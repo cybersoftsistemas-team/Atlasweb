@@ -130,7 +130,6 @@ object fCadSeriais: TfCadSeriais
     Plain = True
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 966
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
@@ -262,7 +261,6 @@ object fCadSeriais: TfCadSeriais
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
-        ExplicitLeft = -8
         DesignSize = (
           1278
           681)
@@ -302,8 +300,6 @@ object fCadSeriais: TfCadSeriais
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object UniDBLookupComboBox2: TUniDBLookupComboBox
             Left = 21
@@ -316,7 +312,6 @@ object fCadSeriais: TfCadSeriais
             ListSource = dsCores
             KeyField = 'Codigo'
             ListFieldIndex = 1
-            BorderStyle = ubsSolid
             DataField = 'Cor'
             DataSource = dsSeriais
             TabOrder = 2
@@ -325,7 +320,6 @@ object fCadSeriais: TfCadSeriais
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
           end
           object UniDBComboBox1: TUniDBComboBox
             Left = 21
@@ -358,7 +352,6 @@ object fCadSeriais: TfCadSeriais
             ListSource = dsProcessos
             KeyField = 'Processo'
             ListFieldIndex = 0
-            BorderStyle = ubsSolid
             DataField = 'Processo'
             DataSource = dsSeriais
             TabOrder = 4
@@ -367,7 +360,6 @@ object fCadSeriais: TfCadSeriais
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
           end
           object UniDBEdit3: TUniDBEdit
             Left = 21
@@ -384,8 +376,6 @@ object fCadSeriais: TfCadSeriais
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object UniDBEdit4: TUniDBEdit
             Left = 341
@@ -402,8 +392,6 @@ object fCadSeriais: TfCadSeriais
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object cProduto: TUniDBLookupComboBox
             Left = 21
@@ -416,7 +404,6 @@ object fCadSeriais: TfCadSeriais
             ListSource = dsProdutos
             KeyField = 'Codigo'
             ListFieldIndex = 1
-            BorderStyle = ubsSolid
             DataField = 'Produto'
             DataSource = dsSeriais
             TabOrder = 7
@@ -425,7 +412,6 @@ object fCadSeriais: TfCadSeriais
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
           end
           object UniDBLookupComboBox5: TUniDBLookupComboBox
             Left = 341
@@ -438,7 +424,6 @@ object fCadSeriais: TfCadSeriais
             ListSource = dsCoresDENTRAN
             KeyField = 'Codigo'
             ListFieldIndex = 1
-            BorderStyle = ubsSolid
             DataField = 'Cor_DENATRAN'
             DataSource = dsSeriais
             TabOrder = 8
@@ -447,7 +432,16 @@ object fCadSeriais: TfCadSeriais
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
+          end
+          object UniButton1: TUniButton
+            Left = 453
+            Top = 97
+            Width = 75
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            Caption = 'UniButton1'
+            TabOrder = 9
           end
         end
       end
@@ -619,8 +613,6 @@ object fCadSeriais: TfCadSeriais
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object cChave: TUniDBEdit
             Left = 14
@@ -637,8 +629,6 @@ object fCadSeriais: TfCadSeriais
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
         end
         object bAddNF: TUniSpeedButton
@@ -946,4 +936,3 @@ object fCadSeriais: TfCadSeriais
     Top = 19
   end
 end
-

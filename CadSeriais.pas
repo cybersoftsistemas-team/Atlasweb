@@ -83,6 +83,7 @@ type
     SeriaisCor_DENATRAN: TStringField;
     SeriaisDisponivel: TBooleanField;
     SeriaisProduto_Desc: TStringField;
+    UniButton1: TUniButton;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
