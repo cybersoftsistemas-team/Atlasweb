@@ -1,0 +1,333 @@
+ERPImporta.exe: 00001B0C: 14:55:42 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001B0C: 14:55:42 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001B0C: 14:55:42 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001B0C: 14:55:42 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001B0C: 14:55:43 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001B0C: 14:55:43 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000012D0: 14:55:55 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00000CDC: 15:01:52 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00000CDC: 15:01:52 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00000CDC: 15:01:52 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00000CDC: 15:01:52 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00000CDC: 15:01:53 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00000CDC: 15:01:53 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00003608: 15:02:07 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 000028D0: 15:03:02 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000028D0: 15:03:02 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000028D0: 15:03:02 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000028D0: 15:03:02 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000028D0: 15:03:03 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000028D0: 15:03:03 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002148: 15:03:11 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00001720: 15:03:49 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001720: 15:03:49 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001720: 15:03:49 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001720: 15:03:49 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001720: 15:03:49 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00001720: 15:03:50 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001720: 15:03:50 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001184: 15:03:57 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00003468: 15:12:00 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003468: 15:12:00 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003468: 15:12:00 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003468: 15:12:00 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003468: 15:12:01 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003468: 15:12:01 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000034DC: 15:14:03 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000034DC: 15:14:03 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000034DC: 15:14:03 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000034DC: 15:14:03 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000034DC: 15:14:04 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000034DC: 15:14:04 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001EC4: 15:36:40 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001EC4: 15:36:40 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001EC4: 15:36:40 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001EC4: 15:36:40 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001EC4: 15:36:40 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001EC4: 15:36:40 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000039B4: 15:36:48 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000039B4: 15:36:48 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000039B4: 15:36:48 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000039B4: 15:36:48 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000039B4: 15:36:48 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000039B4: 15:36:48 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001DF4: 15:37:04 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001DF4: 15:37:04 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001DF4: 15:37:04 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001DF4: 15:37:04 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001DF4: 15:37:04 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00001DF4: 15:37:05 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001DF4: 15:37:05 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000034FC: 15:39:14 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000034FC: 15:39:14 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000034FC: 15:39:14 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000034FC: 15:39:14 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000034FC: 15:39:14 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000034FC: 15:39:15 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00003768: 15:40:16 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003768: 15:40:16 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003768: 15:40:16 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003768: 15:40:16 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003768: 15:40:17 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003768: 15:40:17 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001FC0: 15:48:18 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001FC0: 15:48:18 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001FC0: 15:48:18 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001FC0: 15:48:18 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001FC0: 15:48:18 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001FC0: 15:48:18 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000038FC: 15:51:11 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000038FC: 15:51:11 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000038FC: 15:51:11 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000038FC: 15:51:11 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000038FC: 15:51:11 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000038FC: 15:51:11 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00000AF0: 15:52:36 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00000AF0: 15:52:36 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00000AF0: 15:52:36 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00000AF0: 15:52:36 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00000AF0: 15:52:36 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00000AF0: 15:52:36 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00000AF0: 15:52:36 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001764: 15:53:39 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001764: 15:53:39 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001764: 15:53:39 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001764: 15:53:39 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001764: 15:53:39 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00001764: 15:53:39 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001764: 15:53:39 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000032BC: 15:53:47 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00002680: 16:05:37 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002680: 16:05:37 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002680: 16:05:37 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002680: 16:05:37 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002680: 16:05:37 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00002680: 16:05:37 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002680: 16:05:37 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00000C08: 16:19:31 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00000C08: 16:19:31 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00000C08: 16:19:31 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00000C08: 16:19:31 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00000C08: 16:19:31 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00000C08: 16:19:31 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00000C08: 16:19:31 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001CD4: 16:19:40 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 0000113C: 16:25:09 []:>--------------------------------------------------------------<
+ERPImporta.exe: 0000113C: 16:25:09 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 0000113C: 16:25:09 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 0000113C: 16:25:09 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 0000113C: 16:25:09 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 0000113C: 16:25:09 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 0000113C: 16:25:09 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00003BDC: 16:25:17 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'Conta_Metodo'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'Conta_Metodo'. : Addr: $008BB2F5
+ERPImporta.exe: 00000B20: 16:25:22 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 000004E4: 16:25:31 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000004E4: 16:25:31 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000004E4: 16:25:31 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000004E4: 16:25:31 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000004E4: 16:25:32 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000004E4: 16:25:32 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002C9C: 16:25:40 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00002150: 16:26:53 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002150: 16:26:53 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002150: 16:26:53 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002150: 16:26:53 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002150: 16:26:53 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00002150: 16:26:53 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002150: 16:26:53 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000036A0: 16:27:20 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00003A70: 16:27:34 [127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'Modalidades'. : Addr: $008BB2F5
+ERPImporta.exe: 0000398C: 16:28:56 []:>--------------------------------------------------------------<
+ERPImporta.exe: 0000398C: 16:28:56 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 0000398C: 16:28:56 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 0000398C: 16:28:56 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 0000398C: 16:28:56 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 0000398C: 16:28:57 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 0000398C: 16:28:57 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002AB8: 16:29:04 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00003748: 16:32:36 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003748: 16:32:36 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003748: 16:32:36 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003748: 16:32:36 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003748: 16:32:36 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00003748: 16:32:36 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003748: 16:32:36 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 0000050C: 16:42:52 []:>--------------------------------------------------------------<
+ERPImporta.exe: 0000050C: 16:42:52 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 0000050C: 16:42:52 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 0000050C: 16:42:52 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 0000050C: 16:42:52 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 0000050C: 16:42:53 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 0000050C: 16:42:53 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00000CE8: 16:43:02 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00003A84: 16:44:18 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003A84: 16:44:18 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003A84: 16:44:18 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003A84: 16:44:18 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003A84: 16:44:18 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00003A84: 16:44:18 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003A84: 16:44:18 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000038E0: 16:44:33 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000038E0: 16:44:33 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000038E0: 16:44:33 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000038E0: 16:44:33 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000038E0: 16:44:33 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 000038E0: 16:44:33 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000038E0: 16:44:33 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00003170: 16:44:41 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 000004AC: 16:47:22 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000004AC: 16:47:22 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000004AC: 16:47:22 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000004AC: 16:47:22 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000004AC: 16:47:22 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 000004AC: 16:47:23 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000004AC: 16:47:23 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000016FC: 16:47:31 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 0000340C: 16:49:03 []:>--------------------------------------------------------------<
+ERPImporta.exe: 0000340C: 16:49:03 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 0000340C: 16:49:03 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 0000340C: 16:49:03 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 0000340C: 16:49:03 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 0000340C: 16:49:03 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 0000340C: 16:49:03 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000034F0: 16:50:25 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000034F0: 16:50:25 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000034F0: 16:50:25 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000034F0: 16:50:25 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000034F0: 16:50:25 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000034F0: 16:50:25 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000001AC: 16:50:34 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00003964: 16:51:25 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003964: 16:51:25 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003964: 16:51:25 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003964: 16:51:25 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003964: 16:51:25 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00003964: 16:51:26 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003964: 16:51:26 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000014E8: 16:51:38 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000014E8: 16:51:38 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000014E8: 16:51:38 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000014E8: 16:51:38 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000014E8: 16:51:39 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000014E8: 16:51:39 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000006F4: 16:51:46 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00000B88: 16:53:04 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00000B88: 16:53:04 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00000B88: 16:53:04 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00000B88: 16:53:04 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00000B88: 16:53:04 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00000B88: 16:53:04 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00000B88: 16:53:04 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001BA8: 16:53:11 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 0000304C: 16:54:44 []:>--------------------------------------------------------------<
+ERPImporta.exe: 0000304C: 16:54:44 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 0000304C: 16:54:44 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 0000304C: 16:54:44 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 0000304C: 16:54:44 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 0000304C: 16:54:45 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 0000304C: 16:54:45 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002F44: 16:56:52 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002F44: 16:56:52 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002F44: 16:56:52 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002F44: 16:56:52 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002F44: 16:56:52 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002F44: 16:56:53 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002C10: 16:57:06 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002C10: 16:57:06 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002C10: 16:57:06 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002C10: 16:57:06 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002C10: 16:57:06 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00002C10: 16:57:06 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002C10: 16:57:06 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00003A3C: 16:57:26 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00002CFC: 17:01:10 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002CFC: 17:01:10 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002CFC: 17:01:10 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002CFC: 17:01:10 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002CFC: 17:01:10 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00002CFC: 17:01:10 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002CFC: 17:01:10 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002FE0: 17:01:33 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 0000043C: 17:04:11 []:>--------------------------------------------------------------<
+ERPImporta.exe: 0000043C: 17:04:11 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 0000043C: 17:04:11 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 0000043C: 17:04:11 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 0000043C: 17:04:11 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 0000043C: 17:04:11 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 0000043C: 17:04:11 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 0000058C: 17:05:49 []:>--------------------------------------------------------------<
+ERPImporta.exe: 0000058C: 17:05:49 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 0000058C: 17:05:49 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 0000058C: 17:05:49 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 0000058C: 17:05:49 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 0000058C: 17:05:49 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000035D8: 17:08:27 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000035D8: 17:08:27 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000035D8: 17:08:27 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000035D8: 17:08:27 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000035D8: 17:08:27 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000035D8: 17:08:27 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00000434: 17:10:34 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00000434: 17:10:34 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00000434: 17:10:34 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00000434: 17:10:34 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00000434: 17:10:35 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00000434: 17:10:35 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00003610: 17:10:43 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00002198: 17:13:35 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002198: 17:13:35 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002198: 17:13:35 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002198: 17:13:35 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002198: 17:13:35 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00002198: 17:13:35 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002198: 17:13:35 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00003A38: 17:14:03 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00002284: 17:16:41 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002284: 17:16:41 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002284: 17:16:41 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002284: 17:16:41 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002284: 17:16:41 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00002284: 17:16:42 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002284: 17:16:42 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002E2C: 17:16:49 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00003244: 17:20:18 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003244: 17:20:18 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003244: 17:20:18 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003244: 17:20:18 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003244: 17:20:18 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00003244: 17:20:18 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003244: 17:20:18 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00000A30: 17:23:00 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00000A30: 17:23:00 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00000A30: 17:23:00 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00000A30: 17:23:00 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00000A30: 17:23:00 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00000A30: 17:23:01 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00000A30: 17:23:01 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001318: 17:23:30 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00002200: 17:23:42 [127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Incorrect syntax near the keyword 'select'. : Addr: $008BB2F5
+ERPImporta.exe: 00000460: 17:24:00 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00000460: 17:24:00 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00000460: 17:24:00 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00000460: 17:24:00 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00000460: 17:24:00 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00000460: 17:24:01 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00000460: 17:24:01 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000025C4: 17:24:10 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 000026D4: 17:27:12 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000026D4: 17:27:12 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000026D4: 17:27:12 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000026D4: 17:27:12 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000026D4: 17:27:12 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 000026D4: 17:27:13 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000026D4: 17:27:13 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002974: 17:27:19 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00002E44: 17:27:30 [127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'Observacao_Liquidacao'. : Addr: $008BB2F5
+ERPImporta.exe: 00003784: 17:30:01 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003784: 17:30:01 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003784: 17:30:01 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003784: 17:30:01 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003784: 17:30:01 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00003784: 17:30:01 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003784: 17:30:01 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000001A8: 17:30:10 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg

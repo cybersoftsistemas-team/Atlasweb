@@ -1,0 +1,21 @@
+ERPImporta.exe: 00002AE4: 09:33:36 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002AE4: 09:33:36 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002AE4: 09:33:36 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002AE4: 09:33:36 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002AE4: 09:33:36 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00002AE4: 09:33:36 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002AE4: 09:33:36 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 0000272C: 09:50:06 [127.0.0.1]:EUniSessionException : Sessão inváilda ou tempo da sessão expirado. (Session not found: DvQpd5Wh7W11190589B ) : Addr: $007D0FCC
+ERPImporta.exe: 00000B24: 09:52:57 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00000B24: 09:52:57 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00000B24: 09:52:57 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00000B24: 09:52:57 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00000B24: 09:52:57 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00000B24: 09:52:57 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000016DC: 09:54:22 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000016DC: 09:54:22 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000016DC: 09:54:22 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000016DC: 09:54:22 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000016DC: 09:54:23 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000016DC: 09:54:23 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000015C0: 09:56:52 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'Saida_Entrada'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'Saida_Entrada'. : Addr: $008E1D71

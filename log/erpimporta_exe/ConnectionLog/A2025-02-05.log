@@ -1,0 +1,9 @@
+ERPImporta.exe: 00002A10: 10:59:24 [127.0.0.1]:Failed Sequence Recovery: SeqId: 41, Event: select
+ERPImporta.exe: 00002A10: 10:59:24 [127.0.0.1]:Sequence sent from cache:  SeqId: 41
+ERPImporta.exe: 00002A10: 10:59:24 [127.0.0.1]:Processed: Id: 41, Evt: select, [mS5fHoq5Ir1105AAE8E]
+ERPImporta.exe: 000016E4: 10:59:24 [127.0.0.1]:Processing: Id: -1, Evt: data
+ERPImporta.exe: 000016E4: 10:59:24 [127.0.0.1]:Processed: Id: -1, Evt: data, [mS5fHoq5Ir1105AAE8E]
+ERPImporta.exe: 00003640: 10:59:34 [127.0.0.1]:Sequence Error Timeout : TDiff:10031, Event: load, Expected: 46, Received: 49, [mS5fHoq5Ir1105AAE8E]
+ERPImporta.exe: 00003640: 10:59:34 [127.0.0.1]:Failed Sequence Reset to: 46
+ERPImporta.exe: 00002834: 10:59:34 [127.0.0.1]:Sequence Error Timeout : TDiff:10078, Event: load, Expected: 46, Received: 47, [mS5fHoq5Ir1105AAE8E]
+ERPImporta.exe: 00002A18: 10:59:34 [127.0.0.1]:Sequence Error Timeout : TDiff:10094, Event: tabchange, Expected: 46, Received: 48, [mS5fHoq5Ir1105AAE8E]

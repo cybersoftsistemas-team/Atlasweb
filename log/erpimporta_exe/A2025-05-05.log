@@ -1,0 +1,19 @@
+ERPImporta.exe: 000007A8: 09:15:20 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000007A8: 09:15:20 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000007A8: 09:15:20 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000007A8: 09:15:20 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000007A8: 09:15:21 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000007A8: 09:15:21 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002264: 09:17:27 [127.0.0.1]:EDatabaseError : PedidosNFItens: Dataset not in edit or insert mode : Addr: $00657AAE
+ERPImporta.exe: 00001B5C: 09:19:35 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001B5C: 09:19:35 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001B5C: 09:19:35 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001B5C: 09:19:35 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001B5C: 09:19:35 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001B5C: 09:19:35 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00003864: 09:21:56 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003864: 09:21:56 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003864: 09:21:56 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003864: 09:21:56 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003864: 09:21:56 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003864: 09:21:56 [TUniServerModule]:HTTP Server Started on Port: 8077

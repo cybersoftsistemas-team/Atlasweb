@@ -1,0 +1,112 @@
+ERPImporta.exe: 0000332C: 09:04:14 []:>--------------------------------------------------------------<
+ERPImporta.exe: 0000332C: 09:04:14 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 0000332C: 09:04:14 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 0000332C: 09:04:14 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 0000332C: 09:04:16 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 0000332C: 09:04:16 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 0000238C: 09:07:27 []:>--------------------------------------------------------------<
+ERPImporta.exe: 0000238C: 09:07:27 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 0000238C: 09:07:27 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 0000238C: 09:07:27 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 0000238C: 09:07:29 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 0000238C: 09:07:29 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002E50: 09:13:42 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002E50: 09:13:42 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002E50: 09:13:42 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002E50: 09:13:42 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002E50: 09:13:43 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002E50: 09:13:44 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00003E2C: 09:15:44 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003E2C: 09:15:44 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003E2C: 09:15:44 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003E2C: 09:15:44 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003E2C: 09:15:45 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003E2C: 09:15:45 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002014: 10:10:20 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002014: 10:10:20 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002014: 10:10:20 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002014: 10:10:20 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002014: 10:10:20 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00002014: 10:10:22 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002014: 10:10:22 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00004F48: 10:11:43 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00004F48: 10:11:43 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00004F48: 10:11:43 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00004F48: 10:11:43 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00004F48: 10:11:45 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00004F48: 10:11:45 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00003C1C: 10:14:33 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:14:39 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:14:42 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:14:45 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:14:47 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:14:48 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:14:49 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:14:50 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:14:50 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:14:52 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:14:53 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:14:54 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:14:55 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:14:57 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:14:57 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:14:58 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:14:59 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:15:00 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:15:01 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:15:02 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:15:02 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:15:04 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:15:05 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:15:06 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:15:07 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:15:08 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:15:11 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:15:13 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:15:17 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:15:18 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:15:18 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:15:18 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:15:19 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:15:19 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:15:19 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 00003C1C: 10:15:19 [127.0.0.1]:EDatabaseError : Produtos: Field 'CSTPIS_Entrada' not found : Addr: $00657AAE
+ERPImporta.exe: 000026C4: 10:15:29 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000026C4: 10:15:29 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000026C4: 10:15:29 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000026C4: 10:15:29 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000026C4: 10:15:29 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 000026C4: 10:15:30 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000026C4: 10:15:30 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001748: 10:15:45 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression. : Addr: $008E1CE9
+ERPImporta.exe: 000036BC: 10:19:08 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000036BC: 10:19:08 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000036BC: 10:19:08 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000036BC: 10:19:08 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000036BC: 10:19:10 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000036BC: 10:19:10 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 0000294C: 10:19:25 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression. : Addr: $008E1CE9
+ERPImporta.exe: 00003D90: 10:19:57 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003D90: 10:19:57 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003D90: 10:19:57 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003D90: 10:19:57 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003D90: 10:19:57 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00003D90: 10:19:58 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003D90: 10:19:59 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002464: 10:20:34 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression. : Addr: $008E1CE9
+ERPImporta.exe: 000039A0: 10:21:50 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000039A0: 10:21:50 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000039A0: 10:21:50 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000039A0: 10:21:50 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000039A0: 10:21:50 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 000039A0: 10:21:52 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000039A0: 10:21:52 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 0000318C: 10:22:03 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression. : Addr: $008E1CE9
+ERPImporta.exe: 00002788: 10:24:50 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002788: 10:24:50 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002788: 10:24:50 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002788: 10:24:50 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002788: 10:24:50 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00002788: 10:24:52 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002788: 10:24:52 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000048E0: 10:25:57 [127.0.0.1]:EUniSessionException : Sessão inváilda ou tempo da sessão expirado. (Session not found: rqGOisIAHK111271C95 ) : Addr: $007D0F44

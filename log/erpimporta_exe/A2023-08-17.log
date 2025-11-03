@@ -1,0 +1,57 @@
+ERPImporta.exe: 000038F8: 15:32:00 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000038F8: 15:32:00 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000038F8: 15:32:00 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000038F8: 15:32:00 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000038F8: 15:32:00 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 000038F8: 15:32:01 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000038F8: 15:32:01 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000014B4: 15:32:04 [TUniGUIServerModule.AppHandleException-127.0.0.1]:EAbort : Operation aborted : Addr: $00B90325
+ERPImporta.exe: 00001C90: 15:32:17 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001C90: 15:32:17 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001C90: 15:32:17 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001C90: 15:32:17 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001C90: 15:32:17 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001C90: 15:32:17 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000034B4: 15:32:20 [TUniGUIServerModule.AppHandleException-127.0.0.1]:EAbort : Operation aborted : Addr: $00B90325
+ERPImporta.exe: 000016A0: 15:32:22 [127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Login failed for user 'sa'. : Addr: $008DDE75
+ERPImporta.exe: 00000D1C: 15:34:41 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00000D1C: 15:34:41 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00000D1C: 15:34:41 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00000D1C: 15:34:41 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00000D1C: 15:34:42 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00000D1C: 15:34:42 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 0000219C: 15:34:44 [TUniGUIServerModule.AppHandleException-127.0.0.1]:EAbort : Operation aborted : Addr: $00B90325
+ERPImporta.exe: 00003B7C: 15:34:47 [127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Login failed for user 'sa'. : Addr: $008DDE75
+ERPImporta.exe: 00003760: 15:37:15 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003760: 15:37:15 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003760: 15:37:15 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003760: 15:37:15 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003760: 15:37:15 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003760: 15:37:15 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001CC4: 15:37:19 [TUniGUIServerModule.AppHandleException-127.0.0.1]:EAbort : Operation aborted : Addr: $00B90325
+ERPImporta.exe: 000018D4: 15:41:28 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000018D4: 15:41:28 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000018D4: 15:41:28 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000018D4: 15:41:28 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000018D4: 15:41:28 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000018D4: 15:41:28 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 0000019C: 15:44:21 []:>--------------------------------------------------------------<
+ERPImporta.exe: 0000019C: 15:44:21 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 0000019C: 15:44:21 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 0000019C: 15:44:21 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 0000019C: 15:44:22 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 0000019C: 15:44:22 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00003198: 15:45:07 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImportacao'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImportacao'. : Addr: $008DDE75
+ERPImporta.exe: 00003198: 15:45:17 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'Nome'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'Nome'. : Addr: $008DDE75
+ERPImporta.exe: 00001174: 15:45:44 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00003198: 15:46:31 [cValor_Real: Field 'Valor_Real' not found-127.0.0.1]:EDatabaseError : cValor_Real: Field 'Valor_Real' not found : Addr: $0065756A
+ERPImporta.exe: 000010AC: 15:46:32 [127.0.0.1]:EAccessViolation : Access violation at address 0067121E in module 'ERPImporta.exe'. Read of address 00000000 : Addr: $0067121E
+ERPImporta.exe: 00001B50: 15:46:58 [127.0.0.1]:UniErrorException : Event:edited, Object: O657 not found in session list. It could be timed out, refresh page and try again : Addr: $00000000
+ERPImporta.exe: 00001C80: 15:49:40 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001C80: 15:49:40 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001C80: 15:49:40 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001C80: 15:49:40 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001C80: 15:49:41 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001C80: 15:49:41 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00000A10: 15:49:55 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImportacao'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImportacao'. : Addr: $008DDE75
+ERPImporta.exe: 00000A10: 15:50:31 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImportacao'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImportacao'. : Addr: $008DDE75

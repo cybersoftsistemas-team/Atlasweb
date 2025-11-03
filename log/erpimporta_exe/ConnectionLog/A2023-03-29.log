@@ -1,0 +1,3 @@
+ERPImporta.exe: 00003524: 11:16:50 [127.0.0.1]:Failed Sequence Recovery: SeqId: 78, Event: bclose
+ERPImporta.exe: 00003524: 11:16:50 [127.0.0.1]:Sequence sent from cache:  SeqId: 78
+ERPImporta.exe: 00003524: 11:16:50 [127.0.0.1]:Processed: Id: 78, Evt: bclose, [oy7VdNlaqf10C4E9F71]

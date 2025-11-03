@@ -1,0 +1,537 @@
+ERPImporta.exe: 00003824: 07:35:48 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003824: 07:35:48 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003824: 07:35:48 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003824: 07:35:48 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003824: 07:35:48 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003824: 07:35:48 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00003E60: 07:37:58 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003E60: 07:37:58 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003E60: 07:37:58 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003E60: 07:37:58 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003E60: 07:37:58 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003E60: 07:37:58 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 0000183C: 07:46:08 []:>--------------------------------------------------------------<
+ERPImporta.exe: 0000183C: 07:46:08 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 0000183C: 07:46:08 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 0000183C: 07:46:08 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 0000183C: 07:46:08 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 0000183C: 07:46:09 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 0000183C: 07:46:09 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00004148: 07:48:21 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00004148: 07:48:21 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00004148: 07:48:21 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00004148: 07:48:21 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00004148: 07:48:21 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00004148: 07:48:21 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00004148: 07:48:21 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001B14: 07:48:52 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001B14: 07:48:52 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001B14: 07:48:52 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001B14: 07:48:52 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001B14: 07:48:52 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00001B14: 07:48:52 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001B14: 07:48:52 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00000900: 07:48:54 [127.0.0.1]:EUniSessionException : Sessão inváilda ou tempo da sessão expirado. (Session not found: rADOSWsZ7N11092F04E ) : Addr: $007BD296
+ERPImporta.exe: 00001CA8: 07:51:01 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001CA8: 07:51:01 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001CA8: 07:51:01 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001CA8: 07:51:01 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001CA8: 07:51:01 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00001CA8: 07:51:01 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001CA8: 07:51:01 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000042CC: 07:51:13 [tItensTmp: Dataset not in edit or insert mode-127.0.0.1]:EDatabaseError : tItensTmp: Dataset not in edit or insert mode : Addr: $00657ABA
+ERPImporta.exe: 00003250: 07:51:41 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003250: 07:51:41 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003250: 07:51:41 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003250: 07:51:41 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003250: 07:51:41 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003250: 07:51:41 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001C6C: 07:51:55 [tItensTmp: Dataset not in edit or insert mode-127.0.0.1]:EDatabaseError : tItensTmp: Dataset not in edit or insert mode : Addr: $00657ABA
+ERPImporta.exe: 00000E54: 07:52:26 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00000E54: 07:52:26 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00000E54: 07:52:26 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00000E54: 07:52:26 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00000E54: 07:52:26 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00000E54: 07:52:26 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00003EC0: 07:53:51 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003EC0: 07:53:51 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003EC0: 07:53:51 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003EC0: 07:53:51 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003EC0: 07:53:51 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003EC0: 07:53:51 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00000544: 07:56:03 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00000544: 07:56:03 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00000544: 07:56:03 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00000544: 07:56:03 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00000544: 07:56:03 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00000544: 07:56:04 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00000544: 07:56:04 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00003248: 07:56:16 [tItensTmp: Dataset not in edit or insert mode-127.0.0.1]:EDatabaseError : tItensTmp: Dataset not in edit or insert mode : Addr: $00657ABA
+ERPImporta.exe: 0000307C: 07:56:56 []:>--------------------------------------------------------------<
+ERPImporta.exe: 0000307C: 07:56:56 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 0000307C: 07:56:56 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 0000307C: 07:56:56 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 0000307C: 07:56:56 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 0000307C: 07:56:56 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001F44: 07:57:03 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'Saida_Entrada'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'Saida_Entrada'. : Addr: $008C4D79
+ERPImporta.exe: 00003EA4: 07:57:57 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003EA4: 07:57:57 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003EA4: 07:57:57 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003EA4: 07:57:57 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003EA4: 07:57:58 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003EA4: 07:57:58 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000040DC: 07:59:16 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000040DC: 07:59:16 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000040DC: 07:59:16 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000040DC: 07:59:16 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000040DC: 07:59:16 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000040DC: 07:59:17 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000044C4: 07:59:56 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000044C4: 07:59:56 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000044C4: 07:59:56 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000044C4: 07:59:56 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000044C4: 07:59:56 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 000044C4: 07:59:56 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000044C4: 07:59:56 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000042E4: 08:04:32 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000042E4: 08:04:32 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000042E4: 08:04:32 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000042E4: 08:04:32 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000042E4: 08:04:32 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 000042E4: 08:04:32 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000042E4: 08:04:32 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001A5C: 08:09:15 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001A5C: 08:09:15 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001A5C: 08:09:15 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001A5C: 08:09:15 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001A5C: 08:09:16 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001A5C: 08:09:16 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00003DDC: 08:09:51 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003DDC: 08:09:51 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003DDC: 08:09:51 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003DDC: 08:09:51 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003DDC: 08:09:51 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003DDC: 08:09:51 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000012F0: 08:11:40 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000012F0: 08:11:40 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000012F0: 08:11:40 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000012F0: 08:11:40 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000012F0: 08:11:40 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000012F0: 08:11:41 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002498: 08:13:35 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002498: 08:13:35 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002498: 08:13:35 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002498: 08:13:35 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002498: 08:13:36 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002498: 08:13:36 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002B00: 08:15:17 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002B00: 08:15:17 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002B00: 08:15:17 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002B00: 08:15:17 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002B00: 08:15:17 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002B00: 08:15:17 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002A8C: 09:03:17 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002A8C: 09:03:17 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002A8C: 09:03:18 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002A8C: 09:03:18 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002A8C: 09:03:18 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002A8C: 09:03:18 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001E50: 10:29:44 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001E50: 10:29:44 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001E50: 10:29:44 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001E50: 10:29:44 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001E50: 10:29:45 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001E50: 10:29:45 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002718: 10:29:57 [127.0.0.1]:EDatabaseError : UniDBEdit54: Field 'Aliquota_COFINSSaida' not found : Addr: $00657ABA
+ERPImporta.exe: 00004A18: 10:33:08 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00004A18: 10:33:08 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00004A18: 10:33:08 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00004A18: 10:33:08 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00004A18: 10:33:08 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00004A18: 10:33:08 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001098: 10:33:22 [127.0.0.1]:EDatabaseError : UniDBEdit54: Field 'Aliquota_COFINSSaida' not found : Addr: $00657ABA
+ERPImporta.exe: 00001098: 10:34:58 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'UM'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'UM'. : Addr: $008C4D79
+ERPImporta.exe: 00001098: 10:35:08 [127.0.0.1]:EDatabaseError : UniDBEdit48: Field 'ICMS_DentroEstadoSai' not found : Addr: $00657ABA
+ERPImporta.exe: 00001098: 10:37:31 [127.0.0.1]:EDatabaseError : UniDBEdit46: Field 'ICMS_ForaEstadoEnt' not found : Addr: $00657ABA
+ERPImporta.exe: 00001098: 10:38:38 [127.0.0.1]:EDatabaseError : UniDBCheckBox1: Field 'Detalhamento' not found : Addr: $00657ABA
+ERPImporta.exe: 00003B30: 10:55:44 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003B30: 10:55:44 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003B30: 10:55:44 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003B30: 10:55:44 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003B30: 10:55:44 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00003B30: 10:55:44 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003B30: 10:55:45 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002204: 10:55:55 [127.0.0.1]:EDatabaseError : cOrigem: Field 'Origem_Mercadoria' not found : Addr: $00657ABA
+ERPImporta.exe: 00001B40: 11:15:40 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001B40: 11:15:40 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001B40: 11:15:40 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001B40: 11:15:40 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001B40: 11:15:40 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00001B40: 11:15:40 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001B40: 11:15:40 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002A08: 11:15:57 [127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'Saida_Entrada'. : Addr: $008C4D79
+ERPImporta.exe: 00000534: 11:16:14 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00000534: 11:16:14 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00000534: 11:16:14 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00000534: 11:16:14 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00000534: 11:16:14 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00000534: 11:16:14 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00000534: 11:16:14 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002904: 11:16:25 [127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'Saida_Entrada'. : Addr: $008C4D79
+ERPImporta.exe: 0000175C: 11:17:09 []:>--------------------------------------------------------------<
+ERPImporta.exe: 0000175C: 11:17:09 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 0000175C: 11:17:09 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 0000175C: 11:17:09 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 0000175C: 11:17:09 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 0000175C: 11:17:09 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 0000175C: 11:17:09 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00004128: 11:17:22 [127.0.0.1]:EDatabaseError : Produtos: Field 'Imagem' not found : Addr: $00657ABA
+ERPImporta.exe: 00004308: 11:21:04 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00004308: 11:21:04 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00004308: 11:21:04 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00004308: 11:21:04 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00004308: 11:21:04 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00004308: 11:21:04 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000040D4: 11:25:56 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000040D4: 11:25:56 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000040D4: 11:25:56 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000040D4: 11:25:56 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000040D4: 11:25:56 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 000040D4: 11:25:56 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000040D4: 11:25:56 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00000EBC: 11:26:06 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Conversion failed when converting the varchar value 'I' to data type int.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Conversion failed when converting the varchar value 'I' to data type int. : Addr: $008C4D79
+ERPImporta.exe: 00000EBC: 11:26:12 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'DI'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'DI'. : Addr: $008C4D79
+ERPImporta.exe: 00002124: 11:26:16 [HandleFileRequest[127.0.0.1]]:File not found: D:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00003A38: 11:26:59 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003A38: 11:26:59 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003A38: 11:26:59 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003A38: 11:26:59 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003A38: 11:26:59 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003A38: 11:26:59 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000040E4: 11:27:11 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'DI'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'DI'. : Addr: $008C4D79
+ERPImporta.exe: 00004B98: 11:27:19 [HandleFileRequest[127.0.0.1]]:File not found: D:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00004B08: 11:28:26 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00004B08: 11:28:26 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00004B08: 11:28:26 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00004B08: 11:28:26 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00004B08: 11:28:27 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00004B08: 11:28:27 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00004A58: 11:28:37 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'FormaPagamento'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'FormaPagamento'. : Addr: $008C4D79
+ERPImporta.exe: 000043C4: 11:28:43 [HandleFileRequest[127.0.0.1]]:File not found: D:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 000043D0: 11:29:17 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000043D0: 11:29:17 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000043D0: 11:29:17 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000043D0: 11:29:17 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000043D0: 11:29:17 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000043D0: 11:29:17 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00004410: 11:29:26 [HandleFileRequest[127.0.0.1]]:File not found: D:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00000154: 11:32:31 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00000154: 11:32:31 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00000154: 11:32:31 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00000154: 11:32:31 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00000154: 11:32:31 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00000154: 11:32:31 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001FF8: 11:32:39 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'Origem'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'Origem'. : Addr: $008C4D79
+ERPImporta.exe: 000034D8: 11:32:47 [HandleFileRequest[127.0.0.1]]:File not found: D:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00002A50: 11:34:36 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002A50: 11:34:36 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002A50: 11:34:36 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002A50: 11:34:36 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002A50: 11:34:36 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002A50: 11:34:36 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 0000230C: 11:37:09 []:>--------------------------------------------------------------<
+ERPImporta.exe: 0000230C: 11:37:09 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 0000230C: 11:37:09 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 0000230C: 11:37:09 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 0000230C: 11:37:09 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 0000230C: 11:37:10 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 0000230C: 11:37:10 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001F1C: 11:37:18 [127.0.0.1]:EUniSessionException : Sessão inváilda ou tempo da sessão expirado. (Session not found: NUaGJPvg9I110932DAD ) : Addr: $007BD296
+ERPImporta.exe: 000041C8: 11:37:23 [HandleFileRequest[127.0.0.1]]:File not found: D:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00002BF0: 11:39:02 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002BF0: 11:39:02 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002BF0: 11:39:02 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002BF0: 11:39:02 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002BF0: 11:39:02 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00002BF0: 11:39:03 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002BF0: 11:39:03 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002364: 11:40:05 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002364: 11:40:05 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002364: 11:40:05 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002364: 11:40:05 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002364: 11:40:06 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00002364: 11:40:06 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002364: 11:40:06 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002B10: 11:40:09 [127.0.0.1]:EUniSessionException : Sessão inváilda ou tempo da sessão expirado. (Session not found: BlM8qdFZ5m110932EE2 ) : Addr: $007BD296
+ERPImporta.exe: 00001430: 11:40:09 [127.0.0.1]:EUniSessionException : Sessão inváilda ou tempo da sessão expirado. (Session not found: BlM8qdFZ5m110932EE2 ) : Addr: $007BD296
+ERPImporta.exe: 00004178: 11:40:18 [HandleFileRequest[127.0.0.1]]:File not found: D:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 000012F4: 11:43:05 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'Origem'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'Origem'. : Addr: $008C4D79
+ERPImporta.exe: 00003FE8: 13:58:51 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003FE8: 13:58:51 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003FE8: 13:58:51 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003FE8: 13:58:51 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003FE8: 13:58:51 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003FE8: 13:58:51 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00000950: 13:58:59 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'Origem'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'Origem'. : Addr: $008C4D79
+ERPImporta.exe: 00002F1C: 14:00:08 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002F1C: 14:00:08 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002F1C: 14:00:08 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002F1C: 14:00:08 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002F1C: 14:00:08 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002F1C: 14:00:08 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000008A0: 14:00:17 [Produtos: Field 'Origem' not found-127.0.0.1]:EDatabaseError : Produtos: Field 'Origem' not found : Addr: $00657ABA
+ERPImporta.exe: 00004154: 14:02:34 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00004154: 14:02:34 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00004154: 14:02:34 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00004154: 14:02:34 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00004154: 14:02:34 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00004154: 14:02:34 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00004154: 14:02:34 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002010: 14:10:33 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002010: 14:10:33 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002010: 14:10:33 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002010: 14:10:33 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002010: 14:10:33 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002010: 14:10:33 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00000ABC: 14:11:17 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00000ABC: 14:11:17 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00000ABC: 14:11:17 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00000ABC: 14:11:17 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00000ABC: 14:11:17 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00000ABC: 14:11:17 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00000ABC: 14:11:17 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000043E8: 14:13:05 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000043E8: 14:13:05 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000043E8: 14:13:05 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000043E8: 14:13:05 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000043E8: 14:13:05 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000043E8: 14:13:05 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000022B0: 14:13:57 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000022B0: 14:13:57 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000022B0: 14:13:57 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000022B0: 14:13:57 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000022B0: 14:13:57 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000022B0: 14:13:57 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00004618: 16:43:52 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00004618: 16:43:52 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00004618: 16:43:52 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00004618: 16:43:52 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00004618: 16:43:52 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00004618: 16:43:52 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002230: 16:48:34 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002230: 16:48:34 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002230: 16:48:34 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002230: 16:48:34 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002230: 16:48:34 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00002230: 16:48:34 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002230: 16:48:34 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 0000337C: 17:09:44 [127.0.0.1]:EDatabaseError : cOrigem: Field 'Origem_Mercadoria' not found : Addr: $00657ABA
+ERPImporta.exe: 00004034: 17:09:51 [127.0.0.1]:EUniSessionException : Sessão inváilda ou tempo da sessão expirado. (Session not found: AzWZLobYfh110938193 ) : Addr: $007BD296
+ERPImporta.exe: 00004E0C: 17:09:51 [127.0.0.1]:EUniSessionException : Sessão inváilda ou tempo da sessão expirado. (Session not found: AzWZLobYfh110938193 ) : Addr: $007BD296
+ERPImporta.exe: 00002010: 17:17:38 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002010: 17:17:38 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002010: 17:17:38 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002010: 17:17:38 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002010: 17:17:38 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00002010: 17:17:38 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002010: 17:17:38 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002A80: 17:35:43 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002A80: 17:35:43 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002A80: 17:35:43 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002A80: 17:35:43 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002A80: 17:35:43 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002A80: 17:35:43 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002E88: 17:49:17 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002E88: 17:49:17 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002E88: 17:49:17 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002E88: 17:49:17 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002E88: 17:49:18 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002E88: 17:49:18 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000040C8: 18:23:13 [127.0.0.1]:EUniSessionException : Sessão inváilda ou tempo da sessão expirado. (Session not found: eSiNohKz7V110939353 ) : Addr: $007BD296
+ERPImporta.exe: 00004398: 18:23:49 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'Origem_Mercadoria'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'Origem_Mercadoria'. : Addr: $008C4D79
+ERPImporta.exe: 00004630: 18:25:29 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00004630: 18:25:29 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00004630: 18:25:29 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00004630: 18:25:29 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00004630: 18:25:29 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00004630: 18:25:29 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00004E64: 18:29:26 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00004E64: 18:29:26 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00004E64: 18:29:26 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00004E64: 18:29:26 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00004E64: 18:29:26 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00004E64: 18:29:26 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00004E64: 18:29:26 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00004F20: 18:29:34 [PedidosNF: Field 'Operacao' not found-127.0.0.1]:EDatabaseError : PedidosNF: Field 'Operacao' not found : Addr: $00657ABA
+ERPImporta.exe: 00004878: 18:29:34 [127.0.0.1]:EDatabaseError : OpFiscal: Cannot perform this operation on a closed dataset : Addr: $00657ABA
+ERPImporta.exe: 00001D44: 18:30:52 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001D44: 18:30:52 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001D44: 18:30:52 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001D44: 18:30:52 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001D44: 18:30:52 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001D44: 18:30:52 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001F34: 18:45:21 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001F34: 18:45:21 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001F34: 18:45:21 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001F34: 18:45:21 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001F34: 18:45:21 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001F34: 18:45:21 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00004AA0: 18:45:53 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00004AA0: 18:45:53 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00004AA0: 18:45:53 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00004AA0: 18:45:53 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00004AA0: 18:45:54 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00004AA0: 18:45:54 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002010: 18:51:45 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002010: 18:51:45 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002010: 18:51:45 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002010: 18:51:45 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002010: 18:51:45 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002010: 18:51:45 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002240: 18:51:51 [ListaPed: Field 'Tipo_Processo' not found-127.0.0.1]:EDatabaseError : ListaPed: Field 'Tipo_Processo' not found : Addr: $00657ABA
+ERPImporta.exe: 00004048: 18:53:12 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00004048: 18:53:12 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00004048: 18:53:12 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00004048: 18:53:12 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00004048: 18:53:12 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00004048: 18:53:12 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002238: 18:53:26 [127.0.0.1]:EDatabaseError : Empresas: Field 'Estado' not found : Addr: $00657ABA
+ERPImporta.exe: 00003024: 18:54:33 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003024: 18:54:33 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003024: 18:54:33 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003024: 18:54:34 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003024: 18:54:34 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00003024: 18:54:34 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003024: 18:54:34 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000000B4: 18:55:42 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000000B4: 18:55:42 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000000B4: 18:55:42 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000000B4: 18:55:42 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000000B4: 18:55:42 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000000B4: 18:55:43 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00004F98: 18:57:05 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00004F98: 18:57:05 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00004F98: 18:57:05 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00004F98: 18:57:05 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00004F98: 18:57:05 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00004F98: 18:57:05 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00003D94: 18:58:09 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003D94: 18:58:09 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003D94: 18:58:09 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003D94: 18:58:09 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003D94: 18:58:09 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00003D94: 18:58:09 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003D94: 18:58:09 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00004DC8: 18:58:15 [PedidosNF: Field 'ES' not found-127.0.0.1]:EDatabaseError : PedidosNF: Field 'ES' not found : Addr: $00657ABA
+ERPImporta.exe: 00004DC8: 18:58:21 [PedidosNF: Field 'ES' not found-127.0.0.1]:EDatabaseError : PedidosNF: Field 'ES' not found : Addr: $00657ABA
+ERPImporta.exe: 000033C8: 18:58:42 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000033C8: 18:58:42 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000033C8: 18:58:42 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000033C8: 18:58:42 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000033C8: 18:58:42 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000033C8: 18:58:42 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000021BC: 18:58:49 [PedidosNF: Field 'ES' not found-127.0.0.1]:EDatabaseError : PedidosNF: Field 'ES' not found : Addr: $00657ABA
+ERPImporta.exe: 00002C94: 19:00:47 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002C94: 19:00:47 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002C94: 19:00:47 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002C94: 19:00:47 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002C94: 19:00:47 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002C94: 19:00:47 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00004CF0: 19:00:54 [PedidosNF: Field 'ES' not found-127.0.0.1]:EDatabaseError : PedidosNF: Field 'ES' not found : Addr: $00657ABA
+ERPImporta.exe: 0000136C: 19:02:19 []:>--------------------------------------------------------------<
+ERPImporta.exe: 0000136C: 19:02:19 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 0000136C: 19:02:19 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 0000136C: 19:02:19 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 0000136C: 19:02:19 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 0000136C: 19:02:19 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 0000136C: 19:02:19 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002B14: 19:02:25 [PedidosNF: Field 'ES' not found-127.0.0.1]:EDatabaseError : PedidosNF: Field 'ES' not found : Addr: $00657ABA
+ERPImporta.exe: 00001CC8: 19:02:38 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001CC8: 19:02:38 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001CC8: 19:02:38 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001CC8: 19:02:38 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001CC8: 19:02:38 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00001CC8: 19:02:39 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001CC8: 19:02:39 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 0000402C: 19:02:45 [PedidosNF: Field 'ES' not found-127.0.0.1]:EDatabaseError : PedidosNF: Field 'ES' not found : Addr: $00657ABA
+ERPImporta.exe: 00004890: 19:02:58 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00004890: 19:02:58 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00004890: 19:02:58 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00004890: 19:02:58 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00004890: 19:02:59 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00004890: 19:02:59 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00003CB0: 19:03:06 [PedidosNF: Field 'ES' not found-127.0.0.1]:EDatabaseError : PedidosNF: Field 'ES' not found : Addr: $00657ABA
+ERPImporta.exe: 00003834: 19:04:00 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003834: 19:04:00 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003834: 19:04:00 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003834: 19:04:00 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003834: 19:04:00 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00003834: 19:04:00 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003834: 19:04:00 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00004F14: 19:04:08 [PedidosNF: Field 'ES' not found-127.0.0.1]:EDatabaseError : PedidosNF: Field 'ES' not found : Addr: $00657ABA
+ERPImporta.exe: 00001CD0: 19:05:49 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001CD0: 19:05:49 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001CD0: 19:05:49 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001CD0: 19:05:49 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001CD0: 19:05:49 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00001CD0: 19:05:50 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001CD0: 19:05:50 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001094: 19:06:07 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001094: 19:06:07 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001094: 19:06:07 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001094: 19:06:07 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001094: 19:06:07 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00001094: 19:06:07 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001094: 19:06:07 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00003950: 19:06:13 [OpFiscal: Field 'Apuracao_PISCOFINS' not found-127.0.0.1]:EDatabaseError : OpFiscal: Field 'Apuracao_PISCOFINS' not found : Addr: $00657ABA
+ERPImporta.exe: 000006A4: 19:07:07 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000006A4: 19:07:07 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000006A4: 19:07:07 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000006A4: 19:07:07 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000006A4: 19:07:07 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000006A4: 19:07:07 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00004278: 19:07:15 [OpFiscal: Field 'Apuracao_PISCOFINS' not found-127.0.0.1]:EDatabaseError : OpFiscal: Field 'Apuracao_PISCOFINS' not found : Addr: $00657ABA
+ERPImporta.exe: 000022F0: 19:08:32 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000022F0: 19:08:32 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000022F0: 19:08:32 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000022F0: 19:08:32 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000022F0: 19:08:32 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 000022F0: 19:08:33 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000022F0: 19:08:33 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00004AC4: 19:08:39 [OpFiscal: Field 'Apuracao_PISCOFINS' not found-127.0.0.1]:EDatabaseError : OpFiscal: Field 'Apuracao_PISCOFINS' not found : Addr: $00657ABA
+ERPImporta.exe: 00004774: 19:10:19 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00004774: 19:10:19 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00004774: 19:10:19 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00004774: 19:10:19 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00004774: 19:10:19 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00004774: 19:10:19 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00003C04: 19:12:02 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003C04: 19:12:02 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003C04: 19:12:02 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003C04: 19:12:02 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003C04: 19:12:02 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003C04: 19:12:02 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000048D0: 19:13:30 [127.0.0.1]:EConvertError : '' is not a valid integer value : Addr: $00427B9E
+ERPImporta.exe: 000048D0: 19:13:42 [127.0.0.1]:EConvertError : '' is not a valid integer value : Addr: $00427B9E
+ERPImporta.exe: 000048D0: 19:14:07 [127.0.0.1]:EDatabaseError : cOrigem: Field 'Origem_Mercadoria' not found : Addr: $00657ABA
+ERPImporta.exe: 00003A50: 19:15:11 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003A50: 19:15:11 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003A50: 19:15:11 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003A50: 19:15:11 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003A50: 19:15:11 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003A50: 19:15:11 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00004C5C: 19:16:40 [127.0.0.1]:EDatabaseError : PedidosNFItens: Dataset not in edit or insert mode : Addr: $00657ABA
+ERPImporta.exe: 00004C5C: 19:17:00 [127.0.0.1]:EConvertError : '' is not a valid integer value : Addr: $00427B9E
+ERPImporta.exe: 00004C5C: 19:17:25 [127.0.0.1]:EConvertError : '' is not a valid integer value : Addr: $00427B9E
+ERPImporta.exe: 00002A4C: 19:18:59 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002A4C: 19:18:59 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002A4C: 19:18:59 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002A4C: 19:18:59 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002A4C: 19:18:59 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002A4C: 19:18:59 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000014D0: 19:19:33 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000014D0: 19:19:33 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000014D0: 19:19:33 [TUniServerModule]:Start Path = D:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000014D0: 19:19:33 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000014D0: 19:19:34 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000014D0: 19:19:34 [TUniServerModule]:HTTP Server Started on Port: 8077

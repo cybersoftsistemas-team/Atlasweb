@@ -1,0 +1,26 @@
+ERPImporta.exe: 000031F8: 14:57:15 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000031F8: 14:57:15 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000031F8: 14:57:15 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000031F8: 14:57:15 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000031F8: 14:57:16 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000031F8: 14:57:16 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 0000353C: 15:04:18 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00001448: 15:30:35 [127.0.0.1]:EUniSessionException : Sessão inváilda ou tempo da sessão expirado. (Session not found: IuVnL6TbTA110428593 ) : Addr: $007CFC94
+ERPImporta.exe: 00002404: 15:30:35 [127.0.0.1]:EUniSessionException : Sessão inváilda ou tempo da sessão expirado. (Session not found: IuVnL6TbTA110428593 ) : Addr: $007CFC94
+ERPImporta.exe: 00003108: 15:31:38 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'CSTTabelaB'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'CSTTabelaB'. : Addr: $008DFC79
+ERPImporta.exe: 00000760: 15:37:36 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00003108: 15:39:02 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'TipoNota'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'TipoNota'. : Addr: $008DFC79
+ERPImporta.exe: 00001E2C: 15:56:03 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001E2C: 15:56:03 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001E2C: 15:56:03 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001E2C: 15:56:03 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001E2C: 15:56:03 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00001E2C: 15:56:03 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001E2C: 15:56:03 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001548: 15:56:20 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00002830: 16:26:33 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002830: 16:26:33 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002830: 16:26:33 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002830: 16:26:33 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002830: 16:26:34 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002830: 16:26:34 [TUniServerModule]:HTTP Server Started on Port: 8077
