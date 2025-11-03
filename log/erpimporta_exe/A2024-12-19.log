@@ -1,0 +1,141 @@
+ERPImporta.exe: 00002A00: 16:18:20 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002A00: 16:18:20 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002A00: 16:18:20 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002A00: 16:18:20 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002A00: 16:18:20 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002A00: 16:18:21 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 0000251C: 16:19:10 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00000FB0: 16:30:15 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00000FB0: 16:30:15 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00000FB0: 16:30:15 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00000FB0: 16:30:15 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00000FB0: 16:30:15 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00000FB0: 16:30:15 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002C2C: 16:30:27 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImp'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImp'. : Addr: $008DFDA9
+ERPImporta.exe: 00004320: 16:30:27 [127.0.0.1]:EDatabaseError : ModalImp: Cannot perform this operation on a closed dataset : Addr: $006576F6
+ERPImporta.exe: 00001B04: 16:31:33 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001B04: 16:31:33 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001B04: 16:31:33 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001B04: 16:31:33 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001B04: 16:31:33 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00001B04: 16:31:33 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001B04: 16:31:33 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00003390: 16:31:47 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImp'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImp'. : Addr: $008DFDA9
+ERPImporta.exe: 00003A34: 16:31:47 [127.0.0.1]:EDatabaseError : ModalImp: Cannot perform this operation on a closed dataset : Addr: $006576F6
+ERPImporta.exe: 00003390: 16:32:57 [127.0.0.1]:Exception : Blocking method ShowMessage() can not be called here. : Addr: $0079F6F6
+ERPImporta.exe: 000007EC: 16:34:48 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000007EC: 16:34:48 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000007EC: 16:34:48 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000007EC: 16:34:48 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000007EC: 16:34:48 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000007EC: 16:34:48 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 0000076C: 16:35:04 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImp'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImp'. : Addr: $008DFDA9
+ERPImporta.exe: 00000C14: 16:35:04 [127.0.0.1]:EDatabaseError : ModalImp: Cannot perform this operation on a closed dataset : Addr: $006576F6
+ERPImporta.exe: 00002C8C: 16:36:55 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002C8C: 16:36:55 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002C8C: 16:36:55 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002C8C: 16:36:55 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002C8C: 16:36:55 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002C8C: 16:36:55 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000026BC: 16:37:15 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImp'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImp'. : Addr: $008DFDA9
+ERPImporta.exe: 00003FEC: 16:37:15 [127.0.0.1]:EDatabaseError : ModalImp: Cannot perform this operation on a closed dataset : Addr: $006576F6
+ERPImporta.exe: 00001FB4: 16:38:21 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001FB4: 16:38:21 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001FB4: 16:38:21 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001FB4: 16:38:21 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001FB4: 16:38:21 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00001FB4: 16:38:21 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001FB4: 16:38:21 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 0000338C: 16:38:32 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImp'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImp'. : Addr: $008DFDA9
+ERPImporta.exe: 000018CC: 16:38:32 [127.0.0.1]:EDatabaseError : ModalImp: Cannot perform this operation on a closed dataset : Addr: $006576F6
+ERPImporta.exe: 00003C84: 16:40:50 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003C84: 16:40:50 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003C84: 16:40:50 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003C84: 16:40:50 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003C84: 16:40:50 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003C84: 16:40:50 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000014AC: 16:41:04 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImp'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImp'. : Addr: $008DFDA9
+ERPImporta.exe: 00001530: 16:41:05 [127.0.0.1]:EDatabaseError : ModalImp: Cannot perform this operation on a closed dataset : Addr: $006576F6
+ERPImporta.exe: 00003744: 16:42:09 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003744: 16:42:09 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003744: 16:42:09 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003744: 16:42:09 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003744: 16:42:10 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003744: 16:42:10 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002374: 16:42:19 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImp'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImp'. : Addr: $008DFDA9
+ERPImporta.exe: 00001458: 16:42:20 [127.0.0.1]:EDatabaseError : ModalImp: Cannot perform this operation on a closed dataset : Addr: $006576F6
+ERPImporta.exe: 00002D5C: 16:42:58 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002D5C: 16:42:58 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002D5C: 16:42:58 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002D5C: 16:42:58 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002D5C: 16:42:58 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00002D5C: 16:42:59 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002D5C: 16:42:59 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00003D40: 16:43:12 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImp'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImp'. : Addr: $008DFDA9
+ERPImporta.exe: 00003EFC: 16:43:12 [127.0.0.1]:EDatabaseError : ModalImp: Cannot perform this operation on a closed dataset : Addr: $006576F6
+ERPImporta.exe: 00003874: 16:43:31 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003874: 16:43:31 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003874: 16:43:31 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003874: 16:43:31 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003874: 16:43:31 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00003874: 16:43:31 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003874: 16:43:31 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00004190: 16:43:32 [127.0.0.1]:EUniSessionException : Sessão inváilda ou tempo da sessão expirado. (Session not found: dcPIvA7DQ611011CE35 ) : Addr: $007CFC94
+ERPImporta.exe: 00001430: 16:43:32 [127.0.0.1]:EUniSessionException : Sessão inváilda ou tempo da sessão expirado. (Session not found: dcPIvA7DQ611011CE35 ) : Addr: $007CFC94
+ERPImporta.exe: 000037EC: 16:44:02 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000037EC: 16:44:02 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000037EC: 16:44:02 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000037EC: 16:44:02 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000037EC: 16:44:02 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 000037EC: 16:44:02 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000037EC: 16:44:02 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001184: 16:44:02 [127.0.0.1]:EUniSessionException : Sessão inváilda ou tempo da sessão expirado. (Session not found: Cj4cdGKrNt11011CE5A ) : Addr: $007CFC94
+ERPImporta.exe: 00001E6C: 16:44:18 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001E6C: 16:44:18 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001E6C: 16:44:18 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001E6C: 16:44:18 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001E6C: 16:44:18 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00001E6C: 16:44:18 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001E6C: 16:44:18 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001910: 16:44:28 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 0000362C: 16:44:54 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImp'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImp'. : Addr: $008DFDA9
+ERPImporta.exe: 000016D0: 16:44:54 [127.0.0.1]:EDatabaseError : ModalImp: Cannot perform this operation on a closed dataset : Addr: $006576F6
+ERPImporta.exe: 0000184C: 16:47:46 []:>--------------------------------------------------------------<
+ERPImporta.exe: 0000184C: 16:47:46 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 0000184C: 16:47:46 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 0000184C: 16:47:46 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 0000184C: 16:47:47 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 0000184C: 16:47:47 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00003DEC: 16:49:12 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003DEC: 16:49:12 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003DEC: 16:49:12 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003DEC: 16:49:12 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003DEC: 16:49:13 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003DEC: 16:49:13 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002C14: 16:50:22 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002C14: 16:50:22 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002C14: 16:50:22 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002C14: 16:50:22 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002C14: 16:50:23 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002C14: 16:50:23 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00000C38: 16:51:57 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00002A68: 16:53:07 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00002A68: 16:53:07 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00002A68: 16:53:07 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00002A68: 16:53:07 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00002A68: 16:53:08 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00002A68: 16:53:08 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002674: 16:53:34 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 000031C4: 17:07:21 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000031C4: 17:07:21 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000031C4: 17:07:21 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000031C4: 17:07:21 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000031C4: 17:07:21 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000031C4: 17:07:21 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 0000346C: 17:07:32 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00003FA4: 17:08:50 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00003FA4: 17:08:50 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00003FA4: 17:08:50 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00003FA4: 17:08:50 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00003FA4: 17:08:51 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00003FA4: 17:08:51 [TUniServerModule]:HTTP Server Started on Port: 8077

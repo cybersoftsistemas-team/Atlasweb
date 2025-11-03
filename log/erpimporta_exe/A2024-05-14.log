@@ -1,0 +1,42 @@
+ERPImporta.exe: 00001854: 10:58:54 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001854: 10:58:54 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001854: 10:58:54 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001854: 10:58:54 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001854: 10:58:54 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000014DC: 10:58:56 [Requested Theme File not found:]:C:\uni\css\uni-xtheme-classic.css
+ERPImporta.exe: 000014DC: 10:58:56 []:TUniThemeProps: File not found: C:\uni\css\uni-xtheme-classic.css
+ERPImporta.exe: 000014DC: 10:58:56 [HandleFileRequest[127.0.0.1]]:File not found: C:\uni\css\uni-ext.css
+ERPImporta.exe: 00002518: 10:58:56 [HandleFileRequest[127.0.0.1]]:File not found: C:\ext-7.5.1\build\classic\theme-classic\resources\theme-classic-all.css
+ERPImporta.exe: 000017A0: 10:58:56 [HandleFileRequest[127.0.0.1]]:File not found: C:\ext-7.5.1\build\ext-all.js
+ERPImporta.exe: 0000069C: 10:58:56 [HandleFileRequest[127.0.0.1]]:File not found: C:\ext-7.5.1\build\packages\font-awesome-4.7.0\resources\font-awesome-all.css
+ERPImporta.exe: 00001CB8: 10:58:56 [HandleFileRequest[127.0.0.1]]:File not found: C:\uni\sweetalert\sweetalert2.min.css
+ERPImporta.exe: 00001144: 10:58:56 [HandleFileRequest[127.0.0.1]]:File not found: C:\uni\sweetalert\unisweetalert2.css
+ERPImporta.exe: 00000570: 10:58:56 [HandleFileRequest[127.0.0.1]]:File not found: C:\ext-7.5.1\build\packages\ux\classic\classic\resources\ux-all.css
+ERPImporta.exe: 00001F80: 10:58:56 [HandleFileRequest[127.0.0.1]]:File not found: C:\ext-7.5.1\build\packages\font-pictos\resources\font-pictos-all.css
+ERPImporta.exe: 000019D0: 10:58:56 [HandleFileRequest[127.0.0.1]]:File not found: C:\ext-7.5.1\build\packages\font-awesome\resources\font-awesome-all.css
+ERPImporta.exe: 00001078: 10:58:56 [HandleFileRequest[127.0.0.1]]:File not found: C:\ext-7.5.1\ext-addons\packages\calendar\build\classic\classic\resources\calendar-all.css
+ERPImporta.exe: 000019A4: 10:58:56 [HandleFileRequest[127.0.0.1]]:File not found: C:\uni\codemirror-0.8\css\csscolors.css
+ERPImporta.exe: 000000A8: 10:58:57 [HandleFileRequest[127.0.0.1]]:File not found: C:\uni\css\uni-xtheme-colors.css
+ERPImporta.exe: 00001680: 10:58:57 [HandleFileRequest[127.0.0.1]]:File not found: C:\uni\css\uni-xtheme-common.css
+ERPImporta.exe: 00001C38: 10:58:57 [HandleFileRequest[127.0.0.1]]:File not found: C:\ext-7.5.1\build\classic\theme-classic\theme-classic.js
+ERPImporta.exe: 00001CC0: 10:58:57 [HandleFileRequest[127.0.0.1]]:File not found: C:\uni\ext-unicommon-min.js
+ERPImporta.exe: 00001644: 10:58:57 [HandleFileRequest[127.0.0.1]]:File not found: C:\uni\ext-sync-min.js
+ERPImporta.exe: 000005C8: 10:58:57 [HandleFileRequest[127.0.0.1]]:File not found: C:\ext-7.5.1\build\classic\locale\locale-pt_BR.js
+ERPImporta.exe: 00002028: 10:58:57 [HandleFileRequest[127.0.0.1]]:File not found: C:\uni\jQuery\jquery-3.6.4.min.js
+ERPImporta.exe: 000027D8: 10:58:57 [HandleFileRequest[127.0.0.1]]:File not found: C:\uni\sweetalert\sweetalert2.min.js
+ERPImporta.exe: 00002A54: 10:58:57 [HandleFileRequest[127.0.0.1]]:File not found: C:\uni\jQuery\MaskedInput\jquery.inputmask.min.js
+ERPImporta.exe: 000027F8: 10:58:57 [HandleFileRequest[127.0.0.1]]:File not found: C:\uni\jQuery\autoNumeric\autoNumeric-1.9.35.js
+ERPImporta.exe: 00000FF8: 10:58:57 [HandleFileRequest[127.0.0.1]]:File not found: C:\uni\ext-treenode-plugin.js
+ERPImporta.exe: 000028C0: 10:58:57 [HandleFileRequest[127.0.0.1]]:File not found: C:\ext-7.5.1\build\packages\ux\classic\ux.js
+ERPImporta.exe: 00002A60: 10:58:57 [HandleFileRequest[127.0.0.1]]:File not found: C:\ext-7.5.1\ext-addons\packages\calendar\build\classic\calendar.js
+ERPImporta.exe: 000027E8: 10:58:57 [HandleFileRequest[127.0.0.1]]:File not found: C:\uni\codemirror-0.8\js\codemirror.js
+ERPImporta.exe: 0000171C: 10:58:57 [HandleFileRequest[127.0.0.1]]:File not found: C:\uni\codemirror-0.8\js\Ext.ux.CodeMirror.js
+ERPImporta.exe: 00000384: 10:58:57 [HandleFileRequest[127.0.0.1]]:File not found: C:\uni\ext-unigui-min.js
+ERPImporta.exe: 000018F4: 12:02:32 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000018F4: 12:02:32 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000018F4: 12:02:32 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000018F4: 12:02:32 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000018F4: 12:02:32 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000018F4: 12:02:32 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 000029B0: 12:04:48 [[FireDAC][Phys][ODBC][Microsoft][ODBC SQL Server Driver]Recurso opcional não implementado-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][ODBC SQL Server Driver]Recurso opcional não implementado : Addr: $008DFDA9
+ERPImporta.exe: 000029B0: 12:05:03 [[FireDAC][Phys][ODBC][Microsoft][ODBC SQL Server Driver]Conexão ocupada com os resultados de outro HSTMT-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][ODBC SQL Server Driver]Conexão ocupada com os resultados de outro HSTMT : Addr: $008DFDA9

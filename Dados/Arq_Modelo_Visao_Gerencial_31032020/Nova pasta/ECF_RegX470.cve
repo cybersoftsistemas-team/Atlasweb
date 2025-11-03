@@ -1,0 +1,19 @@
+Reg X470: Capacitação de Informatica e Inclusão Digital
+1;CVF_FILIAL;CVF_CODIGO;CVF_CONTAG;CVF_ORDEM;CVF_CLASSE;CVF_CTASUP;CVF_DESCCG;CVF_NORMAL;CVF_COLUNA;CVF_IDENT;CVF_TOTVIS;CVF_VISENT;CVF_SLDENT;CVF_FATSLD
+2;CTS_FILIAL;CTS_CODPLA;CTS_ORDEM;CTS_CONTAG;CTS_CTASUP;CTS_DESCCG;CTS_DETHCG;CTS_NORMAL;CTS_COLUNA;CTS_CLASSE;CTS_IDENT;CTS_NOME;CTS_LINHA;CTS_CT1INI;CTS_CT1FIM;CTS_CTTINI;CTS_CTTFIM;CTS_CTDINI;CTS_CTDFIM;CTS_CTHINI;CTS_CTHFIM;CTS_TPSALD;CTS_FORMUL;CTS_TOTVIS;CTS_VISENT;CTS_SLDENT;CTS_FATSLD
+1;01;001;01;0000000001;1;;CAPACITAÇÃO E COMPETITIVIDADE DO SETOR DE INFORMÁTICA (LEI Nº 8.248/1991);1;0; ; ; ; ;
+1;01;001;02;0000000002;2;01                  ;Vendas de Bens de Informática e Automação (Leis nº 8.248/1991, 8.191/1991, 10.176/2001, 11.077/2004 e Dec. nº 5.906/2006);1;0; ; ; ; ;
+1;01;001;03;0000000003;2;01                  ;Redução do IPI na Venda de Bens de Informática e Automação Produzidos Fora das Regiões Centro-Oeste e Sudam/Sudene(Leis nº 8.248/1991, 8.191/1991, 10.176/2001, 11.077/2004 e Dec. nº 5.906/2006);1;0; ; ; ; ;
+1;01;001;04;0000000004;2;01                  ;Vendas de Bens de Informática e Automação Produzidos na Região Centro-Oeste e na Região de Atuação da Sudam/Sudene (Leis nº 10.176/2001, 11.077/2004 e Dec. nº 5.906/2006);1;0; ; ; ; ;
+1;01;001;05;0000000005;2;01                  ;Redução do IPI na Venda de Bens de Informática e Automação Produzidos nas Regiões Centro-Oeste e Sudam/Sudene (Lei nº 10.176/2001, art. 11, com redação dada pela Lei nº 11.077/2004; Dec. nº 5.906/2006, art. 4º, I);1;0; ; ; ; ;
+1;01;001;06;0000000006;2;01                  ;Vendas no Mercado Interno de Microcomputadores e Microprocessadores (Leis nº 8.248/1991, 11.077/2004 e Dec. nº 5.906/2006);1;0; ; ; ; ;
+1;01;001;07;0000000007;2;01                  ;Redução do IPI nas Vendas de Microcomputadores e Microprocessadores Produzidos Fora das Regiões Centro-Oeste e Sudam/Sudene (Leis nº 8.248/1991, 11.077/2004 e Dec. nº 5.906/2006);1;0; ; ; ; ;
+1;01;001;08;0000000008;2;01                  ;Vendas de Microcomputadores e Microprocessadores Produzidos na Região Centro-Oeste e na Região de Atuação da Sudam/Sudene (Leis nº 10.176/2001, 11.077/2004 e Dec. nº 5.906/2006);1;0; ; ; ; ;
+1;01;001;09;0000000009;2;01                  ;Isenção do IPI na Venda de Microcomputadores e Microprocessadores Produzidos nas Regiões Centro-Oeste e Sudam/Sudene (Leis nº 10.176/2001, 11.077/2004 e Dec. nº 5.906/2006);1;0; ; ; ; ;
+1;01;001;10;0000000010;2;01                  ;Vendas de Bens de Informática e Automação Desenvolvidos no País (Leis nºs 12.431/2011, 8.248/1991, 8.191/1991, 10.176/2001, 11.077/2004 e Dec. nº 5.906/2006);1;0; ; ; ; ;
+1;01;001;11;0000000011;2;01                  ;Redução de IPI na Venda de Bens de Informática e Automação Desenvolvidos no País (Leis nºs 12.431/2011, 8.248/1991, 8.191/1991, 10.176/2001, 11.077/2004 e Dec. nº 5.906/2006);1;0; ; ; ; ;
+1;01;001;12;0000000012;1;;PROGRAMA DE INCLUSÃO DIGITAL - LEI Nº 11.196/2005;1;0; ; ; ; ;
+1;01;001;13;0000000013;2;12                  ;Receita Auferida na Venda a Varejo (art. 28, I a VI);1;0; ; ; ; ;
+1;01;001;14;0000000014;2;12                  ;Receita Auferida na Venda Efetuada às Pessoas Jurídicas de Direito Privado (art. 28, § 2º);1;0; ; ; ; ;
+1;01;001;15;0000000015;2;12                  ;Receita Auferida na Venda Efetuada a Órgãos da Administração Pública (art. 28, § 2º);1;0; ; ; ; ;
+1;01;001;16;0000000016;2;12                  ;Receita Auferida na Venda Efetuada às Sociedades de Arrendamento Mercantil e Leasing (art. 28, § 3º);1;0; ; ; ; ;

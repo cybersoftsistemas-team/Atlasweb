@@ -1,0 +1,4 @@
+ERPImporta.exe: 00002C68: 18:18:30 [127.0.0.1]:Sequence Error Timeout : TDiff:30813, Event: click, Expected: 9, Received: 10, [bFpGFwdwGK10E18D715]
+ERPImporta.exe: 00002C68: 18:18:30 [127.0.0.1]:Failed Sequence Reset to: 9
+ERPImporta.exe: 00002614: 18:18:46 [127.0.0.1]:Sequence Error Timeout : TDiff:31718, Event: click, Expected: 10, Received: 11, [bFpGFwdwGK10E18D715]
+ERPImporta.exe: 00002614: 18:18:46 [127.0.0.1]:Failed Sequence Reset to: 10

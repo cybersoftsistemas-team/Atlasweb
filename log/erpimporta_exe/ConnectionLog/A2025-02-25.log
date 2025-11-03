@@ -1,0 +1,6 @@
+ERPImporta.exe: 00002B48: 11:48:31 [127.0.0.1]:Failed Sequence Recovery: SeqId: 26, Event: click
+ERPImporta.exe: 00002B48: 11:48:32 [127.0.0.1]:Processing: Id: 26, Evt: click
+ERPImporta.exe: 00002B48: 11:48:32 [127.0.0.1]:Processed: Id: 26, Evt: click, [V2nUuiCHOr1107940BD]
+ERPImporta.exe: 00001A84: 11:48:58 [127.0.0.1]:Failed Sequence Recovery: SeqId: 51, Event: load
+ERPImporta.exe: 00001A84: 11:48:58 [127.0.0.1]:Processing: Id: 51, Evt: load
+ERPImporta.exe: 00001A84: 11:48:58 [127.0.0.1]:Processed: Id: 51, Evt: load, [V2nUuiCHOr1107940BD]

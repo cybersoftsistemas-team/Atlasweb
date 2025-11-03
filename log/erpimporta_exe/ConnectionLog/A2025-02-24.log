@@ -1,0 +1,8 @@
+ERPImporta.exe: 000012D0: 17:08:45 [127.0.0.1]:Sequence Error Timeout : TDiff:10031, Event: tabchange, Expected: 30, Received: 31, [Ygil6oaIMV1107810DE]
+ERPImporta.exe: 000012D0: 17:08:45 [127.0.0.1]:Failed Sequence Reset to: 30
+ERPImporta.exe: 00004480: 17:08:45 [127.0.0.1]:Failed Sequence Recovery: SeqId: 30, Event: blurchange
+ERPImporta.exe: 00004480: 17:08:45 [127.0.0.1]:Processing: Id: 30, Evt: blurchange
+ERPImporta.exe: 00004480: 17:08:45 [127.0.0.1]:Processed: Id: 30, Evt: blurchange, [Ygil6oaIMV1107810DE]
+ERPImporta.exe: 00000CCC: 17:08:46 [127.0.0.1]:Failed Sequence Recovery: SeqId: 31, Event: tabchange
+ERPImporta.exe: 00000CCC: 17:08:46 [127.0.0.1]:Processing: Id: 31, Evt: tabchange
+ERPImporta.exe: 00000CCC: 17:08:46 [127.0.0.1]:Processed: Id: 31, Evt: tabchange, [Ygil6oaIMV1107810DE]

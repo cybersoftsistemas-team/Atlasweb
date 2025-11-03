@@ -1,0 +1,23 @@
+ERPImporta.exe: 00001198: 18:17:55 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001198: 18:17:55 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001198: 18:17:55 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001198: 18:17:55 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001198: 18:17:55 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+ERPImporta.exe: 00001198: 18:17:55 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001198: 18:17:55 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002E38: 18:18:14 [127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0]Named Pipes Provider: Could not open a connection to SQL Server [53].  : Addr: $008C5AFE
+ERPImporta.exe: 00002E38: 18:18:30 [127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0]Named Pipes Provider: Could not open a connection to SQL Server [53].  : Addr: $008C5AFE
+ERPImporta.exe: 00002E38: 18:18:46 [127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0]Named Pipes Provider: Could not open a connection to SQL Server [53].  : Addr: $008C5AFE
+ERPImporta.exe: 00001A9C: 18:20:36 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001A9C: 18:20:36 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001A9C: 18:20:36 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001A9C: 18:20:36 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001A9C: 18:20:36 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001A9C: 18:20:36 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00001C7C: 18:20:56 []:>--------------------------------------------------------------<
+ERPImporta.exe: 00001C7C: 18:20:56 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 00001C7C: 18:20:56 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 00001C7C: 18:20:56 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 00001C7C: 18:20:56 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 00001C7C: 18:20:56 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00002678: 18:21:14 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg

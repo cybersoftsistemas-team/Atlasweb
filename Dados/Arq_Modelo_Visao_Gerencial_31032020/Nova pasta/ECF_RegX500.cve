@@ -1,0 +1,16 @@
+Reg X500: Zonas de Processamento de Exportação(ZPE)
+1;CVF_FILIAL;CVF_CODIGO;CVF_CONTAG;CVF_ORDEM;CVF_CLASSE;CVF_CTASUP;CVF_DESCCG;CVF_NORMAL;CVF_COLUNA;CVF_IDENT;CVF_TOTVIS;CVF_VISENT;CVF_SLDENT;CVF_FATSLD
+2;CTS_FILIAL;CTS_CODPLA;CTS_ORDEM;CTS_CONTAG;CTS_CTASUP;CTS_DESCCG;CTS_DETHCG;CTS_NORMAL;CTS_COLUNA;CTS_CLASSE;CTS_IDENT;CTS_NOME;CTS_LINHA;CTS_CT1INI;CTS_CT1FIM;CTS_CTTINI;CTS_CTTFIM;CTS_CTDINI;CTS_CTDFIM;CTS_CTHINI;CTS_CTHFIM;CTS_TPSALD;CTS_FORMUL;CTS_TOTVIS;CTS_VISENT;CTS_SLDENT;CTS_FATSLD
+1;01;001;01;0000000001;1;;ZPE (LEI Nº 11.508/2007, ALTERADA PELA LEI Nº 11.732/2008);1;0; ; ; ; ;
+1;01;001;02;0000000002;2;01;Aquisição de Bens no Mercado Interno por Empresa Autorizada a Operar em ZPE (art. 6º-A, caput);1;0; ; ; ; ;
+1;01;001;03;0000000003;2;01;Aquisição de Serviços no Mercado Interno por Empresa Autorizada a Operar em ZPE (art. 6º-A, caput);1;0; ; ; ; ;
+1;01;001;04;0000000004;2;01;Suspensão do IPI sobre Aquisições de Bens no Mercado Interno (art. 6º-A, II);1;0; ; ; ; ;
+1;01;001;05;0000000005;2;01;Importação de Bens por Empresa Autorizada a Operar em ZPE (art. 6º-A, caput);1;0; ; ; ; ;
+1;01;001;06;0000000006;2;01;Importação de Serviços por Empresa Autorizada a Operar em ZPE (art. 6º-A, caput);1;0; ; ; ; ;
+1;01;001;07;0000000007;2;01;Suspensão de II (art. 6º-A, I);1;0; ; ; ; ;
+1;01;001;08;0000000008;2;01;IPI - Vinculado Suspenso (art. 6º-A, II);1;0; ; ; ; ;
+1;01;001;09;0000000009;2;01;Venda para o Mercado Interno de Produtos Industrializados em ZPE (art. 18, § 3º);1;0; ; ; ; ;
+1;01;001;10;0000000010;2;01;Venda de Mercadorias entre Empresas Autorizadas a Operar em ZPE (art. 18, § 5º);1;0; ; ; ; ;
+1;01;001;11;0000000011;2;01;Suspensão do IPI sobre a Venda de Mercadorias entre Empresas Autorizadas a Operar em ZPE (art. 18, § 5º);1;0; ; ; ; ;
+1;01;001;12;0000000012;2;01;Aquisição de Mercadorias entre Empresas Autorizadas a Operar em ZPE (art. 18, § 5º);1;0; ; ; ; ;
+1;01;001;13;0000000013;2;01;Suspensão do IPI sobre Aquisições de Mercadorias entre Empresas Autorizadas a Operar em ZPE (art. 18, § 5º);1;0; ; ; ; ;

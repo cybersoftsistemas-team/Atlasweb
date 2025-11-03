@@ -1,0 +1,9 @@
+ERPImporta.exe: 000040E4: 09:34:55 []:>--------------------------------------------------------------<
+ERPImporta.exe: 000040E4: 09:34:55 [TUniServerModule]:Server First Init.
+ERPImporta.exe: 000040E4: 09:34:55 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
+ERPImporta.exe: 000040E4: 09:34:55 [TUniServerModule]:Debug Mode = ON
+ERPImporta.exe: 000040E4: 09:34:56 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+ERPImporta.exe: 000040E4: 09:34:56 [TUniServerModule]:HTTP Server Started on Port: 8077
+ERPImporta.exe: 00004068: 09:50:03 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'Conta'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid column name 'Conta'. : Addr: $008B6E0D
+ERPImporta.exe: 00001534: 09:51:06 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
+ERPImporta.exe: 00003A1C: 09:53:30 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg

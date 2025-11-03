@@ -1,0 +1,3 @@
+ERPImporta.exe: 00002FDC: 18:14:53 [127.0.0.1]:Failed Sequence Recovery: SeqId: 77, Event: click
+ERPImporta.exe: 00002FDC: 18:14:53 [127.0.0.1]:Sequence sent from cache:  SeqId: 77
+ERPImporta.exe: 00002FDC: 18:14:53 [127.0.0.1]:Processed: Id: 77, Evt: click, [RSGV7iqAMM10B23FF36]

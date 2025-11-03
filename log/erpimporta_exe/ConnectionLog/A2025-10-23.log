@@ -1,0 +1,3 @@
+ERPImporta.exe: 00000DF8: 10:38:22 [127.0.0.1]:Failed Sequence Recovery: SeqId: 23, Event: click
+ERPImporta.exe: 00000DF8: 10:38:22 [127.0.0.1]:Sequence sent from cache:  SeqId: 23
+ERPImporta.exe: 00000DF8: 10:38:22 [127.0.0.1]:Processed: Id: 23, Evt: click, [Mr9swuBIav111E76397]
