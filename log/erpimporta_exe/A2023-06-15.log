@@ -1,6 +1,0 @@
-ERPImporta.exe: 00002724: 12:28:07 []:>--------------------------------------------------------------<
-ERPImporta.exe: 00002724: 12:28:07 [TUniServerModule]:Server First Init.
-ERPImporta.exe: 00002724: 12:28:07 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
-ERPImporta.exe: 00002724: 12:28:07 [TUniServerModule]:Debug Mode = ON
-ERPImporta.exe: 00002724: 12:28:07 [TUniServerModule]:Starting HTTP Server on Port: 8077...
-ERPImporta.exe: 00002724: 12:28:07 [TUniServerModule]:HTTP Server Started on Port: 8077

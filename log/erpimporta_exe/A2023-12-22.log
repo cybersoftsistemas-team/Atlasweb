@@ -1,9 +1,0 @@
-ERPImporta.exe: 00000A54: 08:57:54 []:>--------------------------------------------------------------<
-ERPImporta.exe: 00000A54: 08:57:54 [TUniServerModule]:Server First Init.
-ERPImporta.exe: 00000A54: 08:57:54 [TUniServerModule]:Start Path = C:\Projetos_WEB\ERP_Importa\
-ERPImporta.exe: 00000A54: 08:57:54 [TUniServerModule]:Debug Mode = ON
-ERPImporta.exe: 00000A54: 08:57:54 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
-ERPImporta.exe: 00000A54: 08:57:54 [TUniServerModule]:Starting HTTP Server on Port: 8077...
-ERPImporta.exe: 00000A54: 08:57:55 [TUniServerModule]:HTTP Server Started on Port: 8077
-ERPImporta.exe: 00000CA0: 08:58:31 [[FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImportacao'.-127.0.0.1]:EMSSQLNativeException : [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Invalid object name 'ModalidadeImportacao'. : Addr: $008DF359
-ERPImporta.exe: 000027D0: 08:58:51 [HandleFileRequest[127.0.0.1]]:File not found: C:\Projetos_WEB\ERP_Importa\files\images\fundo8.jpg
