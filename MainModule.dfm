@@ -5,7 +5,7 @@ object UniMainModule: TUniMainModule
   TouchTheme = 'neptune'
   MonitoredKeys.Keys = <>
   EnableSynchronousOperations = True
-  Title = 'ERP IMPORTA'
+  Title = 'ATLAS WEB'
   Height = 322
   Width = 586
   object imgBotoes: TUniNativeImageList
@@ -171,7 +171,13 @@ object UniMainModule: TUniMainModule
       6C6973743B66615F3BFFFFFF1F060D0000006C6973742D616C743B66615F3BFF
       FFFF1F060B0000006572617365723B66615F3B}
   end
-  object ERPImporta: TFDConnection
+  object AtlasWeb: TFDConnection
+    Params.Strings = (
+      'Database=AtlasWeb'
+      'User_Name=sa'
+      'Password=cybersoft@123'
+      'DriverID=MSSQL'
+      'Server=server-Dados')
     FetchOptions.AssignedValues = [evMode, evRecsSkip, evRecsMax, evRowsetSize, evRecordCountMode, evCursorKind, evAutoFetchAll, evLiveWindowParanoic, evDetailCascade]
     FetchOptions.Mode = fmAll
     FetchOptions.RowsetSize = 100
@@ -272,6 +278,7 @@ object UniMainModule: TUniMainModule
     FetchOptions.LiveWindowParanoic = False
     ResourceOptions.AssignedValues = [rvCmdExecMode]
     ResourceOptions.CmdExecMode = amNonBlocking
+    Connected = True
     LoginPrompt = False
     Left = 115
     Top = 19

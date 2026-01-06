@@ -1,26 +1,24 @@
 object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
   Left = 0
   Top = 0
-  ClientHeight = 712
-  ClientWidth = 1327
+  ClientHeight = 714
+  ClientWidth = 1333
   Caption = 'ITENS DA DUIMP'
+  Color = clWindow
   OnShow = UniFormShow
-  BorderStyle = bsDialog
+  BorderStyle = bsNone
   OldCreateOrder = False
   MonitoredKeys.Keys = <>
   PageMode = True
-  ClientEvents.UniEvents.Strings = (
-    
-      'window.beforeInit=function window.beforeInit(sender, config)'#13#10'{'#13 +
-      #10'  config.cls = '#39'Ficha'#39';'#13#10'}')
   PixelsPerInch = 96
   TextHeight = 13
   object UniPanel3: TUniPanel
     Left = 0
-    Top = 677
-    Width = 1327
+    Top = 679
+    Width = 1333
     Height = 35
     Hint = ''
+    Margins.Top = 0
     ShowHint = True
     ParentShowHint = False
     Align = alBottom
@@ -34,7 +32,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
     Color = 5526569
     object bSair: TUniSpeedButton
       AlignWithMargins = True
-      Left = 1285
+      Left = 1291
       Top = 1
       Width = 41
       Height = 33
@@ -76,28 +74,6 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       TabOrder = 2
       OnClick = bAddItemClick
     end
-    object bRemTudo: TUniSpeedButton
-      AlignWithMargins = True
-      Left = 367
-      Top = 1
-      Width = 120
-      Height = 33
-      Hint = 'Remover todos os itens'
-      Margins.Left = 1
-      Margins.Top = 1
-      Margins.Right = 1
-      Margins.Bottom = 1
-      ShowHint = True
-      ParentShowHint = False
-      Caption = 'Remover Tudo'
-      Align = alLeft
-      ParentColor = False
-      IconAlign = iaCenter
-      Images = UniMainModule.imgBotoes
-      ImageIndex = 2
-      TabOrder = 3
-      OnClick = bRemTudoClick
-    end
     object bAddTudo: TUniSpeedButton
       AlignWithMargins = True
       Left = 123
@@ -118,7 +94,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       IconAlign = iaCenter
       Images = UniMainModule.imgBotoes
       ImageIndex = 24
-      TabOrder = 4
+      TabOrder = 3
       OnClick = bAddTudoClick
     end
     object bRemItem: TUniSpeedButton
@@ -140,61 +116,550 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       IconAlign = iaCenter
       Images = UniMainModule.imgBotoes
       ImageIndex = 2
-      TabOrder = 5
+      TabOrder = 4
       OnClick = bRemItemClick
     end
+    object bRemTudo: TUniSpeedButton
+      AlignWithMargins = True
+      Left = 367
+      Top = 1
+      Width = 120
+      Height = 33
+      Hint = 'Remover todos os itens'
+      Margins.Left = 1
+      Margins.Top = 1
+      Margins.Right = 1
+      Margins.Bottom = 1
+      ShowHint = True
+      ParentShowHint = False
+      Caption = 'Remover Tudo'
+      Align = alLeft
+      ParentColor = False
+      IconAlign = iaCenter
+      Images = UniMainModule.imgBotoes
+      ImageIndex = 2
+      TabOrder = 5
+      OnClick = bRemTudoClick
+    end
   end
-  object UniPanel2: TUniPanel
+  object UniContainerPanel4: TUniContainerPanel
     Left = 0
     Top = 0
-    Width = 1327
-    Height = 677
+    Width = 1333
+    Height = 679
     Hint = ''
-    Margins.Left = 10
-    Margins.Top = 10
-    Margins.Right = 10
-    Margins.Bottom = 10
+    ParentColor = False
     Align = alClient
-    TabOrder = 1
     ClientEvents.UniEvents.Strings = (
       
         'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-        '= '#39'FichaSSombra'#39';'#13#10'}')
-    Caption = 'UniPanel2'
-    object UniPanel1: TUniPanel
-      AlignWithMargins = True
-      Left = 4
-      Top = 4
-      Width = 1319
-      Height = 65
+        '= '#39'Ficha'#39';'#13#10'}')
+    TabOrder = 1
+    object UniPanel2: TUniPanel
+      Left = 0
+      Top = 99
+      Width = 1333
+      Height = 580
       Hint = ''
-      Align = alTop
+      Margins.Left = 10
+      Margins.Top = 10
+      Margins.Right = 10
+      Margins.Bottom = 10
+      Align = alBottom
       TabOrder = 1
       ClientEvents.UniEvents.Strings = (
         
           'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
           '= '#39'FichaSSombra'#39';'#13#10'}')
+      Caption = 'UniPanel2'
+      object Pasta: TUniPageControl
+        AlignWithMargins = True
+        Left = 4
+        Top = 4
+        Width = 1325
+        Height = 575
+        Hint = ''
+        Margins.Bottom = 0
+        ActivePage = UniTabSheet2
+        Align = alClient
+        ClientEvents.UniEvents.Strings = (
+          
+            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+            '= '#39'pcSemBarraAzul'#39';'#13#10'}')
+        TabOrder = 1
+        ExplicitLeft = 5
+        ExplicitTop = 5
+        object UniTabSheet1: TUniTabSheet
+          AlignWithMargins = True
+          Hint = ''
+          Caption = 'Itens do Pedido'
+          object UniContainerPanel3: TUniContainerPanel
+            Left = 295
+            Top = 0
+            Width = 1022
+            Height = 547
+            Hint = ''
+            ParentColor = False
+            Align = alClient
+            TabOrder = 0
+            object UniContainerPanel1: TUniContainerPanel
+              Left = 0
+              Top = 0
+              Width = 1022
+              Height = 217
+              Hint = ''
+              ParentColor = False
+              Align = alTop
+              TabOrder = 1
+              object gAdicoes: TUniDBGrid
+                Left = 0
+                Top = 0
+                Width = 1022
+                Height = 217
+                Hint = ''
+                HeaderTitle = 'ITENS DA DUIMP'
+                HeaderTitleAlign = taRightJustify
+                DataSource = dsProcessosImpItens
+                Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgMultiSelect, dgAutoRefreshRow]
+                ReadOnly = True
+                WebOptions.Paged = False
+                LoadMask.Message = 'Carregando itens da DUIMP...Aguarde'
+                ForceFit = True
+                BorderStyle = ubsInset
+                Align = alClient
+                TabOrder = 1
+                Columns = <
+                  item
+                    FieldName = 'Item'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'Item'
+                    Title.Font.Style = [fsBold]
+                    Width = 40
+                  end
+                  item
+                    FieldName = 'Codigo_Mercadoria'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'Produto'
+                    Title.Font.Style = [fsBold]
+                    Width = 64
+                  end
+                  item
+                    FieldName = 'Descricao'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'Descri'#231#227'o'
+                    Title.Font.Style = [fsBold]
+                    Width = 324
+                    ReadOnly = True
+                    MemoOptions.ConvertNewLineToBreak = True
+                  end
+                  item
+                    FieldName = 'NCM'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'NCM'
+                    Title.Font.Style = [fsBold]
+                    Width = 70
+                    Alignment = taCenter
+                  end
+                  item
+                    FieldName = 'Quantidade'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'QTDE'
+                    Title.Font.Style = [fsBold]
+                    Width = 100
+                    ForceStringFormat = True
+                  end
+                  item
+                    FieldName = 'Disponivel'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'Dispon'#237'vel'
+                    Title.Font.Style = [fsBold]
+                    Width = 100
+                    ReadOnly = True
+                  end
+                  item
+                    FieldName = 'Valor_UnitarioME'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'Unitario ME'
+                    Title.Font.Style = [fsBold]
+                    Width = 100
+                  end
+                  item
+                    FieldName = 'Valor_UnitarioReal'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'Unit'#225'rio R$'
+                    Title.Font.Style = [fsBold]
+                    Width = 100
+                  end>
+              end
+            end
+            object UniContainerPanel2: TUniContainerPanel
+              Left = 0
+              Top = 217
+              Width = 1022
+              Height = 330
+              Hint = ''
+              ParentColor = False
+              Align = alClient
+              TabOrder = 2
+              object gItens: TUniDBGrid
+                Left = 0
+                Top = 0
+                Width = 1022
+                Height = 330
+                Hint = ''
+                HeaderTitle = 'ITENS DO PEDIDO'
+                HeaderTitleAlign = taCenter
+                DataSource = dsPedidosNFItens
+                Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgMultiSelect, dgAutoRefreshRow]
+                ReadOnly = True
+                WebOptions.Paged = False
+                LoadMask.Message = 'Carregando itens do Pedido...Aguarde'
+                ForceFit = True
+                BorderStyle = ubsInset
+                Align = alClient
+                TabOrder = 1
+                Columns = <
+                  item
+                    FieldName = 'Item'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'Item'
+                    Title.Font.Style = [fsBold]
+                    Width = 40
+                  end
+                  item
+                    FieldName = 'Codigo_Mercadoria'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'Produto'
+                    Title.Font.Style = [fsBold]
+                    Width = 64
+                  end
+                  item
+                    FieldName = 'Descricao_Mercadoria'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'Descri'#231#227'o'
+                    Title.Font.Style = [fsBold]
+                    Width = 553
+                    DisplayMemo = True
+                  end
+                  item
+                    FieldName = 'NCM'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'NCM'
+                    Title.Font.Style = [fsBold]
+                    Width = 70
+                    Alignment = taCenter
+                  end
+                  item
+                    FieldName = 'Quantidade'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'QTDE'
+                    Title.Font.Style = [fsBold]
+                    Width = 100
+                  end
+                  item
+                    FieldName = 'Valor_Unitario'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'Unit'#225'rio'
+                    Title.Font.Style = [fsBold]
+                    Width = 106
+                  end
+                  item
+                    FieldName = 'CFOP'
+                    Title.Alignment = taCenter
+                    Title.Caption = 'CFOP'
+                    Title.Font.Style = [fsBold]
+                    Width = 60
+                    Alignment = taCenter
+                  end>
+              end
+            end
+          end
+          object UniPanel4: TUniPanel
+            AlignWithMargins = True
+            Left = 3
+            Top = 3
+            Width = 289
+            Height = 544
+            Hint = ''
+            Margins.Bottom = 0
+            Align = alLeft
+            TabOrder = 1
+            BorderStyle = ubsInset
+            ShowCaption = False
+            Caption = 'UniPanel4'
+            object cQtdePerc: TUniFormattedNumberEdit
+              Left = 8
+              Top = 8
+              Width = 270
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 1
+              SelectOnFocus = True
+              FieldLabel = 'Quantidade %'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+              DecimalPrecision = 3
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cValorUnitario: TUniFormattedNumberEdit
+              Left = 8
+              Top = 35
+              Width = 270
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 2
+              SelectOnFocus = True
+              FieldLabel = 'Valor Unit'#225'rio'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+              DecimalPrecision = 4
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cFracionar: TUniCheckBox
+              Left = 10
+              Top = 240
+              Width = 137
+              Height = 17
+              Cursor = crHandPoint
+              Hint = ''
+              Caption = 'Fracionar Quantidades'
+              TabOrder = 3
+            end
+            object cLucroPerc: TUniFormattedNumberEdit
+              Left = 8
+              Top = 62
+              Width = 270
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 4
+              SelectOnFocus = True
+              FieldLabel = 'Margem Lucro (%)'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+              DecimalPrecision = 4
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cLucroValor: TUniFormattedNumberEdit
+              Left = 8
+              Top = 89
+              Width = 270
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 5
+              SelectOnFocus = True
+              FieldLabel = 'Margem Lucro (Valor)'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+              DecimalPrecision = 4
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cDescPerc: TUniFormattedNumberEdit
+              Left = 8
+              Top = 116
+              Width = 270
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 6
+              SelectOnFocus = True
+              FieldLabel = 'Desconto (%)'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+              DecimalPrecision = 4
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cDescValor: TUniFormattedNumberEdit
+              Left = 8
+              Top = 143
+              Width = 270
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 7
+              SelectOnFocus = True
+              FieldLabel = 'Desconto (Valor)'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+              DecimalPrecision = 4
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cCalcVol: TUniCheckBox
+              Left = 10
+              Top = 270
+              Width = 203
+              Height = 17
+              Cursor = crHandPoint
+              Hint = ''
+              Caption = 'Calcular quantidade total de volumes'
+              TabOrder = 8
+            end
+            object cICMSAnt: TUniCheckBox
+              Left = 10
+              Top = 300
+              Width = 196
+              Height = 17
+              Cursor = crHandPoint
+              Hint = ''
+              Caption = 'ICMS cobrado anteriormente por ST'
+              TabOrder = 9
+            end
+            object UniCheckBox1: TUniCheckBox
+              Left = 10
+              Top = 210
+              Width = 259
+              Height = 17
+              Cursor = crHandPoint
+              Hint = ''
+              Caption = 'Utilizar quantidade total p/quebra por percentual'
+              TabOrder = 10
+            end
+          end
+        end
+        object UniTabSheet2: TUniTabSheet
+          Hint = ''
+          Caption = 'Ocorr'#234'ncias'
+          object cLog: TUniMemo
+            Left = 0
+            Top = 343
+            Width = 1317
+            Height = 204
+            Hint = ''
+            BorderStyle = ubsInset
+            ScrollBars = ssBoth
+            Lines.Strings = (
+              'cLog')
+            ParentFont = False
+            Font.Color = clGray
+            Font.Height = -12
+            Font.Name = 'JetBrains Mono'
+            Align = alBottom
+            Color = 5453824
+            TabOrder = 0
+            ClientEvents.UniEvents.Strings = (
+              
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                '= '#39'CampoDestaque'#39';'#13#10'}')
+            FieldLabel = 'F'#211'RMULAS DOS CALCULOS DO PEDIDO'
+            FieldLabelAlign = laTop
+            FieldLabelSeparator = ' '
+          end
+          object gFormula: TUniStringGrid
+            AlignWithMargins = True
+            Left = 3
+            Top = 3
+            Width = 1311
+            Height = 337
+            Hint = ''
+            HeaderTitle = 'F'#211'RMULAS DOS CALCULOS DO PEDIDO'
+            HeaderTitleAlign = taCenter
+            CellCursor = crHandPoint
+            FixedColor = 15263976
+            FixedRows = 0
+            RowCount = 1
+            ColCount = 4
+            DefaultRowHeight = 22
+            Options = [goVertLine, goHorzLine, goDrawFocusSelected]
+            CustomizableCells = False
+            ShowColumnTitles = True
+            Columns = <
+              item
+                Title.Alignment = taCenter
+                Title.Caption = 'Campo'
+                Width = 140
+              end
+              item
+                Title.Alignment = taCenter
+                Title.Caption = 'F'#243'rmula'
+                Width = 770
+              end
+              item
+                Title.Alignment = taCenter
+                Title.Caption = 'Valores'
+                Width = 180
+              end
+              item
+                Title.Alignment = taCenter
+                Title.Caption = 'Resultado'
+                Width = 100
+              end>
+            BorderStyle = ubsInset
+            StripeRows = True
+            ForceFit = True
+            Align = alClient
+            TabOrder = 1
+            ExplicitHeight = 342
+          end
+        end
+      end
+    end
+    object UniPanel1: TUniPanel
+      AlignWithMargins = True
+      Left = 3
+      Top = 3
+      Width = 1327
+      Height = 104
+      Hint = ''
+      Margins.Bottom = 8
+      Align = alTop
+      TabOrder = 2
+      ClientEvents.UniEvents.Strings = (
+        
+          'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'   config.cls' +
+          ' = '#39'Painel'#39';'#13#10'}')
       BorderStyle = ubsInset
       Caption = ''
       object cDUIMP: TUniDBLookupComboBox
-        Left = 319
+        AlignWithMargins = True
+        Left = 302
         Top = 12
-        Width = 683
-        Height = 50
+        Width = 722
+        Height = 25
         Hint = ''
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 1
+        Margins.Bottom = 1
         ShowHint = True
         ParentShowHint = False
         ListField = 'DUIMP;Data;Processo;Exportador'
         ListSource = dsDUIMP
         KeyField = 'DUIMP'
         ListFieldIndex = 2
+        BorderStyle = ubsInset
         ClearButton = True
         AnyMatch = True
         TabOrder = 1
         Color = clWindow
         FieldLabel = 'DUIMP'
-        FieldLabelWidth = 70
-        FieldLabelAlign = laTop
+        FieldLabelWidth = 80
         FieldLabelSeparator = ' '
         ForceSelection = True
         NormalizeString = True
@@ -202,421 +667,66 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
         Mode = umNameValue
         OnChange = cDUIMPChange
       end
-    end
-    object Pasta: TUniPageControl
-      Left = 1
-      Top = 72
-      Width = 1325
-      Height = 604
-      Hint = ''
-      Margins.Left = 10
-      Margins.Right = 10
-      ActivePage = UniTabSheet1
-      Align = alClient
-      TabOrder = 2
-      object UniTabSheet1: TUniTabSheet
+      object cCFOP: TUniDBLookupComboBox
+        AlignWithMargins = True
+        Left = 302
+        Top = 39
+        Width = 722
+        Height = 25
         Hint = ''
-        Caption = 'Itens do Pedido'
-        object pFicha: TUniPanel
-          Left = 0
-          Top = 0
-          Width = 1317
-          Height = 365
-          Hint = ''
-          Enabled = False
-          Align = alClient
-          TabOrder = 0
-          ClientEvents.UniEvents.Strings = (
-            
-              'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-              's = '#39'FichaSSombra'#39';'#13#10'}')
-          BorderStyle = ubsInset
-          Caption = ''
-          object gAdicoes: TUniDBGrid
-            AlignWithMargins = True
-            Left = 4
-            Top = 125
-            Width = 1309
-            Height = 236
-            Hint = ''
-            DataSource = dsAdicoes
-            Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgMultiSelect, dgAutoRefreshRow]
-            ReadOnly = True
-            WebOptions.Paged = False
-            LoadMask.Message = 'Carregando itens da DUIMP...Aguarde'
-            ForceFit = True
-            BorderStyle = ubsInset
-            Align = alBottom
-            TabOrder = 1
-            Columns = <
-              item
-                FieldName = 'Adicao'
-                Title.Alignment = taCenter
-                Title.Caption = 'Adi'#231#227'o'
-                Title.Font.Style = [fsBold]
-                Width = 45
-                Alignment = taRightJustify
-              end
-              item
-                FieldName = 'Codigo_Mercadoria'
-                Title.Alignment = taCenter
-                Title.Caption = 'Produto'
-                Title.Font.Style = [fsBold]
-                Width = 64
-              end
-              item
-                FieldName = 'Descricao'
-                Title.Alignment = taCenter
-                Title.Caption = 'Descri'#231#227'o'
-                Title.Font.Style = [fsBold]
-                Width = 610
-                ReadOnly = True
-              end
-              item
-                FieldName = 'NCM'
-                Title.Alignment = taCenter
-                Title.Caption = 'NCM'
-                Title.Font.Style = [fsBold]
-                Width = 70
-                Alignment = taCenter
-              end
-              item
-                FieldName = 'Quantidade'
-                Title.Alignment = taCenter
-                Title.Caption = 'Quantidade'
-                Title.Font.Style = [fsBold]
-                Width = 100
-              end
-              item
-                FieldName = 'Disponivel'
-                Title.Alignment = taCenter
-                Title.Caption = 'Dispon'#237'vel'
-                Title.Font.Style = [fsBold]
-                Width = 64
-                ReadOnly = True
-              end
-              item
-                FieldName = 'Valor_UnitarioReal'
-                Title.Alignment = taCenter
-                Title.Caption = 'Unit'#225'rio'
-                Title.Font.Style = [fsBold]
-                Width = 100
-              end
-              item
-                FieldName = 'Peso_Liquido'
-                Title.Alignment = taCenter
-                Title.Caption = 'Peso L'#237'quido'
-                Title.Font.Style = [fsBold]
-                Width = 90
-              end>
-          end
-          object cCFOP: TUniDBLookupComboBox
-            Left = 8
-            Top = 56
-            Width = 655
-            Height = 50
-            Hint = ''
-            ShowHint = True
-            ParentShowHint = False
-            ListField = 'Codigo;Descricao'
-            ListSource = dsCFOP
-            KeyField = 'Codigo'
-            ListFieldIndex = 1
-            ClearButton = True
-            AnyMatch = True
-            TabOrder = 9
-            Color = clWindow
-            FieldLabel = 'CFOP'
-            FieldLabelWidth = 70
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-            ForceSelection = True
-            NormalizeString = True
-            Style = csDropDown
-            Mode = umNameValue
-            OnChange = cCFOPChange
-          end
-          object cEmbarque: TUniDBLookupComboBox
-            Left = 8
-            Top = 5
-            Width = 329
-            Height = 50
-            Hint = ''
-            ShowHint = True
-            ParentShowHint = False
-            ListField = 'Navio;Nome;Processo'
-            ListSource = dsEmbarques
-            KeyField = 'Navio'
-            ListFieldIndex = 1
-            ClearButton = True
-            AnyMatch = True
-            TabOrder = 2
-            Color = clWindow
-            FieldLabel = 'Embarque'
-            FieldLabelWidth = 70
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-            ForceSelection = True
-            NormalizeString = True
-            Style = csDropDown
-            Mode = umNameValue
-          end
-          object cQtdePerc: TUniFormattedNumberEdit
-            Left = 351
-            Top = 5
-            Width = 100
-            Height = 50
-            Hint = ''
-            ShowHint = True
-            ParentShowHint = False
-            Alignment = taRightJustify
-            TabOrder = 3
-            SelectOnFocus = True
-            FieldLabel = 'Quantidade %'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-            DecimalPrecision = 3
-            DecimalSeparator = ','
-            ThousandSeparator = '.'
-          end
-          object cValorUnitario: TUniFormattedNumberEdit
-            Left = 457
-            Top = 5
-            Width = 100
-            Height = 50
-            Hint = ''
-            ShowHint = True
-            ParentShowHint = False
-            Alignment = taRightJustify
-            TabOrder = 4
-            SelectOnFocus = True
-            FieldLabel = 'Valor Unit'#225'rio'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-            DecimalPrecision = 4
-            DecimalSeparator = ','
-            ThousandSeparator = '.'
-          end
-          object cFracionar: TUniCheckBox
-            Left = 670
-            Top = 40
-            Width = 72
-            Height = 17
-            Hint = ''
-            Caption = 'Fracionar'
-            TabOrder = 13
-          end
-          object cLucroPerc: TUniFormattedNumberEdit
-            Left = 669
-            Top = 5
-            Width = 100
-            Height = 50
-            Hint = ''
-            ShowHint = True
-            ParentShowHint = False
-            Alignment = taRightJustify
-            TabOrder = 6
-            SelectOnFocus = True
-            FieldLabel = '% Margem Lucro'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-            DecimalPrecision = 4
-            DecimalSeparator = ','
-            ThousandSeparator = '.'
-          end
-          object cLucroValor: TUniFormattedNumberEdit
-            Left = 563
-            Top = 5
-            Width = 100
-            Height = 50
-            Hint = ''
-            ShowHint = True
-            ParentShowHint = False
-            Alignment = taRightJustify
-            TabOrder = 5
-            SelectOnFocus = True
-            FieldLabel = 'Valor Margem Lucro'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-            DecimalPrecision = 4
-            DecimalSeparator = ','
-            ThousandSeparator = '.'
-          end
-          object cDescPerc: TUniFormattedNumberEdit
-            Left = 881
-            Top = 5
-            Width = 100
-            Height = 50
-            Hint = ''
-            ShowHint = True
-            ParentShowHint = False
-            Alignment = taRightJustify
-            TabOrder = 8
-            SelectOnFocus = True
-            FieldLabel = '% Desconto'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-            DecimalPrecision = 4
-            DecimalSeparator = ','
-            ThousandSeparator = '.'
-          end
-          object cDescValor: TUniFormattedNumberEdit
-            Left = 775
-            Top = 5
-            Width = 100
-            Height = 50
-            Hint = ''
-            ShowHint = True
-            ParentShowHint = False
-            Alignment = taRightJustify
-            TabOrder = 7
-            SelectOnFocus = True
-            FieldLabel = 'Valor Desconto'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-            DecimalPrecision = 4
-            DecimalSeparator = ','
-            ThousandSeparator = '.'
-          end
-          object cCalcVol: TUniCheckBox
-            Left = 1004
-            Top = 29
-            Width = 210
-            Height = 17
-            Hint = ''
-            Caption = 'Calcular quantidade total de volumes'
-            TabOrder = 10
-          end
-          object cICMSAnt: TUniCheckBox
-            Left = 1004
-            Top = 52
-            Width = 210
-            Height = 17
-            Hint = ''
-            Caption = 'ICMS cobrado anteriormente por ST'
-            TabOrder = 11
-          end
-          object UniCheckBox1: TUniCheckBox
-            Left = 1004
-            Top = 75
-            Width = 300
-            Height = 17
-            Hint = ''
-            Caption = 'Utilizar quantidade total do item p/ quebra por percentual'
-            TabOrder = 12
-          end
-        end
-        object gItens: TUniDBGrid
-          AlignWithMargins = True
-          Left = 3
-          Top = 368
-          Width = 1311
-          Height = 205
-          Hint = ''
-          DataSource = dsPedidosNFItens
-          Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgMultiSelect, dgAutoRefreshRow]
-          ReadOnly = True
-          WebOptions.Paged = False
-          LoadMask.Message = 'Carregando itens do Pedido...Aguarde'
-          ForceFit = True
-          BorderStyle = ubsInset
-          Align = alBottom
-          TabOrder = 1
-          Columns = <
-            item
-              FieldName = 'Item'
-              Title.Alignment = taCenter
-              Title.Caption = 'Item'
-              Title.Font.Style = [fsBold]
-              Width = 40
-            end
-            item
-              FieldName = 'Adicao'
-              Title.Alignment = taCenter
-              Title.Caption = 'Adi'#231#227'o'
-              Title.Font.Style = [fsBold]
-              Width = 45
-            end
-            item
-              FieldName = 'Codigo'
-              Title.Alignment = taCenter
-              Title.Caption = 'Produto'
-              Title.Font.Style = [fsBold]
-              Width = 64
-            end
-            item
-              FieldName = 'Descricao_Mercadoria'
-              Title.Alignment = taCenter
-              Title.Caption = 'Descri'#231#227'o'
-              Title.Font.Style = [fsBold]
-              Width = 689
-              DisplayMemo = True
-            end
-            item
-              FieldName = 'NCM'
-              Title.Alignment = taCenter
-              Title.Caption = 'NCM'
-              Title.Font.Style = [fsBold]
-              Width = 70
-              Alignment = taCenter
-            end
-            item
-              FieldName = 'Quantidade'
-              Title.Alignment = taCenter
-              Title.Caption = 'Quantidade'
-              Title.Font.Style = [fsBold]
-              Width = 115
-            end
-            item
-              FieldName = 'Valor_Unitario'
-              Title.Alignment = taCenter
-              Title.Caption = 'Unit'#225'rio'
-              Title.Font.Style = [fsBold]
-              Width = 106
-            end
-            item
-              FieldName = 'CFOP'
-              Title.Alignment = taCenter
-              Title.Caption = 'CFOP'
-              Title.Font.Style = [fsBold]
-              Width = 40
-              Alignment = taCenter
-            end>
-        end
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 1
+        Margins.Bottom = 1
+        ShowHint = True
+        ParentShowHint = False
+        ListField = 'Codigo;Descricao'
+        ListSource = dsCFOP
+        KeyField = 'Codigo'
+        ListFieldIndex = 1
+        BorderStyle = ubsInset
+        ClearButton = True
+        AnyMatch = True
+        TabOrder = 2
+        Color = clWindow
+        FieldLabel = 'CFOP'
+        FieldLabelWidth = 80
+        FieldLabelSeparator = ' '
+        ForceSelection = True
+        NormalizeString = True
+        Style = csDropDown
+        Mode = umNameValue
+        OnChange = cCFOPChange
       end
-      object UniTabSheet2: TUniTabSheet
+      object cEmbarque: TUniDBLookupComboBox
+        AlignWithMargins = True
+        Left = 302
+        Top = 66
+        Width = 722
+        Height = 25
         Hint = ''
-        Caption = 'Ocorr'#234'ncias'
-        object mFormulas: TUniMemo
-          Left = 0
-          Top = 0
-          Width = 1317
-          Height = 576
-          Hint = ''
-          ScrollBars = ssBoth
-          Lines.Strings = (
-            'mFormulas')
-          ParentFont = False
-          Font.Color = clGray
-          Font.Height = -12
-          Font.Name = 'JetBrains Mono'
-          Align = alClient
-          Color = 5453824
-          TabOrder = 0
-          ClientEvents.UniEvents.Strings = (
-            
-              'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-              '= '#39'CampoDestaque'#39';'#13#10'}')
-          FieldLabel = 'F'#211'RMULAS DOS CALCULOS DO PEDIDO'
-          FieldLabelAlign = laTop
-          FieldLabelSeparator = ' '
-        end
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 1
+        Margins.Bottom = 1
+        ShowHint = True
+        ParentShowHint = False
+        ListField = 'Navio;Nome;Processo'
+        ListSource = dsEmbarques
+        KeyField = 'Navio'
+        ListFieldIndex = 1
+        BorderStyle = ubsInset
+        ClearButton = True
+        AnyMatch = True
+        TabOrder = 3
+        Color = clWindow
+        FieldLabel = 'Embarque'
+        FieldLabelWidth = 80
+        FieldLabelSeparator = ' '
+        ForceSelection = True
+        NormalizeString = True
+        Style = csDropDown
+        Mode = umNameValue
       end
     end
   end
@@ -633,15 +743,15 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       '      ,ES'
       'from CFOP '
       'where Desativada <> 1')
-    Left = 414
-    Top = 279
+    Left = 456
+    Top = 389
   end
   object PedidosNF: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'select * from pedidosNF')
-    Left = 158
-    Top = 279
+    Left = 943
+    Top = 338
   end
   object PedidosNFItens: TFDQuery
     AfterRefresh = PedidosNFItensAfterRefresh
@@ -655,11 +765,15 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       'select *'
       'from PedidosNFitens'
       '')
-    Left = 238
-    Top = 279
+    Left = 602
+    Top = 389
     object PedidosNFItensPedido: TIntegerField
       FieldName = 'Pedido'
       Origin = 'Pedido'
+    end
+    object PedidosNFItensItem: TSmallintField
+      FieldName = 'Item'
+      Origin = 'Item'
     end
     object PedidosNFItensEmpresa: TStringField
       FieldName = 'Empresa'
@@ -669,10 +783,6 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
     object PedidosNFItensES: TSmallintField
       FieldName = 'ES'
       Origin = 'ES'
-    end
-    object PedidosNFItensItem: TSmallintField
-      FieldName = 'Item'
-      Origin = 'Item'
     end
     object PedidosNFItensOperacao: TSmallintField
       FieldName = 'Operacao'
@@ -766,6 +876,14 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       FieldName = 'Movimenta_Estoque'
       Origin = 'Movimenta_Estoque'
     end
+    object PedidosNFItensMovimenta_EstoqueRep: TBooleanField
+      FieldName = 'Movimenta_EstoqueRep'
+      Origin = 'Movimenta_EstoqueRep'
+    end
+    object PedidosNFItensMovimenta_EstoqueInd: TBooleanField
+      FieldName = 'Movimenta_EstoqueInd'
+      Origin = 'Movimenta_EstoqueInd'
+    end
     object PedidosNFItensModalidade_BCICMS: TSmallintField
       FieldName = 'Modalidade_BCICMS'
       Origin = 'Modalidade_BCICMS'
@@ -774,18 +892,9 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       FieldName = 'Modalidade_BCICMSST'
       Origin = 'Modalidade_BCICMSST'
     end
-    object PedidosNFItensVeiculo: TBooleanField
-      FieldName = 'Veiculo'
-      Origin = 'Veiculo'
-    end
     object PedidosNFItensProcesso: TStringField
       FieldName = 'Processo'
       Origin = 'Processo'
-      Size = 15
-    end
-    object PedidosNFItensDUIMP: TStringField
-      FieldName = 'DUIMP'
-      Origin = 'DUIMP'
       Size = 15
     end
     object PedidosNFItensRateio_ICMSProcesso: TFloatField
@@ -795,14 +904,6 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
     object PedidosNFItensApuracao_PISCOFINS: TBooleanField
       FieldName = 'Apuracao_PISCOFINS'
       Origin = 'Apuracao_PISCOFINS'
-    end
-    object PedidosNFItensFinalidade_Mercadoria: TSmallintField
-      FieldName = 'Finalidade_Mercadoria'
-      Origin = 'Finalidade_Mercadoria'
-    end
-    object PedidosNFItensRegistro_Adicao: TIntegerField
-      FieldName = 'Registro_Adicao'
-      Origin = 'Registro_Adicao'
     end
     object PedidosNFItensICMSST_Anterior: TBooleanField
       FieldName = 'ICMSST_Anterior'
@@ -834,10 +935,6 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       FieldName = 'Devolucao'
       Origin = 'Devolucao'
     end
-    object PedidosNFItensMovimenta_EstoqueRep: TBooleanField
-      FieldName = 'Movimenta_EstoqueRep'
-      Origin = 'Movimenta_EstoqueRep'
-    end
     object PedidosNFItensCEST: TStringField
       FieldName = 'CEST'
       Origin = 'CEST'
@@ -852,9 +949,9 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       FieldName = 'Ordem'
       Origin = 'Ordem'
     end
-    object PedidosNFItensAliquota_ICMSSubAnt: TFloatField
-      FieldName = 'Aliquota_ICMSSubAnt'
-      Origin = 'Aliquota_ICMSSubAnt'
+    object PedidosNFItensAliquota_ICMSSTAnt: TFloatField
+      FieldName = 'Aliquota_ICMSSTAnt'
+      Origin = 'Aliquota_ICMSSTAnt'
     end
     object PedidosNFItensFator_Cambio: TFloatField
       FieldName = 'Fator_Cambio'
@@ -877,14 +974,6 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       FieldName = 'Codigo_CredPres'
       Origin = 'Codigo_CredPres'
       Size = 8
-    end
-    object PedidosNFItensSequencia: TIntegerField
-      FieldName = 'Sequencia'
-      Origin = 'Sequencia'
-    end
-    object PedidosNFItensSequencia_SISCOMEX: TIntegerField
-      FieldName = 'Sequencia_SISCOMEX'
-      Origin = 'Sequencia_SISCOMEX'
     end
     object PedidosNFItensValor_BCDIFAL: TCurrencyField
       FieldName = 'Valor_BCDIFAL'
@@ -1110,6 +1199,10 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       FieldName = 'Valor_ICMSDesonerado'
       Origin = 'Valor_ICMSDesonerado'
     end
+    object PedidosNFItensValor_BCICMSSTAnt: TCurrencyField
+      FieldName = 'Valor_BCICMSSTAnt'
+      Origin = 'Valor_BCICMSSTAnt'
+    end
     object PedidosNFItensValor_ICMSSTAnt: TCurrencyField
       FieldName = 'Valor_ICMSSTAnt'
       Origin = 'Valor_ICMSSTAnt'
@@ -1166,9 +1259,9 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       FieldName = 'Valor_TotalNota'
       Origin = 'Valor_TotalNota'
     end
-    object PedidosNFItensValor_Impostos: TCurrencyField
-      FieldName = 'Valor_Impostos'
-      Origin = 'Valor_Impostos'
+    object PedidosNFItensValor_TotalImpostos: TCurrencyField
+      FieldName = 'Valor_TotalImpostos'
+      Origin = 'Valor_TotalImpostos'
     end
     object PedidosNFItensValor_Inventario: TCurrencyField
       FieldName = 'Valor_Inventario'
@@ -1278,10 +1371,100 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       FieldName = 'Percentual_ICMSMonoRet'
       Origin = 'Percentual_ICMSMonoRet'
     end
+    object PedidosNFItensValor_BCIBS: TCurrencyField
+      FieldName = 'Valor_BCIBS'
+      Origin = 'Valor_BCIBS'
+    end
+    object PedidosNFItensAliquota_IBS: TFloatField
+      FieldName = 'Aliquota_IBS'
+      Origin = 'Aliquota_IBS'
+    end
+    object PedidosNFItensValor_IBS: TCurrencyField
+      FieldName = 'Valor_IBS'
+      Origin = 'Valor_IBS'
+    end
+    object PedidosNFItensValor_BCCBS: TCurrencyField
+      FieldName = 'Valor_BCCBS'
+      Origin = 'Valor_BCCBS'
+    end
+    object PedidosNFItensAliquota_CBS: TFloatField
+      FieldName = 'Aliquota_CBS'
+      Origin = 'Aliquota_CBS'
+    end
+    object PedidosNFItensValor_CBS: TCurrencyField
+      FieldName = 'Valor_CBS'
+      Origin = 'Valor_CBS'
+    end
+    object PedidosNFItensValor_BCIS: TCurrencyField
+      FieldName = 'Valor_BCIS'
+      Origin = 'Valor_BCIS'
+    end
+    object PedidosNFItensAliquota_IS: TFloatField
+      FieldName = 'Aliquota_IS'
+      Origin = 'Aliquota_IS'
+    end
+    object PedidosNFItensValor_IS: TCurrencyField
+      FieldName = 'Valor_IS'
+      Origin = 'Valor_IS'
+    end
+    object PedidosNFItensCSTIBS: TStringField
+      FieldName = 'CSTIBS'
+      Origin = 'CSTIBS'
+      Size = 3
+    end
+    object PedidosNFItensCSTCBS: TStringField
+      FieldName = 'CSTCBS'
+      Origin = 'CSTCBS'
+      Size = 3
+    end
     object PedidosNFItensBL: TStringField
       FieldName = 'BL'
       Origin = 'BL'
       Size = 15
+    end
+    object PedidosNFItensValor_BCICMSDif: TCurrencyField
+      FieldName = 'Valor_BCICMSDif'
+      Origin = 'Valor_BCICMSDif'
+    end
+    object PedidosNFItensValor_IPIDevol: TCurrencyField
+      FieldName = 'Valor_IPIDevol'
+      Origin = 'Valor_IPIDevol'
+    end
+    object PedidosNFItensPercentual_IPIDevol: TFloatField
+      FieldName = 'Percentual_IPIDevol'
+      Origin = 'Percentual_IPIDevol'
+    end
+    object PedidosNFItensBeneficio_Fiscal: TStringField
+      FieldName = 'Beneficio_Fiscal'
+      Origin = 'Beneficio_Fiscal'
+      FixedChar = True
+      Size = 10
+    end
+    object PedidosNFItensDeclaracao: TStringField
+      FieldName = 'Declaracao'
+      Origin = 'Declaracao'
+      Size = 15
+    end
+    object PedidosNFItensValor_Produtos: TCurrencyField
+      FieldName = 'Valor_Produtos'
+      Origin = 'Valor_Produtos'
+    end
+    object PedidosNFItensValor_FCPICMSOrig: TCurrencyField
+      FieldName = 'Valor_FCPICMSOrig'
+      Origin = 'Valor_FCPICMSOrig'
+    end
+    object PedidosNFItensItem_DUIMP: TIntegerField
+      FieldName = 'Item_DUIMP'
+      Origin = 'Item_DUIMP'
+    end
+    object PedidosNFItensFinalidade_Mercadoria: TStringField
+      FieldName = 'Finalidade_Mercadoria'
+      Origin = 'Finalidade_Mercadoria'
+      Size = 21
+    end
+    object PedidosNFItensRegistro_Adicao: TIntegerField
+      FieldName = 'Registro_Adicao'
+      Origin = 'Registro_Adicao'
     end
   end
   object Empresas: TFDQuery
@@ -1296,8 +1479,8 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       '      ,Estado'
       '      ,Razao_Social'
       'from Empresas')
-    Left = 550
-    Top = 279
+    Left = 818
+    Top = 338
   end
   object OpFiscal: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1308,11 +1491,11 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from OperacaoFiscal')
-    Left = 614
-    Top = 279
+    Left = 1001
+    Top = 338
   end
-  object Adicoes: TFDQuery
-    AfterRefresh = AdicoesAfterRefresh
+  object ProcessosImpItens: TFDQuery
+    AfterRefresh = ProcessosImpItensAfterRefresh
     Connection = UniMainModule.Conecta
     FetchOptions.AssignedValues = [evMode, evRowsetSize, evLiveWindowParanoic]
     FetchOptions.RowsetSize = 250
@@ -1320,19 +1503,91 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
     UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
-      'select Adicao'
+      'select Registro'
+      '      ,Item'
       '      ,Codigo_Mercadoria'
       
         '      ,Descricao = (select Descricao from Produtos where Codigo ' +
         '= Codigo_Mercadoria)'
       '      ,Quantidade'
-      '      ,Disponivel = 0'
+      '      ,Disponivel = cast(0 as float)'
+      '      ,Valor_UnitarioME'
       '      ,Valor_UnitarioReal'
       '      ,NCM'
       '      ,Peso_Liquido'
-      'from Adicoes')
-    Left = 309
-    Top = 279
+      '      ,Pedido'
+      '      ,Adicao'
+      '      ,Ordem'
+      'from ProcessosImpItens')
+    Left = 701
+    Top = 388
+    object ProcessosImpItensCodigo_Mercadoria: TIntegerField
+      FieldName = 'Codigo_Mercadoria'
+      Origin = 'Codigo_Mercadoria'
+      Required = True
+    end
+    object ProcessosImpItensDescricao: TStringField
+      FieldName = 'Descricao'
+      Origin = 'Descricao'
+      ReadOnly = True
+      Size = 5000
+    end
+    object ProcessosImpItensQuantidade: TFloatField
+      FieldName = 'Quantidade'
+      Origin = 'Quantidade'
+      Required = True
+      DisplayFormat = ',##0.000'
+    end
+    object ProcessosImpItensValor_UnitarioReal: TCurrencyField
+      FieldName = 'Valor_UnitarioReal'
+      Origin = 'Valor_UnitarioReal'
+      DisplayFormat = ',##0.0000'
+    end
+    object ProcessosImpItensNCM: TStringField
+      FieldName = 'NCM'
+      Origin = 'NCM'
+      EditMask = '####.##.##;0'
+      Size = 8
+    end
+    object ProcessosImpItensPeso_Liquido: TFloatField
+      FieldName = 'Peso_Liquido'
+      Origin = 'Peso_Liquido'
+      DisplayFormat = ',##0.000'
+    end
+    object ProcessosImpItensItem: TSmallintField
+      FieldName = 'Item'
+      Origin = 'Item'
+      DisplayFormat = '000000'
+    end
+    object ProcessosImpItensDisponivel: TFloatField
+      FieldName = 'Disponivel'
+      Origin = 'Disponivel'
+      ReadOnly = True
+      DisplayFormat = ',##0.000'
+    end
+    object ProcessosImpItensValor_UnitarioME: TCurrencyField
+      FieldName = 'Valor_UnitarioME'
+      Origin = 'Valor_UnitarioME'
+      DisplayFormat = ',##0.0000'
+    end
+    object ProcessosImpItensPedido: TStringField
+      FieldName = 'Pedido'
+      Origin = 'Pedido'
+      Size = 15
+    end
+    object ProcessosImpItensAdicao: TSmallintField
+      FieldName = 'Adicao'
+      Origin = 'Adicao'
+    end
+    object ProcessosImpItensRegistro: TFDAutoIncField
+      FieldName = 'Registro'
+      Origin = 'Registro'
+      ReadOnly = True
+    end
+    object ProcessosImpItensOrdem: TIntegerField
+      FieldName = 'Ordem'
+      Origin = 'Ordem'
+    end
   end
   object DUIMP: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1352,8 +1607,8 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       'where Desativado <> 1'
       'and Data_Encerramento is null'
       '')
-    Left = 365
-    Top = 279
+    Left = 407
+    Top = 389
   end
   object Embarques: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1366,29 +1621,29 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       
         'select Navio, Processo, Nome = (select Nome from Navios where Co' +
         'digo = Navio), Filial, UF from Embarques')
-    Left = 477
-    Top = 279
+    Left = 519
+    Top = 389
   end
   object tCambio: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'select * from pedidosNF')
-    Left = 158
-    Top = 375
+    Left = 1066
+    Top = 454
   end
   object tProcesso: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'select * from pedidosNF')
-    Left = 238
-    Top = 375
+    Left = 818
+    Top = 454
   end
   object tTmp: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'select * from pedidosNF')
-    Left = 54
-    Top = 383
+    Left = 944
+    Top = 454
   end
   object tNCM: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1403,8 +1658,8 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       '      ,ES'
       'from CFOP '
       'where Desativada <> 1')
-    Left = 666
-    Top = 279
+    Left = 874
+    Top = 338
   end
   object tBeneficios: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1413,8 +1668,8 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
     FetchOptions.LiveWindowParanoic = False
     UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
-    Left = 306
-    Top = 375
+    Left = 874
+    Top = 454
   end
   object Produtos: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1429,8 +1684,8 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       '      ,Descricao'
       'from Produtos'
       '')
-    Left = 730
-    Top = 279
+    Left = 943
+    Top = 391
   end
   object CSTIPI: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1441,8 +1696,8 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * FROM CSTIPI')
-    Left = 798
-    Top = 279
+    Left = 1001
+    Top = 391
   end
   object CSTPIS: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1453,8 +1708,8 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * FROM CSTPIS')
-    Left = 862
-    Top = 279
+    Left = 1066
+    Top = 391
   end
   object CSTCOFINS: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1465,8 +1720,8 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * FROM CSTCOFINS')
-    Left = 929
-    Top = 279
+    Left = 1138
+    Top = 391
   end
   object CSTICMS: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1477,8 +1732,8 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * FROM CSTICMS')
-    Left = 1003
-    Top = 279
+    Left = 1217
+    Top = 391
   end
   object TabPISCOFINS: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1486,8 +1741,8 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       'select *'
       'from TabelaPISCOFINS'
       'where Tipo = '#39'B'#39)
-    Left = 1076
-    Top = 279
+    Left = 1138
+    Top = 338
   end
   object Destinatarios: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1503,13 +1758,13 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
         '      ,CNPJ_CPF = iif(CNPJ <> '#39#39', replicate('#39'0'#39', 14-len(CNPJ))+C' +
         'NPJ, replicate('#39'0'#39', 14-len(CPF))+CPF)'
       'from Destinatarios')
-    Left = 1162
-    Top = 279
+    Left = 1066
+    Top = 338
   end
   object dsPedidosNFItens: TDataSource
     DataSet = PedidosNFItens
-    Left = 238
-    Top = 326
+    Left = 602
+    Top = 439
   end
   object Alerta: TUniSweetAlert
     Title = ' '
@@ -1518,28 +1773,28 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
     CancelButtonText = 'Cancelar'
     Width = 400
     Padding = 20
-    Left = 70
-    Top = 277
+    Left = 608
+    Top = 165
   end
-  object dsAdicoes: TDataSource
-    DataSet = Adicoes
-    Left = 309
-    Top = 326
+  object dsProcessosImpItens: TDataSource
+    DataSet = ProcessosImpItens
+    Left = 703
+    Top = 439
   end
   object dsDUIMP: TDataSource
     DataSet = DUIMP
-    Left = 364
-    Top = 326
+    Left = 406
+    Top = 439
   end
   object dsCFOP: TDataSource
     DataSet = CFOP
-    Left = 413
-    Top = 326
+    Left = 455
+    Top = 439
   end
   object dsEmbarques: TDataSource
     DataSet = Embarques
-    Left = 477
-    Top = 326
+    Left = 519
+    Top = 439
   end
   object Processos: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1557,8 +1812,8 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       '      ,Processo'
       'from ProcessosExp'
       'where isnull(DE, '#39#39') <> '#39#39)
-    Left = 553
-    Top = 326
+    Left = 874
+    Top = 391
   end
   object tNCMICMS: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1573,8 +1828,8 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       '      ,ES'
       'from CFOP '
       'where Desativada <> 1')
-    Left = 666
-    Top = 327
+    Left = 818
+    Top = 391
   end
   object tFormulas: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1585,17 +1840,140 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from OperacaoFiscalFormulas')
-    Left = 1236
-    Top = 275
+    Left = 407
+    Top = 497
   end
   object dstFormulas: TDataSource
     DataSet = tFormulas
-    Left = 1236
-    Top = 317
+    Left = 407
+    Top = 543
   end
   object Macro: TCalcExpress
     Formula = '0'
-    Left = 19
-    Top = 276
+    Left = 550
+    Top = 165
+  end
+  object tImpostos: TFDMemTable
+    FieldDefs = <>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    FormatOptions.AssignedValues = [fvMaxBcdPrecision, fvMaxBcdScale]
+    FormatOptions.MaxBcdPrecision = 2147483647
+    FormatOptions.MaxBcdScale = 1073741823
+    ResourceOptions.AssignedValues = [rvPersistent, rvSilentMode]
+    ResourceOptions.Persistent = True
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable, uvAutoCommitUpdates]
+    UpdateOptions.LockWait = True
+    UpdateOptions.FetchGeneratorsPoint = gpNone
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 339
+    Top = 391
+    object tImpostosOrdem_Calculo: TSmallintField
+      FieldName = 'Ordem_Calculo'
+    end
+    object tImpostosDescricao: TStringField
+      FieldName = 'Descricao'
+      Size = 60
+    end
+    object tImpostosCampo: TStringField
+      FieldName = 'Campo'
+      Size = 60
+    end
+    object tImpostosAliquota: TFloatField
+      FieldName = 'Aliquota'
+      DisplayFormat = ',##0.0000'
+    end
+    object tImpostosValor: TCurrencyField
+      FieldName = 'Valor'
+      DisplayFormat = ',##0.0000'
+    end
+    object tImpostosTotal: TCurrencyField
+      FieldName = 'Total'
+      DisplayFormat = ',##0.0000'
+    end
+    object tImpostosCST: TStringField
+      FieldName = 'CST'
+      Size = 5
+    end
+  end
+  object tFormulasItens: TFDQuery
+    Connection = UniMainModule.Conecta
+    FetchOptions.AssignedValues = [evMode, evRowsetSize, evLiveWindowParanoic]
+    FetchOptions.RowsetSize = 250
+    FetchOptions.LiveWindowParanoic = False
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select * from OperacaoFiscalFormulas')
+    Left = 339
+    Top = 440
+  end
+  object Campos: TFDQuery
+    Connection = UniMainModule.Conecta
+    FetchOptions.AssignedValues = [evMode, evRowsetSize, evLiveWindowParanoic]
+    FetchOptions.RowsetSize = 250
+    FetchOptions.LiveWindowParanoic = False
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select CNPJ'
+      '      ,Estado'
+      '      ,Razao_Social'
+      'from Empresas')
+    Left = 340
+    Top = 493
+  end
+  object CSTICMSA: TFDQuery
+    Connection = UniMainModule.Conecta
+    FetchOptions.AssignedValues = [evMode, evRowsetSize, evLiveWindowParanoic]
+    FetchOptions.RowsetSize = 250
+    FetchOptions.LiveWindowParanoic = False
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select * FROM CSTICMS')
+    Left = 600
+    Top = 341
+  end
+  object CSTICMSB: TFDQuery
+    Connection = UniMainModule.Conecta
+    FetchOptions.AssignedValues = [evMode, evRowsetSize, evLiveWindowParanoic]
+    FetchOptions.RowsetSize = 250
+    FetchOptions.LiveWindowParanoic = False
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select * FROM CSTICMS')
+    Left = 696
+    Top = 339
+  end
+  object CSTIBS: TFDQuery
+    Connection = UniMainModule.Conecta
+    FetchOptions.AssignedValues = [evMode, evRowsetSize, evLiveWindowParanoic]
+    FetchOptions.RowsetSize = 250
+    FetchOptions.LiveWindowParanoic = False
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select * FROM CSTIBS')
+    Left = 259
+    Top = 395
+  end
+  object CSTCBS: TFDQuery
+    Connection = UniMainModule.Conecta
+    FetchOptions.AssignedValues = [evMode, evRowsetSize, evLiveWindowParanoic]
+    FetchOptions.RowsetSize = 250
+    FetchOptions.LiveWindowParanoic = False
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select * FROM CSTCBS'
+      '')
+    Left = 256
+    Top = 448
   end
 end

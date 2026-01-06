@@ -36,8 +36,8 @@ object TelaLogin: TTelaLogin
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
-        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-        '= '#39'Fundo'#39';'#13#10'}')
+        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+        's = '#39'Fundo'#39';'#13#10'}')
     TabOrder = 0
     DesignSize = (
       1075
@@ -6120,6 +6120,7 @@ object TelaLogin: TTelaLogin
         Height = 30
         Hint = ''
         PasswordChar = #186
+        BorderStyle = ubsInset
         Text = ''
         ParentFont = False
         Font.Height = -13
@@ -6163,6 +6164,7 @@ object TelaLogin: TTelaLogin
         Width = 366
         Height = 32
         Hint = ''
+        BorderStyle = ubsInset
         Text = ''
         ParentFont = False
         Font.Height = -13
@@ -6176,7 +6178,7 @@ object TelaLogin: TTelaLogin
     end
   end
   object Clientes: TFDQuery
-    Connection = UniMainModule.ERPImporta
+    Connection = UniMainModule.AtlasWeb
     UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (

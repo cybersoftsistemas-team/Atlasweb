@@ -103,6 +103,7 @@ begin
              sql.Add('and Tabela = '+quotedstr(cTabela.Text));
           end;
           sql.add('order by Descricao, Tabela');
+          //sql.savetofile('c:\temp\Campos_Calculaveis.sql');
           open;
      end;
 end;
@@ -259,7 +260,7 @@ var
     Texto: WideString;
     Pos: Integer;
 begin
-      if not tCampos.fieldbyname('Percentual').AsBoolean then begin
+     if not tCampos.fieldbyname('Percentual').AsBoolean then begin
         if not tCampos.fieldbyname('Funcao').AsBoolean then begin
            Texto := tCampos.fieldbyname('Campo').asstring
         end else begin
@@ -270,13 +271,16 @@ begin
      end;
 
      // Armazena a coluna em que está o cursor.
-     pos := strtoint(cFormula.CustomAttribs.Values['cpos']);
+     pos := 0;
+     if cFormula.CustomAttribs.Values['cpos'] <> '' then begin
+        pos := strtoint(cFormula.CustomAttribs.Values['cpos']);
+     end;
 
      // Armazena o texto anterior.
      TextoA := Copy(cFormula.Text, 1, Pos);
 
      // Armazena o texto depois.
-     TextoD := Copy(cFormula.Text,POS+1,Length(cFormula.Text));
+     TextoD := Copy(cFormula.Text, POS+1, Length(cFormula.Text));
 
      // Armazena o texto anterior, o texto desejato, e o texto posterior.
      cFormula.Text := textoA +' '+ texto +' '+ textoD;

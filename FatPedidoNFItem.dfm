@@ -1,1970 +1,2752 @@
 object fFatPedidoNFItem: TfFatPedidoNFItem
   Left = 0
   Top = 0
-  ClientHeight = 689
-  ClientWidth = 1332
-  Caption = 'Item do Pedido'
-  OnShow = UniFormShow
-  BorderStyle = bsDialog
-  OldCreateOrder = False
-  CaptionAlign = taCenter
-  MonitoredKeys.Keys = <>
-  PixelsPerInch = 96
-  TextHeight = 13
-  object UniPanel3: TUniPanel
-    Left = 0
-    Top = 654
-    Width = 1332
-    Height = 35
-    Hint = ''
-    ShowHint = True
-    ParentShowHint = False
-    Align = alBottom
-    TabOrder = 0
-    ClientEvents.UniEvents.Strings = (
-      
-        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-        '= '#39'Pasta'#39';'#13#10'}')
-    BorderStyle = ubsSolid
-    Caption = ''
-    Color = 5526569
-    object UniSpeedButton1: TUniSpeedButton
-      AlignWithMargins = True
-      Left = 1290
-      Top = 1
-      Width = 41
-      Height = 33
-      Hint = 'Fecha a tela de cadastro atual.'
-      Margins.Left = 1
-      Margins.Top = 1
-      Margins.Right = 1
-      Margins.Bottom = 1
-      ShowHint = True
-      Caption = ''
-      Align = alRight
-      ParentColor = False
-      IconAlign = iaCenter
-      Images = UniMainModule.imgBotoes
-      ImageIndex = 7
-      TabOrder = 1
-      OnClick = UniSpeedButton1Click
-    end
-    object bAddItem: TUniSpeedButton
-      AlignWithMargins = True
-      Left = 1198
-      Top = 1
-      Width = 90
-      Height = 33
-      Hint = 'Adicionar um Item'
-      Margins.Left = 1
-      Margins.Top = 1
-      Margins.Right = 1
-      Margins.Bottom = 1
-      ShowHint = True
-      ParentShowHint = False
-      Caption = 'Salvar'
-      Align = alRight
-      ParentColor = False
-      IconAlign = iaCenter
-      Images = UniMainModule.imgBotoes
-      ImageIndex = 4
-      TabOrder = 2
-    end
-    object bAddTudo: TUniSpeedButton
-      AlignWithMargins = True
-      Left = 1106
-      Top = 1
-      Width = 90
-      Height = 33
-      Hint = 'Cancelar opera'#231#227'o'
-      Margins.Left = 1
-      Margins.Top = 1
-      Margins.Right = 1
-      Margins.Bottom = 1
-      ShowHint = True
-      ParentShowHint = False
-      Caption = 'Cancelar'
-      Align = alRight
-      ParentColor = False
-      IconAlign = iaCenter
-      Images = UniMainModule.imgBotoes
-      ImageIndex = 3
-      TabOrder = 3
-    end
-  end
+  Width = 968
+  Height = 1900
+  OnCreate = UniFrameCreate
+  TabOrder = 0
   object UniPageControl1: TUniPageControl
     Left = 0
     Top = 0
-    Width = 1332
-    Height = 654
+    Width = 968
+    Height = 1900
     Hint = ''
-    ActivePage = UniTabSheet2
+    ActivePage = UniTabSheet3
+    Plain = True
     Align = alClient
-    TabOrder = 1
-    object UniTabSheet1: TUniTabSheet
+    TabOrder = 0
+    object UniTabSheet3: TUniTabSheet
       Hint = ''
-      Caption = 'Item'
-      ClientEvents.UniEvents.Strings = (
-        
-          'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-          '= '#39'Ficha'#39';'#13#10'}')
-      object cCSTIPI: TUniDBLookupComboBox
-        Left = 659
-        Top = 226
-        Width = 647
-        Height = 25
+      Caption = 'Itens do Pedido'
+      object UniContainerPanel1: TUniContainerPanel
+        Left = 0
+        Top = 0
+        Width = 960
+        Height = 1872
         Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        ListField = 'Codigo;Descricao'
-        ListSource = dsCSTIPI
-        KeyField = 'Codigo'
-        ListFieldIndex = 1
-        DataField = 'CSTIPI'
-        DataSource = dsPedidosNFItens
-        AnyMatch = True
+        ParentColor = False
+        Align = alClient
+        AutoScroll = True
+        ClientEvents.UniEvents.Strings = (
+          
+            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+            '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
-        Color = clWindow
-        FieldLabel = 'CST IPI'
-        FieldLabelWidth = 75
-        FieldLabelSeparator = ' '
-        ForceSelection = True
-        NormalizeString = True
-        Style = csDropDown
-      end
-      object cCSTPIS: TUniDBLookupComboBox
-        Left = 659
-        Top = 307
-        Width = 647
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        ListField = 'Codigo;Descricao'
-        ListSource = dsCSTPIS
-        KeyField = 'Codigo'
-        ListFieldIndex = 1
-        DataField = 'CSTPIS'
-        DataSource = dsPedidosNFItens
-        AnyMatch = True
-        TabOrder = 10
-        Color = clWindow
-        MatchFieldWidth = False
-        FieldLabel = 'CST PIS'
-        FieldLabelWidth = 75
-        FieldLabelSeparator = ' '
-        ForceSelection = True
-        NormalizeString = True
-        Style = csDropDown
-      end
-      object cCSTCOFINS: TUniDBLookupComboBox
-        Left = 659
-        Top = 334
-        Width = 647
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        ListField = 'Codigo;Descricao'
-        ListSource = dsCSTCOFINS
-        KeyField = 'Codigo'
-        ListFieldIndex = 1
-        DataField = 'CSTCOFINS'
-        DataSource = dsPedidosNFItens
-        AnyMatch = True
-        TabOrder = 11
-        Color = clWindow
-        MatchFieldWidth = False
-        FieldLabel = 'CST COFINS'
-        FieldLabelWidth = 75
-        FieldLabelSeparator = ' '
-        ForceSelection = True
-        NormalizeString = True
-        Style = csDropDown
-      end
-      object cCSTICMS: TUniDBLookupComboBox
-        Left = 984
-        Top = 361
-        Width = 322
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        ListField = 'Codigo;Descricao'
-        ListSource = dsCSTICMSB
-        KeyField = 'Codigo'
-        ListFieldIndex = 1
-        DataField = 'CSTICMS_TabB'
-        DataSource = dsPedidosNFItens
-        AnyMatch = True
-        TabOrder = 12
-        Color = clWindow
-        MatchFieldWidth = False
-        FieldLabel = 'CST ICMS Tab.B'
-        FieldLabelWidth = 75
-        FieldLabelSeparator = ' '
-        ForceSelection = True
-        NormalizeString = True
-        Style = csDropDown
-      end
-      object cQtde: TUniDBFormattedNumberEdit
-        Left = 19
-        Top = 101
-        Width = 200
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Quantidade'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 6
-        SelectOnFocus = True
-        FieldLabel = 'Quantidade'
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalPrecision = 3
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-        OnExit = cQtdeExit
-      end
-      object cPercentual_Desconto: TUniDBFormattedNumberEdit
-        Left = 19
-        Top = 128
-        Width = 200
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Percentual_Desconto'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 8
-        SelectOnFocus = True
-        FieldLabel = '% Desconto'
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalPrecision = 4
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cValor_Desconto: TUniDBFormattedNumberEdit
-        Left = 229
-        Top = 128
-        Width = 200
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_Desconto'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 9
-        SelectOnFocus = True
-        FieldLabel = 'Valor Desconto'
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cProduto: TUniDBLookupComboBox
-        Left = 19
-        Top = 19
-        Width = 1287
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        ListField = 'Codigo;NCM;Descricao'
-        ListSource = dsProdutos
-        KeyField = 'Codigo'
-        ListFieldIndex = 2
-        ClearButton = True
-        DataField = 'Codigo_Mercadoria'
-        DataSource = dsPedidosNFItens
-        AnyMatch = True
-        TabOrder = 1
-        Color = clWindow
-        FieldLabel = 'Produto'
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        ForceSelection = True
-        NormalizeString = True
-        Style = csDropDown
-        Mode = umNameValue
-        OnExit = cProdutoExit
-      end
-      object cCFOP: TUniDBLookupComboBox
-        Left = 19
-        Top = 46
-        Width = 1287
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        ListField = 'Codigo;Descricao'
-        ListSource = dsCFOP
-        KeyField = 'Codigo'
-        ListFieldIndex = 1
-        ClearButton = True
-        DataField = 'CFOP'
-        DataSource = dsPedidosNFItens
-        AnyMatch = True
-        TabOrder = 2
-        Color = clWindow
-        FieldLabel = 'CFOP'
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        ForceSelection = True
-        NormalizeString = True
-        Style = csDropDown
-      end
-      object cProcesso: TUniDBLookupComboBox
-        Left = 19
-        Top = 73
-        Width = 410
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        ListField = 'Tipo;Processo'
-        ListSource = dsProcessos
-        KeyField = 'Processo'
-        ListFieldIndex = 1
-        DataField = 'Processo'
-        DataSource = dsPedidosNFItens
-        AnyMatch = True
-        TabOrder = 3
-        Color = clWindow
-        FieldLabel = 'Processo'
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        ForceSelection = True
-        NormalizeString = True
-        Style = csDropDown
-      end
-      object cPO: TUniDBEdit
-        Left = 442
-        Top = 73
-        Width = 200
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'PO'
-        DataSource = dsPedidosNFItens
-        TabOrder = 4
-        FieldLabel = 'Pedido Compra'
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-      end
-      object cOrdem: TUniDBEdit
-        Left = 653
-        Top = 73
-        Width = 200
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Ordem'
-        DataSource = dsPedidosNFItens
-        TabOrder = 5
-        FieldLabel = 'Ordem'
-        FieldLabelWidth = 40
-        FieldLabelSeparator = ' '
-      end
-      object cAliquota_II: TUniDBFormattedNumberEdit
-        Left = 289
-        Top = 199
-        Width = 80
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Aliquota_II'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 13
-        SelectOnFocus = True
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cValor_BCII: TUniDBFormattedNumberEdit
-        Left = 147
-        Top = 199
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_BCII'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 14
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cValor_II: TUniDBFormattedNumberEdit
-        Left = 371
-        Top = 199
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_II'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 15
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cAliquota_IPI: TUniDBFormattedNumberEdit
-        Left = 289
-        Top = 226
-        Width = 80
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Aliquota_IPI'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 16
-        SelectOnFocus = True
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cValor_BCIPI: TUniDBFormattedNumberEdit
-        Left = 147
-        Top = 226
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_BCIPI'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 17
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cValor_IPI: TUniDBFormattedNumberEdit
-        Left = 371
-        Top = 226
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_IPI'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 18
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cValor_OutrasIPI: TUniDBFormattedNumberEdit
-        Left = 147
-        Top = 253
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_OutrasIPI'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 19
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cAliquota_PIS: TUniDBFormattedNumberEdit
-        Left = 289
-        Top = 307
-        Width = 80
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Aliquota_PIS'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 20
-        SelectOnFocus = True
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cValor_BCPIS: TUniDBFormattedNumberEdit
-        Left = 147
-        Top = 307
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_BCPIS'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 21
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cValor_PIS: TUniDBFormattedNumberEdit
-        Left = 371
-        Top = 307
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_PIS'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 22
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cAliquota_COFINS: TUniDBFormattedNumberEdit
-        Left = 289
-        Top = 334
-        Width = 80
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Aliquota_COFINS'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 23
-        SelectOnFocus = True
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cValor_BCCOFINS: TUniDBFormattedNumberEdit
-        Left = 147
-        Top = 334
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_BCCOFINS'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 24
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cValor_COFINS: TUniDBFormattedNumberEdit
-        Left = 371
-        Top = 334
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_COFINS'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 25
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cAliquota_ICMSOp: TUniDBFormattedNumberEdit
-        Left = 289
-        Top = 361
-        Width = 80
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Aliquota_ICMSOp'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 26
-        SelectOnFocus = True
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cValor_BCICMSOp: TUniDBFormattedNumberEdit
-        Left = 147
-        Top = 361
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_BCICMSOp'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 27
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cValor_ICMS: TUniDBFormattedNumberEdit
-        Left = 371
-        Top = 361
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_ICMSOp'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 28
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cAliquota_ICMSDif: TUniDBFormattedNumberEdit
-        Left = 147
-        Top = 415
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Aliquota_ICMSDif'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 29
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalPrecision = 4
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cValor_ICMSDif: TUniDBFormattedNumberEdit
-        Left = 371
-        Top = 415
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_ICMSDif'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 30
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cValor_OutrasICMS: TUniDBFormattedNumberEdit
-        Left = 147
-        Top = 442
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_OutrasICMS'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 31
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cValor_IsentasICMS: TUniDBFormattedNumberEdit
-        Left = 147
-        Top = 469
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_IsentasICMS'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 32
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cAliquota_ICMSST: TUniDBFormattedNumberEdit
-        Left = 289
-        Top = 388
-        Width = 80
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Aliquota_ICMSST'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 33
-        SelectOnFocus = True
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cValor_BCICMSST: TUniDBFormattedNumberEdit
-        Left = 147
-        Top = 388
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_BCICMSST'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 34
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cValor_ICMSST: TUniDBFormattedNumberEdit
-        Left = 371
-        Top = 388
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_ICMSST'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 35
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cAliquota_MVA: TUniDBFormattedNumberEdit
-        Left = 289
-        Top = 496
-        Width = 80
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Aliquota_MVA'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 36
-        SelectOnFocus = True
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cValor_BCMVA: TUniDBFormattedNumberEdit
-        Left = 147
-        Top = 496
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_BCMVA'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 37
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cValor_MVA: TUniDBFormattedNumberEdit
-        Left = 371
-        Top = 496
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_MVA'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 38
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cValor_Total: TUniFormattedNumberEdit
-        Left = 442
-        Top = 104
-        Width = 200
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        BorderStyle = ubsSolid
-        Alignment = taRightJustify
-        TabOrder = 39
-        TabStop = False
-        Color = 15720158
-        ReadOnly = True
-        FieldLabel = 'Total'
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-      end
-      object cValor_Unitario: TUniDBFormattedNumberEdit
-        Left = 229
-        Top = 101
-        Width = 200
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_Unitario'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 7
-        SelectOnFocus = True
-        FieldLabel = 'Valor Unit'#225'rio'
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalPrecision = 4
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-        OnExit = cValor_UnitarioExit
-        OnEnter = cValor_UnitarioEnter
-      end
-      object cTotalIPI: TUniFormattedNumberEdit
-        Left = 513
-        Top = 226
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        BorderStyle = ubsSolid
-        Alignment = taRightJustify
-        TabOrder = 40
-        TabStop = False
-        Color = 15720158
-        ReadOnly = True
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-            's = '#39'CampoDesativado'#39';'#13#10'}')
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-      end
-      object cTotalOutrasIPI: TUniFormattedNumberEdit
-        Left = 513
-        Top = 253
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        BorderStyle = ubsSolid
-        Alignment = taRightJustify
-        TabOrder = 41
-        TabStop = False
-        Color = 15720158
-        ReadOnly = True
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-            's = '#39'CampoDesativado'#39';'#13#10'}')
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-      end
-      object cTotalPIS: TUniFormattedNumberEdit
-        Left = 513
-        Top = 307
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        BorderStyle = ubsSolid
-        Alignment = taRightJustify
-        TabOrder = 42
-        TabStop = False
-        Color = 15720158
-        ReadOnly = True
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-            's = '#39'CampoDesativado'#39';'#13#10'}')
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-      end
-      object cTotalCOFINS: TUniFormattedNumberEdit
-        Left = 513
-        Top = 334
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        BorderStyle = ubsSolid
-        Alignment = taRightJustify
-        TabOrder = 43
-        TabStop = False
-        Color = 15720158
-        ReadOnly = True
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-            's = '#39'CampoDesativado'#39';'#13#10'}')
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-      end
-      object cTotalICMSOp: TUniFormattedNumberEdit
-        Left = 513
-        Top = 361
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        BorderStyle = ubsSolid
-        Alignment = taRightJustify
-        TabOrder = 44
-        TabStop = False
-        Color = 15720158
-        ReadOnly = True
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-            's = '#39'CampoDesativado'#39';'#13#10'}')
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-      end
-      object cTotalICMSST: TUniFormattedNumberEdit
-        Left = 513
-        Top = 388
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        BorderStyle = ubsSolid
-        Alignment = taRightJustify
-        TabOrder = 45
-        TabStop = False
-        Color = 15720158
-        ReadOnly = True
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-            's = '#39'CampoDesativado'#39';'#13#10'}')
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-      end
-      object cTotalOutrasICMS: TUniFormattedNumberEdit
-        Left = 513
-        Top = 442
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        BorderStyle = ubsSolid
-        Alignment = taRightJustify
-        TabOrder = 46
-        TabStop = False
-        Color = 15720158
-        ReadOnly = True
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-            's = '#39'CampoDesativado'#39';'#13#10'}')
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-      end
-      object cTotalIsentasICMS: TUniFormattedNumberEdit
-        Left = 513
-        Top = 469
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        BorderStyle = ubsSolid
-        Alignment = taRightJustify
-        TabOrder = 47
-        TabStop = False
-        Color = 15720158
-        ReadOnly = True
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-            's = '#39'CampoDesativado'#39';'#13#10'}')
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-      end
-      object cTotalMVA: TUniFormattedNumberEdit
-        Left = 513
-        Top = 496
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        BorderStyle = ubsSolid
-        Alignment = taRightJustify
-        TabOrder = 48
-        TabStop = False
-        Color = 15720158
-        ReadOnly = True
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-            's = '#39'CampoDesativado'#39';'#13#10'}')
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-      end
-      object cTotalII: TUniFormattedNumberEdit
-        Left = 513
-        Top = 199
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        BorderStyle = ubsSolid
-        Alignment = taRightJustify
-        TabOrder = 49
-        TabStop = False
-        Color = 15720158
-        ReadOnly = True
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-            '= '#39'CampoDesativado'#39';'#13#10'}')
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-      end
-      object cICMSAnt: TUniDBCheckBox
-        Left = 659
-        Top = 392
-        Width = 297
-        Height = 17
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'ICMSST_Anterior'
-        DataSource = dsPedidosNFItens
-        Caption = 'ICMS cobrado anteriormente por substitui'#231#227'o tribut'#225'ria.'
-        TabOrder = 50
-        ParentColor = False
-        Color = clBtnFace
-      end
-      object UniLabel16: TUniLabel
-        Left = 19
-        Top = 171
-        Width = 126
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        Alignment = taCenter
-        AutoSize = False
-        Caption = 'IMPOSTO'
-        ParentFont = False
-        Font.Name = 'Calibri'
-        Font.Style = [fsBold]
-        ParentColor = False
-        Color = clWindow
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-            '= '#39'LabelDestaque'#39';'#13#10'}')
-        Transparent = False
-        TabOrder = 51
-      end
-      object UniLabel17: TUniLabel
-        Left = 19
-        Top = 199
-        Width = 126
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        AutoSize = False
-        Caption = 'II'
-        ParentFont = False
-        Font.Name = 'Calibri'
-        ParentColor = False
-        Color = clWindow
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-            '= '#39'LabelDestaque'#39';'#13#10'}')
-        Transparent = False
-        TabOrder = 52
-      end
-      object UniLabel18: TUniLabel
-        Left = 19
-        Top = 226
-        Width = 126
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        AutoSize = False
-        Caption = 'IPI'
-        ParentFont = False
-        Font.Name = 'Calibri'
-        ParentColor = False
-        Color = clWindow
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-            '= '#39'LabelDestaque'#39';'#13#10'}')
-        Transparent = False
-        TabOrder = 53
-      end
-      object UniLabel19: TUniLabel
-        Left = 19
-        Top = 253
-        Width = 126
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        AutoSize = False
-        Caption = 'Outras de IPI'
-        ParentFont = False
-        Font.Name = 'Calibri'
-        ParentColor = False
-        Color = clWindow
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-            's = '#39'LabelDestaque'#39';'#13#10'}')
-        Transparent = False
-        TabOrder = 54
-      end
-      object UniLabel20: TUniLabel
-        Left = 19
-        Top = 307
-        Width = 126
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        AutoSize = False
-        Caption = 'PIS'
-        ParentFont = False
-        Font.Name = 'Calibri'
-        ParentColor = False
-        Color = clWindow
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-            '= '#39'LabelDestaque'#39';'#13#10'}')
-        Transparent = False
-        TabOrder = 55
-      end
-      object UniLabel21: TUniLabel
-        Left = 19
-        Top = 334
-        Width = 126
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        AutoSize = False
-        Caption = 'COFINS'
-        ParentFont = False
-        Font.Name = 'Calibri'
-        ParentColor = False
-        Color = clWindow
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-            '= '#39'LabelDestaque'#39';'#13#10'}')
-        Transparent = False
-        TabOrder = 56
-      end
-      object UniLabel22: TUniLabel
-        Left = 19
-        Top = 361
-        Width = 126
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        AutoSize = False
-        Caption = 'ICMS'
-        ParentFont = False
-        Font.Name = 'Calibri'
-        ParentColor = False
-        Color = clWindow
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-            '= '#39'LabelDestaque'#39';'#13#10'}')
-        Transparent = False
-        TabOrder = 57
-      end
-      object UniLabel23: TUniLabel
-        Left = 19
-        Top = 388
-        Width = 126
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        AutoSize = False
-        Caption = 'ICMS ST'
-        ParentFont = False
-        Font.Name = 'Calibri'
-        ParentColor = False
-        Color = clWindow
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-            '= '#39'LabelDestaque'#39';'#13#10'}')
-        Transparent = False
-        TabOrder = 58
-      end
-      object UniLabel24: TUniLabel
-        Left = 19
-        Top = 415
-        Width = 126
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        AutoSize = False
-        Caption = 'ICMS Diferimento'
-        ParentFont = False
-        Font.Name = 'Calibri'
-        ParentColor = False
-        Color = clWindow
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-            '= '#39'LabelDestaque'#39';'#13#10'}')
-        Transparent = False
-        TabOrder = 59
-      end
-      object UniLabel25: TUniLabel
-        Left = 19
-        Top = 442
-        Width = 126
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        AutoSize = False
-        Caption = 'Outras ICMS'
-        ParentFont = False
-        Font.Name = 'Calibri'
-        ParentColor = False
-        Color = clWindow
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-            '= '#39'LabelDestaque'#39';'#13#10'}')
-        Transparent = False
-        TabOrder = 60
-      end
-      object UniLabel26: TUniLabel
-        Left = 19
-        Top = 496
-        Width = 126
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        AutoSize = False
-        Caption = 'MVA'
-        ParentFont = False
-        Font.Name = 'Calibri'
-        ParentColor = False
-        Color = clWindow
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-            '= '#39'LabelDestaque'#39';'#13#10'}')
-        Transparent = False
-        TabOrder = 61
-      end
-      object UniLabel27: TUniLabel
-        Left = 147
-        Top = 171
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        Alignment = taCenter
-        AutoSize = False
-        Caption = 'BASE DE C'#193'LCULO'
-        ParentFont = False
-        Font.Name = 'Calibri'
-        Font.Style = [fsBold]
-        ParentColor = False
-        Color = clWindow
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-            '= '#39'LabelDestaque'#39';'#13#10'}')
-        Transparent = False
-        TabOrder = 62
-      end
-      object UniLabel28: TUniLabel
-        Left = 289
-        Top = 171
-        Width = 80
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        Alignment = taCenter
-        AutoSize = False
-        Caption = 'AL'#205'QUOTA'
-        ParentFont = False
-        Font.Name = 'Calibri'
-        Font.Style = [fsBold]
-        ParentColor = False
-        Color = clWindow
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-            '= '#39'LabelDestaque'#39';'#13#10'}')
-        Transparent = False
-        TabOrder = 63
-      end
-      object UniLabel29: TUniLabel
-        Left = 371
-        Top = 171
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        Alignment = taCenter
-        AutoSize = False
-        Caption = 'VALOR'
-        ParentFont = False
-        Font.Name = 'Calibri'
-        Font.Style = [fsBold]
-        ParentColor = False
-        Color = clWindow
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-            '= '#39'LabelDestaque'#39';'#13#10'}')
-        Transparent = False
-        TabOrder = 64
-      end
-      object UniLabel30: TUniLabel
-        Left = 513
-        Top = 171
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        Alignment = taCenter
-        AutoSize = False
-        Caption = 'TOTAIS'
-        ParentFont = False
-        Font.Name = 'Calibri'
-        Font.Style = [fsBold]
-        ParentColor = False
-        Color = clWindow
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-            '= '#39'LabelDestaque'#39';'#13#10'}')
-        Transparent = False
-        TabOrder = 65
-      end
-      object cValor_IsentasIPI: TUniDBFormattedNumberEdit
-        Left = 147
-        Top = 280
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_IsentasIPI'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 66
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cTotalIsentasIPI: TUniFormattedNumberEdit
-        Left = 513
-        Top = 280
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        BorderStyle = ubsSolid
-        Alignment = taRightJustify
-        TabOrder = 67
-        TabStop = False
-        Color = 15720158
-        ReadOnly = True
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-            's = '#39'CampoDesativado'#39';'#13#10'}')
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-      end
-      object UniLabel31: TUniLabel
-        Left = 19
-        Top = 280
-        Width = 126
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        AutoSize = False
-        Caption = 'Isentas de IPI'
-        ParentFont = False
-        Font.Name = 'Calibri'
-        ParentColor = False
-        Color = clWindow
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-            's = '#39'LabelDestaque'#39';'#13#10'}')
-        Transparent = False
-        TabOrder = 68
-      end
-      object UniLabel32: TUniLabel
-        Left = 19
-        Top = 469
-        Width = 126
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        AutoSize = False
-        Caption = 'Isentas ICMS'
-        ParentFont = False
-        Font.Name = 'Calibri'
-        ParentColor = False
-        Color = clWindow
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-            '= '#39'LabelDestaque'#39';'#13#10'}')
-        Transparent = False
-        TabOrder = 69
-      end
-      object UniDBFormattedNumberEdit5: TUniDBFormattedNumberEdit
-        Left = 289
-        Top = 523
-        Width = 80
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Aliquota_IS'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 70
-        SelectOnFocus = True
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object UniDBFormattedNumberEdit6: TUniDBFormattedNumberEdit
-        Left = 147
-        Top = 523
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_BCIS'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 71
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object UniDBFormattedNumberEdit7: TUniDBFormattedNumberEdit
-        Left = 371
-        Top = 523
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_IS'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 72
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object UniDBFormattedNumberEdit8: TUniDBFormattedNumberEdit
-        Left = 289
-        Top = 550
-        Width = 80
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Aliquota_IBS'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 73
-        SelectOnFocus = True
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object UniDBFormattedNumberEdit9: TUniDBFormattedNumberEdit
-        Left = 147
-        Top = 550
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_BCIBS'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 74
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object UniDBFormattedNumberEdit10: TUniDBFormattedNumberEdit
-        Left = 371
-        Top = 550
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_IBS'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 75
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object UniDBFormattedNumberEdit11: TUniDBFormattedNumberEdit
-        Left = 289
-        Top = 577
-        Width = 80
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Aliquota_CBS'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 76
-        SelectOnFocus = True
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object UniDBFormattedNumberEdit12: TUniDBFormattedNumberEdit
-        Left = 147
-        Top = 577
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_BCCBS'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 77
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object UniDBFormattedNumberEdit13: TUniDBFormattedNumberEdit
-        Left = 371
-        Top = 577
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        DataField = 'Valor_CBS'
-        DataSource = dsPedidosNFItens
-        Alignment = taRightJustify
-        TabOrder = 78
-        SelectOnFocus = True
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-        BorderStyle = ubsSolid
-      end
-      object cTotalIS: TUniFormattedNumberEdit
-        Left = 513
-        Top = 523
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        BorderStyle = ubsSolid
-        Alignment = taRightJustify
-        TabOrder = 79
-        TabStop = False
-        Color = 15720158
-        ReadOnly = True
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-            's = '#39'CampoDesativado'#39';'#13#10'}')
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-      end
-      object cTotalIBS: TUniFormattedNumberEdit
-        Left = 513
-        Top = 550
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        BorderStyle = ubsSolid
-        Alignment = taRightJustify
-        TabOrder = 80
-        TabStop = False
-        Color = 15720158
-        ReadOnly = True
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-            's = '#39'CampoDesativado'#39';'#13#10'}')
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-      end
-      object cTotalCBS: TUniFormattedNumberEdit
-        Left = 513
-        Top = 577
-        Width = 140
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        BorderStyle = ubsSolid
-        Alignment = taRightJustify
-        TabOrder = 81
-        TabStop = False
-        Color = 15720158
-        ReadOnly = True
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-            's = '#39'CampoDesativado'#39';'#13#10'}')
-        FieldLabelWidth = 85
-        FieldLabelSeparator = ' '
-        DecimalSeparator = ','
-        ThousandSeparator = '.'
-      end
-      object UniLabel1: TUniLabel
-        Left = 19
-        Top = 523
-        Width = 126
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        AutoSize = False
-        Caption = 'IS'
-        ParentFont = False
-        Font.Name = 'Calibri'
-        ParentColor = False
-        Color = clWindow
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-            '= '#39'LabelDestaque'#39';'#13#10'}')
-        Transparent = False
-        TabOrder = 82
-      end
-      object UniLabel2: TUniLabel
-        Left = 19
-        Top = 550
-        Width = 126
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        AutoSize = False
-        Caption = 'IBS'
-        ParentFont = False
-        Font.Name = 'Calibri'
-        ParentColor = False
-        Color = clWindow
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-            '= '#39'LabelDestaque'#39';'#13#10'}')
-        Transparent = False
-        TabOrder = 83
-      end
-      object UniLabel3: TUniLabel
-        Left = 19
-        Top = 577
-        Width = 126
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        AutoSize = False
-        Caption = 'CBS'
-        ParentFont = False
-        Font.Name = 'Calibri'
-        ParentColor = False
-        Color = clWindow
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-            '= '#39'LabelDestaque'#39';'#13#10'}')
-        Transparent = False
-        TabOrder = 84
-      end
-      object UniDBLookupComboBox1: TUniDBLookupComboBox
-        Left = 659
-        Top = 550
-        Width = 647
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        ListField = 'Codigo;Descricao'
-        ListSource = dsCSTIBS
-        KeyField = 'Codigo'
-        ListFieldIndex = 1
-        DataField = 'CSTIBS'
-        DataSource = dsPedidosNFItens
-        AnyMatch = True
-        TabOrder = 85
-        Color = clWindow
-        MatchFieldWidth = False
-        FieldLabel = 'CST IBS'
-        FieldLabelWidth = 75
-        FieldLabelSeparator = ' '
-        ForceSelection = True
-        NormalizeString = True
-        Style = csDropDown
-      end
-      object UniDBLookupComboBox2: TUniDBLookupComboBox
-        Left = 659
-        Top = 577
-        Width = 647
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        ListField = 'Codigo;Descricao'
-        ListSource = dsCSTCBS
-        KeyField = 'Codigo'
-        ListFieldIndex = 1
-        DataField = 'CSTCBS'
-        DataSource = dsPedidosNFItens
-        AnyMatch = True
-        TabOrder = 86
-        Color = clWindow
-        MatchFieldWidth = False
-        FieldLabel = 'CST CBS'
-        FieldLabelWidth = 75
-        FieldLabelSeparator = ' '
-        ForceSelection = True
-        NormalizeString = True
-        Style = csDropDown
-      end
-      object UniDBLookupComboBox3: TUniDBLookupComboBox
-        Left = 659
-        Top = 361
-        Width = 322
-        Height = 25
-        Hint = ''
-        ShowHint = True
-        ParentShowHint = False
-        ListField = 'Codigo;Descricao'
-        ListSource = dsCSTICMSA
-        KeyField = 'Codigo'
-        ListFieldIndex = 1
-        DataField = 'CSTICMS_TabA'
-        DataSource = dsPedidosNFItens
-        AnyMatch = True
-        TabOrder = 87
-        Color = clWindow
-        MatchFieldWidth = False
-        FieldLabel = 'CST ICMS Tab.A'
-        FieldLabelWidth = 75
-        FieldLabelSeparator = ' '
-        ForceSelection = True
-        NormalizeString = True
-        Style = csDropDown
+        DesignSize = (
+          960
+          1872)
+        ScrollHeight = 1872
+        ScrollWidth = 960
+        object UniPanel3: TUniPanel
+          Left = 43
+          Top = 15
+          Width = 784
+          Height = 1743
+          Hint = ''
+          Anchors = [akTop]
+          TabOrder = 1
+          ClientEvents.UniEvents.Strings = (
+            
+              'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+              '= '#39'Ficha'#39';'#13#10'}')
+          BorderStyle = ubsNone
+          ShowCaption = False
+          Caption = 'UniPanel3'
+          Color = clTeal
+          object UniPanel11: TUniPanel
+            Left = 12
+            Top = 1607
+            Width = 761
+            Height = 121
+            Hint = ''
+            TabOrder = 8
+            ClientEvents.UniEvents.Strings = (
+              
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                '= '#39'CaixaSimples'#39';'#13#10'}')
+            BorderStyle = ubsInset
+            ShowCaption = False
+            TitleVisible = True
+            Title = 'Outros Valores / Rateios'
+            Caption = ''
+            object UniDBFormattedNumberEdit40: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 35
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_Seguro'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 3
+              SelectOnFocus = True
+              FieldLabel = 'Seguro'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit38: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 8
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_Frete'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 1
+              SelectOnFocus = True
+              FieldLabel = 'Frete'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit39: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 62
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_Despesa'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 5
+              SelectOnFocus = True
+              FieldLabel = 'Despesas'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cTotalFrete: TUniFormattedNumberEdit
+              Left = 575
+              Top = 8
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 2
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cTotalSeguro: TUniFormattedNumberEdit
+              Left = 575
+              Top = 35
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 4
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cTotalDespesa: TUniFormattedNumberEdit
+              Left = 575
+              Top = 62
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 6
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+          end
+          object UniPanel12: TUniPanel
+            Left = 12
+            Top = 1413
+            Width = 761
+            Height = 176
+            Hint = ''
+            TabOrder = 7
+            ClientEvents.UniEvents.Strings = (
+              
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                '= '#39'CaixaSimples'#39';'#13#10'}')
+            BorderStyle = ubsInset
+            ShowCaption = False
+            TitleVisible = True
+            Title = 'Reforma Tribut'#225'ria - IS / CBS / IBS'
+            Caption = ''
+            object UniDBLookupComboBox1: TUniDBLookupComboBox
+              Left = 8
+              Top = 35
+              Width = 742
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              ListField = 'Codigo;Descricao'
+              ListSource = dsCSTCBS
+              KeyField = 'Codigo'
+              ListFieldIndex = 1
+              BorderStyle = ubsInset
+              DataField = 'CSTCBS'
+              DataSource = dsPedidosNFItens
+              AnyMatch = True
+              TabOrder = 5
+              Color = clWindow
+              FieldLabel = 'CST CBS'
+              FieldLabelSeparator = ' '
+              ForceSelection = True
+              NormalizeString = True
+              Style = csDropDown
+            end
+            object cTotalCBS: TUniFormattedNumberEdit
+              Left = 575
+              Top = 8
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 4
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object UniDBFormattedNumberEdit41: TUniDBFormattedNumberEdit
+              Left = 397
+              Top = 8
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_CBS'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 3
+              SelectOnFocus = True
+              FieldLabel = 'Valor'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit42: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 8
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_BCCBS'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 1
+              SelectOnFocus = True
+              FieldLabel = 'BC CBS'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit43: TUniDBFormattedNumberEdit
+              Left = 270
+              Top = 8
+              Width = 125
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Aliquota_CBS'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 2
+              SelectOnFocus = True
+              FieldLabel = 'Al'#237'quota'
+              FieldLabelWidth = 50
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBLookupComboBox9: TUniDBLookupComboBox
+              Left = 8
+              Top = 89
+              Width = 742
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              ListField = 'Codigo;Descricao'
+              ListSource = dsCSTIBS
+              KeyField = 'Codigo'
+              ListFieldIndex = 1
+              BorderStyle = ubsInset
+              DataField = 'CSTCBS'
+              DataSource = dsPedidosNFItens
+              AnyMatch = True
+              TabOrder = 10
+              Color = clWindow
+              FieldLabel = 'CST IBS'
+              FieldLabelSeparator = ' '
+              ForceSelection = True
+              NormalizeString = True
+              Style = csDropDown
+            end
+            object cTotalIBS: TUniFormattedNumberEdit
+              Left = 575
+              Top = 62
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 9
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object UniDBFormattedNumberEdit44: TUniDBFormattedNumberEdit
+              Left = 397
+              Top = 62
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_IBS'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 8
+              SelectOnFocus = True
+              FieldLabel = 'Valor'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit45: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 62
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_BCIBS'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 6
+              SelectOnFocus = True
+              FieldLabel = 'BC IBS'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit46: TUniDBFormattedNumberEdit
+              Left = 270
+              Top = 62
+              Width = 125
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Aliquota_IBS'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 7
+              SelectOnFocus = True
+              FieldLabel = 'Al'#237'quota'
+              FieldLabelWidth = 50
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit47: TUniDBFormattedNumberEdit
+              Left = 270
+              Top = 116
+              Width = 125
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Aliquota_IS'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 12
+              SelectOnFocus = True
+              FieldLabel = 'Al'#237'quota'
+              FieldLabelWidth = 50
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit48: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 116
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_BCIS'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 11
+              SelectOnFocus = True
+              FieldLabel = 'BC IS'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit49: TUniDBFormattedNumberEdit
+              Left = 397
+              Top = 116
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_IS'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 13
+              SelectOnFocus = True
+              FieldLabel = 'Valor'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cTotalIS: TUniFormattedNumberEdit
+              Left = 575
+              Top = 116
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 14
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+          end
+          object UniPanel13: TUniPanel
+            Left = 12
+            Top = 11
+            Width = 761
+            Height = 372
+            Hint = ''
+            TabOrder = 1
+            ClientEvents.UniEvents.Strings = (
+              
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                '= '#39'CaixaSimples'#39';'#13#10'}')
+            BorderStyle = ubsInset
+            ShowCaption = False
+            TitleVisible = True
+            Title = 'Produto'
+            Caption = ''
+            object cQtde: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 170
+              Width = 240
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Quantidade'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 12
+              SelectOnFocus = True
+              FieldLabel = 'Quantidade'
+              FieldLabelSeparator = ' '
+              DecimalPrecision = 3
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+              OnExit = cQtdeExit
+            end
+            object UniDBFormattedNumberEdit17: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 224
+              Width = 240
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Percentual_Desconto'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 14
+              SelectOnFocus = True
+              FieldLabel = '% Desconto'
+              FieldLabelSeparator = ' '
+              DecimalPrecision = 4
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit18: TUniDBFormattedNumberEdit
+              Left = 250
+              Top = 224
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_Desconto'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 15
+              SelectOnFocus = True
+              FieldLabel = 'Valor Desconto'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cProduto: TUniDBLookupComboBox
+              Left = 8
+              Top = 8
+              Width = 742
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              ListField = 'Codigo;NCM;Descricao'
+              ListSource = dsProdutos
+              KeyField = 'Codigo'
+              ListFieldIndex = 2
+              BorderStyle = ubsInset
+              ClearButton = True
+              DataField = 'Codigo_Mercadoria'
+              DataSource = dsPedidosNFItens
+              AnyMatch = True
+              TabOrder = 1
+              Color = clWindow
+              MatchFieldWidth = False
+              FieldLabel = 'Produto'
+              FieldLabelSeparator = ' '
+              ForceSelection = True
+              NormalizeString = True
+              Style = csDropDown
+              Mode = umNameValue
+              OnExit = cProdutoExit
+            end
+            object cCFOP: TUniDBLookupComboBox
+              Left = 8
+              Top = 35
+              Width = 742
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              ListField = 'Codigo;Descricao'
+              ListSource = dsCFOP
+              KeyField = 'Codigo'
+              ListFieldIndex = 1
+              BorderStyle = ubsInset
+              ClearButton = True
+              DataField = 'CFOP'
+              DataSource = dsPedidosNFItens
+              AnyMatch = True
+              TabOrder = 2
+              Color = clWindow
+              FieldLabel = 'CFOP'
+              FieldLabelSeparator = ' '
+              ForceSelection = True
+              NormalizeString = True
+              Style = csDropDown
+            end
+            object cProcesso: TUniDBLookupComboBox
+              Left = 8
+              Top = 62
+              Width = 502
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              ListField = 'Tipo;Declaracao;Processo'
+              ListSource = dsProcessos
+              KeyField = 'Processo'
+              ListFieldIndex = 1
+              BorderStyle = ubsInset
+              DataField = 'Processo'
+              DataSource = dsPedidosNFItens
+              AnyMatch = True
+              TabOrder = 3
+              Color = clWindow
+              FieldLabel = 'Processo'
+              FieldLabelSeparator = ' '
+              ForceSelection = True
+              NormalizeString = True
+              Style = csDropDown
+              OnExit = cProcessoExit
+            end
+            object UniDBEdit1: TUniDBEdit
+              Left = 8
+              Top = 89
+              Width = 240
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'PO'
+              DataSource = dsPedidosNFItens
+              TabOrder = 4
+              FieldLabel = 'Pedido Compra'
+              FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
+            end
+            object UniDBEdit2: TUniDBEdit
+              Left = 250
+              Top = 89
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Ordem'
+              DataSource = dsPedidosNFItens
+              TabOrder = 5
+              FieldLabel = 'Ordem'
+              FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
+            end
+            object cValor_Produtos: TUniFormattedNumberEdit
+              Left = 8
+              Top = 251
+              Width = 240
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 16
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              FieldLabel = 'Total L'#237'quido'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cValor_Unitario: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 197
+              Width = 240
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_Unitario'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 13
+              SelectOnFocus = True
+              FieldLabel = 'Valor Unit'#225'rio'
+              FieldLabelSeparator = ' '
+              DecimalPrecision = 4
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+              OnExit = cValor_UnitarioExit
+            end
+            object UniDBEdit4: TUniDBEdit
+              Left = 8
+              Top = 278
+              Width = 240
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'NCM'
+              DataSource = dsPedidosNFItens
+              TabOrder = 6
+              TabStop = False
+              ReadOnly = True
+              FieldLabel = 'NCM'
+              FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
+            end
+            object UniDBEdit5: TUniDBEdit
+              Left = 250
+              Top = 278
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'UM'
+              DataSource = dsPedidosNFItens
+              TabOrder = 7
+              TabStop = False
+              ReadOnly = True
+              FieldLabel = 'Unidade Medida'
+              FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit20: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 143
+              Width = 240
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Percentual_Lucro'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 10
+              SelectOnFocus = True
+              FieldLabel = '% Desconto'
+              FieldLabelSeparator = ' '
+              DecimalPrecision = 4
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit21: TUniDBFormattedNumberEdit
+              Left = 250
+              Top = 143
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_Lucro'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 11
+              SelectOnFocus = True
+              FieldLabel = 'Valor Desconto'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object bLoteDet: TUniButton
+              Left = 250
+              Top = 170
+              Width = 87
+              Height = 26
+              Hint = ''
+              Caption = 'Lote / Detalhe'
+              TabOrder = 19
+              OnClick = bLoteDetClick
+            end
+            object bSerCha: TUniButton
+              Left = 340
+              Top = 170
+              Width = 89
+              Height = 26
+              Hint = ''
+              Caption = 'Serial / Chassi'
+              TabOrder = 20
+              OnClick = bSerChaClick
+            end
+            object UniDBEdit6: TUniDBEdit
+              Left = 8
+              Top = 305
+              Width = 502
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'ChaveNF_Referencia'
+              DataSource = dsPedidosNFItens
+              TabOrder = 17
+              TabStop = False
+              ReadOnly = True
+              InputMask.MaskChar = #0
+              InputMask.UnmaskText = True
+              InputType = 'text'
+              FieldLabel = 'Nota Refer'#234'ncia'
+              FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
+            end
+            object UniDBDateTimePicker1: TUniDBDateTimePicker
+              Left = 512
+              Top = 305
+              Width = 208
+              Height = 25
+              Hint = ''
+              DataField = 'DataNF_Referencia'
+              DataSource = dsPedidosNFItens
+              DateTime = 45988.000000000000000000
+              DateFormat = 'dd/MM/yyyy'
+              TimeFormat = 'HH:mm:ss'
+              ReadOnly = True
+              TabOrder = 18
+              TabStop = False
+              BorderStyle = ubsInset
+              FieldLabel = 'Data'
+              FieldLabelWidth = 50
+            end
+            object UniDBFormattedNumberEdit5: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 116
+              Width = 240
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Peso_Liquido'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 8
+              SelectOnFocus = True
+              FieldLabel = 'Peso L'#237'quido'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit6: TUniDBFormattedNumberEdit
+              Left = 250
+              Top = 116
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Peso_Bruto'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 9
+              SelectOnFocus = True
+              FieldLabel = 'Peso Bruto'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniPanel2: TUniPanel
+              Left = 528
+              Top = 69
+              Width = 220
+              Height = 142
+              Hint = ''
+              TabOrder = 21
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                  '= '#39'CaixaSimples'#39';'#13#10'}')
+              BorderStyle = ubsInset
+              Caption = ''
+              object cEstoqueMinimo: TUniFormattedNumberEdit
+                AlignWithMargins = True
+                Left = 5
+                Top = 4
+                Width = 210
+                Height = 25
+                Hint = ''
+                Margins.Left = 4
+                Margins.Right = 4
+                Margins.Bottom = 1
+                ShowHint = True
+                ParentShowHint = False
+                BorderStyle = ubsInset
+                Alignment = taRightJustify
+                ParentFont = False
+                Font.Style = [fsBold]
+                Align = alTop
+                TabOrder = 1
+                TabStop = False
+                Color = 15720158
+                ReadOnly = True
+                ClientEvents.UniEvents.Strings = (
+                  
+                    'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                    '= '#39'CampoDesativado'#39';'#13#10'}')
+                FieldLabel = 'Estoque Min'#237'mo'
+                FieldLabelWidth = 80
+                FieldLabelSeparator = ' '
+                DecimalPrecision = 3
+                DecimalSeparator = ','
+                ThousandSeparator = '.'
+              end
+              object cDisponivel: TUniFormattedNumberEdit
+                AlignWithMargins = True
+                Left = 5
+                Top = 112
+                Width = 210
+                Height = 25
+                Hint = ''
+                Margins.Left = 4
+                Margins.Top = 1
+                Margins.Right = 4
+                ShowHint = True
+                ParentShowHint = False
+                BorderStyle = ubsInset
+                Alignment = taRightJustify
+                ParentFont = False
+                Font.Style = [fsBold]
+                Align = alTop
+                TabOrder = 2
+                TabStop = False
+                Color = 15720158
+                ReadOnly = True
+                ClientEvents.UniEvents.Strings = (
+                  
+                    'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                    '= '#39'CampoDesativado'#39';'#13#10'}')
+                FieldLabel = 'Estoque Atual'
+                FieldLabelWidth = 80
+                FieldLabelSeparator = ' '
+                DecimalPrecision = 3
+                DecimalSeparator = ','
+                ThousandSeparator = '.'
+              end
+              object cInventario: TUniFormattedNumberEdit
+                AlignWithMargins = True
+                Left = 5
+                Top = 85
+                Width = 210
+                Height = 25
+                Hint = ''
+                Margins.Left = 4
+                Margins.Top = 1
+                Margins.Right = 4
+                Margins.Bottom = 1
+                ShowHint = True
+                ParentShowHint = False
+                BorderStyle = ubsInset
+                Alignment = taRightJustify
+                ParentFont = False
+                Font.Style = [fsBold]
+                Align = alTop
+                TabOrder = 3
+                TabStop = False
+                Color = 15720158
+                ReadOnly = True
+                ClientEvents.UniEvents.Strings = (
+                  
+                    'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                    '= '#39'CampoDesativado'#39';'#13#10'}')
+                FieldLabel = 'Invent'#225'rio Atual'
+                FieldLabelWidth = 80
+                FieldLabelSeparator = ' '
+                DecimalPrecision = 3
+                DecimalSeparator = ','
+                ThousandSeparator = '.'
+              end
+              object cEstoqueLote: TUniFormattedNumberEdit
+                AlignWithMargins = True
+                Left = 5
+                Top = 31
+                Width = 210
+                Height = 25
+                Hint = ''
+                Margins.Left = 4
+                Margins.Top = 1
+                Margins.Right = 4
+                Margins.Bottom = 1
+                ShowHint = True
+                ParentShowHint = False
+                BorderStyle = ubsInset
+                Alignment = taRightJustify
+                ParentFont = False
+                Font.Style = [fsBold]
+                Align = alTop
+                TabOrder = 4
+                TabStop = False
+                Color = 15720158
+                ReadOnly = True
+                ClientEvents.UniEvents.Strings = (
+                  
+                    'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                    '= '#39'CampoDesativado'#39';'#13#10'}')
+                FieldLabel = 'Detalhe/Lote'
+                FieldLabelWidth = 80
+                FieldLabelSeparator = ' '
+                DecimalPrecision = 3
+                DecimalSeparator = ','
+                ThousandSeparator = '.'
+              end
+              object cEstoqueNavio: TUniFormattedNumberEdit
+                AlignWithMargins = True
+                Left = 5
+                Top = 58
+                Width = 210
+                Height = 25
+                Hint = ''
+                Margins.Left = 4
+                Margins.Top = 1
+                Margins.Right = 4
+                Margins.Bottom = 1
+                ShowHint = True
+                ParentShowHint = False
+                BorderStyle = ubsInset
+                Alignment = taRightJustify
+                ParentFont = False
+                Font.Style = [fsBold]
+                Align = alTop
+                TabOrder = 5
+                TabStop = False
+                Color = 15720158
+                ReadOnly = True
+                ClientEvents.UniEvents.Strings = (
+                  
+                    'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                    '= '#39'CampoDesativado'#39';'#13#10'}')
+                FieldLabel = 'Estoque Navio'
+                FieldLabelWidth = 80
+                FieldLabelSeparator = ' '
+                DecimalPrecision = 3
+                DecimalSeparator = ','
+                ThousandSeparator = '.'
+              end
+            end
+          end
+          object UniPanel5: TUniPanel
+            Left = 12
+            Top = 404
+            Width = 761
+            Height = 442
+            Hint = ''
+            TabOrder = 2
+            ClientEvents.UniEvents.Strings = (
+              
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                '= '#39'CaixaSimples'#39';'#13#10'}')
+            BorderStyle = ubsInset
+            ShowCaption = False
+            TitleVisible = True
+            Title = 'Imposto sobre Circula'#231#227'o de Mercadorias e Servi'#231'os - ICMS'
+            Caption = ''
+            object cValor_BCICMSOp: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 8
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_BCICMSOp'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 1
+              SelectOnFocus = True
+              FieldLabel = 'BC ICMS Oper.'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cValor_ICMS: TUniDBFormattedNumberEdit
+              Left = 397
+              Top = 8
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_ICMSOp'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 3
+              SelectOnFocus = True
+              FieldLabel = 'Valor'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cTotalICMSOp: TUniFormattedNumberEdit
+              Left = 575
+              Top = 8
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 4
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object UniDBLookupComboBox3: TUniDBLookupComboBox
+              Left = 8
+              Top = 35
+              Width = 742
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              ListField = 'Codigo;Descricao'
+              ListSource = dsCSTICMSA
+              KeyField = 'Codigo'
+              ListFieldIndex = 1
+              BorderStyle = ubsInset
+              DataField = 'CSTICMS_TabA'
+              DataSource = dsPedidosNFItens
+              AnyMatch = True
+              TabOrder = 5
+              Color = clWindow
+              FieldLabel = 'CST - Tabela A'
+              FieldLabelSeparator = ' '
+              ForceSelection = True
+              NormalizeString = True
+              Style = csDropDown
+            end
+            object cCSTICMS: TUniDBLookupComboBox
+              Left = 8
+              Top = 62
+              Width = 742
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              ListField = 'Codigo;Descricao'
+              ListSource = dsCSTICMSB
+              KeyField = 'Codigo'
+              ListFieldIndex = 1
+              BorderStyle = ubsInset
+              DataField = 'CSTICMS_TabB'
+              DataSource = dsPedidosNFItens
+              AnyMatch = True
+              TabOrder = 6
+              Color = clWindow
+              FieldLabel = 'CST -  Tabela B'
+              FieldLabelSeparator = ' '
+              ForceSelection = True
+              NormalizeString = True
+              Style = csDropDown
+            end
+            object cAliquota_ICMSOp: TUniDBFormattedNumberEdit
+              Left = 270
+              Top = 8
+              Width = 125
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Aliquota_ICMSOp'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 2
+              SelectOnFocus = True
+              FieldLabel = 'Al'#237'quota'
+              FieldLabelWidth = 50
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit2: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 143
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_BCICMSMono'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 10
+              SelectOnFocus = True
+              FieldLabel = 'BC ICMS Mono'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cTotalICMSMono: TUniFormattedNumberEdit
+              Left = 575
+              Top = 143
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 13
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cTotalICMSMonoRet: TUniFormattedNumberEdit
+              Left = 575
+              Top = 170
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 17
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object UniDBFormattedNumberEdit15: TUniDBFormattedNumberEdit
+              Left = 397
+              Top = 170
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_ICMSMonoRet'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 16
+              SelectOnFocus = True
+              FieldLabel = 'Valor'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit14: TUniDBFormattedNumberEdit
+              Left = 270
+              Top = 170
+              Width = 125
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Percentual_ICMSMonoRet'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 15
+              SelectOnFocus = True
+              FieldLabel = 'Al'#237'quota'
+              FieldLabelWidth = 50
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit4: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 170
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_BCICMSMonoRet'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 14
+              SelectOnFocus = True
+              FieldLabel = 'BC ICMS Mono Ret'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit3: TUniDBFormattedNumberEdit
+              Left = 397
+              Top = 143
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_ICMSMono'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 12
+              SelectOnFocus = True
+              FieldLabel = 'Valor'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit1: TUniDBFormattedNumberEdit
+              Left = 270
+              Top = 143
+              Width = 125
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Percentual_ICMSMono'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 11
+              SelectOnFocus = True
+              FieldLabel = 'Al'#237'quota'
+              FieldLabelWidth = 50
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cValor_ICMSST: TUniDBFormattedNumberEdit
+              Left = 397
+              Top = 197
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_ICMSST'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 20
+              SelectOnFocus = True
+              FieldLabel = 'Valor'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cTotalICMSSTAnt: TUniFormattedNumberEdit
+              Left = 575
+              Top = 224
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 25
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cValor_ICMSSTAnt: TUniDBFormattedNumberEdit
+              Left = 397
+              Top = 224
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_ICMSSTAnt'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 24
+              SelectOnFocus = True
+              FieldLabel = 'Valor'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cValor_BCICMSSTAnt: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 224
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_BCICMSSTAnt'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 22
+              SelectOnFocus = True
+              FieldLabel = 'BC - Recolhido Ant'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cAliquota_ICMSSTAnt: TUniDBFormattedNumberEdit
+              Left = 270
+              Top = 224
+              Width = 125
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Aliquota_ICMSSTAnt'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 23
+              SelectOnFocus = True
+              FieldLabel = 'Al'#237'quota'
+              FieldLabelWidth = 50
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cTotalICMSST: TUniFormattedNumberEdit
+              Left = 575
+              Top = 197
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 21
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cValor_BCICMSST: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 197
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_BCICMSST'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 18
+              SelectOnFocus = True
+              FieldLabel = 'BC ICMS ST'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cAliquota_ICMSST: TUniDBFormattedNumberEdit
+              Left = 270
+              Top = 197
+              Width = 125
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Aliquota_ICMSST'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 19
+              SelectOnFocus = True
+              FieldLabel = 'Al'#237'quota'
+              FieldLabelWidth = 50
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cAliquota_MVA: TUniDBFormattedNumberEdit
+              Left = 270
+              Top = 251
+              Width = 125
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Aliquota_MVA'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 27
+              SelectOnFocus = True
+              FieldLabel = 'Al'#237'quota'
+              FieldLabelWidth = 50
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cValor_BCMVA: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 251
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_BCMVA'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 26
+              SelectOnFocus = True
+              FieldLabel = 'BC MVA'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cValor_MVA: TUniDBFormattedNumberEdit
+              Left = 397
+              Top = 251
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_MVA'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 28
+              SelectOnFocus = True
+              FieldLabel = 'Valor'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cTotalMVA: TUniFormattedNumberEdit
+              Left = 575
+              Top = 251
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 29
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cAliquota_ICMSDif: TUniDBFormattedNumberEdit
+              Left = 270
+              Top = 278
+              Width = 125
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Aliquota_ICMSDif'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 31
+              SelectOnFocus = True
+              FieldLabel = 'Al'#237'quota'
+              FieldLabelWidth = 50
+              FieldLabelSeparator = ' '
+              DecimalPrecision = 4
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cTotalICMSDif: TUniFormattedNumberEdit
+              Left = 575
+              Top = 278
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 33
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cValor_ICMSDif: TUniDBFormattedNumberEdit
+              Left = 397
+              Top = 278
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_ICMSDif'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 32
+              SelectOnFocus = True
+              FieldLabel = 'Valor'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit22: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 278
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_BCICMSDif'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 30
+              SelectOnFocus = True
+              FieldLabel = 'BC ICMS Diferido'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit23: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 305
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_ICMSAnt'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 34
+              SelectOnFocus = True
+              FieldLabel = 'ICMS Anterior'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cICMSAnt: TUniDBCheckBox
+              Left = 273
+              Top = 309
+              Width = 296
+              Height = 18
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'ICMSST_Anterior'
+              DataSource = dsPedidosNFItens
+              Caption = 'ICMS cobrado anteriormente por substitui'#231#227'o tribut'#225'ria.'
+              TabOrder = 35
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelAlign = laRight
+            end
+            object cValor_OutrasICMS: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 89
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_OutrasICMS'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 7
+              SelectOnFocus = True
+              FieldLabel = 'Outras de ICMS'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cValor_IsentasICMS: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 116
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_IsentasICMS'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 8
+              SelectOnFocus = True
+              FieldLabel = 'Isentas de ICMS'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cTotalOutrasICMS: TUniFormattedNumberEdit
+              Left = 575
+              Top = 89
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 42
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cTotalIsentasICMS: TUniFormattedNumberEdit
+              Left = 575
+              Top = 116
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 9
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object UniDBFormattedNumberEdit10: TUniDBFormattedNumberEdit
+              Left = 270
+              Top = 331
+              Width = 125
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Aliquota_ICMSPresumido'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 37
+              SelectOnFocus = True
+              FieldLabel = 'Al'#237'quota'
+              FieldLabelWidth = 50
+              FieldLabelSeparator = ' '
+              DecimalPrecision = 4
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cTotalICMSPresumido: TUniFormattedNumberEdit
+              Left = 575
+              Top = 331
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 39
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object UniDBFormattedNumberEdit31: TUniDBFormattedNumberEdit
+              Left = 397
+              Top = 331
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_ICMSPresumido'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 38
+              SelectOnFocus = True
+              FieldLabel = 'Valor'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit32: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 332
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_BCICMSPresumido'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 36
+              SelectOnFocus = True
+              FieldLabel = 'BC ICMS Presumido'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cValor_ICMSDesonerado: TUniFormattedNumberEdit
+              Left = 575
+              Top = 358
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 41
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object UniDBFormattedNumberEdit37: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 359
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_ICMSDesonerado'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 40
+              SelectOnFocus = True
+              FieldLabel = 'BC ICMS Presumido'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBEdit3: TUniDBEdit
+              Left = 8
+              Top = 386
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Codigo_CredPres'
+              DataSource = dsPedidosNFItens
+              TabOrder = 43
+              FieldLabel = 'C'#243'd Cred.Pres.'
+              FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
+            end
+            object UniDBEdit7: TUniDBEdit
+              Left = 270
+              Top = 386
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Beneficio_Fiscal'
+              DataSource = dsPedidosNFItens
+              TabOrder = 44
+              FieldLabel = 'C'#243'd Benef'#237'cio Fiscal'
+              FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
+            end
+          end
+          object UniPanel6: TUniPanel
+            Left = 12
+            Top = 1140
+            Width = 761
+            Height = 120
+            Hint = ''
+            TabOrder = 5
+            ClientEvents.UniEvents.Strings = (
+              
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                '= '#39'CaixaSimples'#39';'#13#10'}')
+            BorderStyle = ubsInset
+            ShowCaption = False
+            TitleVisible = True
+            Title = 'Programa de Integra'#231#227'o Social - PIS'
+            Caption = ''
+            object cValor_BCPIS: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 8
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_BCPIS'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 1
+              SelectOnFocus = True
+              FieldLabel = 'BC PIS'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cTotalPIS: TUniFormattedNumberEdit
+              Left = 575
+              Top = 8
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 4
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cValor_PIS: TUniDBFormattedNumberEdit
+              Left = 397
+              Top = 8
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_PIS'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 3
+              SelectOnFocus = True
+              FieldLabel = 'Valor'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cAliquota_PIS: TUniDBFormattedNumberEdit
+              Left = 270
+              Top = 8
+              Width = 125
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Aliquota_PIS'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 2
+              SelectOnFocus = True
+              FieldLabel = 'Al'#237'quota'
+              FieldLabelWidth = 50
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cCSTPIS: TUniDBLookupComboBox
+              Left = 8
+              Top = 35
+              Width = 742
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              ListField = 'Codigo;Descricao'
+              ListSource = dsCSTPIS
+              KeyField = 'Codigo'
+              ListFieldIndex = 1
+              BorderStyle = ubsInset
+              DataField = 'CSTPIS'
+              DataSource = dsPedidosNFItens
+              AnyMatch = True
+              TabOrder = 5
+              Color = clWindow
+              FieldLabel = 'CST PIS'
+              FieldLabelSeparator = ' '
+              ForceSelection = True
+              NormalizeString = True
+              Style = csDropDown
+            end
+            object UniDBFormattedNumberEdit8: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 62
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_PISST'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 6
+              SelectOnFocus = True
+              FieldLabel = 'PIS ST'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cTotalPISST: TUniFormattedNumberEdit
+              Left = 575
+              Top = 62
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 7
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+          end
+          object UniPanel7: TUniPanel
+            Left = 12
+            Top = 863
+            Width = 761
+            Height = 176
+            Hint = ''
+            TabOrder = 3
+            ClientEvents.UniEvents.Strings = (
+              
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                '= '#39'CaixaSimples'#39';'#13#10'}')
+            BorderStyle = ubsInset
+            ShowCaption = False
+            TitleVisible = True
+            Title = 'Imposto sobre Produtos Industrializados - IPI'
+            Caption = ''
+            object cCSTIPI: TUniDBLookupComboBox
+              Left = 8
+              Top = 89
+              Width = 742
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              ListField = 'Codigo;Descricao'
+              ListSource = dsCSTIPI
+              KeyField = 'Codigo'
+              ListFieldIndex = 1
+              BorderStyle = ubsInset
+              DataField = 'CSTIPI'
+              DataSource = dsPedidosNFItens
+              AnyMatch = True
+              TabOrder = 9
+              Color = clWindow
+              FieldLabel = 'CST IPI'
+              FieldLabelSeparator = ' '
+              ForceSelection = True
+              NormalizeString = True
+              Style = csDropDown
+            end
+            object cAliquota_IPI: TUniDBFormattedNumberEdit
+              Left = 270
+              Top = 8
+              Width = 125
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Aliquota_IPI'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 2
+              SelectOnFocus = True
+              FieldLabel = 'Al'#237'quota'
+              FieldLabelWidth = 50
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cValor_BCIPI: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 8
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_BCIPI'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 1
+              SelectOnFocus = True
+              FieldLabel = 'BC IPI'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cValor_IPI: TUniDBFormattedNumberEdit
+              Left = 397
+              Top = 8
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_IPI'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 3
+              SelectOnFocus = True
+              FieldLabel = 'Valor'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cValor_OutrasIPI: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 35
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_OutrasIPI'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 5
+              SelectOnFocus = True
+              FieldLabel = 'Outras de IPI'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cTotalIPI: TUniFormattedNumberEdit
+              Left = 575
+              Top = 8
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 4
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cTotalOutrasIPI: TUniFormattedNumberEdit
+              Left = 575
+              Top = 35
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 6
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cValor_IsentasIPI: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 62
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_IsentasIPI'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 7
+              SelectOnFocus = True
+              FieldLabel = 'Isentas de IPI'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cTotalIsentasIPI: TUniFormattedNumberEdit
+              Left = 575
+              Top = 62
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 8
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object UniDBFormattedNumberEdit33: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 116
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_IPIDevol'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 10
+              SelectOnFocus = True
+              FieldLabel = '% IPI Devolu'#231#227'o'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniFormattedNumberEdit2: TUniFormattedNumberEdit
+              Left = 575
+              Top = 116
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 12
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object UniDBFormattedNumberEdit34: TUniDBFormattedNumberEdit
+              Left = 270
+              Top = 116
+              Width = 125
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Percentual_IPIDevol'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 11
+              SelectOnFocus = True
+              FieldLabel = '% Devol'
+              FieldLabelWidth = 50
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+          end
+          object UniPanel8: TUniPanel
+            Left = 12
+            Top = 1058
+            Width = 761
+            Height = 67
+            Hint = ''
+            TabOrder = 4
+            ClientEvents.UniEvents.Strings = (
+              
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                '= '#39'CaixaSimples'#39';'#13#10'}')
+            BorderStyle = ubsInset
+            ShowCaption = False
+            TitleVisible = True
+            Title = 'Imposto de Importa'#231#227'o - II'
+            Caption = ''
+            object cTotalII: TUniFormattedNumberEdit
+              Left = 575
+              Top = 8
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 4
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                  '= '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cValor_II: TUniDBFormattedNumberEdit
+              Left = 397
+              Top = 8
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_II'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 3
+              SelectOnFocus = True
+              FieldLabel = 'Valor'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cAliquota_II: TUniDBFormattedNumberEdit
+              Left = 270
+              Top = 8
+              Width = 125
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Aliquota_II'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 2
+              SelectOnFocus = True
+              FieldLabel = 'Al'#237'quota'
+              FieldLabelWidth = 50
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit24: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 8
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_BCII'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 1
+              SelectOnFocus = True
+              FieldLabel = 'BC II'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+          end
+          object UniPanel9: TUniPanel
+            Left = 20
+            Top = 1275
+            Width = 761
+            Height = 120
+            Hint = ''
+            TabOrder = 6
+            ClientEvents.UniEvents.Strings = (
+              
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                '= '#39'CaixaSimples'#39';'#13#10'}')
+            BorderStyle = ubsInset
+            ShowCaption = False
+            TitleVisible = True
+            Title = 'Contribui'#231#227'o para o Financiamento da Seguridade Social - COFINS'
+            Caption = ''
+            object UniDBFormattedNumberEdit25: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 8
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_BCCOFINS'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 1
+              SelectOnFocus = True
+              FieldLabel = 'BC COFINS'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cTotalCOFINS: TUniFormattedNumberEdit
+              Left = 575
+              Top = 8
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 4
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object UniDBFormattedNumberEdit26: TUniDBFormattedNumberEdit
+              Left = 397
+              Top = 8
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_COFINS'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 3
+              SelectOnFocus = True
+              FieldLabel = 'Valor'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBFormattedNumberEdit27: TUniDBFormattedNumberEdit
+              Left = 270
+              Top = 8
+              Width = 125
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Aliquota_COFINS'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 2
+              SelectOnFocus = True
+              FieldLabel = 'Al'#237'quota'
+              FieldLabelWidth = 50
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object UniDBLookupComboBox7: TUniDBLookupComboBox
+              Left = 8
+              Top = 35
+              Width = 742
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              ListField = 'Codigo;Descricao'
+              ListSource = dsCSTPIS
+              KeyField = 'Codigo'
+              ListFieldIndex = 1
+              BorderStyle = ubsInset
+              DataField = 'CSTCOFINS'
+              DataSource = dsPedidosNFItens
+              AnyMatch = True
+              TabOrder = 5
+              Color = clWindow
+              FieldLabel = 'CST COFINS'
+              FieldLabelSeparator = ' '
+              ForceSelection = True
+              NormalizeString = True
+              Style = csDropDown
+            end
+            object UniDBFormattedNumberEdit9: TUniDBFormattedNumberEdit
+              Left = 8
+              Top = 62
+              Width = 260
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              DataField = 'Valor_COFINSST'
+              DataSource = dsPedidosNFItens
+              Alignment = taRightJustify
+              TabOrder = 7
+              SelectOnFocus = True
+              FieldLabel = 'COFINS ST'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+              BorderStyle = ubsInset
+            end
+            object cTotalCOFINSST: TUniFormattedNumberEdit
+              Left = 575
+              Top = 62
+              Width = 175
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ParentShowHint = False
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 6
+              TabStop = False
+              Color = 15720158
+              ReadOnly = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                  's = '#39'CampoDesativado'#39';'#13#10'}')
+              FieldLabel = 'Total'
+              FieldLabelWidth = 40
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+          end
+        end
+        object UniContainerPanel2: TUniContainerPanel
+          Left = 309
+          Top = 1836
+          Width = 256
+          Height = 17
+          Hint = ''
+          ParentColor = False
+          TabOrder = 2
+        end
       end
     end
     object UniTabSheet2: TUniTabSheet
       Hint = ''
       Caption = 'F'#243'rmulas'
       object gFormula: TUniStringGrid
-        Left = 0
-        Top = 0
-        Width = 1324
+        AlignWithMargins = True
+        Left = 3
+        Top = 3
+        Width = 954
         Height = 506
         Hint = ''
         HeaderTitle = 'F'#211'RMULAS DOS CALCULOS DO PEDIDO'
         HeaderTitleAlign = taCenter
         CellCursor = crHandPoint
-        FixedColor = 15450856
+        FixedColor = 15263976
         FixedRows = 0
         RowCount = 1
         ColCount = 4
-        DefaultRowHeight = 20
-        Options = [goVertLine, goHorzLine, goDrawFocusSelected, goEditing]
+        DefaultRowHeight = 22
+        Options = [goVertLine, goHorzLine, goDrawFocusSelected]
         CustomizableCells = False
         ShowColumnTitles = True
         Columns = <
@@ -1988,19 +2770,20 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
             Title.Caption = 'Resultado'
             Width = 100
           end>
-        BorderStyle = ubsNone
+        BorderStyle = ubsInset
         StripeRows = True
         ForceFit = True
         Align = alTop
         TabOrder = 0
       end
       object cLog: TUniMemo
-        Left = 0
-        Top = 506
-        Width = 1324
-        Height = 120
+        AlignWithMargins = True
+        Left = 3
+        Top = 515
+        Width = 954
+        Height = 1354
         Hint = ''
-        BorderStyle = ubsNone
+        BorderStyle = ubsInset
         ScrollBars = ssBoth
         ParentFont = False
         Font.Color = clBlack
@@ -2012,8 +2795,6 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
         FieldLabel = 'LOG'
         FieldLabelAlign = laTop
         FieldLabelSeparator = ' '
-        ExplicitTop = 509
-        ExplicitHeight = 117
       end
     end
   end
@@ -2028,8 +2809,8 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       'select *'
       'from PedidosNFitens'
       '')
-    Left = 795
-    Top = 107
+    Left = 259
+    Top = 149
     object PedidosNFItensPedido: TIntegerField
       FieldName = 'Pedido'
       Origin = 'Pedido'
@@ -2140,10 +2921,6 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       FieldName = 'Apuracao_PISCOFINS'
       Origin = 'Apuracao_PISCOFINS'
     end
-    object PedidosNFItensFinalidade_Mercadoria: TSmallintField
-      FieldName = 'Finalidade_Mercadoria'
-      Origin = 'Finalidade_Mercadoria'
-    end
     object PedidosNFItensRegistro_Adicao: TIntegerField
       FieldName = 'Registro_Adicao'
       Origin = 'Registro_Adicao'
@@ -2159,6 +2936,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     object PedidosNFItensChaveNF_Referencia: TStringField
       FieldName = 'ChaveNF_Referencia'
       Origin = 'ChaveNF_Referencia'
+      EditMask = '##.##.##.##.##.###.###/####-##-###.###.###-###-###.###.###-#'
       Size = 44
     end
     object PedidosNFItensDataNF_Referencia: TDateField
@@ -2209,19 +2987,9 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       Origin = 'Numero_BL'
       Size = 15
     end
-    object PedidosNFItensCodigo_CredPres: TStringField
-      FieldName = 'Codigo_CredPres'
-      Origin = 'Codigo_CredPres'
-      Size = 8
-    end
     object PedidosNFItensSequencia: TIntegerField
       FieldName = 'Sequencia'
       Origin = 'Sequencia'
-    end
-    object PedidosNFItensSequencia_SISCOMEX: TIntegerField
-      FieldName = 'Sequencia_SISCOMEX'
-      Origin = 'Sequencia_SISCOMEX'
-      DisplayFormat = ',##0.0000'
     end
     object PedidosNFItensValor_BCDIFAL: TCurrencyField
       FieldName = 'Valor_BCDIFAL'
@@ -2537,6 +3305,10 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       FieldName = 'Aliquota_ICMSOp'
       Origin = 'Aliquota_ICMSOp'
     end
+    object PedidosNFItensValor_ICMSOp: TCurrencyField
+      FieldName = 'Valor_ICMSOp'
+      Origin = 'Valor_ICMSOp'
+    end
     object PedidosNFItensAliquota_ICMSEntrada: TFloatField
       FieldName = 'Aliquota_ICMSEntrada'
       Origin = 'Aliquota_ICMSEntrada'
@@ -2552,48 +3324,41 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       Origin = 'Aliquota_ICMSDif'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensAliquota_ICMSSubAnt: TFloatField
-      FieldName = 'Aliquota_ICMSSubAnt'
-      Origin = 'Aliquota_ICMSSubAnt'
-    end
-    object PedidosNFItensValor_ICMSOp: TCurrencyField
-      FieldName = 'Valor_ICMSOp'
-      Origin = 'Valor_ICMSOp'
-    end
     object PedidosNFItensValor_BCICMSApuracao: TCurrencyField
       FieldName = 'Valor_BCICMSApuracao'
       Origin = 'Valor_BCICMSApuracao'
       DisplayFormat = ',##0.00'
+      currency = False
     end
     object PedidosNFItensValor_ICMSApuracao: TCurrencyField
       FieldName = 'Valor_ICMSApuracao'
       Origin = 'Valor_ICMSApuracao'
       DisplayFormat = ',##0.00'
+      currency = False
     end
     object PedidosNFItensValor_MediaBCR: TCurrencyField
       FieldName = 'Valor_MediaBCR'
       Origin = 'Valor_MediaBCR'
       DisplayFormat = ',##0.00'
+      currency = False
     end
     object PedidosNFItensValor_TotalNota: TCurrencyField
       FieldName = 'Valor_TotalNota'
       Origin = 'Valor_TotalNota'
       DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_Impostos: TCurrencyField
-      FieldName = 'Valor_Impostos'
-      Origin = 'Valor_Impostos'
-      DisplayFormat = ',##0.00'
+      currency = False
     end
     object PedidosNFItensValor_Inventario: TCurrencyField
       FieldName = 'Valor_Inventario'
       Origin = 'Valor_Inventario'
       DisplayFormat = ',##0.00'
+      currency = False
     end
     object PedidosNFItensValor_Dumping: TCurrencyField
       FieldName = 'Valor_Dumping'
       Origin = 'Valor_Dumping'
       DisplayFormat = ',##0.00'
+      currency = False
     end
     object PedidosNFItensPercentual_Lucro: TFloatField
       FieldName = 'Percentual_Lucro'
@@ -2604,6 +3369,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       FieldName = 'Valor_Lucro'
       Origin = 'Valor_Lucro'
       DisplayFormat = ',##0.00'
+      currency = False
     end
     object PedidosNFItensValor_PIS2: TFloatField
       FieldName = 'Valor_PIS2'
@@ -2634,6 +3400,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       FieldName = 'Valor_CSLL'
       Origin = 'Valor_CSLL'
       DisplayFormat = ',##0.00'
+      currency = False
     end
     object PedidosNFItensRateio_FreteTerrNac: TFloatField
       FieldName = 'Rateio_FreteTerrNac'
@@ -2674,6 +3441,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       FieldName = 'Valor_Comissao'
       Origin = 'Valor_Comissao'
       DisplayFormat = ',##0.00'
+      currency = False
     end
     object PedidosNFItensPercentual_RedICMSST: TFloatField
       FieldName = 'Percentual_RedICMSST'
@@ -2684,6 +3452,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       FieldName = 'Valor_ICMSDif'
       Origin = 'Valor_ICMSDif'
       DisplayFormat = ',##0.00'
+      currency = False
     end
     object PedidosNFItensPercentual_Beneficio: TFloatField
       FieldName = 'Percentual_Beneficio'
@@ -2707,6 +3476,8 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     object PedidosNFItensValor_ICMSOpRed: TCurrencyField
       FieldName = 'Valor_ICMSOpRed'
       Origin = 'Valor_ICMSOpRed'
+      DisplayFormat = ',##0.00'
+      currency = False
     end
     object PedidosNFItensAliquota_ICMSOpIntegral: TFloatField
       FieldName = 'Aliquota_ICMSOpIntegral'
@@ -2732,15 +3503,6 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       FieldName = 'ES'
       Origin = 'ES'
     end
-    object PedidosNFItensVeiculo: TBooleanField
-      FieldName = 'Veiculo'
-      Origin = 'Veiculo'
-    end
-    object PedidosNFItensDUIMP: TStringField
-      FieldName = 'DUIMP'
-      Origin = 'DUIMP'
-      Size = 15
-    end
     object PedidosNFItensEmbarque: TIntegerField
       FieldName = 'Embarque'
       Origin = 'Embarque'
@@ -2753,18 +3515,26 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     object PedidosNFItensValor_BCIBS: TCurrencyField
       FieldName = 'Valor_BCIBS'
       Origin = 'Valor_BCIBS'
+      DisplayFormat = ',##0.00'
+      currency = False
     end
     object PedidosNFItensAliquota_IBS: TFloatField
       FieldName = 'Aliquota_IBS'
       Origin = 'Aliquota_IBS'
+      DisplayFormat = ',##0.00'
+      currency = True
     end
     object PedidosNFItensValor_IBS: TCurrencyField
       FieldName = 'Valor_IBS'
       Origin = 'Valor_IBS'
+      DisplayFormat = ',##0.00'
+      currency = False
     end
     object PedidosNFItensValor_BCCBS: TCurrencyField
       FieldName = 'Valor_BCCBS'
       Origin = 'Valor_BCCBS'
+      DisplayFormat = ',##0.00'
+      currency = False
     end
     object PedidosNFItensAliquota_CBS: TFloatField
       FieldName = 'Aliquota_CBS'
@@ -2773,18 +3543,26 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     object PedidosNFItensValor_CBS: TCurrencyField
       FieldName = 'Valor_CBS'
       Origin = 'Valor_CBS'
+      DisplayFormat = ',##0.00'
+      currency = False
     end
     object PedidosNFItensValor_BCIS: TCurrencyField
       FieldName = 'Valor_BCIS'
       Origin = 'Valor_BCIS'
+      DisplayFormat = ',##0.00'
+      currency = False
     end
     object PedidosNFItensAliquota_IS: TFloatField
       FieldName = 'Aliquota_IS'
       Origin = 'Aliquota_IS'
+      DisplayFormat = ',##0.00'
+      currency = True
     end
     object PedidosNFItensValor_IS: TCurrencyField
       FieldName = 'Valor_IS'
       Origin = 'Valor_IS'
+      DisplayFormat = ',##0.00'
+      currency = False
     end
     object PedidosNFItensCSTIBS: TStringField
       FieldName = 'CSTIBS'
@@ -2796,11 +3574,79 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       Origin = 'CSTCBS'
       Size = 3
     end
+    object PedidosNFItensAliquota_ICMSSTAnt: TFloatField
+      FieldName = 'Aliquota_ICMSSTAnt'
+      Origin = 'Aliquota_ICMSSTAnt'
+    end
+    object PedidosNFItensValor_BCICMSSTAnt: TCurrencyField
+      FieldName = 'Valor_BCICMSSTAnt'
+      Origin = 'Valor_BCICMSSTAnt'
+      DisplayFormat = ',##0.00'
+      currency = False
+    end
+    object PedidosNFItensValor_BCICMSDif: TCurrencyField
+      FieldName = 'Valor_BCICMSDif'
+      Origin = 'Valor_BCICMSDif'
+      DisplayFormat = ',##0.00'
+      currency = False
+    end
+    object PedidosNFItensValor_IPIDevol: TCurrencyField
+      FieldName = 'Valor_IPIDevol'
+      Origin = 'Valor_IPIDevol'
+      DisplayFormat = ',##0.00'
+      currency = False
+    end
+    object PedidosNFItensPercentual_IPIDevol: TFloatField
+      FieldName = 'Percentual_IPIDevol'
+      Origin = 'Percentual_IPIDevol'
+    end
+    object PedidosNFItensBeneficio_Fiscal: TStringField
+      FieldName = 'Beneficio_Fiscal'
+      Origin = 'Beneficio_Fiscal'
+      FixedChar = True
+      Size = 10
+    end
+    object PedidosNFItensDeclaracao: TStringField
+      FieldName = 'Declaracao'
+      Origin = 'Declaracao'
+      Size = 15
+    end
+    object PedidosNFItensMovimenta_EstoqueInd: TBooleanField
+      FieldName = 'Movimenta_EstoqueInd'
+      Origin = 'Movimenta_EstoqueInd'
+    end
+    object PedidosNFItensCodigo_CredPres: TStringField
+      FieldName = 'Codigo_CredPres'
+      Origin = 'Codigo_CredPres'
+      Size = 8
+    end
+    object PedidosNFItensValor_Produtos: TCurrencyField
+      FieldName = 'Valor_Produtos'
+      Origin = 'Valor_Produtos'
+      DisplayFormat = ',##0.00'
+      currency = False
+    end
+    object PedidosNFItensValor_FCPICMSOrig: TCurrencyField
+      FieldName = 'Valor_FCPICMSOrig'
+      Origin = 'Valor_FCPICMSOrig'
+      DisplayFormat = ',##0.00'
+      currency = False
+    end
+    object PedidosNFItensValor_TotalImpostos: TCurrencyField
+      FieldName = 'Valor_TotalImpostos'
+      Origin = 'Valor_TotalImpostos'
+      DisplayFormat = ',##0.00'
+      currency = False
+    end
+    object PedidosNFItensFinalidade_Mercadoria: TStringField
+      FieldName = 'Finalidade_Mercadoria'
+      Origin = 'Finalidade_Mercadoria'
+    end
   end
   object dsPedidosNFItens: TDataSource
     DataSet = PedidosNFItens
-    Left = 795
-    Top = 151
+    Left = 259
+    Top = 191
   end
   object Produtos: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2842,6 +3688,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       '      ,ICMS_DentroEstadoEnt'
       '      ,ICMS_DentroEstadoSai'
       '      ,ICMS_DentroEstadoSimples'
+      '      ,Aliquota_IBS'
       '      ,Tabela_CAMEX'
       '      ,CSTICMS_Entrada'
       '      ,CSTICMS_Saida'
@@ -2851,12 +3698,14 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       '      ,UM'
       '      ,Peso_Liquido'
       '      ,Peso_Bruto'
+      '      ,Estoque_Minimo'
+      '      ,Estoque_Navio'
       'from Produtos'
       'where Desativado <> 1'
       'and isnull(NCM, '#39#39') <> '#39#39' '
       'order by Descricao')
-    Left = 961
-    Top = 107
+    Left = 426
+    Top = 147
     object ProdutosCodigo: TIntegerField
       Alignment = taCenter
       FieldName = 'Codigo'
@@ -3035,11 +3884,23 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       FieldName = 'Peso_Bruto'
       Origin = 'Peso_Bruto'
     end
+    object ProdutosAliquota_IBS: TFloatField
+      FieldName = 'Aliquota_IBS'
+      Origin = 'Aliquota_IBS'
+    end
+    object ProdutosEstoque_Minimo: TFloatField
+      FieldName = 'Estoque_Minimo'
+      Origin = 'Estoque_Minimo'
+    end
+    object ProdutosEstoque_Navio: TBooleanField
+      FieldName = 'Estoque_Navio'
+      Origin = 'Estoque_Navio'
+    end
   end
   object dsProdutos: TDataSource
     DataSet = Produtos
-    Left = 963
-    Top = 151
+    Left = 426
+    Top = 191
   end
   object CSTCBS: TFDQuery
     Connection = UniMainModule.Conecta
@@ -3051,13 +3912,13 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     SQL.Strings = (
       'select * FROM CSTCBS'
       '')
-    Left = 1110
-    Top = 203
+    Left = 575
+    Top = 243
   end
   object dsCSTCBS: TDataSource
     DataSet = CSTCBS
-    Left = 1110
-    Top = 249
+    Left = 575
+    Top = 289
   end
   object CSTIBS: TFDQuery
     Connection = UniMainModule.Conecta
@@ -3068,13 +3929,13 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * FROM CSTIBS')
-    Left = 1107
-    Top = 107
+    Left = 575
+    Top = 147
   end
   object dsCSTIBS: TDataSource
     DataSet = CSTIBS
-    Left = 1107
-    Top = 151
+    Left = 575
+    Top = 191
   end
   object CFOP: TFDQuery
     Connection = UniMainModule.Conecta
@@ -3089,8 +3950,8 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       '      ,ES'
       'from CFOP '
       'where Desativada <> 1')
-    Left = 652
-    Top = 107
+    Left = 117
+    Top = 147
     object CFOPCodigo: TStringField
       FieldName = 'Codigo'
       Origin = 'Codigo'
@@ -3106,8 +3967,8 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
   end
   object dsCFOP: TDataSource
     DataSet = CFOP
-    Left = 652
-    Top = 151
+    Left = 117
+    Top = 191
   end
   object Processos: TFDQuery
     Connection = UniMainModule.Conecta
@@ -3119,19 +3980,21 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     SQL.Strings = (
       'select Tipo = '#39'IMP'#39
       '      ,Processo'
+      '      ,Declaracao = DUIMP'
       'from ProcessosImp'
       'where isnull(DUIMP, '#39#39') <> '#39#39
       'select Tipo = '#39'EXP'#39
       '      ,Processo'
+      '      ,Declaracao = DE'
       'from ProcessosExp'
       'where isnull(DE, '#39#39') <> '#39#39)
-    Left = 710
-    Top = 107
+    Left = 175
+    Top = 147
   end
   object dsProcessos: TDataSource
     DataSet = Processos
-    Left = 710
-    Top = 151
+    Left = 175
+    Top = 191
   end
   object CSTIPI: TFDQuery
     Connection = UniMainModule.Conecta
@@ -3142,13 +4005,13 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * FROM CSTIPI')
-    Left = 710
-    Top = 203
+    Left = 175
+    Top = 243
   end
   object dsCSTIPI: TDataSource
     DataSet = CSTIPI
-    Left = 710
-    Top = 249
+    Left = 175
+    Top = 289
   end
   object CSTPIS: TFDQuery
     Connection = UniMainModule.Conecta
@@ -3159,13 +4022,13 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * FROM CSTPIS')
-    Left = 795
-    Top = 203
+    Left = 259
+    Top = 243
   end
   object dsCSTPIS: TDataSource
     DataSet = CSTPIS
-    Left = 795
-    Top = 249
+    Left = 259
+    Top = 289
   end
   object CSTCOFINS: TFDQuery
     Connection = UniMainModule.Conecta
@@ -3176,13 +4039,13 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * FROM CSTCOFINS')
-    Left = 1031
-    Top = 107
+    Left = 496
+    Top = 147
   end
   object dsCSTCOFINS: TDataSource
     DataSet = CSTCOFINS
-    Left = 1031
-    Top = 151
+    Left = 496
+    Top = 191
   end
   object CSTICMSB: TFDQuery
     Connection = UniMainModule.Conecta
@@ -3193,13 +4056,13 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * FROM CSTICMS')
-    Left = 1036
-    Top = 203
+    Left = 496
+    Top = 243
   end
   object dsCSTICMSB: TDataSource
     DataSet = CSTICMSB
-    Left = 1036
-    Top = 249
+    Left = 496
+    Top = 289
   end
   object ICMS: TFDQuery
     Connection = UniMainModule.Conecta
@@ -3210,13 +4073,13 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from ICMS')
-    Left = 886
-    Top = 203
+    Left = 351
+    Top = 242
   end
   object dsICMS: TDataSource
     DataSet = ICMS
-    Left = 886
-    Top = 249
+    Left = 351
+    Top = 289
   end
   object CSTICMSA: TFDQuery
     Connection = UniMainModule.Conecta
@@ -3227,13 +4090,13 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * FROM CSTICMS')
-    Left = 965
-    Top = 203
+    Left = 426
+    Top = 243
   end
   object dsCSTICMSA: TDataSource
     DataSet = CSTICMSA
-    Left = 965
-    Top = 249
+    Left = 426
+    Top = 289
   end
   object TabPISCOFINS: TFDQuery
     Connection = UniMainModule.Conecta
@@ -3241,25 +4104,25 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       'select *'
       'from TabelaPISCOFINS'
       'where Tipo = '#39'B'#39)
-    Left = 886
-    Top = 107
+    Left = 351
+    Top = 147
   end
   object dsTabPISCOFINS: TDataSource
     DataSet = TabPISCOFINS
-    Left = 886
-    Top = 151
+    Left = 351
+    Top = 191
   end
   object PedidosNF: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'select * from pedidosNF')
-    Left = 1174
-    Top = 107
+    Left = 639
+    Top = 147
   end
   object dsPedidosNF: TDataSource
     DataSet = PedidosNF
-    Left = 1174
-    Top = 151
+    Left = 639
+    Top = 191
   end
   object OpFiscal: TFDQuery
     Connection = UniMainModule.Conecta
@@ -3270,15 +4133,15 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from OperacaoFiscal')
-    Left = 1229
-    Top = 107
+    Left = 710
+    Top = 147
   end
   object dsOPFiscal: TDataSource
     DataSet = OpFiscal
-    Left = 1229
-    Top = 151
+    Left = 710
+    Top = 191
   end
-  object tFormulas: TFDQuery
+  object tFormulasItens: TFDQuery
     Connection = UniMainModule.Conecta
     FetchOptions.AssignedValues = [evMode, evRowsetSize, evLiveWindowParanoic]
     FetchOptions.RowsetSize = 250
@@ -3287,13 +4150,13 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from OperacaoFiscalFormulas')
-    Left = 597
-    Top = 108
+    Left = 600
+    Top = 341
   end
-  object dstFormulas: TDataSource
-    DataSet = tFormulas
-    Left = 597
-    Top = 150
+  object dstFormulasItens: TDataSource
+    DataSet = tFormulasItens
+    Left = 600
+    Top = 383
   end
   object Campos: TFDQuery
     Connection = UniMainModule.Conecta
@@ -3307,42 +4170,42 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       '      ,Estado'
       '      ,Razao_Social'
       'from Empresas')
-    Left = 601
-    Top = 205
+    Left = 62
+    Top = 245
   end
   object dsCampos: TDataSource
     DataSet = Campos
-    Left = 603
-    Top = 255
+    Left = 62
+    Top = 295
   end
   object Macro: TCalcExpress
     Formula = '0'
-    Left = 654
-    Top = 38
+    Left = 427
+    Top = 81
   end
   object tNCM: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'select * from NCM')
-    Left = 1176
-    Top = 203
+    Left = 639
+    Top = 243
   end
   object dstNCM: TDataSource
     DataSet = tNCM
-    Left = 1176
-    Top = 249
+    Left = 639
+    Top = 289
   end
   object tNCMICMS: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'select * from NCM')
-    Left = 1236
-    Top = 203
+    Left = 710
+    Top = 243
   end
   object dstNCMICMS: TDataSource
     DataSet = tNCMICMS
-    Left = 1236
-    Top = 249
+    Left = 710
+    Top = 289
   end
   object Destinatarios: TFDQuery
     Connection = UniMainModule.Conecta
@@ -3358,24 +4221,148 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
         '      ,CNPJ_CPF = iif(CNPJ <> '#39#39', replicate('#39'0'#39', 14-len(CNPJ))+C' +
         'NPJ, replicate('#39'0'#39', 14-len(CPF))+CPF)'
       'from Destinatarios')
-    Left = 605
-    Top = 315
+    Left = 62
+    Top = 347
   end
   object dsDestinatarios: TDataSource
     DataSet = Destinatarios
-    Left = 605
-    Top = 362
+    Left = 62
+    Top = 394
   end
   object ProdutosPauta: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'select * from ProdutosPauta')
-    Left = 969
-    Top = 304
+    Left = 259
+    Top = 347
   end
   object dsProdutosPauta: TDataSource
     DataSet = ProdutosPauta
-    Left = 969
-    Top = 350
+    Left = 259
+    Top = 394
+  end
+  object dstImpostos: TDataSource
+    DataSet = tImpostos
+    Left = 62
+    Top = 506
+  end
+  object tImpostos: TFDMemTable
+    FieldDefs = <>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    FormatOptions.AssignedValues = [fvMaxBcdPrecision, fvMaxBcdScale]
+    FormatOptions.MaxBcdPrecision = 2147483647
+    FormatOptions.MaxBcdScale = 1073741823
+    ResourceOptions.AssignedValues = [rvPersistent, rvSilentMode]
+    ResourceOptions.Persistent = True
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvUpdateChngFields, uvUpdateMode, uvLockMode, uvLockPoint, uvLockWait, uvRefreshMode, uvFetchGeneratorsPoint, uvCheckRequired, uvCheckReadOnly, uvCheckUpdatable, uvAutoCommitUpdates]
+    UpdateOptions.LockWait = True
+    UpdateOptions.FetchGeneratorsPoint = gpNone
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 62
+    Top = 457
+    object tImpostosOrdem_Calculo: TSmallintField
+      FieldName = 'Ordem_Calculo'
+    end
+    object tImpostosDescricao: TStringField
+      FieldName = 'Descricao'
+      Size = 60
+    end
+    object tImpostosCampo: TStringField
+      FieldName = 'Campo'
+      Size = 60
+    end
+    object tImpostosAliquota: TFloatField
+      FieldName = 'Aliquota'
+      DisplayFormat = ',##0.0000'
+    end
+    object tImpostosValor: TCurrencyField
+      FieldName = 'Valor'
+      DisplayFormat = ',##0.0000'
+    end
+    object tImpostosTotal: TCurrencyField
+      FieldName = 'Total'
+      DisplayFormat = ',##0.0000'
+    end
+    object tImpostosCST: TStringField
+      FieldName = 'CST'
+      Size = 5
+    end
+  end
+  object Alerta: TUniSweetAlert
+    Title = ' '
+    Text = 'Alerta !'
+    ConfirmButtonText = 'OK'
+    CancelButtonText = 'Cancelar'
+    Width = 400
+    Padding = 20
+    Left = 480
+    Top = 79
+  end
+  object ttmp: TFDQuery
+    Connection = UniMainModule.Conecta
+    FetchOptions.AssignedValues = [evMode, evRowsetSize, evLiveWindowParanoic]
+    FetchOptions.RowsetSize = 250
+    FetchOptions.LiveWindowParanoic = False
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select CNPJ'
+      '      ,Estado'
+      '      ,Razao_Social'
+      'from Empresas')
+    Left = 565
+    Top = 79
+  end
+  object Empresas: TFDQuery
+    Connection = UniMainModule.Conecta
+    FetchOptions.AssignedValues = [evMode, evRowsetSize, evLiveWindowParanoic]
+    FetchOptions.RowsetSize = 250
+    FetchOptions.LiveWindowParanoic = False
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select CNPJ'
+      '      ,Estado'
+      '      ,Razao_Social'
+      'from Empresas')
+    Left = 175
+    Top = 347
+  end
+  object dsEmpresas: TDataSource
+    DataSet = Empresas
+    Left = 175
+    Top = 394
+  end
+  object FichaEstoque: TFDQuery
+    Connection = UniMainModule.Conecta
+    Left = 350
+    Top = 347
+  end
+  object FichaInventario: TFDQuery
+    Connection = UniMainModule.Conecta
+    Left = 430
+    Top = 346
+  end
+  object dstFormulasTotais: TDataSource
+    DataSet = tFormulasTotais
+    Left = 515
+    Top = 383
+  end
+  object tFormulasTotais: TFDQuery
+    Connection = UniMainModule.Conecta
+    FetchOptions.AssignedValues = [evMode, evRowsetSize, evLiveWindowParanoic]
+    FetchOptions.RowsetSize = 250
+    FetchOptions.LiveWindowParanoic = False
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select * from OperacaoFiscalFormulas')
+    Left = 515
+    Top = 341
   end
 end

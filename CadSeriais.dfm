@@ -433,16 +433,6 @@ object fCadSeriais: TfCadSeriais
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
-          object UniButton1: TUniButton
-            Left = 453
-            Top = 97
-            Width = 75
-            Height = 25
-            Hint = ''
-            ShowHint = True
-            Caption = 'UniButton1'
-            TabOrder = 9
-          end
         end
       end
     end

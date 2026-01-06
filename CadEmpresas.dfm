@@ -24,6 +24,10 @@ object fCadEmpresas: TfCadEmpresas
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniDBGrid1: TUniDBGrid
         Left = 0
         Top = 0
@@ -98,6 +102,10 @@ object fCadEmpresas: TfCadEmpresas
     object aFicha: TUniTabSheet
       Hint = ''
       Caption = 'Endere'#231'o'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -437,6 +445,10 @@ object fCadEmpresas: TfCadEmpresas
         
           'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
           's = '#39'Pasta'#39';'#13#10'}')
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox4: TUniScrollBox
         Left = 0
         Top = 0
@@ -582,6 +594,10 @@ object fCadEmpresas: TfCadEmpresas
         
           'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'      config.' +
           'cls = '#39'Pasta'#39';'#13#10'}')
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox5: TUniScrollBox
         Left = 0
         Top = 0
@@ -998,6 +1014,10 @@ object fCadEmpresas: TfCadEmpresas
     object aContador: TUniTabSheet
       Hint = ''
       Caption = 'Contabilista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox6: TUniScrollBox
         Left = 0
         Top = 0
@@ -1421,6 +1441,10 @@ object fCadEmpresas: TfCadEmpresas
     object aRepresentante: TUniTabSheet
       Hint = ''
       Caption = 'Representante Legal'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox7: TUniScrollBox
         Left = 0
         Top = 0
@@ -1844,6 +1868,10 @@ object fCadEmpresas: TfCadEmpresas
     object aParametros: TUniTabSheet
       Hint = ''
       Caption = 'Par'#226'metros'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0
@@ -2799,6 +2827,10 @@ object fCadEmpresas: TfCadEmpresas
     object UniTabSheet2: TUniTabSheet
       Hint = ''
       Caption = 'SPED'#39's'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox8: TUniScrollBox
         Left = 0
         Top = 0
@@ -9395,6 +9427,10 @@ object fCadEmpresas: TfCadEmpresas
         DDD3734CC15C3283201E4718E315D5D4AD467E7B463B5757575656BFFFD9}
       Caption = 'Rede / Internet'
       ParentFont = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox3: TUniScrollBox
         Left = 0
         Top = 0
@@ -9869,6 +9905,10 @@ object fCadEmpresas: TfCadEmpresas
     object UniTabSheet3: TUniTabSheet
       Hint = ''
       Caption = 'Autoriza'#231#245'es de NF-e'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox9: TUniScrollBox
         Left = 0
         Top = 0

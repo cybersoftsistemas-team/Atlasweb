@@ -218,7 +218,7 @@ begin
                                              ',', inttostr(tMenu.Items[i].Id),
                                              ',', quotedstr(tMenu.Items[i].Text),
                                              ',',
-                                             quotedstr('\erp_importa\files\'+TabMenu.fieldbyname('Form').asstring+'.png'),
+                                             quotedstr('\Projetos\atlasweb\files\'+TabMenu.fieldbyname('Form').asstring+'.png'),
                                              ',',
                                              quotedstr(TabMenu.fieldbyname('Form').asstring),
                                              ',',

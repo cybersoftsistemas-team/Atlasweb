@@ -41,6 +41,7 @@ type
     MenuPrincipal: TUniMenuItems;
     UniImage1: TUniImage;
     UniImage3: TUniImage;
+    UniButton1: TUniButton;
     procedure cPesquisaChange(Sender: TObject);
     procedure mnSairClick(Sender: TObject);
     procedure bFecharTodosClick(Sender: TObject);
@@ -49,7 +50,7 @@ type
     procedure botao_Atalho(Sender: TObject);
     procedure UniFormBeforeShow(Sender: TObject);
     procedure UniFormCreate(Sender: TObject);
-    procedure Nome_EmpresaDblClick(Sender: TObject);
+    procedure UniButton1Click(Sender: TObject);
   private
     { Private declarations }
     procedure CriaAba(nFrame: TuniFrame; dFrame: string; Fechar: Boolean);
@@ -133,7 +134,9 @@ uses
  ,CadDREContabil
  ,CadNavios
  ,Embarques
- ,ConfigCampos;(*uses p/gerador*)
+ ,ConfigCampos
+ ,Estoque_SaldoAbertura
+ , DUIMP;(*uses p/gerador*)
 
 function MainForm: TMainForm;
 begin
@@ -199,11 +202,6 @@ begin
       Close;
 end;
 
-procedure TMainForm.Nome_EmpresaDblClick(Sender: TObject);
-begin
-
-end;
-
 // Fecha todas as abas abertas.
 procedure TMainForm.bFecharTodosClick(Sender: TObject);
 var
@@ -234,6 +232,11 @@ end;
 procedure TMainForm.bMudarEmpresaClick(Sender: TObject);
 begin
      uniscreenMask1.DisplayMessage := 'Aguarde...Fechando todas as Abas';
+end;
+
+procedure TMainForm.UniButton1Click(Sender: TObject);
+begin
+      fDUIMP.ShowModal;
 end;
 
 procedure TMainForm.UniFormBeforeShow(Sender: TObject);
@@ -270,13 +273,10 @@ begin
                 bAtalho.hint             := fieldbyname('Titulo').asstring;
                 bAtalho.ShowHint         := true;
 
-                mPath := ExtractFileDir(GetCurrentDir);
-                if fileexists(mPath+fieldbyname('Icone').asstring) then begin
-                   bAtalho.Picture.LoadFromFile(mpath+fieldbyname('Icone').asstring);
+                if fileexists(fieldbyname('Icone').asstring) then begin
+                   bAtalho.Picture.LoadFromFile(fieldbyname('Icone').asstring);
                 end else begin
-                   //bAtalho.Picture.LoadFromFile('c:\Projetos_WEB\ERP_Importa\files\Atalho0b.png');
-                   bAtalho.Picture.LoadFromFile(mpath+'\erp_importa\files\Atalho0b.png');
-
+                   bAtalho.Picture.LoadFromFile('c:\Projetos\AtlasWeb\files\Atalho0b.png');
                 end;
                 bAtalho.OnClick := MainForm.Botao_Atalho;
                 next;
@@ -428,6 +428,7 @@ initialization
   RegisterClass(TfCadNavios);
   RegisterClass(TfEmbarques);
   RegisterClass(TfConfigCampos);
+  RegisterClass(TfEstoque_SaldoAbertura);
   (*RegisterClass p/gerador*)
 
   

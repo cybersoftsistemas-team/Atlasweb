@@ -68,12 +68,7 @@ type
     cAdiantamento: TUniDBLookupComboBox;
     Adiantamentos: TFDQuery;
     dsAdiantamentos: TDataSource;
-    UniGroupBox1: TUniGroupBox;
-    cPago_Cliente: TUniDBCheckBox;
-    cRecuperavel: TUniDBCheckBox;
-    cProvisorio: TUniDBCheckBox;
     cNumero_Documento: TUniDBEdit;
-    UniGroupBox2: TUniGroupBox;
     FormaPgto: TFDQuery;
     dsFormaPgto: TDataSource;
     bBaixar: TUniButton;
@@ -93,13 +88,6 @@ type
     cMes: TUniSegmentedButton;
     cDia: TUniSegmentedButton;
     cAno: TUniSpinEdit;
-    cValor_Documento: TUniDBFormattedNumberEdit;
-    cValor_Desconto: TUniDBFormattedNumberEdit;
-    cDesconto_Liquidacao: TUniDBFormattedNumberEdit;
-    cValor_Juros: TUniDBFormattedNumberEdit;
-    cValor_Multa: TUniDBFormattedNumberEdit;
-    cValor_Total: TUniDBFormattedNumberEdit;
-    cValor_Parcela: TUniDBFormattedNumberEdit;
     cEmpresa: TUniDBLookupComboBox;
     BaixasRegistro: TLargeintField;
     BaixasTipo: TStringField;
@@ -221,14 +209,7 @@ type
     AdiantamentosCNPJ: TStringField;
     AdiantamentosAdiantamento_Numero: TSmallintField;
     AdiantamentosNome: TStringField;
-    UniGroupBox3: TUniGroupBox;
-    cNumeroPgto: TUniDBEdit;
-    cDataBaixa: TUniDateTimePicker;
     cCodigoBarras: TUniDBEdit;
-    cBanco: TUniDBLookupComboBox;
-    cValorBaixa: TUniFormattedNumberEdit;
-    cSaldo: TUniFormattedNumberEdit;
-    UniFormattedNumberEdit1: TUniFormattedNumberEdit;
     UniPanel4: TUniPanel;
     UniPanel10: TUniPanel;
     GradeLan: TUniDBGrid;
@@ -237,7 +218,30 @@ type
     brTotais: TUniSegmentedButton;
     UniDBEdit5: TUniDBEdit;
     UniDateTimePicker2: TUniDateTimePicker;
+    cSaldoDoc: TUniFormattedNumberEdit;
+    cValor_Desconto: TUniDBFormattedNumberEdit;
+    cDesconto_Liquidacao: TUniDBFormattedNumberEdit;
+    cValor_Juros: TUniDBFormattedNumberEdit;
+    cValor_Multa: TUniDBFormattedNumberEdit;
+    cValor_Total: TUniDBFormattedNumberEdit;
+    cValor_Parcela: TUniDBFormattedNumberEdit;
+    cValor_Documento: TUniDBFormattedNumberEdit;
+    cValorBaixa: TUniFormattedNumberEdit;
+    cSaldo: TUniFormattedNumberEdit;
+    cNumeroPgto: TUniDBEdit;
+    cDataBaixa: TUniDateTimePicker;
+    cBanco: TUniDBLookupComboBox;
     UniDBLookupComboBox11: TUniDBLookupComboBox;
+    cPago_Cliente: TUniDBCheckBox;
+    cRecuperavel: TUniDBCheckBox;
+    cProvisorio: TUniDBCheckBox;
+    UniDBCheckBox1: TUniDBCheckBox;
+    UniDBFormattedNumberEdit1: TUniDBFormattedNumberEdit;
+    UniDBFormattedNumberEdit2: TUniDBFormattedNumberEdit;
+    cValor_Baixado: TUniFormattedNumberEdit;
+    bVeiculo: TUniButton;
+    UniButton1: TUniButton;
+    UniContainerPanel1: TUniContainerPanel;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
@@ -689,9 +693,11 @@ begin
       // Alinhando todas as ficha de dados ao centro do form.
       for i := 0 to ComponentCount -1 do begin
           if Components[i] is TUniPanel then begin
-             TuniPanel(Components[i]).Top   := 30;
-             TuniPanel(Components[i]).Left  := (Pasta.Width - TuniPanel(Components[i]).Width) div 2;
-             TuniPanel(Components[i]).Color := clNone
+             if (Components[i].Name <> 'PanelBanco') and (Components[i].Name <> 'PanelValores') then begin
+                TuniPanel(Components[i]).Top   := 30;
+                TuniPanel(Components[i]).Left  := (Pasta.Width - TuniPanel(Components[i]).Width) div 2;
+                TuniPanel(Components[i]).Color := clNone
+             end;
           end;
       end;
 
@@ -1115,8 +1121,9 @@ begin
                 cDia.Items[i].Caption := Formatfloat('00', i+1);
             end;
             while not eof do begin
-                  //cDia.Items[FieldByName('Dia').AsInteger-1].Caption := FormatFloat('00', FieldByName('Dia').asinteger)+' <i class="fa fa-check-circle" aria-hidden="true"></i>';
-                  cDia.Items[FieldByName('Dia').AsInteger-1].Caption := '<span style="text-decoration:underline #000 solid 2px"> '+FormatFloat('00', FieldByName('Dia').asinteger); //+' <i class="fa fa-check-circle" aria-hidden="true"></i>';
+                  cDia.Items[FieldByName('Dia').AsInteger-1].Caption := FormatFloat('00', FieldByName('Dia').asinteger)+'<i class="fa fa-circle" style="margin-left:4px; font-size:7px; color: #FFFF00"></i>';
+//                  cDia.Items[FieldByName('Dia').AsInteger-1].Caption := FormatFloat('00', FieldByName('Dia').asinteger)+' <i class="fa fa-star" aria-hidden="true"></i>';
+                  //cDia.Items[FieldByName('Dia').AsInteger-1].Caption := '<span style="text-decoration:underline #000 solid 2px"> '+FormatFloat('00', FieldByName('Dia').asinteger); //+' <i class="fa fa-check-circle" aria-hidden="true"></i>';
                   next;
             end;
        end;

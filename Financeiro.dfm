@@ -219,7 +219,7 @@ object fFinanceiro: TfFinanceiro
     Height = 795
     Hint = ''
     BodyRTL = False
-    ActivePage = UniTabSheet1
+    ActivePage = UniTabSheet2
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -1059,15 +1059,16 @@ object fFinanceiro: TfFinanceiro
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1199
+          1182
           759)
-        ScrollHeight = 748
+        ScrollHeight = 1023
+        ScrollWidth = 620
         object pFicha1: TUniPanel
           AlignWithMargins = True
-          Left = 249
-          Top = 7
-          Width = 930
-          Height = 741
+          Left = 42
+          Top = 5
+          Width = 897
+          Height = 820
           Hint = ''
           Enabled = False
           ShowHint = True
@@ -1084,16 +1085,17 @@ object fFinanceiro: TfFinanceiro
           Caption = ''
           Color = clTeal
           object cConta: TUniDBLookupComboBox
-            Left = 12
-            Top = 107
-            Width = 442
-            Height = 50
+            Left = 13
+            Top = 95
+            Width = 694
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Nome'
             ListSource = dsPlano
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             ClearButton = True
             DataField = 'Conta'
             DataSource = dsPagarReceber
@@ -1102,7 +1104,7 @@ object fFinanceiro: TfFinanceiro
             Color = clWindow
             RemoteQuery = True
             FieldLabel = 'Conta'
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 120
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
@@ -1110,10 +1112,10 @@ object fFinanceiro: TfFinanceiro
             OnExit = cContaChange
           end
           object cData_Previsao: TUniDBDateTimePicker
-            Left = 460
-            Top = 107
-            Width = 120
-            Height = 50
+            Left = 13
+            Top = 122
+            Width = 344
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Data_Previsao'
@@ -1122,17 +1124,16 @@ object fFinanceiro: TfFinanceiro
             DateFormat = 'dd/MM/yyyy'
             TimeFormat = 'HH:mm:ss'
             TabOrder = 4
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
             FieldLabel = 'Previs'#227'o'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
           object cDocumento_Data: TUniDBDateTimePicker
-            Left = 586
-            Top = 206
-            Width = 120
-            Height = 50
+            Left = 362
+            Top = 203
+            Width = 344
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Documento_Data'
@@ -1140,18 +1141,16 @@ object fFinanceiro: TfFinanceiro
             DateTime = 44489.000000000000000000
             DateFormat = 'dd/MM/yyyy'
             TimeFormat = 'HH:mm:ss'
-            TabOrder = 8
-            BorderStyle = ubsSolid
+            TabOrder = 12
+            BorderStyle = ubsInset
             FieldLabel = 'Data Documento'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
           object cData_Vencimento: TUniDBDateTimePicker
-            Left = 586
-            Top = 107
-            Width = 120
-            Height = 50
+            Left = 362
+            Top = 121
+            Width = 344
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Data_Vencimento'
@@ -1159,108 +1158,107 @@ object fFinanceiro: TfFinanceiro
             DateTime = 44501.000000000000000000
             TabOrder = 5
             UseSystemFormats = True
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
             FieldLabel = 'Vencimento'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
           object cBeneficiario: TUniDBLookupComboBox
-            Left = 12
-            Top = 304
+            Left = 13
+            Top = 284
             Width = 694
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'CNPJ_CPF;Nome'
             ListSource = dsBeneficiario
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             ClearButton = True
             DataField = 'Beneficiario'
             DataSource = dsPagarReceber
             AnyMatch = True
-            TabOrder = 11
+            TabOrder = 15
             Color = clWindow
             FieldLabel = 'Benefici'#225'rio'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
           end
           object cDocumento: TUniDBLookupComboBox
-            Left = 12
-            Top = 206
-            Width = 442
-            Height = 50
+            Left = 13
+            Top = 176
+            Width = 694
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Nome'
             ListSource = dsTipoDoc
             KeyField = 'Codigo'
             ListFieldIndex = 0
+            BorderStyle = ubsInset
             ClearButton = True
             DataField = 'Documento_Tipo'
             DataSource = dsPagarReceber
             AnyMatch = True
-            TabOrder = 6
+            TabOrder = 9
             Color = clWindow
             FieldLabel = 'Documento'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
           end
           object cModalidade_Pgto: TUniDBLookupComboBox
-            Left = 12
-            Top = 402
+            Left = 13
+            Top = 338
             Width = 694
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dsModal
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             ClearButton = True
             DataField = 'Modalidade_Pgto'
             DataSource = dsPagarReceber
-            TabOrder = 13
+            TabOrder = 19
             Color = clWindow
             FieldLabel = 'Modalidade Pgto'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             NormalizeString = True
           end
           object cObservacao: TUniDBMemo
-            Left = 12
-            Top = 502
-            Width = 693
-            Height = 78
+            Left = 13
+            Top = 716
+            Width = 805
+            Height = 53
             Hint = ''
             ShowHint = True
             DataField = 'Observacao'
             DataSource = dsPagarReceber
-            TabOrder = 14
+            BorderStyle = ubsInset
+            TabOrder = 39
             FieldLabel = 'Observa'#231#227'o'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
           object cCentro_Custo: TUniDBLookupComboBox
-            Left = 12
-            Top = 58
+            Left = 13
+            Top = 68
             Width = 694
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Nome'
             ListSource = dsCentroCusto
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             ClearButton = True
             DataField = 'Centro_Custo'
             DataSource = dsPagarReceber
@@ -1269,403 +1267,85 @@ object fFinanceiro: TfFinanceiro
             Color = clWindow
             RemoteQuery = True
             FieldLabel = 'Centro de Custo'
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 120
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
           end
           object cProcesso: TUniDBLookupComboBox
-            Left = 12
-            Top = 255
-            Width = 276
-            Height = 50
+            Left = 13
+            Top = 230
+            Width = 344
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Processo'
             ListSource = dsProcessos
             KeyField = 'Processo'
             ListFieldIndex = 0
+            BorderStyle = ubsInset
             ClearButton = True
             DataField = 'Processo'
             DataSource = dsPagarReceber
             AnyMatch = True
-            TabOrder = 9
+            TabOrder = 13
             Color = clWindow
             RemoteQuery = True
             FieldLabel = 'Processo'
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 120
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
           end
           object cAdiantamento: TUniDBLookupComboBox
-            Left = 12
-            Top = 353
+            Left = 13
+            Top = 311
             Width = 694
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'CNPJ;Nome'
             ListSource = dsAdiantamentos
             KeyField = 'Adiantamento_Numero'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             ClearButton = True
             DataField = 'Adiantamento_Numero'
             DataSource = dsPagarReceber
-            TabOrder = 12
+            TabOrder = 17
             Color = clWindow
             FieldLabel = 'Adiantamento'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             NormalizeString = True
           end
-          object UniGroupBox1: TUniGroupBox
-            Left = 729
-            Top = 5
-            Width = 186
-            Height = 87
-            Hint = ''
-            ShowHint = True
-            Caption = 'Caracter'#237'sticas'
-            TabOrder = 17
-            ParentFont = False
-            Font.Style = [fsBold]
-            ClientEvents.UniEvents.Strings = (
-              
-                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-                '= '#39'Grupo'#39';'#13#10'}')
-            object cPago_Cliente: TUniDBCheckBox
-              Left = 13
-              Top = 18
-              Width = 160
-              Height = 17
-              Hint = ''
-              ShowHint = True
-              DataField = 'Pago_Cliente'
-              DataSource = dsPagarReceber
-              Caption = 'Pago Pelo Cliente'
-              TabOrder = 1
-              ParentColor = False
-              Color = clBtnFace
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cRecuperavel: TUniDBCheckBox
-              Left = 13
-              Top = 37
-              Width = 160
-              Height = 17
-              Hint = ''
-              ShowHint = True
-              DataField = 'Recuperavel'
-              DataSource = dsPagarReceber
-              Caption = 'Recuper'#225'vel'
-              TabOrder = 2
-              ParentColor = False
-              Color = clBtnFace
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cProvisorio: TUniDBCheckBox
-              Left = 13
-              Top = 56
-              Width = 160
-              Height = 17
-              Hint = ''
-              ShowHint = True
-              DataField = 'Provisorio'
-              DataSource = dsPagarReceber
-              Caption = 'Documerno Provis'#243'rio'
-              TabOrder = 3
-              ParentColor = False
-              Color = clBtnFace
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-          end
           object cNumero_Documento: TUniDBEdit
-            Left = 460
-            Top = 206
-            Width = 120
-            Height = 50
+            Left = 13
+            Top = 203
+            Width = 344
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Documento_Numero'
             DataSource = dsPagarReceber
-            TabOrder = 7
-            FieldLabel = 'N'#186' '
+            TabOrder = 11
+            FieldLabel = 'N'#186'  Documento'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-          end
-          object UniGroupBox2: TUniGroupBox
-            Left = 729
-            Top = 106
-            Width = 186
-            Height = 539
-            Hint = ''
-            ShowHint = True
-            Caption = 'Valores'
-            TabOrder = 16
-            ParentFont = False
-            Font.Style = [fsBold]
-            ClientEvents.UniEvents.Strings = (
-              
-                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-                '= '#39'Grupo'#39';'#13#10'}')
-            object cValor_Desconto: TUniDBFormattedNumberEdit
-              Left = 13
-              Top = 267
-              Width = 160
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              InputRTL = False
-              DataField = 'Valor_Desconto'
-              DataSource = dsPagarReceber
-              ParentFont = False
-              Font.Height = -13
-              Font.Name = 'DejaVu Sans'
-              Font.Style = [fsBold]
-              TabOrder = 4
-              SelectOnFocus = True
-              FieldLabel = 'Valor Desconto'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-              BorderStyle = ubsSolid
-              OnExit = cValor_DescontoExit
-            end
-            object cDesconto_Liquidacao: TUniDBFormattedNumberEdit
-              Left = 13
-              Top = 318
-              Width = 160
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              InputRTL = False
-              DataField = 'Desconto_Liquidacao'
-              DataSource = dsPagarReceber
-              ParentFont = False
-              Font.Height = -13
-              Font.Name = 'DejaVu Sans'
-              Font.Style = [fsBold]
-              TabOrder = 5
-              SelectOnFocus = True
-              FieldLabel = 'Valor Desconto (Dupl)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-              BorderStyle = ubsSolid
-              OnExit = cDesconto_LiquidacaoExit
-            end
-            object cValor_Juros: TUniDBFormattedNumberEdit
-              Left = 13
-              Top = 165
-              Width = 160
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              InputRTL = False
-              DataField = 'Valor_Juros'
-              DataSource = dsPagarReceber
-              ParentFont = False
-              Font.Height = -13
-              Font.Name = 'DejaVu Sans'
-              Font.Style = [fsBold]
-              TabOrder = 2
-              SelectOnFocus = True
-              FieldLabel = 'Valor Juros'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-              BorderStyle = ubsSolid
-              OnExit = cValor_JurosExit
-            end
-            object cValor_Multa: TUniDBFormattedNumberEdit
-              Left = 13
-              Top = 216
-              Width = 160
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              InputRTL = False
-              DataField = 'Valor_Multa'
-              DataSource = dsPagarReceber
-              ParentFont = False
-              Font.Height = -13
-              Font.Name = 'DejaVu Sans'
-              Font.Style = [fsBold]
-              TabOrder = 3
-              SelectOnFocus = True
-              FieldLabel = 'Valor Multa'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-              BorderStyle = ubsSolid
-              OnExit = cValor_MultaExit
-            end
-            object cValor_Total: TUniDBFormattedNumberEdit
-              Left = 13
-              Top = 369
-              Width = 160
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              InputRTL = False
-              DataField = 'Valor_Total'
-              DataSource = dsPagarReceber
-              Alignment = taRightJustify
-              ParentFont = False
-              Font.Height = -13
-              Font.Name = 'DejaVu Sans'
-              Font.Style = [fsBold]
-              TabOrder = 6
-              TabStop = False
-              Color = clActiveCaption
-              ReadOnly = True
-              SelectOnFocus = True
-              FieldLabel = 'Valor Total'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-              BorderStyle = ubsSolid
-            end
-            object cValor_Parcela: TUniDBFormattedNumberEdit
-              Left = 13
-              Top = 64
-              Width = 160
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              InputRTL = False
-              DataField = 'Valor_Parcela'
-              DataSource = dsPagarReceber
-              ParentFont = False
-              Font.Height = -13
-              Font.Name = 'DejaVu Sans'
-              Font.Style = [fsBold]
-              TabOrder = 1
-              SelectOnFocus = True
-              FieldLabel = 'Valor Parcela'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-              BorderStyle = ubsSolid
-              OnExit = cValor_ParcelaExit
-            end
-            object cValor_Documento: TUniDBFormattedNumberEdit
-              Left = 13
-              Top = 13
-              Width = 160
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              InputRTL = False
-              DataField = 'Valor_Documento'
-              DataSource = dsPagarReceber
-              ParentFont = False
-              Font.Height = -13
-              Font.Name = 'DejaVu Sans'
-              Font.Style = [fsBold]
-              TabOrder = 0
-              SelectOnFocus = True
-              FieldLabel = 'Valor Documento'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-              BorderStyle = ubsSolid
-              OnExit = cValor_DocumentoExit
-            end
-            object cValorBaixa: TUniFormattedNumberEdit
-              Left = 13
-              Top = 115
-              Width = 160
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              Alignment = taRightJustify
-              TabOrder = 8
-              FieldLabel = 'Valor Baixa'
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-            end
-            object cSaldo: TUniFormattedNumberEdit
-              Left = 13
-              Top = 420
-              Width = 160
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              BorderStyle = ubsSolid
-              Alignment = taRightJustify
-              ParentFont = False
-              Font.Style = [fsBold]
-              TabOrder = 9
-              TabStop = False
-              Color = clActiveCaption
-              ReadOnly = True
-              SelectOnFocus = True
-              FieldLabel = 'Saldo Aberto'
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-            end
-            object UniFormattedNumberEdit1: TUniFormattedNumberEdit
-              Left = 13
-              Top = 471
-              Width = 160
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              BorderStyle = ubsSolid
-              Alignment = taRightJustify
-              ParentFont = False
-              Font.Style = [fsBold]
-              TabOrder = 10
-              TabStop = False
-              Color = clActiveCaption
-              ReadOnly = True
-              SelectOnFocus = True
-              FieldLabel = 'Saldo Documento'
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-            end
+            BorderStyle = ubsInset
           end
           object cEmpresa: TUniDBLookupComboBox
-            Left = 138
-            Top = 9
-            Width = 568
-            Height = 50
+            Left = 13
+            Top = 41
+            Width = 694
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'CNPJ;Unidade;Estado'
             ListSource = dsEmpresas
             KeyField = 'CNPJ'
             ListFieldIndex = 0
+            BorderStyle = ubsInset
             DataField = 'Empresa'
             DataSource = dsPagarReceber
             AnyMatch = True
@@ -1673,197 +1353,584 @@ object fFinanceiro: TfFinanceiro
             Color = clWindow
             RemoteQuery = True
             FieldLabel = 'Filial'
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 120
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
             OnChange = cContaChange
           end
           object cNumero: TUniDBEdit
-            Left = 12
-            Top = 9
-            Width = 120
-            Height = 50
+            Left = 13
+            Top = 14
+            Width = 255
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Titulo'
             DataSource = dsPagarReceber
-            Alignment = taCenter
+            Alignment = taRightJustify
             ParentFont = False
-            Font.Height = -13
-            Font.Name = 'DejaVu Sans'
+            Font.Height = -19
+            Font.Name = 'Calibri'
             Font.Style = [fsBold]
             TabOrder = 0
             TabStop = False
-            Color = clActiveCaption
+            Color = 15720158
             ReadOnly = True
             UseFieldAlignment = False
             FieldLabel = 'T'#237'tulo'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             DontUpdateOnKeyEvents = True
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
           end
           object cEmbarque: TUniDBLookupComboBox
-            Left = 294
-            Top = 255
-            Width = 412
-            Height = 50
+            Left = 13
+            Top = 257
+            Width = 344
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Referencia;Navio;Processo'
             ListSource = dsEmbarques
             KeyField = 'Registro'
             ListFieldIndex = 0
+            BorderStyle = ubsInset
             ClearButton = True
             DataField = 'Embarque'
             DataSource = dsPagarReceber
             AnyMatch = True
-            TabOrder = 10
+            TabOrder = 14
             Color = clWindow
             RemoteQuery = True
             FieldLabel = 'Embarque'
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 120
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
           end
-          object UniGroupBox3: TUniGroupBox
-            Left = 12
-            Top = 594
-            Width = 694
-            Height = 133
-            Hint = ''
-            ShowHint = True
-            Caption = 'Dados Banc'#225'rios (Baixa)'
-            TabOrder = 18
-            ParentFont = False
-            Font.Style = [fsBold]
-            ClientEvents.UniEvents.Strings = (
-              
-                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-                '= '#39'Grupo'#39';'#13#10'}')
-            object cNumeroPgto: TUniDBEdit
-              Left = 468
-              Top = 64
-              Width = 209
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DataField = 'Forma_PgtoDoc'
-              DataSource = dsPagarReceber
-              TabOrder = 1
-              FieldLabel = 'N'#186' do Documento'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cDataBaixa: TUniDateTimePicker
-              Left = 562
-              Top = 14
-              Width = 115
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DateTime = 45600.000000000000000000
-              DateFormat = 'dd/MM/yyyy'
-              TimeFormat = 'HH:mm:ss'
-              TabOrder = 2
-              FieldLabel = 'Data Baixa'
-              FieldLabelAlign = laTop
-            end
-            object cBanco: TUniDBLookupComboBox
-              Left = 7
-              Top = 14
-              Width = 549
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              ListField = 'Nome;Conta'
-              ListSource = dsBancos
-              KeyField = 'Codigo'
-              ListFieldIndex = 1
-              ClearButton = True
-              DataField = 'Banco'
-              DataSource = dsPagarReceber
-              TabOrder = 3
-              Color = clWindow
-              FieldLabel = 'Banco'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-              NormalizeString = True
-            end
-            object UniDBLookupComboBox11: TUniDBLookupComboBox
-              Left = 7
-              Top = 64
-              Width = 455
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              ListField = 'Codigo;Descricao'
-              ListSource = dsFormaPgto
-              KeyField = 'Codigo'
-              ListFieldIndex = 1
-              ClearButton = True
-              DataField = 'Forma_Pgto'
-              DataSource = dsPagarReceber
-              TabOrder = 4
-              Color = clWindow
-              FieldLabel = 'Forma de Pagamento'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-              NormalizeString = True
-            end
-          end
           object cCodigoBarras: TUniDBEdit
-            Left = 12
-            Top = 452
-            Width = 693
-            Height = 50
+            Left = 13
+            Top = 771
+            Width = 805
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Codigo_Barras'
             DataSource = dsPagarReceber
-            TabOrder = 19
+            TabOrder = 40
             FieldLabel = 'C'#243'digo de Barras'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object UniDBEdit5: TUniDBEdit
-            Left = 12
-            Top = 157
-            Width = 177
-            Height = 50
+            Left = 13
+            Top = 149
+            Width = 344
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Origem_Numero'
             DataSource = dsPagarReceber
-            TabOrder = 20
+            TabOrder = 7
             FieldLabel = 'Nota de Refer'#234'ncia'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object UniDateTimePicker2: TUniDateTimePicker
-            Left = 196
-            Top = 157
-            Width = 120
-            Height = 50
+            Left = 362
+            Top = 149
+            Width = 344
+            Height = 25
             Hint = ''
             ShowHint = True
             DateTime = 45638.000000000000000000
             DateFormat = 'dd/MM/yyyy'
             TimeFormat = 'HH:mm:ss'
-            TabOrder = 21
+            TabOrder = 8
             FieldLabel = 'Data de Refer'#234'ncia'
+            FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
+          end
+          object cSaldoDoc: TUniFormattedNumberEdit
+            Left = 13
+            Top = 635
+            Width = 280
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            BorderStyle = ubsInset
+            Alignment = taRightJustify
+            ParentFont = False
+            Font.Style = [fsBold]
+            TabOrder = 34
+            TabStop = False
+            Color = 15720158
+            ReadOnly = True
+            SelectOnFocus = True
+            FieldLabel = 'Saldo Documento'
+            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
+          end
+          object cValor_Desconto: TUniDBFormattedNumberEdit
+            Left = 13
+            Top = 500
+            Width = 280
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            InputRTL = False
+            DataField = 'Valor_Desconto'
+            DataSource = dsPagarReceber
+            ParentFont = False
+            Font.Height = -13
+            Font.Name = 'DejaVu Sans'
+            Font.Style = [fsBold]
+            TabOrder = 29
+            SelectOnFocus = True
+            FieldLabel = 'Valor Desconto'
+            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
+            BorderStyle = ubsInset
+            OnExit = cValor_DescontoExit
+          end
+          object cDesconto_Liquidacao: TUniDBFormattedNumberEdit
+            Left = 13
+            Top = 527
+            Width = 280
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            InputRTL = False
+            DataField = 'Desconto_Liquidacao'
+            DataSource = dsPagarReceber
+            ParentFont = False
+            Font.Height = -13
+            Font.Name = 'DejaVu Sans'
+            Font.Style = [fsBold]
+            TabOrder = 30
+            SelectOnFocus = True
+            FieldLabel = 'Valor Desconto (Dupl)'
+            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
+            BorderStyle = ubsInset
+            OnExit = cDesconto_LiquidacaoExit
+          end
+          object cValor_Juros: TUniDBFormattedNumberEdit
+            Left = 13
+            Top = 446
+            Width = 280
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            InputRTL = False
+            DataField = 'Valor_Juros'
+            DataSource = dsPagarReceber
+            ParentFont = False
+            Font.Height = -13
+            Font.Name = 'DejaVu Sans'
+            Font.Style = [fsBold]
+            TabOrder = 27
+            SelectOnFocus = True
+            FieldLabel = 'Valor Juros'
+            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
+            BorderStyle = ubsInset
+            OnExit = cValor_JurosExit
+          end
+          object cValor_Multa: TUniDBFormattedNumberEdit
+            Left = 13
+            Top = 473
+            Width = 280
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            InputRTL = False
+            DataField = 'Valor_Multa'
+            DataSource = dsPagarReceber
+            ParentFont = False
+            Font.Height = -13
+            Font.Name = 'DejaVu Sans'
+            Font.Style = [fsBold]
+            TabOrder = 28
+            SelectOnFocus = True
+            FieldLabel = 'Valor Multa'
+            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
+            BorderStyle = ubsInset
+            OnExit = cValor_MultaExit
+          end
+          object cValor_Total: TUniDBFormattedNumberEdit
+            Left = 13
+            Top = 554
+            Width = 280
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            InputRTL = False
+            DataField = 'Valor_Total'
+            DataSource = dsPagarReceber
+            Alignment = taRightJustify
+            ParentFont = False
+            Font.Height = -13
+            Font.Name = 'DejaVu Sans'
+            Font.Style = [fsBold]
+            TabOrder = 31
+            TabStop = False
+            Color = 15720158
+            ReadOnly = True
+            SelectOnFocus = True
+            FieldLabel = 'Valor Total'
+            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
+            BorderStyle = ubsInset
+          end
+          object cValor_Parcela: TUniDBFormattedNumberEdit
+            Left = 13
+            Top = 392
+            Width = 280
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            InputRTL = False
+            DataField = 'Valor_Parcela'
+            DataSource = dsPagarReceber
+            ParentFont = False
+            Font.Height = -13
+            Font.Name = 'DejaVu Sans'
+            Font.Style = [fsBold]
+            TabOrder = 25
+            SelectOnFocus = True
+            FieldLabel = 'Valor Parcela'
+            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
+            BorderStyle = ubsInset
+            OnExit = cValor_ParcelaExit
+          end
+          object cValor_Documento: TUniDBFormattedNumberEdit
+            Left = 13
+            Top = 365
+            Width = 280
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            InputRTL = False
+            DataField = 'Valor_Documento'
+            DataSource = dsPagarReceber
+            ParentFont = False
+            Font.Height = -13
+            Font.Name = 'DejaVu Sans'
+            Font.Style = [fsBold]
+            TabOrder = 21
+            SelectOnFocus = True
+            FieldLabel = 'Valor Documento'
+            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
+            BorderStyle = ubsInset
+            OnExit = cValor_DocumentoExit
+          end
+          object cValorBaixa: TUniFormattedNumberEdit
+            Left = 13
+            Top = 419
+            Width = 280
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            BorderStyle = ubsInset
+            Alignment = taRightJustify
+            TabOrder = 26
+            FieldLabel = 'Valor Baixa Autom'#225'tica'
+            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
+          end
+          object cSaldo: TUniFormattedNumberEdit
+            Left = 13
+            Top = 608
+            Width = 280
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            BorderStyle = ubsInset
+            Alignment = taRightJustify
+            ParentFont = False
+            Font.Style = [fsBold]
+            TabOrder = 33
+            TabStop = False
+            Color = 15720158
+            ReadOnly = True
+            SelectOnFocus = True
+            FieldLabel = 'Saldo Aberto'
+            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
+          end
+          object cNumeroPgto: TUniDBEdit
+            Left = 514
+            Top = 689
+            Width = 304
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            DataField = 'Forma_PgtoDoc'
+            DataSource = dsPagarReceber
+            TabOrder = 38
+            FieldLabel = 'N'#186' do Documento'
+            FieldLabelWidth = 90
+            FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
+          end
+          object cDataBaixa: TUniDateTimePicker
+            Left = 514
+            Top = 662
+            Width = 304
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            DateTime = 45600.000000000000000000
+            DateFormat = 'dd/MM/yyyy'
+            TimeFormat = 'HH:mm:ss'
+            TabOrder = 36
+            FieldLabel = 'Data Baixa'
+            FieldLabelWidth = 90
+            BorderStyle = ubsInset
+          end
+          object cBanco: TUniDBLookupComboBox
+            Left = 13
+            Top = 662
+            Width = 495
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListField = 'Nome;Conta'
+            ListSource = dsBancos
+            KeyField = 'Codigo'
+            ListFieldIndex = 1
+            BorderStyle = ubsInset
+            ClearButton = True
+            DataField = 'Banco'
+            DataSource = dsPagarReceber
+            TabOrder = 35
+            Color = clWindow
+            FieldLabel = 'Banco'
+            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
+            NormalizeString = True
+          end
+          object UniDBLookupComboBox11: TUniDBLookupComboBox
+            Left = 13
+            Top = 689
+            Width = 495
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListField = 'Codigo;Descricao'
+            ListSource = dsFormaPgto
+            KeyField = 'Codigo'
+            ListFieldIndex = 1
+            BorderStyle = ubsInset
+            ClearButton = True
+            DataField = 'Forma_Pgto'
+            DataSource = dsPagarReceber
+            TabOrder = 37
+            Color = clWindow
+            FieldLabel = 'Forma Pagamento'
+            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
+            NormalizeString = True
+          end
+          object cPago_Cliente: TUniDBCheckBox
+            Left = 715
+            Top = 126
+            Width = 113
+            Height = 17
+            Cursor = crHandPoint
+            Hint = ''
+            ShowHint = True
+            DataField = 'Pago_Cliente'
+            DataSource = dsPagarReceber
+            Caption = 'Pago Pelo Cliente'
+            TabOrder = 6
+            ParentColor = False
+            Color = clBtnFace
+            FieldLabelWidth = 120
+            FieldLabelSeparator = '     '
+          end
+          object cRecuperavel: TUniDBCheckBox
+            Left = 715
+            Top = 369
+            Width = 94
+            Height = 17
+            Cursor = crHandPoint
+            Hint = ''
+            ShowHint = True
+            DataField = 'Recuperavel'
+            DataSource = dsPagarReceber
+            Caption = 'Recuper'#225'vel'
+            TabOrder = 24
+            ParentColor = False
+            Color = clBtnFace
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
+          object cProvisorio: TUniDBCheckBox
+            Left = 715
+            Top = 180
+            Width = 143
+            Height = 17
+            Cursor = crHandPoint
+            Hint = ''
+            ShowHint = True
+            DataField = 'Provisorio'
+            DataSource = dsPagarReceber
+            Caption = 'Documerno Provis'#243'rio'
+            TabOrder = 10
+            ParentColor = False
+            Color = clBtnFace
+            FieldLabelWidth = 120
+            FieldLabelAlign = laTop
+            FieldLabelSeparator = ' '
+          end
+          object UniDBCheckBox1: TUniDBCheckBox
+            Left = 715
+            Top = 314
+            Width = 143
+            Height = 17
+            Cursor = crHandPoint
+            Hint = ''
+            ShowHint = True
+            DataField = 'Permuta_Recebimento'
+            DataSource = dsPagarReceber
+            Caption = 'Permuta de Recebimento'
+            TabOrder = 18
+            ParentColor = False
+            Color = clBtnFace
+            FieldLabelWidth = 120
+            FieldLabelAlign = laTop
+            FieldLabelSeparator = ' '
+          end
+          object UniDBFormattedNumberEdit1: TUniDBFormattedNumberEdit
+            Left = 299
+            Top = 365
+            Width = 179
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            InputRTL = False
+            DataField = 'Taxa_ME'
+            DataSource = dsPagarReceber
+            ParentFont = False
+            Font.Height = -13
+            Font.Name = 'DejaVu Sans'
+            Font.Style = [fsBold]
+            TabOrder = 22
+            SelectOnFocus = True
+            FieldLabel = 'Taxa (ME)'
+            FieldLabelWidth = 60
+            FieldLabelSeparator = ' '
+            DecimalPrecision = 4
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
+            BorderStyle = ubsInset
+            OnExit = cValor_DocumentoExit
+          end
+          object UniDBFormattedNumberEdit2: TUniDBFormattedNumberEdit
+            Left = 483
+            Top = 365
+            Width = 224
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            InputRTL = False
+            DataField = 'Valor_ME'
+            DataSource = dsPagarReceber
+            ParentFont = False
+            Font.Height = -13
+            Font.Name = 'DejaVu Sans'
+            Font.Style = [fsBold]
+            TabOrder = 23
+            SelectOnFocus = True
+            FieldLabel = 'Valor (ME)'
+            FieldLabelWidth = 60
+            FieldLabelSeparator = ' '
+            DecimalPrecision = 4
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
+            BorderStyle = ubsInset
+            OnExit = cValor_DocumentoExit
+          end
+          object cValor_Baixado: TUniFormattedNumberEdit
+            Left = 13
+            Top = 581
+            Width = 280
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            BorderStyle = ubsInset
+            Alignment = taRightJustify
+            ParentFont = False
+            Font.Style = [fsBold]
+            TabOrder = 32
+            TabStop = False
+            Color = 15720158
+            ReadOnly = True
+            SelectOnFocus = True
+            FieldLabel = 'Valor Baixado'
+            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
+          end
+          object bVeiculo: TUniButton
+            Left = 715
+            Top = 284
+            Width = 100
+            Height = 26
+            Hint = ''
+            ShowHint = True
+            Caption = 'Dados Banc'#225'rios'
+            TabOrder = 16
+          end
+          object UniButton1: TUniButton
+            Left = 715
+            Top = 338
+            Width = 100
+            Height = 26
+            Hint = ''
+            ShowHint = True
+            Caption = 'Parcelas'
+            TabOrder = 20
+          end
+        end
+        object UniContainerPanel1: TUniContainerPanel
+          Left = 364
+          Top = 979
+          Width = 256
+          Height = 44
+          Hint = ''
+          ParentColor = False
+          TabOrder = 1
         end
       end
     end

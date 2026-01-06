@@ -350,6 +350,7 @@ object fCadDestinatarios: TfCadDestinatarios
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
             OnChangeValue = cCodigoChangeValue
           end
           object cNome: TUniDBEdit
@@ -369,6 +370,7 @@ object fCadDestinatarios: TfCadDestinatarios
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cNome_Fantasia: TUniDBEdit
             Left = 23
@@ -387,6 +389,7 @@ object fCadDestinatarios: TfCadDestinatarios
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cRua: TUniDBEdit
             Left = 294
@@ -405,6 +408,7 @@ object fCadDestinatarios: TfCadDestinatarios
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cRua_Numero: TUniDBEdit
             Left = 23
@@ -423,6 +427,7 @@ object fCadDestinatarios: TfCadDestinatarios
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cComplemento: TUniDBEdit
             Left = 189
@@ -441,6 +446,7 @@ object fCadDestinatarios: TfCadDestinatarios
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cBairro: TUniDBEdit
             Left = 23
@@ -459,6 +465,7 @@ object fCadDestinatarios: TfCadDestinatarios
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cMunicipio: TUniDBLookupComboBox
             Left = 157
@@ -471,6 +478,7 @@ object fCadDestinatarios: TfCadDestinatarios
             ListSource = dsMunicipios
             KeyField = 'Codigo'
             ListFieldIndex = 0
+            BorderStyle = ubsInset
             DataField = 'Municipio'
             DataSource = dsDestinatarios
             ParentFont = False
@@ -494,6 +502,7 @@ object fCadDestinatarios: TfCadDestinatarios
             ListSource = dsEstados
             KeyField = 'UF'
             ListFieldIndex = 0
+            BorderStyle = ubsInset
             DataField = 'Estado'
             DataSource = dsDestinatarios
             ParentFont = False
@@ -525,6 +534,7 @@ object fCadDestinatarios: TfCadDestinatarios
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cTelefone1: TUniDBEdit
             Left = 256
@@ -543,6 +553,7 @@ object fCadDestinatarios: TfCadDestinatarios
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cTelefone2: TUniDBEdit
             Left = 412
@@ -561,6 +572,7 @@ object fCadDestinatarios: TfCadDestinatarios
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cContato: TUniDBEdit
             Left = 23
@@ -579,10 +591,11 @@ object fCadDestinatarios: TfCadDestinatarios
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cData_Cadastro: TUniDBDateTimePicker
             Left = 164
-            Top = 24
+            Top = 26
             Width = 165
             Height = 50
             Hint = ''
@@ -595,6 +608,7 @@ object fCadDestinatarios: TfCadDestinatarios
             TabOrder = 14
             ParentFont = False
             Font.Style = [fsBold]
+            BorderStyle = ubsInset
             FieldLabel = 'Data do Cadastro'
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
@@ -604,7 +618,7 @@ object fCadDestinatarios: TfCadDestinatarios
             Left = 605
             Top = 11
             Width = 216
-            Height = 448
+            Height = 467
             Hint = ''
             ShowHint = True
             Caption = 'Perfil / Caracter'#237'sticas'
@@ -1009,6 +1023,24 @@ object fCadDestinatarios: TfCadDestinatarios
               FieldLabelWidth = 120
               FieldLabelSeparator = ' '
             end
+            object UniDBCheckBox10: TUniDBCheckBox
+              Left = 13
+              Top = 437
+              Width = 190
+              Height = 18
+              Hint = ''
+              ShowHint = True
+              DataField = 'Atendente_Call'
+              DataSource = dsDestinatarios
+              Caption = 'Atendente de Call Center'
+              ParentFont = False
+              Font.Height = -13
+              TabOrder = 23
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+            end
           end
           object gReg: TUniGroupBox
             Left = 23
@@ -1319,6 +1351,7 @@ object fCadDestinatarios: TfCadDestinatarios
             ListSource = dsPaises
             KeyField = 'Codigo'
             ListFieldIndex = 0
+            BorderStyle = ubsInset
             DataField = 'Pais'
             DataSource = dsDestinatarios
             ParentFont = False
@@ -1352,6 +1385,7 @@ object fCadDestinatarios: TfCadDestinatarios
             ListSource = dsRamo
             KeyField = 'Codigo'
             ListFieldIndex = 0
+            BorderStyle = ubsInset
             DataField = 'Ramo_Atividade'
             DataSource = dsDestinatarios
             ParentFont = False
@@ -1375,6 +1409,7 @@ object fCadDestinatarios: TfCadDestinatarios
             ListSource = dsTipoProduto
             KeyField = 'Codigo'
             ListFieldIndex = 0
+            BorderStyle = ubsInset
             DataField = 'Tipo_Produto'
             DataSource = dsDestinatarios
             ParentFont = False

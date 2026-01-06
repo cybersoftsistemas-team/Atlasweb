@@ -525,7 +525,7 @@ begin
      ContribIPI.open;
 
      ClassTrib.sql.clear;
-     ClassTrib.sql.add('select Codigo, Descricao from ClassificacaoTributaria order by Codigo');
+     ClassTrib.sql.add('select Codigo, Descricao from ClassificacaoTributEmp order by Codigo');
      ClassTrib.open;
 end;
 

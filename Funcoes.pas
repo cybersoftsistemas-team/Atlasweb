@@ -4,8 +4,8 @@ interface
 
 uses
     SysUtils, Windows, FireDAC.Comp.Client, Dialogs, MaskUtils, System.Variants, DB, Forms, uniSpeedButton, uniPanel, UniPageControl, System.Classes,
-    uniGUIForm, uniGUIFrame, uniMemo, DBCommon, uniDBLookUpComboBox, uniDBComboBox, uniComboBox, uniDBDateTimePicker, uniDBEdit, uniEdit,
-    uniGuiDialogs, TypInfo, uniSweetAlert, FireDAC.Stan.Param, uniMainMenu, uniDBNavigator, uniButton, uniScrollBox, System.RegularExpressions, System.Rtti;
+    uniGUIForm, uniGUIFrame, uniMemo, DBCommon, uniDBLookUpComboBox, uniDBComboBox, uniComboBox, uniDBDateTimePicker, uniDBEdit, uniEdit, CalcExpress,
+    uniGuiDialogs, TypInfo, uniSweetAlert, FireDAC.Stan.Param, uniMainMenu, uniDBNavigator, uniButton, uniScrollBox, System.RegularExpressions, System.Rtti, uniStringGrid;
 
 
 // Funções de checagens.
@@ -24,6 +24,10 @@ procedure LimpaMemoria;
 procedure AtivaEdicao(Nav, bAdi, bEdi, bExc, bGra, bCan: TObject; aPageControl: TuniPageControl);
 procedure AtivaBotoes(Nav, bAdi, bEdi, bExc, bGra, bCan: TObject);
 function Calculo(Formula: widestring): string;
+function Percentual(Valor:real;Percent:Real):Real;
+function CalculaMacro(pForm: TComponent; pFormula: String): Real;
+function SubstituirCampos(pForm: TComponent; pCampo: string): string;
+function SubstituirCondicao(Campo: string): string;
 
 // Funções de strings.
 function QuebraString(BaseString, BreakString: string): TStringList;
@@ -57,6 +61,13 @@ function ContaPai(Conta, Mascara: String; Nivel:Integer): String;
 function GeraLote(pData: TDate; pEmpresa, pDescricao, pOrigem: string): integer;
 function GeraNumeroLan(pLote:integer; pData:TDate):integer;
 procedure LancamentoContabil(pOrigem, pNumero, pTipo: string; pMetodo:integer);
+
+// Funções de estoque.
+function EstoqueProduto(pProduto: Integer): Real;
+function InventarioProduto(pProduto: Integer): Real;
+function EstoqueDetalhe(pProduto: Integer; pLote: string): Real;
+function EstoqueProdutoEmb(pProduto, pEmbarque: Integer): Real;
+function InventarioProdutoEmb(pProduto, pEmbarque: Integer): Real;
 
 implementation
 
@@ -602,16 +613,16 @@ end;
 // Verifica se campo esta vazio.
 function CampoVazio(Campo:TObject; msg:string): boolean;
 var
-   vazio:boolean;
+   Vazio:boolean;
    Alerta: TUniSweetAlert;
 begin
      Vazio := false;
-     if Campo is TuniDBLookUpComboBox      then vazio := TuniDBLookUpComboBox(Campo).Text = '';
-     if Campo is TuniDBEdit                then vazio := TuniDBEdit(Campo).Text = '';
-     if Campo is TUniDBFormattedNumberEdit then vazio := (TUniDBFormattedNumberEdit(Campo).Text = '') or (TUniDBFormattedNumberEdit(Campo).text = '0');
-     if Campo is TuniDBComboBox            then vazio := TuniDBComboBox(Campo).Text = '';
-     if Campo is TuniComboBox              then vazio := TuniComboBox(Campo).Text = '';
-     if Campo is TuniDBDateTimePicker      then vazio := TuniDBDateTimePicker(Campo).DateTime = 0;
+     if Campo is TuniDBLookUpComboBox      then Vazio := TuniDBLookUpComboBox(Campo).Text = '';
+     if Campo is TuniDBEdit                then Vazio := TuniDBEdit(Campo).Text = '';
+     if Campo is TUniDBFormattedNumberEdit then Vazio := (TUniDBFormattedNumberEdit(Campo).Text = '') or (TUniDBFormattedNumberEdit(Campo).text = '0');
+     if Campo is TuniDBComboBox            then Vazio := TuniDBComboBox(Campo).Text = '';
+     if Campo is TuniComboBox              then Vazio := TuniComboBox(Campo).Text = '';
+     if Campo is TuniDBDateTimePicker      then Vazio := TuniDBDateTimePicker(Campo).DateTime = 0;
 
      if vazio then begin
         Alerta := TuniSweetAlert.create(nil);
@@ -631,7 +642,8 @@ begin
         if Campo is TuniDBDateTimePicker      then TuniDBDateTimePicker(Campo).setfocus;
         if Campo is TUniDBFormattedNumberEdit then TUniDBFormattedNumberEdit(Campo).SetFocus;
      end;
-     CampoVazio := vazio;
+     
+     CampoVazio := Vazio;
 end;
 
 // Compara dois campos do mesmo tipo.
@@ -671,7 +683,7 @@ var
     Alerta: TUniSweetAlert;
     mCond: boolean;
 begin
-     mCond := false;
+     mCond := true;
      if Condicao = '='  then mCond := Valor1 =  Valor2;
      if Condicao = '>'  then mCond := Valor1 >  Valor2;
      if Condicao = '<'  then mCond := Valor1 <  Valor2;
@@ -1660,6 +1672,406 @@ begin
         Result := QuotedStr('');
      End;   
 end;
+
+// Retorna a porcentagem de um valor
+function Percentual(Valor:real;Percent:Real):Real;
+begin
+      Percent := Percent / 100;
+      Try
+         Valor := Valor * Percent;
+      Finally
+         Result := Valor;
+      End;
+end;
+
+// Apura o estoque disponível de um produto informado.
+function EstoqueProduto(pProduto: Integer): Real;
+var
+   tEstoque: TFDQuery;
+begin
+     tEstoque := TFDQuery.Create(nil);
+     with tEstoque do begin
+          Connection := uniMainModule.Conecta;
+          sql.Clear;
+          sql.Add('select Disponivel = cast((isnull((select sum(Quantidade)');
+          sql.Add('                                  from NotasItens');
+          sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
+          sql.Add('                                  and isnull(ES, 0) = 0');
+          sql.Add('                                  and isnull(Movimenta_Estoque, 0) = 1');
+          sql.Add('                                  and isnull(Cancelada, 0) = 0');
+          sql.Add('                                  and isnull(Denegada, 0) = 0), 0) +');
+          sql.Add('                                  isnull((select sum(Quantidade) from NotasTerceirosItens where Codigo_Mercadoria = :pCodigo and Movimenta_Estoque = 1), 0) +');
+          sql.Add('                          isnull((select sum(Quantidade_Entrada)');
+          sql.Add('                                  from ProdutosTransferencia');
+          sql.Add('                                  where Produto_Entrada = :pCodigo), 0) -');
+          sql.Add('                          isnull((select sum(Quantidade)');
+          sql.Add('                                  from NotasItens');
+          sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
+          sql.Add('                                  and isnull(ES, 0) = 1');
+          sql.Add('                                  and isnull(Movimenta_Estoque, 0) = 1');
+          sql.Add('                                  and isnull(Cancelada, 0) = 0');
+          sql.Add('                                  and isnull(Denegada, 0) = 0), 0) -');
+          sql.Add('                          isnull((select sum(Quantidade)');
+          sql.Add('                                  from PedidosNFItens');
+          sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
+          sql.Add('                                  and isnull(ES, 0) = 1');
+          sql.Add('                                  and isnull(Movimenta_Estoque, 0) = 1), 0)) -');
+          sql.Add('                          isnull((select sum(Quantidade_Entrada)');
+          sql.Add('                                  from ProdutosTransferencia');
+          sql.Add('                                  where Produto_Saida = :pCodigo), 0) as decimal(14,3)) -');
+          sql.Add('                          isnull((select sum(Quantidade)');
+          sql.Add('                                  from PedidosRepresentantesItens pri');
+          sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
+          sql.Add('                                  and isnull(Faturamento, 0) = 0');
+          sql.Add('                                  and isnull(Faturado, 0) = 0');
+          sql.Add('                                  and (select isnull(Cancelado, 0) from PedidosRepresentantes pr where pr.Pedido = pri.Pedido) = 0');
+          sql.Add('                                  and (select Local from PedidosRepresentantes pr where pr.Pedido = pri.Pedido) < 4), 0)');
+          ParamByName('pCodigo').AsInteger := pProduto;
+          //sql.SavetoFile('c:\temp\Funcoes_Apura_Estoque.sql');
+          open;
+          EstoqueProduto := FieldByName('Disponivel').Value;
+          close;
+     end;
+end;
+
+// Apura o estoque disponível de um produto informado (Por Embarque).
+function EstoqueProdutoEmb(pProduto, pEmbarque: Integer): Real;
+var
+   tEstoque: TFDQuery;
+begin
+     tEstoque := TFDQuery.Create(nil);
+     with tEstoque do begin
+          Connection := uniMainModule.Conecta;
+          sql.Clear;
+          sql.Add('select Disponivel = cast((isnull((select sum(Quantidade)');
+          sql.Add('                                  from NotasItens');
+          sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
+          sql.Add('                                  and isnull(ES, 0) = 0');
+          sql.Add('                                  and isnull(Movimenta_Estoque, 0) = 1');
+          sql.Add('                                  and isnull(Cancelada, 0) = 0');
+          sql.Add('                                  and isnull(Denegada, 0) = 0');
+          sql.add('                                  and Embarque = :pEmbarque), 0) +');
+          sql.Add('                                  isnull((select sum(Quantidade) from NotasTerceirosItens where Codigo_Mercadoria = :pCodigo and Movimenta_Estoque = 1), 0) +');
+          sql.Add('                          isnull((select sum(Quantidade_Entrada)');
+          sql.Add('                                  from ProdutosTransferencia');
+          sql.Add('                                  where Produto_Entrada = :pCodigo), 0) -');
+          sql.Add('                          isnull((select sum(Quantidade)');
+          sql.Add('                                  from NotasItens');
+          sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
+          sql.Add('                                  and isnull(ES, 0) = 1');
+          sql.Add('                                  and isnull(Movimenta_Estoque, 0) = 1');
+          sql.Add('                                  and isnull(Cancelada, 0) = 0');
+          sql.Add('                                  and isnull(Denegada, 0) = 0');
+          sql.add('                                  and Embarque = :pEmbarque), 0) -');
+          sql.Add('                          isnull((select sum(Quantidade)');
+          sql.Add('                                  from PedidosNFItens');
+          sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
+          sql.Add('                                  and isnull(ES, 0) = 1');
+          sql.Add('                                  and isnull(Movimenta_Estoque, 0) = 1');
+          sql.add('                                  and Embarque = :pEmbarque), 0)) -');
+          sql.Add('                          isnull((select sum(Quantidade_Entrada)');
+          sql.Add('                                  from ProdutosTransferencia');
+          sql.Add('                                  where Produto_Saida = :pCodigo), 0) as decimal(14,3)) -');
+          sql.Add('                          isnull((select sum(Quantidade)');
+          sql.Add('                                  from PedidosRepresentantesItens pri');
+          sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
+          sql.Add('                                  and isnull(Faturamento, 0) = 0');
+          sql.Add('                                  and isnull(Faturado, 0) = 0');
+          sql.Add('                                  and (select isnull(Cancelado, 0) from PedidosRepresentantes pr where pr.Pedido = pri.Pedido) = 0');
+          sql.Add('                                  and (select Local from PedidosRepresentantes pr where pr.Pedido = pri.Pedido) < 4), 0)');
+          ParamByName('pCodigo').AsInteger   := pProduto;
+          ParamByName('pEmbarque').AsInteger := pEmbarque;
+          //sql.SavetoFile('c:\temp\Funcoes_Apura_Estoque_Embarque.sql');
+          open;
+          EstoqueProdutoEmb := FieldByName('Disponivel').Value;
+          close;
+     end;
+end;
+
+// Apura o inventario disponível de um produto informado.
+function InventarioProduto(pProduto: Integer): Real;
+var
+   tInventario: TFDQuery;
+begin
+     tInventario := TFDQuery.Create(nil);
+     with tInventario do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.Add('select Disponivel = cast((isnull((select sum(Quantidade)');
+          sql.Add('                                  from NotasItens');
+          sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
+          sql.Add('                                  and isnull(ES, 0) = 0');
+          sql.Add('                                  and isnull(Movimenta_Inventario, 0) = 1');
+          sql.Add('                                  and isnull(Cancelada, 0) = 0');
+          sql.Add('                                  and isnull(Denegada, 0) = 0), 0) +');
+          sql.Add('                                  isnull((select sum(Quantidade) from NotasTerceirosItens where Codigo_Mercadoria = :pCodigo and Movimenta_Inventario = 1), 0) +');
+          sql.Add('                          isnull((select sum(Quantidade_Entrada)');
+          sql.Add('                                  from ProdutosTransferencia');
+          sql.Add('                                  where Produto_Entrada = :pCodigo), 0) -');
+          sql.Add('                          isnull((select sum(Quantidade)');
+          sql.Add('                                  from NotasItens');
+          sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
+          sql.Add('                                  and isnull(ES, 0) = 1');
+          sql.Add('                                  and isnull(Movimenta_Inventario, 0) = 1');
+          sql.Add('                                  and isnull(Cancelada, 0) = 0');
+          sql.Add('                                  and isnull(Denegada, 0) = 0), 0) -');
+          sql.Add('                          isnull((select sum(Quantidade)');
+          sql.Add('                                  from PedidosNFItens');
+          sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
+          sql.Add('                                  and isnull(ES, 0) = 1');
+          sql.Add('                                  and isnull(Movimenta_Inventario, 0) = 1), 0)) -');
+          sql.Add('                          isnull((select sum(Quantidade_Entrada)');
+          sql.Add('                                  from ProdutosTransferencia');
+          sql.Add('                                  where Produto_Saida = :pCodigo), 0) as decimal(14,3)) -');
+          sql.Add('                          isnull((select sum(Quantidade)');
+          sql.Add('                                  from PedidosRepresentantesItens pri');
+          sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
+          sql.Add('                                  and isnull(Faturamento, 0) = 0');
+          sql.Add('                                  and isnull(Faturado, 0) = 0');
+          sql.Add('                                  and (select isnull(Cancelado, 0) from PedidosRepresentantes pr where pr.Pedido = pri.Pedido) = 0');
+          sql.Add('                                  and (select Local from PedidosRepresentantes pr where pr.Pedido = pri.Pedido) < 4), 0)');
+          ParamByName('pCodigo').AsInteger := pProduto;
+          //sql.SavetoFile('c:\temp\Funcoes_Apura_Estoque.sql');
+          open;
+          InventarioProduto := FieldByName('Disponivel').Value;
+          close;
+     end;
+end;
+
+// Apura o inventario disponível de um produto informado (Por Embarque).
+function InventarioProdutoEmb(pProduto, pEmbarque: Integer): Real;
+var
+   tEstoque: TFDQuery;
+begin
+     tEstoque := TFDQuery.Create(nil);
+     with tEstoque do begin
+          Connection := uniMainModule.Conecta;
+          sql.Clear;
+          sql.Add('select Disponivel = cast((isnull((select sum(Quantidade)');
+          sql.Add('                                  from NotasItens');
+          sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
+          sql.Add('                                  and isnull(ES, 0) = 0');
+          sql.Add('                                  and isnull(Movimenta_Inventario, 0) = 1');
+          sql.Add('                                  and isnull(Cancelada, 0) = 0');
+          sql.Add('                                  and isnull(Denegada, 0) = 0');
+          sql.add('                                  and Embarque = :pEmbarque), 0) +');
+          sql.Add('                                  isnull((select sum(Quantidade) from NotasTerceirosItens where Codigo_Mercadoria = :pCodigo and Movimenta_Inventario = 1), 0) +');
+          sql.Add('                          isnull((select sum(Quantidade_Entrada)');
+          sql.Add('                                  from ProdutosTransferencia');
+          sql.Add('                                  where Produto_Entrada = :pCodigo), 0) -');
+          sql.Add('                          isnull((select sum(Quantidade)');
+          sql.Add('                                  from NotasItens');
+          sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
+          sql.Add('                                  and isnull(ES, 0) = 1');
+          sql.Add('                                  and isnull(Movimenta_Inventario, 0) = 1');
+          sql.Add('                                  and isnull(Cancelada, 0) = 0');
+          sql.Add('                                  and isnull(Denegada, 0) = 0');
+          sql.add('                                  and Embarque = :pEmbarque), 0) -');
+          sql.Add('                          isnull((select sum(Quantidade)');
+          sql.Add('                                  from PedidosNFItens');
+          sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
+          sql.Add('                                  and isnull(ES, 0) = 1');
+          sql.Add('                                  and isnull(Movimenta_Inventario, 0) = 1');
+          sql.add('                                  and Embarque = :pEmbarque), 0)) -');
+          sql.Add('                          isnull((select sum(Quantidade_Entrada)');
+          sql.Add('                                  from ProdutosTransferencia');
+          sql.Add('                                  where Produto_Saida = :pCodigo), 0) as decimal(14,3)) -');
+          sql.Add('                          isnull((select sum(Quantidade)');
+          sql.Add('                                  from PedidosRepresentantesItens pri');
+          sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
+          sql.Add('                                  and isnull(Faturamento, 0) = 0');
+          sql.Add('                                  and isnull(Faturado, 0) = 0');
+          sql.Add('                                  and (select isnull(Cancelado, 0) from PedidosRepresentantes pr where pr.Pedido = pri.Pedido) = 0');
+          sql.Add('                                  and (select Local from PedidosRepresentantes pr where pr.Pedido = pri.Pedido) < 4), 0)');
+          ParamByName('pCodigo').AsInteger   := pProduto;
+          ParamByName('pEmbarque').AsInteger := pEmbarque;
+          //sql.SavetoFile('c:\temp\Funcoes_Apura_Inventario_Embarque.sql');
+          open;
+          InventarioProdutoEmb := FieldByName('Disponivel').Value;
+          close;
+     end;
+end;
+
+// Apura o estoque disponível de um produto por detalhe.
+function EstoqueDetalhe(pProduto: Integer; pLote: string): Real;
+var
+   tDetalhe: TFDQuery;
+begin
+     tDetalhe := TFDQuery.Create(nil);
+     with tDetalhe do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select Disponivel = (select isnull(sum(Quantidade_Entrada),0) from ProdutosDetalhe     where Produto = :pProduto and Lote = :pLote) -');
+          sql.add('                  ( (select isnull(sum(Quantidade),0)         from NotasItensDetalhe   where Produto = :pProduto and Lote = :pLote and isnull(Cancelada, 0) = 0 and isnull(Denegada, 0) = 0) +');
+          SQL.add('                    (select isnull(sum(Quantidade),0)         from PedidosItensDetalhe where Produto = :pProduto and Lote = :pLote) )');
+          parambyname('pProduto').AsInteger := pProduto;
+          parambyname('pLote').AsString     := pLote;
+          open;
+          EstoqueDetalhe := fieldbyname('Disponivel').asfloat;
+     end;
+end;
+
+// Efetua a conversão do texto da formula para valores.
+function CalculaMacro(pForm: TComponent; pFormula: String): Real;
+var
+   mCalc: String;
+   mResultado: real;
+   tCampos: TFDQuery;
+   Macro: TCalcExpress;
+   Memo: TUniMemo;
+   Grade: TuniStringGrid;
+begin
+     tCampos := TFDQuery.Create(nil);
+     Macro   := TCalcExpress.create(nil);
+     with tCampos do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select Campo');
+          sql.add('      ,Tabela');
+          sql.add('      ,Campo_Chave');
+          sql.add('      ,Pesquisa');
+          sql.add('      ,Percentual');
+          sql.add('from Campos');
+          sql.add('where Campo in('+ListaCampos(pFormula, 0)+')');
+          sql.add('order by Tabela');
+          open;
+
+          // Convertendo a formula do campo.
+          mCalc := StringReplace(pFormula, #13,'',[rfReplaceAll]);
+          mCalc := StringReplace(mCalc   , #12,'',[rfReplaceAll]);
+          mCalc := StringReplace(mCalc   , #10,'',[rfReplaceAll]);
+          first;
+          while not Eof do begin
+                mCalc := stringreplace(mCalc, fieldbyname('Campo').AsString, SubstituirCampos(pForm, fieldbyname('Campo').AsString), [rfReplaceAll]);
+                tcampos.Next;
+          end;
+          mCalc := SubstituirCondicao(mCalc);
+          mCalc := stringreplace(mCalc,' ', '', [rfReplaceAll]);
+     end;
+     
+     try
+         Macro.Formula := mCalc;
+         mResultado    := Macro.Calc([0]);
+         if mResultado < 0 then mResultado := 0;
+     except on E:Exception do 
+         begin 
+              Memo := pForm.FindComponent('cLog') as TUniMemo;
+              if Assigned(Memo) then begin
+                 Memo.Lines.Add('');
+                 Memo.Lines.Add(stringofchar('>', 30)+' ERRO NA FÓRMULA DO CAMPO '+stringofchar('<', 30));
+                 Memo.Lines.Add(pFormula);
+                 Memo.Lines.add(E.Message);
+              end;
+              mResultado := 0;
+         end;
+     end;
+     Grade := pForm.FindComponent('gFormula') as TUniStringGrid;
+     if Assigned(Grade) then begin
+        Grade.Cells[2, Grade.RowCount-1] := mCalc;
+        Grade.Cells[3, Grade.RowCount-1] := floattostr(mResultado);
+        Grade.RowCount                   := Grade.RowCount + 1;
+     end;
+     CalculaMacro := mResultado;
+end;
+
+function SubstituirCampos(pForm: TComponent; pCampo: string): string;
+var
+  Match: TMatch;
+  CampoNome
+ ,NomeDataSet: string;
+  DataSet: TDataSet;
+  mValor: real;
+begin
+     Result      := '';
+     NomeDataSet := copy(pCampo, 1, pos('_', pCampo)-1);
+     
+     // Localiza componente pelo nome
+     DataSet := TDataSet(pForm.FindComponent(NomeDataset));
+     if not DataSet.Active then begin
+        result := '0';
+        exit;
+     end;
+     // Expressão regular para pegar o texto dentro dos colchetes
+     Match     := TRegEx.Match(pCampo, '\[(.*?)\]');
+     CampoNome := Match.Groups[1].Value;
+     if DataSet.FindField(CampoNome) <> nil then begin
+//showmessageN('DATASET: '+DataSet.FieldByName(CampoNome).AsString +'      CAMPO: '+CampoNome);
+        Result := iif(DataSet.FieldByName(CampoNome).AsString = '', '0', DataSet.FieldByName(CampoNome).AsString);
+     end else begin
+        Result := '0';
+     end;
+end;
+
+function SubstituirCondicao(Campo: string): string;
+var
+   mPosFun
+  ,i: integer;
+   mFuncao
+  ,mFunCondic
+  ,mValorCondic1
+  ,mValorCondic2
+  ,mFunTermo1
+  ,mFunTermo2
+  ,mSinal: string;
+begin
+     result := '';
+     while Pos('{', Campo) > 0 do begin
+           Campo := stringreplace(Campo, 'CONDIÇÃO', '', [rfReplaceAll]);
+           mPosFun := Pos('{', Campo)+1;
+           mFuncao := Copy(Campo, mPosFun, Pos('}', Campo)-mPosFun);
+
+           // Condição da função.
+           mFunCondic := Copy(mFuncao, 1, Pos(';', mFuncao));
+           mFuncao    := StringReplace(mFuncao, mFunCondic, '', [rfReplaceAll]);
+           mFunCondic := StringReplace(mFunCondic, ';', '', [rfReplaceAll]);
+
+           // Primeiro termo da função.
+           mFunTermo1 := Copy(mFuncao, 1, Pos(';', mFuncao));
+           mFuncao    := StringReplace(mFuncao, mFunTermo1, '', [rfReplaceAll] );
+           mFunTermo1 := StringReplace(mFunTermo1, ';', '', [rfReplaceAll] );
+
+           // Segundo termo da função.
+           mFunTermo2 := StringReplace(mFuncao, ';', '', [rfReplaceAll]);
+
+           // Sinal utilizado no teste de condição.
+           mSinal := '';
+           for i := 1 to Length(mFunCondic) do begin
+               if (mFunCondic[i] = '=') or (mFunCondic[i] = '>') or (mFunCondic[i] = '<') then mSinal := mSinal + mFunCondic[i];
+           end;
+
+           // Valores da condição.
+           mValorCondic1 := Copy(mFunCondic, 1, Pos(mSinal, mFunCondic)-1);
+           mValorCondic2 := Copy(mFunCondic, Pos(mSinal, mFunCondic)+Length(mSinal), Length(mFunCondic)-Length(mSinal)-Length(mValorCondic1)) ;
+           mFuncao := '';
+           for i := Pos('{', Campo) to Length(Campo) do begin
+               mFuncao := mFuncao + Campo[i];
+               if Campo[i] = '}' then break;
+           end;
+           if ApenasNumeros(mValorCondic2) <> '' then begin
+              if (mSinal = '=' ) and (StrtoFloat(mValorCondic1) =  StrtoFloat(mValorCondic2)) or
+                 (mSinal = '>' ) and (StrtoFloat(mValorCondic1) >  StrtoFloat(mValorCondic2)) or
+                 (mSinal = '<' ) and (StrtoFloat(mValorCondic1) <  StrtoFloat(mValorCondic2)) or
+                 (mSinal = '<>') and (StrtoFloat(mValorCondic1) <> StrtoFloat(mValorCondic2)) or
+                 (mSinal = '<=') and (StrtoFloat(mValorCondic1) <= StrtoFloat(mValorCondic2)) or
+                 (mSinal = '>=') and (StrtoFloat(mValorCondic1) >= StrtoFloat(mValorCondic2)) then
+                 Campo := StringReplace(Campo, mFuncao, mFunTermo1, [rfReplaceAll])
+              else
+                 Campo := StringReplace(Campo, mFuncao, mFunTermo2, [rfReplaceAll]);
+           end else begin
+              if (mSinal = '=' ) and (mValorCondic1 =  mValorCondic2) or
+                 (mSinal = '>' ) and (mValorCondic1 >  mValorCondic2) or
+                 (mSinal = '<' ) and (mValorCondic1 <  mValorCondic2) or
+                 (mSinal = '<>') and (mValorCondic1 <> mValorCondic2) or
+                 (mSinal = '<=') and (mValorCondic1 <= mValorCondic2) or
+                 (mSinal = '>=') and (mValorCondic1 >= mValorCondic2) then
+                 Campo := StringReplace(Campo, mFuncao, mFunTermo1, [rfReplaceAll])
+              else
+                 Campo := StringReplace(Campo, mFuncao, mFunTermo2, [rfReplaceAll]);
+           end;
+     end;
+     result := Campo;
+end;
+
 
 
 

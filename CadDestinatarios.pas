@@ -315,6 +315,7 @@ type
     UniDBCheckBox7: TUniDBCheckBox;
     UniDBCheckBox8: TUniDBCheckBox;
     UniDBCheckBox9: TUniDBCheckBox;
+    UniDBCheckBox10: TUniDBCheckBox;
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado, Edita:boolean);
     procedure bSalvarClick(Sender: TObject);

@@ -2,7 +2,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
   Left = 0
   Top = 0
   Width = 1407
-  Height = 822
+  Height = 800
   OnCreate = uniFrameCreate
   OnDestroy = uniFrameDestroy
   TabOrder = 0
@@ -143,9 +143,9 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     Left = 0
     Top = 35
     Width = 1407
-    Height = 787
+    Height = 765
     Hint = ''
-    ActivePage = UniTabSheet4
+    ActivePage = TabSheet1
     Plain = True
     Align = alClient
     ClientEvents.UniEvents.Strings = (
@@ -153,14 +153,16 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
         'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
         '= '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 0
+    ExplicitHeight = 787
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitHeight = 759
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
         Width = 1399
-        Height = 732
+        Height = 710
         Hint = ''
         HeaderTitleAlign = taCenter
         TitleFont.Height = -13
@@ -285,11 +287,12 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     object TabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Par'#226'metros Diversos'
+      ExplicitHeight = 759
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
         Width = 1399
-        Height = 759
+        Height = 737
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -299,13 +302,13 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
         TabOrder = 0
         DesignSize = (
           1397
-          757)
-        ScrollHeight = 675
+          735)
+        ScrollHeight = 710
         object pFicha1: TUniPanel
-          Left = 275
-          Top = 20
-          Width = 777
-          Height = 655
+          Left = 235
+          Top = 28
+          Width = 686
+          Height = 682
           Hint = ''
           Enabled = False
           ShowHint = True
@@ -336,11 +339,12 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cDescricao: TUniDBEdit
             Left = 107
             Top = 17
-            Width = 652
+            Width = 565
             Height = 50
             Hint = ''
             ShowHint = True
@@ -351,12 +355,13 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cRateio_PISCOFINSEntrada: TUniDBRadioGroup
-            Left = 17
-            Top = 250
-            Width = 180
-            Height = 53
+            Left = 14
+            Top = 342
+            Width = 160
+            Height = 70
             Hint = ''
             ShowHint = True
             DataField = 'Rateio_PISCOFINSEntrada'
@@ -370,16 +375,15 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             Items.Strings = (
               'Rateado'
               'Calculado')
-            Columns = 2
             Values.Strings = (
               '0'
               '1')
           end
           object cSaida_Entrada: TUniDBRadioGroup
-            Left = 17
+            Left = 14
             Top = 129
-            Width = 180
-            Height = 53
+            Width = 160
+            Height = 70
             Hint = ''
             ShowHint = True
             DataField = 'ES'
@@ -393,17 +397,17 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             Items.Strings = (
               'Entrada'
               'Sa'#237'da')
-            Columns = 2
             Values.Strings = (
               '0'
               '1')
           end
           object cOrigem_ValorUnitario: TUniDBRadioGroup
-            Left = 498
-            Top = 211
-            Width = 261
-            Height = 122
+            Left = 492
+            Top = 517
+            Width = 185
+            Height = 146
             Hint = ''
+            Visible = False
             ShowHint = True
             DataField = 'Origem_ValorUnitario'
             DataSource = dsOperacaoFiscal
@@ -417,40 +421,42 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
               'Utilizar valor de Entrada'
               'Utilizar valor de Venda'
               'Utilizar valor de Custo M'#233'dio'
-              'Utilizar valor da Ficha de Estoque')
+              'Utilizar valor da Ficha de Estoque'
+              'Utilizar o C'#225'lculo Reverso')
             Values.Strings = (
               '0'
               '1'
               '2'
-              '3')
+              '3'
+              '4')
           end
           object cOrigem_AliquotaICMS: TUniDBRadioGroup
-            Left = 498
-            Top = 129
-            Width = 261
+            Left = 14
+            Top = 589
+            Width = 160
             Height = 74
             Hint = ''
             ShowHint = True
             DataField = 'Origem_AliquotaICMS'
             DataSource = dsOperacaoFiscal
-            Caption = 'C'#225'lculo do ICMS Operacional'
+            Caption = 'Al'#237'quota ICMS Operacional'
             TabOrder = 6
             ClientEvents.UniEvents.Strings = (
               
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
                 '= '#39'Grupo'#39';'#13#10'}')
             Items.Strings = (
-              'Utilizar a al'#237'quota da tabela de ICMS'
-              'Utilizar a al'#237'quota da Adi'#231#227'o / Nota Entrada')
+              'Tabela de ICMS'
+              'Adi'#231#227'o / Nota Entrada')
             Values.Strings = (
               '0'
               '1')
           end
           object GroupBox3: TUniGroupBox
-            Left = 17
-            Top = 415
+            Left = 491
+            Top = 129
             Width = 180
-            Height = 221
+            Height = 244
             Hint = ''
             ShowHint = True
             Caption = 'Campos Vis'#237'veis DANFE '
@@ -462,7 +468,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             object cVisiveis_ICMSOper: TUniDBCheckBox
               Left = 7
               Top = 22
-              Width = 122
+              Width = 168
               Height = 17
               Hint = ''
               ShowHint = True
@@ -479,7 +485,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             object cVisiveis_ICMSSub: TUniDBCheckBox
               Left = 7
               Top = 41
-              Width = 122
+              Width = 168
               Height = 17
               Hint = ''
               ShowHint = True
@@ -496,7 +502,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             object cVisiveis_Frete: TUniDBCheckBox
               Left = 7
               Top = 60
-              Width = 122
+              Width = 168
               Height = 17
               Hint = ''
               ShowHint = True
@@ -513,7 +519,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             object cVisiveis_Seguro: TUniDBCheckBox
               Left = 7
               Top = 79
-              Width = 122
+              Width = 168
               Height = 17
               Hint = ''
               ShowHint = True
@@ -530,7 +536,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             object cVisiveis_Desconto: TUniDBCheckBox
               Left = 7
               Top = 98
-              Width = 122
+              Width = 168
               Height = 17
               Hint = ''
               ShowHint = True
@@ -547,7 +553,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             object cVisiveis_Despesas: TUniDBCheckBox
               Left = 7
               Top = 117
-              Width = 122
+              Width = 168
               Height = 17
               Hint = ''
               ShowHint = True
@@ -564,7 +570,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             object cVisiveis_IPI: TUniDBCheckBox
               Left = 7
               Top = 136
-              Width = 122
+              Width = 168
               Height = 17
               Hint = ''
               ShowHint = True
@@ -580,8 +586,8 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cVisiveis_QuantidadeItem: TUniDBCheckBox
               Left = 7
-              Top = 155
-              Width = 122
+              Top = 172
+              Width = 168
               Height = 17
               Hint = ''
               ShowHint = True
@@ -597,8 +603,8 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cVisiveis_DIFAL: TUniDBCheckBox
               Left = 7
-              Top = 174
-              Width = 122
+              Top = 191
+              Width = 168
               Height = 17
               Hint = ''
               ShowHint = True
@@ -614,8 +620,8 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cVisiveis_AFRMM: TUniDBCheckBox
               Left = 7
-              Top = 193
-              Width = 122
+              Top = 210
+              Width = 168
               Height = 17
               Hint = ''
               ShowHint = True
@@ -629,57 +635,40 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
             end
-          end
-          object cFinalidade_Mercadoria_Mercadoria: TUniDBRadioGroup
-            Left = 498
-            Top = 346
-            Width = 261
-            Height = 220
-            Hint = ''
-            ShowHint = True
-            DataField = 'Finalidade_Mercadoria'
-            DataSource = dsOperacaoFiscal
-            Caption = ' Finalidade da Mercadoria '
-            TabOrder = 8
-            ClientEvents.UniEvents.Strings = (
-              
-                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-                '= '#39'Grupo'#39';'#13#10'}')
-            Items.Strings = (
-              'Revenda'
-              'Consumo'
-              'Devolu'#231#227'o'
-              'Exporta'#231#227'o'
-              'Pr'#243'pria em Terceiros'
-              'Terceiros na Empresa'
-              'Imobilizado'
-              'Outras')
-            Values.Strings = (
-              '0'
-              '1'
-              '2'
-              '3'
-              '4'
-              '5'
-              '6'
-              '9')
+            object UniDBCheckBox21: TUniDBCheckBox
+              Left = 7
+              Top = 154
+              Width = 168
+              Height = 17
+              Hint = ''
+              ShowHint = True
+              DataField = 'Visiveis_IPIDevolucao'
+              DataSource = dsOperacaoFiscal
+              Caption = 'IPI Devolu'#231#227'o'
+              TabOrder = 11
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
           end
           object GroupBox2: TUniGroupBox
-            Left = 207
+            Left = 192
             Top = 129
             Width = 281
-            Height = 507
+            Height = 533
             Hint = ''
             ShowHint = True
             Caption = ' Par'#226'metros Diversos '
-            TabOrder = 9
+            TabOrder = 8
             ClientEvents.UniEvents.Strings = (
               
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
                 's = '#39'Grupo'#39';'#13#10'}')
             object cNota_Referencia: TUniDBCheckBox
               Left = 5
-              Top = 105
+              Top = 124
               Width = 269
               Height = 17
               Hint = ''
@@ -696,7 +685,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cApuracao_PISCOFINS: TUniDBCheckBox
               Left = 5
-              Top = 123
+              Top = 142
               Width = 269
               Height = 17
               Hint = ''
@@ -714,7 +703,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cGerar_Financeiro: TUniDBCheckBox
               Left = 5
-              Top = 141
+              Top = 160
               Width = 269
               Height = 17
               Hint = ''
@@ -731,7 +720,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cComplementar: TUniDBCheckBox
               Left = 5
-              Top = 51
+              Top = 106
               Width = 269
               Height = 17
               Hint = ''
@@ -748,7 +737,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cReceita: TUniDBCheckBox
               Left = 5
-              Top = 159
+              Top = 178
               Width = 269
               Height = 17
               Hint = ''
@@ -765,7 +754,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cRelatorio_Vendas: TUniDBCheckBox
               Left = 5
-              Top = 177
+              Top = 196
               Width = 269
               Height = 17
               Hint = ''
@@ -782,7 +771,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cRelatorio_DestaqueICMS: TUniDBCheckBox
               Left = 5
-              Top = 195
+              Top = 214
               Width = 269
               Height = 17
               Hint = ''
@@ -799,7 +788,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cBaixa_Estoque: TUniDBCheckBox
               Left = 5
-              Top = 69
+              Top = 88
               Width = 269
               Height = 17
               Hint = ''
@@ -816,7 +805,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cICMS_Destacar: TUniDBCheckBox
               Left = 5
-              Top = 213
+              Top = 232
               Width = 269
               Height = 17
               Hint = ''
@@ -833,7 +822,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cEmail_NFE: TUniDBCheckBox
               Left = 5
-              Top = 231
+              Top = 250
               Width = 269
               Height = 17
               Hint = ''
@@ -850,7 +839,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cNFE_Estorno: TUniDBCheckBox
               Left = 5
-              Top = 249
+              Top = 268
               Width = 269
               Height = 17
               Hint = ''
@@ -867,7 +856,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cTransferencia: TUniDBCheckBox
               Left = 5
-              Top = 267
+              Top = 286
               Width = 269
               Height = 17
               Hint = ''
@@ -884,7 +873,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cDados_Veiculo: TUniDBCheckBox
               Left = 5
-              Top = 285
+              Top = 322
               Width = 269
               Height = 17
               Hint = ''
@@ -901,7 +890,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cBloqueio_Lucro: TUniDBCheckBox
               Left = 5
-              Top = 303
+              Top = 340
               Width = 269
               Height = 17
               Hint = ''
@@ -918,7 +907,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cCalculo_CST: TUniDBCheckBox
               Left = 5
-              Top = 321
+              Top = 358
               Width = 269
               Height = 17
               Hint = ''
@@ -935,7 +924,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cFormula_Produto: TUniDBCheckBox
               Left = 5
-              Top = 339
+              Top = 376
               Width = 269
               Height = 17
               Hint = ''
@@ -952,7 +941,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cMostrar_Despesas: TUniDBCheckBox
               Left = 5
-              Top = 357
+              Top = 394
               Width = 269
               Height = 17
               Hint = ''
@@ -969,7 +958,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cAtivo: TUniDBCheckBox
               Left = 5
-              Top = 375
+              Top = 16
               Width = 269
               Height = 17
               Hint = ''
@@ -986,7 +975,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object UniDBCheckBox9: TUniDBCheckBox
               Left = 5
-              Top = 15
+              Top = 34
               Width = 269
               Height = 17
               Hint = ''
@@ -1003,7 +992,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object UniDBCheckBox10: TUniDBCheckBox
               Left = 5
-              Top = 33
+              Top = 52
               Width = 269
               Height = 17
               Hint = ''
@@ -1020,7 +1009,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object UniDBCheckBox19: TUniDBCheckBox
               Left = 5
-              Top = 87
+              Top = 70
               Width = 269
               Height = 17
               Hint = ''
@@ -1037,7 +1026,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object UniDBCheckBox17: TUniDBCheckBox
               Left = 5
-              Top = 393
+              Top = 430
               Width = 269
               Height = 17
               Hint = ''
@@ -1054,7 +1043,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object UniDBCheckBox11: TUniDBCheckBox
               Left = 5
-              Top = 411
+              Top = 448
               Width = 269
               Height = 17
               Hint = ''
@@ -1069,18 +1058,103 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
             end
+            object UniDBCheckBox14: TUniDBCheckBox
+              Left = 5
+              Top = 304
+              Width = 269
+              Height = 17
+              Hint = ''
+              ShowHint = True
+              DataField = 'Remessa'
+              DataSource = dsOperacaoFiscal
+              Caption = 'Nota Fiscal de Remessa'
+              TabOrder = 24
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
+            object UniDBCheckBox15: TUniDBCheckBox
+              Left = 5
+              Top = 412
+              Width = 269
+              Height = 17
+              Hint = ''
+              ShowHint = True
+              DataField = 'TTD'
+              DataSource = dsOperacaoFiscal
+              Caption = 'Tratamento Tribut'#225'rio Diferenciado (TTD)'
+              TabOrder = 25
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
+            object UniDBCheckBox16: TUniDBCheckBox
+              Left = 5
+              Top = 466
+              Width = 269
+              Height = 17
+              Hint = ''
+              ShowHint = True
+              DataField = 'Visivel_Televendas'
+              DataSource = dsOperacaoFiscal
+              Caption = 'Vis'#237'vel no Televendas'
+              TabOrder = 26
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
+            object UniDBCheckBox18: TUniDBCheckBox
+              Left = 5
+              Top = 484
+              Width = 269
+              Height = 17
+              Hint = ''
+              ShowHint = True
+              DataField = 'Fechamento_Processo'
+              DataSource = dsOperacaoFiscal
+              Caption = 'Incluir no Fechamento do Processo'
+              TabOrder = 27
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
+            object UniDBCheckBox20: TUniDBCheckBox
+              Left = 5
+              Top = 502
+              Width = 269
+              Height = 17
+              Hint = ''
+              ShowHint = True
+              DataField = 'Estornar_TituloDev'
+              DataSource = dsOperacaoFiscal
+              Caption = 'Estornar t'#237'tulo financeiro para devolu'#231#227'o integral'
+              TabOrder = 28
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
           end
           object UniDBRadioGroup1: TUniDBRadioGroup
-            Left = 17
-            Top = 189
-            Width = 180
-            Height = 53
+            Left = 14
+            Top = 233
+            Width = 160
+            Height = 70
             Hint = ''
             ShowHint = True
             DataField = 'Emissao'
             DataSource = dsOperacaoFiscal
             Caption = 'Emiss'#227'o'
-            TabOrder = 10
+            TabOrder = 9
             ClientEvents.UniEvents.Strings = (
               
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
@@ -1088,15 +1162,14 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             Items.Strings = (
               'Pr'#243'pria'
               'Terceiros')
-            Columns = 2
             Values.Strings = (
               'P'
               'T')
           end
           object UniDBLookupComboBox1: TUniDBLookupComboBox
             Left = 14
-            Top = 70
-            Width = 742
+            Top = 69
+            Width = 250
             Height = 50
             Hint = ''
             ShowHint = True
@@ -1105,9 +1178,10 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             ListSource = dstBeneficio
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Beneficio_Fiscal'
             DataSource = dsOperacaoFiscal
-            TabOrder = 11
+            TabOrder = 10
             Color = clWindow
             FieldLabel = 'Beneficio Fiscal'
             FieldLabelWidth = 120
@@ -1116,16 +1190,16 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             NormalizeString = True
           end
           object UniDBRadioGroup2: TUniDBRadioGroup
-            Left = 17
-            Top = 311
-            Width = 180
+            Left = 14
+            Top = 452
+            Width = 160
             Height = 100
             Hint = ''
             ShowHint = True
             DataField = 'Destino_Origem'
             DataSource = dsOperacaoFiscal
             Caption = 'Destino/Origem'
-            TabOrder = 12
+            TabOrder = 11
             ClientEvents.UniEvents.Strings = (
               
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
@@ -1139,17 +1213,46 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
               'E'
               'D')
           end
+          object cFinalidade: TUniDBComboBox
+            Left = 279
+            Top = 69
+            Width = 250
+            Height = 50
+            Hint = ''
+            ShowHint = True
+            AnyMatch = True
+            DataField = 'Finalidade_Mercadoria'
+            DataSource = dsOperacaoFiscal
+            Items.Strings = (
+              'Revenda'
+              'Consumo'
+              'Devolu'#231#227'o'
+              'Devolu'#231#227'o de Importa'#231#227'o'
+              'Exporta'#231#227'o'
+              'Pr'#243'pria em Terceiros'
+              'Terceiros na Empresa'
+              'Imobilizado'
+              'Outras')
+            TabOrder = 12
+            FieldLabel = 'Finalidade da Mercadoria'
+            FieldLabelWidth = 120
+            FieldLabelAlign = laTop
+            FieldLabelSeparator = ' '
+            ClearButton = True
+            IconItems = <>
+          end
         end
       end
     end
     object UniTabSheet3: TUniTabSheet
       Hint = ''
       Caption = 'Par'#226'metros NF Terceiros'
+      ExplicitHeight = 759
       object UniScrollBox7: TUniScrollBox
         Left = 0
         Top = 0
         Width = 1399
-        Height = 759
+        Height = 737
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -1157,9 +1260,10 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
+        ExplicitHeight = 759
         DesignSize = (
           1397
-          757)
+          735)
         ScrollHeight = 648
         object pFicha7: TUniPanel
           AlignWithMargins = True
@@ -1403,11 +1507,12 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       Hint = ''
       ImageIndex = 4
       Caption = 'Par'#226'metros Fiscais'
+      ExplicitHeight = 759
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0
         Width = 1399
-        Height = 759
+        Height = 737
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -1415,16 +1520,17 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
+        ExplicitHeight = 759
         DesignSize = (
-          1397
-          757)
-        ScrollHeight = 705
+          1380
+          735)
+        ScrollHeight = 754
         object pFicha2: TUniPanel
           AlignWithMargins = True
-          Left = 253
+          Left = 244
           Top = 20
           Width = 1034
-          Height = 685
+          Height = 734
           Hint = ''
           Enabled = False
           ShowHint = True
@@ -1440,6 +1546,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           Title = 'DADOS GERAIS'
           Caption = ''
           Color = clTeal
+          ExplicitLeft = 253
           object cCST: TUniGroupBox
             Left = 12
             Top = 65
@@ -1526,7 +1633,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           end
           object GrupoPIS: TUniGroupBox
             Left = 473
-            Top = 401
+            Top = 465
             Width = 272
             Height = 195
             Hint = ''
@@ -1659,7 +1766,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           end
           object GrupoCOFINS: TUniGroupBox
             Left = 754
-            Top = 401
+            Top = 465
             Width = 264
             Height = 195
             Hint = ''
@@ -1792,7 +1899,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           end
           object GroupBox4: TUniGroupBox
             Left = 12
-            Top = 401
+            Top = 465
             Width = 160
             Height = 195
             Hint = ''
@@ -1957,7 +2064,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           end
           object UniGroupBox1: TUniGroupBox
             Left = 179
-            Top = 401
+            Top = 465
             Width = 286
             Height = 224
             Hint = ''
@@ -2139,17 +2246,40 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
               FieldLabelSeparator = ' '
             end
           end
+          object UniDBLookupComboBox7: TUniDBLookupComboBox
+            Left = 12
+            Top = 393
+            Width = 772
+            Height = 50
+            Hint = ''
+            ShowHint = True
+            ParentShowHint = False
+            ListField = 'Codigo;Descricao'
+            ListSource = dstClassTribut
+            KeyField = 'Codigo'
+            ListFieldIndex = 1
+            DataField = 'Classificacao_Tributaria'
+            DataSource = dsOperacaoFiscal
+            TabOrder = 8
+            Color = clWindow
+            FieldLabel = 'Classifica'#231#227'o Tribut'#225'ria'
+            FieldLabelWidth = 120
+            FieldLabelAlign = laTop
+            FieldLabelSeparator = ' '
+            NormalizeString = True
+          end
         end
       end
     end
     object UniTabSheet4: TUniTabSheet
       Hint = ''
       Caption = 'Formulas'
+      ExplicitHeight = 759
       object UniScrollBox8: TUniScrollBox
         Left = 0
         Top = 0
         Width = 1399
-        Height = 759
+        Height = 737
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -2157,9 +2287,10 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
+        ExplicitHeight = 759
         DesignSize = (
           1397
-          757)
+          735)
         ScrollHeight = 603
         object UniPanel4: TUniPanel
           AlignWithMargins = True
@@ -2357,11 +2488,12 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       Hint = ''
       ImageIndex = 3
       Caption = 'Informa'#231#245'es Complementares'
+      ExplicitHeight = 759
       object UniScrollBox4: TUniScrollBox
         Left = 0
         Top = 0
         Width = 1399
-        Height = 759
+        Height = 737
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -2369,9 +2501,10 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
+        ExplicitHeight = 759
         DesignSize = (
           1397
-          757)
+          735)
         ScrollHeight = 622
         object pFicha3: TUniPanel
           AlignWithMargins = True
@@ -2500,11 +2633,12 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Parametriza'#231#227'o Financeira'
+      ExplicitHeight = 759
       object UniScrollBox3: TUniScrollBox
         Left = 0
         Top = 0
         Width = 1399
-        Height = 759
+        Height = 737
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -2512,9 +2646,10 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
+        ExplicitHeight = 759
         DesignSize = (
           1397
-          757)
+          735)
         ScrollHeight = 312
         object pFicha5: TUniPanel
           AlignWithMargins = True
@@ -2651,11 +2786,12 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       Hint = ''
       ImageIndex = 3
       Caption = 'Parametriza'#231#227'o Cont'#225'bil'
+      ExplicitHeight = 759
       object UniScrollBox6: TUniScrollBox
         Left = 0
         Top = 0
         Width = 1399
-        Height = 759
+        Height = 737
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -2663,9 +2799,10 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
+        ExplicitHeight = 759
         DesignSize = (
           1397
-          757)
+          735)
         ScrollHeight = 486
         object pFicha4: TUniPanel
           AlignWithMargins = True
@@ -3023,8 +3160,8 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'SELECT MAX(Codigo) AS Codigo FROM OperacaoFiscal')
-    Left = 40
-    Top = 667
+    Left = 453
+    Top = 68
     object tCodigoCodigo: TIntegerField
       FieldName = 'Codigo'
       ReadOnly = True
@@ -3032,12 +3169,12 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
   end
   object tCopia: TFDQuery
     Connection = UniMainModule.Conecta
-    Left = 40
-    Top = 712
+    Left = 507
+    Top = 68
   end
   object mnVariavel: TPopupMenu
-    Left = 40
-    Top = 338
+    Left = 384
+    Top = 68
     object FORNECEDORES1: TUniMenuItem
       Caption = 'FORNECEDOR (Conta do cadastro do fornecedor)'
     end
@@ -3059,7 +3196,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
   end
   object tClassificacao: TFDQuery
     Left = 40
-    Top = 157
+    Top = 156
   end
   object dstClassificacao: TDataSource
     DataSet = tClassificacao
@@ -3067,14 +3204,14 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     Top = 204
   end
   object tQtde: TFDQuery
-    Left = 40
-    Top = 250
+    Left = 554
+    Top = 68
   end
   object tNotas: TFDQuery
     SQL.Strings = (
       '')
-    Left = 40
-    Top = 294
+    Left = 262
+    Top = 68
   end
   object OperacaoFiscal: TFDQuery
     BeforePost = OperacaoFiscalBeforePost
@@ -3088,27 +3225,9 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
-      'select * '
-      
-        '      --,Emissao_Descricao = iif(Emissao = '#39'P'#39', '#39'PR'#211'PRIA'#39', '#39'TERC' +
-        'EIROS'#39')'
-      '      ,Finalidade = case Finalidade_Mercadoria'
-      #9'                     when 0 then '#39'Revenda'#39
-      #9'                     when 1 then '#39'Consumo'#39
-      #9'                     when 2 then '#39'Devolu'#231#227'o'#39
-      #9'                     when 3 then '#39'Exporta'#231#227'o'#39
-      
-        #9'                     when 4 then '#39'Pr'#243'pria em Poder de Terceiros' +
-        #39
-      
-        #9'                     when 5 then '#39'Terceiros em Poder da Empresa' +
-        #39
-      #9'                     when 6 then '#39'Imobilizado'#39
-      #9'                     when 9 then '#39'Outras'#39
-      '                    end'
-      'from OperacaoFiscal')
+      'select * from OperacaoFiscal')
     Left = 40
-    Top = 65
+    Top = 68
     object OperacaoFiscalCodigo: TIntegerField
       FieldName = 'Codigo'
       Origin = 'Codigo'
@@ -3475,10 +3594,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     object OperacaoFiscalIPI_Imune: TBooleanField
       FieldName = 'IPI_Imune'
       Origin = 'IPI_Imune'
-    end
-    object OperacaoFiscalFinalidade_Mercadoria: TSmallintField
-      FieldName = 'Finalidade_Mercadoria'
-      Origin = 'Finalidade_Mercadoria'
     end
     object OperacaoFiscalComplementar: TBooleanField
       FieldName = 'Complementar'
@@ -3884,12 +3999,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       FieldName = 'Desativado'
       Origin = 'Desativado'
     end
-    object OperacaoFiscalFinalidade: TStringField
-      FieldKind = fkCalculated
-      FieldName = 'Finalidade'
-      Size = 30
-      Calculated = True
-    end
     object OperacaoFiscalEmissao_Descricao: TStringField
       FieldKind = fkCalculated
       FieldName = 'Emissao_Descricao'
@@ -3932,6 +4041,80 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       FieldName = 'Diferido_ICMS'
       Origin = 'Diferido_ICMS'
     end
+    object OperacaoFiscalTTD: TBooleanField
+      FieldName = 'TTD'
+      Origin = 'TTD'
+    end
+    object OperacaoFiscalRemessa: TBooleanField
+      FieldName = 'Remessa'
+      Origin = 'Remessa'
+    end
+    object OperacaoFiscalVisivel_Televendas: TBooleanField
+      FieldName = 'Visivel_Televendas'
+      Origin = 'Visivel_Televendas'
+    end
+    object OperacaoFiscalFechamento_Processo: TBooleanField
+      FieldName = 'Fechamento_Processo'
+      Origin = 'Fechamento_Processo'
+    end
+    object OperacaoFiscalEstornar_TituloDev: TBooleanField
+      FieldName = 'Estornar_TituloDev'
+      Origin = 'Estornar_TituloDev'
+    end
+    object OperacaoFiscalVisiveis_IPIDevolucao: TBooleanField
+      FieldName = 'Visiveis_IPIDevolucao'
+      Origin = 'Visiveis_IPIDevolucao'
+    end
+    object OperacaoFiscalCalculo_Reverso: TBooleanField
+      FieldName = 'Calculo_Reverso'
+      Origin = 'Calculo_Reverso'
+    end
+    object OperacaoFiscalCodigo_BeneficioFiscal: TStringField
+      FieldName = 'Codigo_BeneficioFiscal'
+      Origin = 'Codigo_BeneficioFiscal'
+      Size = 8
+    end
+    object OperacaoFiscalClassificacao_Tributaria: TStringField
+      FieldName = 'Classificacao_Tributaria'
+      Origin = 'Classificacao_Tributaria'
+      Size = 6
+    end
+    object OperacaoFiscalIBS_Isencao: TBooleanField
+      FieldName = 'IBS_Isencao'
+      Origin = 'IBS_Isencao'
+    end
+    object OperacaoFiscalIBS_Imunidade: TBooleanField
+      FieldName = 'IBS_Imunidade'
+      Origin = 'IBS_Imunidade'
+    end
+    object OperacaoFiscalIBS_Diferido: TBooleanField
+      FieldName = 'IBS_Diferido'
+      Origin = 'IBS_Diferido'
+    end
+    object OperacaoFiscalIBS_Suspensao: TBooleanField
+      FieldName = 'IBS_Suspensao'
+      Origin = 'IBS_Suspensao'
+    end
+    object OperacaoFiscalCBS_Isencao: TBooleanField
+      FieldName = 'CBS_Isencao'
+      Origin = 'CBS_Isencao'
+    end
+    object OperacaoFiscalCBS_Imunidade: TBooleanField
+      FieldName = 'CBS_Imunidade'
+      Origin = 'CBS_Imunidade'
+    end
+    object OperacaoFiscalCBS_Diferido: TBooleanField
+      FieldName = 'CBS_Diferido'
+      Origin = 'CBS_Diferido'
+    end
+    object OperacaoFiscalCBS_Suspensao: TBooleanField
+      FieldName = 'CBS_Suspensao'
+      Origin = 'CBS_Suspensao'
+    end
+    object OperacaoFiscalFinalidade_Mercadoria: TStringField
+      FieldName = 'Finalidade_Mercadoria'
+      Origin = 'Finalidade_Mercadoria'
+    end
   end
   object dsOperacaoFiscal: TDataSource
     DataSet = OperacaoFiscal
@@ -3953,108 +4136,108 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     SQL.Strings = (
       'select * from BeneficioFiscal')
     Left = 40
-    Top = 482
+    Top = 344
   end
   object dstBeneficio: TDataSource
     DataSet = tBeneficio
     Left = 40
-    Top = 528
+    Top = 390
   end
   object tServicos: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'select * from Servicos')
     Left = 120
-    Top = 64
+    Top = 68
   end
   object dstServicos: TDataSource
     DataSet = tServicos
     Left = 120
-    Top = 111
+    Top = 109
   end
   object tCFOP: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'Select Codigo, Descricao from CFOP order by Codigo')
     Left = 120
-    Top = 155
+    Top = 156
   end
   object dstCFOP: TDataSource
     DataSet = tCFOP
     Left = 120
-    Top = 200
+    Top = 204
   end
   object tEnqIPI: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'Select Codigo, Descricao from EnquadramentoIPI')
     Left = 120
-    Top = 245
+    Top = 251
   end
   object dstEnqIPI: TDataSource
     DataSet = tEnqIPI
     Left = 120
-    Top = 292
+    Top = 298
   end
   object tCSTPIS: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'Select Codigo, Descricao from CSTPIS')
     Left = 120
-    Top = 338
+    Top = 344
   end
   object dstCSTPIS: TDataSource
     DataSet = tCSTPIS
     Left = 120
-    Top = 382
+    Top = 390
   end
   object tCSTCOFINS: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'Select Codigo, Descricao from CSTCOFINS')
     Left = 120
-    Top = 426
+    Top = 440
   end
   object dstCSTCOFINS: TDataSource
     DataSet = tCSTCOFINS
     Left = 120
-    Top = 471
+    Top = 486
   end
   object tBCCredito: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'Select Codigo, Descricao from CSTCOFINS')
     Left = 120
-    Top = 518
+    Top = 535
   end
   object dstBCCredito: TDataSource
     DataSet = tBCCredito
     Left = 120
-    Top = 562
+    Top = 579
   end
   object tCSTTabelaB: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'Select Codigo, Descricao from CSTCOFINS')
-    Left = 120
-    Top = 608
+    Left = 40
+    Top = 535
   end
   object dstCSTTabelaB: TDataSource
     DataSet = tCSTTabelaB
-    Left = 120
-    Top = 652
+    Left = 40
+    Top = 579
   end
   object tTipoDoc: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'Select Codigo, Nome from TiposDocumentos')
     Left = 189
-    Top = 66
+    Top = 68
   end
   object dstTipoDoc: TDataSource
     DataSet = tTipoDoc
     Left = 189
-    Top = 111
+    Top = 109
   end
   object tPlano: TFDQuery
     Connection = UniMainModule.Conecta
@@ -4068,31 +4251,31 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
   object dstPlano: TDataSource
     DataSet = tPlano
     Left = 189
-    Top = 201
+    Top = 204
   end
   object tCentroCusto: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'Select Codigo, Nome from CentroCusto')
     Left = 189
-    Top = 245
+    Top = 251
   end
   object dstCentroCusto: TDataSource
     DataSet = tCentroCusto
     Left = 189
-    Top = 292
+    Top = 298
   end
   object tModalidade: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'Select Codigo, Descricao from ModalidadesPagamento')
     Left = 189
-    Top = 338
+    Top = 344
   end
   object dstModalidade: TDataSource
     DataSet = tModalidade
     Left = 189
-    Top = 382
+    Top = 390
   end
   object tOperCtb: TFDQuery
     Connection = UniMainModule.Conecta
@@ -4107,13 +4290,13 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
         '      ,Historico_Desc = (select Descricao from Historicos where ' +
         'Codigo = Historico)'
       'from OperacaoFiscalCtb')
-    Left = 192
-    Top = 426
+    Left = 189
+    Top = 440
   end
   object dstOperCtb: TDataSource
     DataSet = tOperCtb
-    Left = 192
-    Top = 471
+    Left = 189
+    Top = 486
   end
   object tHistorico: TFDQuery
     BeforePost = OperacaoFiscalBeforePost
@@ -4127,13 +4310,13 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from Historicos')
-    Left = 192
-    Top = 522
+    Left = 189
+    Top = 535
   end
   object dstHistorico: TDataSource
     DataSet = tHistorico
-    Left = 192
-    Top = 567
+    Left = 189
+    Top = 579
   end
   object tTmp: TFDQuery
     BeforePost = OperacaoFiscalBeforePost
@@ -4147,8 +4330,8 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from Historicos')
-    Left = 192
-    Top = 618
+    Left = 317
+    Top = 68
   end
   object tOpFormulas: TFDQuery
     AfterScroll = tOpFormulasAfterScroll
@@ -4156,23 +4339,43 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     SQL.Strings = (
       'select * from OperacaoFiscalFormulas')
     Left = 40
-    Top = 570
+    Top = 440
   end
   object dstOpFormulas: TDataSource
     DataSet = tOpFormulas
     Left = 40
-    Top = 616
+    Top = 486
   end
   object tCampos: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'select * from Campos where Calculavel = 1')
     Left = 40
-    Top = 391
+    Top = 251
   end
   object dstCampos: TDataSource
     DataSet = tCampos
     Left = 40
-    Top = 436
+    Top = 298
+  end
+  object tClassTribut: TFDQuery
+    BeforePost = OperacaoFiscalBeforePost
+    BeforeDelete = OperacaoFiscalBeforeDelete
+    OnCalcFields = OperacaoFiscalCalcFields
+    Connection = UniMainModule.Conecta
+    FetchOptions.AssignedValues = [evMode, evRowsetSize, evLiveWindowParanoic]
+    FetchOptions.RowsetSize = 250
+    FetchOptions.LiveWindowParanoic = False
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select * from ClassificacaoTributaria')
+    Left = 40
+    Top = 629
+  end
+  object dstClassTribut: TDataSource
+    DataSet = tClassTribut
+    Left = 40
+    Top = 674
   end
 end

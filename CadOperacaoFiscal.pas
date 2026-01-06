@@ -65,7 +65,6 @@ type
     cVisiveis_QuantidadeItem: TUniDBCheckBox;
     cVisiveis_DIFAL: TUniDBCheckBox;
     cVisiveis_AFRMM: TUniDBCheckBox;
-    cFinalidade_Mercadoria_Mercadoria: TUniDBRadioGroup;
     GroupBox2: TUniGroupBox;
     cNota_Referencia: TUniDBCheckBox;
     cApuracao_PISCOFINS: TUniDBCheckBox;
@@ -171,7 +170,6 @@ type
     UniDBLookupComboBox2: TUniDBLookupComboBox;
     UniDBLookupComboBox3: TUniDBLookupComboBox;
     UniDBLookupComboBox4: TUniDBLookupComboBox;
-    OperacaoFiscalFinalidade: TStringField;
     OperacaoFiscalCodigo: TIntegerField;
     OperacaoFiscalDescricao: TStringField;
     OperacaoFiscalInf_Complementares: TMemoField;
@@ -245,7 +243,6 @@ type
     OperacaoFiscalCST_PIS: TStringField;
     OperacaoFiscalCST_COFINS: TStringField;
     OperacaoFiscalIPI_Imune: TBooleanField;
-    OperacaoFiscalFinalidade_Mercadoria: TSmallintField;
     OperacaoFiscalComplementar: TBooleanField;
     OperacaoFiscalSuspensao_ICMS: TBooleanField;
     OperacaoFiscalReceita: TBooleanField;
@@ -399,6 +396,34 @@ type
     UniDBCheckBox13: TUniDBCheckBox;
     OperacaoFiscalDiferido_ICMS: TBooleanField;
     UniDBMemo1: TUniDBMemo;
+    UniDBCheckBox14: TUniDBCheckBox;
+    OperacaoFiscalTTD: TBooleanField;
+    OperacaoFiscalRemessa: TBooleanField;
+    OperacaoFiscalVisivel_Televendas: TBooleanField;
+    OperacaoFiscalFechamento_Processo: TBooleanField;
+    OperacaoFiscalEstornar_TituloDev: TBooleanField;
+    UniDBCheckBox15: TUniDBCheckBox;
+    UniDBCheckBox16: TUniDBCheckBox;
+    UniDBCheckBox18: TUniDBCheckBox;
+    UniDBCheckBox20: TUniDBCheckBox;
+    UniDBCheckBox21: TUniDBCheckBox;
+    OperacaoFiscalVisiveis_IPIDevolucao: TBooleanField;
+    OperacaoFiscalCalculo_Reverso: TBooleanField;
+    OperacaoFiscalCodigo_BeneficioFiscal: TStringField;
+    OperacaoFiscalClassificacao_Tributaria: TStringField;
+    OperacaoFiscalIBS_Isencao: TBooleanField;
+    OperacaoFiscalIBS_Imunidade: TBooleanField;
+    OperacaoFiscalIBS_Diferido: TBooleanField;
+    OperacaoFiscalIBS_Suspensao: TBooleanField;
+    OperacaoFiscalCBS_Isencao: TBooleanField;
+    OperacaoFiscalCBS_Imunidade: TBooleanField;
+    OperacaoFiscalCBS_Diferido: TBooleanField;
+    OperacaoFiscalCBS_Suspensao: TBooleanField;
+    UniDBLookupComboBox7: TUniDBLookupComboBox;
+    tClassTribut: TFDQuery;
+    dstClassTribut: TDataSource;
+    OperacaoFiscalFinalidade_Mercadoria: TStringField;
+    cFinalidade: TUniDBComboBox;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
@@ -813,6 +838,13 @@ begin
            sql.add('order by Codigo');
            open;
       end;
+      with tClassTribut do begin
+           sql.clear;
+           sql.Add('select * ');
+           sql.add('from ClassificacaoTributaria');
+           sql.add('order by Codigo');
+           open;
+      end;
 
       FiltraTabCtb;
 
@@ -841,6 +873,7 @@ end;
 
 procedure TfCadOperacaoFiscal.OperacaoFiscalCalcFields(DataSet: TDataSet);
 begin
+{
      with Dataset do begin
           fieldbyname('Emissao_Descricao').Value := iif(fieldbyname('Emissao').Value = 'P', 'PRÓPRIA', 'TERCEIROS');
           fieldbyname('ES_Descricao').Value      := iif(fieldbyname('ES').Value = 0, 'ENTRADA', 'SAÍDA');
@@ -855,6 +888,7 @@ begin
                9:fieldbyname('Finalidade').value := 'Outras';
           end;
      end;
+}     
 end;
 
 procedure TfCadOperacaoFiscal.tOpFormulasAfterScroll(DataSet: TDataSet);

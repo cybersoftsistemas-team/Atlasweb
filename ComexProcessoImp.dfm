@@ -1,15 +1,15 @@
 object fComexProcessoImp: TfComexProcessoImp
   Left = 0
   Top = 0
-  Width = 1377
-  Height = 1720
+  Width = 1300
+  Height = 1200
   OnCreate = uniFrameCreate
   OnDestroy = uniFrameDestroy
   TabOrder = 0
   object pBarraNav: TUniPanel
     Left = 0
     Top = 0
-    Width = 1377
+    Width = 1300
     Height = 35
     Hint = ''
     Align = alTop
@@ -136,8 +136,8 @@ object fComexProcessoImp: TfComexProcessoImp
   object Pasta: TUniPageControl
     Left = 0
     Top = 35
-    Width = 1377
-    Height = 1685
+    Width = 1300
+    Height = 1165
     Hint = ''
     ActivePage = TabSheet1
     Align = alClient
@@ -148,7 +148,7 @@ object fComexProcessoImp: TfComexProcessoImp
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
-        Width = 1369
+        Width = 1292
         Height = 27
         Hint = ''
         Align = alTop
@@ -193,8 +193,8 @@ object fComexProcessoImp: TfComexProcessoImp
       object GradeLista: TUniDBGrid
         Left = 0
         Top = 27
-        Width = 1369
-        Height = 1630
+        Width = 1292
+        Height = 1110
         Hint = ''
         DataSource = dsProcessosImp
         Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgMultiSelect, dgCancelOnExit]
@@ -273,8 +273,8 @@ object fComexProcessoImp: TfComexProcessoImp
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1369
-        Height = 1657
+        Width = 1292
+        Height = 1137
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -283,14 +283,15 @@ object fComexProcessoImp: TfComexProcessoImp
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1367
-          1655)
-        ScrollHeight = 1057
+          1290
+          1135)
+        ScrollHeight = 1081
+        ScrollWidth = 1099
         object UniPanel1: TUniPanel
-          Left = 34
-          Top = 26
-          Width = 1067
-          Height = 1031
+          Left = 18
+          Top = 22
+          Width = 1129
+          Height = 816
           Hint = ''
           Enabled = False
           ShowHint = True
@@ -302,1098 +303,802 @@ object fComexProcessoImp: TfComexProcessoImp
               'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
               ' '#39'Ficha'#39';'#13#10'}')
           BorderStyle = ubsNone
+          ShowCaption = False
           TitleAlign = taCenter
           Title = 'DADOS GERAIS'
           Caption = ''
           Color = clTeal
-          object GroupBox1: TUniGroupBox
-            Left = 15
-            Top = 544
-            Width = 616
-            Height = 450
+          object PainelInterno1: TUniPanel
+            Left = 618
+            Top = 299
+            Width = 500
+            Height = 505
             Hint = ''
             ShowHint = True
-            Caption = 'Fatura (Comercial Invoice)'
             TabOrder = 1
             ClientEvents.UniEvents.Strings = (
               
-                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-                's = '#39'Grupo'#39';'#13#10'}')
-            object cNumero_Fatura: TUniDBEdit
-              Left = 6
-              Top = 15
-              Width = 165
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DataField = 'Numero_Fatura'
-              DataSource = dsProcessosImp
-              TabOrder = 9
-              FieldLabel = 'Fatura N'#186
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cNome_Transporte: TUniDBEdit
-              Left = 325
-              Top = 214
-              Width = 273
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DataField = 'Nome_Transporte'
-              DataSource = dsProcessosImp
-              TabOrder = 1
-              FieldLabel = 'Nome Transporte'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cConhecimento: TUniDBEdit
-              Left = 325
-              Top = 315
-              Width = 273
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DataField = 'Conhecimento_Embarque'
-              DataSource = dsProcessosImp
-              TabOrder = 7
-              FieldLabel = 'Conhecimento de Embarque'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cAgencia_Maritima: TUniDBEdit
-              Left = 6
-              Top = 315
-              Width = 308
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DataField = 'Agencia_Maritima'
-              DataSource = dsProcessosImp
-              TabOrder = 2
-              FieldLabel = 'Ag'#234'ncia'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cNavio_DataPrevista: TUniDBDateTimePicker
-              Left = 324
-              Top = 264
-              Width = 133
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DataField = 'Navio_DataPrevista'
-              DataSource = dsProcessosImp
-              DateTime = 45000.000000000000000000
-              DateFormat = 'dd/MM/yyyy'
-              TimeFormat = 'HH:mm:ss'
-              TabOrder = 3
-              FieldLabel = 'Data Prevista'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cNavio_DataChegada: TUniDBDateTimePicker
-              Left = 465
-              Top = 264
-              Width = 133
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DataField = 'Navio_DataChegada'
-              DataSource = dsProcessosImp
-              DateTime = 45000.000000000000000000
-              DateFormat = 'dd/MM/yyyy'
-              TimeFormat = 'HH:mm:ss'
-              TabOrder = 4
-              FieldLabel = 'Data da Chegada'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object clTipo_Mercadoria: TUniDBLookupComboBox
-              Left = 6
-              Top = 163
-              Width = 592
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              ListField = 'Codigo;Descricao'
-              ListSource = dstFuncaoProd
-              KeyField = 'Codigo'
-              ListFieldIndex = 1
-              DataField = 'Tipo_Mercadoria'
-              DataSource = dsProcessosImp
-              AnyMatch = True
-              TabOrder = 8
-              Color = clWindow
-              FieldLabel = 'Tipo Mercadoria'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-              NormalizeString = True
-              Style = csDropDown
-            end
-            object cData_Fatura: TUniDBDateTimePicker
-              Left = 348
-              Top = 15
-              Width = 133
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DataField = 'Data_Fatura'
-              DataSource = dsProcessosImp
-              DateTime = 45000.000000000000000000
-              DateFormat = 'dd/MM/yyyy'
-              TimeFormat = 'HH:mm:ss'
-              TabOrder = 10
-              FieldLabel = 'Data'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cDocumento_Carga: TUniDBEdit
-              Left = 6
-              Top = 264
-              Width = 308
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DataField = 'Documento_Carga'
-              DataSource = dsProcessosImp
-              TabOrder = 5
-              FieldLabel = 'Documento de Carga N'#186
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cValor_FaturaME: TUniDBEdit
-              Left = 184
-              Top = 15
-              Width = 152
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DataField = 'Valor_FaturaME'
-              DataSource = dsProcessosImp
-              TabOrder = 11
-              FieldLabel = 'Valor Fatura (ME)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cData_BL: TUniDBDateTimePicker
-              Left = 6
-              Top = 365
-              Width = 113
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DataField = 'Data_BL'
-              DataSource = dsProcessosImp
-              DateTime = 45000.000000000000000000
-              DateFormat = 'dd/MM/yyyy'
-              TimeFormat = 'HH:mm:ss'
-              TabOrder = 6
-              FieldLabel = 'Data BL'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cCondicaoCambio: TUniDBLookupComboBox
-              Left = 6
-              Top = 65
-              Width = 592
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              ListField = 'Codigo; Descricao'
-              ListSource = dstCondCambial
-              KeyField = 'Codigo'
-              ListFieldIndex = 1
-              DataField = 'Condicao_Cambio'
-              DataSource = dsProcessosImp
-              TabOrder = 12
-              Color = clWindow
-              FieldLabel = 'Condi'#231#227'o Cambial'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object clFornecedor: TUniDBLookupComboBox
-              Left = 6
-              Top = 115
-              Width = 592
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              ListField = 'Codigo;Nome'
-              ListSource = dstExportador
-              KeyField = 'Codigo'
-              ListFieldIndex = 1
-              DataField = 'Exportador'
-              DataSource = dsProcessosImp
-              AnyMatch = True
-              TabOrder = 0
-              Color = clWindow
-              FieldLabel = 'Exportador'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-              NormalizeString = True
-              Style = csDropDown
-            end
-            object cROF_Numero: TUniDBEdit
-              Left = 134
-              Top = 365
-              Width = 113
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DataField = 'ROF_Numero'
-              DataSource = dsProcessosImp
-              TabOrder = 14
-              FieldLabel = 'ROF N'#186
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cROF_Emissao: TUniDBDateTimePicker
-              Left = 253
-              Top = 365
-              Width = 113
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DataField = 'ROF_Emissao'
-              DataSource = dsProcessosImp
-              DateTime = 45000.000000000000000000
-              DateFormat = 'dd/MM/yyyy'
-              TimeFormat = 'HH:mm:ss'
-              TabOrder = 15
-              FieldLabel = 'Emiss'#227'o'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cROF_Dias: TUniDBEdit
-              Left = 372
-              Top = 365
-              Width = 112
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DataField = 'ROF_Dias'
-              DataSource = dsProcessosImp
-              TabOrder = 16
-              FieldLabel = 'Vencimento (Dias)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object clVia_Transporte: TUniDBLookupComboBox
-              Left = 6
-              Top = 213
-              Width = 308
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              ListField = 'Codigo;Descricao'
-              ListSource = dstViaTransp
-              KeyField = 'Codigo'
-              ListFieldIndex = 1
-              DataField = 'Via_Transporte'
-              DataSource = dsProcessosImp
-              AnyMatch = True
-              TabOrder = 17
-              Color = clWindow
-              FieldLabel = 'Via de Transporte'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-              NormalizeString = True
-              Style = csDropDown
-            end
-          end
-          object GroupBox2: TUniGroupBox
-            Left = 645
-            Top = 222
-            Width = 404
-            Height = 772
-            Hint = ''
-            ShowHint = True
-            Caption = 'Valores'
-            TabOrder = 2
-            ClientEvents.UniEvents.Strings = (
-              
-                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-                's = '#39'Grupo'#39';'#13#10'}')
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                '= '#39'CaixaSimples'#39';'#13#10'}')
+            BorderStyle = ubsInset
+            ShowCaption = False
+            TitleVisible = True
+            Title = 'VALORES DO PROCESSO'
+            Caption = ''
             object cFOB: TUniDBEdit
-              Left = 140
-              Top = 215
-              Width = 125
-              Height = 50
+              Left = 252
+              Top = 116
+              Width = 240
+              Height = 25
               Hint = ''
-              Enabled = False
               ShowHint = True
               DataField = 'Valor_FOB'
               DataSource = dsProcessosImp
-              TabOrder = 9
+              Alignment = taRightJustify
+              TabOrder = 1
+              TabStop = False
+              ReadOnly = True
+              InputMask.MaskChar = #0
               FieldLabel = 'FOB (Real)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cFrete: TUniDBEdit
-              Left = 140
-              Top = 313
-              Width = 125
-              Height = 50
+              Left = 252
+              Top = 170
+              Width = 240
+              Height = 25
               Hint = ''
-              Enabled = False
               ShowHint = True
               DataField = 'Valor_Frete'
               DataSource = dsProcessosImp
-              TabOrder = 11
+              Alignment = taRightJustify
+              TabOrder = 2
+              TabStop = False
+              ReadOnly = True
+              InputMask.MaskChar = #0
               FieldLabel = 'Frete (Real)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cAliquota_ICMS: TUniDBEdit
-              Left = 140
-              Top = 705
-              Width = 80
-              Height = 50
+              Left = 252
+              Top = 386
+              Width = 240
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Aliquota_ICMS'
               DataSource = dsProcessosImp
-              TabOrder = 25
+              Alignment = taRightJustify
+              TabOrder = 3
+              InputMask.MaskChar = #0
               FieldLabel = '% ICMS'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
               OnChange = cAliquota_ICMSChange
             end
             object cSeguro: TUniDBEdit
-              Left = 140
-              Top = 411
-              Width = 125
-              Height = 50
+              Left = 252
+              Top = 224
+              Width = 240
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_Seguro'
               DataSource = dsProcessosImp
-              TabOrder = 13
+              Alignment = taRightJustify
+              TabOrder = 4
+              InputMask.MaskChar = #0
               FieldLabel = 'Seguro (Real)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cValor_ICMS: TUniDBEdit
-              Left = 6
-              Top = 705
-              Width = 125
-              Height = 50
+              Left = 8
+              Top = 386
+              Width = 240
+              Height = 25
               Hint = ''
+              ParentCustomHint = False
               ShowHint = True
               DataField = 'Valor_ICMS'
               DataSource = dsProcessosImp
-              TabOrder = 24
+              Alignment = taRightJustify
+              TabOrder = 5
+              InputMask.MaskChar = #0
               FieldLabel = 'Valor ICMS(R$)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cTaxa_FOB: TUniDBEdit
-              Left = 301
-              Top = 18
-              Width = 85
-              Height = 50
+              Left = 372
+              Top = 8
+              Width = 120
+              Height = 25
               Hint = ''
-              Enabled = False
               ShowHint = True
               DataField = 'Taxa_FOB'
               DataSource = dsProcessosImp
-              TabOrder = 1
+              TabOrder = 6
+              TabStop = False
+              ReadOnly = True
               FieldLabel = 'Taxa'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 40
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
               OnChange = cTaxa_FOBChange
             end
             object cTaxa_Frete: TUniDBEdit
-              Left = 301
-              Top = 68
-              Width = 85
-              Height = 50
+              Left = 372
+              Top = 35
+              Width = 120
+              Height = 25
               Hint = ''
-              Enabled = False
               ShowHint = True
               DataField = 'Taxa_Frete'
               DataSource = dsProcessosImp
-              TabOrder = 3
+              TabOrder = 7
+              TabStop = False
+              ReadOnly = True
               FieldLabel = 'Taxa'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 40
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cTaxa_Seguro: TUniDBEdit
-              Left = 301
-              Top = 117
-              Width = 85
-              Height = 50
+              Left = 372
+              Top = 62
+              Width = 120
+              Height = 25
               Hint = ''
-              Enabled = False
               ShowHint = True
               DataField = 'Taxa_Seguro'
               DataSource = dsProcessosImp
-              TabOrder = 5
+              TabOrder = 8
+              TabStop = False
+              ReadOnly = True
               FieldLabel = 'Taxa'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 40
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cValor_PIS: TUniDBEdit
-              Left = 6
-              Top = 558
-              Width = 125
-              Height = 50
+              Left = 8
+              Top = 305
+              Width = 240
+              Height = 25
               Hint = ''
+              ParentCustomHint = False
               ShowHint = True
               DataField = 'Valor_PIS'
               DataSource = dsProcessosImp
-              TabOrder = 18
+              Alignment = taRightJustify
+              TabOrder = 9
+              InputMask.MaskChar = #0
               FieldLabel = 'PIS Majorado'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cValor_COFINS: TUniDBEdit
-              Left = 6
-              Top = 607
-              Width = 125
-              Height = 50
+              Left = 8
+              Top = 332
+              Width = 240
+              Height = 25
               Hint = ''
+              ParentCustomHint = False
               ShowHint = True
               DataField = 'Valor_COFINS'
               DataSource = dsProcessosImp
-              TabOrder = 20
+              Alignment = taRightJustify
+              TabOrder = 10
+              InputMask.MaskChar = #0
               FieldLabel = 'COFINS Major.'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cII: TUniDBEdit
-              Left = 6
-              Top = 509
-              Width = 125
-              Height = 50
+              Left = 8
+              Top = 278
+              Width = 240
+              Height = 25
               Hint = ''
+              ParentCustomHint = False
               ShowHint = True
               DataField = 'Valor_II'
               DataSource = dsProcessosImp
-              TabOrder = 16
+              Alignment = taRightJustify
+              TabOrder = 11
+              InputMask.MaskChar = #0
               FieldLabel = 'II (R$)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cValor_IPI: TUniDBEdit
-              Left = 140
-              Top = 509
-              Width = 125
-              Height = 50
+              Left = 252
+              Top = 278
+              Width = 240
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_IPI'
               DataSource = dsProcessosImp
-              TabOrder = 17
+              Alignment = taRightJustify
+              TabOrder = 12
+              InputMask.MaskChar = #0
               FieldLabel = 'IPI (R$)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object clMoeda_FOB: TUniDBLookupComboBox
-              Left = 6
-              Top = 18
-              Width = 288
-              Height = 50
+              Left = 8
+              Top = 8
+              Width = 360
+              Height = 25
               Hint = ''
+              ParentCustomHint = False
               ShowHint = True
               ListField = 'Simbolo; Nome'
               ListSource = dstMoedas
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'Moeda_FOB'
               DataSource = dsProcessosImp
               AnyMatch = True
-              TabOrder = 0
+              TabOrder = 13
               Color = clWindow
               FieldLabel = 'Moeda FOB'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               NormalizeString = True
               Style = csDropDown
             end
             object cFOB_ME: TUniDBEdit
-              Left = 6
-              Top = 215
-              Width = 125
-              Height = 50
+              Left = 8
+              Top = 116
+              Width = 240
+              Height = 25
               Hint = ''
+              ParentCustomHint = False
               ShowHint = True
               DataField = 'Valor_FOBME'
               DataSource = dsProcessosImp
-              TabOrder = 8
-              InputMask.Mask = '0.00'
+              Alignment = taRightJustify
+              TabOrder = 14
+              InputMask.MaskChar = #0
               FieldLabel = 'FOB (ME)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
               OnChange = cFOB_MEChange
             end
             object clMoeda_Frete: TUniDBLookupComboBox
-              Left = 6
-              Top = 68
-              Width = 288
-              Height = 50
+              Left = 8
+              Top = 35
+              Width = 360
+              Height = 25
               Hint = ''
+              ParentCustomHint = False
               ShowHint = True
               ListField = 'Simbolo; Nome'
               ListSource = dstMoedas
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'Moeda_Frete'
               DataSource = dsProcessosImp
               AnyMatch = True
-              TabOrder = 2
+              TabOrder = 15
               Color = clWindow
               FieldLabel = 'Moeda Frete'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               NormalizeString = True
               Style = csDropDown
             end
             object cFrete_ME: TUniDBEdit
-              Left = 6
-              Top = 313
-              Width = 125
-              Height = 50
+              Left = 8
+              Top = 170
+              Width = 240
+              Height = 25
               Hint = ''
+              ParentCustomHint = False
               ShowHint = True
               DataField = 'Valor_FreteME'
               DataSource = dsProcessosImp
-              TabOrder = 10
+              Alignment = taRightJustify
+              TabOrder = 16
+              InputMask.MaskChar = #0
               FieldLabel = 'Frete (ME)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
               OnChange = cFrete_MEChange
             end
             object clMoeda_Seguro: TUniDBLookupComboBox
-              Left = 6
-              Top = 117
-              Width = 288
-              Height = 50
+              Left = 8
+              Top = 62
+              Width = 360
+              Height = 25
               Hint = ''
+              ParentCustomHint = False
               ShowHint = True
               ListField = 'Simbolo; Nome'
               ListSource = dstMoedas
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'Moeda_Seguro'
               DataSource = dsProcessosImp
               AnyMatch = True
-              TabOrder = 4
+              TabOrder = 17
               Color = clWindow
               FieldLabel = 'Moeda Seguro'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               NormalizeString = True
               Style = csDropDown
             end
             object cSeguro_ME: TUniDBEdit
-              Left = 6
-              Top = 411
-              Width = 125
-              Height = 50
+              Left = 8
+              Top = 224
+              Width = 240
+              Height = 25
               Hint = ''
+              ParentCustomHint = False
               ShowHint = True
               DataField = 'Valor_SeguroME'
               DataSource = dsProcessosImp
-              TabOrder = 12
+              Alignment = taRightJustify
+              TabOrder = 18
+              InputMask.MaskChar = #0
               FieldLabel = 'Seguro (ME)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cAd_Valorem: TUniDBEdit
-              Left = 140
-              Top = 460
-              Width = 125
-              Height = 50
+              Left = 252
+              Top = 251
+              Width = 240
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_AdValorem'
               DataSource = dsProcessosImp
-              TabOrder = 15
+              Alignment = taRightJustify
+              TabOrder = 19
+              ClearButton = True
+              InputMask.MaskChar = #0
               FieldLabel = 'Acr'#233'scimo(Real)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cAdValorem: TUniFormattedNumberEdit
-              Left = 6
-              Top = 460
-              Width = 125
-              Height = 50
+              Left = 8
+              Top = 251
+              Width = 240
+              Height = 25
               Hint = ''
-              Enabled = False
+              ParentCustomHint = False
               ShowHint = True
-              TabOrder = 14
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 20
+              TabStop = False
+              ReadOnly = True
               FieldLabel = 'Acr'#233'scimo (ME)'
-              FieldLabelAlign = laTop
               DecimalSeparator = ','
               ThousandSeparator = '.'
             end
             object cValor_Dumping: TUniDBEdit
-              Left = 6
-              Top = 656
-              Width = 125
-              Height = 50
+              Left = 8
+              Top = 359
+              Width = 240
+              Height = 25
               Hint = ''
+              ParentCustomHint = False
               ShowHint = True
               DataField = 'Valor_Dumping'
               DataSource = dsProcessosImp
-              TabOrder = 22
+              Alignment = taRightJustify
+              TabOrder = 21
+              InputMask.MaskChar = #0
               FieldLabel = 'Anti-Dumping (R$)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cTaxa_SISCOMEX: TUniDBEdit
-              Left = 140
-              Top = 656
-              Width = 125
-              Height = 50
+              Left = 252
+              Top = 359
+              Width = 240
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_TaxaSISCOMEX'
               DataSource = dsProcessosImp
-              TabOrder = 23
+              Alignment = taRightJustify
+              TabOrder = 22
+              InputMask.MaskChar = #0
               FieldLabel = 'Taxa SISCOMEX'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cReducao_ICMS: TUniDBEdit
-              Left = 224
-              Top = 705
-              Width = 80
-              Height = 50
+              Left = 8
+              Top = 413
+              Width = 240
+              Height = 25
               Hint = ''
+              ParentCustomHint = False
               ShowHint = True
               DataField = 'Reducao_ICMS'
               DataSource = dsProcessosImp
-              TabOrder = 26
+              Alignment = taRightJustify
+              TabOrder = 23
+              InputMask.MaskChar = #0
               FieldLabel = 'Red.% ICMS'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cFOB_MEAdicoes: TUniDBEdit
-              Left = 6
-              Top = 167
-              Width = 125
-              Height = 50
+              Left = 8
+              Top = 89
+              Width = 240
+              Height = 25
               Hint = ''
-              Enabled = False
+              ParentCustomHint = False
               ShowHint = True
               DataField = 'Valor_FOBMEAdicoes'
               DataSource = dsProcessosImp
-              TabOrder = 6
-              InputMask.Mask = '0.00'
+              Alignment = taRightJustify
+              TabOrder = 24
+              TabStop = False
+              ReadOnly = True
+              InputMask.MaskChar = #0
               FieldLabel = 'FOB Adi'#231#245'es(ME)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cFOB_Adicoes: TUniDBEdit
-              Left = 140
-              Top = 167
-              Width = 125
-              Height = 50
+              Left = 252
+              Top = 89
+              Width = 240
+              Height = 25
               Hint = ''
-              Enabled = False
               ShowHint = True
               DataField = 'Valor_FOBAdicoes'
               DataSource = dsProcessosImp
-              TabOrder = 7
+              Alignment = taRightJustify
+              TabOrder = 25
+              TabStop = False
+              ReadOnly = True
+              InputMask.MaskChar = #0
               FieldLabel = 'FOB Adi'#231#245'es(Real)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cReducao_BC: TUniDBEdit
-              Left = 310
-              Top = 705
-              Width = 80
-              Height = 50
+              Left = 252
+              Top = 414
+              Width = 240
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Reducao_BC'
               DataSource = dsProcessosImp
-              TabOrder = 27
+              Alignment = taRightJustify
+              TabOrder = 26
+              InputMask.MaskChar = #0
               FieldLabel = '%Red.BC ICMS'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cValor_PIS2: TUniDBEdit
-              Left = 140
-              Top = 558
-              Width = 125
-              Height = 50
+              Left = 252
+              Top = 305
+              Width = 240
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_PIS2'
               DataSource = dsProcessosImp
-              TabOrder = 19
+              Alignment = taRightJustify
+              TabOrder = 27
+              InputMask.MaskChar = #0
               FieldLabel = 'Valor PIS'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cValor_COFINS2: TUniDBEdit
-              Left = 140
-              Top = 607
-              Width = 125
-              Height = 50
+              Left = 252
+              Top = 332
+              Width = 240
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_COFINS2'
               DataSource = dsProcessosImp
-              TabOrder = 21
+              Alignment = taRightJustify
+              TabOrder = 28
+              InputMask.MaskChar = #0
               FieldLabel = 'Valor COFINS'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cAFRMM: TUniDBEdit
-              Left = 271
-              Top = 313
-              Width = 115
-              Height = 50
+              Left = 8
+              Top = 440
+              Width = 240
+              Height = 25
               Hint = ''
+              ParentCustomHint = False
               ShowHint = True
               DataField = 'Valor_AFRMM'
               DataSource = dsProcessosImp
-              TabOrder = 28
+              Alignment = taRightJustify
+              TabOrder = 29
+              InputMask.MaskChar = #0
               FieldLabel = 'AFRMM'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cFOB_SemADVal: TUniFormattedNumberEdit
-              Left = 140
-              Top = 264
-              Width = 125
-              Height = 50
+              Left = 252
+              Top = 143
+              Width = 240
+              Height = 25
               Hint = ''
-              Enabled = False
               ShowHint = True
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
               TabOrder = 30
+              TabStop = False
+              ReadOnly = True
               FieldLabel = 'FOB s/Adval (Real)'
-              FieldLabelAlign = laTop
               DecimalSeparator = ','
               ThousandSeparator = '.'
             end
             object cFOB_SemADValReal: TUniFormattedNumberEdit
-              Left = 6
-              Top = 264
-              Width = 125
-              Height = 50
+              Left = 8
+              Top = 143
+              Width = 240
+              Height = 25
               Hint = ''
-              Enabled = False
+              ParentCustomHint = False
               ShowHint = True
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
               TabOrder = 31
+              TabStop = False
+              ReadOnly = True
               FieldLabel = 'FOB s/Adval (ME)'
-              FieldLabelAlign = laTop
               DecimalSeparator = ','
               ThousandSeparator = '.'
             end
             object cFrete_NacionalReal: TUniDBEdit
-              Left = 140
-              Top = 362
-              Width = 125
-              Height = 50
+              Left = 252
+              Top = 197
+              Width = 240
+              Height = 25
               Hint = ''
-              Enabled = False
               ShowHint = True
               DataField = 'Valor_FreteNacionalReal'
               DataSource = dsProcessosImp
+              Alignment = taRightJustify
               TabOrder = 32
+              TabStop = False
+              ReadOnly = True
+              InputMask.MaskChar = #0
               FieldLabel = 'Frete Terr.Nac.(Real)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cFrete_NacionalME: TUniDBEdit
-              Left = 6
-              Top = 362
-              Width = 125
-              Height = 50
+              Left = 8
+              Top = 197
+              Width = 240
+              Height = 25
               Hint = ''
+              ParentCustomHint = False
               ShowHint = True
               DataField = 'Valor_FreteNacionalME'
               DataSource = dsProcessosImp
+              Alignment = taRightJustify
               TabOrder = 33
+              InputMask.MaskChar = #0
               FieldLabel = 'Frete Terr.Nac.(ME)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
           end
-          object GroupBox3: TUniGroupBox
-            Left = 15
-            Top = 355
-            Width = 616
-            Height = 178
+          object PainelInterno2: TUniPanel
+            Left = 10
+            Top = 8
+            Width = 602
+            Height = 796
             Hint = ''
             ShowHint = True
-            Caption = 'Declara'#231#227'o de Importa'#231#227'o (DI)'
-            TabOrder = 3
+            TabOrder = 2
             ClientEvents.UniEvents.Strings = (
               
-                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-                's = '#39'Grupo'#39';'#13#10'}')
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                '= '#39'CaixaSimples'#39';'#13#10'}')
+            BorderStyle = ubsInset
+            ShowCaption = False
+            TitleVisible = True
+            Title = 'DADOS DO PROCESSO'
+            Caption = ''
             object cData_RegistroDeclaracao: TUniDBDateTimePicker
-              Left = 169
-              Top = 15
-              Width = 129
-              Height = 50
+              Left = 312
+              Top = 305
+              Width = 280
+              Height = 25
               Hint = ''
               ShowHint = True
-              DataField = 'Data_RegistroDI'
+              DataField = 'Data_Registro'
               DataSource = dsProcessosImp
               DateTime = 45000.000000000000000000
               DateFormat = 'dd/MM/yyyy'
               TimeFormat = 'HH:mm:ss'
               TabOrder = 1
+              BorderStyle = ubsInset
               FieldLabel = 'Data do Registro'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               OnExit = cData_RegistroDeclaracaoExit
               OnChange = cData_RegistroDeclaracaoChange
             end
             object cNumero_Declaracao: TUniDBEdit
-              Left = 6
-              Top = 15
-              Width = 153
-              Height = 50
+              Left = 8
+              Top = 305
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
-              DataField = 'DI'
+              DataField = 'DUIMP'
               DataSource = dsProcessosImp
               MaxLength = 13
-              TabOrder = 0
-              FieldLabel = 'DI N'#186
+              TabOrder = 2
+              FieldLabel = 'DUIMP N'#186
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
               OnChange = cNumero_DeclaracaoChange
             end
             object cData_DesembaracoDeclaracao: TUniDBDateTimePicker
-              Left = 308
-              Top = 15
-              Width = 133
-              Height = 50
+              Left = 8
+              Top = 332
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
-              DataField = 'Data_DesembaracoDI'
+              DataField = 'Data_Desembaraco'
               DataSource = dsProcessosImp
               DateTime = 45000.000000000000000000
               DateFormat = 'dd/MM/yyyy'
               TimeFormat = 'HH:mm:ss'
-              TabOrder = 2
+              TabOrder = 3
+              BorderStyle = ubsInset
               FieldLabel = 'Data do Desembara'#231'o'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
             end
-            object cCanal_SISCOMEX: TUniDBRadioGroup
-              Left = 480
-              Top = 25
-              Width = 114
-              Height = 125
-              Hint = ''
-              ShowHint = True
-              DataField = 'Canal_SISCOMEX'
-              DataSource = dsProcessosImp
-              Caption = 'Canal'
-              TabOrder = 8
-              ClientEvents.UniEvents.Strings = (
-                
-                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'      config.' +
-                  'cls = '#39'Grupo'#39';'#13#10'}')
-              Items.Strings = (
-                'Verde'
-                'Amarelo'
-                'Vemelho'
-                'Cinza')
-              Values.Strings = (
-                'VD'
-                'AM'
-                'VM'
-                'CZ')
-            end
             object cVolumes: TUniDBEdit
-              Left = 6
-              Top = 113
-              Width = 112
-              Height = 50
+              Left = 8
+              Top = 710
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Volumes'
               DataSource = dsProcessosImp
-              TabOrder = 6
+              TabOrder = 4
               FieldLabel = 'Volumes'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
               OnChange = cVolumesChange
             end
             object cQuantidade: TUniDBEdit
-              Left = 276
-              Top = 64
-              Width = 133
-              Height = 50
+              Left = 8
+              Top = 683
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Quantidade'
               DataSource = dsProcessosImp
-              TabOrder = 3
+              TabOrder = 5
               FieldLabel = 'Quantidade Total'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cPeso_Liquido: TUniDBEdit
-              Left = 6
-              Top = 64
-              Width = 112
-              Height = 50
+              Left = 8
+              Top = 737
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Peso_Liquido'
               DataSource = dsProcessosImp
-              TabOrder = 4
+              TabOrder = 6
               FieldLabel = 'Peso L'#237'quido'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cPeso_Bruto: TUniDBEdit
-              Left = 133
-              Top = 64
-              Width = 129
-              Height = 50
+              Left = 312
+              Top = 737
+              Width = 280
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Peso_Bruto'
               DataSource = dsProcessosImp
-              TabOrder = 5
+              TabOrder = 7
               FieldLabel = 'Peso Bruto'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cEspecie: TUniDBEdit
-              Left = 133
-              Top = 113
-              Width = 309
-              Height = 50
+              Left = 312
+              Top = 708
+              Width = 280
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Especie'
               DataSource = dsProcessosImp
-              TabOrder = 7
+              TabOrder = 8
               FieldLabel = 'Esp'#233'cie'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
               OnChange = cVolumesChange
             end
-          end
-          object GroupBox4: TUniGroupBox
-            Left = 15
-            Top = 16
-            Width = 616
-            Height = 329
-            Hint = ''
-            ShowHint = True
-            Caption = 'Processo'
-            TabOrder = 4
-            ClientEvents.UniEvents.Strings = (
-              
-                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-                's = '#39'Grupo'#39';'#13#10'}')
             object cProcesso: TUniDBEdit
-              Left = 6
-              Top = 14
-              Width = 162
-              Height = 50
+              Left = 8
+              Top = 8
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Processo'
               DataSource = dsProcessosImp
-              TabOrder = 0
+              TabOrder = 9
               FieldLabel = 'Processo N'#186
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
               OnChange = cProcessoChange
               OnExit = cProcessoExit
             end
             object clCliente: TUniDBLookupComboBox
-              Left = 6
-              Top = 163
-              Width = 593
-              Height = 50
+              Left = 8
+              Top = 224
+              Width = 585
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Nome'
               ListSource = dstClientes
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'Cliente'
               DataSource = dsProcessosImp
               AnyMatch = True
-              TabOrder = 8
+              TabOrder = 10
               Color = clWindow
               FieldLabel = 'Cliente'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               NormalizeString = True
               Style = csDropDown
               OnExit = clClienteExit
             end
             object cProcesso_Abertura: TUniDBDateTimePicker
-              Left = 296
-              Top = 14
-              Width = 98
-              Height = 50
+              Left = 8
+              Top = 35
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Processo_Abertura'
@@ -1401,18 +1106,18 @@ object fComexProcessoImp: TfComexProcessoImp
               DateTime = 45000.000000000000000000
               DateFormat = 'dd/MM/yyyy'
               TimeFormat = 'HH:mm:ss'
-              TabOrder = 9
+              TabOrder = 11
+              BorderStyle = ubsInset
               FieldLabel = 'Abertura'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               OnChange = cProcesso_AberturaChange
             end
             object cProcesso_Fechamento: TUniDBDateTimePicker
-              Left = 400
-              Top = 14
-              Width = 98
-              Height = 50
+              Left = 312
+              Top = 35
+              Width = 280
+              Height = 25
               Hint = ''
               Enabled = False
               ShowHint = True
@@ -1421,109 +1126,108 @@ object fComexProcessoImp: TfComexProcessoImp
               DateTime = 45000.000000000000000000
               DateFormat = 'dd/MM/yyyy'
               TimeFormat = 'HH:mm:ss'
-              TabOrder = 10
+              TabOrder = 12
+              BorderStyle = ubsInset
               FieldLabel = 'Fechamento'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
             end
             object clModalidade_Importacao: TUniDBLookupComboBox
-              Left = 6
-              Top = 213
-              Width = 593
-              Height = 50
+              Left = 8
+              Top = 251
+              Width = 585
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Descricao'
               ListSource = dstModal
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'Modalidade'
               DataSource = dsProcessosImp
               AnyMatch = True
-              TabOrder = 12
+              TabOrder = 13
               Color = clWindow
               FieldLabel = 'Modalidade'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               NormalizeString = True
               Style = csDropDown
               OnExit = clModalidade_ImportacaoExit
             end
             object cIncentivo: TUniDBLookupComboBox
-              Left = 6
-              Top = 113
-              Width = 201
-              Height = 50
+              Left = 8
+              Top = 170
+              Width = 585
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo; Estado; Nome'
               ListSource = dstBeneficio
               KeyField = 'Nome'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'Beneficio_Fiscal'
               DataSource = dsProcessosImp
               AnyMatch = True
-              TabOrder = 3
+              TabOrder = 14
               Color = clWindow
               FieldLabel = 'Incentivo Fiscal'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
             end
             object clResponsavel: TUniDBLookupComboBox
-              Left = 6
-              Top = 260
-              Width = 593
-              Height = 50
+              Left = 8
+              Top = 278
+              Width = 585
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Matricula;Nome'
               ListSource = dstUsuarios
               KeyField = 'Matricula'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'Responsavel'
               DataSource = dsProcessosImp
               AnyMatch = True
-              TabOrder = 13
+              TabOrder = 15
               Color = clWindow
               FieldLabel = 'Respons'#225'vel'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               NormalizeString = True
               Style = csDropDown
             end
             object cProcesso_Mestre: TUniDBLookupComboBox
-              Left = 6
-              Top = 63
-              Width = 162
-              Height = 50
+              Left = 8
+              Top = 89
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Processo'
               ListSource = dstMestre
               KeyField = 'Processo'
               ListFieldIndex = 0
+              BorderStyle = ubsInset
               DataField = 'Processo_Mestre'
               DataSource = dsProcessosImp
               AnyMatch = True
-              TabOrder = 2
+              TabOrder = 16
               Color = clWindow
               FieldLabel = 'Mestre'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               NormalizeString = True
               Style = csDropDown
               OnExit = cProcesso_MestreExit
             end
             object cData_Encerramento: TUniDBDateTimePicker
-              Left = 504
-              Top = 14
-              Width = 97
-              Height = 50
+              Left = 8
+              Top = 62
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Data_Encerramento'
@@ -1531,53 +1235,53 @@ object fComexProcessoImp: TfComexProcessoImp
               DateTime = 45000.000000000000000000
               DateFormat = 'dd/MM/yyyy'
               TimeFormat = 'HH:mm:ss'
-              TabOrder = 11
+              TabOrder = 17
+              BorderStyle = ubsInset
               FieldLabel = 'Encerramento'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
             end
             object cCondicaoVenda: TUniDBLookupComboBox
-              Left = 215
-              Top = 113
-              Width = 384
-              Height = 50
+              Left = 8
+              Top = 197
+              Width = 585
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Descricao'
               ListSource = dstIncoterms
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'Incoterms'
               DataSource = dsProcessosImp
               AnyMatch = True
-              TabOrder = 7
+              TabOrder = 18
               Color = clWindow
               FieldLabel = 'INCOTERMS'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
             end
             object cReferencia_Cliente: TUniDBEdit
-              Left = 177
-              Top = 63
-              Width = 165
-              Height = 50
+              Left = 8
+              Top = 116
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Referencia_Cliente'
               DataSource = dsProcessosImp
-              TabOrder = 4
-              FieldLabel = 'Ref.(Cliente/Proc.)'
+              TabOrder = 19
+              FieldLabel = 'Ref.(Cliente)'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cReferencia_DataEntrega: TUniDBDateTimePicker
-              Left = 504
-              Top = 63
-              Width = 97
-              Height = 50
+              Left = 312
+              Top = 116
+              Width = 280
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Referencia_DataEntrega'
@@ -1585,17 +1289,16 @@ object fComexProcessoImp: TfComexProcessoImp
               DateTime = 45000.000000000000000000
               DateFormat = 'dd/MM/yyyy'
               TimeFormat = 'HH:mm:ss'
-              TabOrder = 5
+              TabOrder = 20
+              BorderStyle = ubsInset
               FieldLabel = 'Data da Entrega'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
             end
             object cData: TUniDBDateTimePicker
-              Left = 177
-              Top = 14
-              Width = 113
-              Height = 50
+              Left = 312
+              Top = 8
+              Width = 280
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Data'
@@ -1603,46 +1306,363 @@ object fComexProcessoImp: TfComexProcessoImp
               DateTime = 45000.000000000000000000
               DateFormat = 'dd/MM/yyyy'
               TimeFormat = 'HH:mm:ss'
-              TabOrder = 1
+              TabOrder = 21
+              BorderStyle = ubsInset
               FieldLabel = 'Data'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
             end
             object cReferencia_Despachante: TUniDBEdit
-              Left = 348
-              Top = 63
-              Width = 150
-              Height = 50
+              Left = 8
+              Top = 143
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Referencia_Despachante'
               DataSource = dsProcessosImp
-              TabOrder = 6
-              FieldLabel = 'Ref.(Despach/Proc.)'
+              TabOrder = 22
+              FieldLabel = 'Ref.(Despachante)'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
+            end
+            object cNavio_DataChegada: TUniDBDateTimePicker
+              Left = 312
+              Top = 521
+              Width = 280
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Navio_DataChegada'
+              DataSource = dsProcessosImp
+              DateTime = 45000.000000000000000000
+              DateFormat = 'dd/MM/yyyy'
+              TimeFormat = 'HH:mm:ss'
+              TabOrder = 23
+              BorderStyle = ubsInset
+              FieldLabel = 'Data da Chegada'
               FieldLabelSeparator = ' '
             end
+            object cNumero_Fatura: TUniDBEdit
+              Left = 8
+              Top = 359
+              Width = 300
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Numero_Fatura'
+              DataSource = dsProcessosImp
+              TabOrder = 24
+              FieldLabel = 'Fatura N'#186
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
+            end
+            object cNome_Transporte: TUniDBEdit
+              Left = 312
+              Top = 494
+              Width = 280
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Nome_Transporte'
+              DataSource = dsProcessosImp
+              TabOrder = 25
+              FieldLabel = 'Nome Transporte'
+              FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
+            end
+            object cConhecimento: TUniDBEdit
+              Left = 312
+              Top = 548
+              Width = 280
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Conhecimento_Embarque'
+              DataSource = dsProcessosImp
+              TabOrder = 26
+              FieldLabel = 'Conhec. Embarque'
+              FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
+            end
+            object cAgencia_Maritima: TUniDBEdit
+              Left = 8
+              Top = 575
+              Width = 584
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Agencia_Maritima'
+              DataSource = dsProcessosImp
+              TabOrder = 27
+              FieldLabel = 'Ag'#234'ncia'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
+            end
+            object cNavio_DataPrevista: TUniDBDateTimePicker
+              Left = 8
+              Top = 521
+              Width = 300
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Navio_DataPrevista'
+              DataSource = dsProcessosImp
+              DateTime = 45000.000000000000000000
+              DateFormat = 'dd/MM/yyyy'
+              TimeFormat = 'HH:mm:ss'
+              TabOrder = 28
+              BorderStyle = ubsInset
+              FieldLabel = 'Data Prevista'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+            end
+            object clTipo_Mercadoria: TUniDBLookupComboBox
+              Left = 8
+              Top = 467
+              Width = 585
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ListField = 'Codigo;Descricao'
+              ListSource = dstFuncaoProd
+              KeyField = 'Codigo'
+              ListFieldIndex = 1
+              BorderStyle = ubsInset
+              DataField = 'Tipo_Mercadoria'
+              DataSource = dsProcessosImp
+              AnyMatch = True
+              TabOrder = 29
+              Color = clWindow
+              FieldLabel = 'Tipo Mercadoria'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+              NormalizeString = True
+              Style = csDropDown
+            end
+            object cData_Fatura: TUniDBDateTimePicker
+              Left = 312
+              Top = 359
+              Width = 280
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Data_Fatura'
+              DataSource = dsProcessosImp
+              DateTime = 45000.000000000000000000
+              DateFormat = 'dd/MM/yyyy'
+              TimeFormat = 'HH:mm:ss'
+              TabOrder = 30
+              BorderStyle = ubsInset
+              FieldLabel = 'Data'
+              FieldLabelSeparator = ' '
+            end
+            object cDocumento_Carga: TUniDBEdit
+              Left = 8
+              Top = 548
+              Width = 300
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Documento_Carga'
+              DataSource = dsProcessosImp
+              TabOrder = 31
+              FieldLabel = 'Documento de Carga N'#186
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
+            end
+            object cValor_FaturaME: TUniDBEdit
+              Left = 8
+              Top = 386
+              Width = 300
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Valor_FaturaME'
+              DataSource = dsProcessosImp
+              TabOrder = 32
+              FieldLabel = 'Valor Fatura (ME)'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
+            end
+            object cData_BL: TUniDBDateTimePicker
+              Left = 8
+              Top = 602
+              Width = 300
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Data_BL'
+              DataSource = dsProcessosImp
+              DateTime = 45000.000000000000000000
+              DateFormat = 'dd/MM/yyyy'
+              TimeFormat = 'HH:mm:ss'
+              TabOrder = 33
+              BorderStyle = ubsInset
+              FieldLabel = 'Data BL'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+            end
+            object cCondicaoCambio: TUniDBLookupComboBox
+              Left = 8
+              Top = 413
+              Width = 585
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ListField = 'Codigo; Descricao'
+              ListSource = dstCondCambial
+              KeyField = 'Codigo'
+              ListFieldIndex = 1
+              BorderStyle = ubsInset
+              DataField = 'Condicao_Cambio'
+              DataSource = dsProcessosImp
+              TabOrder = 34
+              Color = clWindow
+              FieldLabel = 'Condi'#231#227'o Cambial'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+            end
+            object clFornecedor: TUniDBLookupComboBox
+              Left = 8
+              Top = 440
+              Width = 585
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ListField = 'Codigo;Nome'
+              ListSource = dstExportador
+              KeyField = 'Codigo'
+              ListFieldIndex = 1
+              BorderStyle = ubsInset
+              DataField = 'Exportador'
+              DataSource = dsProcessosImp
+              AnyMatch = True
+              TabOrder = 35
+              Color = clWindow
+              FieldLabel = 'Exportador'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+              NormalizeString = True
+              Style = csDropDown
+            end
+            object cROF_Numero: TUniDBEdit
+              Left = 8
+              Top = 629
+              Width = 300
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'ROF_Numero'
+              DataSource = dsProcessosImp
+              TabOrder = 36
+              FieldLabel = 'ROF N'#186
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
+            end
+            object cROF_Emissao: TUniDBDateTimePicker
+              Left = 8
+              Top = 656
+              Width = 300
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'ROF_Emissao'
+              DataSource = dsProcessosImp
+              DateTime = 45000.000000000000000000
+              DateFormat = 'dd/MM/yyyy'
+              TimeFormat = 'HH:mm:ss'
+              TabOrder = 37
+              BorderStyle = ubsInset
+              FieldLabel = 'Emiss'#227'o'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+            end
+            object cROF_Dias: TUniDBEdit
+              Left = 312
+              Top = 629
+              Width = 280
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'ROF_Dias'
+              DataSource = dsProcessosImp
+              TabOrder = 38
+              FieldLabel = 'Vencimento (Dias)'
+              FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
+            end
+            object clVia_Transporte: TUniDBLookupComboBox
+              Left = 8
+              Top = 494
+              Width = 300
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ListField = 'Codigo;Descricao'
+              ListSource = dstViaTransp
+              KeyField = 'Codigo'
+              ListFieldIndex = 1
+              BorderStyle = ubsInset
+              DataField = 'Via_Transporte'
+              DataSource = dsProcessosImp
+              AnyMatch = True
+              TabOrder = 39
+              Color = clWindow
+              FieldLabel = 'Via de Transporte'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+              NormalizeString = True
+              Style = csDropDown
+            end
+            object cCanal: TUniDBComboBox
+              Left = 312
+              Top = 62
+              Width = 280
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Canal_SISCOMEX'
+              DataSource = dsProcessosImp
+              Items.Strings = (
+                'Verde'
+                'Amarelo'
+                'Vemelho'
+                'Cinza')
+              TabOrder = 40
+              FieldLabel = 'Canal'
+              FieldLabelSeparator = ' '
+              IconItems = <>
+              Mode = umNameValue
+            end
           end
-          object UniGroupBox2: TUniGroupBox
-            Left = 645
-            Top = 16
-            Width = 404
-            Height = 197
+          object PainelInterno3: TUniPanel
+            Left = 618
+            Top = 8
+            Width = 500
+            Height = 285
             Hint = ''
             ShowHint = True
-            Caption = 'Caracter'#237'sticas da Importa'#231#227'o'
-            TabOrder = 5
+            TabOrder = 3
             ClientEvents.UniEvents.Strings = (
               
-                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-                's = '#39'Grupo'#39';'#13#10'}')
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                '= '#39'CaixaSimples'#39';'#13#10'}')
+            BorderStyle = ubsInset
+            ShowCaption = False
+            TitleVisible = True
+            Title = 'CARACTER'#205'STICAS DA IMPORTA'#199#195'O'
+            Caption = ''
             object cPreco_Venda: TUniDBCheckBox
-              Left = 6
-              Top = 111
-              Width = 384
-              Height = 17
+              Left = 8
+              Top = 108
+              Width = 360
+              Height = 18
               Hint = ''
               ShowHint = True
               DataField = 'Preco_Venda'
@@ -1656,10 +1676,10 @@ object fComexProcessoImp: TfComexProcessoImp
               FieldLabelSeparator = ' '
             end
             object cRateia_FretePeso: TUniDBCheckBox
-              Left = 6
-              Top = 129
-              Width = 384
-              Height = 17
+              Left = 8
+              Top = 128
+              Width = 360
+              Height = 18
               Hint = ''
               ShowHint = True
               DataField = 'Rateia_FretePeso'
@@ -1673,10 +1693,10 @@ object fComexProcessoImp: TfComexProcessoImp
               FieldLabelSeparator = ' '
             end
             object cRemover_FreteNacBC: TUniDBCheckBox
-              Left = 6
-              Top = 147
-              Width = 384
-              Height = 17
+              Left = 8
+              Top = 148
+              Width = 360
+              Height = 18
               Hint = ''
               ShowHint = True
               DataField = 'Remover_FreteNacBC'
@@ -1692,10 +1712,10 @@ object fComexProcessoImp: TfComexProcessoImp
               FieldLabelSeparator = ' '
             end
             object cICMS_DIferido: TUniDBCheckBox
-              Left = 6
-              Top = 93
-              Width = 150
-              Height = 17
+              Left = 8
+              Top = 88
+              Width = 360
+              Height = 18
               Hint = ''
               ShowHint = True
               DataField = 'ICMS_DIferido'
@@ -1709,10 +1729,10 @@ object fComexProcessoImp: TfComexProcessoImp
               FieldLabelSeparator = ' '
             end
             object UniDBCheckBox1: TUniDBCheckBox
-              Left = 6
-              Top = 21
-              Width = 145
-              Height = 17
+              Left = 8
+              Top = 8
+              Width = 360
+              Height = 18
               Hint = ''
               ShowHint = True
               DataField = 'Courrier'
@@ -1722,14 +1742,14 @@ object fComexProcessoImp: TfComexProcessoImp
               ParentColor = False
               Color = clBtnFace
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelAlign = laRight
               FieldLabelSeparator = ' '
             end
             object UniDBCheckBox2: TUniDBCheckBox
-              Left = 6
-              Top = 165
-              Width = 145
-              Height = 17
+              Left = 8
+              Top = 228
+              Width = 360
+              Height = 18
               Hint = ''
               ShowHint = True
               DataField = 'Desativado'
@@ -1743,10 +1763,10 @@ object fComexProcessoImp: TfComexProcessoImp
               FieldLabelSeparator = ' '
             end
             object UniDBCheckBox3: TUniDBCheckBox
-              Left = 6
-              Top = 57
-              Width = 145
-              Height = 17
+              Left = 8
+              Top = 48
+              Width = 360
+              Height = 18
               Hint = ''
               ShowHint = True
               DataField = 'Entreposto'
@@ -1760,10 +1780,10 @@ object fComexProcessoImp: TfComexProcessoImp
               FieldLabelSeparator = ' '
             end
             object UniDBCheckBox4: TUniDBCheckBox
-              Left = 6
-              Top = 39
-              Width = 145
-              Height = 17
+              Left = 8
+              Top = 28
+              Width = 360
+              Height = 18
               Hint = ''
               ShowHint = True
               DataField = 'DA'
@@ -1777,10 +1797,10 @@ object fComexProcessoImp: TfComexProcessoImp
               FieldLabelSeparator = ' '
             end
             object UniDBCheckBox5: TUniDBCheckBox
-              Left = 6
-              Top = 75
-              Width = 145
-              Height = 17
+              Left = 8
+              Top = 68
+              Width = 360
+              Height = 18
               Hint = ''
               ShowHint = True
               DataField = 'Admissao_Temporaria'
@@ -1793,7 +1813,67 @@ object fComexProcessoImp: TfComexProcessoImp
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
             end
+            object UniDBCheckBox6: TUniDBCheckBox
+              Left = 8
+              Top = 187
+              Width = 360
+              Height = 18
+              Hint = ''
+              ShowHint = True
+              DataField = 'Apuracao_PISCOFINS'
+              DataSource = dsProcessosImp
+              Caption = 'Apura PIS/COFINS'
+              TabOrder = 10
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
+            object UniDBCheckBox7: TUniDBCheckBox
+              Left = 8
+              Top = 168
+              Width = 360
+              Height = 18
+              Hint = ''
+              ShowHint = True
+              DataField = 'Exonerado'
+              DataSource = dsProcessosImp
+              Caption = 'Exonerado'
+              TabOrder = 11
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
+            object UniDBCheckBox8: TUniDBCheckBox
+              Left = 8
+              Top = 208
+              Width = 360
+              Height = 18
+              Hint = ''
+              ShowHint = True
+              DataField = 'Estoque_Bloqueado'
+              DataSource = dsProcessosImp
+              Caption = 'Estoque da Declara'#231#227'o Bloqueado'
+              TabOrder = 12
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
           end
+        end
+        object UniContainerPanel1: TUniContainerPanel
+          Left = 235
+          Top = 1068
+          Width = 864
+          Height = 13
+          Hint = ''
+          ParentColor = False
+          TabOrder = 1
         end
       end
     end
@@ -1804,8 +1884,8 @@ object fComexProcessoImp: TfComexProcessoImp
       object UniScrollBox3: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1369
-        Height = 1657
+        Width = 1292
+        Height = 1137
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -1814,14 +1894,14 @@ object fComexProcessoImp: TfComexProcessoImp
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1367
-          1655)
-        ScrollHeight = 1176
+          1290
+          1135)
+        ScrollHeight = 940
         object UniPanel3: TUniPanel
-          Left = 94
-          Top = 22
-          Width = 686
-          Height = 1154
+          Left = 62
+          Top = 96
+          Width = 805
+          Height = 844
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -1837,10 +1917,10 @@ object fComexProcessoImp: TfComexProcessoImp
           Caption = ''
           Color = clTeal
           object cCondicao_Pgto: TUniDBEdit
-            Left = 11
-            Top = 260
+            Left = 20
+            Top = 154
             Width = 347
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Condicao_Pgto'
@@ -1848,14 +1928,14 @@ object fComexProcessoImp: TfComexProcessoImp
             TabOrder = 1
             FieldLabel = 'Condi'#231#227'o Pagamento'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cLocal_Embarque: TUniDBEdit
-            Left = 374
-            Top = 260
-            Width = 284
-            Height = 50
+            Left = 383
+            Top = 154
+            Width = 326
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Local_Embarque'
@@ -1863,14 +1943,14 @@ object fComexProcessoImp: TfComexProcessoImp
             TabOrder = 2
             FieldLabel = 'Local Embarque'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cLocal_Desembarque: TUniDBEdit
-            Left = 11
-            Top = 159
+            Left = 20
+            Top = 100
             Width = 347
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Local_Desembarque'
@@ -1878,20 +1958,21 @@ object fComexProcessoImp: TfComexProcessoImp
             TabOrder = 3
             FieldLabel = 'Local Desembarque'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object clUF_Desembaraco: TUniDBLookupComboBox
-            Left = 374
-            Top = 208
-            Width = 284
-            Height = 50
+            Left = 383
+            Top = 127
+            Width = 326
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'UF;Nome'
             ListSource = dstEstados
             KeyField = 'UF'
             ListFieldIndex = 0
+            BorderStyle = ubsInset
             DataField = 'UF_Desembaraco'
             DataSource = dsProcessosImp
             AnyMatch = True
@@ -1899,16 +1980,15 @@ object fComexProcessoImp: TfComexProcessoImp
             Color = clWindow
             FieldLabel = 'UF Desemb.'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
           end
           object cMargem_Lucro: TUniDBEdit
-            Left = 11
-            Top = 461
-            Width = 144
-            Height = 50
+            Left = 20
+            Top = 262
+            Width = 250
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Margem_Lucro'
@@ -1916,14 +1996,14 @@ object fComexProcessoImp: TfComexProcessoImp
             TabOrder = 5
             FieldLabel = 'Margem de Lucro'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cDesconto_Operacional: TUniDBEdit
-            Left = 11
-            Top = 512
-            Width = 143
-            Height = 50
+            Left = 20
+            Top = 289
+            Width = 250
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Desconto_Operacional'
@@ -1931,14 +2011,14 @@ object fComexProcessoImp: TfComexProcessoImp
             TabOrder = 6
             FieldLabel = 'Desconto Operacional'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cDesconto_Adicional: TUniDBEdit
-            Left = 11
-            Top = 563
-            Width = 143
-            Height = 50
+            Left = 20
+            Top = 316
+            Width = 250
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Desconto_Adicional'
@@ -1946,20 +2026,21 @@ object fComexProcessoImp: TfComexProcessoImp
             TabOrder = 7
             FieldLabel = 'Desconto Adicional'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object clLocal_Desembaraco: TUniDBLookupComboBox
-            Left = 11
-            Top = 209
+            Left = 20
+            Top = 127
             Width = 347
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Nome'
             ListSource = dstLocalDesemb
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Local_Desembaraco'
             DataSource = dsProcessosImp
             AnyMatch = True
@@ -1967,16 +2048,15 @@ object fComexProcessoImp: TfComexProcessoImp
             Color = clWindow
             FieldLabel = 'Local Desembara'#231'o'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
           end
           object GroupBox6: TUniGroupBox
-            Left = 11
-            Top = 676
-            Width = 663
-            Height = 279
+            Left = 20
+            Top = 383
+            Width = 763
+            Height = 228
             Hint = ''
             ShowHint = True
             Caption = 'Previs'#245'es'
@@ -1986,40 +2066,40 @@ object fComexProcessoImp: TfComexProcessoImp
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
                 's = '#39'Grupo'#39';'#13#10'}')
             object cFator_FaturamentoValor: TUniDBEdit
-              Left = 129
-              Top = 167
-              Width = 112
-              Height = 50
+              Left = 253
+              Top = 153
+              Width = 238
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_FatorFaturamento'
               DataSource = dsProcessosImp
               TabOrder = 13
               FieldLabel = 'ME'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 40
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cFator_SISCOMEXValor: TUniDBEdit
-              Left = 129
+              Left = 253
               Top = 18
-              Width = 112
-              Height = 50
+              Width = 238
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_FatorSISCOMEX'
               DataSource = dsProcessosImp
               TabOrder = 2
               FieldLabel = 'ME'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 40
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cData_PrevRegistro: TUniDBDateTimePicker
               Left = 11
               Top = 18
-              Width = 112
-              Height = 50
+              Width = 238
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Data_PrevRegistro'
@@ -2028,16 +2108,16 @@ object fComexProcessoImp: TfComexProcessoImp
               DateFormat = 'dd/MM/yyyy'
               TimeFormat = 'HH:mm:ss'
               TabOrder = 1
+              BorderStyle = ubsInset
               FieldLabel = 'Previs'#227'o Registro'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
             end
             object cData_PrevFaturamento: TUniDBDateTimePicker
               Left = 11
-              Top = 167
-              Width = 112
-              Height = 50
+              Top = 153
+              Width = 238
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Data_PrevFaturamento'
@@ -2046,16 +2126,16 @@ object fComexProcessoImp: TfComexProcessoImp
               DateFormat = 'dd/MM/yyyy'
               TimeFormat = 'HH:mm:ss'
               TabOrder = 12
+              BorderStyle = ubsInset
               FieldLabel = 'Previs'#227'o Faturamento'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
             end
             object cCondicao_Pagamento: TUniDBEdit
               Left = 11
-              Top = 217
-              Width = 112
-              Height = 50
+              Top = 180
+              Width = 238
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Condicao_Pagamento'
@@ -2063,29 +2143,29 @@ object fComexProcessoImp: TfComexProcessoImp
               TabOrder = 15
               FieldLabel = 'Condi'#231#227'o Pgto. (Dupl)'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cFator_FreteValor: TUniDBEdit
-              Left = 129
-              Top = 68
-              Width = 112
-              Height = 50
+              Left = 253
+              Top = 45
+              Width = 238
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_FatorFrete'
               DataSource = dsProcessosImp
               TabOrder = 5
               FieldLabel = 'ME'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 40
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cData_PrevFrete: TUniDBDateTimePicker
               Left = 11
-              Top = 68
-              Width = 112
-              Height = 50
+              Top = 45
+              Width = 238
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Data_PrevFrete'
@@ -2094,21 +2174,22 @@ object fComexProcessoImp: TfComexProcessoImp
               DateFormat = 'dd/MM/yyyy'
               TimeFormat = 'HH:mm:ss'
               TabOrder = 4
+              BorderStyle = ubsInset
               FieldLabel = 'Previs'#227'o Frete'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
             end
             object clPrevisao_FreteTransportador: TUniDBLookupComboBox
-              Left = 366
-              Top = 68
-              Width = 280
-              Height = 50
+              Left = 11
+              Top = 72
+              Width = 640
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Nome'
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'Previsao_FreteTransportador'
               DataSource = dsProcessosImp
               AnyMatch = True
@@ -2116,76 +2197,75 @@ object fComexProcessoImp: TfComexProcessoImp
               Color = clWindow
               FieldLabel = 'Fornecedor'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               NormalizeString = True
               Style = csDropDown
             end
             object cFator_FaturamentoValorReal: TUniDBEdit
-              Left = 248
-              Top = 167
-              Width = 112
-              Height = 50
+              Left = 496
+              Top = 153
+              Width = 238
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_FatorFaturamentoReal'
               DataSource = dsProcessosImp
               TabOrder = 14
               FieldLabel = 'R$'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 40
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cFator_SISCOMEXValorReal: TUniDBEdit
-              Left = 248
+              Left = 496
               Top = 18
-              Width = 112
-              Height = 50
+              Width = 238
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_FatorSISCOMEXReal'
               DataSource = dsProcessosImp
               TabOrder = 3
               FieldLabel = 'R$'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 40
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cFator_FreteValorReal: TUniDBEdit
-              Left = 248
-              Top = 68
-              Width = 112
-              Height = 50
+              Left = 496
+              Top = 45
+              Width = 238
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_FatorFreteReal'
               DataSource = dsProcessosImp
               TabOrder = 6
               FieldLabel = 'R$'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 40
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cFator_ArmazemValor: TUniDBEdit
-              Left = 129
-              Top = 118
-              Width = 112
-              Height = 50
+              Left = 253
+              Top = 99
+              Width = 238
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_FatorArmazem'
               DataSource = dsProcessosImp
               TabOrder = 9
               FieldLabel = 'ME'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 40
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
             object cData_PrevArmazem: TUniDBDateTimePicker
               Left = 11
-              Top = 118
-              Width = 112
-              Height = 50
+              Top = 99
+              Width = 238
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Data_PrevArmazem'
@@ -2194,21 +2274,22 @@ object fComexProcessoImp: TfComexProcessoImp
               DateFormat = 'dd/MM/yyyy'
               TimeFormat = 'HH:mm:ss'
               TabOrder = 8
+              BorderStyle = ubsInset
               FieldLabel = 'Previs'#227'o Armazenagem'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
             end
             object clPrevisao_ArmazemFornecedor: TUniDBLookupComboBox
-              Left = 367
-              Top = 117
-              Width = 280
-              Height = 50
+              Left = 11
+              Top = 126
+              Width = 640
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Nome'
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'Previsao_ArmazemFornecedor'
               DataSource = dsProcessosImp
               AnyMatch = True
@@ -2216,32 +2297,31 @@ object fComexProcessoImp: TfComexProcessoImp
               Color = clWindow
               FieldLabel = 'Fornecedor'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               NormalizeString = True
               Style = csDropDown
             end
             object cFator_ArmazemValorReal: TUniDBEdit
-              Left = 248
-              Top = 118
-              Width = 112
-              Height = 50
+              Left = 496
+              Top = 99
+              Width = 238
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_FatorArmazemReal'
               DataSource = dsProcessosImp
               TabOrder = 10
               FieldLabel = 'R$'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 40
               FieldLabelSeparator = ' '
+              BorderStyle = ubsInset
             end
           end
           object cMargem_LucroValor: TUniDBEdit
-            Left = 160
-            Top = 461
-            Width = 113
-            Height = 50
+            Left = 383
+            Top = 262
+            Width = 250
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Valor_MargemLucro'
@@ -2249,14 +2329,14 @@ object fComexProcessoImp: TfComexProcessoImp
             TabOrder = 10
             FieldLabel = '.'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cDesconto_OperacionalValor: TUniDBEdit
-            Left = 160
-            Top = 512
-            Width = 113
-            Height = 50
+            Left = 383
+            Top = 289
+            Width = 250
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Valor_DescontoOperacional'
@@ -2264,14 +2344,14 @@ object fComexProcessoImp: TfComexProcessoImp
             TabOrder = 11
             FieldLabel = '.'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cDesconto_AdicionalValor: TUniDBEdit
-            Left = 160
-            Top = 563
-            Width = 113
-            Height = 50
+            Left = 383
+            Top = 316
+            Width = 250
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Valor_DescontoAdicional'
@@ -2279,14 +2359,14 @@ object fComexProcessoImp: TfComexProcessoImp
             TabOrder = 12
             FieldLabel = '.'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cVencimento_Cambio: TUniDBEdit
-            Left = 11
-            Top = 614
-            Width = 143
-            Height = 50
+            Left = 20
+            Top = 343
+            Width = 250
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Vencimento_Cambio'
@@ -2294,20 +2374,21 @@ object fComexProcessoImp: TfComexProcessoImp
             TabOrder = 13
             FieldLabel = 'Per'#237'odo Pgto.C'#226'mbio'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cPais_Origem: TUniDBLookupComboBox
-            Left = 11
-            Top = 108
+            Left = 20
+            Top = 73
             Width = 346
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Nome'
             ListSource = dstPaises
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Pais_Origem'
             DataSource = dsProcessosImp
             AnyMatch = True
@@ -2315,37 +2396,37 @@ object fComexProcessoImp: TfComexProcessoImp
             Color = clWindow
             FieldLabel = 'Pa'#237's Origem'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
           object cObservacao: TUniDBMemo
-            Left = 11
-            Top = 975
-            Width = 663
-            Height = 145
+            Left = 20
+            Top = 648
+            Width = 758
+            Height = 118
             Hint = ''
             ShowHint = True
             DataField = 'Observacao'
             DataSource = dsProcessosImp
+            BorderStyle = ubsInset
             ScrollBars = ssVertical
             TabOrder = 15
             FieldLabel = 'Observa'#231#245'es'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
           object cCSTPIS: TUniDBLookupComboBox
-            Left = 11
-            Top = 310
+            Left = 20
+            Top = 181
             Width = 647
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dstCSTPIS
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'CST_PIS'
             DataSource = dsProcessosImp
             AnyMatch = True
@@ -2354,22 +2435,22 @@ object fComexProcessoImp: TfComexProcessoImp
             MatchFieldWidth = False
             FieldLabel = 'CST PIS'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
           end
           object cCSTCOFINS: TUniDBLookupComboBox
-            Left = 11
-            Top = 360
+            Left = 20
+            Top = 208
             Width = 647
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dstCSTCOFINS
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'CST_COFINS'
             DataSource = dsProcessosImp
             AnyMatch = True
@@ -2378,15 +2459,14 @@ object fComexProcessoImp: TfComexProcessoImp
             MatchFieldWidth = False
             FieldLabel = 'CST COFINS'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
           object cBCCredito: TUniDBComboBox
-            Left = 11
-            Top = 410
+            Left = 20
+            Top = 235
             Width = 647
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             AnyMatch = True
@@ -2427,16 +2507,15 @@ object fComexProcessoImp: TfComexProcessoImp
             TabOrder = 18
             FieldLabel = 'C'#243'd.B.C dos Cr'#233'ditos'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             IconItems = <>
             NormalizeString = True
           end
           object cConsignatario_CNPJ: TUniDBEdit
-            Left = 11
-            Top = 8
-            Width = 155
-            Height = 50
+            Left = 20
+            Top = 19
+            Width = 346
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Consignatario_CNPJ'
@@ -2445,20 +2524,21 @@ object fComexProcessoImp: TfComexProcessoImp
             TabOrder = 19
             FieldLabel = 'CNPJ Consignat'#225'rio '
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cRecinto_Aduaneiro: TUniDBLookupComboBox
-            Left = 11
-            Top = 58
-            Width = 647
-            Height = 50
+            Left = 20
+            Top = 46
+            Width = 689
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Nome'
             ListSource = dstRecintoAdua
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Recinto_Aduaneiro'
             DataSource = dsProcessosImp
             AnyMatch = True
@@ -2466,21 +2546,21 @@ object fComexProcessoImp: TfComexProcessoImp
             Color = clWindow
             FieldLabel = 'Recinto Aduaneiro'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
           object cConsignatario_UF: TUniDBLookupComboBox
-            Left = 178
-            Top = 8
-            Width = 237
-            Height = 50
+            Left = 383
+            Top = 19
+            Width = 326
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'UF;Nome'
             ListSource = dstEstados
             KeyField = 'UF'
             ListFieldIndex = 0
+            BorderStyle = ubsInset
             DataField = 'Consignatario_UF'
             DataSource = dsProcessosImp
             AnyMatch = True
@@ -2488,7 +2568,6 @@ object fComexProcessoImp: TfComexProcessoImp
             Color = clWindow
             FieldLabel = 'Consignat'#225'rio UF'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
@@ -2503,8 +2582,8 @@ object fComexProcessoImp: TfComexProcessoImp
       object UniScrollBox4: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1369
-        Height = 1657
+        Width = 1292
+        Height = 1137
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -2513,11 +2592,11 @@ object fComexProcessoImp: TfComexProcessoImp
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1367
-          1655)
+          1273
+          1135)
         ScrollHeight = 1625
         object UniPanel4: TUniPanel
-          Left = 223
+          Left = 180
           Top = 23
           Width = 811
           Height = 1602
@@ -2550,6 +2629,7 @@ object fComexProcessoImp: TfComexProcessoImp
             ShowHint = True
             DataField = 'Texto'
             DataSource = dsTexto
+            BorderStyle = ubsInset
             ParentFont = False
             Font.Height = -12
             Font.Name = 'Courier New'
@@ -2570,8 +2650,8 @@ object fComexProcessoImp: TfComexProcessoImp
       object UniScrollBox5: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1369
-        Height = 1657
+        Width = 1292
+        Height = 1137
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -2580,14 +2660,14 @@ object fComexProcessoImp: TfComexProcessoImp
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1367
-          1655)
-        ScrollHeight = 528
+          1290
+          1135)
+        ScrollHeight = 630
         object UniPanel5: TUniPanel
-          Left = 116
+          Left = 80
           Top = 29
-          Width = 1052
-          Height = 499
+          Width = 1107
+          Height = 601
           Hint = ''
           Enabled = False
           ShowHint = True
@@ -2605,9 +2685,9 @@ object fComexProcessoImp: TfComexProcessoImp
           Caption = ''
           Color = clTeal
           object bDespesas: TUniSpeedButton
-            Left = 859
-            Top = 404
-            Width = 142
+            Left = 922
+            Top = 409
+            Width = 129
             Height = 35
             Hint = '  Contas a pagar/Receber.  '
             ShowHint = True
@@ -2620,8 +2700,8 @@ object fComexProcessoImp: TfComexProcessoImp
             AlignWithMargins = True
             Left = 3
             Top = 3
-            Width = 784
-            Height = 493
+            Width = 847
+            Height = 595
             Hint = ''
             ShowHint = True
             Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgTabs, dgCancelOnExit]
@@ -2630,6 +2710,7 @@ object fComexProcessoImp: TfComexProcessoImp
             WebOptions.PageSize = 30
             LoadMask.Message = 'Carregando dados ...'
             ForceFit = True
+            BorderStyle = ubsInset
             Align = alLeft
             TabOrder = 2
             ParentColor = False
@@ -2686,7 +2767,7 @@ object fComexProcessoImp: TfComexProcessoImp
               end>
           end
           object UniGroupBox1: TUniGroupBox
-            Left = 807
+            Left = 868
             Top = 3
             Width = 224
             Height = 133
@@ -2702,10 +2783,10 @@ object fComexProcessoImp: TfComexProcessoImp
               Left = 8
               Top = 42
               Width = 200
-              Height = 26
+              Height = 25
               Hint = ''
               ShowHint = True
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               Alignment = taRightJustify
               TabOrder = 1
               Color = 12189695
@@ -2720,10 +2801,10 @@ object fComexProcessoImp: TfComexProcessoImp
               Left = 8
               Top = 96
               Width = 200
-              Height = 26
+              Height = 25
               Hint = ''
               ShowHint = True
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               Alignment = taRightJustify
               TabOrder = 2
               Color = 12189695
@@ -2738,10 +2819,10 @@ object fComexProcessoImp: TfComexProcessoImp
               Left = 8
               Top = 15
               Width = 200
-              Height = 26
+              Height = 25
               Hint = ''
               ShowHint = True
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               Alignment = taRightJustify
               TabOrder = 3
               Color = 12189695
@@ -2756,10 +2837,10 @@ object fComexProcessoImp: TfComexProcessoImp
               Left = 8
               Top = 69
               Width = 200
-              Height = 26
+              Height = 25
               Hint = ''
               ShowHint = True
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               Alignment = taRightJustify
               TabOrder = 4
               Color = 12189695
@@ -2772,7 +2853,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
           end
           object UniGroupBox3: TUniGroupBox
-            Left = 807
+            Left = 868
             Top = 150
             Width = 224
             Height = 108
@@ -2788,10 +2869,10 @@ object fComexProcessoImp: TfComexProcessoImp
               Left = 8
               Top = 42
               Width = 200
-              Height = 26
+              Height = 25
               Hint = ''
               ShowHint = True
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               Alignment = taRightJustify
               TabOrder = 1
               Color = 16771255
@@ -2806,10 +2887,10 @@ object fComexProcessoImp: TfComexProcessoImp
               Left = 8
               Top = 15
               Width = 200
-              Height = 26
+              Height = 25
               Hint = ''
               ShowHint = True
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               Alignment = taRightJustify
               TabOrder = 2
               Color = 16771255
@@ -2824,10 +2905,10 @@ object fComexProcessoImp: TfComexProcessoImp
               Left = 8
               Top = 69
               Width = 200
-              Height = 26
+              Height = 25
               Hint = ''
               ShowHint = True
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               Alignment = taRightJustify
               TabOrder = 3
               Color = 16771255
@@ -2840,7 +2921,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
           end
           object UniGroupBox4: TUniGroupBox
-            Left = 807
+            Left = 868
             Top = 275
             Width = 224
             Height = 111
@@ -2856,10 +2937,10 @@ object fComexProcessoImp: TfComexProcessoImp
               Left = 8
               Top = 17
               Width = 200
-              Height = 26
+              Height = 25
               Hint = ''
               ShowHint = True
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               Alignment = taRightJustify
               TabOrder = 1
               Color = 16763594
@@ -2874,10 +2955,10 @@ object fComexProcessoImp: TfComexProcessoImp
               Left = 8
               Top = 44
               Width = 200
-              Height = 26
+              Height = 25
               Hint = ''
               ShowHint = True
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               Alignment = taRightJustify
               TabOrder = 2
               Color = 16763594
@@ -2892,10 +2973,10 @@ object fComexProcessoImp: TfComexProcessoImp
               Left = 8
               Top = 71
               Width = 200
-              Height = 26
+              Height = 25
               Hint = ''
               ShowHint = True
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               Alignment = taRightJustify
               TabOrder = 3
               Color = 16763594
@@ -2917,8 +2998,8 @@ object fComexProcessoImp: TfComexProcessoImp
       object UniScrollBox6: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1369
-        Height = 1657
+        Width = 1292
+        Height = 1137
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -2927,11 +3008,11 @@ object fComexProcessoImp: TfComexProcessoImp
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1367
-          1655)
+          1290
+          1135)
         ScrollHeight = 555
         object UniPanel6: TUniPanel
-          Left = 31
+          Left = 0
           Top = 29
           Width = 1061
           Height = 526
@@ -2965,6 +3046,7 @@ object fComexProcessoImp: TfComexProcessoImp
             WebOptions.PageSize = 30
             LoadMask.Message = 'Carregando dados ...'
             ForceFit = True
+            BorderStyle = ubsInset
             Align = alClient
             TabOrder = 1
             ParentColor = False
@@ -3022,8 +3104,8 @@ object fComexProcessoImp: TfComexProcessoImp
       object UniScrollBox7: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1369
-        Height = 1657
+        Width = 1292
+        Height = 1137
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -3032,11 +3114,11 @@ object fComexProcessoImp: TfComexProcessoImp
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1367
-          1655)
+          1290
+          1135)
         ScrollHeight = 564
         object UniPanel7: TUniPanel
-          Left = 31
+          Left = 0
           Top = 29
           Width = 1061
           Height = 535
@@ -3069,6 +3151,7 @@ object fComexProcessoImp: TfComexProcessoImp
             WebOptions.PageSize = 30
             LoadMask.Message = 'Carregando dados ...'
             ForceFit = True
+            BorderStyle = ubsInset
             Align = alTop
             TabOrder = 1
             Columns = <
@@ -3159,8 +3242,8 @@ object fComexProcessoImp: TfComexProcessoImp
       object UniScrollBox10: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1369
-        Height = 1657
+        Width = 1292
+        Height = 1137
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -3169,11 +3252,11 @@ object fComexProcessoImp: TfComexProcessoImp
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1367
-          1655)
+          1290
+          1135)
         ScrollHeight = 650
         object UniPanel10: TUniPanel
-          Left = 31
+          Left = -2
           Top = 29
           Width = 1126
           Height = 621
@@ -3265,8 +3348,8 @@ object fComexProcessoImp: TfComexProcessoImp
       object UniScrollBox9: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1369
-        Height = 1657
+        Width = 1292
+        Height = 1137
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -3275,11 +3358,11 @@ object fComexProcessoImp: TfComexProcessoImp
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1367
-          1655)
+          1290
+          1135)
         ScrollHeight = 629
         object UniPanel9: TUniPanel
-          Left = 49
+          Left = 15
           Top = 26
           Width = 1138
           Height = 603
@@ -3311,6 +3394,7 @@ object fComexProcessoImp: TfComexProcessoImp
             Align = alTop
             TabOrder = 1
             Sorted = True
+            BorderStyle = ubsInset
             OnDblClick = cListaDOCDblClick
           end
           object bDocumento: TUniBitBtn
@@ -3814,6 +3898,818 @@ object fComexProcessoImp: TfComexProcessoImp
       'select * from ProcessosImp')
     Left = 41
     Top = 78
+    object ProcessosImpRegistro: TFDAutoIncField
+      FieldName = 'Registro'
+      Origin = 'Registro'
+      ReadOnly = True
+    end
+    object ProcessosImpEmpresa: TStringField
+      FieldName = 'Empresa'
+      Origin = 'Empresa'
+      Size = 14
+    end
+    object ProcessosImpProcesso: TStringField
+      FieldName = 'Processo'
+      Origin = 'Processo'
+      Size = 15
+    end
+    object ProcessosImpIncoterms: TStringField
+      FieldName = 'Incoterms'
+      Origin = 'Incoterms'
+      FixedChar = True
+      Size = 3
+    end
+    object ProcessosImpEntreposto: TBooleanField
+      FieldName = 'Entreposto'
+      Origin = 'Entreposto'
+    end
+    object ProcessosImpDUIMP: TStringField
+      FieldName = 'DUIMP'
+      Origin = 'DUIMP'
+      Size = 15
+    end
+    object ProcessosImpData_Registro: TDateField
+      FieldName = 'Data_Registro'
+      Origin = 'Data_Registro'
+    end
+    object ProcessosImpData_Desembaraco: TDateField
+      FieldName = 'Data_Desembaraco'
+      Origin = 'Data_Desembaraco'
+    end
+    object ProcessosImpValor_FOB: TCurrencyField
+      FieldName = 'Valor_FOB'
+      Origin = 'Valor_FOB'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpValor_Frete: TCurrencyField
+      FieldName = 'Valor_Frete'
+      Origin = 'Valor_Frete'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpValor_Seguro: TCurrencyField
+      FieldName = 'Valor_Seguro'
+      Origin = 'Valor_Seguro'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpValor_II: TCurrencyField
+      FieldName = 'Valor_II'
+      Origin = 'Valor_II'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpICMS_DIferido: TBooleanField
+      FieldName = 'ICMS_DIferido'
+      Origin = 'ICMS_DIferido'
+    end
+    object ProcessosImpAliquota_ICMS: TFloatField
+      FieldName = 'Aliquota_ICMS'
+      Origin = 'Aliquota_ICMS'
+    end
+    object ProcessosImpValor_ICMS: TCurrencyField
+      FieldName = 'Valor_ICMS'
+      Origin = 'Valor_ICMS'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpUF_Desembaraco: TStringField
+      FieldName = 'UF_Desembaraco'
+      Origin = 'UF_Desembaraco'
+      FixedChar = True
+      Size = 2
+    end
+    object ProcessosImpQuantidade: TFloatField
+      FieldName = 'Quantidade'
+      Origin = 'Quantidade'
+    end
+    object ProcessosImpVolumes: TFloatField
+      FieldName = 'Volumes'
+      Origin = 'Volumes'
+    end
+    object ProcessosImpEspecie: TStringField
+      FieldName = 'Especie'
+      Origin = 'Especie'
+    end
+    object ProcessosImpQuantidade_Liberada: TFloatField
+      FieldName = 'Quantidade_Liberada'
+      Origin = 'Quantidade_Liberada'
+    end
+    object ProcessosImpQuantidade_Digitada: TFloatField
+      FieldName = 'Quantidade_Digitada'
+      Origin = 'Quantidade_Digitada'
+    end
+    object ProcessosImpPeso_Bruto: TFloatField
+      FieldName = 'Peso_Bruto'
+      Origin = 'Peso_Bruto'
+    end
+    object ProcessosImpPeso_Liquido: TFloatField
+      FieldName = 'Peso_Liquido'
+      Origin = 'Peso_Liquido'
+    end
+    object ProcessosImpNumero_Fatura: TStringField
+      FieldName = 'Numero_Fatura'
+      Origin = 'Numero_Fatura'
+      Size = 40
+    end
+    object ProcessosImpData_Fatura: TDateField
+      FieldName = 'Data_Fatura'
+      Origin = 'Data_Fatura'
+    end
+    object ProcessosImpValor_FOBME: TCurrencyField
+      FieldName = 'Valor_FOBME'
+      Origin = 'Valor_FOBME'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpMoeda_FOB: TSmallintField
+      FieldName = 'Moeda_FOB'
+      Origin = 'Moeda_FOB'
+    end
+    object ProcessosImpTaxa_FOB: TFloatField
+      FieldName = 'Taxa_FOB'
+      Origin = 'Taxa_FOB'
+    end
+    object ProcessosImpValor_FreteME: TCurrencyField
+      FieldName = 'Valor_FreteME'
+      Origin = 'Valor_FreteME'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpMoeda_Frete: TSmallintField
+      FieldName = 'Moeda_Frete'
+      Origin = 'Moeda_Frete'
+    end
+    object ProcessosImpTaxa_Frete: TFloatField
+      FieldName = 'Taxa_Frete'
+      Origin = 'Taxa_Frete'
+    end
+    object ProcessosImpValor_SeguroME: TCurrencyField
+      FieldName = 'Valor_SeguroME'
+      Origin = 'Valor_SeguroME'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpMoeda_Seguro: TSmallintField
+      FieldName = 'Moeda_Seguro'
+      Origin = 'Moeda_Seguro'
+    end
+    object ProcessosImpTaxa_Seguro: TFloatField
+      FieldName = 'Taxa_Seguro'
+      Origin = 'Taxa_Seguro'
+    end
+    object ProcessosImpCondicao_Pgto: TStringField
+      FieldName = 'Condicao_Pgto'
+      Origin = 'Condicao_Pgto'
+      Size = 50
+    end
+    object ProcessosImpTipo_Mercadoria: TIntegerField
+      FieldName = 'Tipo_Mercadoria'
+      Origin = 'Tipo_Mercadoria'
+    end
+    object ProcessosImpNome_Transporte: TStringField
+      FieldName = 'Nome_Transporte'
+      Origin = 'Nome_Transporte'
+      Size = 30
+    end
+    object ProcessosImpLocal_Embarque: TStringField
+      FieldName = 'Local_Embarque'
+      Origin = 'Local_Embarque'
+      Size = 30
+    end
+    object ProcessosImpLocal_Desembarque: TStringField
+      FieldName = 'Local_Desembarque'
+      Origin = 'Local_Desembarque'
+      Size = 30
+    end
+    object ProcessosImpConhecimento_Embarque: TStringField
+      FieldName = 'Conhecimento_Embarque'
+      Origin = 'Conhecimento_Embarque'
+      Size = 30
+    end
+    object ProcessosImpData_DOC: TDateField
+      FieldName = 'Data_DOC'
+      Origin = 'Data_DOC'
+    end
+    object ProcessosImpAgencia_Maritima: TStringField
+      FieldName = 'Agencia_Maritima'
+      Origin = 'Agencia_Maritima'
+      Size = 40
+    end
+    object ProcessosImpNavio_DataPrevista: TDateField
+      FieldName = 'Navio_DataPrevista'
+      Origin = 'Navio_DataPrevista'
+    end
+    object ProcessosImpNavio_DataChegada: TDateField
+      FieldName = 'Navio_DataChegada'
+      Origin = 'Navio_DataChegada'
+    end
+    object ProcessosImpCliente: TIntegerField
+      FieldName = 'Cliente'
+      Origin = 'Cliente'
+    end
+    object ProcessosImpProcesso_Abertura: TDateField
+      FieldName = 'Processo_Abertura'
+      Origin = 'Processo_Abertura'
+    end
+    object ProcessosImpProcesso_Fechamento: TDateField
+      FieldName = 'Processo_Fechamento'
+      Origin = 'Processo_Fechamento'
+    end
+    object ProcessosImpConta_Impostos: TStringField
+      FieldName = 'Conta_Impostos'
+      Origin = 'Conta_Impostos'
+      FixedChar = True
+      Size = 11
+    end
+    object ProcessosImpConta_Despesas: TStringField
+      FieldName = 'Conta_Despesas'
+      Origin = 'Conta_Despesas'
+      FixedChar = True
+      Size = 11
+    end
+    object ProcessosImpBloqueado: TBooleanField
+      FieldName = 'Bloqueado'
+      Origin = 'Bloqueado'
+    end
+    object ProcessosImpExportador: TSmallintField
+      FieldName = 'Exportador'
+      Origin = 'Exportador'
+    end
+    object ProcessosImpRE_Numero: TStringField
+      FieldName = 'RE_Numero'
+      Origin = 'RE_Numero'
+      Size = 180
+    end
+    object ProcessosImpRE_DataAverbacao: TDateField
+      FieldName = 'RE_DataAverbacao'
+      Origin = 'RE_DataAverbacao'
+    end
+    object ProcessosImpDespachante: TSmallintField
+      FieldName = 'Despachante'
+      Origin = 'Despachante'
+    end
+    object ProcessosImpCanal_SISCOMEX: TStringField
+      FieldName = 'Canal_SISCOMEX'
+      Origin = 'Canal_SISCOMEX'
+      Size = 8
+    end
+    object ProcessosImpValor_PIS: TCurrencyField
+      FieldName = 'Valor_PIS'
+      Origin = 'Valor_PIS'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpValor_COFINS: TCurrencyField
+      FieldName = 'Valor_COFINS'
+      Origin = 'Valor_COFINS'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpValor_IPI: TCurrencyField
+      FieldName = 'Valor_IPI'
+      Origin = 'Valor_IPI'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpVencimento_Cambio: TSmallintField
+      FieldName = 'Vencimento_Cambio'
+      Origin = 'Vencimento_Cambio'
+    end
+    object ProcessosImpCourrier: TBooleanField
+      FieldName = 'Courrier'
+      Origin = 'Courrier'
+    end
+    object ProcessosImpDocumento_Carga: TStringField
+      FieldName = 'Documento_Carga'
+      Origin = 'Documento_Carga'
+      Size = 30
+    end
+    object ProcessosImpValor_AdValorem: TCurrencyField
+      FieldName = 'Valor_AdValorem'
+      Origin = 'Valor_AdValorem'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpBeneficio_Fiscal: TStringField
+      FieldName = 'Beneficio_Fiscal'
+      Origin = 'Beneficio_Fiscal'
+      Size = 15
+    end
+    object ProcessosImpTipo_Declaracao: TSmallintField
+      FieldName = 'Tipo_Declaracao'
+      Origin = 'Tipo_Declaracao'
+    end
+    object ProcessosImpNatureza_Exportacao: TSmallintField
+      FieldName = 'Natureza_Exportacao'
+      Origin = 'Natureza_Exportacao'
+    end
+    object ProcessosImpTipo_Conhecimento: TSmallintField
+      FieldName = 'Tipo_Conhecimento'
+      Origin = 'Tipo_Conhecimento'
+    end
+    object ProcessosImpConta_Adiantamento: TStringField
+      FieldName = 'Conta_Adiantamento'
+      Origin = 'Conta_Adiantamento'
+      FixedChar = True
+      Size = 11
+    end
+    object ProcessosImpModalidade: TSmallintField
+      FieldName = 'Modalidade'
+      Origin = 'Modalidade'
+    end
+    object ProcessosImpResponsavel: TStringField
+      FieldName = 'Responsavel'
+      Origin = 'Responsavel'
+      Size = 15
+    end
+    object ProcessosImpContainer_Numero: TStringField
+      FieldName = 'Container_Numero'
+      Origin = 'Container_Numero'
+      Size = 15
+    end
+    object ProcessosImpProcesso_Mestre: TStringField
+      FieldName = 'Processo_Mestre'
+      Origin = 'Processo_Mestre'
+      Size = 15
+    end
+    object ProcessosImpCNPJ_Importado: TStringField
+      FieldName = 'CNPJ_Importado'
+      Origin = 'CNPJ_Importado'
+      Size = 14
+    end
+    object ProcessosImpMargem_Lucro: TFloatField
+      FieldName = 'Margem_Lucro'
+      Origin = 'Margem_Lucro'
+    end
+    object ProcessosImpDesconto_Operacional: TFloatField
+      FieldName = 'Desconto_Operacional'
+      Origin = 'Desconto_Operacional'
+    end
+    object ProcessosImpDesconto_Adicional: TFloatField
+      FieldName = 'Desconto_Adicional'
+      Origin = 'Desconto_Adicional'
+    end
+    object ProcessosImpData_Encerramento: TDateField
+      FieldName = 'Data_Encerramento'
+      Origin = 'Data_Encerramento'
+    end
+    object ProcessosImpData_BL: TDateField
+      FieldName = 'Data_BL'
+      Origin = 'Data_BL'
+    end
+    object ProcessosImpValor_FaturaME: TCurrencyField
+      FieldName = 'Valor_FaturaME'
+      Origin = 'Valor_FaturaME'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpData_PrevFaturamento: TDateField
+      FieldName = 'Data_PrevFaturamento'
+      Origin = 'Data_PrevFaturamento'
+    end
+    object ProcessosImpData_PrevRegistro: TDateField
+      FieldName = 'Data_PrevRegistro'
+      Origin = 'Data_PrevRegistro'
+    end
+    object ProcessosImpLocal_Desembaraco: TIntegerField
+      FieldName = 'Local_Desembaraco'
+      Origin = 'Local_Desembaraco'
+    end
+    object ProcessosImpDesativado: TBooleanField
+      FieldName = 'Desativado'
+      Origin = 'Desativado'
+    end
+    object ProcessosImpValor_FatorFaturamento: TFloatField
+      FieldName = 'Valor_FatorFaturamento'
+      Origin = 'Valor_FatorFaturamento'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpValor_FatorSISCOMEX: TFloatField
+      FieldName = 'Valor_FatorSISCOMEX'
+      Origin = 'Valor_FatorSISCOMEX'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpValor_MargemLucro: TCurrencyField
+      FieldName = 'Valor_MargemLucro'
+      Origin = 'Valor_MargemLucro'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpValor_DescontoAdicional: TCurrencyField
+      FieldName = 'Valor_DescontoAdicional'
+      Origin = 'Valor_DescontoAdicional'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpValor_DescontoOperacional: TCurrencyField
+      FieldName = 'Valor_DescontoOperacional'
+      Origin = 'Valor_DescontoOperacional'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpValor_Dumping: TCurrencyField
+      FieldName = 'Valor_Dumping'
+      Origin = 'Valor_Dumping'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpCondicao_Cambio: TSmallintField
+      FieldName = 'Condicao_Cambio'
+      Origin = 'Condicao_Cambio'
+    end
+    object ProcessosImpPais_Origem: TStringField
+      FieldName = 'Pais_Origem'
+      Origin = 'Pais_Origem'
+      Size = 4
+    end
+    object ProcessosImpValor_TaxaSISCOMEX: TCurrencyField
+      FieldName = 'Valor_TaxaSISCOMEX'
+      Origin = 'Valor_TaxaSISCOMEX'
+    end
+    object ProcessosImpReducao_ICMS: TFloatField
+      FieldName = 'Reducao_ICMS'
+      Origin = 'Reducao_ICMS'
+    end
+    object ProcessosImpObservacao: TMemoField
+      FieldName = 'Observacao'
+      Origin = 'Observacao'
+      BlobType = ftMemo
+    end
+    object ProcessosImpValor_FOBMEAdicoes: TCurrencyField
+      FieldName = 'Valor_FOBMEAdicoes'
+      Origin = 'Valor_FOBMEAdicoes'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpValor_FOBAdicoes: TCurrencyField
+      FieldName = 'Valor_FOBAdicoes'
+      Origin = 'Valor_FOBAdicoes'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpDA: TBooleanField
+      FieldName = 'DA'
+      Origin = 'DA'
+    end
+    object ProcessosImpReducao_BC: TFloatField
+      FieldName = 'Reducao_BC'
+      Origin = 'Reducao_BC'
+    end
+    object ProcessosImpValor_PIS2: TCurrencyField
+      FieldName = 'Valor_PIS2'
+      Origin = 'Valor_PIS2'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpValor_COFINS2: TCurrencyField
+      FieldName = 'Valor_COFINS2'
+      Origin = 'Valor_COFINS2'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpMemorando_Exportacao: TIntegerField
+      FieldName = 'Memorando_Exportacao'
+      Origin = 'Memorando_Exportacao'
+    end
+    object ProcessosImpCT_Numero: TStringField
+      FieldName = 'CT_Numero'
+      Origin = 'CT_Numero'
+    end
+    object ProcessosImpCT_Data: TDateField
+      FieldName = 'CT_Data'
+      Origin = 'CT_Data'
+    end
+    object ProcessosImpCT_Modelo: TStringField
+      FieldName = 'CT_Modelo'
+      Origin = 'CT_Modelo'
+      Size = 3
+    end
+    object ProcessosImpCT_Serie: TStringField
+      FieldName = 'CT_Serie'
+      Origin = 'CT_Serie'
+      Size = 3
+    end
+    object ProcessosImpOrigem_Mercadoria: TSmallintField
+      FieldName = 'Origem_Mercadoria'
+      Origin = 'Origem_Mercadoria'
+    end
+    object ProcessosImpBanco: TSmallintField
+      FieldName = 'Banco'
+      Origin = 'Banco'
+    end
+    object ProcessosImpReducao_PIS: TFloatField
+      FieldName = 'Reducao_PIS'
+      Origin = 'Reducao_PIS'
+    end
+    object ProcessosImpReducao_COFINS: TFloatField
+      FieldName = 'Reducao_COFINS'
+      Origin = 'Reducao_COFINS'
+    end
+    object ProcessosImpPIS_NFEntrada: TFloatField
+      FieldName = 'PIS_NFEntrada'
+      Origin = 'PIS_NFEntrada'
+    end
+    object ProcessosImpPIS_NFESaida: TFloatField
+      FieldName = 'PIS_NFESaida'
+      Origin = 'PIS_NFESaida'
+    end
+    object ProcessosImpCOFINS_NFEntrada: TFloatField
+      FieldName = 'COFINS_NFEntrada'
+      Origin = 'COFINS_NFEntrada'
+    end
+    object ProcessosImpCOFINS_NFESaida: TFloatField
+      FieldName = 'COFINS_NFESaida'
+      Origin = 'COFINS_NFESaida'
+    end
+    object ProcessosImpPIS_Majorada: TFloatField
+      FieldName = 'PIS_Majorada'
+      Origin = 'PIS_Majorada'
+    end
+    object ProcessosImpCOFINS_Majorada: TFloatField
+      FieldName = 'COFINS_Majorada'
+      Origin = 'COFINS_Majorada'
+    end
+    object ProcessosImpSuspensao_Impostos: TBooleanField
+      FieldName = 'Suspensao_Impostos'
+      Origin = 'Suspensao_Impostos'
+    end
+    object ProcessosImpRemover_Valoracao: TBooleanField
+      FieldName = 'Remover_Valoracao'
+      Origin = 'Remover_Valoracao'
+    end
+    object ProcessosImpReferencia_Cliente: TStringField
+      FieldName = 'Referencia_Cliente'
+      Origin = 'Referencia_Cliente'
+      Size = 15
+    end
+    object ProcessosImpAdmissao_Temporaria: TBooleanField
+      FieldName = 'Admissao_Temporaria'
+      Origin = 'Admissao_Temporaria'
+    end
+    object ProcessosImpCondicao_Pagamento: TSmallintField
+      FieldName = 'Condicao_Pagamento'
+      Origin = 'Condicao_Pagamento'
+    end
+    object ProcessosImpData_PrevFrete: TDateField
+      FieldName = 'Data_PrevFrete'
+      Origin = 'Data_PrevFrete'
+    end
+    object ProcessosImpValor_FatorFrete: TCurrencyField
+      FieldName = 'Valor_FatorFrete'
+      Origin = 'Valor_FatorFrete'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpPrevisao_FreteTransportador: TSmallintField
+      FieldName = 'Previsao_FreteTransportador'
+      Origin = 'Previsao_FreteTransportador'
+    end
+    object ProcessosImpValor_FatorSISCOMEXReal: TCurrencyField
+      FieldName = 'Valor_FatorSISCOMEXReal'
+      Origin = 'Valor_FatorSISCOMEXReal'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpValor_FatorFreteReal: TCurrencyField
+      FieldName = 'Valor_FatorFreteReal'
+      Origin = 'Valor_FatorFreteReal'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpValor_FatorFaturamentoReal: TCurrencyField
+      FieldName = 'Valor_FatorFaturamentoReal'
+      Origin = 'Valor_FatorFaturamentoReal'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpData_PrevArmazem: TDateField
+      FieldName = 'Data_PrevArmazem'
+      Origin = 'Data_PrevArmazem'
+    end
+    object ProcessosImpValor_FatorArmazem: TCurrencyField
+      FieldName = 'Valor_FatorArmazem'
+      Origin = 'Valor_FatorArmazem'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpValor_FatorArmazemReal: TCurrencyField
+      FieldName = 'Valor_FatorArmazemReal'
+      Origin = 'Valor_FatorArmazemReal'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpPrevisao_ArmazemFornecedor: TSmallintField
+      FieldName = 'Previsao_ArmazemFornecedor'
+      Origin = 'Previsao_ArmazemFornecedor'
+    end
+    object ProcessosImpReferencia_DataEntrega: TDateField
+      FieldName = 'Referencia_DataEntrega'
+      Origin = 'Referencia_DataEntrega'
+    end
+    object ProcessosImpCST_PIS: TStringField
+      FieldName = 'CST_PIS'
+      Origin = 'CST_PIS'
+      FixedChar = True
+      Size = 2
+    end
+    object ProcessosImpCST_COFINS: TStringField
+      FieldName = 'CST_COFINS'
+      Origin = 'CST_COFINS'
+      FixedChar = True
+      Size = 2
+    end
+    object ProcessosImpCodigo_BCCredito: TStringField
+      FieldName = 'Codigo_BCCredito'
+      Origin = 'Codigo_BCCredito'
+      FixedChar = True
+      Size = 2
+    end
+    object ProcessosImpApuracao_PISCOFINS: TBooleanField
+      FieldName = 'Apuracao_PISCOFINS'
+      Origin = 'Apuracao_PISCOFINS'
+    end
+    object ProcessosImpConsignatario_UF: TStringField
+      FieldName = 'Consignatario_UF'
+      Origin = 'Consignatario_UF'
+      Size = 2
+    end
+    object ProcessosImpConsignatario_CNPJ: TStringField
+      FieldName = 'Consignatario_CNPJ'
+      Origin = 'Consignatario_CNPJ'
+      Size = 14
+    end
+    object ProcessosImpValor_AFRMM: TCurrencyField
+      FieldName = 'Valor_AFRMM'
+      Origin = 'Valor_AFRMM'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpPreco_Venda: TBooleanField
+      FieldName = 'Preco_Venda'
+      Origin = 'Preco_Venda'
+    end
+    object ProcessosImpProforma_Numero: TStringField
+      FieldName = 'Proforma_Numero'
+      Origin = 'Proforma_Numero'
+      Size = 15
+    end
+    object ProcessosImpProforma_Data: TDateField
+      FieldName = 'Proforma_Data'
+      Origin = 'Proforma_Data'
+    end
+    object ProcessosImpCondicao_Frete: TStringField
+      FieldName = 'Condicao_Frete'
+      Origin = 'Condicao_Frete'
+      Size = 60
+    end
+    object ProcessosImpSeguradora: TStringField
+      FieldName = 'Seguradora'
+      Origin = 'Seguradora'
+      Size = 60
+    end
+    object ProcessosImpProforma_DataTaxa: TDateField
+      FieldName = 'Proforma_DataTaxa'
+      Origin = 'Proforma_DataTaxa'
+    end
+    object ProcessosImpData_TaxaFatura: TDateField
+      FieldName = 'Data_TaxaFatura'
+      Origin = 'Data_TaxaFatura'
+    end
+    object ProcessosImpData: TDateField
+      FieldName = 'Data'
+      Origin = 'Data'
+    end
+    object ProcessosImpROF_Numero: TStringField
+      FieldName = 'ROF_Numero'
+      Origin = 'ROF_Numero'
+      Size = 8
+    end
+    object ProcessosImpROF_Emissao: TDateField
+      FieldName = 'ROF_Emissao'
+      Origin = 'ROF_Emissao'
+    end
+    object ProcessosImpROF_Dias: TSmallintField
+      FieldName = 'ROF_Dias'
+      Origin = 'ROF_Dias'
+    end
+    object ProcessosImpNotificar: TSmallintField
+      FieldName = 'Notificar'
+      Origin = 'Notificar'
+    end
+    object ProcessosImpURF_Despacho: TStringField
+      FieldName = 'URF_Despacho'
+      Origin = 'URF_Despacho'
+      Size = 7
+    end
+    object ProcessosImpReferencia_Despachante: TStringField
+      FieldName = 'Referencia_Despachante'
+      Origin = 'Referencia_Despachante'
+      Size = 15
+    end
+    object ProcessosImpVia_Transporte: TSmallintField
+      FieldName = 'Via_Transporte'
+      Origin = 'Via_Transporte'
+    end
+    object ProcessosImpRateia_FretePeso: TBooleanField
+      FieldName = 'Rateia_FretePeso'
+      Origin = 'Rateia_FretePeso'
+    end
+    object ProcessosImpRemover_FreteNacBC: TBooleanField
+      FieldName = 'Remover_FreteNacBC'
+      Origin = 'Remover_FreteNacBC'
+    end
+    object ProcessosImpValor_FreteNacionalME: TCurrencyField
+      FieldName = 'Valor_FreteNacionalME'
+      Origin = 'Valor_FreteNacionalME'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpValor_FreteNacionalReal: TCurrencyField
+      FieldName = 'Valor_FreteNacionalReal'
+      Origin = 'Valor_FreteNacionalReal'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpRecinto_Aduaneiro: TIntegerField
+      FieldName = 'Recinto_Aduaneiro'
+      Origin = 'Recinto_Aduaneiro'
+    end
+    object ProcessosImpAd_Valorem: TCurrencyField
+      FieldName = 'Ad_Valorem'
+      Origin = 'Ad_Valorem'
+    end
+    object ProcessosImpArmazem: TSmallintField
+      FieldName = 'Armazem'
+      Origin = 'Armazem'
+    end
+    object ProcessosImpCIDE_ValorDevido: TCurrencyField
+      FieldName = 'CIDE_ValorDevido'
+      Origin = 'CIDE_ValorDevido'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpCIDE_ValorRecolher: TCurrencyField
+      FieldName = 'CIDE_ValorRecolher'
+      Origin = 'CIDE_ValorRecolher'
+      DisplayFormat = ',##0.00'
+    end
+    object ProcessosImpEnquadramento_Operacao: TStringField
+      FieldName = 'Enquadramento_Operacao'
+      Origin = 'Enquadramento_Operacao'
+      Size = 6
+    end
+    object ProcessosImpEstoque_Bloqueado: TBooleanField
+      FieldName = 'Estoque_Bloqueado'
+      Origin = 'Estoque_Bloqueado'
+    end
+    object ProcessosImpExonerado: TBooleanField
+      FieldName = 'Exonerado'
+      Origin = 'Exonerado'
+    end
+    object ProcessosImpIndicador_InfCompl: TStringField
+      FieldName = 'Indicador_InfCompl'
+      Origin = 'Indicador_InfCompl'
+      FixedChar = True
+      Size = 3
+    end
+    object ProcessosImpIndicador_RecintoAlf: TSmallintField
+      FieldName = 'Indicador_RecintoAlf'
+      Origin = 'Indicador_RecintoAlf'
+    end
+    object ProcessosImpLocal_EmbarqueCod: TIntegerField
+      FieldName = 'Local_EmbarqueCod'
+      Origin = 'Local_EmbarqueCod'
+    end
+    object ProcessosImpNavio_Ordem: TIntegerField
+      FieldName = 'Navio_Ordem'
+      Origin = 'Navio_Ordem'
+    end
+    object ProcessosImpNavio_PrevSaida: TSQLTimeStampField
+      FieldName = 'Navio_PrevSaida'
+      Origin = 'Navio_PrevSaida'
+    end
+    object ProcessosImpNumero_BL: TStringField
+      FieldName = 'Numero_BL'
+      Origin = 'Numero_BL'
+      Size = 15
+    end
+    object ProcessosImpNumero_HouseBL: TStringField
+      FieldName = 'Numero_HouseBL'
+      Origin = 'Numero_HouseBL'
+      Size = 15
+    end
+    object ProcessosImpNumero_TFA: TStringField
+      FieldName = 'Numero_TFA'
+      Origin = 'Numero_TFA'
+      Size = 15
+    end
+    object ProcessosImpOrigem: TStringField
+      FieldName = 'Origem'
+      Origin = 'Origem'
+      Size = 30
+    end
+    object ProcessosImpPais: TStringField
+      FieldName = 'Pais'
+      Origin = 'Pais'
+      FixedChar = True
+      Size = 4
+    end
+    object ProcessosImpPrioridade_Carga: TIntegerField
+      FieldName = 'Prioridade_Carga'
+      Origin = 'Prioridade_Carga'
+    end
+    object ProcessosImpRecinto_AlfandegarioCod: TIntegerField
+      FieldName = 'Recinto_AlfandegarioCod'
+      Origin = 'Recinto_AlfandegarioCod'
+    end
+    object ProcessosImpTransporte_Viagem: TStringField
+      FieldName = 'Transporte_Viagem'
+      Origin = 'Transporte_Viagem'
+      Size = 15
+    end
+    object ProcessosImpTUP: TCurrencyField
+      FieldName = 'TUP'
+      Origin = 'TUP'
+    end
+    object ProcessosImpUltima_Atualizacao: TSQLTimeStampField
+      FieldName = 'Ultima_Atualizacao'
+      Origin = 'Ultima_Atualizacao'
+    end
+    object ProcessosImpVia_EspecialTransp: TSmallintField
+      FieldName = 'Via_EspecialTransp'
+      Origin = 'Via_EspecialTransp'
+    end
   end
   object dsProcessosImp: TDataSource
     DataSet = ProcessosImp

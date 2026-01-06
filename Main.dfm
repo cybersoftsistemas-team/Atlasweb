@@ -57,7 +57,8 @@ object MainForm: TMainForm
               '= '#39'PastaInterna'#39';'#13#10'}')
           TabOrder = 0
           ScrollDirection = sdVertical
-          ScrollHeight = 50
+          ScrollHeight = 140
+          ScrollWidth = 135
           object pAtalhos: TUniContainerPanel
             Left = 0
             Top = 0
@@ -68,6 +69,16 @@ object MainForm: TMainForm
             Color = 4730899
             Align = alTop
             TabOrder = 0
+          end
+          object UniButton1: TUniButton
+            Left = 20
+            Top = 74
+            Width = 115
+            Height = 66
+            Hint = ''
+            Caption = 'Buscar DUIMP'
+            TabOrder = 1
+            OnClick = UniButton1Click
           end
         end
       end
@@ -826,7 +837,6 @@ object MainForm: TMainForm
         000049454E44AE426082}
       Align = alLeft
       ScreenMask.Enabled = True
-      ExplicitLeft = 0
     end
     object UniImage3: TUniImage
       AlignWithMargins = True
@@ -6976,7 +6986,7 @@ object MainForm: TMainForm
     Left = 175
     Top = 158
     Images = {
-      10000000FFFFFF1F060C000000636F6D706F73653B66615F3BFFFFFF1F061200
+      11000000FFFFFF1F060C000000636F6D706F73653B66615F3BFFFFFF1F061200
       000077696E646F772D726573746F72653B66613BFFFFFF1F06090000006D6F6E
       65793B66613BFFFFFF1F06090000007072696E743B66613BFFFFFF1F060A0000
       007772656E63683B66613BFFFFFF1F0607000000636F673B66613BFFFFFF1F06
@@ -6986,7 +6996,8 @@ object MainForm: TMainForm
       6F64653B66615F3BFFFFFF1F0612000000636173682D72656769737465723B66
       615F3BFFFFFF1F0609000000747275636B3B66613BFFFFFF1F060E0000006272
       696566636173653B66615F3BFFFFFF1F060D000000636172742D706C75733B66
-      613BFFFFFF1F0609000000736869703B66615F3B}
+      613BFFFFFF1F0609000000736869703B66615F3BFFFFFF1F0609000000746167
+      733B66615F3B}
   end
   object tEmpresas: TFDQuery
     Connection = UniMainModule.Conecta

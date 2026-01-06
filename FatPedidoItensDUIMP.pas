@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, uniGUITypes, uniGUIAbstractClasses, uniGUIClasses, uniGUIForm, uniButton, uniBitBtn,
   uniSpeedButton, uniGUIBaseClasses, uniPanel, uniLabel, uniDBText, uniEdit, uniMultiItem, uniComboBox, uniDBComboBox, uniDBLookupComboBox, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  uniCheckBox, uniGroupBox, uniBasicGrid, uniDBGrid, Datasnap.DBClient, FireDAC.Stan.StorageBin, uniMemo, uniSweetAlert, uniPageControl, CalcExpress;
+  uniCheckBox, uniGroupBox, uniBasicGrid, uniDBGrid, Datasnap.DBClient, FireDAC.Stan.StorageBin, uniMemo, uniSweetAlert, uniPageControl, CalcExpress, uniDateTimePicker, uniDBDateTimePicker, uniStringGrid;
 
 type
   TfFatPedidoItensDUIMP = class(TUniForm)
@@ -17,14 +17,10 @@ type
     PedidosNFItens: TFDQuery;
     Empresas: TFDQuery;
     OpFiscal: TFDQuery;
-    Adicoes: TFDQuery;
+    ProcessosImpItens: TFDQuery;
     DUIMP: TFDQuery;
     Embarques: TFDQuery;
-    UniPanel2: TUniPanel;
-    UniPanel1: TUniPanel;
-    cDUIMP: TUniDBLookupComboBox;
     bAddItem: TUniSpeedButton;
-    bRemTudo: TUniSpeedButton;
     tCambio: TFDQuery;
     tProcesso: TFDQuery;
     tTmp: TFDQuery;
@@ -39,40 +35,21 @@ type
     Destinatarios: TFDQuery;
     dsPedidosNFItens: TDataSource;
     Alerta: TUniSweetAlert;
-    dsAdicoes: TDataSource;
+    dsProcessosImpItens: TDataSource;
     dsDUIMP: TDataSource;
     dsCFOP: TDataSource;
     dsEmbarques: TDataSource;
     Processos: TFDQuery;
     tNCMICMS: TFDQuery;
-    Pasta: TUniPageControl;
-    UniTabSheet1: TUniTabSheet;
-    UniTabSheet2: TUniTabSheet;
-    pFicha: TUniPanel;
-    gAdicoes: TUniDBGrid;
-    cCFOP: TUniDBLookupComboBox;
-    cEmbarque: TUniDBLookupComboBox;
-    cQtdePerc: TUniFormattedNumberEdit;
-    cValorUnitario: TUniFormattedNumberEdit;
-    cFracionar: TUniCheckBox;
-    cLucroPerc: TUniFormattedNumberEdit;
-    cLucroValor: TUniFormattedNumberEdit;
-    cDescPerc: TUniFormattedNumberEdit;
-    cDescValor: TUniFormattedNumberEdit;
-    cCalcVol: TUniCheckBox;
-    cICMSAnt: TUniCheckBox;
-    UniCheckBox1: TUniCheckBox;
-    mFormulas: TUniMemo;
-    gItens: TUniDBGrid;
     bAddTudo: TUniSpeedButton;
     bRemItem: TUniSpeedButton;
     tFormulas: TFDQuery;
     dstFormulas: TDataSource;
     Macro: TCalcExpress;
     PedidosNFItensPedido: TIntegerField;
+    PedidosNFItensItem: TSmallintField;
     PedidosNFItensEmpresa: TStringField;
     PedidosNFItensES: TSmallintField;
-    PedidosNFItensItem: TSmallintField;
     PedidosNFItensOperacao: TSmallintField;
     PedidosNFItensCFOP: TStringField;
     PedidosNFItensCodigo_Mercadoria: TIntegerField;
@@ -92,15 +69,13 @@ type
     PedidosNFItensPeso_Bruto: TFloatField;
     PedidosNFItensMovimenta_Inventario: TBooleanField;
     PedidosNFItensMovimenta_Estoque: TBooleanField;
+    PedidosNFItensMovimenta_EstoqueRep: TBooleanField;
+    PedidosNFItensMovimenta_EstoqueInd: TBooleanField;
     PedidosNFItensModalidade_BCICMS: TSmallintField;
     PedidosNFItensModalidade_BCICMSST: TSmallintField;
-    PedidosNFItensVeiculo: TBooleanField;
     PedidosNFItensProcesso: TStringField;
-    PedidosNFItensDUIMP: TStringField;
     PedidosNFItensRateio_ICMSProcesso: TFloatField;
     PedidosNFItensApuracao_PISCOFINS: TBooleanField;
-    PedidosNFItensFinalidade_Mercadoria: TSmallintField;
-    PedidosNFItensRegistro_Adicao: TIntegerField;
     PedidosNFItensICMSST_Anterior: TBooleanField;
     PedidosNFItensNumeroNF_Referencia: TIntegerField;
     PedidosNFItensChaveNF_Referencia: TStringField;
@@ -108,18 +83,15 @@ type
     PedidosNFItensNumeroNF_Terceiros: TStringField;
     PedidosNFItensDataNF_Terceiros: TDateField;
     PedidosNFItensDevolucao: TBooleanField;
-    PedidosNFItensMovimenta_EstoqueRep: TBooleanField;
     PedidosNFItensCEST: TStringField;
     PedidosNFItensPO: TStringField;
     PedidosNFItensOrdem: TIntegerField;
-    PedidosNFItensAliquota_ICMSSubAnt: TFloatField;
+    PedidosNFItensAliquota_ICMSSTAnt: TFloatField;
     PedidosNFItensFator_Cambio: TFloatField;
     PedidosNFItensOrigem_Mercadoria: TSmallintField;
     PedidosNFItensEmbarque: TIntegerField;
     PedidosNFItensNumero_BL: TStringField;
     PedidosNFItensCodigo_CredPres: TStringField;
-    PedidosNFItensSequencia: TIntegerField;
-    PedidosNFItensSequencia_SISCOMEX: TIntegerField;
     PedidosNFItensValor_BCDIFAL: TCurrencyField;
     PedidosNFItensValor_BCDIFALST: TCurrencyField;
     PedidosNFItensValor_BCICMSMono: TCurrencyField;
@@ -176,6 +148,7 @@ type
     PedidosNFItensPercentual_FCPICMSOrig: TFloatField;
     PedidosNFItensValor_FCPICMSDest: TCurrencyField;
     PedidosNFItensValor_ICMSDesonerado: TCurrencyField;
+    PedidosNFItensValor_BCICMSSTAnt: TCurrencyField;
     PedidosNFItensValor_ICMSSTAnt: TCurrencyField;
     PedidosNFItensValor_ICMSAnt: TCurrencyField;
     PedidosNFItensValor_CIF: TCurrencyField;
@@ -190,7 +163,7 @@ type
     PedidosNFItensValor_ICMSApuracao: TCurrencyField;
     PedidosNFItensValor_MediaBCR: TCurrencyField;
     PedidosNFItensValor_TotalNota: TCurrencyField;
-    PedidosNFItensValor_Impostos: TCurrencyField;
+    PedidosNFItensValor_TotalImpostos: TCurrencyField;
     PedidosNFItensValor_Inventario: TCurrencyField;
     PedidosNFItensValor_Dumping: TCurrencyField;
     PedidosNFItensPercentual_Lucro: TFloatField;
@@ -218,7 +191,83 @@ type
     PedidosNFItensPercentual_Beneficio: TFloatField;
     PedidosNFItensPercentual_ICMSMono: TFloatField;
     PedidosNFItensPercentual_ICMSMonoRet: TFloatField;
+    PedidosNFItensValor_BCIBS: TCurrencyField;
+    PedidosNFItensAliquota_IBS: TFloatField;
+    PedidosNFItensValor_IBS: TCurrencyField;
+    PedidosNFItensValor_BCCBS: TCurrencyField;
+    PedidosNFItensAliquota_CBS: TFloatField;
+    PedidosNFItensValor_CBS: TCurrencyField;
+    PedidosNFItensValor_BCIS: TCurrencyField;
+    PedidosNFItensAliquota_IS: TFloatField;
+    PedidosNFItensValor_IS: TCurrencyField;
+    PedidosNFItensCSTIBS: TStringField;
+    PedidosNFItensCSTCBS: TStringField;
     PedidosNFItensBL: TStringField;
+    PedidosNFItensValor_BCICMSDif: TCurrencyField;
+    PedidosNFItensValor_IPIDevol: TCurrencyField;
+    PedidosNFItensPercentual_IPIDevol: TFloatField;
+    PedidosNFItensBeneficio_Fiscal: TStringField;
+    PedidosNFItensDeclaracao: TStringField;
+    PedidosNFItensValor_Produtos: TCurrencyField;
+    PedidosNFItensValor_FCPICMSOrig: TCurrencyField;
+    ProcessosImpItensCodigo_Mercadoria: TIntegerField;
+    ProcessosImpItensDescricao: TStringField;
+    ProcessosImpItensQuantidade: TFloatField;
+    ProcessosImpItensValor_UnitarioReal: TCurrencyField;
+    ProcessosImpItensNCM: TStringField;
+    ProcessosImpItensPeso_Liquido: TFloatField;
+    ProcessosImpItensItem: TSmallintField;
+    ProcessosImpItensDisponivel: TFloatField;
+    ProcessosImpItensValor_UnitarioME: TCurrencyField;
+    UniContainerPanel4: TUniContainerPanel;
+    UniPanel2: TUniPanel;
+    Pasta: TUniPageControl;
+    UniTabSheet1: TUniTabSheet;
+    UniContainerPanel3: TUniContainerPanel;
+    UniContainerPanel1: TUniContainerPanel;
+    gAdicoes: TUniDBGrid;
+    UniContainerPanel2: TUniContainerPanel;
+    gItens: TUniDBGrid;
+    UniPanel4: TUniPanel;
+    cQtdePerc: TUniFormattedNumberEdit;
+    cValorUnitario: TUniFormattedNumberEdit;
+    cFracionar: TUniCheckBox;
+    cLucroPerc: TUniFormattedNumberEdit;
+    cLucroValor: TUniFormattedNumberEdit;
+    cDescPerc: TUniFormattedNumberEdit;
+    cDescValor: TUniFormattedNumberEdit;
+    cCalcVol: TUniCheckBox;
+    cICMSAnt: TUniCheckBox;
+    UniCheckBox1: TUniCheckBox;
+    UniTabSheet2: TUniTabSheet;
+    cLog: TUniMemo;
+    UniPanel1: TUniPanel;
+    cDUIMP: TUniDBLookupComboBox;
+    cCFOP: TUniDBLookupComboBox;
+    cEmbarque: TUniDBLookupComboBox;
+    bRemTudo: TUniSpeedButton;
+    PedidosNFItensItem_DUIMP: TIntegerField;
+    ProcessosImpItensPedido: TStringField;
+    PedidosNFItensFinalidade_Mercadoria: TStringField;
+    ProcessosImpItensAdicao: TSmallintField;
+    ProcessosImpItensRegistro: TFDAutoIncField;
+    PedidosNFItensRegistro_Adicao: TIntegerField;
+    ProcessosImpItensOrdem: TIntegerField;
+    gFormula: TUniStringGrid;
+    tImpostos: TFDMemTable;
+    tImpostosOrdem_Calculo: TSmallintField;
+    tImpostosDescricao: TStringField;
+    tImpostosCampo: TStringField;
+    tImpostosAliquota: TFloatField;
+    tImpostosValor: TCurrencyField;
+    tImpostosTotal: TCurrencyField;
+    tImpostosCST: TStringField;
+    tFormulasItens: TFDQuery;
+    Campos: TFDQuery;
+    CSTICMSA: TFDQuery;
+    CSTICMSB: TFDQuery;
+    CSTIBS: TFDQuery;
+    CSTCBS: TFDQuery;
     procedure bSairClick(Sender: TObject);
     procedure UniFormShow(Sender: TObject);
     procedure cCFOPChange(Sender: TObject);
@@ -227,7 +276,7 @@ type
     procedure bRemTudoClick(Sender: TObject);
     procedure PedidosNFItensAfterRefresh(DataSet: TDataSet);
     procedure bRemItemClick(Sender: TObject);
-    procedure AdicoesAfterRefresh(DataSet: TDataSet);
+    procedure ProcessosImpItensAfterRefresh(DataSet: TDataSet);
     procedure bAddTudoClick(Sender: TObject);
   private
     procedure AddItem;
@@ -235,7 +284,10 @@ type
     procedure LigaBotoes;
     function CalculaCampos(Formula: widestring): real;
     procedure CalculaTudo;
-    function CalculaMacro(Campo: String): Real;
+    //function CalculaMacro(Campo: String): Real;
+    function CalculaMacro(pForm: TComponent; pFormula: String): Real;
+    procedure TotalizaItens;
+    
     { Private declarations }
   public
     { Public declarations }
@@ -258,7 +310,7 @@ begin
      Result := TfFatPedidoItensDUIMP(UniMainModule.GetFormInstance(TfFatPedidoItensDUIMP));
 end;
 
-procedure TfFatPedidoItensDUIMP.AdicoesAfterRefresh(DataSet: TDataSet);
+procedure TfFatPedidoItensDUIMP.ProcessosImpItensAfterRefresh(DataSet: TDataSet);
 begin
      LigaBotoes;
 end;
@@ -266,12 +318,12 @@ end;
 procedure TfFatPedidoItensDUIMP.bAddItemClick(Sender: TObject);
 begin
      AddItem;
-     Adicoes.Refresh;
+     ProcessosImpItens.Refresh;
 end;
 
 procedure TfFatPedidoItensDUIMP.bAddTudoClick(Sender: TObject);
 begin
-     with Adicoes do begin
+     with ProcessosImpItens do begin
           first;
           while not eof do begin
                 Additem;
@@ -291,7 +343,7 @@ begin
                              Alerta.Text := 'Itens removido do Pedido!';
                              Alerta.Execute;
                              Refresh;
-                             if Adicoes.State = dsBrowse then Adicoes.Refresh;
+                             if ProcessosImpItens.State = dsBrowse then ProcessosImpItens.Refresh;
                           end;
                     end);
      end;
@@ -309,7 +361,7 @@ begin
                              parambyname('pPedido').Value := PedidosNF.FieldByName('Pedido').AsInteger;
                              execute;
                              PedidosNFItens.Refresh;
-                             if Adicoes.State = dsBrowse then Adicoes.Refresh;
+                             if ProcessosImpItens.State = dsBrowse then ProcessosImpItens.Refresh;
                              Alerta.Text := 'Todos os itens foram removidos do Pedido!';
                              Alerta.Execute;
                           end;
@@ -330,29 +382,42 @@ end;
 procedure TfFatPedidoItensDUIMP.cDUIMPChange(Sender: TObject);
 begin
      if cDUIMP.text <> '' then begin
-        with Adicoes do begin
+        with ProcessosImpItens do begin
              sql.clear;
-             sql.add('select Adicao');
-             sql.add('      ,Registro');
-             sql.add('      ,Sequencia');
-             sql.add('      ,Sequencia_SISCOMEX');
+             sql.add('select Registro');
+             sql.add('      ,Item');
              sql.add('      ,Codigo_Mercadoria');
-             sql.add('      ,Descricao = (select Descricao from Produtos where Codigo = Codigo_Mercadoria)');
+             sql.add('      ,Descricao = (select Descricao from Produtos prd where prd.Codigo = pii.Codigo_Mercadoria)');
              sql.add('      ,Quantidade');
-             sql.add('      ,Disponivel = 0');
-             sql.add('      ,Valor_Unitario');
+             sql.add('      ,Disponivel = case :pES ');
+             sql.add('                         when 0 then ');
+             sql.add('                              pii.Quantidade -');
+             sql.add('                              (select isnull(sum(Quantidade), 0) from NotasItens nfi          where nfi.Declaracao = pii.DUIMP and nfi.Codigo_Mercadoria = pii.Codigo_Mercadoria and nfi.ES = 0');
+             sql.add('                                      and nfi.Item_DUIMP = pii.Item and Cancelada <> 1 and Denegada <> 1) -');
+             sql.add('                              (select isnull(sum(Quantidade), 0) from PedidosNFItens pni      where pni.Declaracao = pii.DUIMP and pni.Codigo_Mercadoria = pii.Codigo_Mercadoria and pni.ES = 0 and pni.Item_DUIMP = pii.Item) -');
+             sql.add('                              (select isnull(sum(Quantidade), 0) from NotasTerceirosItens nti where nti.Declaracao = pii.DUIMP and nti.Codigo_Mercadoria = pii.Codigo_Mercadoria and nti.Item_DUIMP = pii.Item');
+             sql.add('                                      and (select Finalidade_Mercadoria from OperacaoFiscal opf where opf.Codigo = nti.Operacao) = :pFinalidade)');
+             sql.add('                         when 1 then');
+             sql.add('                              (select isnull(sum(Quantidade), 0) from NotasItens nfi          where nfi.Declaracao = pii.DUIMP and nfi.Codigo_Mercadoria = pii.Codigo_Mercadoria');
+             sql.add('                                      and nfi.Item_DUIMP = pii.Item  and nfi.ES = 0 and Cancelada <> 1 and Denegada <> 1) +');
+             sql.add('                              (select isnull(sum(Quantidade), 0) from NotasTerceirosItens nti where nti.Declaracao = pii.DUIMP and nti.Codigo_Mercadoria = pii.Codigo_Mercadoria');
+             sql.add('                                      and nti.Item_DUIMP = pii.Item  and (select Finalidade_Mercadoria from OperacaoFiscal opf where opf.Codigo = nti.Operacao) = :pFinalidade)');
+             sql.add('                    end');
+             sql.add('      ,Valor_UnitarioME');
              sql.add('      ,Valor_UnitarioReal');
-             sql.add('      ,Descricao = (select descricao from Produtos where Codigo = Codigo_Mercadoria)');
              sql.add('      ,NCM');
              sql.add('      ,Peso_Liquido');
              sql.add('      ,Pedido');
              sql.add('      ,Ordem');
-             sql.add('from Adicoes adi');
-             sql.Add('where adi.DUIMP = '+quotedstr(DUIMP.FieldByName('DUIMP').AsString));
-             sql.Add('and adi.Exportador = '+DUIMP.FieldByName('Exportador').asstring);
-             sql.add('and adi.Codigo_Mercadoria not in(select Codigo_Mercadoria from PedidosNFItens pni where pni.Codigo_Mercadoria = adi.Codigo_Mercadoria and pni.Quantidade = adi.Quantidade)');
-             sql.add('order by Adicao, Sequencia');
-             //sql.SaveToFile('c:\temp\Pedidos_Itens_Adicoes.sql');
+             sql.add('      ,Adicao');
+             sql.add('from ProcessosImpItens pii');
+             sql.Add('where pii.DUIMP = '+quotedstr(DUIMP.FieldByName('DUIMP').AsString));
+             sql.Add('and pii.Exportador = '+DUIMP.FieldByName('Exportador').asstring);
+             sql.add('and pii.Codigo_Mercadoria not in(select Codigo_Mercadoria from PedidosNFItens pni where pni.Codigo_Mercadoria = pii.Codigo_Mercadoria and pni.Quantidade = pii.Quantidade)');
+             sql.add('order by Item');
+             parambyname('pES').Value         := PedidosNF.FieldByName('ES').AsInteger;
+             parambyname('pFinalidade').Value := 'Devolução de Importação';
+             //sql.SaveToFile('c:\temp\Pedidos_Itens_ProcessosImpItens.sql');
              open;
         end;
         with tProcesso do begin
@@ -365,13 +430,12 @@ begin
              open;
         end;
      end;
-     pFicha.Enabled := Adicoes.RecordCount > 0;
 end;
 
 procedure TfFatPedidoItensDUIMP.UniFormShow(Sender: TObject);
 begin
      Pasta.ActivePageIndex := 0;
-     mFormulas.clear;
+     cLog.clear;
      with Empresas do begin
           sql.Clear;
           sql.Add('select CNPJ');
@@ -406,46 +470,47 @@ begin
      with OpFiscal do begin
           sql.clear;
           sql.add('select Codigo');
-          sql.Add('      ,Descricao');
-          sql.Add('      ,Tipo = iif(ES = 0, ''ENTRADA'', ''SAÍDA'') ');
-          sql.Add('      ,ES');
-          sql.Add('      ,Nota_Referencia');
-          sql.Add('      ,Apuracao_PISCOFINS');
-          sql.Add('      ,Beneficio_Fiscal');
-          sql.Add('      ,Transportador');
-          sql.Add('      ,Transferencia');
-          sql.Add('      ,Nao_Tributada_IPI');
-          sql.Add('      ,Imune_IPI');
-          sql.Add('      ,Suspensao_IPI');
-          sql.Add('      ,Isencao_IPI');
-          sql.add('      ,CST_PIS');
-          sql.add('      ,CST_COFINS');
-          sql.add('      ,CSTPIS_AliquotaUM');
-          sql.add('      ,CSTPIS_Monofasica');
-          sql.add('      ,CSTPIS_AliquotaZero');
-          sql.add('      ,CSTPIS_Isenta');
-          sql.add('      ,CSTPIS_SemIncidencia');
-          sql.add('      ,CSTPIS_Suspensao');
-          sql.add('      ,CSTPIS_Outras');
           sql.add('      ,Finalidade_Mercadoria');
+          sql.add('      ,Destino_Origem');
+          sql.add('      ,ES');
+          sql.add('      ,Apuracao_PISCOFINS');
+          sql.add('      ,Isencao_IPI');
+          sql.add('      ,Nao_Tributada_IPI');
+          sql.add('      ,Imune_IPI');
+          sql.add('      ,Suspensao_IPI');
+          sql.Add('      ,CSTPIS_AliquotaZero');
+          sql.Add('      ,CSTPIS_AliquotaUm');
+          sql.Add('      ,CSTPIS_Monofasica');
+          sql.add('      ,CSTPIS_Isenta');
+          sql.Add('      ,CSTPIS_SemIncidencia');
+          sql.Add('      ,CSTPIS_Suspensao');
+          sql.Add('      ,CSTPIS_Outras');
           sql.add('      ,Isencao_ICMS');
-          sql.add('      ,Nao_Tributada_ICMS');
-          sql.add('      ,Suspensao_ICMS');
-          sql.add('      ,Diferido_ICMS');
+          sql.Add('      ,Nao_Tributada_ICMS');
+          sql.Add('      ,Suspensao_ICMS');
+          sql.Add('      ,Diferido_ICMS');
+          sql.add('      ,Imune_ICMS');
           sql.add('      ,Monofasico_Comb');
-          sql.add('      ,Monofasico_CombRetencao');
-          sql.add('      ,Monofasico_CombDiferido');
-          sql.add('      ,Monofasico_CombAnterior');
+          sql.Add('      ,Monofasico_CombRetencao');
+          sql.Add('      ,Monofasico_CombDiferido');
+          sql.Add('      ,Monofasico_CombAnterior');
           sql.add('      ,Movimenta_Estoque');
           sql.add('      ,Movimenta_EstoqueRep');
+          sql.add('      ,Movimenta_EstoqueInd');
           sql.add('      ,Movimenta_Inventario');
-          sql.add('      ,CSTPIS_AliquotaUM');
-          sql.add('      ,Imune_ICMS');
           sql.add('      ,CSOSN_Saida');
-          sql.Add('from OperacaoFiscal');
-          sql.Add('where Codigo = :pCod');
-          sql.add('order by Tipo, Descricao');
-          parambyname('pCod').value := PedidosNF.FieldByName('Operacao').AsInteger;
+          sql.add('      ,Complementar');
+          sql.add('      ,CBS_Isencao');
+          sql.add('      ,CBS_Imunidade');
+          sql.add('      ,CBS_Suspensao');
+          sql.add('      ,CBS_Diferido');
+          sql.add('      ,IBS_Isencao');
+          sql.add('      ,IBS_Imunidade');
+          sql.add('      ,IBS_Suspensao');
+          sql.add('      ,IBS_Diferido');
+          sql.add('from OperacaoFiscal');
+          sql.add('where Codigo = :pCodigo');
+          parambyname('pCodigo').asinteger := PedidosNF.FieldByName('Operacao').AsInteger;
           open;
      end;
      with CFOP do begin
@@ -456,13 +521,16 @@ begin
           sql.add('where Desativada <> 1');
           sql.add('and ES = :pES');
           sql.add('and Apuracao_PISCOFINS = :pApura');
+          sql.add('and Dentro_Fora = :pDentroFora');
+          
           if PedidosNF.FieldByName('Destinatario_Estado').asstring = Empresas.FieldByName('Estado').AsString then begin
-             sql.add('and Estado = ''D'' ');
+             sql.add('and Dentro_Fora = ''D'' ');
           end else begin
-             sql.add('and Estado <> ''D'' ');
+             sql.add('and Dentro_Fora = ''F'' ');
           end;
-          parambyname('pApura').value := OpFiscal.FieldByName('Apuracao_PISCOFINS').asboolean;
-          parambyname('pES').value    := PedidosNF.FieldByName('ES').asinteger;
+          parambyname('pApura').value      := OpFiscal.FieldByName('Apuracao_PISCOFINS').asboolean;
+          parambyname('pES').value         := PedidosNF.FieldByName('ES').asinteger;
+          parambyname('pDentroFora').value := iif(PedidosNF.FieldByName('Destinatario_Estado').asstring = Empresas.FieldByName('Estado').AsString, 'D', 'F');
           //sql.savetofile('c:\temp\CFOP.sql');
           open;
      end;
@@ -477,11 +545,12 @@ begin
           sql.add('where Desativado <> 1');
           sql.add('and Data_Encerramento is null');
           if PedidosNF.FieldByName('ES').AsInteger = 0 then begin
-             sql.add('and (select isnull(sum(Quantidade), 0) from Notasitens ni where ni.DUIMP = pi.DUIMP and ni.ES = 0) <= (select sum(Quantidade) from Adicoes ad where ad.DUIMP = pi.DUIMP)');
+             sql.add('and (select isnull(sum(Quantidade), 0) from Notasitens ni where ni.Declaracao = pi.DUIMP and ni.ES = 0) <= (select sum(Quantidade) from ProcessosImpItens ad where ad.DUIMP = pi.DUIMP)');
           end else begin
-             sql.add('and (select isnull(sum(Quantidade), 0) from Notasitens ni where ni.DUIMP = pi.DUIMP and ni.ES = 1) <= (select sum(Quantidade) from Adicoes ad where ad.DUIMP = pi.DUIMP)');
+             sql.add('and (select isnull(sum(Quantidade), 0) from Notasitens ni where ni.Declaracao = pi.DUIMP and ni.ES = 1) <= (select sum(Quantidade) from ProcessosImpItens ad where ad.DUIMP = pi.DUIMP)');
           end;
           sql.add('order by Processo, DUIMP');
+          //sql.savetofile('c:\temp\DUIMP.sql');
           open;
      end;
      with Embarques do begin
@@ -522,9 +591,21 @@ begin
           sql.add('select Classificacao, Codigo from CSTCOFINS');
           open;
      end;
+     {
      with CSTICMS do begin
           sql.clear;
           sql.add('select Classificacao, Codigo from CSTICMSTabB');
+          open;
+     end;
+     }
+     with CSTICMSB do begin
+          sql.clear;
+          sql.add('select * from CSTICMSTabB order by Codigo');
+          open;
+     end;
+     with CSTICMSA do begin
+          sql.clear;
+          sql.add('select * from CSTICMSTabA order by Codigo');
           open;
      end;
      with TabPISCOFINS do begin
@@ -532,6 +613,18 @@ begin
           sql.add('select Imposto, Saida from TabelaPISCOFINS where Tipo = ''B'' ');
           open;
      end;
+     with CSTIBS do begin
+          sql.clear;
+          sql.add('select * from CSTIBS order by Codigo');
+          open;
+     end;
+     with CSTCBS do begin
+          sql.clear;
+          sql.add('select * from CSTCBS order by Codigo');
+          open;
+     end;
+     
+     {
      with tFormulas do begin
           sql.clear;
           sql.add('select *');
@@ -542,58 +635,30 @@ begin
           parambyname('pOp').AsInteger := PedidosNF.FieldByName('Operacao').AsInteger;
           open;
      end;
+     }
+     with tFormulasItens do begin
+          sql.clear;
+          sql.add('select Campo');
+          sql.add('      ,Formula');
+          sql.add('      ,Campo_Aliquota');
+          sql.add('      ,Campo_CST');
+          sql.add('      ,Ordem_Calculo');
+          sql.add('      ,Descricao');
+          sql.add('from OperacaoFiscalFormulas');
+          sql.add('where Operacao = :pOp');
+          sql.add('and Tipo = :pTipo');
+          sql.add('and isnull(Desativada, 0) = 0');
+          sql.add('order by Ordem_Calculo');
+          parambyname('pOp').AsInteger  := PedidosNF.fieldbyname('Operacao').asinteger;
+          parambyname('pTipo').asstring := 'Item';
+          open;
+     end;
 end;
 
 procedure TfFatPedidoItensDUIMP.AddItem;
 var
    mDescricao: widestring;
 begin
-     // Totalizando os contratos de câmbio para gerar o fator de rateio do valor unitário pelo câmbio.
-     with tCambio do begin
-          sql.clear;
-          sql.add('select Fator = isnull(sum((Valor_ME * Taxa_Cambial)) / sum(Valor_ME), 0)');
-          sql.add('from   ContratoCambioItens');
-          sql.add('where  Processo = :pProcesso');
-          parambyName('pProcesso').AsString := tProcesso.fieldbyname('Processo').asstring;
-          open;
-     end;
-     // Sequencial do item no pedido.
-     with tTmp do begin
-          sql.Clear;
-          sql.Add('select Item = isnull(max(Item), 0)+1 from PedidosNFItens where Pedido = :pPedido');
-          ParamByName('pPedido').AsInteger := mPedido;
-          Open;
-     end;
-     with tNCM do begin
-          sql.Clear;
-          sql.add('select CEST');
-          sql.add('      ,Modalidade_BCICMS');
-          sql.add('      ,Modalidade_BCICMSST');
-          sql.add('      ,IPI_TribAliquotaZero');
-          sql.add('      ,IPI_Isento');
-          sql.add('      ,IPI_Suspensao');
-          sql.add('      ,PIS_ST');
-          sql.add('      ,ICMS_Isento');
-          sql.add('      ,ICMS_Imune');
-          sql.add('      ,ICMS_Suspensao');
-          sql.add('      ,CodigoTrib_TabA');
-          sql.add('from NCM nc where nc.NCM = :pNCM');
-          ParamByName('pNCM').AsInteger := Adicoes.FieldByName('NCM').Value;
-          Open;
-     end;
-     with tNCMICMS do begin
-          sql.Clear;
-          sql.Add('select * from NCMICMS where NCM = :pNCM and Estado = :pEstado');
-          parambyname('pNCM').Value    := Adicoes.FieldByName('NCM').AsString;
-          parambyname('pEstado').Value := mEstado;
-          open;
-     end;
-     with tBeneficios do begin
-          sql.Clear;
-          sql.Add('select Percentual_Beneficio from BeneficioFiscal where Codigo = :pCod');
-          ParamByName('pCod').AsInteger := PedidosNF.FieldByName('Beneficio_Fiscal').Value;
-          open;
-     end;
      with Produtos do begin
           sql.Clear;
           sql.Add('select Codigo');
@@ -613,9 +678,70 @@ begin
           sql.add('      ,CSTPIS_Outras');
           sql.add('      ,CSTICMS_Saida');
           sql.add('      ,Origem');
+          sql.add('      ,NCM');
           sql.Add('from Produtos');
           sql.Add('where Codigo = :pCod');
-          ParamByName('pCod').asinteger := Adicoes.FieldByName('Codigo_Mercadoria').Value;
+          ParamByName('pCod').asinteger := ProcessosImpItens.FieldByName('Codigo_Mercadoria').Value;
+          open;
+     end;
+     // Totalizando os contratos de câmbio para gerar o fator de rateio do valor unitário pelo câmbio.
+     with tCambio do begin
+          sql.clear;
+          sql.add('select Fator = isnull(sum((Valor_ME * Taxa_Cambial)) / sum(Valor_ME), 0)');
+          sql.add('from   ContratoCambioItens');
+          sql.add('where  Processo = :pProcesso');
+          parambyName('pProcesso').AsString := tProcesso.fieldbyname('Processo').asstring;
+          open;
+     end;
+     // Sequencial do item no pedido.
+     with tTmp do begin
+          sql.Clear;
+          sql.Add('select Item = isnull(max(Item), 0)+1 from PedidosNFItens where Pedido = :pPedido');
+          ParamByName('pPedido').AsInteger := mPedido;
+          Open;
+     end;
+     with tNCM do begin
+          sql.clear;
+          sql.add('select NCM');
+          sql.add('      ,IPI_TribAliquotaZero');
+          sql.add('      ,IPI_Isento');
+          sql.add('      ,IPI_Suspensao');
+          sql.add('      ,PIS_ST');
+          sql.add('      ,CodigoTrib_TabA');
+          sql.add('      ,CodigoTrib_TabA2');
+          sql.add('      ,CodigoTrib_TabA3');
+          sql.add('      ,Codigo_CredPres');
+          sql.add('      ,ICMS_Isento');
+          sql.Add('      ,ICMS_Imune');
+          sql.add('      ,ICMS_Suspensao');
+          sql.add('      ,Modalidade_BCICMS');
+          sql.add('      ,Modalidade_BCICMSST');
+          sql.add('      ,Codigo_EXTIPI');
+          sql.add('      ,CEST');
+          sql.add('      ,CBS_Isencao');
+          sql.add('      ,CBS_Imunidade');
+          sql.add('      ,CBS_Suspensao');
+          sql.add('      ,CBS_Diferido');
+          sql.add('      ,IBS_Isencao');
+          sql.add('      ,IBS_Imunidade');
+          sql.add('      ,IBS_Suspensao');
+          sql.add('      ,IBS_Diferido');
+          sql.add('from NCM');
+          sql.Add('where NCM = :pNCM');
+          ParamByName('pNCM').value := Produtos.fieldbyname('NCM').AsString;
+          open;
+     end;
+     with tNCMICMS do begin
+          sql.Clear;
+          sql.Add('select * from NCMICMS where NCM = :pNCM and Estado = :pEstado');
+          parambyname('pNCM').Value    := ProcessosImpItens.FieldByName('NCM').AsString;
+          parambyname('pEstado').Value := mEstado;
+          open;
+     end;
+     with tBeneficios do begin
+          sql.Clear;
+          sql.Add('select Percentual_Beneficio from BeneficioFiscal where Codigo = :pCod');
+          ParamByName('pCod').AsInteger := PedidosNF.FieldByName('Beneficio_Fiscal').Value;
           open;
      end;
 
@@ -626,8 +752,8 @@ begin
      mDescricao := RemoveCaracterXML(mDescricao);
 
      // Adiciona Pedido e Ordem do item na descrição.Ajuste Para PRADOTEX.
-     if trim(Adicoes.FieldByName('Pedido').asstring) <> ''then begin
-        mDescricao := mDescricao + ' PO <['+Adicoes.FieldByName('Pedido').asstring+']> ITEM [<'+Adicoes.FieldByName('Ordem').asstring+'>]';
+     if trim(ProcessosImpItens.FieldByName('Pedido').asstring) <> ''then begin
+        mDescricao := mDescricao + ' PO <['+ProcessosImpItens.FieldByName('Pedido').asstring+']> ITEM [<'+ProcessosImpItens.FieldByName('Ordem').asstring+'>]';
      end;
 
      with PedidosNFItens do begin
@@ -637,8 +763,9 @@ begin
                fieldbyname('ES').Value                    := PedidosNF.FieldByName('ES').asinteger;
                fieldbyname('CFOP').Value                  := CFOP.FieldByName('Codigo').AsString;
                fieldbyname('Item').Value                  := tTmp.FieldByName('Item').AsInteger;
+               fieldbyname('Registro_Adicao').Value       := ProcessosImpItens.Fieldbyname('Registro').Value;
                fieldbyname('Processo').Value              := tProcesso.FieldByName('Processo').Value;
-               fieldbyname('DUIMP').Value                 := DUIMP.FieldByName('DUIMP').value;
+               fieldbyname('Declaracao').Value            := DUIMP.FieldByName('DUIMP').value;
                fieldbyname('Embarque').Value              := Embarques.FieldByName('Codigo').Value;
                fieldbyname('Percentual_Lucro').Value      := cLucroPerc.Value;
                fieldbyname('Valor_Lucro').Value           := cLucroValor.Value;
@@ -660,15 +787,13 @@ begin
                fieldbyname('Apuracao_PISCOFINS').Value    := OpFiscal.FieldByName('Apuracao_PISCOFINS').Value;
                fieldbyname('Finalidade_Mercadoria').Value := OpFiscal.Fieldbyname('Finalidade_Mercadoria').Value;
                fieldbyname('Operacao').Value              := OpFiscal.Fieldbyname('Codigo').Value;
-               fieldbyname('Codigo_Mercadoria').Value     := Adicoes.FieldByName('Codigo_Mercadoria').Value;
-               fieldbyname('NCM').Value                   := Adicoes.FieldByName('NCM').Value;
-               fieldbyname('Sequencia_SISCOMEX').Value    := Adicoes.FieldByName('Sequencia_SISCOMEX').Value;
-               fieldbyname('Adicao').Value                := Adicoes.FieldByName('Adicao').Value;
-               fieldbyname('Quantidade').Value            := Adicoes.FieldByName('Quantidade').Value;
-               fieldbyname('Peso_Liquido').Value          := Adicoes.FieldByName('Peso_Liquido').Value;
-               fieldbyname('Registro_Adicao').Value       := Adicoes.Fieldbyname('Registro').Value;
-               fieldbyname('PO').Value                    := Adicoes.Fieldbyname('Pedido').Value;
-               fieldbyname('Ordem').Value                 := Adicoes.Fieldbyname('Ordem').Value;
+               fieldbyname('Codigo_Mercadoria').Value     := ProcessosImpItens.FieldByName('Codigo_Mercadoria').Value;
+               fieldbyname('NCM').Value                   := ProcessosImpItens.FieldByName('NCM').Value;
+               fieldbyname('Adicao').Value                := ProcessosImpItens.FieldByName('Adicao').Value;
+               fieldbyname('Quantidade').Value            := ProcessosImpItens.FieldByName('Quantidade').Value;
+               fieldbyname('Peso_Liquido').Value          := ProcessosImpItens.FieldByName('Peso_Liquido').Value;
+               fieldbyname('PO').Value                    := ProcessosImpItens.Fieldbyname('Pedido').Value;
+               fieldbyname('Ordem').Value                 := ProcessosImpItens.Fieldbyname('Ordem').Value;
 
                CalculaTudo;
                PegaCST;
@@ -734,8 +859,8 @@ begin
                                     PedidosItensAliquota_ICMSIntegral.Value := 0;
                                  End;
                               end else begin
-                                 PedidosItensAliquota_ICMSOper.Value     := AdicoesAliquota_ICMS.Value;
-                                 PedidosItensAliquota_ICMSIntegral.Value := AdicoesAliquota_ICMS.Value;
+                                 PedidosItensAliquota_ICMSOper.Value     := ProcessosImpItensAliquota_ICMS.Value;
+                                 PedidosItensAliquota_ICMSIntegral.Value := ProcessosImpItensAliquota_ICMS.Value;
                               End;
 
                               // Alíquota do Diferencial de alíquota de ICMS.
@@ -795,7 +920,7 @@ begin
                         else
                            PedidosItensQuantidade.Value := (mQuantidade * ProdutosQuantidade_Unidade.asfloat);
 
-                        PedidosItensNCM.Value            := AdicoesNCM.Value;
+                        PedidosItensNCM.Value            := ProcessosImpItensNCM.Value;
                         PedidosItensUnidade_Medida.Value := ProdutosUnidade.Value;
 
                         // Pegando a aliquota do IPI.
@@ -906,14 +1031,14 @@ begin
                         end;
 
                         If ConfiguracaoAdicao_PesoLiquido.Value = 0 then
-                           PedidosItensPeso_Liquido.Value := AdicoesPeso_Liquido.AsFloat
+                           PedidosItensPeso_Liquido.Value := ProcessosImpItensPeso_Liquido.AsFloat
                         else
                            PedidosItensPeso_Liquido.Value := ProdutosPeso_Liquido.AsFloat;
 
                         PedidosItensPeso_Bruto.Value := 0;
                         if ProcessosDOCPeso_Liquido.AsFloat > 0 then begin
                            If ConfiguracaoAdicao_PesoLiquido.Value = 0 then
-                              PedidosItensPeso_Bruto.Value := (ProcessosDOCPeso_Bruto.AsFloat/ProcessosDOCPeso_Liquido.AsFloat) * (AdicoesPeso_Liquido.AsFloat)
+                              PedidosItensPeso_Bruto.Value := (ProcessosDOCPeso_Bruto.AsFloat/ProcessosDOCPeso_Liquido.AsFloat) * (ProcessosImpItensPeso_Liquido.AsFloat)
                            else
                               PedidosItensPeso_Bruto.Value := (ProcessosDOCPeso_Bruto.AsFloat/ProcessosDOCPeso_Liquido.AsFloat) * (ProdutosPeso_Liquido.AsFloat);
                         end else begin
@@ -936,8 +1061,8 @@ begin
                         if (ProcessosDOCValor_PIS.AsCurrency > 0) and (ProdutosAliquota_PIS.AsFloat > 0) then begin
                            {
                            if ConfiguracaoRateio_PIS.Value = 'V' then begin
-                              PedidosItensValor_PIS.Value  := RoundTo( (ProcessosDOCValor_PIS.Value  / ProcessosDOCFOB_MEAdicoes.Value) * AdicoesValor_Unitario.Value, -4);
-                              PedidosItensValor_PIS2.Value := RoundTo( (ProcessosDOCValor_PIS2.Value / ProcessosDOCFOB_MEAdicoes.Value) * AdicoesValor_Unitario.Value, -4);
+                              PedidosItensValor_PIS.Value  := RoundTo( (ProcessosDOCValor_PIS.Value  / ProcessosDOCFOB_MEProcessosImpItens.Value) * ProcessosImpItensValor_Unitario.Value, -4);
+                              PedidosItensValor_PIS2.Value := RoundTo( (ProcessosDOCValor_PIS2.Value / ProcessosDOCFOB_MEProcessosImpItens.Value) * ProcessosImpItensValor_Unitario.Value, -4);
                            end;
                            if ConfiguracaoRateio_PIS.Value = 'Q' then begin
                               PedidosItensValor_PIS.Value  := RoundTo((ProcessosDOCValor_PIS.Value  / ProcessosDOCQuantidade.Value), -4);
@@ -949,8 +1074,8 @@ begin
                            end;
                            }
                            if ConfiguracaoRateio_PIS.Value = 'V' then begin
-                              PedidosItensValor_PIS.Value  := RoundTo( (ProcessosDOCValor_PIS.Value  / tFOB.fieldbyname('FOBPISCOFINS_ME').Value) * AdicoesValor_Unitario.Value, -4);
-                              PedidosItensValor_PIS2.Value := RoundTo( (ProcessosDOCValor_PIS2.Value / tFOB.fieldbyname('FOBPISCOFINS_ME').Value) * AdicoesValor_Unitario.Value, -4);
+                              PedidosItensValor_PIS.Value  := RoundTo( (ProcessosDOCValor_PIS.Value  / tFOB.fieldbyname('FOBPISCOFINS_ME').Value) * ProcessosImpItensValor_Unitario.Value, -4);
+                              PedidosItensValor_PIS2.Value := RoundTo( (ProcessosDOCValor_PIS2.Value / tFOB.fieldbyname('FOBPISCOFINS_ME').Value) * ProcessosImpItensValor_Unitario.Value, -4);
                            end;
                            if ConfiguracaoRateio_PIS.Value = 'Q' then begin
                               PedidosItensValor_PIS.Value  := RoundTo((ProcessosDOCValor_PIS.Value  / ProcessosDOCQuantidade.Value), -4);
@@ -973,8 +1098,8 @@ begin
                         If (ProcessosDOCValor_COFINS.AsCurrency > 0) and (Dados.ProdutosAliquota_COFINS.AsFloat > 0) then begin
                           {
                            If ConfiguracaoRateio_COFINS.Value = 'V' then begin
-                              PedidosItensValor_COFINS.Value  := Roundto((ProcessosDOCValor_COFINS.Value  / ProcessosDOCFOB_MEAdicoes.Value) * AdicoesValor_Unitario.Value, -4);
-                              PedidosItensValor_COFINS2.Value := Roundto((ProcessosDOCValor_COFINS2.Value / ProcessosDOCFOB_MEAdicoes.Value) * AdicoesValor_Unitario.Value, -4);
+                              PedidosItensValor_COFINS.Value  := Roundto((ProcessosDOCValor_COFINS.Value  / ProcessosDOCFOB_MEProcessosImpItens.Value) * ProcessosImpItensValor_Unitario.Value, -4);
+                              PedidosItensValor_COFINS2.Value := Roundto((ProcessosDOCValor_COFINS2.Value / ProcessosDOCFOB_MEProcessosImpItens.Value) * ProcessosImpItensValor_Unitario.Value, -4);
                            End;
                            If ConfiguracaoRateio_COFINS.Value = 'Q' then begin
                               PedidosItensValor_COFINS.Value  := RoundTo((ProcessosDOCValor_COFINS.Value  / ProcessosDOCQuantidade.Value), -4);
@@ -986,8 +1111,8 @@ begin
                            End;
                            }
                            If ConfiguracaoRateio_COFINS.Value = 'V' then begin
-                              PedidosItensValor_COFINS.Value  := Roundto((ProcessosDOCValor_COFINS.Value  / tFOB.fieldbyname('FOBPISCOFINS_ME').Value) * AdicoesValor_Unitario.Value, -4);
-                              PedidosItensValor_COFINS2.Value := Roundto((ProcessosDOCValor_COFINS2.Value / tFOB.fieldbyname('FOBPISCOFINS_ME').Value) * AdicoesValor_Unitario.Value, -4);
+                              PedidosItensValor_COFINS.Value  := Roundto((ProcessosDOCValor_COFINS.Value  / tFOB.fieldbyname('FOBPISCOFINS_ME').Value) * ProcessosImpItensValor_Unitario.Value, -4);
+                              PedidosItensValor_COFINS2.Value := Roundto((ProcessosDOCValor_COFINS2.Value / tFOB.fieldbyname('FOBPISCOFINS_ME').Value) * ProcessosImpItensValor_Unitario.Value, -4);
                            End;
                            If ConfiguracaoRateio_COFINS.Value = 'Q' then begin
                               PedidosItensValor_COFINS.Value  := RoundTo((ProcessosDOCValor_COFINS.Value  / ProcessosDOCQuantidade.Value), -4);
@@ -1009,7 +1134,7 @@ begin
                         // Calculo do rateio do Frete (Internacional).
                         if IncotermsFrete.AsBoolean then begin
                            if ConfiguracaoRateio_Frete.Value = 'V' then
-                              PedidosItensValor_Frete.Value := ((ProcessosDOCFrete.Value / tFOB.FieldByName('FOB_Total').Value) * AdicoesValor_SemAdValorem.Value);
+                              PedidosItensValor_Frete.Value := ((ProcessosDOCFrete.Value / tFOB.FieldByName('FOB_Total').Value) * ProcessosImpItensValor_SemAdValorem.Value);
                            if ConfiguracaoRateio_Frete.Value = 'Q' then
                               PedidosItensValor_Frete.Value := RoundTo((ProcessosDOCFrete.Value / ProcessosDOCQuantidade.Value),-6);
                            if ConfiguracaoRateio_Frete.Value = 'P' then
@@ -1020,7 +1145,7 @@ begin
                         PedidosItensRateio_FreteTerrNac.Value := 0;
                         if ProcessosDOCRemover_FreteNacBC.AsBoolean then begin
                            if ConfiguracaoRateio_Frete.Value = 'V' then
-                              PedidosItensRateio_FreteTerrNac.Value := ((ProcessosDOCFrete_NacionalReal.Value / tFOB.FieldByName('FOB_Total').Value) * AdicoesValor_SemAdValorem.Value);
+                              PedidosItensRateio_FreteTerrNac.Value := ((ProcessosDOCFrete_NacionalReal.Value / tFOB.FieldByName('FOB_Total').Value) * ProcessosImpItensValor_SemAdValorem.Value);
                            if ConfiguracaoRateio_Frete.Value = 'Q' then
                               PedidosItensRateio_FreteTerrNac.Value := RoundTo((ProcessosDOCFrete_NacionalReal.Value / ProcessosDOCQuantidade.Value),-6);
                            if ConfiguracaoRateio_Frete.Value = 'P' then
@@ -1030,7 +1155,7 @@ begin
                         // Calculo do rateio do Seguro.
                         if IncotermsSeguro.AsBoolean = True then begin
                            if ConfiguracaoRateio_Seguro.Value = 'V' then
-                              PedidosItensValor_Seguro.Value := (ProcessosDOCSeguro.Value / tFOB.FieldByName('FOB_Total').Value) * AdicoesValor_SemAdValorem.Value;
+                              PedidosItensValor_Seguro.Value := (ProcessosDOCSeguro.Value / tFOB.FieldByName('FOB_Total').Value) * ProcessosImpItensValor_SemAdValorem.Value;
                            if ConfiguracaoRateio_Seguro.Value = 'Q' then
                               PedidosItensValor_Seguro.Value := Roundto((ProcessosDOCSeguro.Value / ProcessosDOCQuantidade.Value),-6);
                            if ConfiguracaoRateio_Seguro.Value = 'P' then
@@ -1078,9 +1203,9 @@ begin
                         PedidosItensRateio_SISCOMEX.Value := 0;
                         If Dados.ProcessosDOCTaxa_SISCOMEX.Value > 0 then begin
                            If Uppercase(Trim(ConfiguracaoRateio_DespesasValor.AsString)) = 'FOB' then begin
-                              PedidosItensRateio_SISCOMEX.Value := (ProcessosDOCTaxa_SISCOMEX.Value / tFOB.FieldByName('FOB_Total').Value) * AdicoesValor_SemAdValorem.Value;
+                              PedidosItensRateio_SISCOMEX.Value := (ProcessosDOCTaxa_SISCOMEX.Value / tFOB.FieldByName('FOB_Total').Value) * ProcessosImpItensValor_SemAdValorem.Value;
                            end else begin
-                              PedidosItensRateio_SISCOMEX.Value := (ProcessosDOCTaxa_SISCOMEX.Value / tFOB.FieldByName('CIF_Total').Value) * (AdicoesValor_UnitarioReal.Value+PedidosItensValor_Frete.Value+PedidosItensValor_Seguro.Value+PedidosItensValor_II.Value);
+                              PedidosItensRateio_SISCOMEX.Value := (ProcessosDOCTaxa_SISCOMEX.Value / tFOB.FieldByName('CIF_Total').Value) * (ProcessosImpItensValor_UnitarioReal.Value+PedidosItensValor_Frete.Value+PedidosItensValor_Seguro.Value+PedidosItensValor_II.Value);
                            End;
                         End;
 
@@ -1089,15 +1214,15 @@ begin
                         if mAFRMM > 0 then begin
                            if not ProcessosDOCEntreposto.AsBoolean then begin
                               if Uppercase(Trim(ConfiguracaoRateio_DespesasValor.AsString)) = 'FOB' then begin
-                                 PedidosItensValor_AFRMM.Value := (mAFRMM / tFOB.FieldByName('FOB_Total').Value) * AdicoesValor_SemAdValorem.Value;
+                                 PedidosItensValor_AFRMM.Value := (mAFRMM / tFOB.FieldByName('FOB_Total').Value) * ProcessosImpItensValor_SemAdValorem.Value;
                               end else begin
-                                 PedidosItensValor_AFRMM.Value := (mAFRMM / tFOB.FieldByName('CIF_Total').Value) * (AdicoesValor_UnitarioReal.Value+PedidosItensValor_Frete.Value+PedidosItensValor_Seguro.Value+PedidosItensValor_II.Value);
+                                 PedidosItensValor_AFRMM.Value := (mAFRMM / tFOB.FieldByName('CIF_Total').Value) * (ProcessosImpItensValor_UnitarioReal.Value+PedidosItensValor_Frete.Value+PedidosItensValor_Seguro.Value+PedidosItensValor_II.Value);
                               end;
                            end else begin
                               if Uppercase(Trim(ConfiguracaoRateio_DespesasValor.AsString)) = 'FOB' then begin
-                                 PedidosItensValor_AFRMM.Value := (mAFRMM / tFOB.FieldByName('FOB_Mestre').Value) * AdicoesValor_SemAdValorem.Value;
+                                 PedidosItensValor_AFRMM.Value := (mAFRMM / tFOB.FieldByName('FOB_Mestre').Value) * ProcessosImpItensValor_SemAdValorem.Value;
                               end else begin
-                                 PedidosItensValor_AFRMM.Value := (mAFRMM / tFOB.FieldByName('FOB_Mestre').Value) * (AdicoesValor_UnitarioReal.Value+PedidosItensValor_Frete.Value+PedidosItensValor_Seguro.Value+PedidosItensValor_II.Value);
+                                 PedidosItensValor_AFRMM.Value := (mAFRMM / tFOB.FieldByName('FOB_Mestre').Value) * (ProcessosImpItensValor_UnitarioReal.Value+PedidosItensValor_Frete.Value+PedidosItensValor_Seguro.Value+PedidosItensValor_II.Value);
                               end;
                            end;
                         end;
@@ -1116,7 +1241,7 @@ begin
                            If tDespesas.FieldByName('Valor_DespesasMestre').AsCurrency > 0 then begin
                               If (ConfiguracaoRateio_Despesas.Value = 'V') and (not ProcessosDOCRateia_FretePeso.AsBoolean) then begin
                                  If tFOB.FieldByName('FOB_Mestre').Value > 0 then begin
-                                    mDespesaMestre := (tDespesas.FieldByName('Valor_DespesasMestre').Value / tFOB.FieldByName('FOB_Mestre').Value) * AdicoesValor_SemAdValorem.Value;
+                                    mDespesaMestre := (tDespesas.FieldByName('Valor_DespesasMestre').Value / tFOB.FieldByName('FOB_Mestre').Value) * ProcessosImpItensValor_SemAdValorem.Value;
                                  End;
                               End;
                               If (ConfiguracaoRateio_Despesas.Value = 'Q') and (not ProcessosDOCRateia_FretePeso.AsBoolean) then
@@ -1131,7 +1256,7 @@ begin
                         If ProdutosCusto_Seletivo.AsBoolean = true then begin
                            If tDespesas.FieldByName('Valor_Seletivo').AsCurrency > 0 then begin
                               If (ConfiguracaoRateio_Despesas.Value = 'V') and (not ProcessosDOCRateia_FretePeso.AsBoolean) then
-                                 mDespesaSeletivo := ((tDespesas.FieldByName('Valor_Seletivo').Value / tFOB.FieldByName('FOB_Seletivo').Value) * AdicoesValor_SemAdValorem.Value);
+                                 mDespesaSeletivo := ((tDespesas.FieldByName('Valor_Seletivo').Value / tFOB.FieldByName('FOB_Seletivo').Value) * ProcessosImpItensValor_SemAdValorem.Value);
                               If (ConfiguracaoRateio_Despesas.Value = 'Q') and (not ProcessosDOCRateia_FretePeso.AsBoolean) then
                                  mDespesaSeletivo := tDespesas.FieldByName('Valor_Seletivo').Value / ProcessosDOCQuantidade.Value;
                               If (ConfiguracaoRateio_Despesas.Value = 'P') or (ProcessosDOCRateia_FretePeso.AsBoolean) then
@@ -1143,9 +1268,9 @@ begin
                         If tDespesas.FieldByName('Valor_Despesas').AsCurrency > 0 then begin
                            If (ConfiguracaoRateio_Despesas.Value = 'V') and (not ProcessosDOCRateia_FretePeso.AsBoolean) then begin
                               If Uppercase(Trim(ConfiguracaoRateio_DespesasValor.AsString)) = 'FOB' then begin
-                                 PedidosItensValor_Despesa.Value := (tDespesas.FieldByName('Valor_Despesas').AsCurrency / tFOB.FieldByName('FOB_Total').AsCurrency) * AdicoesValor_SemAdValorem.AsCurrency;
+                                 PedidosItensValor_Despesa.Value := (tDespesas.FieldByName('Valor_Despesas').AsCurrency / tFOB.FieldByName('FOB_Total').AsCurrency) * ProcessosImpItensValor_SemAdValorem.AsCurrency;
                               end else begin
-                                 PedidosItensValor_Despesa.Value := (tDespesas.FieldByName('Valor_Despesas').Value / tFOB.FieldByName('CIF_Total').Value) * (AdicoesValor_UnitarioReal.Value+PedidosItensValor_Frete.Value+PedidosItensValor_Seguro.Value+PedidosItensValor_II.Value);
+                                 PedidosItensValor_Despesa.Value := (tDespesas.FieldByName('Valor_Despesas').Value / tFOB.FieldByName('CIF_Total').Value) * (ProcessosImpItensValor_UnitarioReal.Value+PedidosItensValor_Frete.Value+PedidosItensValor_Seguro.Value+PedidosItensValor_II.Value);
                               End;
                            End;
                            If (ConfiguracaoRateio_Despesas.Value = 'Q') and (not ProcessosDOCRateia_FretePeso.AsBoolean) then begin
@@ -1160,9 +1285,9 @@ begin
                         If tDespesas.FieldByName('Valor_DespesasOutros').AsCurrency > 0 then begin
                            If (ConfiguracaoRateio_Despesas.Value = 'V') and (not ProcessosDOCRateia_FretePeso.AsBoolean) then begin
                               If Uppercase(Trim(ConfiguracaoRateio_DespesasValor.AsString)) = 'FOB' then begin
-                                 PedidosItensValor_DespesasOutros.Value := (tDespesas.FieldByName('Valor_DespesasOutros').Value / tFOB.FieldByName('FOB_Total').Value) * AdicoesValor_SemAdValorem.Value;
+                                 PedidosItensValor_DespesasOutros.Value := (tDespesas.FieldByName('Valor_DespesasOutros').Value / tFOB.FieldByName('FOB_Total').Value) * ProcessosImpItensValor_SemAdValorem.Value;
                               end else begin
-                                 PedidosItensValor_DespesasOutros.Value := (tDespesas.FieldByName('Valor_DespesasOutros').Value / tFOB.FieldByName('CIF_Total').Value) * (AdicoesValor_UnitarioReal.Value+PedidosItensValor_Frete.Value+PedidosItensValor_Seguro.Value+PedidosItensValor_II.Value);
+                                 PedidosItensValor_DespesasOutros.Value := (tDespesas.FieldByName('Valor_DespesasOutros').Value / tFOB.FieldByName('CIF_Total').Value) * (ProcessosImpItensValor_UnitarioReal.Value+PedidosItensValor_Frete.Value+PedidosItensValor_Seguro.Value+PedidosItensValor_II.Value);
                               End;
                            End;
                            If (ConfiguracaoRateio_Despesas.Value = 'Q') and (not ProcessosDOCRateia_FretePeso.AsBoolean) then
@@ -1181,13 +1306,13 @@ begin
 
                         // Calculo do rateio do ICMS do Processo.
                         If ProcessosDOCValor_ICMS.AsCurrency > 0 then begin
-                           PedidosItensRateio_ICMSProcesso.Value := (ProcessosDOCValor_ICMS.Value / tFOB.FieldByName('FOB_Total').Value) * AdicoesValor_SemAdValorem.Value;
+                           PedidosItensRateio_ICMSProcesso.Value := (ProcessosDOCValor_ICMS.Value / tFOB.FieldByName('FOB_Total').Value) * ProcessosImpItensValor_SemAdValorem.Value;
                         End;
 
                         // Calculo do rateio do DUMPING do Processo.
                         If (ProcessosDOCValor_Dumping.AsCurrency > 0) and (ProdutosDumping.AsBoolean = true) then begin
                            If tDumping.FieldByName('TotalFOB_Dumping').AsCurrency > 0 then begin
-                              PedidosItensValor_Dumping.Value := (ProcessosDOCValor_Dumping.AsCurrency / tDumping.FieldByName('TotalFOB_Dumping').AsCurrency) * AdicoesValor_SemAdValorem.AsFloat;
+                              PedidosItensValor_Dumping.Value := (ProcessosDOCValor_Dumping.AsCurrency / tDumping.FieldByName('TotalFOB_Dumping').AsCurrency) * ProcessosImpItensValor_SemAdValorem.AsFloat;
                            end else begin
                               mErro := 7;
                            end;
@@ -1564,14 +1689,14 @@ begin
                         If (ProcessosDOCValor_COFINS.AsCurrency > 0) and (Dados.ProdutosAliquota_COFINS.AsFloat > 0) then begin
                            // Mostra os rateios do PIS para Alt-H.
                            cFormula.Lines.Add('     CAMPO: Valor do PIS rateado');
-                           cFormula.Lines.Add('   FÓRMULA: RoundTo((ProcessosDOCValor_PIS.Value / tFOB.fieldbyname(''FOBPISCOFINS_ME'').Value) * AdicoesValor_Unitario.Value, -4)');
-                           cFormula.Lines.Add('   VALORES: '+ProcessosDOCValor_PIS.AsString+' / ' + tFOB.fieldbyname('FOBPISCOFINS_ME').asstring + ' * ' + AdicoesValor_Unitario.asstring);
+                           cFormula.Lines.Add('   FÓRMULA: RoundTo((ProcessosDOCValor_PIS.Value / tFOB.fieldbyname(''FOBPISCOFINS_ME'').Value) * ProcessosImpItensValor_Unitario.Value, -4)');
+                           cFormula.Lines.Add('   VALORES: '+ProcessosDOCValor_PIS.AsString+' / ' + tFOB.fieldbyname('FOBPISCOFINS_ME').asstring + ' * ' + ProcessosImpItensValor_Unitario.asstring);
                            cFormula.Lines.Add(' RESULTADO: '+FormatFloat('###,###,###,##0.00000000000000', PedidosItensValor_PIS.Value));
                            cFormula.Lines.Add('');
                            // Mostra os rateios do PIS para Alt-H.
                            cFormula.Lines.Add('     CAMPO: Valor da COFINS rateado');
-                           cFormula.Lines.Add('   FÓRMULA: RoundTo((ProcessosDOCValor_COFINS.Value / tFOB.fieldbyname(''FOBPISCOFINS_ME'').Value) * AdicoesValor_Unitario.Value, -4)');
-                           cFormula.Lines.Add('   VALORES: '+ProcessosDOCValor_COFINS.AsString+' / ' + tFOB.fieldbyname('FOBPISCOFINS_ME').asstring + ' * ' + AdicoesValor_Unitario.asstring);
+                           cFormula.Lines.Add('   FÓRMULA: RoundTo((ProcessosDOCValor_COFINS.Value / tFOB.fieldbyname(''FOBPISCOFINS_ME'').Value) * ProcessosImpItensValor_Unitario.Value, -4)');
+                           cFormula.Lines.Add('   VALORES: '+ProcessosDOCValor_COFINS.AsString+' / ' + tFOB.fieldbyname('FOBPISCOFINS_ME').asstring + ' * ' + ProcessosImpItensValor_Unitario.asstring);
                            cFormula.Lines.Add(' RESULTADO: '+FormatFloat('###,###,###,##0.00000000000000', PedidosItensValor_COFINS.Value));
                            cFormula.Lines.Add('');
                         end;
@@ -1866,7 +1991,7 @@ begin
                            PedidosItensValor_COFINS.Value    := 0;
                            PedidosItensValor_COFINS2.Value   := 0;
                         End;
-                        PedidosItensAdicao.Value              := AdicoesAdicao.Value;
+                        PedidosItensAdicao.Value              := ProcessosImpItensAdicao.Value;
                         PedidosItensEXTIPI.Value              := NCMCodigo_EXTIPI.Value;
                         PedidosItensModalidade_BCICMS.Value   := NCMModalidade_BCICMS.Value;
                         PedidosItensModalidade_BCICMSST.Value := NCMModalidade_BCICMSST.Value;
@@ -1874,13 +1999,13 @@ begin
                         // Remove a valoração do valor unitario.
                         If (TipoNotaValoracao_Produto.AsBoolean = true) and (ProcessosDOCAd_Valorem.AsCurrency > 0) then begin
                            If (IncotermsFrete.Value = True) and (IncotermsSeguro.Value = True) then
-                              PedidosItensValor_Unitario.Value := PedidosItensValor_Unitario.Value -  ((ProcessosDOC.FieldByName('Ad_Valorem').Value / ProcessosDOCFOB_ME.Value) * AdicoesValor_Unitario.Value);
+                              PedidosItensValor_Unitario.Value := PedidosItensValor_Unitario.Value -  ((ProcessosDOC.FieldByName('Ad_Valorem').Value / ProcessosDOCFOB_ME.Value) * ProcessosImpItensValor_Unitario.Value);
                            If (IncotermsFrete.Value = True) and (IncotermsSeguro.Value = False) then
-                              PedidosItensValor_Unitario.Value := PedidosItensValor_Unitario.Value -  ((ProcessosDOC.FieldByName('Ad_Valorem').Value / (ProcessosDOCFOB_ME.Value+ProcessosDOCSeguro_ME.Value)) * AdicoesValor_Unitario.Value);
+                              PedidosItensValor_Unitario.Value := PedidosItensValor_Unitario.Value -  ((ProcessosDOC.FieldByName('Ad_Valorem').Value / (ProcessosDOCFOB_ME.Value+ProcessosDOCSeguro_ME.Value)) * ProcessosImpItensValor_Unitario.Value);
                            If (IncotermsFrete.Value = False) and (IncotermsSeguro.Value = False) then
-                              PedidosItensValor_Unitario.Value := PedidosItensValor_Unitario.Value -  ((ProcessosDOC.FieldByName('Ad_Valorem').Value / (ProcessosDOCFOB_ME.Value+ProcessosDOCSeguro_ME.Value+ProcessosDOCFrete_ME.Value)) * AdicoesValor_Unitario.Value);
+                              PedidosItensValor_Unitario.Value := PedidosItensValor_Unitario.Value -  ((ProcessosDOC.FieldByName('Ad_Valorem').Value / (ProcessosDOCFOB_ME.Value+ProcessosDOCSeguro_ME.Value+ProcessosDOCFrete_ME.Value)) * ProcessosImpItensValor_Unitario.Value);
                            If (IncotermsFrete.Value = False) and (IncotermsSeguro.Value = True) then
-                              PedidosItensValor_Unitario.Value := PedidosItensValor_Unitario.Value -  ((ProcessosDOC.FieldByName('Ad_Valorem').Value / (ProcessosDOCFOB_ME.Value+ProcessosDOCFrete_ME.Value)) * AdicoesValor_Unitario.Value);
+                              PedidosItensValor_Unitario.Value := PedidosItensValor_Unitario.Value -  ((ProcessosDOC.FieldByName('Ad_Valorem').Value / (ProcessosDOCFOB_ME.Value+ProcessosDOCFrete_ME.Value)) * ProcessosImpItensValor_Unitario.Value);
 
                            If ProdutosTipo_Conversao.Value <> 'M' then
                               PedidosItensValor_Total.Value := Roundto(PedidosItensValor_Unitario.Value * (PedidosItensQuantidade.Value * ProdutosQuantidade_Unidade.Value), -4)
@@ -1938,7 +2063,7 @@ begin
                         // Mostra os valores do rateio das despesas.
                         cFormula.Lines.Add('     CAMPO: Valor_Despesa');
                         cFormula.Lines.Add('   FÓRMULA: (Valor_Despesa / FOB_Total) * Valor_SemAdValorem');
-                        cFormula.Lines.Add('    RATEIO: ('+tDespesas.FieldByName('Valor_Despesas').AsString+'/'+tFOB.FieldByName('FOB_Total').AsString+') * '+AdicoesValor_SemAdValorem.AsString+' = '+FormatFloat('###,###,###,##0.00000000000000', (tDespesas.FieldByName('Valor_Despesas').Value / tFOB.FieldByName('FOB_Total').Value) * AdicoesValor_SemAdValorem.Value));
+                        cFormula.Lines.Add('    RATEIO: ('+tDespesas.FieldByName('Valor_Despesas').AsString+'/'+tFOB.FieldByName('FOB_Total').AsString+') * '+ProcessosImpItensValor_SemAdValorem.AsString+' = '+FormatFloat('###,###,###,##0.00000000000000', (tDespesas.FieldByName('Valor_Despesas').Value / tFOB.FieldByName('FOB_Total').Value) * ProcessosImpItensValor_SemAdValorem.Value));
                         cFormula.Lines.Add('   FÓRMULA: Valor_Despesa + mDespesaMestre + mDespesaSeletivo');
                         cFormula.Lines.Add('   VALORES: '+floattostr(PedidosItensValor_Despesa.asfloat-mDespesaMestre-mDespesaSeletivo)+'+'+CurrtoStr(mDespesaMestre)+'+'+CurrtoStr(mDespesaSeletivo));
                         cFormula.Lines.Add(' RESULTADO: '+FormatFloat('###,###,###,##0.00000000000000', (PedidosItensValor_Despesa.asfloat-mDespesaMestre-mDespesaSeletivo) + mDespesaMestre + mDespesaSeletivo));
@@ -1955,7 +2080,7 @@ begin
                            end else begin
                               // Calculo o rateio do Frete novamente para retirar do valor do inventario quando necessario.
                               if ConfiguracaoRateio_Frete.Value = 'V' then
-                                 PedidosItensValor_Frete.Value := ((ProcessosDOCFrete.Value / tFOB.FieldByName('FOB_Total').Value) * AdicoesValor_SemAdValorem.Value);
+                                 PedidosItensValor_Frete.Value := ((ProcessosDOCFrete.Value / tFOB.FieldByName('FOB_Total').Value) * ProcessosImpItensValor_SemAdValorem.Value);
                               if ConfiguracaoRateio_Frete.Value = 'Q' then
                                  PedidosItensValor_Frete.Value := RoundTo((ProcessosDOCFrete.Value / ProcessosDOCQuantidade.Value),-6);
                               if ConfiguracaoRateio_Frete.Value = 'P' then
@@ -1969,7 +2094,7 @@ begin
                            end else begin
                               // Calculo o rateio do Seguro novamente para retirar do valor do inventario quando necessario.
                               if ConfiguracaoRateio_Seguro.Value = 'V' then
-                                 PedidosItensValor_Seguro.Value := (ProcessosDOCSeguro.Value / tFOB.FieldByName('FOB_Total').Value) * AdicoesValor_SemAdValorem.Value;
+                                 PedidosItensValor_Seguro.Value := (ProcessosDOCSeguro.Value / tFOB.FieldByName('FOB_Total').Value) * ProcessosImpItensValor_SemAdValorem.Value;
                               if ConfiguracaoRateio_Seguro.Value = 'Q' then
                                  PedidosItensValor_Seguro.Value := Roundto((ProcessosDOCSeguro.Value / ProcessosDOCQuantidade.Value),-6);
                               if ConfiguracaoRateio_Seguro.Value = 'P' then
@@ -1985,7 +2110,7 @@ begin
 
                         //PedidosItensNatureza_Codigo.Value := PedidosNatureza_Codigo.Value;
                         PedidosItensNatureza_Codigo.Value := cNatureza.KeyValue;
-                        PedidosItensValor_CIF.Value       := (AdicoesValor_UnitarioReal.Value+PedidosItensValor_Frete.Value+PedidosItensValor_Seguro.Value);
+                        PedidosItensValor_CIF.Value       := (ProcessosImpItensValor_UnitarioReal.Value+PedidosItensValor_Frete.Value+PedidosItensValor_Seguro.Value);
 
                         // Valores de PIS/COFINS são zerados ao final dos cálculos, caso haja necessidade de adicionar os valores desses impostos em outro campo.
                         if not CSTPISTributavel.AsBoolean then begin
@@ -2112,6 +2237,7 @@ begin
      LigaBotoes;
 end;
 
+(*
 procedure TfFatPedidoItensDUIMP.PegaCST;
 var
    mCST: string;
@@ -2287,7 +2413,7 @@ begin
                    if (tNCMICMS.FieldByName('ST').AsFloat = 0) and (Destinatarios.fieldbyname('Consumidor_Final').AsBoolean or Destinatarios.fieldbyname('Simples_Nacional').AsBoolean) then mCST := '102';
                 end;
              end else begin
-                mFormulas.Lines.add('ERRO DE CST: Tabela de ICMS para "SIMPLES NACIONAL" não cadastrada.');
+                cLog.Lines.add('ERRO DE CST: Tabela de ICMS para "SIMPLES NACIONAL" não cadastrada.');
              end;
 
              if OpFiscal.Fieldbyname('Isencao_ICMS').AsBoolean or tNCM.fieldbyname('ICMS_Isento').AsBoolean then begin
@@ -2357,15 +2483,284 @@ begin
           end;
      end;
 end;
+*)
+procedure TfFatPedidoItensDUIMP.PegaCST;
+var
+   mCST: string;
+   mBC, mTotal: real;
+begin
+     with PedidosNFItens do begin
+          // Código de Situação Tributaria do IPI.
+          mCST := '';
+          if (Fieldbyname('Valor_IPI').ascurrency > 0) or (Fieldbyname('Aliquota_IPI').ascurrency> 0)      then mCST := Trim(OpFiscal.FieldByName('ES').AsString)+'+IPI';
+          if Produtos.fieldbyname('Valor_IPI').asfloat <> 0                                                then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+V';
+          if tNCM.fieldbyname('IPI_TribAliquotaZero').asboolean                                            then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+V';
+          if (tNCM.fieldbyname('IPI_Isento').AsBoolean) or (OpFiscal.fieldbyname('Isencao_IPI').AsBoolean) then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+I';
+          if OpFiscal.fieldbyname('Nao_Tributada_IPI').asboolean                                           then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+NT';
+          if OpFiscal.fieldbyname('Imune_IPI').asboolean                                                   then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+IM';
+          if tNCM.fieldbyname('IPI_Suspensao').asboolean                                                   then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+SUS';
+          if OpFiscal.fieldbyname('Suspensao_IPI').asboolean                                               then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+SUS';
+          if mCST = ''                                                                                     then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+<>';
+          if not CSTIPI.Locate('Classificacao', mCST, [loCaseInsensitive]) then begin
+             mCST := '<>';
+             CSTIPI.Locate('Classificacao', mCST, [loCaseInsensitive]);
+          end;
+          Fieldbyname('CSTIPI').Value := CSTIPI.FieldByName('Codigo').Value;
+
+          // Código de Situação Tributaria do PIS/COFINS.
+          if TabPISCOFINS.Locate('Imposto', 'PIS', [loCaseInsensitive]) then begin
+             mCST := '';
+             if PedidosNF.fieldbyname('ES').AsInteger = 1 then begin
+                if (Produtos.fieldbyname('Aliquota_PISSaida').AsFloat > 0) and (Produtos.fieldbyname('Aliquota_PISSaida').AsFloat = TabPISCOFINS.fieldbyname('Saida').AsFloat) then
+                   mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+B';                                     // 01.
+                if (Produtos.fieldbyname('Aliquota_PISSaida').AsFloat > 0) and (Produtos.fieldbyname('Aliquota_PISSaida').AsFloat <> TabPISCOFINS.fieldbyname('Saida').AsFloat) then
+                   mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+D';                                     // 02.
+                if (OpFiscal.fieldbyname('CSTPIS_AliquotaUM').AsBoolean) or (Produtos.fieldbyname('CSTPIS_AliquotaUM').AsBoolean) then
+                   mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+UM';                                    // 03.
+                if (OpFiscal.fieldbyname('CSTPIS_Monofasica').AsBoolean) or (Produtos.fieldbyname('CSTPIS_Monofasica').AsBoolean) then
+                   mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+MONO+A0';                               // 04.
+                if (tNCM.fieldbyname('PIS_ST').asboolean) and (Destinatarios.fieldbyname('Varejista').AsBoolean) then
+                   mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+ST';                                    // 05.
+                if (OpFiscal.fieldbyname('CSTPIS_AliquotaZero').AsBoolean) or (Produtos.fieldbyname('CSTPIS_AliquotaZero').AsBoolean) then
+                   mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+A0';                                    // 06.
+                if (OpFiscal.fieldbyname('CSTPIS_Isenta').AsBoolean) or (Produtos.fieldbyname('CSTPIS_Isenta').AsBoolean) then
+                   mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+ISE';                                   // 07.
+                if (OpFiscal.fieldbyname('CSTPIS_SemIncidencia').AsBoolean) or (Produtos.fieldbyname('CSTPIS_SemIncidencia').AsBoolean) then
+                   mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+SINC';                                  // 08.
+                if (OpFiscal.fieldbyname('CSTPIS_Suspensao').AsBoolean) or (Produtos.fieldbyname('CSTPIS_Suspensao').AsBoolean) then
+                   mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+SUS';                                   // 09.
+                if (OpFiscal.fieldbyname('CSTPIS_Outras').AsBoolean) or (Produtos.fieldbyname('CSTPIS_Outras').AsBoolean) then
+                   mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+O';                                     // Outras.
+             end else begin
+                if Trim(Produtos.fieldbyname('CSTPIS_Entrada').AsString) <> '' then begin
+                   if CSTPIS.Locate('Codigo', Produtos.fieldbyname('CSTPIS_Entrada').Value, [loCaseInsensitive]) = true then begin
+                      mCST := CSTPIS.fieldbyname('Classificacao').Value;
+                   end;
+                end else begin
+                   if Trim(OpFiscal.fieldbyname('CST_PIS').Value) <> '' then begin
+                      if CSTPIS.Locate('Codigo', OpFiscal.fieldbyname('CST_PIS').Value, [loCaseInsensitive]) = true then begin
+                         mCST := CSTPIS.fieldbyname('Classificacao').Value;
+                      end;
+                   end else begin
+                      If (Produtos.fieldbyname('PIS_Nota').AsFloat > 0) then
+                         mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+RNTNTMIE'; // 56;
+                   end;
+                end;
+
+                If (OpFiscal.fieldbyname('CSTPIS_Isenta').AsBoolean        = true) or (Produtos.fieldbyname('CSTPIS_IsentaEnt').AsBoolean        = true) then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+ISE';  // 71.
+                If (OpFiscal.fieldbyname('CSTPIS_Suspensao').AsBoolean     = true) or (Produtos.fieldbyname('CSTPIS_SuspensaoEnt').AsBoolean     = true) then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+SUS';  // 72.
+                If (OpFiscal.fieldbyname('CSTPIS_AliquotaZero').AsBoolean  = true) or (Produtos.fieldbyname('CSTPIS_AliquotaZeroEnt').AsBoolean  = true) then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+A0';   // 73.
+                If (OpFiscal.fieldbyname('CSTPIS_SemIncidencia').AsBoolean = true) or (Produtos.fieldbyname('CSTPIS_SemIncidenciaEnt').AsBoolean = true) then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+SINC'; // 74.
+                If (OpFiscal.fieldbyname('CSTPIS_Outras').AsBoolean        = true) or (Produtos.fieldbyname('CSTPIS_OutrasEnt').AsBoolean        = true) then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+O';    // Outras.
+             end;
+          end else begin
+             Alerta.Title     := 'ATENÇÃO!';
+             Alerta.Text      := 'Alíquota básica do PIS/COFINS não cadastrada na tabela de PIS/COFINS.';
+             Alerta.AlertType := atWarning;
+             Alerta.Execute;
+          end;
+          with tTmp do begin
+               // CST PIS.
+               sql.clear;
+               sql.add('select Codigo from CSTPIS where Classificacao = '+quotedstr(mCST));
+               open;
+               if recordcount = 0 then begin
+                  mCST := '<>';
+                  sql.clear;
+                  sql.add('select * from CSTPIS where Codigo = '+quotedstr(mCST));
+                  open;
+               end;
+               PedidosNFItens.fieldbyname('CSTPIS').Value := fieldbyname('Codigo').Value;
+               // CST COFINS.
+               sql.clear;
+               sql.add('select Codigo from CSTCOFINS where Classificacao = '+quotedstr(mCST));
+               open;
+               if recordcount = 0 then begin
+                  mCST := '<>';
+                  sql.clear;
+                  sql.add('select * from CSTCOFINS where Codigo = '+quotedstr(mCST));
+                  open;
+               end;
+               PedidosNFItens.fieldbyname('CSTCOFINS').Value := fieldbyname('Codigo').Value;
+          end;
+
+          // CST ICMS Operacional.
+          mCST   := '';
+          mBC    := fieldbyname('Valor_BCICMSOp').asfloat;
+          //mTotal := cValor_Produtos.Value;
+          mTotal := FieldByName('Valor_Unitario').AsCurrency * FieldByName('Quantidade').asfloat;
+          if Empresas.fieldbyname('Regime_Tributario').asinteger = 3 then begin
+             // Empresas optantes do Regime normal.
+             if Fieldbyname('Valor_ICMSOp').Value <> 0 then
+                mCST := mCST + '+O'
+             else
+                mCST := mCST + '-O';     // ICMS Operacional.
+             if (Int(mBC) < Int(mTotal)) and (mBC > 0) then
+                mCST := mCST + '+R'
+             else
+                mCST := mCST + '-R';     // Reducao de base.
+             if OpFiscal.Fieldbyname('ES').asinteger = 0 then begin
+                mCST := mCST + '-S';     // ICMS ST na Entrada.
+             end else begin
+                if Fieldbyname('Valor_ICMSST').ascurrency <> 0 then
+                   mCST := mCST + '+S'
+                else
+                   mCST := mCST + '-S';  // ICMS ST na Saida.
+             end;
+             if OpFiscal.Fieldbyname('Isencao_ICMS').AsBoolean or tNCM.fieldbyname('ICMS_Isento').AsBoolean then mCST := '+I';
+             if OpFiscal.Fieldbyname('Nao_Tributada_ICMS').asboolean then mCST := '+NT';
+             if OpFiscal.Fieldbyname('Suspensao_ICMS').AsBoolean or tNCM.fieldbyname('ICMS_Suspensao').AsBoolean then mCST := '+SUS';
+             if Processos.fieldbyname('ICMS_Diferido').asboolean and (OpFiscal.Fieldbyname('ES').asinteger = 0) then mCST := '+D';
+             if OpFiscal.Fieldbyname('Diferido_ICMS').AsBoolean then mCST := '+D';
+             if cICMSAnt.Checked then mCST := mCST + '+SD';
+             
+             // CST para Detalhe especifico combustivel.
+             if OpFiscal.Fieldbyname('ES').asinteger = 0 then begin
+                if Produtos.fieldbyname('CSTICMS_Entrada').asstring <> '' then mCST := Produtos.fieldbyname('CSTICMS_Entrada').AsString;
+             end else begin
+                if Produtos.fieldbyname('CSTICMS_Saida').asstring <> '' then mCST := Produtos.fieldbyname('CSTICMS_Saida').AsString;
+             end;
+
+             if OpFiscal.Fieldbyname('Monofasico_Comb').asboolean         then mCST := '02';
+             if OpFiscal.Fieldbyname('Monofasico_CombRetencao').asboolean then mCST := '15';
+             if OpFiscal.Fieldbyname('Monofasico_CombDiferido').asboolean then mCST := '53';
+             if OpFiscal.Fieldbyname('Monofasico_CombAnterior').asboolean then mCST := '61';
+             with tTmp do begin
+                  sql.clear;
+                  sql.add('select Codigo from CSTICMSTabB where Classificacao = '+quotedstr(mCST));
+                  open;
+                  if recordcount = 0 then begin
+                     mCST := '<>';
+                     sql.clear;
+                     sql.add('select * from CSTICMSTabB where Codigo = '+quotedstr(mCST));
+                     open;
+                  end;
+                  if Produtos.Fieldbyname('Origem').asstring = 'I' then mCST := tNCM.Fieldbyname('CodigoTrib_TabA').Value;
+                  if Produtos.Fieldbyname('Origem').asstring = 'N' then mCST := tNCM.Fieldbyname('CodigoTrib_TabA2').Value;
+                  if Produtos.Fieldbyname('Origem').asstring = 'M' then mCST := tNCM.Fieldbyname('CodigoTrib_TabA3').Value;
+                  PedidosNFItens.fieldbyname('CSTICMS_TabA').Value := mCST;
+                  PedidosNFItens.fieldbyname('CSTICMS_TabB').Value := fieldbyname('Codigo').asstring;
+             end;
+          end else begin
+             // Empresas do Regime do Simples Nacional.
+             if tNCMICMS.RecordCount > 0 then begin
+                if OpFiscal.Fieldbyname('ES').asinteger = 1 then begin
+                   if (tNCMICMS.FieldByName('ST').AsFloat = 0) and (not Destinatarios.fieldbyname('Consumidor_Final').AsBoolean and not Destinatarios.fieldbyname('Simples_Nacional').AsBoolean) then mCST := '101';
+                end;
+                if OpFiscal.Fieldbyname('ES').asinteger = 0 then begin
+                   if tNCMICMS.FieldByName('ST').asfloat = 0 then mCST := '102';
+                end else begin
+                   if (tNCMICMS.FieldByName('ST').AsFloat = 0) and (Destinatarios.fieldbyname('Consumidor_Final').AsBoolean or Destinatarios.fieldbyname('Simples_Nacional').AsBoolean) then mCST := '102';
+                end;
+             end else begin
+                cLog.Lines.add('ERRO DE CST: Tabela de ICMS para "SIMPLES NACIONAL" não cadastrada.');
+             end;
+
+             if OpFiscal.Fieldbyname('Isencao_ICMS').AsBoolean or tNCM.fieldbyname('ICMS_Isento').AsBoolean then begin
+                if PedidosNF.Fieldbyname('ES').AsInteger = 0 then begin
+                   if tNCMICMS.FieldByName('ST').AsFloat = 0 then mCST := '103';
+                end else begin
+                   if tNCMICMS.FieldByName('ST').AsFloat = 0 then mCST := '103';
+                end;
+             end;
+             if OpFiscal.Fieldbyname('ES').asinteger = 1 then begin
+                if (tNCMICMS.FieldByName('ST').AsFloat > 0) and not Destinatarios.Fieldbyname('Consumidor_Final').AsBoolean and not Destinatarios.Fieldbyname('Simples_Nacional').AsBoolean then mCST := '201';
+             end;
+             if OpFiscal.Fieldbyname('ES').asinteger = 0 then begin
+                if tNCMICMS.FieldByName('ST').AsFloat > 0 then mCST := '202';
+             end else begin
+                if (tNCMICMS.FieldByName('ST').AsFloat > 0) and (Destinatarios.Fieldbyname('Consumidor_Final').AsBoolean or Destinatarios.Fieldbyname('Simples_Nacional').AsBoolean) then mCST := '202';
+             end;
+             if OpFiscal.Fieldbyname('Isencao_ICMS').AsBoolean or tNCM.Fieldbyname('ICMS_Isento').AsBoolean then begin
+                if PedidosNF.Fieldbyname('ES').AsInteger = 0 then begin         // NF de Entrada.
+                   if tNCMICMS.FieldByName('ST').AsFloat > 0 then mCST := '203';
+                end else begin                                           // NF de Saída.
+                   if tNCMICMS.FieldByName('ST').AsFloat > 0 then mCST := '203';
+                end;
+             end;
+             if OpFiscal.Fieldbyname('Imune_ICMS').AsBoolean or tNCM.Fieldbyname('ICMS_Imune').AsBoolean then mCST := '300';
+             if OpFiscal.Fieldbyname('Nao_Tributada_ICMS').AsBoolean then mCST := '400';
+             if cICMSAnt.Checked then mCST := '500';
+             if OpFiscal.Fieldbyname('Diferido_ICMS').AsBoolean then mCST := '900';
+
+             if PedidosNF.Fieldbyname('ES').AsInteger = 0 then begin
+                if Trim(OpFiscal.Fieldbyname('CSOSN_Entrada').AsString) <> '' then begin
+                   mCST := Trim(OpFiscal.Fieldbyname('CSOSN_Entrada').AsString);
+                end;
+             end else begin
+                if Trim(OpFiscal.Fieldbyname('CSOSN_Saida').AsString) <> '' then begin
+                   mCST := Trim(OpFiscal.Fieldbyname('CSOSN_Saida').AsString);
+                end;
+             end;
+
+             if OpFiscal.Fieldbyname('Monofasico_Comb').asboolean then mCST := '02';
+             if OpFiscal.Fieldbyname('Monofasico_CombRetencao').asboolean then mCST := '15';
+             if OpFiscal.Fieldbyname('Monofasico_CombDiferido').asboolean then mCST := '53';
+             if OpFiscal.Fieldbyname('Monofasico_CombAnterior').asboolean then mCST := '61';
+
+             with tTmp do begin
+                  sql.clear;
+                  sql.add('select Codigo from CSTICMSTabB where Classificacao = '+quotedstr(mCST));
+                  open;
+                  if recordcount = 0 then begin
+                     mCST := 'S<>';
+                     sql.clear;
+                     sql.add('select * from CSTICMSTabB where Codigo = '+quotedstr(mCST));
+                     //sql.SaveToFile('c:\temp\Atlas_CSTICMS.sql');
+                     open;
+                  end;
+                  if Produtos.Fieldbyname('Origem').asstring = 'I' then 
+                     mCST := tNCM.Fieldbyname('CodigoTrib_TabA').Value;
+                  if Produtos.Fieldbyname('Origem').asstring = 'N' then 
+                     mCST := tNCM.Fieldbyname('CodigoTrib_TabA2').Value;
+                  if Produtos.Fieldbyname('Origem').asstring = 'M' then 
+                     mCST := tNCM.Fieldbyname('CodigoTrib_TabA3').Value;
+                     
+                  PedidosNFItens.fieldbyname('CSTICMS_TabA').Value := mCST;
+                  PedidosNFItens.fieldbyname('CSTICMS_TabB').Value := fieldbyname('Codigo').asstring;
+             end;
+          end;
+          if (State = dsInsert) or (State = dsEdit) then begin
+             // CST DO CBS.
+             mCST := 'T+I';
+             if fieldbyname('Valor_CBS').Value > 0 then mCST := 'T+I';
+             if tNCM.fieldbyname('CBS_Isencao').AsBoolean        then mCST := 'IS';
+             if OpFiscal.fieldbyname('CBS_Isencao').AsBoolean   then mCST := 'IS';
+             if tNCM.fieldbyname('CBS_Imunidade').AsBoolean      then mCST := 'I+N+I';
+             if OpFiscal.fieldbyname('CBS_Imunidade').asboolean then mCST := 'I+N+I';
+             if tNCM.fieldbyname('CBS_Suspensao').asboolean      then mCST := 'S';
+             if OpFiscal.fieldbyname('CBS_Suspensao').asboolean then mCST := 'S';
+             if tNCM.fieldbyname('CBS_Diferido').AsBoolean       then mCST := 'D';
+             if OpFiscal.fieldbyname('CBS_Diferido').AsBoolean  then mCST := 'D';
+             CSTCBS.Locate('Classificacao', mCST, [loCaseInsensitive]) ;
+             fieldbyname('CSTCBS').Value := CSTCBS.fieldbyname('Codigo').Value;
+             // CST DO IBS
+             mCST := 'T+I';
+             if fieldbyname('Valor_IBS').Value > 0 then mCST := 'T+I';
+             if tNCM.fieldbyname('IBS_Isencao').AsBoolean        then mCST := 'IS';
+             if OpFiscal.fieldbyname('IBS_Isencao').AsBoolean   then mCST := 'IS';
+             if tNCM.fieldbyname('IBS_Imunidade').AsBoolean      then mCST := 'I+N+I';
+             if OpFiscal.fieldbyname('IBS_Imunidade').asboolean then mCST := 'I+N+I';
+             if tNCM.fieldbyname('IBS_Suspensao').asboolean      then mCST := 'S';
+             if OpFiscal.fieldbyname('IBS_Suspensao').asboolean then mCST := 'S';
+             if tNCM.fieldbyname('IBS_Diferido').AsBoolean       then mCST := 'D';
+             if OpFiscal.fieldbyname('IBS_Diferido').AsBoolean  then mCST := 'D';
+             CSTIBS.Locate('Classificacao', mCST, [loCaseInsensitive]) ;
+             fieldbyname('CSTIBS').Value := CSTIBS.fieldbyname('Codigo').Value;
+          end;
+     end;
+end;
+
 
 procedure TfFatPedidoItensDUIMP.LigaBotoes;
 begin
-     bAddItem.Enabled := (Adicoes.RecordCount > 0) and (trim(cCFOP.Text) <> '');
-     bAddTudo.Enabled := (Adicoes.RecordCount > 0) and (trim(cCFOP.Text) <> '');
+     bAddItem.Enabled := (ProcessosImpItens.RecordCount > 0) and (trim(cCFOP.Text) <> '');
+     bAddTudo.Enabled := (ProcessosImpItens.RecordCount > 0) and (trim(cCFOP.Text) <> '');
      bRemItem.Enabled := PedidosNFItens.RecordCount > 0;
      bRemTudo.Enabled := PedidosNFItens.RecordCount > 0;
 end;
 
+(*
 procedure TfFatPedidoItensDUIMP.CalculaTudo;
 var
    mValor: real;
@@ -2411,7 +2806,126 @@ begin
       }
       PegaCST;
 end;
+*)
 
+procedure TfFatPedidoItensDUIMP.CalculaTudo;
+var
+   mValor: real;
+   mCp: TComponent;
+   mAliqImp
+  ,mBenef 
+  ,mCSTImp: string;
+begin
+     // Limpa a tabela de impostos.
+     with tImpostos do begin
+          Open;
+          EmptyDataSet;
+     end;
+     with tFormulasItens do begin
+          first;
+          while not eof do begin
+                // Pula o calculo do valor unitário pois ja foi calculado anteriormente.
+                if fieldbyname('Campo').AsString <> 'Valor_Unitario' then begin
+                   gFormula.Cells[0, gFormula.RowCount-1] := FieldByName('Campo').AsString;
+                   gFormula.Cells[1, gFormula.RowCount-1] := fieldbyname('Formula').AsString;
+                   with Campos do begin
+                        sql.clear;
+                        sql.add('select Campo');
+                        sql.add('      ,Tabela');
+                        sql.add('      ,Campo_Chave');
+                        sql.add('      ,Pesquisa');
+                        sql.add('      ,Percentual');
+                        sql.Add('from Campos');
+                        sql.Add('where Campo in('+ListaCampos(tFormulasItens.fieldbyname('Formula').AsString, 0)+')');
+                        sql.add('order by Tabela');
+                        open;
+                   end;
+                
+                   // Faz o cálculo da formula e Acha o campo.
+                   try
+                      mValor := CalculaMacro(self, fieldbyname('Formula').AsString);
+                   except On E: Exception do
+                      begin
+                          cLog.Lines.add('Ocorreu um erro de cálculo: '+E.Message);
+                          cLog.lines.Add(fieldbyname('Formula').AsString);
+                      end;
+                   end;
+                   PedidosNFItens.fieldbyname(fieldbyname('Campo').AsString).value := mValor;
+                   mCp := Self.FindComponent('c'+trim(fieldbyname('Campo').asstring));
+                
+                   with tImpostos do begin
+                        mAliqImp := trim(tFormulasItens.fieldbyname('Campo_Aliquota').asstring);
+                        mCSTImp  := trim(tFormulasItens.fieldbyname('Campo_CST').asstring);
+                        append;
+                              fieldbyname('Ordem_Calculo').Value := tFormulasItens.FieldByName('Ordem_Calculo').Value;
+                              fieldbyname('Descricao').Value     := tFormulasItens.FieldByName('Descricao').Value;
+                              fieldbyname('Campo').Value         := tFormulasItens.fieldbyname('Campo').value;
+                              fieldbyname('Valor').Value         := mValor;
+                              fieldbyname('Total').Value         := mValor * PedidosNFItens.fieldbyname('Quantidade').value;
+                              if mAliqImp <> '' then begin
+                                 fieldbyname('Aliquota').Value := PedidosNFItens.fieldbyname(mAliqImp).asfloat;
+                              end;
+                              if mCSTImp <> '' then begin
+                                 fieldbyname('CST').Value := PedidosNFItens.fieldbyname(mCSTImp).asstring;
+                              end;
+                        post;
+                   end;
+                end;
+                next;
+          end;
+     end;
+     with PedidosNFItens do begin
+          // Totaliza os campos de total dos itens.
+          TotalizaItens;
+          
+          // Gera os código cst dos impostos.
+          PegaCST;
+
+          if (fieldbyname('CSTICMS_TabA').asstring = '1') or (fieldbyname('CSTICMS_TabA').asstring = '6') then begin 
+             if fieldbyname('ES').Asinteger = 0 then begin
+                mBenef := Produtos.fieldbyname('Beneficio_FiscalEnt').asstring;
+             end else begin
+                mBenef := Produtos.fieldbyname('Beneficio_FiscalSai').asstring;
+             end;
+             if mBenef = null then begin
+                mBenef := OpFiscal.fieldbyname('Beneficio_Fiscal').asstring;
+             end;
+          end;
+     end;
+end;
+
+procedure TfFatPedidoItensDUIMP.TotalizaItens;
+begin
+{
+     // Totaliza os campos de total dos itens.
+     with PedidosNFItens do begin
+          cValor_Produtos.Value   := FieldByName('Valor_Unitario').AsCurrency * FieldByName('Quantidade').asfloat;
+          cTotalII.Value          := Fieldbyname('Valor_II').AsCurrency * Fieldbyname('Quantidade').asfloat;
+          cTotalIPI.Value         := Fieldbyname('Valor_IPI').AsCurrency * Fieldbyname('Quantidade').asfloat;
+          cTotalOutrasIPI.Value   := Fieldbyname('Valor_OutrasIPI').AsCurrency * Fieldbyname('Quantidade').asfloat;
+          cTotalIsentasIPI.Value  := Fieldbyname('Valor_IsentasIPI').AsCurrency * Fieldbyname('Quantidade').asfloat;
+          cTotalPIS.Value         := Fieldbyname('Valor_PIS').AsCurrency * Fieldbyname('Quantidade').asfloat;
+          cTotalCOFINS.Value      := Fieldbyname('Valor_COFINS').AsCurrency * Fieldbyname('Quantidade').asfloat;
+          cTotalICMSOp.Value      := Fieldbyname('Valor_ICMSOp').AsCurrency * Fieldbyname('Quantidade').asfloat;
+          cTotalICMSMono.Value    := Fieldbyname('Valor_ICMSMono').AsCurrency * Fieldbyname('Quantidade').asfloat;
+          cTotalICMSMonoRet.Value := Fieldbyname('Valor_ICMSMonoRet').AsCurrency * Fieldbyname('Quantidade').asfloat;
+          cTotalICMSST.Value      := Fieldbyname('Valor_ICMSST').AsCurrency * Fieldbyname('Quantidade').asfloat;
+          cTotalICMSSTAnt.Value   := Fieldbyname('Valor_ICMSSTAnt').AsCurrency * Fieldbyname('Quantidade').asfloat;
+          cTotalICMSDif.Value     := Fieldbyname('Valor_ICMSDif').AsCurrency * Fieldbyname('Quantidade').asfloat;
+          cTotalOutrasICMS.Value  := Fieldbyname('Valor_OutrasICMS').AsCurrency * Fieldbyname('Quantidade').asfloat;
+          cTotalIsentasICMS.Value := Fieldbyname('Valor_IsentasICMS').AsCurrency * Fieldbyname('Quantidade').asfloat;
+          cTotalMVA.Value         := Fieldbyname('Valor_MVA').AsCurrency * Fieldbyname('Quantidade').asfloat;
+          cTotalCBS.Value         := Fieldbyname('Valor_CBS').AsCurrency * Fieldbyname('Quantidade').asfloat;
+          cTotalIBS.Value         := Fieldbyname('Valor_IBS').AsCurrency * Fieldbyname('Quantidade').asfloat;
+          cTotalIS.Value          := Fieldbyname('Valor_IS').AsCurrency * Fieldbyname('Quantidade').asfloat;
+          
+          if state = dsEdit then ApuraEstoque;
+     end;
+}     
+end;
+
+
+(*
 function TfFatPedidoItensDUIMP.CalculaCampos(Formula: widestring): real;
 var
    i, mPos, mPosFun: integer;
@@ -2456,7 +2970,6 @@ mFormulas.Lines.Add(mQuebra.text);
      for i := 0 to pred(mQuebra.Count) do begin
          if trim(mQuebra[i]) <> '' then begin
             mComp  := FindComponent(mQuebra[i]);
-//mFormulas.Lines.Add(mQuebra[i]);
             mValor := 0;
             if mComp <> nil then mValor := TFloatField(mComp).value;
             Formula := stringReplace(Formula, mQuebra[i], floattostr(mValor), [rfReplaceAll, rfIgnoreCase]);
@@ -2537,7 +3050,8 @@ mFormulas.Lines.Add(mQuebra.text);
          end;
      end;
 end;
-
+*)
+(*
 // Executa os calculos dos macro passados como strings.
 Function TfFatPedidoItensDUIMP.CalculaMacro(Campo:String):Real;
 var
@@ -2557,7 +3071,7 @@ var
    ,mValorCondic1
    ,mValorCondic2: String;
 begin
-(*
+{
 //     with Dados, dmFiscal do begin
           // Convertendo a formula do campo.
           mFormula := Stringreplace(tFormulas.FieldByName(Campo).AsString,#13,'',[rfReplaceAll]);
@@ -2613,9 +3127,9 @@ begin
                       else
                          Insert( '0', mFormula, mPos );
                    End;
-                   If UpperCase(CamposTabela.Value) = 'ADICOES' then begin
-                      If Trim(Adicoes.FieldByName(mCampo).AsString) <> '' then
-                         Insert( Adicoes.FieldByName(mCampo).AsString, mFormula, mPos )
+                   If UpperCase(CamposTabela.Value) = 'ProcessosImpItens' then begin
+                      If Trim(ProcessosImpItens.FieldByName(mCampo).AsString) <> '' then
+                         Insert( ProcessosImpItens.FieldByName(mCampo).AsString, mFormula, mPos )
                       else
                          Insert( '0', mFormula, mPos );
                    End;
@@ -2761,9 +3275,76 @@ begin
      cFormula.Lines.Add(' RESULTADO: '+FormatFloat('###,###,###,##0.00000000000000', mResultado ));
      cFormula.Lines.Add('');
      Result := mResultado;
-     *)
+     }
+end;
+*)
+// Efetua a conversão do texto da formula para valores.
+function TfFatPedidoItensDUIMP.CalculaCampos(Formula: widestring): real;
+begin
+
 end;
 
+function TfFatPedidoItensDUIMP.CalculaMacro(pForm: TComponent; pFormula: String): Real;
+var
+   mCalc: String;
+   mResultado: real;
+   tCampos: TFDQuery;
+   Macro: TCalcExpress;
+   Memo: TUniMemo;
+   Grade: TuniStringGrid;
+begin
+     tCampos := TFDQuery.Create(nil);
+     Macro   := TCalcExpress.create(nil);
+     with tCampos do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select Campo');
+          sql.add('      ,Tabela');
+          sql.add('      ,Campo_Chave');
+          sql.add('      ,Pesquisa');
+          sql.add('      ,Percentual');
+          sql.add('from Campos');
+          sql.add('where Campo in('+ListaCampos(pFormula, 0)+')');
+          sql.add('order by Tabela');
+          open;
+
+          // Convertendo a formula do campo.
+          mCalc := StringReplace(pFormula, #13,'',[rfReplaceAll]);
+          mCalc := StringReplace(mCalc   , #12,'',[rfReplaceAll]);
+          mCalc := StringReplace(mCalc   , #10,'',[rfReplaceAll]);
+          first;
+          while not Eof do begin
+                mCalc := stringreplace(mCalc, fieldbyname('Campo').AsString, SubstituirCampos(pForm, fieldbyname('Campo').AsString), [rfReplaceAll]);
+                tcampos.Next;
+          end;
+          mCalc := SubstituirCondicao(mCalc);
+          mCalc := stringreplace(mCalc,' ', '', [rfReplaceAll]);
+     end;
+     
+     try
+         Macro.Formula := mCalc;
+         mResultado    := Macro.Calc([0]);
+         if mResultado < 0 then mResultado := 0;
+     except on E:Exception do 
+         begin 
+              Memo := pForm.FindComponent('cLog') as TUniMemo;
+              if Assigned(Memo) then begin
+                 Memo.Lines.Add('');
+                 Memo.Lines.Add(stringofchar('>', 30)+' ERRO NA FÓRMULA DO CAMPO '+stringofchar('<', 30));
+                 Memo.Lines.Add(pFormula);
+                 Memo.Lines.add(E.Message);
+              end;
+              mResultado := 0;
+         end;
+     end;
+     Grade := pForm.FindComponent('gFormula') as TUniStringGrid;
+     if Assigned(Grade) then begin
+        Grade.Cells[2, Grade.RowCount-1] := mCalc;
+        Grade.Cells[3, Grade.RowCount-1] := floattostr(mResultado);
+        Grade.RowCount                   := Grade.RowCount + 1;
+     end;
+     CalculaMacro := mResultado;
+end;
 
 
 end.
