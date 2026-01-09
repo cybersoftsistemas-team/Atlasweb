@@ -82,7 +82,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       OnClick = bGravarClick
     end
     object bFechar: TUniSpeedButton
-      Left = 454
+      Left = 566
       Top = 0
       Width = 41
       Height = 35
@@ -95,6 +95,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       ImageIndex = 7
       TabOrder = 6
       OnClick = bFecharClick
+      ExplicitLeft = 454
     end
     object bDuplicar: TUniButton
       Left = 369
@@ -138,6 +139,108 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       Align = alLeft
       TabOrder = 8
     end
+    object UniSpeedButton1: TUniSpeedButton
+      Left = 454
+      Top = 0
+      Width = 112
+      Height = 35
+      Hint = 'Salva o registro corrente.'
+      ShowHint = True
+      ParentShowHint = False
+      Caption = 'Copiar formulas'
+      Align = alLeft
+      ParentColor = False
+      IconAlign = iaCenter
+      Images = UniMainModule.imgBotoes
+      ImageIndex = 19
+      TabOrder = 9
+      OnClick = UniSpeedButton1Click
+      ExplicitLeft = 403
+    end
+    object PanelCopia: TUniContainerPanel
+      AlignWithMargins = True
+      Left = 657
+      Top = 2
+      Width = 316
+      Height = 31
+      Hint = ''
+      Margins.Left = 50
+      Margins.Top = 2
+      Margins.Bottom = 2
+      Visible = False
+      ParentColor = False
+      Align = alLeft
+      TabOrder = 10
+      ExplicitLeft = 610
+      object cCodOper: TUniNumberEdit
+        AlignWithMargins = True
+        Left = 3
+        Top = 3
+        Width = 219
+        Height = 25
+        Hint = ''
+        Margins.Right = 5
+        BorderStyle = ubsInset
+        Alignment = taRightJustify
+        Align = alLeft
+        TabOrder = 1
+        Color = clWhite
+        EmptyText = '-1'
+        SelectOnFocus = True
+        FieldLabel = 'C'#243'digo Opera'#231#227'o Fiscal'
+        FieldLabelWidth = 120
+        FieldLabelSeparator = ' '
+        DecimalPrecision = 0
+        DecimalSeparator = #0
+        ExplicitLeft = -103
+      end
+      object bCancelFor: TUniSpeedButton
+        AlignWithMargins = True
+        Left = 262
+        Top = 1
+        Width = 32
+        Height = 29
+        Hint = 'Salva o registro corrente.'
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 1
+        Margins.Bottom = 1
+        Caption = ''
+        Align = alLeft
+        ParentColor = False
+        IconAlign = iaCenter
+        Images = UniMainModule.imgBotoes
+        ImageIndex = 26
+        TabOrder = 2
+        OnClick = bCancelForClick
+        ExplicitLeft = 297
+        ExplicitTop = 3
+        ExplicitHeight = 25
+      end
+      object bCopiaFor: TUniSpeedButton
+        AlignWithMargins = True
+        Left = 228
+        Top = 1
+        Width = 32
+        Height = 29
+        Hint = 'Salva o registro corrente.'
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 1
+        Margins.Bottom = 1
+        Caption = ''
+        Align = alLeft
+        ParentColor = False
+        IconAlign = iaCenter
+        Images = UniMainModule.imgBotoes
+        ImageIndex = 4
+        TabOrder = 3
+        OnClick = bCopiaForClick
+        ExplicitLeft = 297
+        ExplicitTop = 3
+        ExplicitHeight = 25
+      end
+    end
   end
   object Pasta: TUniPageControl
     Left = 0
@@ -145,7 +248,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     Width = 1407
     Height = 765
     Hint = ''
-    ActivePage = TabSheet1
+    ActivePage = aLista
     Plain = True
     Align = alClient
     ClientEvents.UniEvents.Strings = (
@@ -153,11 +256,9 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
         'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
         '= '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 0
-    ExplicitHeight = 787
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitHeight = 759
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -287,7 +388,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     object TabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Par'#226'metros Diversos'
-      ExplicitHeight = 759
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -1247,7 +1347,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     object UniTabSheet3: TUniTabSheet
       Hint = ''
       Caption = 'Par'#226'metros NF Terceiros'
-      ExplicitHeight = 759
       object UniScrollBox7: TUniScrollBox
         Left = 0
         Top = 0
@@ -1260,7 +1359,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
-        ExplicitHeight = 759
         DesignSize = (
           1397
           735)
@@ -1507,7 +1605,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       Hint = ''
       ImageIndex = 4
       Caption = 'Par'#226'metros Fiscais'
-      ExplicitHeight = 759
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0
@@ -1520,7 +1617,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
-        ExplicitHeight = 759
         DesignSize = (
           1380
           735)
@@ -1546,7 +1642,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           Title = 'DADOS GERAIS'
           Caption = ''
           Color = clTeal
-          ExplicitLeft = 253
           object cCST: TUniGroupBox
             Left = 12
             Top = 65
@@ -2274,7 +2369,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     object UniTabSheet4: TUniTabSheet
       Hint = ''
       Caption = 'Formulas'
-      ExplicitHeight = 759
       object UniScrollBox8: TUniScrollBox
         Left = 0
         Top = 0
@@ -2287,7 +2381,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
-        ExplicitHeight = 759
         DesignSize = (
           1397
           735)
@@ -2488,7 +2581,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       Hint = ''
       ImageIndex = 3
       Caption = 'Informa'#231#245'es Complementares'
-      ExplicitHeight = 759
       object UniScrollBox4: TUniScrollBox
         Left = 0
         Top = 0
@@ -2501,7 +2593,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
-        ExplicitHeight = 759
         DesignSize = (
           1397
           735)
@@ -2633,7 +2724,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Parametriza'#231#227'o Financeira'
-      ExplicitHeight = 759
       object UniScrollBox3: TUniScrollBox
         Left = 0
         Top = 0
@@ -2646,7 +2736,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
-        ExplicitHeight = 759
         DesignSize = (
           1397
           735)
@@ -2786,7 +2875,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       Hint = ''
       ImageIndex = 3
       Caption = 'Parametriza'#231#227'o Cont'#225'bil'
-      ExplicitHeight = 759
       object UniScrollBox6: TUniScrollBox
         Left = 0
         Top = 0
@@ -2799,7 +2887,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
-        ExplicitHeight = 759
         DesignSize = (
           1397
           735)

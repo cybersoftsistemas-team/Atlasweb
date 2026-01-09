@@ -1,14 +1,14 @@
 object fConfigCampos: TfConfigCampos
   Left = 0
   Top = 0
-  Width = 1298
+  Width = 1365
   Height = 803
   OnCreate = UniFrameCreate
   TabOrder = 0
   object UniScrollBox1: TUniScrollBox
     Left = 0
     Top = 35
-    Width = 1298
+    Width = 1365
     Height = 768
     Hint = ''
     Align = alClient
@@ -17,11 +17,12 @@ object fConfigCampos: TfConfigCampos
         'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'   config.cls' +
         ' = '#39'Pasta'#39';'#13#10'}')
     TabOrder = 0
+    ExplicitWidth = 1298
     object pFicha5: TUniPanel
       AlignWithMargins = True
       Left = 3
       Top = 3
-      Width = 1290
+      Width = 1357
       Height = 760
       Hint = ''
       ShowHint = True
@@ -37,11 +38,12 @@ object fConfigCampos: TfConfigCampos
       Title = 'DADOS GERAIS'
       Caption = ''
       Color = clTeal
+      ExplicitWidth = 1290
       object UniDBGrid1: TUniDBGrid
         Left = 0
         Top = 0
-        Width = 1290
-        Height = 639
+        Width = 1357
+        Height = 666
         Hint = ''
         ShowHint = True
         RowEditor = True
@@ -198,9 +200,9 @@ object fConfigCampos: TfConfigCampos
       end
       object UniContainerPanel1: TUniContainerPanel
         Left = 0
-        Top = 639
-        Width = 1290
-        Height = 121
+        Top = 666
+        Width = 1357
+        Height = 94
         Hint = ''
         ShowHint = True
         ParentColor = False
@@ -210,57 +212,153 @@ object fConfigCampos: TfConfigCampos
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'Painel'#39';'#13#10'}')
         TabOrder = 2
-        object cPesq: TUniEdit
+        ExplicitTop = 665
+        ExplicitWidth = 1290
+        object cTab: TUniEdit
           AlignWithMargins = True
-          Left = 9
-          Top = 6
-          Width = 342
-          Height = 50
+          Left = 6
+          Top = 7
+          Width = 550
+          Height = 25
           Hint = ''
           ShowHint = True
+          BorderStyle = ubsInset
           Text = ''
           TabOrder = 1
           ClearButton = True
           FieldLabel = 'Filtrar Tabela'
-          FieldLabelAlign = laTop
+          FieldLabelWidth = 140
           FieldLabelSeparator = ' '
-          OnChange = cPesqChange
+          OnChange = cTabChange
         end
-        object cTipo: TUniRadioGroup
-          Left = 368
-          Top = 9
-          Width = 329
-          Height = 102
-          Hint = ''
-          ShowHint = True
-          Items.Strings = (
-            'Campos calculaveis'
-            'Campos n'#227'o calculaveis'
-            'Fun'#231#245'es'
-            'Com comando SQL'
-            'Visivel'
-            'Todo')
-          ItemIndex = 5
-          Caption = 'Tipo'
-          TabOrder = 2
-          Columns = 2
-          OnClick = cTipoClick
-        end
-        object cCampo: TUniEdit
+        object cCam: TUniEdit
           AlignWithMargins = True
-          Left = 9
-          Top = 62
-          Width = 342
-          Height = 50
+          Left = 6
+          Top = 34
+          Width = 550
+          Height = 25
           Hint = ''
           ShowHint = True
+          BorderStyle = ubsInset
           Text = ''
-          TabOrder = 3
+          TabOrder = 2
           ClearButton = True
-          FieldLabel = 'Filtrar Tabela'
-          FieldLabelAlign = laTop
+          FieldLabel = 'Filtrar Campo'
+          FieldLabelWidth = 140
           FieldLabelSeparator = ' '
-          OnChange = cPesqChange
+          OnChange = cTabChange
+        end
+        object cFiltro: TUniGroupBox
+          Left = 593
+          Top = 19
+          Width = 761
+          Height = 57
+          Cursor = crHandPoint
+          Hint = ''
+          ShowHint = True
+          Caption = 'Filtros'
+          TabOrder = 3
+          object cCal: TUniCheckBox
+            Left = 10
+            Top = 20
+            Width = 100
+            Height = 17
+            Cursor = crHandPoint
+            Hint = ''
+            ShowHint = True
+            Caption = 'Calculaveis'
+            TabOrder = 1
+            OnClick = cCalClick
+          end
+          object cFun: TUniCheckBox
+            Left = 330
+            Top = 20
+            Width = 100
+            Height = 17
+            Cursor = crHandPoint
+            Hint = ''
+            ShowHint = True
+            Caption = 'Fun'#231#245'es'
+            TabOrder = 2
+            OnClick = cCalClick
+          end
+          object cSQL: TUniCheckBox
+            Left = 121
+            Top = 20
+            Width = 100
+            Height = 17
+            Cursor = crHandPoint
+            Hint = ''
+            ShowHint = True
+            Caption = 'Com SQL'
+            TabOrder = 3
+            OnClick = cCalClick
+          end
+          object cVis: TUniCheckBox
+            Left = 430
+            Top = 20
+            Width = 100
+            Height = 17
+            Cursor = crHandPoint
+            Hint = ''
+            ShowHint = True
+            Caption = 'Vis'#237'veis'
+            TabOrder = 4
+            OnClick = cCalClick
+          end
+          object cRec: TUniCheckBox
+            Left = 518
+            Top = 20
+            Width = 100
+            Height = 17
+            Cursor = crHandPoint
+            Hint = ''
+            ShowHint = True
+            Caption = 'Recebe f'#243'rmula'
+            TabOrder = 5
+            OnClick = cCalClick
+          end
+          object cImp: TUniCheckBox
+            Left = 646
+            Top = 20
+            Width = 100
+            Height = 17
+            Cursor = crHandPoint
+            Hint = ''
+            ShowHint = True
+            Caption = 'Imposto'
+            TabOrder = 6
+            OnClick = cCalClick
+          end
+          object cPer: TUniCheckBox
+            Left = 218
+            Top = 20
+            Width = 100
+            Height = 17
+            Cursor = crHandPoint
+            Hint = ''
+            ShowHint = True
+            Caption = 'Percentual'
+            TabOrder = 7
+            OnClick = cCalClick
+          end
+        end
+        object cDes: TUniEdit
+          AlignWithMargins = True
+          Left = 6
+          Top = 61
+          Width = 550
+          Height = 25
+          Hint = ''
+          ShowHint = True
+          BorderStyle = ubsInset
+          Text = ''
+          TabOrder = 4
+          ClearButton = True
+          FieldLabel = 'Filtrar Descri'#231#227'o'
+          FieldLabelWidth = 140
+          FieldLabelSeparator = ' '
+          OnChange = cTabChange
         end
       end
     end
@@ -268,7 +366,7 @@ object fConfigCampos: TfConfigCampos
   object pBarraNav: TUniPanel
     Left = 0
     Top = 0
-    Width = 1298
+    Width = 1365
     Height = 35
     Hint = ''
     Align = alTop
@@ -280,6 +378,7 @@ object fConfigCampos: TfConfigCampos
     BorderStyle = ubsSingle
     Caption = ''
     Color = 5526569
+    ExplicitWidth = 1298
     object Navega: TUniDBNavigator
       Left = 0
       Top = 0
@@ -307,7 +406,6 @@ object fConfigCampos: TfConfigCampos
       ImageIndex = 2
       TabOrder = 3
       OnClick = bExcluirClick
-      ExplicitLeft = 223
     end
     object bFechar: TUniSpeedButton
       Left = 223
@@ -323,7 +421,6 @@ object fConfigCampos: TfConfigCampos
       ImageIndex = 7
       TabOrder = 4
       OnClick = bFecharClick
-      ExplicitLeft = 346
     end
     object bAdicionar: TUniSpeedButton
       Left = 141

@@ -351,7 +351,7 @@ object fFatPedidoNF: TfFatPedidoNF
           Left = 67
           Top = 3
           Width = 818
-          Height = 769
+          Height = 801
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -388,7 +388,7 @@ object fFatPedidoNF: TfFatPedidoNF
           object cOperacao: TUniDBLookupComboBox
             Left = 8
             Top = 35
-            Width = 804
+            Width = 800
             Height = 25
             Hint = ''
             ShowHint = True
@@ -414,7 +414,7 @@ object fFatPedidoNF: TfFatPedidoNF
             Left = 5
             Top = 80
             Width = 808
-            Height = 669
+            Height = 714
             Hint = ''
             Margins.Left = 5
             Margins.Top = 5
@@ -427,7 +427,7 @@ object fFatPedidoNF: TfFatPedidoNF
             ScrollDirection = sdNone
             object cDestinatario: TUniDBLookupComboBox
               Left = 3
-              Top = 96
+              Top = 116
               Width = 600
               Height = 25
               Hint = ''
@@ -451,7 +451,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cTransportador: TUniDBLookupComboBox
               Left = 3
-              Top = 123
+              Top = 143
               Width = 600
               Height = 25
               Hint = ''
@@ -475,7 +475,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cNFRef: TUniDBLookupComboBox
               Left = 3
-              Top = 69
+              Top = 89
               Width = 800
               Height = 25
               Hint = ''
@@ -499,7 +499,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cVolume_Especie: TUniDBEdit
               Left = 3
-              Top = 555
+              Top = 575
               Width = 348
               Height = 25
               Hint = ''
@@ -515,7 +515,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cVolume_Quantidade: TUniDBEdit
               Left = 3
-              Top = 528
+              Top = 548
               Width = 348
               Height = 25
               Hint = ''
@@ -531,7 +531,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cVolume_Marca: TUniDBEdit
               Left = 354
-              Top = 555
+              Top = 575
               Width = 223
               Height = 25
               Hint = ''
@@ -547,7 +547,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cVolume_Numero: TUniDBEdit
               Left = 580
-              Top = 555
+              Top = 575
               Width = 223
               Height = 25
               Hint = ''
@@ -563,7 +563,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cForma_Pagamento: TUniDBLookupComboBox
               Left = 3
-              Top = 420
+              Top = 440
               Width = 549
               Height = 25
               Hint = ''
@@ -587,7 +587,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cDescricao_Forma: TUniDBEdit
               Left = 3
-              Top = 447
+              Top = 467
               Width = 800
               Height = 25
               Hint = ''
@@ -603,7 +603,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cIntermediador: TUniDBLookupComboBox
               Left = 3
-              Top = 258
+              Top = 278
               Width = 800
               Height = 25
               Hint = ''
@@ -627,7 +627,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cBeneficio_Fiscal: TUniDBLookupComboBox
               Left = 3
-              Top = 42
+              Top = 62
               Width = 493
               Height = 25
               Hint = ''
@@ -652,7 +652,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cModalidade_Frete: TUniDBLookupComboBox
               Left = 3
-              Top = 177
+              Top = 197
               Width = 800
               Height = 25
               Hint = ''
@@ -676,7 +676,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cIndicador_Intermediario: TUniDBLookupComboBox
               Left = 3
-              Top = 231
+              Top = 251
               Width = 800
               Height = 25
               Hint = ''
@@ -700,7 +700,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cIndicador_Presenca: TUniDBLookupComboBox
               Left = 3
-              Top = 204
+              Top = 224
               Width = 800
               Height = 25
               Hint = ''
@@ -724,7 +724,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cTipoDesc: TUniDBLookupComboBox
               Left = 3
-              Top = 285
+              Top = 305
               Width = 800
               Height = 25
               Hint = ''
@@ -748,7 +748,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cDesconto_Percentual: TUniDBFormattedNumberEdit
               Left = 419
-              Top = 339
+              Top = 359
               Width = 164
               Height = 25
               Hint = ''
@@ -766,7 +766,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cAliquota_IRPJ: TUniDBFormattedNumberEdit
               Left = 3
-              Top = 312
+              Top = 332
               Width = 300
               Height = 25
               Hint = ''
@@ -784,7 +784,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cAliquota_CSLL: TUniDBFormattedNumberEdit
               Left = 306
-              Top = 312
+              Top = 332
               Width = 200
               Height = 25
               Hint = ''
@@ -802,7 +802,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cTipo_Pagamento: TUniDBLookupComboBox
               Left = 3
-              Top = 393
+              Top = 413
               Width = 549
               Height = 25
               Hint = ''
@@ -826,7 +826,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cOperacao_Veiculo: TUniDBLookupComboBox
               Left = 3
-              Top = 474
+              Top = 494
               Width = 800
               Height = 25
               Hint = ''
@@ -850,7 +850,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cVeiculo_Restricao: TUniDBLookupComboBox
               Left = 3
-              Top = 501
+              Top = 521
               Width = 800
               Height = 25
               Hint = ''
@@ -874,7 +874,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cTaxa_Cambio: TUniDBFormattedNumberEdit
               Left = 499
-              Top = 42
+              Top = 62
               Width = 304
               Height = 25
               Hint = ''
@@ -892,7 +892,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object UniDBFormattedNumberEdit3: TUniDBFormattedNumberEdit
               Left = 354
-              Top = 528
+              Top = 548
               Width = 223
               Height = 25
               Hint = ''
@@ -909,7 +909,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object UniDBFormattedNumberEdit4: TUniDBFormattedNumberEdit
               Left = 580
-              Top = 528
+              Top = 548
               Width = 223
               Height = 25
               Hint = ''
@@ -926,7 +926,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cLotes: TUniDBComboBox
               Left = 3
-              Top = 15
+              Top = 35
               Width = 348
               Height = 25
               Hint = ''
@@ -942,7 +942,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object UniDBLookupComboBox3: TUniDBLookupComboBox
               Left = 3
-              Top = 150
+              Top = 170
               Width = 800
               Height = 25
               Hint = ''
@@ -966,7 +966,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object UniDBComboBox1: TUniDBComboBox
               Left = 3
-              Top = 339
+              Top = 359
               Width = 413
               Height = 25
               Hint = ''
@@ -990,7 +990,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cValor_Desconto: TUniDBFormattedNumberEdit
               Left = 586
-              Top = 339
+              Top = 359
               Width = 215
               Height = 25
               Hint = ''
@@ -1008,7 +1008,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object UniDBFormattedNumberEdit2: TUniDBFormattedNumberEdit
               Left = 3
-              Top = 366
+              Top = 386
               Width = 300
               Height = 25
               Hint = ''
@@ -1026,7 +1026,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object UniDBFormattedNumberEdit14: TUniDBFormattedNumberEdit
               Left = 306
-              Top = 366
+              Top = 386
               Width = 200
               Height = 25
               Hint = ''
@@ -1044,7 +1044,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object UniDBLookupComboBox4: TUniDBLookupComboBox
               Left = 3
-              Top = 582
+              Top = 602
               Width = 574
               Height = 25
               Hint = ''
@@ -1068,7 +1068,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object UniDBFormattedNumberEdit15: TUniDBFormattedNumberEdit
               Left = 580
-              Top = 582
+              Top = 602
               Width = 223
               Height = 25
               Hint = ''
@@ -1085,7 +1085,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object UniDBFormattedNumberEdit16: TUniDBFormattedNumberEdit
               Left = 3
-              Top = 636
+              Top = 656
               Width = 348
               Height = 25
               Hint = ''
@@ -1102,7 +1102,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object UniDBLookupComboBox5: TUniDBLookupComboBox
               Left = 3
-              Top = 609
+              Top = 629
               Width = 574
               Height = 25
               Hint = ''
@@ -1126,7 +1126,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object UniDBFormattedNumberEdit17: TUniDBFormattedNumberEdit
               Left = 580
-              Top = 609
+              Top = 629
               Width = 223
               Height = 25
               Hint = ''
@@ -1143,7 +1143,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object bVeiculo: TUniButton
               Left = 607
-              Top = 122
+              Top = 142
               Width = 98
               Height = 26
               Hint = ''
@@ -1154,7 +1154,7 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object cEntregaRetirada: TUniComboBox
               Left = 607
-              Top = 96
+              Top = 116
               Width = 196
               Height = 25
               Hint = ''
@@ -1169,6 +1169,30 @@ object fFatPedidoNF: TfFatPedidoNF
               CharCase = ecUpperCase
               ClearButton = True
               IconItems = <>
+            end
+            object cEmpresa: TUniDBLookupComboBox
+              Left = 3
+              Top = 8
+              Width = 800
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ListField = 'CNPJ;Unidade;Estado'
+              ListSource = dsEmpresas
+              KeyField = 'CNPJ'
+              ListFieldIndex = 0
+              BorderStyle = ubsInset
+              DataField = 'Empresa'
+              DataSource = dsPedidosNF
+              AnyMatch = True
+              TabOrder = 38
+              Color = clWindow
+              RemoteQuery = True
+              FieldLabel = 'Empresa'
+              FieldLabelWidth = 140
+              FieldLabelSeparator = ' '
+              NormalizeString = True
+              Style = csDropDown
             end
           end
           object UniSimplePanel1: TUniSimplePanel

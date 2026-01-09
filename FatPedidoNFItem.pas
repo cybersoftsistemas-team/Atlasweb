@@ -49,7 +49,6 @@ type
     PedidosNFItensFator_Cambio: TFloatField;
     PedidosNFItensOrigem_Mercadoria: TSmallintField;
     PedidosNFItensNumero_BL: TStringField;
-    PedidosNFItensSequencia: TIntegerField;
     PedidosNFItensValor_BCDIFAL: TCurrencyField;
     PedidosNFItensValor_BCDIFALST: TCurrencyField;
     PedidosNFItensValor_BCICMSMono: TCurrencyField;
@@ -419,6 +418,7 @@ type
     cTotalCOFINSST: TUniFormattedNumberEdit;
     UniContainerPanel2: TUniContainerPanel;
     PedidosNFItensFinalidade_Mercadoria: TStringField;
+    PedidosNFItensItem_DUIMP: TIntegerField;
     procedure UniSpeedButton1Click(Sender: TObject);
     procedure UniFrameCreate(Sender: TObject);
     procedure cProdutoExit(Sender: TObject);
@@ -432,7 +432,7 @@ type
     mOper: string;
     mPed
    ,mItem: integer;
-    procedure CalculaTudo;
+//    procedure CalculaTudo;
     procedure PegaCST;
     function CalculoReverso: real;
     procedure ApuraEstoque;
@@ -457,7 +457,8 @@ end;
 
 procedure TfFatPedidoNFItem.cValor_UnitarioExit(Sender: TObject);
 begin
-    CalculaTudo;
+    CalculaTudo(PedidosNF.fieldbyname('Operacao').asinteger, 'Item', gFormula, cLog, PedidosNFItens, self, nil);
+    TotalizaItens;
 end;
 
 {$R *.dfm}
@@ -688,13 +689,15 @@ begin
           PedidosNFItens.fieldbyname('Aliquota_CBS').Value := ICMS.fieldbyname('Aliquota_CBS').asfloat;
           
           // Executa o calculo de todos os campos de valores do item.
-          CalculaTudo;
+          CalculaTudo(PedidosNF.fieldbyname('Operacao').asinteger, 'Item', gFormula, cLog, PedidosNFItens, self, nil);
+          TotalizaItens;
      end;
 end;
 
 procedure TfFatPedidoNFItem.cQtdeExit(Sender: TObject);
 begin
-     CalculaTudo;
+    CalculaTudo(PedidosNF.fieldbyname('Operacao').asinteger, 'Item', gFormula, cLog, PedidosNFItens, self, nil);
+    TotalizaItens;
 end;
 
 procedure TfFatPedidoNFItem.UniFrameCreate(Sender: TObject);
@@ -994,92 +997,6 @@ end;
 procedure TfFatPedidoNFItem.UniSpeedButton1Click(Sender: TObject);
 begin
      free;
-end;
-
-procedure TfFatPedidoNFItem.CalculaTudo;
-var
-   mValor: real;
-   mCp: TComponent;
-   mAliqImp
-  ,mBenef 
-  ,mCSTImp: string;
-begin
-     // Limpa a tabela de impostos.
-     with tImpostos do begin
-          Open;
-          EmptyDataSet;
-     end;
-     with tFormulasItens do begin
-          first;
-          while not eof do begin
-                // Pula o calculo do valor unitário pois ja foi calculado anteriormente.
-                if fieldbyname('Campo').AsString <> 'Valor_Unitario' then begin
-                   gFormula.Cells[0, gFormula.RowCount-1] := FieldByName('Campo').AsString;
-                   gFormula.Cells[1, gFormula.RowCount-1] := fieldbyname('Formula').AsString;
-                   with Campos do begin
-                        sql.clear;
-                        sql.add('select Campo');
-                        sql.add('      ,Tabela');
-                        sql.add('      ,Campo_Chave');
-                        sql.add('      ,Pesquisa');
-                        sql.add('      ,Percentual');
-                        sql.Add('from Campos');
-                        sql.Add('where Campo in('+ListaCampos(tFormulasItens.fieldbyname('Formula').AsString, 0)+')');
-                        sql.add('order by Tabela');
-                        open;
-                   end;
-                
-                   // Faz o cálculo da formula e Acha o campo.
-                   try
-                      mValor := CalculaMacro(self, fieldbyname('Formula').AsString);
-                   except On E: Exception do
-                      begin
-                          cLog.Lines.add('Ocorreu um erro de cálculo: '+E.Message);
-                          cLog.lines.Add(fieldbyname('Formula').AsString);
-                      end;
-                   end;
-                   PedidosNFItens.fieldbyname(fieldbyname('Campo').AsString).value := mValor;
-                   mCp := Self.FindComponent('c'+trim(fieldbyname('Campo').asstring));
-                
-                   with tImpostos do begin
-                        mAliqImp := trim(tFormulasItens.fieldbyname('Campo_Aliquota').asstring);
-                        mCSTImp  := trim(tFormulasItens.fieldbyname('Campo_CST').asstring);
-                        append;
-                              fieldbyname('Ordem_Calculo').Value := tFormulasItens.FieldByName('Ordem_Calculo').Value;
-                              fieldbyname('Descricao').Value     := tFormulasItens.FieldByName('Descricao').Value;
-                              fieldbyname('Campo').Value         := tFormulasItens.fieldbyname('Campo').value;
-                              fieldbyname('Valor').Value         := mValor;
-                              fieldbyname('Total').Value         := mValor * PedidosNFItens.fieldbyname('Quantidade').value;
-                              if mAliqImp <> '' then begin
-                                 fieldbyname('Aliquota').Value := PedidosNFItens.fieldbyname(mAliqImp).asfloat;
-                              end;
-                              if mCSTImp <> '' then begin
-                                 fieldbyname('CST').Value := PedidosNFItens.fieldbyname(mCSTImp).asstring;
-                              end;
-                        post;
-                   end;
-                end;
-                next;
-          end;
-     end;
-     with PedidosNFItens do begin
-          // Totaliza os campos de total dos itens.
-          TotalizaItens;
-          
-          // Gera os código cst dos impostos.
-          PegaCST;
-
-          if (fieldbyname('CSTICMS_TabA').asstring = '1') or (fieldbyname('CSTICMS_TabA').asstring = '6') then begin 
-             if fieldbyname('ES').Asinteger = 0 then begin
-                mBenef := Produtos.fieldbyname('Beneficio_FiscalEnt').asstring;
-             end else begin
-                mBenef := Produtos.fieldbyname('Beneficio_FiscalSai').asstring;
-             end;
-             if mBenef = null then begin
-                mBenef := OpFiscal.fieldbyname('Beneficio_Fiscal').asstring;
-             end;
-          end;
-     end;
 end;
 
 procedure TfFatPedidoNFItem.bLoteDetClick(Sender: TObject);

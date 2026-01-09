@@ -289,9 +289,9 @@ object fComexProcessoImp: TfComexProcessoImp
         ScrollWidth = 1099
         object UniPanel1: TUniPanel
           Left = 18
-          Top = 22
+          Top = 23
           Width = 1129
-          Height = 816
+          Height = 839
           Hint = ''
           Enabled = False
           ShowHint = True
@@ -312,7 +312,7 @@ object fComexProcessoImp: TfComexProcessoImp
             Left = 618
             Top = 299
             Width = 500
-            Height = 505
+            Height = 514
             Hint = ''
             ShowHint = True
             TabOrder = 1
@@ -911,7 +911,7 @@ object fComexProcessoImp: TfComexProcessoImp
             Left = 10
             Top = 8
             Width = 602
-            Height = 796
+            Height = 805
             Hint = ''
             ShowHint = True
             TabOrder = 2
@@ -926,7 +926,7 @@ object fComexProcessoImp: TfComexProcessoImp
             Caption = ''
             object cData_RegistroDeclaracao: TUniDBDateTimePicker
               Left = 312
-              Top = 305
+              Top = 333
               Width = 280
               Height = 25
               Hint = ''
@@ -945,7 +945,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cNumero_Declaracao: TUniDBEdit
               Left = 8
-              Top = 305
+              Top = 333
               Width = 300
               Height = 25
               Hint = ''
@@ -962,7 +962,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cData_DesembaracoDeclaracao: TUniDBDateTimePicker
               Left = 8
-              Top = 332
+              Top = 360
               Width = 300
               Height = 25
               Hint = ''
@@ -980,7 +980,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cVolumes: TUniDBEdit
               Left = 8
-              Top = 710
+              Top = 738
               Width = 300
               Height = 25
               Hint = ''
@@ -996,7 +996,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cQuantidade: TUniDBEdit
               Left = 8
-              Top = 683
+              Top = 711
               Width = 300
               Height = 25
               Hint = ''
@@ -1011,7 +1011,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cPeso_Liquido: TUniDBEdit
               Left = 8
-              Top = 737
+              Top = 765
               Width = 300
               Height = 25
               Hint = ''
@@ -1026,7 +1026,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cPeso_Bruto: TUniDBEdit
               Left = 312
-              Top = 737
+              Top = 765
               Width = 280
               Height = 25
               Hint = ''
@@ -1040,7 +1040,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cEspecie: TUniDBEdit
               Left = 312
-              Top = 708
+              Top = 736
               Width = 280
               Height = 25
               Hint = ''
@@ -1055,7 +1055,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cProcesso: TUniDBEdit
               Left = 8
-              Top = 8
+              Top = 36
               Width = 300
               Height = 25
               Hint = ''
@@ -1072,7 +1072,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object clCliente: TUniDBLookupComboBox
               Left = 8
-              Top = 224
+              Top = 252
               Width = 585
               Height = 25
               Hint = ''
@@ -1096,7 +1096,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cProcesso_Abertura: TUniDBDateTimePicker
               Left = 8
-              Top = 35
+              Top = 63
               Width = 300
               Height = 25
               Hint = ''
@@ -1115,7 +1115,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cProcesso_Fechamento: TUniDBDateTimePicker
               Left = 312
-              Top = 35
+              Top = 63
               Width = 280
               Height = 25
               Hint = ''
@@ -1133,7 +1133,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object clModalidade_Importacao: TUniDBLookupComboBox
               Left = 8
-              Top = 251
+              Top = 279
               Width = 585
               Height = 25
               Hint = ''
@@ -1157,7 +1157,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cIncentivo: TUniDBLookupComboBox
               Left = 8
-              Top = 170
+              Top = 198
               Width = 585
               Height = 25
               Hint = ''
@@ -1178,7 +1178,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object clResponsavel: TUniDBLookupComboBox
               Left = 8
-              Top = 278
+              Top = 306
               Width = 585
               Height = 25
               Hint = ''
@@ -1201,7 +1201,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cProcesso_Mestre: TUniDBLookupComboBox
               Left = 8
-              Top = 89
+              Top = 117
               Width = 300
               Height = 25
               Hint = ''
@@ -1225,7 +1225,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cData_Encerramento: TUniDBDateTimePicker
               Left = 8
-              Top = 62
+              Top = 90
               Width = 300
               Height = 25
               Hint = ''
@@ -1243,7 +1243,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cCondicaoVenda: TUniDBLookupComboBox
               Left = 8
-              Top = 197
+              Top = 225
               Width = 585
               Height = 25
               Hint = ''
@@ -1264,7 +1264,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cReferencia_Cliente: TUniDBEdit
               Left = 8
-              Top = 116
+              Top = 144
               Width = 300
               Height = 25
               Hint = ''
@@ -1279,7 +1279,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cReferencia_DataEntrega: TUniDBDateTimePicker
               Left = 312
-              Top = 116
+              Top = 144
               Width = 280
               Height = 25
               Hint = ''
@@ -1296,7 +1296,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cData: TUniDBDateTimePicker
               Left = 312
-              Top = 8
+              Top = 36
               Width = 280
               Height = 25
               Hint = ''
@@ -1313,7 +1313,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cReferencia_Despachante: TUniDBEdit
               Left = 8
-              Top = 143
+              Top = 171
               Width = 300
               Height = 25
               Hint = ''
@@ -1328,7 +1328,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cNavio_DataChegada: TUniDBDateTimePicker
               Left = 312
-              Top = 521
+              Top = 549
               Width = 280
               Height = 25
               Hint = ''
@@ -1345,7 +1345,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cNumero_Fatura: TUniDBEdit
               Left = 8
-              Top = 359
+              Top = 387
               Width = 300
               Height = 25
               Hint = ''
@@ -1360,7 +1360,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cNome_Transporte: TUniDBEdit
               Left = 312
-              Top = 494
+              Top = 522
               Width = 280
               Height = 25
               Hint = ''
@@ -1374,7 +1374,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cConhecimento: TUniDBEdit
               Left = 312
-              Top = 548
+              Top = 576
               Width = 280
               Height = 25
               Hint = ''
@@ -1388,7 +1388,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cAgencia_Maritima: TUniDBEdit
               Left = 8
-              Top = 575
+              Top = 603
               Width = 584
               Height = 25
               Hint = ''
@@ -1403,7 +1403,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cNavio_DataPrevista: TUniDBDateTimePicker
               Left = 8
-              Top = 521
+              Top = 549
               Width = 300
               Height = 25
               Hint = ''
@@ -1421,7 +1421,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object clTipo_Mercadoria: TUniDBLookupComboBox
               Left = 8
-              Top = 467
+              Top = 495
               Width = 585
               Height = 25
               Hint = ''
@@ -1444,7 +1444,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cData_Fatura: TUniDBDateTimePicker
               Left = 312
-              Top = 359
+              Top = 387
               Width = 280
               Height = 25
               Hint = ''
@@ -1461,7 +1461,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cDocumento_Carga: TUniDBEdit
               Left = 8
-              Top = 548
+              Top = 576
               Width = 300
               Height = 25
               Hint = ''
@@ -1476,7 +1476,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cValor_FaturaME: TUniDBEdit
               Left = 8
-              Top = 386
+              Top = 414
               Width = 300
               Height = 25
               Hint = ''
@@ -1491,7 +1491,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cData_BL: TUniDBDateTimePicker
               Left = 8
-              Top = 602
+              Top = 630
               Width = 300
               Height = 25
               Hint = ''
@@ -1509,7 +1509,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cCondicaoCambio: TUniDBLookupComboBox
               Left = 8
-              Top = 413
+              Top = 441
               Width = 585
               Height = 25
               Hint = ''
@@ -1529,7 +1529,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object clFornecedor: TUniDBLookupComboBox
               Left = 8
-              Top = 440
+              Top = 468
               Width = 585
               Height = 25
               Hint = ''
@@ -1552,7 +1552,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cROF_Numero: TUniDBEdit
               Left = 8
-              Top = 629
+              Top = 657
               Width = 300
               Height = 25
               Hint = ''
@@ -1567,7 +1567,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cROF_Emissao: TUniDBDateTimePicker
               Left = 8
-              Top = 656
+              Top = 684
               Width = 300
               Height = 25
               Hint = ''
@@ -1585,7 +1585,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cROF_Dias: TUniDBEdit
               Left = 312
-              Top = 629
+              Top = 657
               Width = 280
               Height = 25
               Hint = ''
@@ -1599,7 +1599,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object clVia_Transporte: TUniDBLookupComboBox
               Left = 8
-              Top = 494
+              Top = 522
               Width = 300
               Height = 25
               Hint = ''
@@ -1622,7 +1622,7 @@ object fComexProcessoImp: TfComexProcessoImp
             end
             object cCanal: TUniDBComboBox
               Left = 312
-              Top = 62
+              Top = 90
               Width = 280
               Height = 25
               Hint = ''
@@ -1639,6 +1639,30 @@ object fComexProcessoImp: TfComexProcessoImp
               FieldLabelSeparator = ' '
               IconItems = <>
               Mode = umNameValue
+            end
+            object cEmpresa: TUniDBLookupComboBox
+              Left = 8
+              Top = 9
+              Width = 585
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ListField = 'CNPJ;Unidade;Estado'
+              ListSource = dsEmpresas
+              KeyField = 'CNPJ'
+              ListFieldIndex = 0
+              BorderStyle = ubsInset
+              DataField = 'Empresa'
+              DataSource = dsProcessosImp
+              AnyMatch = True
+              TabOrder = 41
+              Color = clWindow
+              RemoteQuery = True
+              FieldLabel = 'Empresa'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+              NormalizeString = True
+              Style = csDropDown
             end
           end
           object PainelInterno3: TUniPanel
@@ -4943,5 +4967,52 @@ object fComexProcessoImp: TfComexProcessoImp
     DataSet = tPlano
     Left = 193
     Top = 320
+  end
+  object Empresas: TFDQuery
+    Filtered = True
+    Connection = UniMainModule.Conecta
+    SQL.Strings = (
+      'select Razao_Social'
+      '      ,CNPJ'
+      
+        '      ,Unidade = case when isnull(Numero_Filial, 0) = 0 then '#39'MA' +
+        'TRIZ'#39' else '#39'FILIAL '#39'+cast(numero_Filial as char(3)) end'
+      '      ,Fechamento_Financeiro'
+      '      ,Estado'
+      'from   Empresas'
+      'order by CNPJ, Numero_Filial')
+    Left = 190
+    Top = 368
+    object EmpresasRazao_Social: TStringField
+      FieldName = 'Razao_Social'
+      Origin = 'Razao_Social'
+      Size = 50
+    end
+    object EmpresasCNPJ: TStringField
+      FieldName = 'CNPJ'
+      Origin = 'CNPJ'
+      EditMask = '##.###.###/####-##;0'
+      Size = 14
+    end
+    object EmpresasUnidade: TStringField
+      FieldName = 'Unidade'
+      Origin = 'Unidade'
+      ReadOnly = True
+      Size = 10
+    end
+    object EmpresasFechamento_Financeiro: TDateField
+      FieldName = 'Fechamento_Financeiro'
+      Origin = 'Fechamento_Financeiro'
+    end
+    object EmpresasEstado: TStringField
+      FieldName = 'Estado'
+      Origin = 'Estado'
+      Size = 2
+    end
+  end
+  object dsEmpresas: TDataSource
+    DataSet = Empresas
+    Left = 190
+    Top = 416
   end
 end

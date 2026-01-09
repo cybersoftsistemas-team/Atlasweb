@@ -283,7 +283,7 @@ type
     procedure PegaCST;
     procedure LigaBotoes;
     function CalculaCampos(Formula: widestring): real;
-    procedure CalculaTudo;
+//    procedure CalculaTudo;
     //function CalculaMacro(Campo: String): Real;
     function CalculaMacro(pForm: TComponent; pFormula: String): Real;
     procedure TotalizaItens;
@@ -788,6 +788,7 @@ begin
                fieldbyname('Finalidade_Mercadoria').Value := OpFiscal.Fieldbyname('Finalidade_Mercadoria').Value;
                fieldbyname('Operacao').Value              := OpFiscal.Fieldbyname('Codigo').Value;
                fieldbyname('Codigo_Mercadoria').Value     := ProcessosImpItens.FieldByName('Codigo_Mercadoria').Value;
+               fieldbyname('Item_DUIMP').Value            := ProcessosImpItens.FieldByName('Item').Value;
                fieldbyname('NCM').Value                   := ProcessosImpItens.FieldByName('NCM').Value;
                fieldbyname('Adicao').Value                := ProcessosImpItens.FieldByName('Adicao').Value;
                fieldbyname('Quantidade').Value            := ProcessosImpItens.FieldByName('Quantidade').Value;
@@ -795,7 +796,15 @@ begin
                fieldbyname('PO').Value                    := ProcessosImpItens.Fieldbyname('Pedido').Value;
                fieldbyname('Ordem').Value                 := ProcessosImpItens.Fieldbyname('Ordem').Value;
 
-               CalculaTudo;
+               //fieldbyname('Valor_Unitario').value := Produtos.fieldbyname('Valor_Venda').ascurrency;
+               if tFormulasItens.Locate('Campo', 'Valor_Unitario', [loCaseInsensitive]) then begin
+                  gFormula.Cells[0, gFormula.RowCount-1] := tFormulasItens.fieldbyname('Campo').AsString;
+                  gFormula.Cells[1, gFormula.RowCount-1] := tFormulasItens.fieldbyname('Formula').AsString;
+                  fieldbyname('Valor_Unitario').value    := CalculaMacro(self, tFormulasItens.fieldbyname('Formula').AsString);
+               end;
+
+               CalculaTudo(PedidosNF.fieldbyname('Operacao').asinteger, 'Item', gFormula, cLog, PedidosNFItens, nil, self);
+               TotalizaItens;
                PegaCST;
           post;
      end;
@@ -2724,26 +2733,26 @@ begin
              // CST DO CBS.
              mCST := 'T+I';
              if fieldbyname('Valor_CBS').Value > 0 then mCST := 'T+I';
-             if tNCM.fieldbyname('CBS_Isencao').AsBoolean        then mCST := 'IS';
+             if tNCM.fieldbyname('CBS_Isencao').AsBoolean       then mCST := 'IS';
              if OpFiscal.fieldbyname('CBS_Isencao').AsBoolean   then mCST := 'IS';
-             if tNCM.fieldbyname('CBS_Imunidade').AsBoolean      then mCST := 'I+N+I';
+             if tNCM.fieldbyname('CBS_Imunidade').AsBoolean     then mCST := 'I+N+I';
              if OpFiscal.fieldbyname('CBS_Imunidade').asboolean then mCST := 'I+N+I';
-             if tNCM.fieldbyname('CBS_Suspensao').asboolean      then mCST := 'S';
+             if tNCM.fieldbyname('CBS_Suspensao').asboolean     then mCST := 'S';
              if OpFiscal.fieldbyname('CBS_Suspensao').asboolean then mCST := 'S';
-             if tNCM.fieldbyname('CBS_Diferido').AsBoolean       then mCST := 'D';
+             if tNCM.fieldbyname('CBS_Diferido').AsBoolean      then mCST := 'D';
              if OpFiscal.fieldbyname('CBS_Diferido').AsBoolean  then mCST := 'D';
              CSTCBS.Locate('Classificacao', mCST, [loCaseInsensitive]) ;
              fieldbyname('CSTCBS').Value := CSTCBS.fieldbyname('Codigo').Value;
              // CST DO IBS
              mCST := 'T+I';
              if fieldbyname('Valor_IBS').Value > 0 then mCST := 'T+I';
-             if tNCM.fieldbyname('IBS_Isencao').AsBoolean        then mCST := 'IS';
+             if tNCM.fieldbyname('IBS_Isencao').AsBoolean       then mCST := 'IS';
              if OpFiscal.fieldbyname('IBS_Isencao').AsBoolean   then mCST := 'IS';
-             if tNCM.fieldbyname('IBS_Imunidade').AsBoolean      then mCST := 'I+N+I';
+             if tNCM.fieldbyname('IBS_Imunidade').AsBoolean     then mCST := 'I+N+I';
              if OpFiscal.fieldbyname('IBS_Imunidade').asboolean then mCST := 'I+N+I';
-             if tNCM.fieldbyname('IBS_Suspensao').asboolean      then mCST := 'S';
+             if tNCM.fieldbyname('IBS_Suspensao').asboolean     then mCST := 'S';
              if OpFiscal.fieldbyname('IBS_Suspensao').asboolean then mCST := 'S';
-             if tNCM.fieldbyname('IBS_Diferido').AsBoolean       then mCST := 'D';
+             if tNCM.fieldbyname('IBS_Diferido').AsBoolean      then mCST := 'D';
              if OpFiscal.fieldbyname('IBS_Diferido').AsBoolean  then mCST := 'D';
              CSTIBS.Locate('Classificacao', mCST, [loCaseInsensitive]) ;
              fieldbyname('CSTIBS').Value := CSTIBS.fieldbyname('Codigo').Value;
@@ -2808,6 +2817,7 @@ begin
 end;
 *)
 
+(*
 procedure TfFatPedidoItensDUIMP.CalculaTudo;
 var
    mValor: real;
@@ -2893,7 +2903,7 @@ begin
           end;
      end;
 end;
-
+*)
 procedure TfFatPedidoItensDUIMP.TotalizaItens;
 begin
 {

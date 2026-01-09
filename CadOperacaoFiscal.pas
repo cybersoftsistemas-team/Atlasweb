@@ -424,6 +424,11 @@ type
     dstClassTribut: TDataSource;
     OperacaoFiscalFinalidade_Mercadoria: TStringField;
     cFinalidade: TUniDBComboBox;
+    UniSpeedButton1: TUniSpeedButton;
+    PanelCopia: TUniContainerPanel;
+    cCodOper: TUniNumberEdit;
+    bCancelFor: TUniSpeedButton;
+    bCopiaFor: TUniSpeedButton;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
@@ -449,6 +454,9 @@ type
     procedure tOpFormulasAfterScroll(DataSet: TDataSet);
     procedure gFormulasDblClick(Sender: TObject);
     procedure bDuplicarClick(Sender: TObject);
+    procedure UniSpeedButton1Click(Sender: TObject);
+    procedure bCancelForClick(Sender: TObject);
+    procedure bCopiaForClick(Sender: TObject);
   private
     { Private declarations }
     procedure LigaBotoesCtb(Estado: boolean);
@@ -549,10 +557,44 @@ begin
       LigaBotoes(true);
 end;
 
+procedure TfCadOperacaoFiscal.bCancelForClick(Sender: TObject);
+begin
+     PanelCopia.Visible := false;
+end;
+
 procedure TfCadOperacaoFiscal.bCanCtbClick(Sender: TObject);
 begin
       tOperCtb.Cancel;
       LigaBotoesCtb(true);
+end;
+
+procedure TfCadOperacaoFiscal.bCopiaForClick(Sender: TObject);
+begin
+     MessageDlg('Atneção!'+#13+#13' Isso ira substituir todas as fórmulas existentes dessa operação fiscal!'+#13+#13'Deseja realmente copias as formulas?', mtConfirmation, mbYesNo,
+               procedure(Comp:TComponent; aRes: Integer)
+               begin
+                    if ARes = mryes then begin
+                         with tTmp do begin
+                              sql.clear;
+                              sql.add('delete from OperacaoFiscalFormulas where Operacao = :pDestino');
+                              sql.add('select * into #temp from OperacaoFiscalFormulas where Operacao = :pOrigem order by Ordem_Calculo');
+                              sql.add('update #temp set Operacao = :pDestino');
+                              sql.add('insert into OperacaoFiscalFormulas select * from #temp');
+                              parambyname('pDestino').value := OperacaoFiscal.FieldByName('Codigo').AsInteger;
+                              parambyname('pOrigem').value  := cCodOper.Value;
+                              Execute;
+                              tOpFormulas.Refresh;
+                              Alerta.Text := 'Fórmulas copiadas';
+                              Alerta.Execute;
+                         end;
+                    end else begin
+                       Alerta.Text := 'Operação cancelada.';
+                       Alerta.Execute;
+                       Abort;
+                    end;
+               end);
+     
+     PanelCopia.Visible := false;
 end;
 
 procedure TfCadOperacaoFiscal.bDuplicarClick(Sender: TObject);
@@ -634,6 +676,12 @@ begin
             TFDQuery(Components[i]).close;
          end;
      end;
+end;
+
+procedure TfCadOperacaoFiscal.UniSpeedButton1Click(Sender: TObject);
+begin
+     PanelCopia.visible := true;
+     cCodOper.SetFocus;
 end;
 
 procedure TfCadOperacaoFiscal.bSavCtbClick(Sender: TObject);

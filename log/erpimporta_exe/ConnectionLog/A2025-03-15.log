@@ -1,5 +1,0 @@
-ERPImporta.exe: 000009AC: 14:26:47 [127.0.0.1]:Failed Sequence Recovery: SeqId: 29, Event: blur
-ERPImporta.exe: 000009AC: 14:26:47 [127.0.0.1]:Sequence sent from cache:  SeqId: 29
-ERPImporta.exe: 000009AC: 14:26:47 [127.0.0.1]:Processed: Id: 29, Evt: blur, [mUSZGYrzLk11094E28C]
-ERPImporta.exe: 00001D5C: 14:35:10 [127.0.0.1]:Failed Sequence Recovery: SeqId: 25, Event: blur
-ERPImporta.exe: 000017C4: 14:35:22 [127.0.0.1]:Failed Sequence Recovery: SeqId: 26, Event: blurchange

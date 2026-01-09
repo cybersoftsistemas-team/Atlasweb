@@ -7,7 +7,7 @@ uses
   Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
   uniGUIClasses, uniGUIFrame, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, uniMultiItem, uniComboBox, uniDBComboBox, uniDBLookupComboBox, uniGroupBox, uniGUIBaseClasses, uniPanel, uniBasicGrid, uniDBGrid, uniScrollBox, uniButton, uniBitBtn, uniSpeedButton, uniDBNavigator, uniEdit,
-  uniRadioGroup, uniSweetAlert;
+  uniRadioGroup, uniSweetAlert, uniCheckBox;
 
 type
   TfConfigCampos = class(TUniFrame)
@@ -22,13 +22,21 @@ type
     bAdicionar: TUniSpeedButton;
     UniDBGrid1: TUniDBGrid;
     UniContainerPanel1: TUniContainerPanel;
-    cPesq: TUniEdit;
-    cTipo: TUniRadioGroup;
-    cCampo: TUniEdit;
+    cTab: TUniEdit;
+    cCam: TUniEdit;
     Alerta: TUniSweetAlert;
+    cFiltro: TUniGroupBox;
+    cCal: TUniCheckBox;
+    cFun: TUniCheckBox;
+    cSQL: TUniCheckBox;
+    cVis: TUniCheckBox;
+    cRec: TUniCheckBox;
+    cImp: TUniCheckBox;
+    cPer: TUniCheckBox;
+    cDes: TUniEdit;
     procedure UniFrameCreate(Sender: TObject);
     procedure bFecharClick(Sender: TObject);
-    procedure cPesqChange(Sender: TObject);
+    procedure cTabChange(Sender: TObject);
     procedure cTipoClick(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure bGravarClick(Sender: TObject);
@@ -36,6 +44,7 @@ type
     procedure bEditarClick(Sender: TObject);
     procedure UniDBGrid1DblClick(Sender: TObject);
     procedure bExcluirClick(Sender: TObject);
+    procedure cCalClick(Sender: TObject);
   private
     procedure FiltraCampos;
     { Private declarations }
@@ -109,7 +118,12 @@ begin
       FiltraCampos;
 end;
 
-procedure TfConfigCampos.cPesqChange(Sender: TObject);
+procedure TfConfigCampos.cCalClick(Sender: TObject);
+begin
+     FiltraCampos;
+end;
+
+procedure TfConfigCampos.cTabChange(Sender: TObject);
 begin
      FiltraCampos;
 end;
@@ -126,13 +140,17 @@ begin
            sql.add('select *');
            sql.add('from Campos');
            sql.Add('where Codigo is not null');
-           if cPesq.Text <> ''then sql.add('and Tabela like '+quotedstr('%'+cPesq.Text+'%'));
-           if cCampo.Text <> ''then sql.add('and Campo like '+quotedstr('%'+cCampo.Text+'%'));
-           if cTipo.ItemIndex = 0 then sql.add('and Calculavel = 1');
-           if cTipo.ItemIndex = 1 then sql.add('and Calculavel <> 1');
-           if cTipo.ItemIndex = 2 then sql.add('and Funcao = 1');
-           if cTipo.ItemIndex = 3 then sql.add('and isnull(Comando_SQL,'''') <> '''' ');
-           if cTipo.ItemIndex = 4 then sql.add('and Visivel = 1');
+           if cTab.Text <> ''then sql.add('and Tabela like '+quotedstr('%'+cTab.Text+'%'));
+           if cCam.Text <> ''then sql.add('and Campo like '+quotedstr('%'+cCam.Text+'%'));
+           if cDes.Text <> ''then sql.add('and Descricao like '+quotedstr('%'+cDes.Text+'%'));
+           if cCal.Checked then sql.add('and isnull(Calculavel, 0) = 1');
+           if cFun.Checked then sql.add('and isnull(Funcao, 0) = 1');
+           if cIMp.Checked then sql.add('and isnull(Imposto, 0) = 1');
+           if cVis.Checked then sql.add('and isnull(Visivel, 0) = 1');
+           if cRec.Checked then sql.add('and isnull(Recebe_Formula, 0) = 1');
+           if cPer.Checked then sql.add('and isnull(Percentual, 0) = 1');
+           if cSQL.Checked then sql.add('and isnull(Comando_SQL, '''') <> '''' ');
+           
            sql.add('order by Funcao desc, Descricao, Tabela, Campo');
            //sql.SaveToFile('c:\temp\Campos.sql');
            Open;

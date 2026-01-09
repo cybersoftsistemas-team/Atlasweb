@@ -157,64 +157,64 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
     TabOrder = 1
     object UniPanel2: TUniPanel
       Left = 0
-      Top = 99
+      Top = 110
       Width = 1333
-      Height = 580
+      Height = 569
       Hint = ''
-      Margins.Left = 10
-      Margins.Top = 10
-      Margins.Right = 10
-      Margins.Bottom = 10
-      Align = alBottom
+      Align = alClient
       TabOrder = 1
       ClientEvents.UniEvents.Strings = (
         
           'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-          '= '#39'FichaSSombra'#39';'#13#10'}')
+          '= '#39'FichaSemSombra'#39';'#13#10'}')
       Caption = 'UniPanel2'
+      ExplicitTop = 99
+      ExplicitHeight = 580
       object Pasta: TUniPageControl
-        AlignWithMargins = True
-        Left = 4
-        Top = 4
-        Width = 1325
-        Height = 575
+        Left = 1
+        Top = 1
+        Width = 1331
+        Height = 567
         Hint = ''
-        Margins.Bottom = 0
         ActivePage = UniTabSheet2
         Align = alClient
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-            '= '#39'pcSemBarraAzul'#39';'#13#10'}')
         TabOrder = 1
-        ExplicitLeft = 5
-        ExplicitTop = 5
+        ExplicitLeft = 4
+        ExplicitTop = 33
+        ExplicitWidth = 1325
+        ExplicitHeight = 532
         object UniTabSheet1: TUniTabSheet
           AlignWithMargins = True
           Hint = ''
           Caption = 'Itens do Pedido'
+          ExplicitWidth = 1317
+          ExplicitHeight = 504
           object UniContainerPanel3: TUniContainerPanel
-            Left = 295
+            Left = 307
             Top = 0
-            Width = 1022
-            Height = 547
+            Width = 1016
+            Height = 539
             Hint = ''
             ParentColor = False
             Align = alClient
             TabOrder = 0
+            ExplicitLeft = 295
+            ExplicitWidth = 1022
+            ExplicitHeight = 547
             object UniContainerPanel1: TUniContainerPanel
               Left = 0
               Top = 0
-              Width = 1022
+              Width = 1016
               Height = 217
               Hint = ''
               ParentColor = False
               Align = alTop
               TabOrder = 1
+              ExplicitWidth = 1022
               object gAdicoes: TUniDBGrid
                 Left = 0
                 Top = 0
-                Width = 1022
+                Width = 1016
                 Height = 217
                 Hint = ''
                 HeaderTitle = 'ITENS DA DUIMP'
@@ -295,17 +295,19 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
             object UniContainerPanel2: TUniContainerPanel
               Left = 0
               Top = 217
-              Width = 1022
-              Height = 330
+              Width = 1016
+              Height = 322
               Hint = ''
               ParentColor = False
               Align = alClient
               TabOrder = 2
+              ExplicitWidth = 1022
+              ExplicitHeight = 330
               object gItens: TUniDBGrid
                 Left = 0
                 Top = 0
-                Width = 1022
-                Height = 330
+                Width = 1016
+                Height = 322
                 Hint = ''
                 HeaderTitle = 'ITENS DO PEDIDO'
                 HeaderTitleAlign = taCenter
@@ -375,18 +377,17 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
             end
           end
           object UniPanel4: TUniPanel
-            AlignWithMargins = True
-            Left = 3
-            Top = 3
-            Width = 289
-            Height = 544
+            Left = 0
+            Top = 0
+            Width = 307
+            Height = 539
             Hint = ''
             Margins.Bottom = 0
             Align = alLeft
             TabOrder = 1
             BorderStyle = ubsInset
             ShowCaption = False
-            Caption = 'UniPanel4'
+            Caption = ''
             object cQtdePerc: TUniFormattedNumberEdit
               Left = 8
               Top = 8
@@ -432,7 +433,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
               Height = 17
               Cursor = crHandPoint
               Hint = ''
-              Caption = 'Fracionar Quantidades'
+              Caption = 'Fracionar quantidades'
               TabOrder = 3
             end
             object cLucroPerc: TUniFormattedNumberEdit
@@ -546,10 +547,12 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
         object UniTabSheet2: TUniTabSheet
           Hint = ''
           Caption = 'Ocorr'#234'ncias'
+          ExplicitWidth = 1317
+          ExplicitHeight = 504
           object cLog: TUniMemo
             Left = 0
-            Top = 343
-            Width = 1317
+            Top = 335
+            Width = 1323
             Height = 204
             Hint = ''
             BorderStyle = ubsInset
@@ -570,13 +573,15 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
             FieldLabel = 'F'#211'RMULAS DOS CALCULOS DO PEDIDO'
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            ExplicitTop = 343
+            ExplicitWidth = 1317
           end
           object gFormula: TUniStringGrid
             AlignWithMargins = True
             Left = 3
             Top = 3
-            Width = 1311
-            Height = 337
+            Width = 1317
+            Height = 329
             Hint = ''
             HeaderTitle = 'F'#211'RMULAS DOS CALCULOS DO PEDIDO'
             HeaderTitleAlign = taCenter
@@ -615,7 +620,8 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
             ForceFit = True
             Align = alClient
             TabOrder = 1
-            ExplicitHeight = 342
+            ExplicitWidth = 1311
+            ExplicitHeight = 337
           end
         end
       end
@@ -627,7 +633,6 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       Width = 1327
       Height = 104
       Hint = ''
-      Margins.Bottom = 8
       Align = alTop
       TabOrder = 2
       ClientEvents.UniEvents.Strings = (
@@ -638,9 +643,9 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       Caption = ''
       object cDUIMP: TUniDBLookupComboBox
         AlignWithMargins = True
-        Left = 302
+        Left = 363
         Top = 12
-        Width = 722
+        Width = 600
         Height = 25
         Hint = ''
         Margins.Left = 1
@@ -659,7 +664,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
         TabOrder = 1
         Color = clWindow
         FieldLabel = 'DUIMP'
-        FieldLabelWidth = 80
+        FieldLabelWidth = 60
         FieldLabelSeparator = ' '
         ForceSelection = True
         NormalizeString = True
@@ -669,9 +674,9 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       end
       object cCFOP: TUniDBLookupComboBox
         AlignWithMargins = True
-        Left = 302
+        Left = 363
         Top = 39
-        Width = 722
+        Width = 600
         Height = 25
         Hint = ''
         Margins.Left = 1
@@ -690,7 +695,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
         TabOrder = 2
         Color = clWindow
         FieldLabel = 'CFOP'
-        FieldLabelWidth = 80
+        FieldLabelWidth = 60
         FieldLabelSeparator = ' '
         ForceSelection = True
         NormalizeString = True
@@ -700,9 +705,9 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       end
       object cEmbarque: TUniDBLookupComboBox
         AlignWithMargins = True
-        Left = 302
+        Left = 363
         Top = 66
-        Width = 722
+        Width = 600
         Height = 25
         Hint = ''
         Margins.Left = 1
@@ -721,7 +726,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
         TabOrder = 3
         Color = clWindow
         FieldLabel = 'Embarque'
-        FieldLabelWidth = 80
+        FieldLabelWidth = 60
         FieldLabelSeparator = ' '
         ForceSelection = True
         NormalizeString = True

@@ -1,6 +1,0 @@
-ERPImporta.exe: 00002D74: 17:24:18 [127.0.0.1]:Failed Sequence Recovery: SeqId: 18, Event: itemclick
-ERPImporta.exe: 00002D74: 17:24:18 [127.0.0.1]:Sequence sent from cache:  SeqId: 18
-ERPImporta.exe: 00002D74: 17:24:18 [127.0.0.1]:Processed: Id: 18, Evt: itemclick, [fO2PNlY7CV10D2F52B6]
-ERPImporta.exe: 00001FD4: 17:24:18 [127.0.0.1]:Failed Sequence Recovery: SeqId: 19, Event: selectionchange
-ERPImporta.exe: 00001FD4: 17:24:18 [127.0.0.1]:Sequence sent from cache:  SeqId: 19
-ERPImporta.exe: 00001FD4: 17:24:18 [127.0.0.1]:Processed: Id: 19, Evt: selectionchange, [fO2PNlY7CV10D2F52B6]

@@ -923,11 +923,11 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
                 AlignWithMargins = True
                 Left = 5
                 Top = 4
-                Width = 210
+                Width = 208
                 Height = 25
                 Hint = ''
                 Margins.Left = 4
-                Margins.Right = 4
+                Margins.Right = 6
                 Margins.Bottom = 1
                 ShowHint = True
                 ParentShowHint = False
@@ -950,17 +950,18 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
                 DecimalPrecision = 3
                 DecimalSeparator = ','
                 ThousandSeparator = '.'
+                ExplicitWidth = 210
               end
               object cDisponivel: TUniFormattedNumberEdit
                 AlignWithMargins = True
                 Left = 5
                 Top = 112
-                Width = 210
+                Width = 208
                 Height = 25
                 Hint = ''
                 Margins.Left = 4
                 Margins.Top = 1
-                Margins.Right = 4
+                Margins.Right = 6
                 ShowHint = True
                 ParentShowHint = False
                 BorderStyle = ubsInset
@@ -982,17 +983,18 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
                 DecimalPrecision = 3
                 DecimalSeparator = ','
                 ThousandSeparator = '.'
+                ExplicitWidth = 210
               end
               object cInventario: TUniFormattedNumberEdit
                 AlignWithMargins = True
                 Left = 5
                 Top = 85
-                Width = 210
+                Width = 208
                 Height = 25
                 Hint = ''
                 Margins.Left = 4
                 Margins.Top = 1
-                Margins.Right = 4
+                Margins.Right = 6
                 Margins.Bottom = 1
                 ShowHint = True
                 ParentShowHint = False
@@ -1015,17 +1017,18 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
                 DecimalPrecision = 3
                 DecimalSeparator = ','
                 ThousandSeparator = '.'
+                ExplicitWidth = 210
               end
               object cEstoqueLote: TUniFormattedNumberEdit
                 AlignWithMargins = True
                 Left = 5
                 Top = 31
-                Width = 210
+                Width = 208
                 Height = 25
                 Hint = ''
                 Margins.Left = 4
                 Margins.Top = 1
-                Margins.Right = 4
+                Margins.Right = 6
                 Margins.Bottom = 1
                 ShowHint = True
                 ParentShowHint = False
@@ -1048,17 +1051,18 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
                 DecimalPrecision = 3
                 DecimalSeparator = ','
                 ThousandSeparator = '.'
+                ExplicitWidth = 210
               end
               object cEstoqueNavio: TUniFormattedNumberEdit
                 AlignWithMargins = True
                 Left = 5
                 Top = 58
-                Width = 210
+                Width = 208
                 Height = 25
                 Hint = ''
                 Margins.Left = 4
                 Margins.Top = 1
-                Margins.Right = 4
+                Margins.Right = 6
                 Margins.Bottom = 1
                 ShowHint = True
                 ParentShowHint = False
@@ -1081,6 +1085,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
                 DecimalPrecision = 3
                 DecimalSeparator = ','
                 ThousandSeparator = '.'
+                ExplicitWidth = 210
               end
             end
           end
@@ -2987,10 +2992,6 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       Origin = 'Numero_BL'
       Size = 15
     end
-    object PedidosNFItensSequencia: TIntegerField
-      FieldName = 'Sequencia'
-      Origin = 'Sequencia'
-    end
     object PedidosNFItensValor_BCDIFAL: TCurrencyField
       FieldName = 'Valor_BCDIFAL'
       Origin = 'Valor_BCDIFAL'
@@ -3641,6 +3642,10 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     object PedidosNFItensFinalidade_Mercadoria: TStringField
       FieldName = 'Finalidade_Mercadoria'
       Origin = 'Finalidade_Mercadoria'
+    end
+    object PedidosNFItensItem_DUIMP: TIntegerField
+      FieldName = 'Item_DUIMP'
+      Origin = 'Item_DUIMP'
     end
   end
   object dsPedidosNFItens: TDataSource

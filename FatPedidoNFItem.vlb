@@ -694,9 +694,6 @@ Coordinates=824,4016,123,36
 [ProdutosUM]
 Coordinates=824,4071,86,36
 
-[PedidosNFItensSequencia]
-Coordinates=1307,1541,167,36
-
 [PedidosNFItensValor_AFRMM]
 Coordinates=1307,1596,190,36
 
@@ -737,7 +734,7 @@ Coordinates=1307,3851,128,36
 Coordinates=1307,4071,99,36
 
 []
-Coordinates=1013,3301,237,36
+Coordinates=1307,1541,167,36
 Visible=True
 
 [tFormulasItens]

@@ -194,6 +194,7 @@ type
     PedidosNFItensQuantidade: TFloatField;
     PedidosNFItensValor_Unitario: TFloatField;
     PedidosNFItensValor_Produtos: TCurrencyField;
+    cEmpresa: TUniDBLookupComboBox;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
@@ -264,6 +265,7 @@ begin
                LigaBotoes(false);
                PanelDados1.Enabled := true;
                Append;
+                    FieldByName('Empresa').Value := UniMainModule.mEmpresaAtiva;
                cOperacao.SetFocus;
            except
                MessageDlgN('Falha desconhecida, não pode adicionar um novo "Pedido" !', mtError, []);
@@ -659,11 +661,11 @@ begin
            sql.Clear;
            sql.Add('select CNPJ');
            sql.Add('      ,Estado');
+           sql.add('      ,Unidade = case when isnull(Numero_Filial, 0) = 0 then ''MATRIZ'' else ''FILIAL ''+cast(numero_Filial as char(3)) end');
            sql.Add('      ,Razao_Social');
            sql.Add('      ,Regime_Tributario');
            sql.Add('from Empresas');
-           sql.Add('where CNPJ = :pCNPJ');
-           parambyname('pCNPJ').Value :=  UniMainModule.mEmpresaAtiva;
+           sql.add('where substring(CNPJ, 1, 8) = '+quotedstr(copy(UniMainModule.mEmpresaAtiva, 1, 8)) );
            open;
       end;
       with Config do begin

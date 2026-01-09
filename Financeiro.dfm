@@ -1352,7 +1352,7 @@ object fFinanceiro: TfFinanceiro
             TabOrder = 1
             Color = clWindow
             RemoteQuery = True
-            FieldLabel = 'Filial'
+            FieldLabel = 'Empresa'
             FieldLabelWidth = 120
             FieldLabelSeparator = ' '
             NormalizeString = True

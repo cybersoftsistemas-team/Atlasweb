@@ -444,6 +444,14 @@ type
     ProcessosImpTUP: TCurrencyField;
     ProcessosImpUltima_Atualizacao: TSQLTimeStampField;
     ProcessosImpVia_EspecialTransp: TSmallintField;
+    cEmpresa: TUniDBLookupComboBox;
+    Empresas: TFDQuery;
+    EmpresasRazao_Social: TStringField;
+    EmpresasCNPJ: TStringField;
+    EmpresasUnidade: TStringField;
+    EmpresasFechamento_Financeiro: TDateField;
+    EmpresasEstado: TStringField;
+    dsEmpresas: TDataSource;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
@@ -507,6 +515,7 @@ begin
            try
                LigaBotoes(false);
                Append;
+                    FieldByName('Empresa').Value := UniMainModule.mEmpresaAtiva;
                Texto.Append;
            except
                MessageDlgN('Falha desconhecida, não pode adicionar um novo registro!', mtError, []);
@@ -664,6 +673,18 @@ begin
            sql.Clear;
            sql.Add('select Processo from ProcessosImp where(ltrim(rtrim(Processo_Mestre)) = '''' or Processo_Mestre is null)');
            sql.Add('order by Processo');
+           open;
+      end;
+      with Empresas do begin
+           sql.clear;
+           sql.add('select Razao_Social');
+           sql.add('      ,CNPJ');
+           sql.add('      ,Unidade = case when isnull(Numero_Filial, 0) = 0 then ''MATRIZ'' else ''FILIAL ''+cast(numero_Filial as char(3)) end');
+           sql.add('      ,Fechamento_Financeiro');
+           sql.add('      ,Estado');
+           sql.add('from  Empresas');
+           sql.add('where substring(CNPJ, 1, 8) = '+quotedstr(copy(UniMainModule.mEmpresaAtiva, 1, 8)) );
+           sql.add('order by CNPJ, Numero_Filial');
            open;
       end;
       with tBeneficio do begin
