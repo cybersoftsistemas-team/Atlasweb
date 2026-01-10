@@ -501,7 +501,6 @@ begin
                    fieldbyname('Movimenta_EstoqueInd').Value  := OPFiscal.Fieldbyname('Movimenta_EstoqueInd').asboolean;
                    fieldbyname('Apuracao_PISCOFINS').Value    := OPFiscal.Fieldbyname('Apuracao_PISCOFINS').value;
                    fieldbyname('Finalidade_Mercadoria').Value := OPFiscal.Fieldbyname('Finalidade_Mercadoria').value;
-                   
                    Post;
 
                    LigaBotoes(true);

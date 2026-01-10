@@ -29,6 +29,12 @@ function CalculaMacro(pForm: TComponent; pFormula: String): Real;
 function SubstituirCampos(pForm: TComponent; pCampo: string): string;
 function SubstituirCondicao(Campo: string): string;
 function CalculaTudo(pOper: integer; pTipo: string; gFormula: TuniStringGrid; cLog: tuniMemo; pTabDestino: TFDQuery; pFrame: TuniFrame; pForm: TuniForm): boolean;
+function PegaCSTIPI(pOper, pProd: integer): string;
+function PegaCSTPIS(pOper, pProd, pDest: Integer): string;
+function PegaCSTCOFINS(pOper, pProd, pDest: Integer): string;
+function PegaCSTICMS(TabItens: TFDQuery; pOper, pProd, pRegTrib, pDest: Integer): string;
+
+procedure PegaCST(TabItens: TFDQuery; pOper, pProd: integer);
 
 // Funções de strings.
 function QuebraString(BaseString, BreakString: string): TStringList;
@@ -2096,123 +2102,984 @@ var
    tImpostos: TFDMemTable;  
 begin
      // Limpa a tabela de impostos.
-     Campos            := TFDQuery.Create(nil);
-     Campos.Connection := uniMainModule.Conecta;
+     try 
+        Campos            := TFDQuery.Create(nil);
+        Campos.Connection := uniMainModule.Conecta;
 
-     tImpostos := TFDMemTable.Create(nil);
-     with tImpostos do begin
-          Close;
-          FieldDefs.Clear;
-          FieldDefs.Add('Ordem_Calculo', ftSmallint);
-          FieldDefs.Add('Descricao'    , ftString, 60);
-          FieldDefs.Add('Campo'        , ftString, 60);
-          FieldDefs.Add('Aliquota'     , ftFloat);
-          FieldDefs.Add('Valor'        , ftCurrency);
-          FieldDefs.Add('Total'        , ftCurrency);
-          FieldDefs.Add('CST'          , ftString, 5);
-          CreateDataSet;
-          EmptyDataSet;
-     end;
-     tFormulasItens            := TFDQuery.Create(nil);
-     tFormulasItens.Connection := uniMainModule.Conecta;
-     with tFormulasItens do begin
-          sql.clear;
-          sql.add('select Campo');
-          sql.add('      ,Formula');
-          sql.add('      ,Campo_Aliquota');
-          sql.add('      ,Campo_CST');
-          sql.add('      ,Ordem_Calculo');
-          sql.add('      ,Descricao');
-          sql.add('from OperacaoFiscalFormulas');
-          sql.add('where Operacao = :pOp');
-          sql.add('and Tipo = :pTipo');
-          sql.add('and isnull(Desativada, 0) = 0');
-          sql.add('order by Ordem_Calculo');
-          parambyname('pOp').AsInteger  := pOper;
-          parambyname('pTipo').asstring := pTipo;
-          open;
+        tImpostos := TFDMemTable.Create(nil);
+        with tImpostos do begin
+             Close;
+             FieldDefs.Clear;
+             FieldDefs.Add('Ordem_Calculo', ftSmallint);
+             FieldDefs.Add('Descricao'    , ftString, 60);
+             FieldDefs.Add('Campo'        , ftString, 60);
+             FieldDefs.Add('Aliquota'     , ftFloat);
+             FieldDefs.Add('Valor'        , ftCurrency);
+             FieldDefs.Add('Total'        , ftCurrency);
+             FieldDefs.Add('CST'          , ftString, 5);
+             CreateDataSet;
+             EmptyDataSet;
+        end;
+        tFormulasItens            := TFDQuery.Create(nil);
+        tFormulasItens.Connection := uniMainModule.Conecta;
+        with tFormulasItens do begin
+             sql.clear;
+             sql.add('select Campo');
+             sql.add('      ,Formula');
+             sql.add('      ,Campo_Aliquota');
+             sql.add('      ,Campo_CST');
+             sql.add('      ,Ordem_Calculo');
+             sql.add('      ,Descricao');
+             sql.add('from OperacaoFiscalFormulas');
+             sql.add('where Operacao = :pOp');
+             sql.add('and Tipo = :pTipo');
+             sql.add('and isnull(Desativada, 0) = 0');
+             sql.add('order by Ordem_Calculo');
+             parambyname('pOp').AsInteger  := pOper;
+             parambyname('pTipo').asstring := pTipo;
+             open;
      
-          first;
-          while not eof do begin
-                // Pula o calculo do valor unitário pois ja foi calculado anteriormente.
-                if fieldbyname('Campo').AsString <> 'Valor_Unitario' then begin
-                   gFormula.Cells[0, gFormula.RowCount-1] := FieldByName('Campo').AsString;
-                   gFormula.Cells[1, gFormula.RowCount-1] := fieldbyname('Formula').AsString;
-                   with Campos do begin
-                        sql.clear;
-                        sql.add('select Campo');
-                        sql.add('      ,Tabela');
-                        sql.add('      ,Campo_Chave');
-                        sql.add('      ,Pesquisa');
-                        sql.add('      ,Percentual');
-                        sql.Add('from Campos');
-                        sql.Add('where Campo in('+ListaCampos(tFormulasItens.fieldbyname('Formula').AsString, 0)+')');
-                        sql.add('order by Tabela');
-                        open;
-                   end;
-                
-                   // Faz o cálculo da formula e Acha o campo.
-                   try
+             first;
+             while not eof do begin
+                   // Pula o calculo do valor unitário pois ja foi calculado anteriormente.
+                   if fieldbyname('Campo').AsString <> 'Valor_Unitario' then begin
+                      gFormula.Cells[0, gFormula.RowCount-1] := FieldByName('Campo').AsString;
+                      gFormula.Cells[1, gFormula.RowCount-1] := fieldbyname('Formula').AsString;
+                      with Campos do begin
+                           sql.clear;
+                           sql.add('select Campo');
+                           sql.add('      ,Tabela');
+                           sql.add('      ,Campo_Chave');
+                           sql.add('      ,Pesquisa');
+                           sql.add('      ,Percentual');
+                           sql.Add('from Campos');
+                           sql.Add('where Campo in('+ListaCampos(tFormulasItens.fieldbyname('Formula').AsString, 0)+')');
+                           sql.add('order by Tabela');
+                           open;
+                      end;
+
+                      // Faz o cálculo da formula e Acha o campo.
+                      try
+                         if pFrame <> nil then begin
+                            mValor := CalculaMacro(pFrame, fieldbyname('Formula').AsString);
+                         end else begin
+                            mValor := CalculaMacro(pForm, fieldbyname('Formula').AsString);
+                         end;
+                      except On E: Exception do
+                         begin
+                             cLog.Lines.add('Ocorreu um erro de cálculo: '+E.Message);
+                             cLog.lines.Add(fieldbyname('Formula').AsString);
+                         end;
+                      end;
+                      pTabDestino.fieldbyname(fieldbyname('Campo').AsString).value := mValor;
                       if pFrame <> nil then begin
-                         mValor := CalculaMacro(pFrame, fieldbyname('Formula').AsString);
+                         mCp := pFrame.FindComponent('c'+trim(fieldbyname('Campo').asstring));
                       end else begin
-                         mValor := CalculaMacro(pForm, fieldbyname('Formula').AsString);
+                         mCp := pForm.FindComponent('c'+trim(fieldbyname('Campo').asstring));
                       end;
-                   except On E: Exception do
-                      begin
-                          cLog.Lines.add('Ocorreu um erro de cálculo: '+E.Message);
-                          cLog.lines.Add(fieldbyname('Formula').AsString);
+                      with tImpostos do begin
+                           mAliqImp := trim(tFormulasItens.fieldbyname('Campo_Aliquota').asstring);
+                           mCSTImp  := trim(tFormulasItens.fieldbyname('Campo_CST').asstring);
+                           append;
+                                 fieldbyname('Ordem_Calculo').Value := tFormulasItens.FieldByName('Ordem_Calculo').Value;
+                                 fieldbyname('Descricao').Value     := tFormulasItens.FieldByName('Descricao').Value;
+                                 fieldbyname('Campo').Value         := tFormulasItens.fieldbyname('Campo').value;
+                                 fieldbyname('Valor').Value         := mValor;
+                                 fieldbyname('Total').Value         := mValor * pTabDestino.fieldbyname('Quantidade').value;
+                                 if mAliqImp <> '' then begin
+                                    fieldbyname('Aliquota').Value := pTabDestino.fieldbyname(mAliqImp).asfloat;
+                                 end;
+                                 if mCSTImp <> '' then begin
+                                    fieldbyname('CST').Value := pTabDestino.fieldbyname(mCSTImp).asstring;
+                                 end;
+                           post;
                       end;
                    end;
-                   //PedidosNFItens.fieldbyname(fieldbyname('Campo').AsString).value := mValor;
-                   pTabDestino.fieldbyname(fieldbyname('Campo').AsString).value := mValor;
-                   if pFrame <> nil then begin
-                      mCp := pFrame.FindComponent('c'+trim(fieldbyname('Campo').asstring));
-                   end else begin
-                      mCp := pForm.FindComponent('c'+trim(fieldbyname('Campo').asstring));
-                   end;
-                   with tImpostos do begin
-                        mAliqImp := trim(tFormulasItens.fieldbyname('Campo_Aliquota').asstring);
-                        mCSTImp  := trim(tFormulasItens.fieldbyname('Campo_CST').asstring);
-                        append;
-                              fieldbyname('Ordem_Calculo').Value := tFormulasItens.FieldByName('Ordem_Calculo').Value;
-                              fieldbyname('Descricao').Value     := tFormulasItens.FieldByName('Descricao').Value;
-                              fieldbyname('Campo').Value         := tFormulasItens.fieldbyname('Campo').value;
-                              fieldbyname('Valor').Value         := mValor;
-                              fieldbyname('Total').Value         := mValor * pTabDestino.fieldbyname('Quantidade').value;
-                              if mAliqImp <> '' then begin
-                                 fieldbyname('Aliquota').Value := pTabDestino.fieldbyname(mAliqImp).asfloat;
-                              end;
-                              if mCSTImp <> '' then begin
-                                 fieldbyname('CST').Value := pTabDestino.fieldbyname(mCSTImp).asstring;
-                              end;
-                        post;
-                   end;
-                end;
-                next;
-          end;
-     end;
-     with pTabDestino do begin
-          // Totaliza os campos de total dos itens.
-          //TotalizaItens;
-          
-          // Gera os código cst dos impostos.
-          //PegaCST;
-          {
-          if (fieldbyname('CSTICMS_TabA').asstring = '1') or (fieldbyname('CSTICMS_TabA').asstring = '6') then begin 
-             if fieldbyname('ES').Asinteger = 0 then begin
-                mBenef := Produtos.fieldbyname('Beneficio_FiscalEnt').asstring;
-             end else begin
-                mBenef := Produtos.fieldbyname('Beneficio_FiscalSai').asstring;
+                   next;
              end;
-             if mBenef = null then begin
-                mBenef := OpFiscal.fieldbyname('Beneficio_Fiscal').asstring;
-             end;
-          end;
-          }
+        end;
+        result := true;
+     except
+        result := false;
      end;
-     result := true;
 end;
+
+function PegaCSTIPI(pOper, pProd: Integer): string;
+var
+   mCST: string;
+   mBC, mTotal: real;
+   tOpFiscal
+  ,tProdutos
+  ,tNCM
+  ,tCST: TFDQuery;
+begin
+     try 
+        tCST            := TFDQuery.create(nil);
+        tCST.Connection := uniMainModule.Conecta;
+     
+        tOpFiscal := TFDQuery.create(nil);
+        with tOpFiscal do begin
+             Connection := uniMainModule.Conecta;
+             sql.clear;
+             sql.add('select ES');
+             sql.add('      ,Isencao_IPI');
+             sql.add('      ,Nao_Tributada_IPI');
+             sql.add('      ,Imune_IPI');
+             sql.add('      ,Suspensao_IPI');
+             sql.add('from OperacaoFiscal');
+             sql.add('where Codigo = :pCodigo');
+             parambyname('pCodigo').asinteger := pOper;
+             open;
+        end;
+        tProdutos := TFDQuery.create(nil);
+        with tProdutos do begin
+             Connection := uniMainModule.Conecta;
+             sql.clear;
+             sql.add('select Aliquota_IPI');
+             sql.Add('      ,Valor_IPI');
+             sql.Add('      ,NCM');
+             sql.add('from Produtos');
+             sql.Add('where Codigo = :pProd');
+             parambyname('pProd').asinteger := pProd;
+             open;
+        end;
+        tNCM:= TFDQuery.create(nil);
+        with tNCM do begin
+             Connection := uniMainModule.Conecta;
+             sql.clear;
+             sql.add('select IPI_TribAliquotaZero');
+             sql.add('      ,IPI_Isento');
+             sql.add('      ,IPI_Suspensao');
+             sql.add('      ,Codigo_EXTIPI');
+             sql.add('from NCM');
+             sql.Add('where NCM = :pNCM');
+             ParamByName('pNCM').value := tProdutos.fieldbyname('NCM').AsString;
+             open;
+        end;
+        // Código de Situação Tributaria do IPI.
+        mCST := '';
+        if (tProdutos.Fieldbyname('Valor_IPI').ascurrency > 0) or (tProdutos.Fieldbyname('Aliquota_IPI').ascurrency> 0) then mCST := Trim(tOpFiscal.FieldByName('ES').AsString)+'+IPI';
+        if tProdutos.fieldbyname('Valor_IPI').asfloat <> 0 then mCST := Trim(tOpFiscal.fieldbyname('ES').AsString)+'+V';
+        if tNCM.fieldbyname('IPI_TribAliquotaZero').asboolean then mCST := Trim(tOpFiscal.fieldbyname('ES').AsString)+'+V';
+        if (tNCM.fieldbyname('IPI_Isento').AsBoolean) or (tOpFiscal.fieldbyname('Isencao_IPI').AsBoolean) then mCST := Trim(tOpFiscal.fieldbyname('ES').AsString)+'+I';
+        if tOpFiscal.fieldbyname('Nao_Tributada_IPI').asboolean then mCST := Trim(tOpFiscal.fieldbyname('ES').AsString)+'+NT';
+        if tOpFiscal.fieldbyname('Imune_IPI').asboolean then mCST := Trim(tOpFiscal.fieldbyname('ES').AsString)+'+IM';
+        if tNCM.fieldbyname('IPI_Suspensao').asboolean then mCST := Trim(tOpFiscal.fieldbyname('ES').AsString)+'+SUS';
+        if tOpFiscal.fieldbyname('Suspensao_IPI').asboolean then mCST := Trim(tOpFiscal.fieldbyname('ES').AsString)+'+SUS';
+        if mCST = '' then mCST := Trim(tOpFiscal.fieldbyname('ES').AsString)+'+<>';
+        with tCST do begin
+             sql.clear;
+             sql.add('select Codigo from CSTIPI where Classificacao = '+quotedstr(mCST));
+             open;
+             result := tCST.FieldByName('Codigo').Value
+        end;
+     except 
+        result := iif(tOpFiscal.fieldbyname('ES').AsInteger = 0, '49', '99');
+     end;
+end;
+
+function PegaCSTPIS(pOper, pProd, pDest: Integer): string;
+var
+   mCST: string;
+   mBC, mTotal: real;
+   tOpFiscal
+  ,tProdutos
+  ,tNCM
+  ,tCST
+  ,TabPISCOFINS
+  ,tDestinatario
+  ,tTabPISCOFINS: TFDQuery;
+begin
+     tCST            := TFDQuery.create(nil);
+     tCST.Connection := uniMainModule.Conecta;
+     
+     tOpFiscal := TFDQuery.create(nil);
+     with tOpFiscal do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select ES');
+          sql.Add('      ,CST_PIS');
+          sql.Add('      ,CSTPIS_AliquotaZero');
+          sql.Add('      ,CSTPIS_AliquotaUm');
+          sql.Add('      ,CSTPIS_Monofasica');
+          sql.add('      ,CSTPIS_Isenta');
+          sql.Add('      ,CSTPIS_SemIncidencia');
+          sql.Add('      ,CSTPIS_Suspensao');
+          sql.Add('      ,CSTPIS_Outras');
+          sql.add('from OperacaoFiscal');
+          sql.add('where Codigo = :pCodigo');
+          parambyname('pCodigo').asinteger := pOper;
+          open;
+     end;
+     tProdutos := TFDQuery.create(nil);
+     with tProdutos do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select NCM');
+          sql.Add('      ,CSTPIS_Entrada');
+          sql.Add('      ,Aliquota_PIS');
+          sql.Add('      ,Aliquota_COFINS');
+          sql.Add('      ,Aliquota_PISEntrada');
+          sql.Add('      ,Aliquota_COFINSEntrada');
+          sql.Add('      ,Aliquota_PISSaida');
+          sql.Add('      ,Aliquota_COFINSSaida');
+          sql.Add('      ,Reducao_PIS');
+          sql.Add('      ,Reducao_COFINS');
+          sql.add('      ,CSTPIS_AliquotaUM');
+          sql.add('      ,CSTPIS_Monofasica');
+          sql.add('      ,CSTPIS_AliquotaZero');
+          sql.add('      ,CSTPIS_AliquotaZeroEnt');
+          sql.add('      ,CSTPIS_Isenta');
+          sql.add('      ,CSTPIS_IsentaEnt');
+          sql.add('      ,CSTPIS_SemIncidencia');
+          sql.add('      ,CSTPIS_SemIncidenciaEnt');
+          sql.add('      ,CSTPIS_Suspensao');
+          sql.add('      ,CSTPIS_SuspensaoEnt');
+          sql.add('      ,CSTPIS_Outras');
+          sql.add('      ,CSTPIS_OutrasEnt');
+          sql.add('from Produtos');
+          sql.Add('where Codigo = :pProd');
+          parambyname('pProd').asinteger := pProd;
+          open;
+     end;
+     tNCM:= TFDQuery.create(nil);
+     with tNCM do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select PIS_ST');
+          sql.add('from NCM');
+          sql.Add('where NCM = :pNCM');
+          ParamByName('pNCM').value := tProdutos.fieldbyname('NCM').AsString;
+          open;
+     end;
+     tDestinatario := TFDQuery.create(nil);
+     with tDestinatario do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select Varejista from Destinatarios where Codigo = :pDest');
+          parambyname('pDest').Value := pDest;
+          open;
+     end;
+     tTabPISCOFINS := TFDQuery.create(nil);
+     with tTabPISCOFINS do begin
+          tTabPISCOFINS.Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select Entrada, Saida from TabelaPISCOFINS where Imposto = :pImp and Tipo = :pTp and Empresa = :pEmp');
+          parambyname('pImp').Value := 'PIS';
+          parambyname('pTp').Value  := 'B';
+          parambyname('pEmp').Value := UniMainModule.mEmpresaAtiva;
+          open;
+     end;
+     
+     // Código de Situação Tributaria do PIS.
+     // ENTRADA.
+     mCST := '';
+     if tOpFiscal.fieldbyname('ES').AsInteger = 0 then begin
+        with tCST do begin
+             sql.clear;
+             sql.add('select Codigo, Classificacao from CSTPIS where ES = 0');
+             open;
+        end;
+        if Trim(tProdutos.fieldbyname('CSTPIS_Entrada').AsString) <> '' then begin
+           tCST.Locate('Codigo', tProdutos.fieldbyname('CSTPIS_Entrada').Value, [loCaseInsensitive]);
+           mCST := tCST.fieldbyname('Classificacao').asstring;
+        end;
+        if Trim(tOpFiscal.fieldbyname('CST_PIS').Value) <> '' then begin
+           tCST.Locate('Codigo', tOpFiscal.fieldbyname('CST_PIS').Value, [loCaseInsensitive]);
+           mCST := tCST.fieldbyname('Classificacao').asstring;
+        end else begin
+           if tProdutos.fieldbyname('Aliquota_PISEntrada').AsFloat > 0 then mCST := '0+RNTNTMIE'; // 56;
+        end;
+        if tOpFiscal.fieldbyname('CSTPIS_Isenta').AsBoolean or tProdutos.fieldbyname('CSTPIS_IsentaEnt').AsBoolean               then mCST := '0+ISE';  // 71.
+        if tOpFiscal.fieldbyname('CSTPIS_Suspensao').AsBoolean or tProdutos.fieldbyname('CSTPIS_SuspensaoEnt').AsBoolean         then mCST := '0+SUS';  // 72.
+        if tOpFiscal.fieldbyname('CSTPIS_AliquotaZero').AsBoolean or tProdutos.fieldbyname('CSTPIS_AliquotaZeroEnt').AsBoolean   then mCST := '0+A0';   // 73.
+        if tOpFiscal.fieldbyname('CSTPIS_SemIncidencia').AsBoolean or tProdutos.fieldbyname('CSTPIS_SemIncidenciaEnt').AsBoolean then mCST := '0+SINC'; // 74.
+        if tOpFiscal.fieldbyname('CSTPIS_Outras').AsBoolean or tProdutos.fieldbyname('CSTPIS_OutrasEnt').AsBoolean               then mCST := '0+O';    // Outras.
+     end;
+     // SAÍDA.
+     if tOpFiscal.fieldbyname('ES').AsInteger = 1 then begin
+        if (tProdutos.fieldbyname('Aliquota_PISSaida').asfloat > 0) and (tProdutos.fieldbyname('Aliquota_PISSaida').asfloat = tTabPISCOFINS.fieldbyname('Saida').asfloat) then mCST := '1+B';
+        if (tProdutos.fieldbyname('Aliquota_PISSaida').AsFloat > 0) and (tProdutos.fieldbyname('Aliquota_PISSaida').AsFloat <> tTabPISCOFINS.fieldbyname('Saida').Value)  then mCST := '1+D';
+        if tOpFiscal.fieldbyname('CSTPIS_AliquotaUM').AsBoolean or tProdutos.fieldbyname('CSTPIS_AliquotaUM').AsBoolean       then mCST := '1+UM';
+        if tOpFiscal.fieldbyname('CSTPIS_Monofasica').AsBoolean or tProdutos.fieldbyname('CSTPIS_Monofasica').AsBoolean       then mCST := '1+MONO+A0';
+        if tNCM.fieldbyname('PIS_ST').asboolean and tDestinatario.fieldbyname('Varejista').AsBoolean                          then mCST := '1+ST';
+        if tOpFiscal.fieldbyname('CSTPIS_AliquotaZero').AsBoolean  or tProdutos.fieldbyname('CSTPIS_AliquotaZero').AsBoolean  then mCST := '1+A0';
+        if tOpFiscal.fieldbyname('CSTPIS_Isenta').AsBoolean        or tProdutos.fieldbyname('CSTPIS_Isenta').AsBoolean        then mCST := '1+ISE';
+        if tOpFiscal.fieldbyname('CSTPIS_SemIncidencia').AsBoolean or tProdutos.fieldbyname('CSTPIS_SemIncidencia').AsBoolean then mCST := '1+SINC';
+        if tOpFiscal.fieldbyname('CSTPIS_Suspensao').AsBoolean     or tProdutos.fieldbyname('CSTPIS_Suspensao').AsBoolean     then mCST := '1+SUS';
+        if tOpFiscal.fieldbyname('CSTPIS_Outras').AsBoolean        or tProdutos.fieldbyname('CSTPIS_Outras').AsBoolean        then mCST := '1+O';
+     end;
+     with tCST do begin
+          sql.clear;
+          sql.add('select Codigo from CSTPIS where Classificacao = :pClass');
+          parambyname('pClass').Value := mCST;
+          open;
+          result := fieldbyname('Codigo').AsString;
+     end;
+end;
+
+function PegaCSTCOFINS(pOper, pProd, pDest: Integer): string;
+var
+   mCST: string;
+   mBC, mTotal: real;
+   tOpFiscal
+  ,tProdutos
+  ,tNCM
+  ,tCST
+  ,TabPISCOFINS
+  ,tDestinatario
+  ,tTabPISCOFINS: TFDQuery;
+begin
+     tCST            := TFDQuery.create(nil);
+     tCST.Connection := uniMainModule.Conecta;
+     
+     tOpFiscal := TFDQuery.create(nil);
+     with tOpFiscal do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select ES');
+          sql.Add('      ,CST_COFINS');
+          sql.Add('      ,CSTCOFINS_AliquotaZero');
+          sql.Add('      ,CSTCOFINS_AliquotaUm');
+          sql.Add('      ,CSTCOFINS_Monofasica');
+          sql.add('      ,CSTCOFINS_Isenta');
+          sql.Add('      ,CSTCOFINS_SemIncidencia');
+          sql.Add('      ,CSTCOFINS_Suspensao');
+          sql.Add('      ,CSTCOFINS_Outras');
+          sql.add('from OperacaoFiscal');
+          sql.add('where Codigo = :pCodigo');
+          parambyname('pCodigo').asinteger := pOper;
+          open;
+     end;
+     tProdutos := TFDQuery.create(nil);
+     with tProdutos do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select NCM');
+          sql.Add('      ,CSTCOFINS_Entrada');
+          sql.Add('      ,Aliquota_COFINS');
+          sql.Add('      ,Aliquota_COFINS');
+          sql.Add('      ,Aliquota_COFINSEntrada');
+          sql.Add('      ,Aliquota_COFINSEntrada');
+          sql.Add('      ,Aliquota_COFINSSaida');
+          sql.Add('      ,Aliquota_COFINSSaida');
+          sql.Add('      ,Reducao_COFINS');
+          sql.Add('      ,Reducao_COFINS');
+          sql.add('      ,CSTCOFINS_AliquotaUM');
+          sql.add('      ,CSTCOFINS_Monofasica');
+          sql.add('      ,CSTCOFINS_AliquotaZero');
+          sql.add('      ,CSTCOFINS_AliquotaZeroEnt');
+          sql.add('      ,CSTCOFINS_Isenta');
+          sql.add('      ,CSTCOFINS_IsentaEnt');
+          sql.add('      ,CSTCOFINS_SemIncidencia');
+          sql.add('      ,CSTCOFINS_SemIncidenciaEnt');
+          sql.add('      ,CSTCOFINS_Suspensao');
+          sql.add('      ,CSTCOFINS_SuspensaoEnt');
+          sql.add('      ,CSTCOFINS_Outras');
+          sql.add('      ,CSTCOFINS_OutrasEnt');
+          sql.add('from Produtos');
+          sql.Add('where Codigo = :pProd');
+          parambyname('pProd').asinteger := pProd;
+          open;
+     end;
+     tNCM:= TFDQuery.create(nil);
+     with tNCM do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select PIS_ST');
+          sql.add('from NCM');
+          sql.Add('where NCM = :pNCM');
+          ParamByName('pNCM').value := tProdutos.fieldbyname('NCM').AsString;
+          open;
+     end;
+     tDestinatario := TFDQuery.create(nil);
+     with tDestinatario do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select Varejista from Destinatarios where Codigo = :pDest');
+          parambyname('pDest').Value := pDest;
+          open;
+     end;
+     tTabPISCOFINS := TFDQuery.create(nil);
+     with tTabPISCOFINS do begin
+          tTabPISCOFINS.Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select Entrada, Saida from TabelaPISCOFINS where Imposto = :pImp and Tipo = :pTp and Empresa = :pEmp');
+          parambyname('pImp').Value := 'COFINS';
+          parambyname('pTp').Value  := 'B';
+          parambyname('pEmp').Value := UniMainModule.mEmpresaAtiva;
+          open;
+     end;
+     
+     // Código de Situação Tributaria do PIS.
+     // ENTRADA.
+     mCST := '';
+     if tOpFiscal.fieldbyname('ES').AsInteger = 0 then begin
+        with tCST do begin
+             sql.clear;
+             sql.add('select Codigo, Classificacao from CSTCOFINS where ES = 0');
+             open;
+        end;
+        if Trim(tProdutos.fieldbyname('CSTCOFINS_Entrada').AsString) <> '' then begin
+           tCST.Locate('Codigo', tProdutos.fieldbyname('CSTCOFINS_Entrada').Value, [loCaseInsensitive]);
+           mCST := tCST.fieldbyname('Classificacao').asstring;
+        end else begin
+           if Trim(tOpFiscal.fieldbyname('CST_COFINS').Value) <> '' then begin
+              tCST.Locate('Codigo', tOpFiscal.fieldbyname('CST_COFINS').Value, [loCaseInsensitive]);
+              mCST := tCST.fieldbyname('Classificacao').asstring;
+           end else begin
+              if tProdutos.fieldbyname('Aliquota_COFINSEntrada').AsFloat > 0 then mCST := '0+RNTNTMIE'; // 56;
+           end;
+        end;                                                                                                                    
+        if tOpFiscal.fieldbyname('CSTCOFINS_Isenta').AsBoolean or tProdutos.fieldbyname('CSTCOFINS_IsentaEnt').AsBoolean               then mCST := '0+ISE';  // 71.
+        if tOpFiscal.fieldbyname('CSTCOFINS_Suspensao').AsBoolean or tProdutos.fieldbyname('CSTCOFINS_SuspensaoEnt').AsBoolean         then mCST := '0+SUS';  // 72.
+        if tOpFiscal.fieldbyname('CSTCOFINS_AliquotaZero').AsBoolean or tProdutos.fieldbyname('CSTCOFINS_AliquotaZeroEnt').AsBoolean   then mCST := '0+A0';   // 73.
+        if tOpFiscal.fieldbyname('CSTCOFINS_SemIncidencia').AsBoolean or tProdutos.fieldbyname('CSTCOFINS_SemIncidenciaEnt').AsBoolean then mCST := '0+SINC'; // 74.
+        if tOpFiscal.fieldbyname('CSTCOFINS_Outras').AsBoolean or tProdutos.fieldbyname('CSTCOFINS_OutrasEnt').AsBoolean               then mCST := '0+O';    // Outras.
+     end;
+     // SAÍDA.
+     if tOpFiscal.fieldbyname('ES').AsInteger = 1 then begin
+        if (tProdutos.fieldbyname('Aliquota_COFINSSaida').asfloat > 0) and (tProdutos.fieldbyname('Aliquota_COFINSSaida').asfloat  = tTabPISCOFINS.fieldbyname('Saida').asfloat) then mCST := '1+B';
+        if (tProdutos.fieldbyname('Aliquota_COFINSSaida').AsFloat > 0) and (tProdutos.fieldbyname('Aliquota_COFINSSaida').AsFloat <> tTabPISCOFINS.fieldbyname('Saida').Value)  then  mCST := '1+D';
+        if tOpFiscal.fieldbyname('CSTCOFINS_AliquotaUM').AsBoolean or tProdutos.fieldbyname('CSTCOFINS_AliquotaUM').AsBoolean       then mCST := '1+UM';
+        if tOpFiscal.fieldbyname('CSTCOFINS_Monofasica').AsBoolean or tProdutos.fieldbyname('CSTCOFINS_Monofasica').AsBoolean       then mCST := '1+MONO+A0';
+        if tNCM.fieldbyname('PIS_ST').asboolean and tDestinatario.fieldbyname('Varejista').AsBoolean                                     then mCST := '1+ST';
+        if tOpFiscal.fieldbyname('CSTCOFINS_AliquotaZero').AsBoolean  or tProdutos.fieldbyname('CSTCOFINS_AliquotaZero').AsBoolean  then mCST := '1+A0';
+        if tOpFiscal.fieldbyname('CSTCOFINS_Isenta').AsBoolean        or tProdutos.fieldbyname('CSTCOFINS_Isenta').AsBoolean        then mCST := '1+ISE';
+        if tOpFiscal.fieldbyname('CSTCOFINS_SemIncidencia').AsBoolean or tProdutos.fieldbyname('CSTCOFINS_SemIncidencia').AsBoolean then mCST := '1+SINC';
+        if tOpFiscal.fieldbyname('CSTCOFINS_Suspensao').AsBoolean     or tProdutos.fieldbyname('CSTCOFINS_Suspensao').AsBoolean     then mCST := '1+SUS';
+        if tOpFiscal.fieldbyname('CSTCOFINS_Outras').AsBoolean        or tProdutos.fieldbyname('CSTCOFINS_Outras').AsBoolean        then mCST := '1+O';
+     end;
+     with tCST do begin
+          sql.clear;
+          sql.add('select Codigo from CSTPIS where Classificacao = :pClass');
+          parambyname('pClass').Value := mCST;
+          open;
+          result := fieldbyname('Codigo').AsString;
+     end;
+end;
+
+function PegaCSTICMS(TabItens: TFDQuery; pOper, pProd, pRegTrib, pDest: Integer): string;
+var
+   mCST: string;
+   mBC, mTotal: real;
+   tOpFiscal
+  ,tProdutos
+  ,tNCM
+  ,tCST
+  ,tDestinatario
+  ,tProcesso
+  ,tICMSB: TFDQuery;
+begin
+     tCST            := TFDQuery.create(nil);
+     tCST.Connection := uniMainModule.Conecta;
+     
+     tOpFiscal := TFDQuery.create(nil);
+     with tOpFiscal do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select Codigo');
+          sql.add('      ,Finalidade_Mercadoria');
+          sql.add('      ,Destino_Origem');
+          sql.add('      ,ES');
+          sql.add('      ,Isencao_ICMS');
+          sql.Add('      ,Nao_Tributada_ICMS');
+          sql.Add('      ,Suspensao_ICMS');
+          sql.Add('      ,Diferido_ICMS');
+          sql.add('      ,Imune_ICMS');
+          sql.add('      ,Monofasico_Comb');
+          sql.Add('      ,Monofasico_CombRetencao');
+          sql.Add('      ,Monofasico_CombDiferido');
+          sql.Add('      ,Monofasico_CombAnterior');
+          sql.add('      ,Movimenta_Estoque');
+          sql.add('      ,Movimenta_EstoqueRep');
+          sql.add('      ,Movimenta_EstoqueInd');
+          sql.add('      ,Movimenta_Inventario');
+          sql.add('      ,CSOSN_Saida');
+          sql.add('      ,Complementar');
+          sql.add('from OperacaoFiscal');
+          sql.add('where Codigo = :pCodigo');
+          parambyname('pCodigo').asinteger := pOper;
+          open;
+     end;
+     tProdutos := TFDQuery.create(nil);
+     with tProdutos do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select Codigo');
+          sql.add('      ,NCM');
+          sql.add('      ,ICMS_ForaEstadoEnt');
+          sql.add('      ,ICMS_ForaEstadoSai');
+          sql.add('      ,ICMS_DentroEstadoEnt');
+          sql.add('      ,ICMS_DentroEstadoSai');
+          sql.add('      ,ICMS_DentroEstadoSimples');
+          sql.add('      ,CSTICMS_Entrada');
+          sql.add('      ,CSTICMS_Saida');
+          sql.add('from Produtos');
+          sql.Add('where Codigo = :pProd');
+          parambyname('pProd').asinteger := pProd;
+          open;
+     end;
+     tNCM:= TFDQuery.create(nil);
+     with tNCM do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select CodigoTrib_TabA');
+          sql.add('      ,CodigoTrib_TabA2');
+          sql.add('      ,CodigoTrib_TabA3');
+          sql.add('      ,Codigo_CredPres');
+          sql.add('      ,ICMS_Isento');
+          sql.Add('      ,ICMS_Imune');
+          sql.add('      ,ICMS_Suspensao');
+          sql.add('      ,Modalidade_BCICMS');
+          sql.add('      ,Modalidade_BCICMSST');
+          sql.add('      ,CEST');
+          sql.add('from NCM');
+          sql.Add('where NCM = :pNCM');
+          ParamByName('pNCM').value := tProdutos.fieldbyname('NCM').AsString;
+          open;
+     end;
+     tDestinatario := TFDQuery.create(nil);
+     with tDestinatario do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select Estado');
+          sql.Add('      ,Consumidor_Final');
+          sql.Add('      ,Simples_Nacional');
+          sql.Add('from Destinatarios where Codigo = :pDest');
+          parambyname('pDest').Value := pDest;
+          open;
+     end;
+     tProcesso := TFDQuery.create(nil);
+     with tProcesso do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select ICMS_Diferido from ProcessosImp where Processo = :pProc');
+          parambyname('pProc').Value := TabItens.FieldByName('Processo').AsString;
+          open;
+     end;
+     tICMSB := TFDQuery.create(nil);
+     with tICMSB do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select Codigo, Classificacao from CSTICMSTabB');
+          open;
+     end;
+
+     // CST ICMS Operacional.
+     mCST := '';
+     if pRegTrib = 3 then begin
+        // Empresas optantes do Regime normal.
+        mCST := iif(TabItens.fieldbyname('Valor_ICMSOp').Value <> 0, '+0', '-0');         // ICMS Operacional.
+        if (Int(TabItens.fieldbyname('Valor_BCICMSOp').Value) < Int(TabItens.fieldbyname('Valor_Produtos').Value)) and (TabItens.fieldbyname('Valor_BCICMSOp').Value > 0) then
+           mCST := mCST + '+R'
+        else
+           mCST := mCST + '-R';
+        if tOpFiscal.fieldbyname('ES').Value = 0 then begin
+           mCST := mCST + '-S';     // ICMS ST na Entrada.
+        end else begin
+           if (tNCM.FieldByName(tDestinatario.FieldByName('Estado').Value+'_ICMS').AsFloat <> 0) and (TabItens.FieldByName('Valor_ICMSSub').ascurrency <> 0) then
+              mCST := mCST + '+S'
+           else
+              mCST := mCST + '-S';  // ICMS ST na Saida.
+        end;
+        if tOpFiscal.fieldbyname('Isencao_ICMS').AsBoolean or tNCM.FieldByName('ICMS_Isento').AsBoolean      then mCST := '+I';
+        if tOpFiscal.fieldbyname('Nao_Tributada_ICMS').asboolean                                             then mCST := '+NT';
+        if tOpFiscal.fieldbyname('Suspensao_ICMS').AsBoolean or tNCM.FieldByName('ICMS_Suspensao').AsBoolean then mCST := '+SUS';
+        if tProcesso.fieldbyname('ICMS_Diferido').asboolean and (tOpFiscal.fieldbyname('ES').Value = 0)      then mCST := '+D';
+        if tOpFiscal.fieldbyname('Diferido_ICMS').AsBoolean                                                  then mCST := '+D';
+        if TabItens.FieldByName('ICMSST_Anterior').asboolean                                                 then mCST := mCST + '+SD';
+
+        // CST para Detalhe especifico combustivel.
+        if tOpFiscal.fieldbyname('ES').AsInteger = 0 then begin
+           if tProdutos.FieldByName('CSTICMS_Entrada').asstring <> '' then mCST := tProdutos.FieldByName('CSTICMS_Entrada').AsString;
+        end else begin
+           if tProdutos.FieldByName('CSTICMS_Saida').asstring <> '' then mCST := tProdutos.FieldByName('CSTICMS_Saida').AsString;
+        end;
+        if tOpFiscal.fieldbyname('Monofasico_Comb').asboolean         then mCST := '02';
+        if tOpFiscal.fieldbyname('Monofasico_CombRetencao').asboolean then mCST := '15';
+        if tOpFiscal.fieldbyname('Monofasico_CombDiferido').asboolean then mCST := '53';
+        if tOpFiscal.fieldbyname('Monofasico_CombAnterior').asboolean then mcst := '61';
+        
+        if not tICMSB.Locate('Classificacao', mCST, [loCaseInsensitive]) then begin
+           mCST := '<>';
+           tICMSB.Locate('Classificacao', mCST, [loCaseInsensitive]);
+        end;
+     end else begin
+        // Empresas optantes do Regime do Simples Nacional.
+        if tOpFiscal.fieldbyname('ES').asinteger = 1 then begin
+           if (tNCM.FieldByName(tDestinatario.fieldbyname('Estado').Value+'_ICMS').AsFloat = 0) and not tDestinatario.fieldbyname('Consumidor_Final').AsBoolean and not tDestinatario.FieldByName('Simples_Nacional').AsBoolean then
+              mCST := '101'
+        End;
+        if tOpFiscal.fieldbyname('Saida_Entrada').asinteger = 0 then begin
+           if (tNCM.FieldByName(tDestinatario.fieldbyname('Estado').Value+'_ICMS').AsFloat = 0) then mCST := '102'
+        end else begin
+           if (tNCM.FieldByName(tDestinatario.fieldbyname('Estado').Value+'_ICMS').AsFloat = 0) and (tDestinatario.fieldbyname('Consumidor_Final').AsBoolean or tDestinatario.fieldbyname('Simples_Nacional').AsBoolean) then mCST := '102'
+        end;
+        if tOpFiscal.fieldbyname('Isencao_ICMS').AsBoolean or tNCM.FieldByName('ICMS_Isento').AsBoolean then begin
+           if tOpFiscal.FieldByName('ES').AsInteger = 0 then begin         // NF de Entrada.
+              if (tNCM.FieldByName(tDestinatario.fieldbyname('Estado').Value+'_ICMS').AsFloat = 0) then mCST := '103'
+           end else begin                                           // NF de Saída.
+              if (tNCM.FieldByName(tDestinatario.fieldbyname('Estado').Value+'_ICMS').AsFloat = 0) then mCST := '103'
+           end;
+        end;
+        if tOpFiscal.fieldbyname('Saida_Entrada').Value = 1 then begin
+           if (tNCM.FieldByName(tDestinatario.fieldbyname('Estado').Value+'_ICMS').AsFloat > 0) and (not tDestinatario.fieldbyname('Consumidor_Final').AsBoolean and not tDestinatario.fieldbyname('Simples_Nacional').AsBoolean) then mCST := '201'
+        end;
+        if tOpFiscal.fieldbyname('Saida_Entrada').Value = 0 then begin
+           if (tNCM.FieldByName(tDestinatario.fieldbyname('Estado').Value+'_ICMS').AsFloat > 0) then mCST := '202'
+        end else begin
+           if (tNCM.FieldByName(tDestinatario.fieldbyname('Estado').Value+'_ICMS').AsFloat > 0) and (tDestinatario.fieldbyname('Consumidor_Final').AsBoolean) or (tDestinatario.fieldbyname('Simples_Nacional').AsBoolean) then mCST := '202'
+        end;
+        if (tOpFiscal.fieldbyname('Isencao_ICMS').AsBoolean) or (tNCM.FieldByName('ICMS_Isento').AsBoolean) then begin
+           if tOpFiscal.FieldByName('ES').AsInteger = 0 then begin         // NF de Entrada.
+              if (tNCM.FieldByName(tDestinatario.fieldbyname('Estado').Value+'_ICMS').AsFloat > 0) then
+                 mCST := '203'
+           end else begin                                           // NF de Saída.
+              if (tNCM.FieldByName(tDestinatario.fieldbyname('Estado').Value+'_ICMS').AsFloat > 0) then
+                 mCST := '203'
+           end;
+        end;
+        if tOpFiscal.fieldbyname('Imune_ICMS').AsBoolean or tNCM.fieldbyname('ICMS_Imune').AsBoolean then mCST := '300';
+        if tOpFiscal.fieldbyname('Nao_Tributada_ICMS').AsBoolean then mCST := '400';
+        if TabItens.FieldByName('ICMSST_Anterior').asboolean     then mCST := mCST + '500';
+        if tOpFiscal.fieldbyname('Diferido_ICMS').asboolean      then mCST := '900';
+        if tOpFiscal.FieldByName('ES').AsInteger = 0 then begin
+           if Trim(tOpFiscal.fieldbyname('CSOSN_Entrada').AsString) <> '' then begin
+              mCST := Trim(tOpFiscal.fieldbyname('CSOSN_Entrada').AsString);
+           end;
+        end else begin
+           if Trim(tOpFiscal.fieldbyname('CSOSN_Saida').AsString) <> '' then begin
+              mCST := Trim(tOpFiscal.fieldbyname('CSOSN_Saida').AsString);
+           end;
+        end;
+        if tOpFiscal.fieldbyname('Monofasico_Comb').asboolean         then MCST := '02';
+        if tOpFiscal.fieldbyname('Monofasico_CombRetencao').asboolean then MCST := '15';
+        if tOpFiscal.fieldbyname('Monofasico_CombDiferido').asboolean then MCST := '53';
+        if tOpFiscal.fieldbyname('Monofasico_CombAnterior').asboolean then MCST := '61';
+        if not tICMSB.Locate('Classificacao', mCST, [loCaseInsensitive]) then begin
+           mCST := 'S<>';
+           tICMSB.Locate('Classificacao', mCST, [loCaseInsensitive]);
+        end;
+     end;
+     result := tICMSB.fieldbyname('Codigo').asstring; 
+end;
+
+procedure PegaCST(TabItens: TFDQuery; pOper, pProd: Integer);
+var
+   mCST: string;
+   mBC, mTotal: real;
+   tOpFiscal
+  ,tProdutos
+  ,tNCM
+  ,tCST
+  ,tTabPISCOFINS
+  ,tConfig: TFDQuery;
+begin
+     tCST                     := TFDQuery.create(nil);
+     tCST.Connection          := uniMainModule.Conecta;
+     tTabPISCOFINS            := TFDQuery.create(nil);
+     tTabPISCOFINS.Connection := uniMainModule.Conecta;
+     
+     tOpFiscal := TFDQuery.create(nil);
+     with tOpFiscal do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select Codigo');
+          sql.add('      ,Finalidade_Mercadoria');
+          sql.add('      ,Destino_Origem');
+          sql.add('      ,ES');
+          sql.add('      ,Apuracao_PISCOFINS');
+          sql.add('      ,Isencao_IPI');
+          sql.add('      ,Nao_Tributada_IPI');
+          sql.add('      ,Imune_IPI');
+          sql.add('      ,Suspensao_IPI');
+          sql.Add('      ,CSTcofins_AliquotaZero');
+          sql.Add('      ,CSTPIS_AliquotaUm');
+          sql.Add('      ,CSTPIS_Monofasica');
+          sql.add('      ,CSTPIS_Isenta');
+          sql.Add('      ,CSTPIS_SemIncidencia');
+          sql.Add('      ,CSTPIS_Suspensao');
+          sql.Add('      ,CSTPIS_Outras');
+          sql.add('      ,Isencao_ICMS');
+          sql.Add('      ,Nao_Tributada_ICMS');
+          sql.Add('      ,Suspensao_ICMS');
+          sql.Add('      ,Diferido_ICMS');
+          sql.add('      ,Imune_ICMS');
+          sql.add('      ,Monofasico_Comb');
+          sql.Add('      ,Monofasico_CombRetencao');
+          sql.Add('      ,Monofasico_CombDiferido');
+          sql.Add('      ,Monofasico_CombAnterior');
+          sql.add('      ,Movimenta_Estoque');
+          sql.add('      ,Movimenta_EstoqueRep');
+          sql.add('      ,Movimenta_EstoqueInd');
+          sql.add('      ,Movimenta_Inventario');
+          sql.add('      ,CSOSN_Saida');
+          sql.add('      ,Complementar');
+          sql.add('      ,CBS_Isencao');
+          sql.add('      ,CBS_Imunidade');
+          sql.add('      ,CBS_Suspensao');
+          sql.add('      ,CBS_Diferido');
+          sql.add('      ,IBS_Isencao');
+          sql.add('      ,IBS_Imunidade');
+          sql.add('      ,IBS_Suspensao');
+          sql.add('      ,IBS_Diferido');
+          sql.add('from OperacaoFiscal');
+          sql.add('where Codigo = :pCodigo');
+          parambyname('pCodigo').asinteger := pOper;
+          open;
+     end;
+     tProdutos := TFDQuery.create(nil);
+     with tProdutos do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select Codigo');
+          sql.Add('      ,Aliquota_IPI');
+          sql.Add('      ,Valor_IPI');
+          sql.Add('      ,Aliquota_II');
+          sql.Add('      ,Valor_II');
+          sql.Add('      ,Aliquota_PIS');
+          sql.Add('      ,Aliquota_COFINS');
+          sql.Add('      ,Aliquota_PISEntrada');
+          sql.Add('      ,Aliquota_COFINSEntrada');
+          sql.Add('      ,Aliquota_PISSaida');
+          sql.Add('      ,Aliquota_COFINSSaida');
+          sql.Add('      ,Reducao_PIS');
+          sql.Add('      ,Reducao_COFINS');
+          sql.add('      ,CSTPIS_AliquotaUM');
+          sql.add('      ,CSTPIS_Monofasica');
+          sql.add('      ,CSTPIS_AliquotaZero');
+          sql.add('      ,CSTPIS_Isenta');
+          sql.add('      ,CSTPIS_SemIncidencia');
+          sql.add('      ,CSTPIS_Suspensao');
+          sql.add('      ,CSTPIS_Outras');
+          sql.add('      ,ICMS_ForaEstadoEnt');
+          sql.add('      ,ICMS_ForaEstadoSai');
+          sql.add('      ,ICMS_DentroEstadoEnt');
+          sql.add('      ,ICMS_DentroEstadoSai');
+          sql.add('      ,ICMS_DentroEstadoSimples');
+          sql.add('      ,Tabela_CAMEX');
+          sql.add('      ,CSTICMS_Entrada');
+          sql.add('      ,CSTICMS_Saida');
+          sql.add('      ,Aliquota_IBS');
+          sql.add('      ,Beneficio_FiscalEnt');
+          sql.add('      ,Beneficio_FiscalSai');
+          sql.add('      ,Estoque_Minimo');
+          sql.add('      ,Estoque_Navio');
+          sql.add('from Produtos');
+          sql.Add('where Codigo = :pProd');
+          parambyname('pProd').asinteger := pProd;
+          open;
+     end;
+     tNCM:= TFDQuery.create(nil);
+     with tNCM do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select IPI_TribAliquotaZero');
+          sql.add('      ,IPI_Isento');
+          sql.add('      ,IPI_Suspensao');
+          sql.add('      ,PIS_ST');
+          sql.add('      ,CodigoTrib_TabA');
+          sql.add('      ,CodigoTrib_TabA2');
+          sql.add('      ,CodigoTrib_TabA3');
+          sql.add('      ,Codigo_CredPres');
+          sql.add('      ,ICMS_Isento');
+          sql.Add('      ,ICMS_Imune');
+          sql.add('      ,ICMS_Suspensao');
+          sql.add('      ,Modalidade_BCICMS');
+          sql.add('      ,Modalidade_BCICMSST');
+          sql.add('      ,Codigo_EXTIPI');
+          sql.add('      ,CEST');
+          sql.add('      ,CBS_Isencao');
+          sql.add('      ,CBS_Imunidade');
+          sql.add('      ,CBS_Suspensao');
+          sql.add('      ,CBS_Diferido');
+          sql.add('      ,IBS_Isencao');
+          sql.add('      ,IBS_Imunidade');
+          sql.add('      ,IBS_Suspensao');
+          sql.add('      ,IBS_Diferido');
+          sql.add('from NCM');
+          sql.Add('where NCM = :pNCM');
+          ParamByName('pNCM').value := tProdutos.fieldbyname('NCM').AsString;
+          open;
+     end;
+     tConfig:= TFDQuery.create(nil);
+     with tConfig do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('select * from Config where Empresa = :pEmp');
+          parambyname('pEmp').Value := UniMainModule.mEmpresaAtiva;
+          open;
+     end;
+    {
+     // CST ICMS Operacional.
+     mCST   := '';
+     mBC    := fieldbyname('Valor_BCICMSOp').asfloat;
+     mTotal := cValor_ttProdutos.fieldbyname('.fieldbyname('.Value;
+     if Empresas.fieldbyname('Regime_Tributario').asinteger = 3 then begin
+        // Empresas optantes do Regime normal.
+        if Fieldbyname('Valor_ICMSOp').Value <> 0 then
+           mCST := mCST + '+O'
+        else
+           mCST := mCST + '-O';     // ICMS Operacional.
+        if (Int(mBC) < Int(mTotal)) and (mBC > 0) then
+           mCST := mCST + '+R'
+        else
+           mCST := mCST + '-R';     // Reducao de base.
+        if tOpFiscal.Fieldbyname('ES').asinteger = 0 then begin
+           mCST := mCST + '-S';     // ICMS ST na Entrada.
+        end else begin
+           if Fieldbyname('Valor_ICMSST').ascurrency <> 0 then
+              mCST := mCST + '+S'
+           else
+              mCST := mCST + '-S';  // ICMS ST na Saida.
+        end;
+        if tOpFiscal.Fieldbyname('Isencao_ICMS').AsBoolean or tNCM.fieldbyname('ICMS_Isento').AsBoolean then mCST := '+I';
+        if tOpFiscal.Fieldbyname('Nao_Tributada_ICMS').asboolean then mCST := '+NT';
+        if tOpFiscal.Fieldbyname('Suspensao_ICMS').AsBoolean or tNCM.fieldbyname('ICMS_Suspensao').AsBoolean then mCST := '+SUS';
+        if Processos.fieldbyname('ICMS_Diferido').asboolean and (tOpFiscal.Fieldbyname('ES').asinteger = 0) then mCST := '+D';
+        if tOpFiscal.Fieldbyname('Diferido_ICMS').AsBoolean then mCST := '+D';
+        if cICMSAnt.Checked then mCST := mCST + '+SD';
+        
+        // CST para Detalhe especifico combustivel.
+        if tOpFiscal.Fieldbyname('ES').asinteger = 0 then begin
+           if ttProdutos.fieldbyname('.fieldbyname('.fieldbyname('CSTICMS_Entrada').asstring <> '' then mCST := ttProdutos.fieldbyname('.fieldbyname('.fieldbyname('CSTICMS_Entrada').AsString;
+        end else begin
+           if ttProdutos.fieldbyname('.fieldbyname('.fieldbyname('CSTICMS_Saida').asstring <> '' then mCST := ttProdutos.fieldbyname('.fieldbyname('.fieldbyname('CSTICMS_Saida').AsString;
+        end;
+
+        if tOpFiscal.Fieldbyname('Monofasico_Comb').asboolean         then mCST := '02';
+        if tOpFiscal.Fieldbyname('Monofasico_CombRetencao').asboolean then mCST := '15';
+        if tOpFiscal.Fieldbyname('Monofasico_CombDiferido').asboolean then mCST := '53';
+        if tOpFiscal.Fieldbyname('Monofasico_CombAnterior').asboolean then mCST := '61';
+        with tTmp do begin
+             sql.clear;
+             sql.add('select Codigo from CSTICMSTabB where Classificacao = '+quotedstr(mCST));
+             open;
+             if recordcount = 0 then begin
+                mCST := '<>';
+                sql.clear;
+                sql.add('select * from CSTICMSTabB where Codigo = '+quotedstr(mCST));
+                open;
+             end;
+             if ttProdutos.fieldbyname('.fieldbyname('.Fieldbyname('Origem').asstring = 'I' then mCST := tNCM.Fieldbyname('CodigoTrib_TabA').Value;
+             if ttProdutos.fieldbyname('.fieldbyname('.Fieldbyname('Origem').asstring = 'N' then mCST := tNCM.Fieldbyname('CodigoTrib_TabA2').Value;
+             if ttProdutos.fieldbyname('.fieldbyname('.Fieldbyname('Origem').asstring = 'M' then mCST := tNCM.Fieldbyname('CodigoTrib_TabA3').Value;
+             PedidosNFItens.fieldbyname('CSTICMS_TabA').Value := mCST;
+             PedidosNFItens.fieldbyname('CSTICMS_TabB').Value := fieldbyname('Codigo').asstring;
+        end;
+     end else begin
+        // Empresas do Regime do Simples Nacional.
+        if tNCMICMS.RecordCount > 0 then begin
+           if tOpFiscal.Fieldbyname('ES').asinteger = 1 then begin
+              if (tNCMICMS.FieldByName('ST').AsFloat = 0) and (not Destinatarios.fieldbyname('Consumidor_Final').AsBoolean and not Destinatarios.fieldbyname('Simples_Nacional').AsBoolean) then mCST := '101';
+           end;
+           if tOpFiscal.Fieldbyname('ES').asinteger = 0 then begin
+              if tNCMICMS.FieldByName('ST').asfloat = 0 then mCST := '102';
+           end else begin
+              if (tNCMICMS.FieldByName('ST').AsFloat = 0) and (Destinatarios.fieldbyname('Consumidor_Final').AsBoolean or Destinatarios.fieldbyname('Simples_Nacional').AsBoolean) then mCST := '102';
+           end;
+        end else begin
+           cLog.Lines.add('ERRO DE CST: Tabela de ICMS para "SIMPLES NACIONAL" não cadastrada.');
+        end;
+
+        if tOpFiscal.Fieldbyname('Isencao_ICMS').AsBoolean or tNCM.fieldbyname('ICMS_Isento').AsBoolean then begin
+           if PedidosNF.Fieldbyname('ES').AsInteger = 0 then begin
+              if tNCMICMS.FieldByName('ST').AsFloat = 0 then mCST := '103';
+           end else begin
+              if tNCMICMS.FieldByName('ST').AsFloat = 0 then mCST := '103';
+           end;
+        end;
+        if tOpFiscal.Fieldbyname('ES').asinteger = 1 then begin
+           if (tNCMICMS.FieldByName('ST').AsFloat > 0) and not Destinatarios.Fieldbyname('Consumidor_Final').AsBoolean and not Destinatarios.Fieldbyname('Simples_Nacional').AsBoolean then mCST := '201';
+        end;
+        if tOpFiscal.Fieldbyname('ES').asinteger = 0 then begin
+           if tNCMICMS.FieldByName('ST').AsFloat > 0 then mCST := '202';
+        end else begin
+           if (tNCMICMS.FieldByName('ST').AsFloat > 0) and (Destinatarios.Fieldbyname('Consumidor_Final').AsBoolean or Destinatarios.Fieldbyname('Simples_Nacional').AsBoolean) then mCST := '202';
+        end;
+        if tOpFiscal.Fieldbyname('Isencao_ICMS').AsBoolean or tNCM.Fieldbyname('ICMS_Isento').AsBoolean then begin
+           if PedidosNF.Fieldbyname('ES').AsInteger = 0 then begin         // NF de Entrada.
+              if tNCMICMS.FieldByName('ST').AsFloat > 0 then mCST := '203';
+           end else begin                                           // NF de Saída.
+              if tNCMICMS.FieldByName('ST').AsFloat > 0 then mCST := '203';
+           end;
+        end;
+        if tOpFiscal.Fieldbyname('Imune_ICMS').AsBoolean or tNCM.Fieldbyname('ICMS_Imune').AsBoolean then mCST := '300';
+        if tOpFiscal.Fieldbyname('Nao_Tributada_ICMS').AsBoolean then mCST := '400';
+        if cICMSAnt.Checked then mCST := '500';
+        if tOpFiscal.Fieldbyname('Diferido_ICMS').AsBoolean then mCST := '900';
+
+        if PedidosNF.Fieldbyname('ES').AsInteger = 0 then begin
+           if Trim(tOpFiscal.Fieldbyname('CSOSN_Entrada').AsString) <> '' then begin
+              mCST := Trim(tOpFiscal.Fieldbyname('CSOSN_Entrada').AsString);
+           end;
+        end else begin
+           if Trim(tOpFiscal.Fieldbyname('CSOSN_Saida').AsString) <> '' then begin
+              mCST := Trim(tOpFiscal.Fieldbyname('CSOSN_Saida').AsString);
+           end;
+        end;
+
+        if tOpFiscal.Fieldbyname('Monofasico_Comb').asboolean then mCST := '02';
+        if tOpFiscal.Fieldbyname('Monofasico_CombRetencao').asboolean then mCST := '15';
+        if tOpFiscal.Fieldbyname('Monofasico_CombDiferido').asboolean then mCST := '53';
+        if tOpFiscal.Fieldbyname('Monofasico_CombAnterior').asboolean then mCST := '61';
+
+        with tTmp do begin
+             sql.clear;
+             sql.add('select Codigo from CSTICMSTabB where Classificacao = '+quotedstr(mCST));
+             open;
+             if recordcount = 0 then begin
+                mCST := 'S<>';
+                sql.clear;
+                sql.add('select * from CSTICMSTabB where Codigo = '+quotedstr(mCST));
+                //sql.SaveToFile('c:\temp\Atlas_CSTICMS.sql');
+                open;
+             end;
+             if tProdutos.fieldbyname(('Origem').asstring = 'I' then 
+                mCST := tNCM.Fieldbyname('CodigoTrib_TabA').Value;
+             if tProdutos.fieldbyname('Origem').asstring = 'N' then 
+                mCST := tNCM.Fieldbyname('CodigoTrib_TabA2').Value;
+             if tProdutos.fieldbyname('Origem').asstring = 'M' then 
+                mCST := tNCM.Fieldbyname('CodigoTrib_TabA3').Value;
+                
+             PedidosNFItens.fieldbyname('CSTICMS_TabA').Value := mCST;
+             PedidosNFItens.fieldbyname('CSTICMS_TabB').Value := fieldbyname('Codigo').asstring;
+        end;
+     end;
+     }
+     {
+     if (State = dsInsert) or (State = dsEdit) then begin
+        // CST DO CBS.
+        mCST := 'T+I';
+        if fieldbyname('Valor_CBS').Value > 0 then mCST := 'T+I';
+        if tNCM.fieldbyname('CBS_Isencao').AsBoolean        then mCST := 'IS';
+        if tOpFiscal.fieldbyname('CBS_Isencao').AsBoolean   then mCST := 'IS';
+        if tNCM.fieldbyname('CBS_Imunidade').AsBoolean      then mCST := 'I+N+I';
+        if tOpFiscal.fieldbyname('CBS_Imunidade').asboolean then mCST := 'I+N+I';
+        if tNCM.fieldbyname('CBS_Suspensao').asboolean      then mCST := 'S';
+        if tOpFiscal.fieldbyname('CBS_Suspensao').asboolean then mCST := 'S';
+        if tNCM.fieldbyname('CBS_Diferido').AsBoolean       then mCST := 'D';
+        if tOpFiscal.fieldbyname('CBS_Diferido').AsBoolean  then mCST := 'D';
+        CSTCBS.Locate('Classificacao', mCST, [loCaseInsensitive]) ;
+        fieldbyname('CSTCBS').Value := CSTCBS.fieldbyname('Codigo').Value;
+        // CST DO IBS
+        mCST := 'T+I';
+        if fieldbyname('Valor_IBS').Value > 0 then mCST := 'T+I';
+        if tNCM.fieldbyname('IBS_Isencao').AsBoolean        then mCST := 'IS';
+        if tOpFiscal.fieldbyname('IBS_Isencao').AsBoolean   then mCST := 'IS';
+        if tNCM.fieldbyname('IBS_Imunidade').AsBoolean      then mCST := 'I+N+I';
+        if tOpFiscal.fieldbyname('IBS_Imunidade').asboolean then mCST := 'I+N+I';
+        if tNCM.fieldbyname('IBS_Suspensao').asboolean      then mCST := 'S';
+        if tOpFiscal.fieldbyname('IBS_Suspensao').asboolean then mCST := 'S';
+        if tNCM.fieldbyname('IBS_Diferido').AsBoolean       then mCST := 'D';
+        if tOpFiscal.fieldbyname('IBS_Diferido').AsBoolean  then mCST := 'D';
+        CSTIBS.Locate('Classificacao', mCST, [loCaseInsensitive]) ;
+        fieldbyname('CSTIBS').Value := CSTIBS.fieldbyname('Codigo').Value;
+     end;
+     }
+end;
+
 
 
 

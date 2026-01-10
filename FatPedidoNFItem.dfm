@@ -950,7 +950,6 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
                 DecimalPrecision = 3
                 DecimalSeparator = ','
                 ThousandSeparator = '.'
-                ExplicitWidth = 210
               end
               object cDisponivel: TUniFormattedNumberEdit
                 AlignWithMargins = True
@@ -983,7 +982,6 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
                 DecimalPrecision = 3
                 DecimalSeparator = ','
                 ThousandSeparator = '.'
-                ExplicitWidth = 210
               end
               object cInventario: TUniFormattedNumberEdit
                 AlignWithMargins = True
@@ -1017,7 +1015,6 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
                 DecimalPrecision = 3
                 DecimalSeparator = ','
                 ThousandSeparator = '.'
-                ExplicitWidth = 210
               end
               object cEstoqueLote: TUniFormattedNumberEdit
                 AlignWithMargins = True
@@ -1051,7 +1048,6 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
                 DecimalPrecision = 3
                 DecimalSeparator = ','
                 ThousandSeparator = '.'
-                ExplicitWidth = 210
               end
               object cEstoqueNavio: TUniFormattedNumberEdit
                 AlignWithMargins = True
@@ -1085,7 +1081,6 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
                 DecimalPrecision = 3
                 DecimalSeparator = ','
                 ThousandSeparator = '.'
-                ExplicitWidth = 210
               end
             end
           end
@@ -2555,7 +2550,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
             end
           end
           object UniPanel9: TUniPanel
-            Left = 20
+            Left = 12
             Top = 1275
             Width = 761
             Height = 120

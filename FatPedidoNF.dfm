@@ -167,7 +167,7 @@ object fFatPedidoNF: TfFatPedidoNF
     Width = 1272
     Height = 965
     Hint = ''
-    ActivePage = UniTabSheet1
+    ActivePage = TabSheet1
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       

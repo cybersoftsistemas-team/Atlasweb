@@ -433,7 +433,7 @@ type
     mPed
    ,mItem: integer;
 //    procedure CalculaTudo;
-    procedure PegaCST;
+//    procedure PegaCST;
     function CalculoReverso: real;
     procedure ApuraEstoque;
     procedure TotalizaItens;
@@ -690,7 +690,25 @@ begin
           
           // Executa o calculo de todos os campos de valores do item.
           CalculaTudo(PedidosNF.fieldbyname('Operacao').asinteger, 'Item', gFormula, cLog, PedidosNFItens, self, nil);
+          
+          fieldbyname('CSTIPI').Value    := PegaCSTIPI(PedidosNF.fieldbyname('Operacao').asinteger, Produtos.FieldByName('Codigo').asinteger);
+          fieldbyname('CSTPIS').Value    := PegaCSTPIS(PedidosNF.fieldbyname('Operacao').asinteger, Produtos.FieldByName('Codigo').asinteger, PedidosNF.fieldbyname('Destinatario').asinteger) ;
+          fieldbyname('CSTCOFINS').Value := PegaCSTCOFINS(PedidosNF.fieldbyname('Operacao').asinteger, Produtos.FieldByName('Codigo').asinteger, PedidosNF.fieldbyname('Destinatario').asinteger) ;
+          // Tabela A - Origem.
+          if Produtos.fieldbyname('Origem').asstring = 'I' then fieldbyname('CSTICMS_TabA').value := tNCM.Fieldbyname('CodigoTrib_TabA').Value;
+          if Produtos.fieldbyname('Origem').asstring = 'N' then fieldbyname('CSTICMS_TabA').value := tNCM.Fieldbyname('CodigoTrib_TabA2').Value;
+          if Produtos.fieldbyname('Origem').asstring = 'M' then fieldbyname('CSTICMS_TabA').value := tNCM.Fieldbyname('CodigoTrib_TabA3').Value;
+          // Tabela B - Tributação.
+          fieldbyname('CSTICMS_TabB').Value := PegaCSTICMS(PedidosNFItens, OpFiscal.fieldbyname('Codigo').asinteger, fieldbyname('Codigo_Mercadoria').asinteger, Empresas.fieldbyname('Regime_Tributario').asinteger, PedidosNF.FieldByName('Destinatario').asinteger);
+          
+//          fieldbyname('CSTICMS').Value   := PegaCSTIPI(PedidosNF.fieldbyname('Operacao').asinteger, Produtos.FieldByName('Codigo').asinteger);
+//          fieldbyname('CSTIPI').Value    := PegaCSTIPI(PedidosNF.fieldbyname('Operacao').asinteger, Produtos.FieldByName('Codigo').asinteger);
+//          fieldbyname('CSTIPI').Value    := PegaCSTIPI(PedidosNF.fieldbyname('Operacao').asinteger, Produtos.FieldByName('Codigo').asinteger);
+          
+          
           TotalizaItens;
+          
+          
      end;
 end;
 
@@ -1015,6 +1033,7 @@ begin
      Frm.ShowModal;
 end;
 
+(*
 procedure TfFatPedidoNFItem.PegaCST;
 var
    mCST: string;
@@ -1280,7 +1299,7 @@ begin
           end;
      end;
 end;
-
+*)
 function TfFatPedidoNFItem.CalculoReverso: real;
 Var
     mUnitario

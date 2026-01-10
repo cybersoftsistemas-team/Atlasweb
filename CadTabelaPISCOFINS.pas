@@ -43,6 +43,9 @@ type
     cData_Final: TUniDBDateTimePicker;
     Modalidade: TFDQuery;
     dsModalidade: TDataSource;
+    cEmpresa: TUniDBLookupComboBox;
+    Empresas: TFDQuery;
+    dsEmpresas: TDataSource;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
@@ -75,6 +78,7 @@ begin
            try
                LigaBotoes(false);
                Append;
+//                    fieldbyname('Empresa').Value := UniMainModule.mEmpresaAtiva;
            except
                Showmessage('Não pode adicionar um novo registro!');
            end;
@@ -198,18 +202,31 @@ begin
            sql.add('      ,Modalidade_Desc = (select Descricao from ModalidadeImportacao where Codigo = Modalidade)');
            sql.add('      ,Regime_Apuracao');
            sql.add('      ,Tipo_Desc = case when Tipo = ''B'' then ''Basica'' ');
-           sql.add('      	                when Tipo = ''M'' then ''DI'' ');
-           sql.add('      						      when Tipo = ''T'' then ''Terceiros'' ');
+           sql.add('                        when Tipo = ''M'' then ''DI'' ');
+           sql.add('                        when Tipo = ''T'' then ''Terceiros'' ');
            sql.add('                   end');
            sql.add('      ,Modalidade_Desc = (select Descricao from ModalidadeImportacao where Codigo = Modalidade)');
-           sql.add('      ,Regime_Desc = case when Regime_Apuracao = ''R'' then ''Lucro Real'' ELSE ''Lucro Presumido'' end');
+           sql.add('      ,Regime_Desc = case when Regime_Apuracao = ''R'' then ''Lucro Real'' else ''Lucro Presumido'' end');
+           sql.add('      ,Empresa');
            sql.add('from TabelaPISCOFINS');
+           sql.add('where Empresa = '+quotedstr(UniMainModule.mEmpresaAtiva));
            sql.add('order by Imposto, Tipo, Tipo_Desc');
            open;
       end;
       with Modalidade do begin
            sql.clear;
            sql.add('select Codigo, Descricao from ModalidadeImportacao order by Codigo');
+           open;
+      end;
+      with Empresas do begin
+           sql.Clear;
+           sql.Add('select CNPJ');
+           sql.Add('      ,Estado');
+           sql.add('      ,Unidade = case when isnull(Numero_Filial, 0) = 0 then ''MATRIZ'' else ''FILIAL ''+cast(numero_Filial as char(3)) end');
+           sql.Add('      ,Razao_Social');
+           sql.Add('      ,Regime_Tributario');
+           sql.Add('from Empresas');
+           sql.add('where substring(CNPJ, 1, 8) = '+quotedstr(copy(UniMainModule.mEmpresaAtiva, 1, 8)) );
            open;
       end;
 end;

@@ -279,12 +279,12 @@ object fCadTabelaPISCOFINS: TfCadTabelaPISCOFINS
         DesignSize = (
           1278
           936)
-        ScrollHeight = 377
+        ScrollHeight = 426
         object pFicha: TUniPanel
-          Left = 192
-          Top = 43
-          Width = 441
-          Height = 334
+          Left = 123
+          Top = 32
+          Width = 551
+          Height = 394
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -301,9 +301,9 @@ object fCadTabelaPISCOFINS: TfCadTabelaPISCOFINS
           Color = clTeal
           object cEntrada: TUniDBEdit
             Left = 14
-            Top = 165
-            Width = 100
-            Height = 50
+            Top = 121
+            Width = 230
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Entrada'
@@ -311,15 +311,15 @@ object fCadTabelaPISCOFINS: TfCadTabelaPISCOFINS
             TabOrder = 4
             FieldLabel = 'Entrada'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cRegime_Apuracao: TUniDBRadioGroup
-            Left = 283
-            Top = 126
-            Width = 144
-            Height = 75
+            Left = 14
+            Top = 319
+            Width = 340
+            Height = 55
             Hint = ''
             ShowHint = True
             DataField = 'Regime_Apuracao'
@@ -333,15 +333,16 @@ object fCadTabelaPISCOFINS: TfCadTabelaPISCOFINS
             Items.Strings = (
               'Lucro Real'
               'Lucro Presumido')
+            Columns = 2
             Values.Strings = (
               'R'
               'P')
           end
           object cSaida: TUniDBEdit
             Left = 14
-            Top = 216
-            Width = 100
-            Height = 50
+            Top = 148
+            Width = 230
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Saida'
@@ -349,15 +350,15 @@ object fCadTabelaPISCOFINS: TfCadTabelaPISCOFINS
             TabOrder = 5
             FieldLabel = 'Sa'#237'da'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cMajorada: TUniDBEdit
             Left = 14
-            Top = 114
-            Width = 100
-            Height = 50
+            Top = 94
+            Width = 230
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Majorada'
@@ -365,15 +366,15 @@ object fCadTabelaPISCOFINS: TfCadTabelaPISCOFINS
             TabOrder = 3
             FieldLabel = 'Al'#237'quota na DI'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cImposto: TUniDBComboBox
             Left = 14
             Top = 13
-            Width = 246
-            Height = 50
+            Width = 340
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Imposto'
@@ -385,15 +386,14 @@ object fCadTabelaPISCOFINS: TfCadTabelaPISCOFINS
             TabOrder = 1
             FieldLabel = 'Imposto'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             IconItems = <>
           end
           object cTipo: TUniDBRadioGroup
-            Left = 283
-            Top = 9
-            Width = 144
-            Height = 96
+            Left = 14
+            Top = 258
+            Width = 340
+            Height = 55
             Hint = ''
             ShowHint = True
             DataField = 'Tipo'
@@ -408,6 +408,7 @@ object fCadTabelaPISCOFINS: TfCadTabelaPISCOFINS
               'B'#225'sica'
               'DI (Majorada)'
               'NF Terceiros')
+            Columns = 3
             Values.Strings = (
               'B'
               'M'
@@ -416,9 +417,9 @@ object fCadTabelaPISCOFINS: TfCadTabelaPISCOFINS
           end
           object cData_Inicio: TUniDBDateTimePicker
             Left = 14
-            Top = 266
-            Width = 125
-            Height = 50
+            Top = 175
+            Width = 280
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Data_Inicio'
@@ -427,37 +428,36 @@ object fCadTabelaPISCOFINS: TfCadTabelaPISCOFINS
             DateFormat = 'dd/MM/yyyy'
             TimeFormat = 'HH:mm:ss'
             TabOrder = 6
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
             FieldLabel = 'Data Inicio'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
           object clModalidade: TUniDBLookupComboBox
             Left = 14
-            Top = 63
-            Width = 246
-            Height = 50
+            Top = 67
+            Width = 340
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo; Descricao'
             ListSource = dsModalidade
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Modalidade'
             DataSource = dsPISCOFINS
             TabOrder = 2
             Color = clWindow
             FieldLabel = 'Modalidade Importa'#231#227'o'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
           object cData_Final: TUniDBDateTimePicker
-            Left = 141
-            Top = 266
-            Width = 119
-            Height = 50
+            Left = 14
+            Top = 202
+            Width = 280
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Data_Final'
@@ -466,11 +466,34 @@ object fCadTabelaPISCOFINS: TfCadTabelaPISCOFINS
             DateFormat = 'dd/MM/yyyy'
             TimeFormat = 'HH:mm:ss'
             TabOrder = 7
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
             FieldLabel = 'Data Final'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+          end
+          object cEmpresa: TUniDBLookupComboBox
+            Left = 14
+            Top = 40
+            Width = 480
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListField = 'CNPJ;Unidade;Estado'
+            ListSource = dsEmpresas
+            KeyField = 'CNPJ'
+            ListFieldIndex = 0
+            BorderStyle = ubsInset
+            DataField = 'Empresa'
+            DataSource = dsPISCOFINS
+            AnyMatch = True
+            TabOrder = 10
+            Color = clWindow
+            RemoteQuery = True
+            FieldLabel = 'Empresa'
+            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
+            NormalizeString = True
+            Style = csDropDown
           end
         end
       end
@@ -525,5 +548,22 @@ object fCadTabelaPISCOFINS: TfCadTabelaPISCOFINS
     Padding = 20
     Left = 36
     Top = 83
+  end
+  object Empresas: TFDQuery
+    Connection = UniMainModule.Conecta
+    FetchOptions.AssignedValues = [evMode, evRowsetSize, evLiveWindowParanoic]
+    FetchOptions.RowsetSize = 250
+    FetchOptions.LiveWindowParanoic = False
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select * from Empresas')
+    Left = 38
+    Top = 393
+  end
+  object dsEmpresas: TDataSource
+    DataSet = Empresas
+    Left = 38
+    Top = 441
   end
 end

@@ -280,13 +280,12 @@ type
     procedure bAddTudoClick(Sender: TObject);
   private
     procedure AddItem;
-    procedure PegaCST;
+//    procedure PegaCST;
     procedure LigaBotoes;
     function CalculaCampos(Formula: widestring): real;
 //    procedure CalculaTudo;
     //function CalculaMacro(Campo: String): Real;
     function CalculaMacro(pForm: TComponent; pFormula: String): Real;
-    procedure TotalizaItens;
     
     { Private declarations }
   public
@@ -452,6 +451,7 @@ begin
           sql.clear;
           sql.add('select Pedido');
           sql.add('      ,ES');
+          sql.add('      ,Destinatario');
           sql.add('      ,Destinatario_Estado');
           sql.add('      ,Operacao');
           sql.add('      ,Beneficio_Fiscal');
@@ -728,7 +728,7 @@ begin
           sql.add('      ,IBS_Diferido');
           sql.add('from NCM');
           sql.Add('where NCM = :pNCM');
-          ParamByName('pNCM').value := Produtos.fieldbyname('NCM').AsString;
+          ParamByName('pNCM').value := ProcessosImpItens.fieldbyname('NCM').AsString;
           open;
      end;
      with tNCMICMS do begin
@@ -803,9 +803,27 @@ begin
                   fieldbyname('Valor_Unitario').value    := CalculaMacro(self, tFormulasItens.fieldbyname('Formula').AsString);
                end;
 
-               CalculaTudo(PedidosNF.fieldbyname('Operacao').asinteger, 'Item', gFormula, cLog, PedidosNFItens, nil, self);
-               TotalizaItens;
-               PegaCST;
+               if not CalculaTudo(PedidosNF.fieldbyname('Operacao').asinteger, 'Item', gFormula, cLog, PedidosNFItens, nil, self) then begin
+                  cLog.Lines.Add('************************************************[ ERRO GRAVE ]*******************************************************');
+                  cLog.Lines.Add('Ocorreu uma erro nas fórmulas, verifique as formulas ou entre em contato com o suporte para corrigir!');
+                  cLog.Lines.Add('*********************************************************************************************************************');
+               end;
+
+               // Gerando todas as CST's.
+               fieldbyname('CSTIPI').Value    := PegaCSTIPI(PedidosNF.fieldbyname('Operacao').asinteger, fieldbyname('Codigo_Mercadoria').asinteger);
+               fieldbyname('CSTPIS').Value    := PegaCSTPIS(PedidosNF.fieldbyname('Operacao').asinteger, fieldbyname('Codigo_Mercadoria').asinteger, PedidosNF.fieldbyname('Destinatario').asinteger);
+               fieldbyname('CSTCOFINS').Value := PegaCSTCOFINS(PedidosNF.fieldbyname('Operacao').asinteger, fieldbyname('Codigo_Mercadoria').asinteger, PedidosNF.fieldbyname('Destinatario').asinteger);
+               
+               // Tabela A - Origem.
+               if Produtos.fieldbyname('Origem').asstring = 'I' then fieldbyname('CSTICMS_TabA').value := tNCM.Fieldbyname('CodigoTrib_TabA').Value;
+               if Produtos.fieldbyname('Origem').asstring = 'N' then fieldbyname('CSTICMS_TabA').value := tNCM.Fieldbyname('CodigoTrib_TabA2').Value;
+               if Produtos.fieldbyname('Origem').asstring = 'M' then fieldbyname('CSTICMS_TabA').value := tNCM.Fieldbyname('CodigoTrib_TabA3').Value;
+               // Tabela B - Tributação.
+               fieldbyname('CSTICMS_TabB').Value := PegaCSTICMS(PedidosNFItens, OpFiscal.fieldbyname('Codigo').asinteger, fieldbyname('Codigo_Mercadoria').asinteger, Empresas.fieldbyname('Regime_Tributario').asinteger, PedidosNF.FieldByName('Destinatario').asinteger);
+               
+//               fieldbyname('CSTIPI').Value    := PegaCSTIPI(PedidosNF.fieldbyname('Operacao').asinteger, Produtos.FieldByName('Codigo').asinteger);
+//               fieldbyname('CSTIPI').Value    := PegaCSTIPI(PedidosNF.fieldbyname('Operacao').asinteger, Produtos.FieldByName('Codigo').asinteger);
+
           post;
      end;
 (*
@@ -2493,6 +2511,8 @@ begin
      end;
 end;
 *)
+
+(*
 procedure TfFatPedidoItensDUIMP.PegaCST;
 var
    mCST: string;
@@ -2759,7 +2779,7 @@ begin
           end;
      end;
 end;
-
+*)
 
 procedure TfFatPedidoItensDUIMP.LigaBotoes;
 begin
@@ -2904,35 +2924,6 @@ begin
      end;
 end;
 *)
-procedure TfFatPedidoItensDUIMP.TotalizaItens;
-begin
-{
-     // Totaliza os campos de total dos itens.
-     with PedidosNFItens do begin
-          cValor_Produtos.Value   := FieldByName('Valor_Unitario').AsCurrency * FieldByName('Quantidade').asfloat;
-          cTotalII.Value          := Fieldbyname('Valor_II').AsCurrency * Fieldbyname('Quantidade').asfloat;
-          cTotalIPI.Value         := Fieldbyname('Valor_IPI').AsCurrency * Fieldbyname('Quantidade').asfloat;
-          cTotalOutrasIPI.Value   := Fieldbyname('Valor_OutrasIPI').AsCurrency * Fieldbyname('Quantidade').asfloat;
-          cTotalIsentasIPI.Value  := Fieldbyname('Valor_IsentasIPI').AsCurrency * Fieldbyname('Quantidade').asfloat;
-          cTotalPIS.Value         := Fieldbyname('Valor_PIS').AsCurrency * Fieldbyname('Quantidade').asfloat;
-          cTotalCOFINS.Value      := Fieldbyname('Valor_COFINS').AsCurrency * Fieldbyname('Quantidade').asfloat;
-          cTotalICMSOp.Value      := Fieldbyname('Valor_ICMSOp').AsCurrency * Fieldbyname('Quantidade').asfloat;
-          cTotalICMSMono.Value    := Fieldbyname('Valor_ICMSMono').AsCurrency * Fieldbyname('Quantidade').asfloat;
-          cTotalICMSMonoRet.Value := Fieldbyname('Valor_ICMSMonoRet').AsCurrency * Fieldbyname('Quantidade').asfloat;
-          cTotalICMSST.Value      := Fieldbyname('Valor_ICMSST').AsCurrency * Fieldbyname('Quantidade').asfloat;
-          cTotalICMSSTAnt.Value   := Fieldbyname('Valor_ICMSSTAnt').AsCurrency * Fieldbyname('Quantidade').asfloat;
-          cTotalICMSDif.Value     := Fieldbyname('Valor_ICMSDif').AsCurrency * Fieldbyname('Quantidade').asfloat;
-          cTotalOutrasICMS.Value  := Fieldbyname('Valor_OutrasICMS').AsCurrency * Fieldbyname('Quantidade').asfloat;
-          cTotalIsentasICMS.Value := Fieldbyname('Valor_IsentasICMS').AsCurrency * Fieldbyname('Quantidade').asfloat;
-          cTotalMVA.Value         := Fieldbyname('Valor_MVA').AsCurrency * Fieldbyname('Quantidade').asfloat;
-          cTotalCBS.Value         := Fieldbyname('Valor_CBS').AsCurrency * Fieldbyname('Quantidade').asfloat;
-          cTotalIBS.Value         := Fieldbyname('Valor_IBS').AsCurrency * Fieldbyname('Quantidade').asfloat;
-          cTotalIS.Value          := Fieldbyname('Valor_IS').AsCurrency * Fieldbyname('Quantidade').asfloat;
-          
-          if state = dsEdit then ApuraEstoque;
-     end;
-}     
-end;
 
 
 (*

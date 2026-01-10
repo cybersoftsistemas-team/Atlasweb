@@ -168,8 +168,6 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
           'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
           '= '#39'FichaSemSombra'#39';'#13#10'}')
       Caption = 'UniPanel2'
-      ExplicitTop = 99
-      ExplicitHeight = 580
       object Pasta: TUniPageControl
         Left = 1
         Top = 1
@@ -179,16 +177,10 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
         ActivePage = UniTabSheet2
         Align = alClient
         TabOrder = 1
-        ExplicitLeft = 4
-        ExplicitTop = 33
-        ExplicitWidth = 1325
-        ExplicitHeight = 532
         object UniTabSheet1: TUniTabSheet
           AlignWithMargins = True
           Hint = ''
           Caption = 'Itens do Pedido'
-          ExplicitWidth = 1317
-          ExplicitHeight = 504
           object UniContainerPanel3: TUniContainerPanel
             Left = 307
             Top = 0
@@ -198,9 +190,6 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
             ParentColor = False
             Align = alClient
             TabOrder = 0
-            ExplicitLeft = 295
-            ExplicitWidth = 1022
-            ExplicitHeight = 547
             object UniContainerPanel1: TUniContainerPanel
               Left = 0
               Top = 0
@@ -210,7 +199,6 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
               ParentColor = False
               Align = alTop
               TabOrder = 1
-              ExplicitWidth = 1022
               object gAdicoes: TUniDBGrid
                 Left = 0
                 Top = 0
@@ -301,8 +289,6 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
               ParentColor = False
               Align = alClient
               TabOrder = 2
-              ExplicitWidth = 1022
-              ExplicitHeight = 330
               object gItens: TUniDBGrid
                 Left = 0
                 Top = 0
@@ -547,8 +533,6 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
         object UniTabSheet2: TUniTabSheet
           Hint = ''
           Caption = 'Ocorr'#234'ncias'
-          ExplicitWidth = 1317
-          ExplicitHeight = 504
           object cLog: TUniMemo
             Left = 0
             Top = 335
@@ -560,11 +544,11 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
             Lines.Strings = (
               'cLog')
             ParentFont = False
-            Font.Color = clGray
-            Font.Height = -12
+            Font.Color = clBlack
+            Font.Height = -16
             Font.Name = 'JetBrains Mono'
             Align = alBottom
-            Color = 5453824
+            Color = 14803425
             TabOrder = 0
             ClientEvents.UniEvents.Strings = (
               
@@ -573,8 +557,6 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
             FieldLabel = 'F'#211'RMULAS DOS CALCULOS DO PEDIDO'
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            ExplicitTop = 343
-            ExplicitWidth = 1317
           end
           object gFormula: TUniStringGrid
             AlignWithMargins = True
@@ -620,8 +602,6 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
             ForceFit = True
             Align = alClient
             TabOrder = 1
-            ExplicitWidth = 1311
-            ExplicitHeight = 337
           end
         end
       end
