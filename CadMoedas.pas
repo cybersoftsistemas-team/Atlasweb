@@ -200,7 +200,7 @@ end;
 
 procedure TfCadMoedas.bPesquisaClick(Sender: TObject);
 begin
-     Pesquisa(Moedas, 'Moedas', 'Codigo', 'Nome', cPesquisa.text);
+     Pesquisa(Moedas, 'Codigo', 'Nome', cPesquisa.text);
 end;
 
 procedure TfCadMoedas.MoedasBeforePost(DataSet: TDataSet);

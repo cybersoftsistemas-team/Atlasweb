@@ -287,10 +287,6 @@ object fCadProdutosLinhas: TfCadProdutosLinhas
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cDescricao: TUniDBEdit
             Left = 13
@@ -307,10 +303,6 @@ object fCadProdutosLinhas: TfCadProdutosLinhas
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
         end
       end
@@ -360,6 +352,3 @@ object fCadProdutosLinhas: TfCadProdutosLinhas
     Top = 198
   end
 end
-
-
-

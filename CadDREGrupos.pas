@@ -199,7 +199,7 @@ end;
 
 procedure TfCadDREGrupos.bPesquisaClick(Sender: TObject);
 begin
-     Pesquisa(DREGrupos, 'DREGrupos','Codigo', 'Nome',cPesquisa.text);
+     Pesquisa(DREGrupos, 'Codigo', 'Nome',cPesquisa.text);
 end;
 
 

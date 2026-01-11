@@ -202,7 +202,7 @@ procedure TfCadCores.bPesquisaClick(Sender: TObject);
 begin
      Cores.Cancel;
      LigaBotoes(true);
-     Pesquisa(Cores, 'Cores', 'Codigo', 'Nome',cPesquisa.text)
+     Pesquisa(Cores, 'Codigo', 'Nome',cPesquisa.text)
 end;
 
 procedure TfCadCores.CoresBeforePost(DataSet: TDataSet);

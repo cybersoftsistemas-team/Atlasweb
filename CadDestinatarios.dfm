@@ -133,7 +133,7 @@ object fCadDestinatarios: TfCadDestinatarios
     Height = 966
     Hint = ''
     BodyRTL = False
-    ActivePage = UniTabSheet1
+    ActivePage = aLista
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -171,12 +171,13 @@ object fCadDestinatarios: TfCadDestinatarios
           Width = 520
           Height = 27
           Hint = ''
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Text = ''
           ParentFont = False
           Font.Color = cl3DDkShadow
           Align = alLeft
           TabOrder = 1
+          Color = 15066597
           EmptyText = 'Pesquisar'
           ClearButton = True
           OnKeyDown = cPesquisaKeyDown
@@ -1072,6 +1073,7 @@ object fCadDestinatarios: TfCadDestinatarios
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cCPF: TUniDBEdit
               Left = 17
@@ -1090,6 +1092,7 @@ object fCadDestinatarios: TfCadDestinatarios
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cRG: TUniDBEdit
               Left = 215
@@ -1108,6 +1111,7 @@ object fCadDestinatarios: TfCadDestinatarios
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cInscricao_Estadual: TUniDBEdit
               Left = 215
@@ -1126,6 +1130,7 @@ object fCadDestinatarios: TfCadDestinatarios
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cInscricao_Municipal: TUniDBEdit
               Left = 413
@@ -1144,6 +1149,7 @@ object fCadDestinatarios: TfCadDestinatarios
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cSUFRAMA: TUniDBEdit
               Left = 619
@@ -1162,6 +1168,7 @@ object fCadDestinatarios: TfCadDestinatarios
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cPassaporte: TUniDBEdit
               Left = 413
@@ -1180,6 +1187,7 @@ object fCadDestinatarios: TfCadDestinatarios
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cRegistro_Alfandega: TUniDBEdit
               Left = 619
@@ -1198,6 +1206,7 @@ object fCadDestinatarios: TfCadDestinatarios
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cCNAE: TUniDBEdit
               Left = 619
@@ -1216,6 +1225,7 @@ object fCadDestinatarios: TfCadDestinatarios
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cDesoneracao: TUniDBLookupComboBox
               Left = 17
@@ -1228,6 +1238,7 @@ object fCadDestinatarios: TfCadDestinatarios
               ListSource = dsDesoneracao
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'Desoneracao'
               DataSource = dsDestinatarios
               ParentFont = False
@@ -1251,6 +1262,7 @@ object fCadDestinatarios: TfCadDestinatarios
               ListSource = dsIndicadorIE
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'Indicador_IE'
               DataSource = dsDestinatarios
               ParentFont = False
@@ -1294,6 +1306,7 @@ object fCadDestinatarios: TfCadDestinatarios
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cAbreviatura: TUniDBEdit
               Left = 586
@@ -1312,6 +1325,7 @@ object fCadDestinatarios: TfCadDestinatarios
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBComboBox1: TUniDBComboBox
               Left = 17

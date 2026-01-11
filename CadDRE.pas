@@ -212,7 +212,7 @@ end;
 
 procedure TfCadDRE.bPesquisaClick(Sender: TObject);
 begin
-     Pesquisa(DRE, 'DRE', 'Codigo', 'Nome',cPesquisa.text);
+     Pesquisa(DRE, 'Codigo', 'Nome',cPesquisa.text);
 end;
 
 

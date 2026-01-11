@@ -241,7 +241,7 @@ procedure TfCadTabelaPISCOFINS.bPesquisaClick(Sender: TObject);
 begin
      PISCOFINS.Cancel;
      LigaBotoes(true);
-     Pesquisa(PISCOFINS, 'TabelaPISCOFINS', 'Codigo', 'Imposto',cPesquisa.text)
+     Pesquisa(PISCOFINS, 'Codigo', 'Imposto',cPesquisa.text)
 end;
 
 procedure TfCadTabelaPISCOFINS.cTipoClick(Sender: TObject);

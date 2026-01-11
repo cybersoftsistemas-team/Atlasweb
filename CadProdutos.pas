@@ -616,72 +616,60 @@ procedure TfCadProdutos.bPesquisaClick(Sender: TObject);
 begin
      Produtos.Cancel;
      LigaBotoes(true);
-     Pesquisa(Produtos, 'Produtos', 'Codigo', 'Descricao',cPesquisa.text)
+     Pesquisa(Produtos, 'Codigo', 'Descricao',cPesquisa.text)
 end;
 
 procedure TfCadProdutos.ProdutosAfterScroll(DataSet: TDataSet);
 begin
-     with Produtos do begin
-          Notas.SQL.Clear;
-          Notas.SQL.Add('SELECT DISTINCT');
-          Notas.SQL.Add('       Data_Entrada');
-          Notas.SQL.Add('      ,Nota');
-          Notas.SQL.Add('      ,Valor_Inventario = ROUND(Valor_Inventario, 4)');
-          Notas.SQL.Add('      ,Valor_Entrada    = ROUND(Valor_UnitarioOrig, 4)');
-          Notas.SQL.Add('	     ,Emissao = ''TERCEIROS'' ');
-          Notas.SQL.Add('FROM   NotasTerceirosItens');
-          Notas.SQL.Add('WHERE (Codigo_Mercadoria = :pCodigo)');
-          Notas.SQL.Add('UNION ALL');
-          Notas.SQL.Add('SELECT DISTINCT');
-          Notas.SQL.Add('       Data');
-          Notas.SQL.Add('      ,Nota');
-          Notas.SQL.Add('      ,Valor_Inventario = ROUND(Valor_Inventario, 4)');
-          Notas.SQL.Add('      ,Valor_Entrada    = ROUND(Valor_Unitario, 4)');
-          Notas.SQL.Add('	     ,Emissao = ''PROPRIA'' ');
-          Notas.SQL.Add('FROM   NotasItens');
-          Notas.SQL.Add('WHERE Codigo_Mercadoria = :pCodigo');
-          Notas.SQL.Add('AND   ES = 0');
-          Notas.SQL.Add('AND   Cancelada <> 1');
-          Notas.SQL.Add('AND   Nfe_Denegada <> 1');
-          Notas.SQL.Add('ORDER BY Data_Entrada desc, Nota Desc, Valor_Entrada desc');
-          Notas.ParamByName('pCodigo').AsInteger := fieldbyname('Codigo').AsInteger;
-          //Notas.SQL.SaveToFile('c:\temp\CadProdutos_Notas.sql');
-          Notas.Open;
-
-//          Tributos.SQL.Clear;
-//          Tributos.SQL.add('select Produto');
-//          Tributos.SQL.add('      ,Tributo');
-//          Tributos.SQL.add('	    ,UF');
-//          Tributos.SQL.add(' 	    ,Modalidade');
-//          Tributos.SQL.add('  	  ,Aliquota');
-//          Tributos.SQL.add('	    ,Valor');
-//          Tributos.SQL.add('from  ProdutosTributos');
-//          Tributos.SQL.add('where Produto = :pProd');
-//          Tributos.SQL.add('order by Tributo ');
-//          Tributos.ParamByName('pProd').AsInteger := Produtos.FieldByName('Codigo').AsInteger;
-//          Tributos.Open;
-
-          Seriais.SQL.Clear;
-          Seriais.SQL.add('select *');
-          Seriais.SQL.add('from  ProdutosSeriais');
-          Seriais.SQL.add('where Produto = :pProd');
-          Seriais.SQL.add('order by Tipo, Numero');
-          Seriais.ParamByName('pProd').AsInteger := Produtos.FieldByName('Codigo').AsInteger;
-          Seriais.Open;
-
-          Detalhes.SQL.Clear;
-          Detalhes.SQL.add('select *');
-          Detalhes.SQL.add('from   ProdutosDetalhe');
-          Detalhes.SQL.add('where  Produto = :pProd');
-          Detalhes.SQL.add('order  by Data_Entrada desc, Nota_Entrada desc');
-          Detalhes.ParamByName('pProd').AsInteger := Produtos.FieldByName('Codigo').AsInteger;
-          Detalhes.Open;
-
-          if fileexists(FieldByName('Imagem').AsString) then begin
-             iFoto.Picture.LoadFromFile(FieldByName('Imagem').AsString);
-          end else begin
-             iFoto.Picture := nil;
-          end;
+     with Notas do begin
+          sql.clear;
+          sql.add('select distinct');
+          sql.add('       Data_Entrada');
+          sql.add('      ,Nota');
+          sql.add('      ,Valor_Inventario = ROUND(Valor_Inventario, 4)');
+          sql.add('      ,Valor_Entrada    = ROUND(Valor_UnitarioOrig, 4)');
+          sql.add('      ,Emissao = ''TERCEIROS'' ');
+          sql.add('from NotasTerceirosItens');
+          sql.add('where Codigo_Mercadoria = :pCodigo');
+          sql.add('union all');
+          sql.add('select distinct');
+          sql.add('       Data');
+          sql.add('      ,Nota');
+          sql.add('      ,Valor_Inventario = ROUND(Valor_Inventario, 4)');
+          sql.add('      ,Valor_Entrada    = ROUND(Valor_Unitario, 4)');
+          sql.add('      ,Emissao = ''PROPRIA'' ');
+          sql.add('from NotasItens');
+          sql.add('where Codigo_Mercadoria = :pCodigo');
+          sql.add('and ES = 0');
+          sql.add('and isnull(Cancelada, 0) = 0');
+          sql.add('and isnull(Denegada, 0) = 0');
+          sql.add('order by Data_Entrada desc, Nota Desc, Valor_Entrada desc');
+          parambyname('pCodigo').AsInteger := Produtos.fieldbyname('Codigo').AsInteger;
+          //sql.SaveToFile('c:\temp\CadProdutos_Notas.sql');
+          open;
+     end;
+     with Seriais do begin
+          sql.clear;
+          sql.add('select *');
+          sql.add('from  ProdutosSeriais');
+          sql.add('where Produto = :pProd');
+          sql.add('order by Tipo, Numero');
+          paramByName('pProd').AsInteger := Produtos.FieldByName('Codigo').AsInteger;
+          open;
+     end;
+     with Detalhes do begin 
+          sql.clear;
+          sql.add('select *');
+          sql.add('from  ProdutosDetalhe');
+          sql.add('where Produto = :pProd');
+          sql.add('order by Data_Entrada desc, Nota_Entrada desc');
+          paramByName('pProd').AsInteger := Produtos.FieldByName('Codigo').AsInteger;
+          open;
+     end;
+     if fileexists(Produtos.fieldbyname('Imagem').AsString) then begin
+        iFoto.Picture.LoadFromFile(Produtos.fieldbyname('Imagem').AsString);
+     end else begin
+        iFoto.Picture := nil;
      end;
 end;
 

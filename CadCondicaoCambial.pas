@@ -220,7 +220,7 @@ procedure TfCadCondicaoCambial.bPesquisaClick(Sender: TObject);
 begin
       CondicaoCambial.Cancel;
       LigaBotoes(true);
-      Pesquisa(CondicaoCambial, 'CondicaoCambial', 'Codigo', 'Descricao',cPesquisa.text)
+      Pesquisa(CondicaoCambial, 'Codigo', 'Descricao',cPesquisa.text)
 end;
 
 procedure TfCadCondicaoCambial.CondicaoCambialBeforePost(DataSet: TDataSet);

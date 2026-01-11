@@ -135,6 +135,10 @@ object fCadProdutos: TfCadProdutos
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
@@ -259,6 +263,10 @@ object fCadProdutos: TfCadProdutos
     object tabProduto: TUniTabSheet
       Hint = ''
       Caption = 'Dados do Produto'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -811,6 +819,10 @@ object fCadProdutos: TfCadProdutos
       Hint = ''
       ImageIndex = 4
       Caption = 'Par'#226'metros'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox5: TUniScrollBox
         Left = 0
         Top = 0
@@ -864,6 +876,10 @@ object fCadProdutos: TfCadProdutos
               Enabled = False
               ShowHint = True
               Caption = 'Autom'#243'vel Novo'
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 256
+              ExplicitHeight = 128
               object cPotencia_Motor: TUniDBEdit
                 Left = 221
                 Top = 15
@@ -1085,6 +1101,10 @@ object fCadProdutos: TfCadProdutos
               ShowHint = True
               ImageIndex = 3
               Caption = 'Combust'#237'vel'
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 256
+              ExplicitHeight = 128
               object clCodigo_ANP: TUniDBLookupComboBox
                 Left = 19
                 Top = 20
@@ -1175,6 +1195,10 @@ object fCadProdutos: TfCadProdutos
               ShowHint = True
               ImageIndex = 2
               Caption = 'Medicamento'
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 256
+              ExplicitHeight = 128
               object cPreco_MaxConsumidor: TUniDBEdit
                 Left = 18
                 Top = 20
@@ -1198,12 +1222,20 @@ object fCadProdutos: TfCadProdutos
               ShowHint = True
               ImageIndex = 1
               Caption = 'Armamento'
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 256
+              ExplicitHeight = 128
             end
             object UniTabSheet1: TUniTabSheet
               Hint = ''
               Enabled = False
               ShowHint = True
               Caption = 'Outros'
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 256
+              ExplicitHeight = 128
             end
           end
           object GroupBox10: TUniGroupBox
@@ -1790,6 +1822,10 @@ object fCadProdutos: TfCadProdutos
       Hint = ''
       ImageIndex = 1
       Caption = 'Valores'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox3: TUniScrollBox
         Left = 0
         Top = 0
@@ -2100,6 +2136,10 @@ object fCadProdutos: TfCadProdutos
     object UniTabSheet2: TUniTabSheet
       Hint = ''
       Caption = 'Tributos'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox6: TUniScrollBox
         Left = 0
         Top = 0
@@ -2617,6 +2657,10 @@ object fCadProdutos: TfCadProdutos
       TabVisible = False
       ImageIndex = 9
       Caption = 'Tributos'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox9: TUniScrollBox
         Left = 0
         Top = 0
@@ -2995,6 +3039,10 @@ object fCadProdutos: TfCadProdutos
       Hint = ''
       ImageIndex = 1
       Caption = 'CST'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0
@@ -3665,6 +3713,10 @@ object fCadProdutos: TfCadProdutos
       Hint = ''
       ImageIndex = 7
       Caption = 'Comiss'#227'o / Desconto'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox4: TUniScrollBox
         Left = 0
         Top = 0
@@ -4185,7 +4237,6 @@ object fCadProdutos: TfCadProdutos
     end
   end
   object Produtos: TFDQuery
-    Active = True
     BeforePost = ProdutosBeforePost
     BeforeDelete = ProdutosBeforeDelete
     AfterScroll = ProdutosAfterScroll

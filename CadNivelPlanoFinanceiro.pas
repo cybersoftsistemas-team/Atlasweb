@@ -202,7 +202,7 @@ end;
 
 procedure TfCadNivelClassificacao.bPesquisaClick(Sender: TObject);
 begin
-     Pesquisa(NivelClass, 'NivelClassificacao', 'Codigo', 'Descricao', cPesquisa.text);
+     Pesquisa(NivelClass, 'Codigo', 'Descricao', cPesquisa.text);
 end;
 
 

@@ -354,7 +354,7 @@ end;
 procedure TfCadSeriais.bPesquisaClick(Sender: TObject);
 begin
      Seriais.Cancel;
-     Pesquisa(Seriais, 'ProdutosSeriais', 'Registro', 'Numero', cPesquisa.text)
+     Pesquisa(Seriais, 'Registro', 'Numero', cPesquisa.text)
 end;
 
 procedure TfCadSeriais.bSalvarNFClick(Sender: TObject);

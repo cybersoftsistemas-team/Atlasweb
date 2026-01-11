@@ -224,7 +224,7 @@ procedure TfCadProdutosMateriaPrima.bPesquisaClick(Sender: TObject);
 begin
      MateriaPrima.Cancel;
      LigaBotoes(true);
-     Pesquisa(MateriaPrima, 'MateriaPrima', 'Codigo', 'Descricao',cPesquisa.text)
+     Pesquisa(MateriaPrima, 'Codigo', 'Descricao',cPesquisa.text)
 end;
 
 procedure TfCadProdutosMateriaPrima.ProdutosMateriaPrimaBeforePost(DataSet: TDataSet);

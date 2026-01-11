@@ -274,10 +274,6 @@ object fCadPlanoContasECF: TfCadPlanoContasECF
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cNome: TUniDBEdit
             Left = 14
@@ -294,10 +290,6 @@ object fCadPlanoContasECF: TfCadPlanoContasECF
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
         end
       end
@@ -335,6 +327,3 @@ object fCadPlanoContasECF: TfCadPlanoContasECF
     Top = 19
   end
 end
-
-
-

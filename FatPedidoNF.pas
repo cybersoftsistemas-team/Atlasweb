@@ -844,7 +844,7 @@ procedure TfFatPedidoNF.bPesquisaClick(Sender: TObject);
 begin
      PedidosNF.Cancel;
      LigaBotoes(true);
-     Pesquisa(PedidosNF,'PedidosNF','Pedido', 'Pedido',cPesquisa.text)
+     Pesquisa(PedidosNF, 'Pedido', 'Pedido',cPesquisa.text)
 end;
 
 procedure TfFatPedidoNF.bVeiculoClick(Sender: TObject);

@@ -239,7 +239,7 @@ procedure TfCadDREContabil.bPesquisaClick(Sender: TObject);
 begin
      DREContabilGrupos.Cancel;
      LigaBotoes(true);
-     Pesquisa(DREContabilGrupos, 'DREContabilGrupos', 'Codigo', 'Nome',cPesquisa.text)
+     Pesquisa(DREContabilGrupos, 'Codigo', 'Nome',cPesquisa.text)
 end;
 
 procedure TfCadDREContabil.DREContabilGruposBeforePost(DataSet: TDataSet);

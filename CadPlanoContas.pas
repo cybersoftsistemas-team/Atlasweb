@@ -472,7 +472,7 @@ procedure TfCadPlanoContas.bPesquisaClick(Sender: TObject);
 begin
      PlanoContas.Cancel;
      LigaBotoes(true, false);
-     Pesquisa(PlanoContas, 'PlanoContas', 'Codigo', 'Nome_Contabil', cPesquisa.text);
+     Pesquisa(PlanoContas, 'Codigo', 'Nome_Contabil', cPesquisa.text);
 end;
 
 

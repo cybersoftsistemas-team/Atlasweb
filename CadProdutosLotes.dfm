@@ -310,10 +310,6 @@ object fCadProdutosLotes: TfCadProdutosLotes
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cData_Fabricacao: TUniDBDateTimePicker
             Left = 29
@@ -356,9 +352,6 @@ object fCadProdutosLotes: TfCadProdutosLotes
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cDescricao: TUniDBEdit
             Left = 29
@@ -375,10 +368,6 @@ object fCadProdutosLotes: TfCadProdutosLotes
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cData_Validade: TUniDBDateTimePicker
             Left = 215
@@ -417,10 +406,6 @@ object fCadProdutosLotes: TfCadProdutosLotes
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
         end
       end
@@ -568,6 +553,3 @@ object fCadProdutosLotes: TfCadProdutosLotes
     Top = 75
   end
 end
-
-
-

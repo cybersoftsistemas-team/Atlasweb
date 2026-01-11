@@ -236,7 +236,7 @@ procedure TfCadHistoricoPadrao.bPesquisaClick(Sender: TObject);
 begin
      Historicos.Cancel;
      LigaBotoes(true);
-     Pesquisa(Historicos, 'Historicos', 'Codigo', 'Descricao',cPesquisa.text)
+     Pesquisa(Historicos, 'Codigo', 'Descricao',cPesquisa.text)
 end;
 
 procedure TfCadHistoricoPadrao.HistoricosBeforePost(DataSet: TDataSet);

@@ -25,6 +25,10 @@ object fCadAlugueis: TfCadAlugueis
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -164,6 +168,10 @@ object fCadAlugueis: TfCadAlugueis
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -220,10 +228,6 @@ object fCadAlugueis: TfCadAlugueis
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cDescricao: TUniDBEdit
             Left = 17
@@ -244,10 +248,6 @@ object fCadAlugueis: TfCadAlugueis
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cValor: TUniDBFormattedNumberEdit
             Left = 17
@@ -532,6 +532,3 @@ object fCadAlugueis: TfCadAlugueis
     Top = 75
   end
 end
-
-
-

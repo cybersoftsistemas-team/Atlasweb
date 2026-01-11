@@ -281,7 +281,7 @@ procedure TfFinSolicitacaoNumerario.bPesquisaClick(Sender: TObject);
 begin
      SolicitacaoNumerario.Cancel;
      LigaBotoes(true);
-     Pesquisa(SolicitacaoNumerario,'SolicitacaoNumerario','Numero', 'Processo',cPesquisa.text)
+     Pesquisa(SolicitacaoNumerario, 'Numero', 'Processo',cPesquisa.text)
 end;
 
 procedure TfFinSolicitacaoNumerario.SolicitacaoNumerarioBeforePost(DataSet: TDataSet);

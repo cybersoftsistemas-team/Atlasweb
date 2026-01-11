@@ -200,7 +200,7 @@ end;
 
 procedure TfCadCentroCusto.bPesquisaClick(Sender: TObject);
 begin
-     Pesquisa(CentroCusto, 'CentroCusto', 'Codigo', 'Desricao',cPesquisa.text);
+     Pesquisa(CentroCusto, 'Codigo', 'Desricao',cPesquisa.text);
 end;
 
 

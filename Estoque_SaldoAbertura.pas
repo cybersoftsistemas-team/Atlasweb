@@ -245,7 +245,7 @@ procedure TfEstoque_SaldoAbertura.bPesquisaClick(Sender: TObject);
 begin
      Transf.Cancel;
      LigaBotoes(true);
-     Pesquisa(Transf,'ProdutosTransferencia','Registro', 'Registro',cPesquisa.text)
+     Pesquisa(Transf, 'Registro', 'Registro',cPesquisa.text)
 end;
 
 procedure TfEstoque_SaldoAbertura.TransfBeforePost(DataSet: TDataSet);

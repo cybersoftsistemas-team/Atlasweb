@@ -212,10 +212,6 @@ object fCadRamoAtividade: TfCadRamoAtividade
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cComissionado: TUniDBCheckBox
             Left = 21
@@ -379,6 +375,3 @@ object fCadRamoAtividade: TfCadRamoAtividade
     Top = 75
   end
 end
-
-
-

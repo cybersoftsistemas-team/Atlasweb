@@ -288,10 +288,6 @@ object fCadLancamentoPadrao: TfCadLancamentoPadrao
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object clBanco: TUniDBLookupComboBox
             Left = 13
@@ -304,7 +300,6 @@ object fCadLancamentoPadrao: TfCadLancamentoPadrao
             ListSource = dsBancos
             KeyField = 'Codigo'
             ListFieldIndex = 1
-            BorderStyle = ubsSolid
             DataField = 'Banco'
             DataSource = dsLancamentoPadrao
             AnyMatch = True
@@ -315,9 +310,6 @@ object fCadLancamentoPadrao: TfCadLancamentoPadrao
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cObservacao: TUniDBMemo
             Left = 13
@@ -328,15 +320,11 @@ object fCadLancamentoPadrao: TfCadLancamentoPadrao
             ShowHint = True
             DataField = 'Observacao'
             DataSource = dsLancamentoPadrao
-            BorderStyle = ubsSolid
             TabOrder = 7
             FieldLabel = 'Observa'#231#227'o'
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cValor: TUniDBEdit
             Left = 129
@@ -352,10 +340,6 @@ object fCadLancamentoPadrao: TfCadLancamentoPadrao
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object clClassificacao: TUniDBLookupComboBox
             Left = 13
@@ -368,7 +352,6 @@ object fCadLancamentoPadrao: TfCadLancamentoPadrao
             ListSource = dsPlanoFin
             KeyField = 'Codigo'
             ListFieldIndex = 1
-            BorderStyle = ubsSolid
             DataField = 'Classificacao'
             DataSource = dsLancamentoPadrao
             AnyMatch = True
@@ -379,9 +362,6 @@ object fCadLancamentoPadrao: TfCadLancamentoPadrao
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object clFornecedor: TUniDBLookupComboBox
             Left = 13
@@ -394,7 +374,6 @@ object fCadLancamentoPadrao: TfCadLancamentoPadrao
             ListSource = dsBeneficiario
             KeyField = 'Codigo'
             ListFieldIndex = 0
-            BorderStyle = ubsSolid
             DataField = 'Beneficiario'
             DataSource = dsLancamentoPadrao
             AnyMatch = True
@@ -405,9 +384,6 @@ object fCadLancamentoPadrao: TfCadLancamentoPadrao
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object clDocumento: TUniDBLookupComboBox
             Left = 13
@@ -420,7 +396,6 @@ object fCadLancamentoPadrao: TfCadLancamentoPadrao
             ListSource = dsTipoDoc
             KeyField = 'Codigo'
             ListFieldIndex = 1
-            BorderStyle = ubsSolid
             DataField = 'Documento'
             DataSource = dsLancamentoPadrao
             AnyMatch = True
@@ -431,9 +406,6 @@ object fCadLancamentoPadrao: TfCadLancamentoPadrao
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object clModalidade: TUniDBLookupComboBox
             Left = 13
@@ -446,7 +418,6 @@ object fCadLancamentoPadrao: TfCadLancamentoPadrao
             ListSource = dsFormaPgto
             KeyField = 'Codigo'
             ListFieldIndex = 1
-            BorderStyle = ubsSolid
             DataField = 'Modalidade'
             DataSource = dsLancamentoPadrao
             AnyMatch = True
@@ -457,9 +428,6 @@ object fCadLancamentoPadrao: TfCadLancamentoPadrao
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object clCentro_Custo: TUniDBLookupComboBox
             Left = 13
@@ -472,7 +440,6 @@ object fCadLancamentoPadrao: TfCadLancamentoPadrao
             ListSource = dsCentroCusto
             KeyField = 'Codigo'
             ListFieldIndex = 1
-            BorderStyle = ubsSolid
             DataField = 'Centro_Custo'
             DataSource = dsLancamentoPadrao
             AnyMatch = True
@@ -483,9 +450,6 @@ object fCadLancamentoPadrao: TfCadLancamentoPadrao
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cDescricao: TUniDBEdit
             Left = 13
@@ -501,10 +465,6 @@ object fCadLancamentoPadrao: TfCadLancamentoPadrao
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
         end
       end
@@ -801,6 +761,3 @@ object fCadLancamentoPadrao: TfCadLancamentoPadrao
     Top = 666
   end
 end
-
-
-

@@ -25,6 +25,10 @@ object fCadPaises: TfCadPaises
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -126,6 +130,10 @@ object fCadPaises: TfCadPaises
     object aFicha: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0

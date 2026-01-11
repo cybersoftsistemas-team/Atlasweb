@@ -120,9 +120,6 @@ object fCadCores: TfCadCores
     end
   end
   object Pasta: TUniPageControl
-        ClientEvents.UniEvents.Strings = (
-             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' + 
-             's = '#39'PastaInterna'#39';'#13#10'}')
     Left = 0
     Top = 35
     Width = 1288
@@ -132,6 +129,10 @@ object fCadCores: TfCadCores
     ActivePage = aLista
     Plain = True
     Align = alClient
+    ClientEvents.UniEvents.Strings = (
+      
+        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+        's = '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 0
     object aLista: TUniTabSheet
       Hint = ''
@@ -269,10 +270,6 @@ object fCadCores: TfCadCores
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cCodigo: TUniDBEdit
             Left = 11
@@ -289,10 +286,6 @@ object fCadCores: TfCadCores
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
         end
       end
@@ -321,7 +314,3 @@ object fCadCores: TfCadCores
     Top = 83
   end
 end
-
-
-
-

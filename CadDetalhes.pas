@@ -200,7 +200,7 @@ procedure TfCadDetalhes.bPesquisaClick(Sender: TObject);
 begin
      Detalhes.Cancel;
      LigaBotoes(true);
-     Pesquisa(Detalhes, 'Detalhes', 'Codigo', 'Descricao',cPesquisa.text)
+     Pesquisa(Detalhes, 'Codigo', 'Descricao',cPesquisa.text)
 end;
 
 procedure TfCadDetalhes.DetalhesBeforePost(DataSet: TDataSet);

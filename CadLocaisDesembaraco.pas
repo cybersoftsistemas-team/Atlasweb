@@ -202,7 +202,7 @@ procedure TfCadLocaisDesembaraco.bPesquisaClick(Sender: TObject);
 begin
      Locais.Cancel;
      LigaBotoes(true);
-     Pesquisa(Locais, 'LocalDesembaraco', 'Codigo', 'Descricao',cPesquisa.text)
+     Pesquisa(Locais, 'Codigo', 'Descricao',cPesquisa.text)
 end;
 
 procedure TfCadLocaisDesembaraco.RecursosBeforePost(DataSet: TDataSet);

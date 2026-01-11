@@ -203,7 +203,7 @@ end;
 
 procedure TfCadTiposDocumentos.bPesquisaClick(Sender: TObject);
 begin
-     Pesquisa(TipoDocumento, 'TiposDocumentos', 'Codigo', 'Nome', cPesquisa.text);
+     Pesquisa(TipoDocumento, 'Codigo', 'Nome', cPesquisa.text);
 end;
 
 

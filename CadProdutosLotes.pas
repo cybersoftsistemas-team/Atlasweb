@@ -233,7 +233,7 @@ procedure TfCadProdutosLotes.bPesquisaClick(Sender: TObject);
 begin
      ProdutosLotes.Cancel;
      LigaBotoes(true);
-     Pesquisa(ProdutosLotes, 'ProdutosLotes', 'Codigo', 'Descricao',cPesquisa.text)
+     Pesquisa(ProdutosLotes, 'Codigo', 'Descricao',cPesquisa.text)
 end;
 
 procedure TfCadProdutosLotes.ProdutosLotesBeforePost(DataSet: TDataSet);

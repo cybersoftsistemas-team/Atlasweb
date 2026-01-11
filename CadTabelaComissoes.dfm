@@ -282,8 +282,6 @@ object fCadTabelaComissoes: TfCadTabelaComissoes
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object cComissao: TUniDBEdit
             Left = 17
@@ -299,8 +297,6 @@ object fCadTabelaComissoes: TfCadTabelaComissoes
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object cDescricao: TUniDBEdit
             Left = 17
@@ -316,8 +312,6 @@ object fCadTabelaComissoes: TfCadTabelaComissoes
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object cCodigo: TUniDBEdit
             Left = 17
@@ -334,8 +328,6 @@ object fCadTabelaComissoes: TfCadTabelaComissoes
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
         end
       end
@@ -377,4 +369,3 @@ object fCadTabelaComissoes: TfCadTabelaComissoes
     Top = 4
   end
 end
-

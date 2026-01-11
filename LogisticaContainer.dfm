@@ -139,6 +139,10 @@ object fLogisticaContainer: TfLogisticaContainer
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
@@ -257,6 +261,10 @@ object fLogisticaContainer: TfLogisticaContainer
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -306,7 +314,6 @@ object fLogisticaContainer: TfLogisticaContainer
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
           end
           object cHora_Entrada: TUniDBEdit
             Left = 126
@@ -323,7 +330,6 @@ object fLogisticaContainer: TfLogisticaContainer
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
           end
           object cHora_Saida: TUniDBEdit
             Left = 126
@@ -340,7 +346,6 @@ object fLogisticaContainer: TfLogisticaContainer
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
           end
           object cFree_Time: TUniDBEdit
             Left = 14
@@ -356,7 +361,6 @@ object fLogisticaContainer: TfLogisticaContainer
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
           end
           object cTipo: TUniDBEdit
             Left = 180
@@ -372,7 +376,6 @@ object fLogisticaContainer: TfLogisticaContainer
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
           end
           object cTamanho: TUniDBEdit
             Left = 487
@@ -388,7 +391,6 @@ object fLogisticaContainer: TfLogisticaContainer
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
           end
           object cArmador: TUniDBEdit
             Left = 180
@@ -404,7 +406,6 @@ object fLogisticaContainer: TfLogisticaContainer
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
           end
           object clArmazem: TUniDBLookupComboBox
             Left = 199
@@ -428,7 +429,6 @@ object fLogisticaContainer: TfLogisticaContainer
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
-            BorderStyle = ubsDefault
           end
           object cDocumento_Carga: TUniDBEdit
             Left = 280
@@ -444,7 +444,6 @@ object fLogisticaContainer: TfLogisticaContainer
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
           end
           object cTerminal: TUniDBEdit
             Left = 14
@@ -460,7 +459,6 @@ object fLogisticaContainer: TfLogisticaContainer
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
           end
           object cHora_Entrega: TUniDBEdit
             Left = 126
@@ -477,7 +475,6 @@ object fLogisticaContainer: TfLogisticaContainer
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
           end
           object clTransportadora_Entrada: TUniDBLookupComboBox
             Left = 199
@@ -500,7 +497,6 @@ object fLogisticaContainer: TfLogisticaContainer
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
-            BorderStyle = ubsDefault
           end
           object clTransportadora_Saida: TUniDBLookupComboBox
             Left = 199
@@ -523,7 +519,6 @@ object fLogisticaContainer: TfLogisticaContainer
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
-            BorderStyle = ubsDefault
           end
           object cTipo_Embarque: TUniDBComboBox
             Left = 14
@@ -616,7 +611,6 @@ object fLogisticaContainer: TfLogisticaContainer
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
           end
           object cValor_Demurrage: TUniDBEdit
             Left = 14
@@ -632,7 +626,6 @@ object fLogisticaContainer: TfLogisticaContainer
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
           end
           object cObservacao: TUniDBMemo
             Left = 14
@@ -648,7 +641,6 @@ object fLogisticaContainer: TfLogisticaContainer
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
           end
           object cData_Entrada: TUniDBDateTimePicker
             Left = 14
@@ -792,4 +784,3 @@ object fLogisticaContainer: TfLogisticaContainer
     Top = 4
   end
 end
-

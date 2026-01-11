@@ -38,9 +38,7 @@ type
     clModalidade_BCICMSST: TUniDBLookupComboBox;
     cProduto: TUniDBEdit;
     cNCM: TUniDBEdit;
-    cCusto_Seletivo: TUniDBCheckBox;
     cCEST: TUniDBEdit;
-    cFCP: TUniDBCheckBox;
     cNALADI: TUniDBEdit;
     cDestaque: TUniDBEdit;
     GroupBox2: TUniGroupBox;
@@ -104,6 +102,9 @@ type
     UniDBLookupComboBox3: TUniDBLookupComboBox;
     CSTICMS: TFDQuery;
     dsCSTICMS: TDataSource;
+    UniGroupBox1: TUniGroupBox;
+    cFCP: TUniDBCheckBox;
+    cCusto_Seletivo: TUniDBCheckBox;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
@@ -371,8 +372,8 @@ end;
 procedure TfCadNCM.bPesquisaClick(Sender: TObject);
 begin
      NCM.Cancel;
-     LigaBotoes(true);
-     Pesquisa(NCM, 'NCM', '', 'Produto',cPesquisa.text)
+     //LigaBotoes(true);
+     Pesquisa(NCM, 'NCM', 'NCM', cPesquisa.text)
 end;
 
 procedure TfCadNCM.bSalvaICMSClick(Sender: TObject);

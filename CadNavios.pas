@@ -187,7 +187,7 @@ end;
 
 procedure TfCadNavios.bPesquisaClick(Sender: TObject);
 begin
-     Pesquisa(Navios, 'Navios', 'Codigo', 'Desricao',cPesquisa.text);
+     Pesquisa(Navios, 'Codigo', 'Desricao',cPesquisa.text);
 end;
 
 

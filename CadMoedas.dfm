@@ -119,9 +119,6 @@ object fCadMoedas: TfCadMoedas
     end
   end
   object Pasta: TUniPageControl
-        ClientEvents.UniEvents.Strings = (
-             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' + 
-             's = '#39'PastaInterna'#39';'#13#10'}')
     Left = 0
     Top = 35
     Width = 1288
@@ -131,6 +128,10 @@ object fCadMoedas: TfCadMoedas
     ActivePage = aLista
     Plain = True
     Align = alClient
+    ClientEvents.UniEvents.Strings = (
+      
+        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+        's = '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 0
     object aLista: TUniTabSheet
       Hint = ''
@@ -282,10 +283,6 @@ object fCadMoedas: TfCadMoedas
           FieldLabelAlign = laTop
           FieldLabelSeparator = ' '
           SelectOnFocus = True
-          BorderStyle = ubsSolid
-          BorderStyle = ubsDefault
-          BorderStyle = ubsDefault
-          BorderStyle = ubsDefault
         end
         object cTipo: TUniDBEdit
           Left = 30
@@ -302,10 +299,6 @@ object fCadMoedas: TfCadMoedas
           FieldLabelAlign = laTop
           FieldLabelSeparator = ' '
           SelectOnFocus = True
-          BorderStyle = ubsSolid
-          BorderStyle = ubsDefault
-          BorderStyle = ubsDefault
-          BorderStyle = ubsDefault
         end
         object cSimbolo: TUniDBEdit
           Left = 30
@@ -322,10 +315,6 @@ object fCadMoedas: TfCadMoedas
           FieldLabelAlign = laTop
           FieldLabelSeparator = ' '
           SelectOnFocus = True
-          BorderStyle = ubsSolid
-          BorderStyle = ubsDefault
-          BorderStyle = ubsDefault
-          BorderStyle = ubsDefault
         end
         object cNome: TUniDBEdit
           Left = 30
@@ -342,10 +331,6 @@ object fCadMoedas: TfCadMoedas
           FieldLabelAlign = laTop
           FieldLabelSeparator = ' '
           SelectOnFocus = True
-          BorderStyle = ubsSolid
-          BorderStyle = ubsDefault
-          BorderStyle = ubsDefault
-          BorderStyle = ubsDefault
         end
         object cCodigo: TUniDBEdit
           Left = 30
@@ -362,10 +347,6 @@ object fCadMoedas: TfCadMoedas
           FieldLabelAlign = laTop
           FieldLabelSeparator = ' '
           SelectOnFocus = True
-          BorderStyle = ubsSolid
-          BorderStyle = ubsDefault
-          BorderStyle = ubsDefault
-          BorderStyle = ubsDefault
         end
       end
     end
@@ -395,7 +376,3 @@ object fCadMoedas: TfCadMoedas
     Left = 424
   end
 end
-
-
-
-

@@ -139,6 +139,10 @@ object fCadProdutosDetalhes: TfCadProdutosDetalhes
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
@@ -255,6 +259,10 @@ object fCadProdutosDetalhes: TfCadProdutosDetalhes
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -312,9 +320,6 @@ object fCadProdutosDetalhes: TfCadProdutosDetalhes
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cNota: TUniDBLookupComboBox
             Left = 29
@@ -335,9 +340,6 @@ object fCadProdutosDetalhes: TfCadProdutosDetalhes
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             OnChange = cNotaChange
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cQuantidade_Entrada: TUniDBEdit
             Left = 29
@@ -354,10 +356,6 @@ object fCadProdutosDetalhes: TfCadProdutosDetalhes
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cData_Entrada: TUniDBDateTimePicker
             Left = 357
@@ -400,9 +398,6 @@ object fCadProdutosDetalhes: TfCadProdutosDetalhes
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cProcesso: TUniDBEdit
             Left = 29
@@ -419,10 +414,6 @@ object fCadProdutosDetalhes: TfCadProdutosDetalhes
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
         end
       end
@@ -603,6 +594,3 @@ object fCadProdutosDetalhes: TfCadProdutosDetalhes
     Top = 3
   end
 end
-
-
-

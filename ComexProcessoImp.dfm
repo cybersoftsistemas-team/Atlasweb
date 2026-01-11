@@ -145,6 +145,10 @@ object fComexProcessoImp: TfComexProcessoImp
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
@@ -270,6 +274,10 @@ object fComexProcessoImp: TfComexProcessoImp
     object TabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Dados do Processo'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0
@@ -1905,6 +1913,10 @@ object fComexProcessoImp: TfComexProcessoImp
       Hint = ''
       ImageIndex = 2
       Caption = 'Outras Informa'#231#245'es'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox3: TUniScrollBox
         Left = 0
         Top = 0
@@ -2603,6 +2615,10 @@ object fComexProcessoImp: TfComexProcessoImp
       Hint = ''
       ImageIndex = 7
       Caption = 'Inf Compl'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox4: TUniScrollBox
         Left = 0
         Top = 0
@@ -2671,6 +2687,10 @@ object fComexProcessoImp: TfComexProcessoImp
       Hint = ''
       ImageIndex = 7
       Caption = ' Financeiro'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox5: TUniScrollBox
         Left = 0
         Top = 0
@@ -3019,6 +3039,10 @@ object fComexProcessoImp: TfComexProcessoImp
       Hint = ''
       ImageIndex = 8
       Caption = 'Seriais'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox6: TUniScrollBox
         Left = 0
         Top = 0
@@ -3125,6 +3149,10 @@ object fComexProcessoImp: TfComexProcessoImp
       Hint = ''
       ImageIndex = 6
       Caption = 'Containers'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox7: TUniScrollBox
         Left = 0
         Top = 0
@@ -3263,6 +3291,10 @@ object fComexProcessoImp: TfComexProcessoImp
       Hint = ''
       ImageIndex = 3
       Caption = 'Hist'#243'rico'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox10: TUniScrollBox
         Left = 0
         Top = 0
@@ -3369,6 +3401,10 @@ object fComexProcessoImp: TfComexProcessoImp
     object TabSheet10: TUniTabSheet
       Hint = ''
       Caption = 'Documentos'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox9: TUniScrollBox
         Left = 0
         Top = 0

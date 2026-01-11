@@ -156,7 +156,7 @@ end;
 
 procedure TfCadUsuarios.bPesquisaClick(Sender: TObject);
 begin
-     Pesquisa(Usuarios, 'Usuarios', 'Matricula', 'Nome', cPesquisa.text);
+     Pesquisa(Usuarios, 'Matricula', 'Nome', cPesquisa.text);
 end;
 
 procedure TfCadUsuarios.bExpandClick(Sender: TObject);

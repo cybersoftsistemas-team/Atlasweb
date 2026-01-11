@@ -124,9 +124,6 @@ object fCadDREContabil: TfCadDREContabil
     end
   end
   object Pasta: TUniPageControl
-        ClientEvents.UniEvents.Strings = (
-             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' + 
-             's = '#39'PastaInterna'#39';'#13#10'}')
     Left = 0
     Top = 35
     Width = 1288
@@ -136,6 +133,10 @@ object fCadDREContabil: TfCadDREContabil
     ActivePage = UniTabSheet1
     Plain = True
     Align = alClient
+    ClientEvents.UniEvents.Strings = (
+      
+        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+        's = '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 0
     ExplicitLeft = 16
     ExplicitWidth = 991
@@ -277,11 +278,7 @@ object fCadDREContabil: TfCadDREContabil
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
             OnChange = cCodigoChange
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object RxDBLookupCombo1: TUniDBLookupComboBox
             Left = 17
@@ -293,7 +290,6 @@ object fCadDREContabil: TfCadDREContabil
             ListField = 'Conta; Codigo; Descricao'
             KeyField = 'Codigo'
             ListFieldIndex = 2
-            BorderStyle = ubsSolid
             DataField = 'Codigo_Conta'
             DataSource = dsDREContabilGrupos
             TabOrder = 2
@@ -302,9 +298,6 @@ object fCadDREContabil: TfCadDREContabil
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cCalculo: TUniDBRadioGroup
             Left = 460
@@ -343,10 +336,6 @@ object fCadDREContabil: TfCadDREContabil
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object Grade: TUniDBGrid
             Left = 17
@@ -849,7 +838,6 @@ object fCadDREContabil: TfCadDREContabil
             ListSource = dsTotalizadores
             KeyField = 'Nome'
             ListFieldIndex = 2
-            BorderStyle = ubsSolid
             DataField = 'Nome'
             DataSource = dsDREContabilGrupos
             TabOrder = 13
@@ -858,9 +846,6 @@ object fCadDREContabil: TfCadDREContabil
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
         end
       end
@@ -937,7 +922,3 @@ object fCadDREContabil: TfCadDREContabil
     Top = 390
   end
 end
-
-
-
-

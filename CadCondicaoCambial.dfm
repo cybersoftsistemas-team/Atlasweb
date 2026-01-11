@@ -310,10 +310,6 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
-              BorderStyle = ubsSolid
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object cCodigo: TUniDBEdit
               Left = 27
@@ -331,10 +327,6 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
-              BorderStyle = ubsSolid
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object cPercentual1: TUniDBEdit
               Left = 27
@@ -351,11 +343,7 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
-              BorderStyle = ubsSolid
               OnChange = cPercentual1Change
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object cPercentual2: TUniDBEdit
               Left = 27
@@ -372,11 +360,7 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
-              BorderStyle = ubsSolid
               OnChange = cPercentual1Change
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object cPercentual3: TUniDBEdit
               Left = 27
@@ -393,11 +377,7 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
-              BorderStyle = ubsSolid
               OnChange = cPercentual1Change
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object cVencimento1: TUniDBEdit
               Left = 112
@@ -414,12 +394,8 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
-              BorderStyle = ubsSolid
               OnChange = cVencimento1Change
               OnExit = cVencimento1Change
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object cVencimento2: TUniDBEdit
               Left = 112
@@ -436,11 +412,7 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
-              BorderStyle = ubsSolid
               OnChange = cVencimento1Change
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object cVencimento3: TUniDBEdit
               Left = 112
@@ -457,11 +429,7 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
-              BorderStyle = ubsSolid
               OnChange = cVencimento1Change
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object cVencimento4: TUniDBEdit
               Left = 112
@@ -478,11 +446,7 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
-              BorderStyle = ubsSolid
               OnChange = cVencimento1Change
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object RxDBLookupCombo1: TUniDBLookupComboBox
               Left = 197
@@ -496,7 +460,6 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 0
-              BorderStyle = ubsSolid
               ClearButton = True
               DataField = 'Classificacao1'
               DataSource = dsCondicaoCambial
@@ -508,9 +471,6 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               Style = csSimple
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object RxDBLookupCombo2: TUniDBLookupComboBox
               Left = 197
@@ -524,7 +484,6 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 0
-              BorderStyle = ubsSolid
               ClearButton = True
               DataField = 'Classificacao2'
               DataSource = dsCondicaoCambial
@@ -536,9 +495,6 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               Style = csSimple
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object RxDBLookupCombo3: TUniDBLookupComboBox
               Left = 197
@@ -552,7 +508,6 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 0
-              BorderStyle = ubsSolid
               ClearButton = True
               DataField = 'Classificacao4'
               DataSource = dsCondicaoCambial
@@ -564,9 +519,6 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               Style = csSimple
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object RxDBLookupCombo4: TUniDBLookupComboBox
               Left = 197
@@ -580,7 +532,6 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 0
-              BorderStyle = ubsSolid
               ClearButton = True
               DataField = 'Classificacao3'
               DataSource = dsCondicaoCambial
@@ -592,9 +543,6 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               Style = csSimple
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object cTermos_Comerciais: TUniDBMemo
               Left = 27
@@ -605,15 +553,11 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               ShowHint = True
               DataField = 'Termos_Comerciais'
               DataSource = dsCondicaoCambial
-              BorderStyle = ubsSolid
               TabOrder = 14
               FieldLabel = 'Termos Cormerciais'
               FieldLabelWidth = 120
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object cObservacao: TUniDBMemo
               Left = 27
@@ -624,15 +568,11 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               ShowHint = True
               DataField = 'Observacao'
               DataSource = dsCondicaoCambial
-              BorderStyle = ubsSolid
               TabOrder = 15
               FieldLabel = 'Observa'#231#227'o'
               FieldLabelWidth = 120
               FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object cTotalPercentual: TUniFormattedNumberEdit
               Left = 27
@@ -716,6 +656,3 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
     Top = 19
   end
 end
-
-
-

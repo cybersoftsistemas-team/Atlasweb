@@ -308,7 +308,7 @@ procedure TfCadLancamentoPadrao.bPesquisaClick(Sender: TObject);
 begin
      LancamentoPadrao.Cancel;
      LigaBotoes(true);
-     Pesquisa(LancamentoPadrao,'LancamentoPadrao','Registro', 'Descricao',cPesquisa.text)
+     Pesquisa(LancamentoPadrao, 'Registro', 'Descricao',cPesquisa.text)
 end;
 
 procedure TfCadLancamentoPadrao.LancamentoPadraoBeforePost(DataSet: TDataSet);

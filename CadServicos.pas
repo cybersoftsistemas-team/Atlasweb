@@ -261,7 +261,7 @@ end;
 
 procedure TfCadServicos.bPesquisaClick(Sender: TObject);
 begin
-     Pesquisa(Servicos, 'Servicos', 'Codigo', 'Descricao', cPesquisa.text);
+     Pesquisa(Servicos, 'Codigo', 'Descricao', cPesquisa.text);
 end;
 
 

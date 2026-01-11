@@ -218,7 +218,7 @@ procedure TfCadCFOP.bPesquisaClick(Sender: TObject);
 begin
      CFOP.Cancel;
      LigaBotoes(true);
-     Pesquisa(CFOP, 'CFOP', 'Codigo', 'Descricao',cPesquisa.text)
+     Pesquisa(CFOP, 'Codigo', 'Descricao',cPesquisa.text)
 end;
 
 procedure TfCadCFOP.CFOPBeforePost(DataSet: TDataSet);

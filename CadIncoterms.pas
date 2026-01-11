@@ -200,7 +200,7 @@ end;
 
 procedure TfCadIncoterms.bPesquisaClick(Sender: TObject);
 begin
-     Pesquisa(Incoterms, 'Incoterms', 'Codigo', 'Descricao',cPesquisa.text)
+     Pesquisa(Incoterms, 'Codigo', 'Descricao',cPesquisa.text)
 end;
 
 procedure TfCadIncoterms.IncotermsBeforePost(DataSet: TDataSet);

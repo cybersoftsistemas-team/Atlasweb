@@ -199,7 +199,7 @@ end;
 
 procedure TfCadRamoAtividade.bPesquisaClick(Sender: TObject);
 begin
-     Pesquisa(RamoAtividade, 'RamoAtividade', 'Codigo', 'Descricao', cPesquisa.text);
+     Pesquisa(RamoAtividade, 'Codigo', 'Descricao', cPesquisa.text);
 end;
 
 

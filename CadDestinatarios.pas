@@ -774,7 +774,8 @@ end;
 procedure TfCadDestinatarios.bPesquisaClick(Sender: TObject);
 begin
      Destinatarios.Cancel;
-     PesquisaFiltro(Destinatarios, 'Destinatarios', 'Nome',cPesquisa.text);
+     Filtra(Destinatarios, 'Nome',cPesquisa.text);
+//     Pesquisa(Destinatarios, '', 'Codigo', 'Nome', cPesquisa.text);
 end;
 
 function TfCadDestinatarios.Obriga(NomeCampo:TObject; NomeField:string):boolean;

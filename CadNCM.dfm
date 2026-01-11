@@ -162,11 +162,14 @@ object fCadNCM: TfCadNCM
           Width = 520
           Height = 27
           Hint = ''
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Text = ''
+          ParentFont = False
           Align = alLeft
           TabOrder = 1
+          Color = 15066597
           EmptyText = 'Pesquisar'
+          ClearButton = True
           OnKeyDown = cPesquisaKeyDown
         end
         object bPesquisa: TUniSpeedButton
@@ -196,6 +199,7 @@ object fCadNCM: TfCadNCM
         WebOptions.PageSize = 50
         LoadMask.Message = 'Loading data...'
         ForceFit = True
+        BorderStyle = ubsNone
         Align = alClient
         TabOrder = 1
         Columns = <
@@ -251,12 +255,12 @@ object fCadNCM: TfCadNCM
         DesignSize = (
           1090
           978)
-        ScrollHeight = 721
+        ScrollHeight = 582
         object pFicha: TUniPanel
-          Left = 176
+          Left = 109
           Top = 32
-          Width = 794
-          Height = 689
+          Width = 947
+          Height = 550
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -272,153 +276,154 @@ object fCadNCM: TfCadNCM
           Caption = ''
           Color = clTeal
           object clModalidade_BCICMS: TUniDBLookupComboBox
-            Left = 17
-            Top = 214
-            Width = 760
-            Height = 50
+            Left = 10
+            Top = 200
+            Width = 925
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dsModalBCICMS
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Modalidade_BCICMS'
             DataSource = dsNCM
             AnyMatch = True
-            TabOrder = 10
+            TabOrder = 8
             Color = clWindow
-            FieldLabel = 'Modalidade Determinante BC ICMS'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabel = 'Modalidade Determ. BC ICMS'
+            FieldLabelWidth = 180
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
           object clCodigo_EXTIPI: TUniDBLookupComboBox
-            Left = 17
-            Top = 165
-            Width = 760
-            Height = 50
+            Left = 10
+            Top = 173
+            Width = 925
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dsEXTIPI
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Codigo_EXTIPI'
             DataSource = dsNCM
             AnyMatch = True
-            TabOrder = 9
+            TabOrder = 7
             Color = clWindow
             FieldLabel = 'C'#243'digo EX da TIPI'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 180
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
           object cEnquadramento_IPI: TUniDBLookupComboBox
-            Left = 17
-            Top = 312
-            Width = 760
-            Height = 50
+            Left = 10
+            Top = 254
+            Width = 925
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dsClasseIPI
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Enquadramento_IPI'
             DataSource = dsNCM
             AnyMatch = True
-            TabOrder = 12
+            TabOrder = 10
             Color = clWindow
+            MatchFieldWidth = False
             FieldLabel = 'Classe Enquadramento Legal do IPI'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 180
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
           object cSelo_IPI: TUniDBEdit
-            Left = 17
-            Top = 362
-            Width = 163
-            Height = 50
+            Left = 10
+            Top = 281
+            Width = 925
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Selo_IPI'
             DataSource = dsNCM
-            TabOrder = 13
+            TabOrder = 11
             FieldLabel = 'Selo de Controle do IPI'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 180
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cGenero: TUniDBLookupComboBox
-            Left = 17
-            Top = 116
-            Width = 760
-            Height = 50
+            Left = 10
+            Top = 146
+            Width = 925
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dsGenero
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Genero'
             DataSource = dsNCM
             AnyMatch = True
-            TabOrder = 8
+            TabOrder = 6
             Color = clWindow
             MatchFieldWidth = False
             FieldLabel = 'G'#234'nero do item'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 180
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
           object clModalidade_BCICMSST: TUniDBLookupComboBox
-            Left = 17
-            Top = 263
-            Width = 760
-            Height = 50
+            Left = 10
+            Top = 227
+            Width = 925
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dsModalBCICMSST
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Modalidade_BCICMSST'
             DataSource = dsNCM
             AnyMatch = True
-            TabOrder = 11
+            TabOrder = 9
             Color = clWindow
-            FieldLabel = 'Modalidade Determinante BC ICMS Sub.'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabel = 'Modalidade Determ.BC ICMS ST'
+            FieldLabelWidth = 180
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
           object cProduto: TUniDBEdit
-            Left = 17
-            Top = 67
-            Width = 760
-            Height = 50
+            Left = 10
+            Top = 119
+            Width = 925
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Produto'
             DataSource = dsNCM
-            TabOrder = 7
+            TabOrder = 5
             FieldLabel = 'Descri'#231#227'o'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 180
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cNCM: TUniDBEdit
-            Left = 17
-            Top = 17
-            Width = 112
-            Height = 50
+            Left = 10
+            Top = 11
+            Width = 400
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'NCM'
@@ -430,35 +435,16 @@ object fCadNCM: TfCadNCM
             InputMask.UnmaskText = True
             InputMask.RemoveWhiteSpace = True
             FieldLabel = 'C'#243'digo (NCM)'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 180
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-          end
-          object cCusto_Seletivo: TUniDBCheckBox
-            Left = 640
-            Top = 45
-            Width = 110
-            Height = 17
-            Hint = ''
-            ShowHint = True
-            DataField = 'Custo_Seletivo'
-            DataSource = dsNCM
-            ValueChecked = 'True'
-            ValueUnchecked = 'False'
-            Caption = 'Custo Seletivo'
-            TabOrder = 6
-            ParentColor = False
-            Color = clBtnFace
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cCEST: TUniDBEdit
-            Left = 371
-            Top = 17
-            Width = 112
-            Height = 50
+            Left = 10
+            Top = 92
+            Width = 400
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'CEST'
@@ -466,35 +452,16 @@ object fCadNCM: TfCadNCM
             MaxLength = 9
             TabOrder = 4
             FieldLabel = 'C'#243'digo CEST'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 180
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-          end
-          object cFCP: TUniDBCheckBox
-            Left = 512
-            Top = 45
-            Width = 110
-            Height = 17
-            Hint = ''
-            ShowHint = True
-            DataField = 'FCP'
-            DataSource = dsNCM
-            ValueChecked = 'True'
-            ValueUnchecked = 'False'
-            Caption = 'Incidencia de FCP'
-            TabOrder = 5
-            ParentColor = False
-            Color = clBtnFace
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cNALADI: TUniDBEdit
-            Left = 135
-            Top = 17
-            Width = 112
-            Height = 50
+            Left = 10
+            Top = 38
+            Width = 400
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'NALADI'
@@ -502,16 +469,16 @@ object fCadNCM: TfCadNCM
             MaxLength = 10
             TabOrder = 2
             FieldLabel = 'NALADI/SH'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 180
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cDestaque: TUniDBEdit
-            Left = 253
-            Top = 17
-            Width = 112
-            Height = 50
+            Left = 10
+            Top = 65
+            Width = 400
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Destaque'
@@ -519,20 +486,20 @@ object fCadNCM: TfCadNCM
             MaxLength = 10
             TabOrder = 3
             FieldLabel = 'Destaque'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 180
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object GroupBox2: TUniGroupBox
-            Left = 17
-            Top = 572
-            Width = 368
-            Height = 103
+            Left = 10
+            Top = 396
+            Width = 281
+            Height = 125
             Hint = ''
             ShowHint = True
             Caption = 'DNF'
-            TabOrder = 14
+            TabOrder = 12
             ClientEvents.UniEvents.Strings = (
               
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
@@ -540,8 +507,8 @@ object fCadNCM: TfCadNCM
             object cCodigo_DNF: TUniDBEdit
               Left = 12
               Top = 15
-              Width = 110
-              Height = 50
+              Width = 250
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Codigo_DNF'
@@ -549,15 +516,15 @@ object fCadNCM: TfCadNCM
               TabOrder = 1
               FieldLabel = 'C'#243'digo do Produto'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cFatorConv_DNF: TUniDBEdit
-              Left = 129
-              Top = 15
-              Width = 110
-              Height = 50
+              Left = 12
+              Top = 42
+              Width = 250
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'FatorConv_DNF'
@@ -565,15 +532,15 @@ object fCadNCM: TfCadNCM
               TabOrder = 3
               FieldLabel = 'Fator Convers'#227'o'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cCapacidadeVol_DNF: TUniDBEdit
-              Left = 245
-              Top = 15
-              Width = 110
-              Height = 50
+              Left = 12
+              Top = 69
+              Width = 250
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'CapacidadeVol_DNF'
@@ -581,28 +548,28 @@ object fCadNCM: TfCadNCM
               TabOrder = 2
               FieldLabel = 'Capacidade Volum.'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
           end
           object GroupBox3: TUniGroupBox
-            Left = 397
-            Top = 572
-            Width = 184
-            Height = 103
+            Left = 515
+            Top = 396
+            Width = 195
+            Height = 125
             Hint = ''
             ShowHint = True
             Caption = 'Par'#226'metros Fiscais / CST IPI'
-            TabOrder = 15
+            TabOrder = 13
             ClientEvents.UniEvents.Strings = (
               
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
                 '= '#39'Grupo'#39';'#13#10'}')
             object cIPI_Isento: TUniDBCheckBox
-              Left = 13
-              Top = 21
-              Width = 155
+              Left = 10
+              Top = 19
+              Width = 149
               Height = 17
               Hint = ''
               ShowHint = True
@@ -619,9 +586,9 @@ object fCadNCM: TfCadNCM
               FieldLabelSeparator = ' '
             end
             object cIPI_Suspensao: TUniDBCheckBox
-              Left = 13
-              Top = 39
-              Width = 155
+              Left = 10
+              Top = 40
+              Width = 149
               Height = 17
               Hint = ''
               ShowHint = True
@@ -638,9 +605,9 @@ object fCadNCM: TfCadNCM
               FieldLabelSeparator = ' '
             end
             object cIPI_TribAliquotaZero: TUniDBCheckBox
-              Left = 13
-              Top = 57
-              Width = 155
+              Left = 10
+              Top = 61
+              Width = 149
               Height = 17
               Hint = ''
               ShowHint = True
@@ -658,21 +625,21 @@ object fCadNCM: TfCadNCM
             end
           end
           object GroupBox1: TUniGroupBox
-            Left = 596
-            Top = 572
-            Width = 181
-            Height = 103
+            Left = 732
+            Top = 396
+            Width = 193
+            Height = 125
             Hint = ''
             ShowHint = True
             Caption = 'Par'#226'metros Fiscais / CST ICMS'
-            TabOrder = 16
+            TabOrder = 14
             ClientEvents.UniEvents.Strings = (
               
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
                 '= '#39'Grupo'#39';'#13#10'}')
             object cICMS_Isento: TUniDBCheckBox
               Left = 13
-              Top = 21
+              Top = 19
               Width = 140
               Height = 17
               Hint = ''
@@ -691,7 +658,7 @@ object fCadNCM: TfCadNCM
             end
             object cICMS_Suspensao: TUniDBCheckBox
               Left = 13
-              Top = 39
+              Top = 40
               Width = 140
               Height = 17
               Hint = ''
@@ -710,7 +677,7 @@ object fCadNCM: TfCadNCM
             end
             object cICMS_Imune: TUniDBCheckBox
               Left = 13
-              Top = 57
+              Top = 61
               Width = 140
               Height = 17
               Hint = ''
@@ -729,7 +696,7 @@ object fCadNCM: TfCadNCM
             end
             object cMVA_NaoReducao: TUniDBCheckBox
               Left = 13
-              Top = 75
+              Top = 82
               Width = 140
               Height = 17
               Hint = ''
@@ -748,70 +715,122 @@ object fCadNCM: TfCadNCM
             end
           end
           object UniDBLookupComboBox1: TUniDBLookupComboBox
-            Left = 17
-            Top = 411
-            Width = 760
-            Height = 50
+            Left = 10
+            Top = 308
+            Width = 925
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dsCSTICMS
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'CodigoTrib_TabA'
             DataSource = dsNCM
             AnyMatch = True
-            TabOrder = 17
+            TabOrder = 15
             Color = clWindow
-            FieldLabel = 'CST ICMS Importado (Tab.A)'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabel = 'CST ICMS Tab.A -  Importado'
+            FieldLabelWidth = 180
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
           object UniDBLookupComboBox2: TUniDBLookupComboBox
-            Left = 17
-            Top = 460
-            Width = 760
-            Height = 50
+            Left = 10
+            Top = 335
+            Width = 925
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dsCSTICMS
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'CodigoTrib_TabA3'
             DataSource = dsNCM
             AnyMatch = True
-            TabOrder = 18
+            TabOrder = 16
             Color = clWindow
-            FieldLabel = 'CST ICMS Adiquirido Mercado Interno (Tab.A)'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabel = 'CST ICMS Tab.A - Mercado Interno'
+            FieldLabelWidth = 180
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
           object UniDBLookupComboBox3: TUniDBLookupComboBox
-            Left = 17
-            Top = 509
-            Width = 760
-            Height = 50
+            Left = 10
+            Top = 362
+            Width = 925
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dsCSTICMS
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'CodigoTrib_TabA2'
             DataSource = dsNCM
             AnyMatch = True
-            TabOrder = 19
+            TabOrder = 17
             Color = clWindow
-            FieldLabel = 'CST ICMS Nacional (Tab.A)'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabel = 'CST ICMS Tab.A - Nacional'
+            FieldLabelWidth = 180
             FieldLabelSeparator = ' '
             Style = csDropDown
+          end
+          object UniGroupBox1: TUniGroupBox
+            Left = 314
+            Top = 396
+            Width = 175
+            Height = 125
+            Hint = ''
+            ShowHint = True
+            Caption = 'Par'#226'metros Fiscais Diversos'
+            TabOrder = 18
+            ClientEvents.UniEvents.Strings = (
+              
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                '= '#39'Grupo'#39';'#13#10'}')
+            object cFCP: TUniDBCheckBox
+              Left = 9
+              Top = 19
+              Width = 110
+              Height = 17
+              Hint = ''
+              ShowHint = True
+              DataField = 'FCP'
+              DataSource = dsNCM
+              ValueChecked = 'True'
+              ValueUnchecked = 'False'
+              Caption = 'Incidencia de FCP'
+              TabOrder = 1
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
+            object cCusto_Seletivo: TUniDBCheckBox
+              Left = 9
+              Top = 40
+              Width = 110
+              Height = 17
+              Hint = ''
+              ShowHint = True
+              DataField = 'Custo_Seletivo'
+              DataSource = dsNCM
+              ValueChecked = 'True'
+              ValueUnchecked = 'False'
+              Caption = 'Custo Seletivo'
+              TabOrder = 2
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
           end
         end
       end
@@ -840,7 +859,7 @@ object fCadNCM: TfCadNCM
         object pPanel2: TUniPanel
           Left = 226
           Top = 27
-          Width = 554
+          Width = 557
           Height = 555
           Hint = ''
           ShowHint = True
@@ -859,7 +878,7 @@ object fCadNCM: TfCadNCM
           object UniPanel2: TUniPanel
             Left = 0
             Top = 0
-            Width = 554
+            Width = 557
             Height = 35
             Hint = ''
             ShowHint = True
@@ -872,6 +891,7 @@ object fCadNCM: TfCadNCM
             BorderStyle = ubsNone
             Caption = ''
             Color = 5526569
+            ExplicitWidth = 554
             object NavegaICMS: TUniDBNavigator
               Left = 0
               Top = 0
@@ -970,7 +990,7 @@ object fCadNCM: TfCadNCM
           object pFichaICMS: TUniContainerPanel
             Left = 0
             Top = 35
-            Width = 554
+            Width = 557
             Height = 520
             Hint = ''
             Enabled = False
@@ -978,12 +998,13 @@ object fCadNCM: TfCadNCM
             ParentColor = False
             Align = alClient
             TabOrder = 2
+            ExplicitWidth = 554
             object UniDBGrid2: TUniDBGrid
               AlignWithMargins = True
               Left = 12
-              Top = 230
-              Width = 530
-              Height = 278
+              Top = 141
+              Width = 533
+              Height = 367
               Hint = ''
               Margins.Left = 12
               Margins.Top = 12
@@ -1053,118 +1074,125 @@ object fCadNCM: TfCadNCM
             object cEstado: TUniDBLookupComboBox
               Left = 11
               Top = 11
-              Width = 291
-              Height = 50
+              Width = 524
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'UF;Nome'
               ListSource = dsEstados
               KeyField = 'UF'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'Estado'
               DataSource = dsICMS
               TabOrder = 0
               Color = clWindow
               FieldLabel = 'Estado'
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 130
               FieldLabelSeparator = ' '
               Style = csDropDown
             end
             object UniDBFormattedNumberEdit1: TUniDBFormattedNumberEdit
               Left = 11
-              Top = 61
-              Width = 140
-              Height = 50
+              Top = 38
+              Width = 260
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'ST'
               DataSource = dsICMS
               TabOrder = 1
               FieldLabel = 'ICMS ST'
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 130
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
               ThousandSeparator = '.'
+              BorderStyle = ubsInset
             end
             object UniDBFormattedNumberEdit2: TUniDBFormattedNumberEdit
               Left = 11
-              Top = 111
-              Width = 140
-              Height = 50
+              Top = 65
+              Width = 260
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'MVA_Imp'
               DataSource = dsICMS
               TabOrder = 3
               FieldLabel = 'MVA Importa'#231#227'o'
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 130
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
               ThousandSeparator = '.'
+              BorderStyle = ubsInset
             end
             object UniDBFormattedNumberEdit3: TUniDBFormattedNumberEdit
               Left = 11
-              Top = 161
-              Width = 140
-              Height = 50
+              Top = 92
+              Width = 260
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Reducao_BCICMSOp'
               DataSource = dsICMS
               TabOrder = 5
               FieldLabel = 'Redu'#231#227'o BC ICMS Oper.'
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 130
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
               ThousandSeparator = '.'
+              BorderStyle = ubsInset
             end
             object UniDBFormattedNumberEdit4: TUniDBFormattedNumberEdit
-              Left = 162
-              Top = 61
-              Width = 140
-              Height = 50
+              Left = 275
+              Top = 38
+              Width = 260
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Reducao_BCICMSST'
               DataSource = dsICMS
               TabOrder = 2
               FieldLabel = 'Redu'#231#227'o BC ICMS ST'
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 130
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
               ThousandSeparator = '.'
+              BorderStyle = ubsInset
             end
             object UniDBFormattedNumberEdit5: TUniDBFormattedNumberEdit
-              Left = 162
-              Top = 111
-              Width = 140
-              Height = 50
+              Left = 275
+              Top = 65
+              Width = 260
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'MVA_Nac'
               DataSource = dsICMS
               TabOrder = 4
               FieldLabel = 'MVA Nacional'
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 130
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
               ThousandSeparator = '.'
+              BorderStyle = ubsInset
             end
             object UniDBFormattedNumberEdit6: TUniDBFormattedNumberEdit
-              Left = 162
-              Top = 162
-              Width = 140
-              Height = 50
+              Left = 275
+              Top = 92
+              Width = 260
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Reducao_BCICMSOp2'
               DataSource = dsICMS
               TabOrder = 6
               FieldLabel = 'Redu'#231#227'o BC ICMS Oper.2'
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 130
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
               ThousandSeparator = '.'
+              BorderStyle = ubsInset
             end
           end
         end

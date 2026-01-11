@@ -24,6 +24,10 @@ object fCadMunicipios: TfCadMunicipios
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -132,6 +136,10 @@ object fCadMunicipios: TfCadMunicipios
     object aFicha2: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0
@@ -188,10 +196,6 @@ object fCadMunicipios: TfCadMunicipios
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cNumero: TUniDBEdit
             Left = 391
@@ -213,10 +217,6 @@ object fCadMunicipios: TfCadMunicipios
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cNome: TUniDBEdit
             Left = 17
@@ -237,10 +237,6 @@ object fCadMunicipios: TfCadMunicipios
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cUF: TUniDBEdit
             Left = 479
@@ -262,10 +258,6 @@ object fCadMunicipios: TfCadMunicipios
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cEstado: TUniDBLookupComboBox
             Left = 17
@@ -278,7 +270,6 @@ object fCadMunicipios: TfCadMunicipios
             ListSource = dsEstados
             KeyField = 'UF'
             ListFieldIndex = 0
-            BorderStyle = ubsSolid
             DataField = 'UF'
             DataSource = dsMunicipios
             ParentFont = False
@@ -293,9 +284,6 @@ object fCadMunicipios: TfCadMunicipios
             FieldLabelSeparator = ' '
             ForceSelection = True
             Style = csSimple
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
         end
       end
@@ -497,6 +485,3 @@ object fCadMunicipios: TfCadMunicipios
     Top = 75
   end
 end
-
-
-

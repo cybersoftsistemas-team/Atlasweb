@@ -205,7 +205,7 @@ procedure TfCadUnidadeMedida.bPesquisaClick(Sender: TObject);
 begin
      Unidades.Cancel;
      LigaBotoes(true);
-     Pesquisa(Unidades, 'Unidades', 'Codigo', 'Nome',cPesquisa.text)
+     Pesquisa(Unidades, 'Codigo', 'Nome',cPesquisa.text)
 end;
 
 procedure TfCadUnidadeMedida.UnidadeMedidaBeforePost(DataSet: TDataSet);

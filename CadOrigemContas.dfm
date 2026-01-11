@@ -8,9 +8,6 @@ object fCadOrigemContas: TfCadOrigemContas
   TabOrder = 0
   AutoScroll = True
   object Pasta: TUniPageControl
-        ClientEvents.UniEvents.Strings = (
-             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' + 
-             's = '#39'PastaInterna'#39';'#13#10'}')
     Left = 0
     Top = 35
     Width = 1078
@@ -20,6 +17,10 @@ object fCadOrigemContas: TfCadOrigemContas
     ActivePage = UniTabSheet1
     Plain = True
     Align = alClient
+    ClientEvents.UniEvents.Strings = (
+      
+        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+        's = '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 0
     ExplicitLeft = 88
     object aLista: TUniTabSheet
@@ -236,7 +237,6 @@ object fCadOrigemContas: TfCadOrigemContas
             KeyField = 'Conta'
             ListFieldIndex = 1
             GridMode = lgmPostListValue
-            BorderStyle = ubsSolid
             ClearButton = True
             DataField = 'Conta'
             DataSource = dsOrigemContas
@@ -252,9 +252,6 @@ object fCadOrigemContas: TfCadOrigemContas
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csSimple
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cOrigem: TUniDBRadioGroup
             Left = 37
@@ -344,7 +341,6 @@ object fCadOrigemContas: TfCadOrigemContas
             KeyField = 'Codigo'
             ListFieldIndex = 1
             GridMode = lgmPostListValue
-            BorderStyle = ubsSolid
             ClearButton = True
             DataField = 'Modalidade'
             DataSource = dsOrigemContas
@@ -360,9 +356,6 @@ object fCadOrigemContas: TfCadOrigemContas
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csSimple
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cTerceiros: TUniDBLookupComboBox
             Left = 37
@@ -378,7 +371,6 @@ object fCadOrigemContas: TfCadOrigemContas
             KeyField = 'Codigo'
             ListFieldIndex = 1
             GridMode = lgmPostListValue
-            BorderStyle = ubsSolid
             ClearButton = True
             DataField = 'Terceiros'
             DataSource = dsOrigemContas
@@ -394,9 +386,6 @@ object fCadOrigemContas: TfCadOrigemContas
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csSimple
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cConta_ECF: TUniDBLookupComboBox
             Left = 37
@@ -412,7 +401,6 @@ object fCadOrigemContas: TfCadOrigemContas
             KeyField = 'Conta'
             ListFieldIndex = 1
             GridMode = lgmPostListValue
-            BorderStyle = ubsSolid
             ClearButton = True
             DataField = 'Conta_ECF'
             DataSource = dsOrigemContas
@@ -428,9 +416,6 @@ object fCadOrigemContas: TfCadOrigemContas
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csSimple
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cGrupo_Financeiro: TUniDBLookupComboBox
             Left = 37
@@ -446,7 +431,6 @@ object fCadOrigemContas: TfCadOrigemContas
             KeyField = 'Codigo'
             ListFieldIndex = 1
             GridMode = lgmPostListValue
-            BorderStyle = ubsSolid
             ClearButton = True
             DataField = 'Grupo_Financeiro'
             DataSource = dsOrigemContas
@@ -462,9 +446,6 @@ object fCadOrigemContas: TfCadOrigemContas
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csSimple
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cGrupo_Processo: TUniDBRadioGroup
             Left = 463
@@ -714,7 +695,3 @@ object fCadOrigemContas: TfCadOrigemContas
     Top = 75
   end
 end
-
-
-
-

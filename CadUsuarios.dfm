@@ -135,6 +135,10 @@ object fCadUsuarios: TfCadUsuarios
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniDBGrid1: TUniDBGrid
         Left = 0
         Top = 27
@@ -305,8 +309,6 @@ object fCadUsuarios: TfCadUsuarios
             FieldLabelWidth = 50
             FieldLabelAlign = laTop
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object cCargo: TUniDBEdit
             Left = 11
@@ -325,8 +327,6 @@ object fCadUsuarios: TfCadUsuarios
             FieldLabelWidth = 50
             FieldLabelAlign = laTop
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object cDepart: TUniDBEdit
             Left = 11
@@ -348,8 +348,6 @@ object fCadUsuarios: TfCadUsuarios
             FieldLabelWidth = 50
             FieldLabelAlign = laTop
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object cPswrd: TUniDBEdit
             Left = 11
@@ -369,8 +367,6 @@ object fCadUsuarios: TfCadUsuarios
             FieldLabelWidth = 50
             FieldLabelAlign = laTop
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object cMatricula: TUniDBEdit
             Left = 11
@@ -392,9 +388,7 @@ object fCadUsuarios: TfCadUsuarios
             FieldLabelWidth = 50
             FieldLabelAlign = laTop
             SelectOnFocus = True
-            BorderStyle = ubsSolid
             OnChangeValue = cMatriculaChangeValue
-            BorderStyle = ubsDefault
           end
           object cNivel: TUniDBLookupComboBox
             Left = 11
@@ -407,14 +401,12 @@ object fCadUsuarios: TfCadUsuarios
             ListSource = dsNiveis
             KeyField = 'Codigo'
             ListFieldIndex = 0
-            BorderStyle = ubsSolid
             DataField = 'Nivel'
             DataSource = dsUsuarios
             TabOrder = 5
             Color = clWindow
             FieldLabel = 'N'#237'vel de Acesso'
             FieldLabelAlign = laTop
-            BorderStyle = ubsDefault
           end
           object UniLabel1: TUniLabel
             Left = 11
@@ -653,4 +645,3 @@ object fCadUsuarios: TfCadUsuarios
     Top = 75
   end
 end
-

@@ -260,7 +260,7 @@ end;
 
 procedure TfCadOrigemContas.bPesquisaClick(Sender: TObject);
 begin
-     Pesquisa(OrigemContas, 'OrigemContas', 'Conta', 'Nome',cPesquisa.text);
+     Pesquisa(OrigemContas, 'Conta', 'Nome',cPesquisa.text);
 end;
 
 

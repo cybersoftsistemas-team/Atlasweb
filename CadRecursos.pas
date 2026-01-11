@@ -200,7 +200,7 @@ end;
 
 procedure TfCadRecursos.bPesquisaClick(Sender: TObject);
 begin
-     Pesquisa(Recursos, 'Recursos', 'Codigo', 'Descricao',cPesquisa.text)
+     Pesquisa(Recursos, 'Codigo', 'Descricao',cPesquisa.text)
 end;
 
 procedure TfCadRecursos.RecursosBeforePost(DataSet: TDataSet);

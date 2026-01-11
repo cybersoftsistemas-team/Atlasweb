@@ -209,7 +209,7 @@ end;
 
 procedure TfCadModalidadesPagamento.bPesquisaClick(Sender: TObject);
 begin
-     Pesquisa(Modal, 'ModalidadesPagamento', 'Codigo', 'Descricao', cPesquisa.text);
+     Pesquisa(Modal, 'Codigo', 'Descricao', cPesquisa.text);
 end;
 
 procedure TfCadModalidadesPagamento.ModalidadesPagamentoBeforePost(DataSet: TDataSet);

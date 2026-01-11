@@ -201,7 +201,7 @@ procedure TfCadPlanoContasECF.bPesquisaClick(Sender: TObject);
 begin
      PlanoContasECF.Cancel;
      LigaBotoes(true);
-     Pesquisa(PlanoContasECF, 'PlanoContasECF', 'Conta', 'Nome',cPesquisa.text)
+     Pesquisa(PlanoContasECF, 'Conta', 'Nome',cPesquisa.text)
 end;
 
 procedure TfCadPlanoContasECF.PlanoContasECFBeforePost(DataSet: TDataSet);

@@ -911,7 +911,7 @@ procedure TfCadOperacaoFiscal.bPesquisaClick(Sender: TObject);
 begin
      OperacaoFiscal.Cancel;
      LigaBotoes(true);
-     Pesquisa(OperacaoFiscal,'OperacaoFiscal','Codigo', 'Descricao',cPesquisa.text)
+     Pesquisa(OperacaoFiscal, 'Codigo', 'Descricao',cPesquisa.text)
 end;
 
 procedure TfCadOperacaoFiscal.OperacaoFiscalBeforePost(DataSet: TDataSet);

@@ -806,7 +806,7 @@ procedure TfComexProcessoImp.bPesquisaClick(Sender: TObject);
 begin
      ProcessosImp.Cancel;
      LigaBotoes(true);
-     Pesquisa(ProcessosImp,'ProcessosImp','Processo', 'Processo',cPesquisa.text)
+     Pesquisa(ProcessosImp, 'Processo', 'Processo',cPesquisa.text)
 end;
 
 procedure TfComexProcessoImp.ProcessosImpBeforePost(DataSet: TDataSet);

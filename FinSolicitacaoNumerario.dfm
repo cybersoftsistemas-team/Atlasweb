@@ -135,6 +135,10 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
@@ -259,8 +263,6 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
-        ExplicitLeft = 3
-        ExplicitTop = -136
         DesignSize = (
           1278
           936)
@@ -300,8 +302,6 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object cData_Previsao: TUniDBDateTimePicker
             Left = 11
@@ -356,8 +356,6 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object clBanco: TUniDBLookupComboBox
             Left = 11
@@ -370,7 +368,6 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             ListSource = dsBancos
             KeyField = 'Codigo'
             ListFieldIndex = 1
-            BorderStyle = ubsSolid
             DataField = 'Banco'
             DataSource = dsSolicitacaoNumerario
             AnyMatch = True
@@ -381,7 +378,6 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
           end
           object clCentro_Custo: TUniDBLookupComboBox
             Left = 11
@@ -394,7 +390,6 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             ListSource = dsCentroCusto
             KeyField = 'Codigo'
             ListFieldIndex = 1
-            BorderStyle = ubsSolid
             ClearButton = True
             DataField = 'Centro_Custo'
             DataSource = dsSolicitacaoNumerario
@@ -406,7 +401,6 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
           end
           object clClassificacao: TUniDBLookupComboBox
             Left = 11
@@ -419,7 +413,6 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             ListSource = dsPlanoFin
             KeyField = 'Codigo'
             ListFieldIndex = 1
-            BorderStyle = ubsSolid
             ClearButton = True
             DataField = 'Classificacao'
             DataSource = dsSolicitacaoNumerario
@@ -431,7 +424,6 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
           end
           object clCliente: TUniDBLookupComboBox
             Left = 11
@@ -444,7 +436,6 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             ListSource = dsClientes
             KeyField = 'Codigo'
             ListFieldIndex = 1
-            BorderStyle = ubsSolid
             ClearButton = True
             DataField = 'Cliente'
             DataSource = dsSolicitacaoNumerario
@@ -456,7 +447,6 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
           end
           object clDocumento: TUniDBLookupComboBox
             Left = 11
@@ -469,7 +459,6 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             ListSource = dsTipoDoc
             KeyField = 'Codigo'
             ListFieldIndex = 0
-            BorderStyle = ubsSolid
             ClearButton = True
             DataField = 'Documento'
             DataSource = dsSolicitacaoNumerario
@@ -481,7 +470,6 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
           end
           object cNumero: TUniDBEdit
             Left = 11
@@ -498,8 +486,6 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object cObservacao: TUniDBMemo
             Left = 11
@@ -510,13 +496,11 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             ShowHint = True
             DataField = 'Observacao'
             DataSource = dsSolicitacaoNumerario
-            BorderStyle = ubsSolid
             TabOrder = 11
             FieldLabel = 'Observa'#231#227'o'
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
           end
           object cProcesso: TUniDBLookupComboBox
             Left = 11
@@ -529,7 +513,6 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             ListSource = dsProcesso
             KeyField = 'Processo'
             ListFieldIndex = 0
-            BorderStyle = ubsSolid
             ClearButton = True
             DataField = 'Processo'
             DataSource = dsSolicitacaoNumerario
@@ -541,7 +524,6 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
           end
           object cValor_Total: TUniDBEdit
             Left = 267
@@ -557,8 +539,6 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
         end
       end
@@ -712,4 +692,3 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
     Top = 135
   end
 end
-

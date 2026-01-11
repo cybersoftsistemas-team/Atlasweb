@@ -8,9 +8,6 @@ object fCadServicos: TfCadServicos
   TabOrder = 0
   AutoScroll = True
   object Pasta: TUniPageControl
-        ClientEvents.UniEvents.Strings = (
-             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' + 
-             's = '#39'PastaInterna'#39';'#13#10'}')
     Left = 0
     Top = 35
     Width = 1025
@@ -20,6 +17,10 @@ object fCadServicos: TfCadServicos
     ActivePage = UniTabSheet1
     Plain = True
     Align = alClient
+    ClientEvents.UniEvents.Strings = (
+      
+        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+        's = '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 0
     ExplicitHeight = 1374
     object aLista: TUniTabSheet
@@ -200,8 +201,6 @@ object fCadServicos: TfCadServicos
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object cAtivo: TUniDBCheckBox
             Left = 204
@@ -240,8 +239,6 @@ object fCadServicos: TfCadServicos
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object cIndustria: TUniDBCheckBox
             Left = 120
@@ -272,7 +269,6 @@ object fCadServicos: TfCadServicos
             ListSource = dsTributos
             KeyField = 'Codigo'
             ListFieldIndex = 0
-            BorderStyle = ubsSolid
             DataField = 'PIS_Recuperar'
             DataSource = dsServicos
             ParentFont = False
@@ -286,7 +282,6 @@ object fCadServicos: TfCadServicos
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
           end
           object cPIS_Recolher: TUniDBLookupComboBox
             Left = 12
@@ -299,7 +294,6 @@ object fCadServicos: TfCadServicos
             ListSource = dsTributos
             KeyField = 'Codigo'
             ListFieldIndex = 0
-            BorderStyle = ubsSolid
             DataField = 'PIS_Recolher'
             DataSource = dsServicos
             ParentFont = False
@@ -313,7 +307,6 @@ object fCadServicos: TfCadServicos
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
           end
           object cCOFINS_Recuperar: TUniDBLookupComboBox
             Left = 12
@@ -326,7 +319,6 @@ object fCadServicos: TfCadServicos
             ListSource = dsTributos
             KeyField = 'Codigo'
             ListFieldIndex = 0
-            BorderStyle = ubsSolid
             DataField = 'COFINS_Recuperar'
             DataSource = dsServicos
             ParentFont = False
@@ -340,7 +332,6 @@ object fCadServicos: TfCadServicos
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
           end
           object cCOFINS_Recolher: TUniDBLookupComboBox
             Left = 12
@@ -353,7 +344,6 @@ object fCadServicos: TfCadServicos
             ListSource = dsTributos
             KeyField = 'Codigo'
             ListFieldIndex = 0
-            BorderStyle = ubsSolid
             DataField = 'COFINS_Recolher'
             DataSource = dsServicos
             ParentFont = False
@@ -367,7 +357,6 @@ object fCadServicos: TfCadServicos
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
           end
           object cCSLL_Recuperar: TUniDBLookupComboBox
             Left = 12
@@ -380,7 +369,6 @@ object fCadServicos: TfCadServicos
             ListSource = dsTributos
             KeyField = 'Codigo'
             ListFieldIndex = 0
-            BorderStyle = ubsSolid
             DataField = 'CSLL_Recuperar'
             DataSource = dsServicos
             ParentFont = False
@@ -394,7 +382,6 @@ object fCadServicos: TfCadServicos
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
           end
           object cCSLL_Recolher: TUniDBLookupComboBox
             Left = 12
@@ -407,7 +394,6 @@ object fCadServicos: TfCadServicos
             ListSource = dsTributos
             KeyField = 'Codigo'
             ListFieldIndex = 0
-            BorderStyle = ubsSolid
             DataField = 'CSLL_Recolher'
             DataSource = dsServicos
             ParentFont = False
@@ -421,7 +407,6 @@ object fCadServicos: TfCadServicos
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
           end
           object cIR_Recuperar: TUniDBLookupComboBox
             Left = 12
@@ -434,7 +419,6 @@ object fCadServicos: TfCadServicos
             ListSource = dsTributos
             KeyField = 'Codigo'
             ListFieldIndex = 0
-            BorderStyle = ubsSolid
             DataField = 'IR_Recuperar'
             DataSource = dsServicos
             ParentFont = False
@@ -448,7 +432,6 @@ object fCadServicos: TfCadServicos
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
           end
           object cIR_Recolher: TUniDBLookupComboBox
             Left = 12
@@ -461,7 +444,6 @@ object fCadServicos: TfCadServicos
             ListSource = dsTributos
             KeyField = 'Codigo'
             ListFieldIndex = 0
-            BorderStyle = ubsSolid
             DataField = 'IR_Recolher'
             DataSource = dsServicos
             ParentFont = False
@@ -475,7 +457,6 @@ object fCadServicos: TfCadServicos
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
           end
           object cINSS_Recuperar: TUniDBLookupComboBox
             Left = 12
@@ -488,7 +469,6 @@ object fCadServicos: TfCadServicos
             ListSource = dsTributos
             KeyField = 'Codigo'
             ListFieldIndex = 0
-            BorderStyle = ubsSolid
             DataField = 'INSS_Recuperar'
             DataSource = dsServicos
             ParentFont = False
@@ -502,7 +482,6 @@ object fCadServicos: TfCadServicos
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
           end
           object cINSS_Recolher: TUniDBLookupComboBox
             Left = 12
@@ -515,7 +494,6 @@ object fCadServicos: TfCadServicos
             ListSource = dsTributos
             KeyField = 'Codigo'
             ListFieldIndex = 0
-            BorderStyle = ubsSolid
             DataField = 'INSS_Recolher'
             DataSource = dsServicos
             ParentFont = False
@@ -529,7 +507,6 @@ object fCadServicos: TfCadServicos
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
           end
           object UniDBEdit1: TUniDBEdit
             Left = 12
@@ -550,8 +527,6 @@ object fCadServicos: TfCadServicos
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object UniDBEdit2: TUniDBEdit
             Left = 166
@@ -572,8 +547,6 @@ object fCadServicos: TfCadServicos
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object UniDBEdit3: TUniDBEdit
             Left = 586
@@ -594,8 +567,6 @@ object fCadServicos: TfCadServicos
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object UniDBEdit4: TUniDBEdit
             Left = 586
@@ -616,8 +587,6 @@ object fCadServicos: TfCadServicos
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object UniDBEdit5: TUniDBEdit
             Left = 586
@@ -638,8 +607,6 @@ object fCadServicos: TfCadServicos
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object UniDBEdit6: TUniDBEdit
             Left = 586
@@ -660,8 +627,6 @@ object fCadServicos: TfCadServicos
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object UniDBEdit7: TUniDBEdit
             Left = 586
@@ -682,8 +647,6 @@ object fCadServicos: TfCadServicos
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object clCSTCOFINS_Entrada: TUniDBLookupComboBox
             Left = 12
@@ -696,7 +659,6 @@ object fCadServicos: TfCadServicos
             ListSource = dsCSTPIS
             KeyField = 'Codigo'
             ListFieldIndex = 1
-            BorderStyle = ubsSolid
             DataField = 'CSTPIS_Saida'
             DataSource = dsServicos
             TabOrder = 22
@@ -705,7 +667,6 @@ object fCadServicos: TfCadServicos
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
           end
           object cCSTPIS_Entrada: TUniDBLookupComboBox
             Left = 12
@@ -718,7 +679,6 @@ object fCadServicos: TfCadServicos
             ListSource = dsCSTPIS
             KeyField = 'Codigo'
             ListFieldIndex = 1
-            BorderStyle = ubsSolid
             DataField = 'CSTPIS_Entrada'
             DataSource = dsServicos
             TabOrder = 23
@@ -727,7 +687,6 @@ object fCadServicos: TfCadServicos
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
           end
           object cCSTCOFINS_Entrada: TUniDBLookupComboBox
             Left = 12
@@ -740,7 +699,6 @@ object fCadServicos: TfCadServicos
             ListSource = dsCSTCOFINS
             KeyField = 'Codigo'
             ListFieldIndex = 1
-            BorderStyle = ubsSolid
             DataField = 'CSTCOFINS_Entrada'
             DataSource = dsServicos
             TabOrder = 24
@@ -749,7 +707,6 @@ object fCadServicos: TfCadServicos
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
           end
           object cCSTCOFINS_Saida: TUniDBLookupComboBox
             Left = 12
@@ -762,7 +719,6 @@ object fCadServicos: TfCadServicos
             ListSource = dsCSTCOFINS
             KeyField = 'Codigo'
             ListFieldIndex = 1
-            BorderStyle = ubsSolid
             DataField = 'CSTCOFINS_Saida'
             DataSource = dsServicos
             TabOrder = 25
@@ -771,7 +727,6 @@ object fCadServicos: TfCadServicos
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
           end
         end
       end
@@ -1086,5 +1041,3 @@ object fCadServicos: TfCadServicos
     Top = 75
   end
 end
-
-

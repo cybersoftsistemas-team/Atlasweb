@@ -188,10 +188,6 @@ object fCadCentroCusto: TfCadCentroCusto
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cNome: TUniDBEdit
             Left = 17
@@ -212,10 +208,6 @@ object fCadCentroCusto: TfCadCentroCusto
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cProcesso: TUniDBCheckBox
             Left = 17
@@ -379,6 +371,3 @@ object fCadCentroCusto: TfCadCentroCusto
     Top = 75
   end
 end
-
-
-

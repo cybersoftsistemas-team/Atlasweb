@@ -205,8 +205,6 @@ object fCadTiposDocumentos: TfCadTiposDocumentos
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object cNome: TUniDBEdit
             Left = 25
@@ -227,8 +225,6 @@ object fCadTiposDocumentos: TfCadTiposDocumentos
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object cSINTEGRA: TUniDBCheckBox
             Left = 25
@@ -428,4 +424,3 @@ object fCadTiposDocumentos: TfCadTiposDocumentos
     Top = 83
   end
 end
-

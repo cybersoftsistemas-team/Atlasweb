@@ -201,7 +201,7 @@ procedure TfCadCodigosRFB.bPesquisaClick(Sender: TObject);
 begin
      CodigosRFB.Cancel;
      LigaBotoes(true);
-     Pesquisa(CodigosRFB, 'CodigosRFB', 'Codigo', 'Descricao',cPesquisa.text)
+     Pesquisa(CodigosRFB, 'Codigo', 'Descricao',cPesquisa.text)
 end;
 
 procedure TfCadCodigosRFB.CodigosRFBBeforePost(DataSet: TDataSet);

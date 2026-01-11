@@ -567,7 +567,7 @@ procedure TfDespRegistroDI.bPesquisaClick(Sender: TObject);
 begin
      DI.Cancel;
      LigaBotoes(true);
-     Pesquisa(DI,'DI','Registro', 'DI',cPesquisa.text)
+     Pesquisa(DI, 'Registro', 'DI',cPesquisa.text)
 end;
 
 procedure TfDespRegistroDI.DIBeforePost(DataSet: TDataSet);

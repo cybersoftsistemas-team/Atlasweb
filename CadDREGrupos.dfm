@@ -202,10 +202,6 @@ object fCadDREGrupos: TfCadDREGrupos
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
         end
       end
@@ -355,6 +351,3 @@ object fCadDREGrupos: TfCadDREGrupos
     Top = 75
   end
 end
-
-
-

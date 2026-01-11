@@ -278,8 +278,6 @@ object fCadUnidadeMedida: TfCadUnidadeMedida
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object cNome: TUniDBEdit
             Left = 13
@@ -296,8 +294,6 @@ object fCadUnidadeMedida: TfCadUnidadeMedida
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
           object cNome_Ingles: TUniDBEdit
             Left = 13
@@ -314,8 +310,6 @@ object fCadUnidadeMedida: TfCadUnidadeMedida
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
           end
         end
       end
@@ -349,4 +343,3 @@ object fCadUnidadeMedida: TfCadUnidadeMedida
     Top = 251
   end
 end
-

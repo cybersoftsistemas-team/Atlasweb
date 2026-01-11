@@ -204,10 +204,6 @@ object fCadDRE: TfCadDRE
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cGrupo: TUniDBLookupComboBox
             Left = 18
@@ -220,7 +216,6 @@ object fCadDRE: TfCadDRE
             ListSource = dsDREGrupos
             KeyField = 'Codigo'
             ListFieldIndex = 1
-            BorderStyle = ubsSolid
             DataField = 'Grupo'
             DataSource = dsDRE
             ParentFont = False
@@ -235,9 +230,6 @@ object fCadDRE: TfCadDRE
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
         end
       end
@@ -401,6 +393,3 @@ object fCadDRE: TfCadDRE
     Top = 75
   end
 end
-
-
-

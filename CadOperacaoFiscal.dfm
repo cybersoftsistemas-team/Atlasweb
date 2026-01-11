@@ -259,6 +259,10 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -388,6 +392,10 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     object TabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Par'#226'metros Diversos'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -1347,6 +1355,10 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     object UniTabSheet3: TUniTabSheet
       Hint = ''
       Caption = 'Par'#226'metros NF Terceiros'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox7: TUniScrollBox
         Left = 0
         Top = 0
@@ -1605,6 +1617,10 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       Hint = ''
       ImageIndex = 4
       Caption = 'Par'#226'metros Fiscais'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0
@@ -2581,6 +2597,10 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       Hint = ''
       ImageIndex = 3
       Caption = 'Informa'#231#245'es Complementares'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox4: TUniScrollBox
         Left = 0
         Top = 0
@@ -2724,6 +2744,10 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Parametriza'#231#227'o Financeira'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox3: TUniScrollBox
         Left = 0
         Top = 0
@@ -2875,6 +2899,10 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       Hint = ''
       ImageIndex = 3
       Caption = 'Parametriza'#231#227'o Cont'#225'bil'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox6: TUniScrollBox
         Left = 0
         Top = 0

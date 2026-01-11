@@ -151,7 +151,7 @@ end;
 
 procedure TfCadEstados.bPesquisaClick(Sender: TObject);
 begin
-      Pesquisa(Estados, 'Estados', 'UF', 'Nome',cPesquisa.text);
+      Pesquisa(Estados, 'UF', 'Nome',cPesquisa.text);
 end;
 
 procedure TfCadEstados.bSalvarClick(Sender: TObject);

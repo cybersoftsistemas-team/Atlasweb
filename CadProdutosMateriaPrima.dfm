@@ -284,9 +284,6 @@ object fCadProdutosMateriaPrima: TfCadProdutosMateriaPrima
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cConversao_M2M3: TUniDBCheckBox
             Left = 16
@@ -320,10 +317,6 @@ object fCadProdutosMateriaPrima: TfCadProdutosMateriaPrima
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cCodigo_Produto: TUniDBLookupComboBox
             Left = 15
@@ -344,9 +337,6 @@ object fCadProdutosMateriaPrima: TfCadProdutosMateriaPrima
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
         end
       end
@@ -423,6 +413,3 @@ object fCadProdutosMateriaPrima: TfCadProdutosMateriaPrima
     Top = 19
   end
 end
-
-
-

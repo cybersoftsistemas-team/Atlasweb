@@ -202,7 +202,7 @@ end;
 
 procedure TfCadComissoes.bPesquisaClick(Sender: TObject);
 begin
-     Pesquisa(Comissoes, 'Comissoes', 'Codigo', 'Descricao',cPesquisa.text);
+     Pesquisa(Comissoes, 'Codigo', 'Descricao',cPesquisa.text);
 end;
 
 

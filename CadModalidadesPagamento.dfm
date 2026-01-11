@@ -325,10 +325,6 @@ object fCadModalidadesPagamento: TfCadModalidadesPagamento
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cCodigo: TUniDBEdit
             Left = 22
@@ -346,10 +342,6 @@ object fCadModalidadesPagamento: TfCadModalidadesPagamento
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cForma_Pagamento: TUniDBRadioGroup
             Left = 22
@@ -387,10 +379,6 @@ object fCadModalidadesPagamento: TfCadModalidadesPagamento
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cPrazo_Primeira: TUniDBEdit
             Left = 22
@@ -407,11 +395,7 @@ object fCadModalidadesPagamento: TfCadModalidadesPagamento
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
             OnExit = cPrazo_PrimeiraExit
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cPrazo_Demais: TUniDBEdit
             Left = 22
@@ -428,10 +412,6 @@ object fCadModalidadesPagamento: TfCadModalidadesPagamento
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cPrazo_Dia: TUniDBEdit
             Left = 22
@@ -448,10 +428,6 @@ object fCadModalidadesPagamento: TfCadModalidadesPagamento
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
         end
       end
@@ -485,6 +461,3 @@ object fCadModalidadesPagamento: TfCadModalidadesPagamento
     Top = 19
   end
 end
-
-
-

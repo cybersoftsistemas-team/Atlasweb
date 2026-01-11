@@ -244,7 +244,7 @@ end;
 
 procedure TfCadTributos.bPesquisaClick(Sender: TObject);
 begin
-     Pesquisa(Tributos, 'Tributos', 'Codigo', 'Descricao',cPesquisa.text);
+     Pesquisa(Tributos, 'Codigo', 'Descricao',cPesquisa.text);
 end;
 
 

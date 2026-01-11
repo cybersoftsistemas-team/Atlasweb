@@ -120,9 +120,6 @@ object fCadCodigosRFB: TfCadCodigosRFB
     end
   end
   object Pasta: TUniPageControl
-        ClientEvents.UniEvents.Strings = (
-             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' + 
-             's = '#39'PastaInterna'#39';'#13#10'}')
     Left = 0
     Top = 35
     Width = 1288
@@ -132,6 +129,10 @@ object fCadCodigosRFB: TfCadCodigosRFB
     ActivePage = UniTabSheet1
     Plain = True
     Align = alClient
+    ClientEvents.UniEvents.Strings = (
+      
+        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+        's = '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 0
     object aLista: TUniTabSheet
       Hint = ''
@@ -288,10 +289,6 @@ object fCadCodigosRFB: TfCadCodigosRFB
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cDescricao: TUniDBMemo
             Left = 13
@@ -302,15 +299,11 @@ object fCadCodigosRFB: TfCadCodigosRFB
             ShowHint = True
             DataField = 'Descricao'
             DataSource = dsCodigosRFB
-            BorderStyle = ubsSolid
             TabOrder = 2
             FieldLabel = 'Descri'#231#227'o'
             FieldLabelWidth = 120
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cComex: TUniDBCheckBox
             Left = 13
@@ -378,7 +371,3 @@ object fCadCodigosRFB: TfCadCodigosRFB
     Top = 19
   end
 end
-
-
-
-

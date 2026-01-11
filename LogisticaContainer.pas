@@ -263,7 +263,7 @@ procedure TfLogisticaContainer.bPesquisaClick(Sender: TObject);
 begin
      Container.Cancel;
      LigaBotoes(true);
-     Pesquisa(Container,'Container','Numero', 'Numero',cPesquisa.text)
+     Pesquisa(Container, 'Numero', 'Numero',cPesquisa.text)
 end;
 
 procedure TfLogisticaContainer.ContainerBeforePost(DataSet: TDataSet);

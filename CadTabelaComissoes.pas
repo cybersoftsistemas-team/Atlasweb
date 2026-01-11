@@ -205,7 +205,7 @@ procedure TfCadTabelaComissoes.bPesquisaClick(Sender: TObject);
 begin
      TabelaComissoes.Cancel;
      LigaBotoes(true);
-     Pesquisa(TabelaComissoes,'TabelaComissoes','Codigo', 'Descricao',cPesquisa.text)
+     Pesquisa(TabelaComissoes, 'Codigo', 'Descricao',cPesquisa.text)
 end;
 
 procedure TfCadTabelaComissoes.TabelaComissoesBeforePost(DataSet: TDataSet);

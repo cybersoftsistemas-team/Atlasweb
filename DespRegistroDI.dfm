@@ -131,6 +131,10 @@ object fDespRegistroDI: TfDespRegistroDI
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
@@ -248,6 +252,10 @@ object fDespRegistroDI: TfDespRegistroDI
     object tDadosDI: TUniTabSheet
       Hint = ''
       Caption = 'Dados da DI'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object Label5: TUniLabel
         Left = 8
         Top = 104
@@ -1199,6 +1207,10 @@ object fDespRegistroDI: TfDespRegistroDI
     object UniTabSheet4: TUniTabSheet
       Hint = ''
       Caption = 'Acr'#233'scimos'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox5: TUniScrollBox
         Left = 0
         Top = 0
@@ -1558,6 +1570,10 @@ object fDespRegistroDI: TfDespRegistroDI
     object UniTabSheet3: TUniTabSheet
       Hint = ''
       Caption = 'Adi'#231#245'es'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox4: TUniScrollBox
         Left = 0
         Top = 0
@@ -1633,6 +1649,10 @@ object fDespRegistroDI: TfDespRegistroDI
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'UniTabSheet1'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0

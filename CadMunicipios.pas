@@ -228,7 +228,7 @@ end;
 
 procedure TfCadMunicipios.bPesquisaClick(Sender: TObject);
 begin
-     Pesquisa(Municipios, 'Municipios', 'Codigo', 'Nome',cPesquisa.text);
+     Pesquisa(Municipios, 'Codigo', 'Nome',cPesquisa.text);
 end;
 
 

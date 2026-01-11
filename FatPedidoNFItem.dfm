@@ -335,7 +335,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
               KeyField = 'Codigo'
               ListFieldIndex = 1
               BorderStyle = ubsInset
-              DataField = 'CSTCBS'
+              DataField = 'CSTIBS'
               DataSource = dsPedidosNFItens
               AnyMatch = True
               TabOrder = 10
@@ -1751,7 +1751,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
             end
             object cICMSAnt: TUniDBCheckBox
               Left = 273
-              Top = 309
+              Top = 304
               Width = 296
               Height = 18
               Hint = ''

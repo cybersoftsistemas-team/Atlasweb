@@ -277,10 +277,6 @@ object fCadComissoes: TfCadComissoes
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cDescricao: TUniDBEdit
             Left = 21
@@ -297,10 +293,6 @@ object fCadComissoes: TfCadComissoes
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cCodigo: TUniDBEdit
             Left = 21
@@ -318,10 +310,6 @@ object fCadComissoes: TfCadComissoes
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
         end
       end
@@ -373,6 +361,3 @@ object fCadComissoes: TfCadComissoes
     Top = 75
   end
 end
-
-
-

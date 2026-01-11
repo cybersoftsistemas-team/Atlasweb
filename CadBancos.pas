@@ -357,7 +357,7 @@ procedure TfCadBancos.bPesquisaClick(Sender: TObject);
 begin
      Bancos.Cancel;
      LigaBotoes(false, false);
-     Pesquisa(Bancos, 'Bancos', 'Codigo', 'Nome',cPesquisa.text);
+     Pesquisa(Bancos, 'Codigo', 'Nome',cPesquisa.text);
 end;
 
 

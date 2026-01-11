@@ -205,7 +205,7 @@ end;
 
 procedure TfCadAlugueis.bPesquisaClick(Sender: TObject);
 begin
-     Pesquisa(Alugueis, 'Alugueis', 'Codigo', 'Descricao',cPesquisa.text);
+     Pesquisa(Alugueis, 'Codigo', 'Descricao',cPesquisa.text);
 end;
 
 

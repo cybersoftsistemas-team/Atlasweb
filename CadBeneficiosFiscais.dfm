@@ -135,6 +135,10 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
@@ -224,6 +228,10 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
     object TabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Benef'#237'cios'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -826,6 +834,10 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
       Hint = ''
       ImageIndex = 1
       Caption = 'Tabela ICMS Recuperar'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0

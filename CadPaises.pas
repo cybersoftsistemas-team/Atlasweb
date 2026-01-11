@@ -196,7 +196,7 @@ end;
 
 procedure TfCadPaises.bPesquisaClick(Sender: TObject);
 begin
-     Pesquisa(Paises, 'Paises', 'Codigo', 'Nome', cPesquisa.text);
+     Pesquisa(Paises, 'Codigo', 'Nome', cPesquisa.text);
 end;
 
 

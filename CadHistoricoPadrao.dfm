@@ -137,6 +137,10 @@ object fCadHistoricoPadrao: TfCadHistoricoPadrao
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
@@ -228,6 +232,10 @@ object fCadHistoricoPadrao: TfCadHistoricoPadrao
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -279,10 +287,6 @@ object fCadHistoricoPadrao: TfCadHistoricoPadrao
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cDescricao: TUniDBEdit
             Left = 13
@@ -299,10 +303,6 @@ object fCadHistoricoPadrao: TfCadHistoricoPadrao
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
           object cComplemento: TUniDBCheckBox
             Left = 117
@@ -346,9 +346,6 @@ object fCadHistoricoPadrao: TfCadHistoricoPadrao
             TabOrder = 5
             FieldLabel = 'Complemento'
             FieldLabelAlign = laTop
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
           end
         end
       end
@@ -432,6 +429,3 @@ object fCadHistoricoPadrao: TfCadHistoricoPadrao
     Top = 3
   end
 end
-
-
-
