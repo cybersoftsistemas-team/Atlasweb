@@ -345,8 +345,6 @@ begin
 end;
 
 procedure TfCadUsuarios.cMatriculaChangeValue(Sender: TObject);
-//var
-//   i:integer;
 begin
      with Usuarios do begin
           if (Trim(FieldByName('Foto').AsString) <> '') and fileexists(FieldByName('Foto').AsString) then begin

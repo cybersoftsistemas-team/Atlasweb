@@ -148,14 +148,11 @@ type
     cTransportador: TUniDBCheckBox;
     cFabricante: TUniDBCheckBox;
     cRepresentante: TUniDBCheckBox;
-    gReg: TUniGroupBox;
+    gPJ: TUniGroupBox;
     cCNPJ: TUniDBEdit;
-    cCPF: TUniDBEdit;
-    cRG: TUniDBEdit;
     cInscricao_Estadual: TUniDBEdit;
     cInscricao_Municipal: TUniDBEdit;
     cSUFRAMA: TUniDBEdit;
-    cPassaporte: TUniDBEdit;
     cRegistro_Alfandega: TUniDBEdit;
     cCNAE: TUniDBEdit;
     cDesoneracao: TUniDBLookupComboBox;
@@ -288,7 +285,6 @@ type
     bExcTrib: TUniSpeedButton;
     bCancTrib: TUniSpeedButton;
     bGravTrib: TUniSpeedButton;
-    UniButton1: TUniButton;
     cRamo_Atividade: TUniDBLookupComboBox;
     UniDBLookupComboBox1: TUniDBLookupComboBox;
     UniDBLookupComboBox9: TUniDBLookupComboBox;
@@ -316,6 +312,10 @@ type
     UniDBCheckBox8: TUniDBCheckBox;
     UniDBCheckBox9: TUniDBCheckBox;
     UniDBCheckBox10: TUniDBCheckBox;
+    gPF: TUniGroupBox;
+    cCPF: TUniDBEdit;
+    cRG: TUniDBEdit;
+    cPassaporte: TUniDBEdit;
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado, Edita:boolean);
     procedure bSalvarClick(Sender: TObject);
@@ -340,6 +340,7 @@ type
     procedure bExcTribClick(Sender: TObject);
     procedure bGravTribClick(Sender: TObject);
     procedure bCancTribClick(Sender: TObject);
+    procedure cCNPJChange(Sender: TObject);
   private
     procedure LigaBotoes2(Estado: boolean);
     { Private declarations }
@@ -641,10 +642,6 @@ begin
           end;
       end;
 
-      //pFicha1.Top   := 30;
-      //pFicha1.Left  := (Pasta.Width - pFicha1.Width) div 2;
-      //pFicha1.color := clNone;
-
       LigaBotoes(true,true);
       LigaBotoes2(true);
       Pasta.ActivePageIndex := 0;
@@ -672,11 +669,6 @@ begin
       with Estados do begin 
            sql.clear;
            sql.add('select UF, Numero, Nome from Estados');
-           open;
-      end;
-      with Municipios do begin 
-           sql.clear;
-           sql.add('select Codigo, UF, Nome from Municipios');
            open;
       end;
       with PlanoContas do begin
@@ -725,6 +717,11 @@ begin
       end;
 end;
 
+procedure TfCadDestinatarios.cCNPJChange(Sender: TObject);
+begin
+    gPF.Enabled := trim(cCNPJ.Text) = '';
+end;
+
 procedure TfCadDestinatarios.cCodigoChangeValue(Sender: TObject);
 begin
       with DestModal do begin
@@ -742,7 +739,7 @@ procedure TfCadDestinatarios.cEstadoChange(Sender: TObject);
 begin
       with Municipios do begin
            sql.clear;
-           sql.add('select Codigo, UF, Nome from Municipios where UF = :pUF');
+           sql.add('select Codigo, UF, Nome from Municipios where UF = :pUF order by Nome');
            ParamByName('pUF').AsString := Destinatarios.FieldByName('Estado').AsString;
            open;
       end;
@@ -775,7 +772,6 @@ procedure TfCadDestinatarios.bPesquisaClick(Sender: TObject);
 begin
      Destinatarios.Cancel;
      Filtra(Destinatarios, 'Nome',cPesquisa.text);
-//     Pesquisa(Destinatarios, '', 'Codigo', 'Nome', cPesquisa.text);
 end;
 
 function TfCadDestinatarios.Obriga(NomeCampo:TObject; NomeField:string):boolean;

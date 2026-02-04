@@ -794,6 +794,7 @@ object fFinanceiro: TfFinanceiro
                 Title.Font.Style = [fsBold]
                 Width = 102
                 Font.Style = [fsBold]
+                ReadOnly = True
               end
               item
                 FieldName = 'Nome'
@@ -902,6 +903,7 @@ object fFinanceiro: TfFinanceiro
                 Font.Color = clWhite
                 Font.Name = 'Calibri'
                 Font.Style = [fsBold]
+                ReadOnly = True
               end
               item
                 FieldName = 'Data'
@@ -913,6 +915,7 @@ object fFinanceiro: TfFinanceiro
                 Font.Name = 'Calibri'
                 Font.Style = [fsBold]
                 Alignment = taCenter
+                ReadOnly = True
               end
               item
                 FieldName = 'Banco_Nome'
@@ -934,6 +937,7 @@ object fFinanceiro: TfFinanceiro
                 Font.Color = clWhite
                 Font.Name = 'Calibri'
                 Font.Style = [fsBold]
+                ReadOnly = True
               end
               item
                 FieldName = 'Forma_TipoDocumento'
@@ -944,6 +948,7 @@ object fFinanceiro: TfFinanceiro
                 Font.Color = clWhite
                 Font.Name = 'Calibri'
                 Font.Style = [fsBold]
+                ReadOnly = True
               end
               item
                 FieldName = 'Valor'
@@ -954,6 +959,7 @@ object fFinanceiro: TfFinanceiro
                 Font.Color = clWhite
                 Font.Name = 'Calibri'
                 Font.Style = [fsBold]
+                ReadOnly = True
               end>
           end
         end
@@ -1966,6 +1972,7 @@ object fFinanceiro: TfFinanceiro
             Title.Caption = 'T'#237'tulo'
             Title.Font.Style = [fsBold]
             Width = 63
+            ReadOnly = True
           end
           item
             FieldName = 'Tipo'
@@ -1974,6 +1981,7 @@ object fFinanceiro: TfFinanceiro
             Title.Font.Style = [fsBold]
             Width = 48
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Valor_Total'
@@ -1981,6 +1989,7 @@ object fFinanceiro: TfFinanceiro
             Title.Caption = 'Valor'
             Title.Font.Style = [fsBold]
             Width = 95
+            ReadOnly = True
           end
           item
             FieldName = 'Valor_Baixado'
@@ -1997,6 +2006,7 @@ object fFinanceiro: TfFinanceiro
             Title.Font.Style = [fsBold]
             Width = 71
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Beneficiario'
@@ -2039,6 +2049,7 @@ object fFinanceiro: TfFinanceiro
             Title.Caption = 'N'#186' Baixa'
             Title.Font.Style = [fsBold]
             Width = 94
+            ReadOnly = True
           end
           item
             FieldName = 'Data'
@@ -2047,6 +2058,7 @@ object fFinanceiro: TfFinanceiro
             Title.Font.Style = [fsBold]
             Width = 60
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Banco_Nome'
@@ -2062,6 +2074,7 @@ object fFinanceiro: TfFinanceiro
             Title.Caption = 'Forma de Pgto.'
             Title.Font.Style = [fsBold]
             Width = 191
+            ReadOnly = True
           end
           item
             FieldName = 'Forma_TipoDocumento'
@@ -2069,6 +2082,7 @@ object fFinanceiro: TfFinanceiro
             Title.Caption = 'Documento'
             Title.Font.Style = [fsBold]
             Width = 129
+            ReadOnly = True
           end
           item
             FieldName = 'Valor'
@@ -2076,6 +2090,7 @@ object fFinanceiro: TfFinanceiro
             Title.Caption = 'Valor'
             Title.Font.Style = [fsBold]
             Width = 98
+            ReadOnly = True
           end>
       end
     end
@@ -3096,14 +3111,14 @@ object fFinanceiro: TfFinanceiro
       ReadOnly = True
       Size = 10
     end
-    object EmpresasFechamento_Financeiro: TDateField
-      FieldName = 'Fechamento_Financeiro'
-      Origin = 'Fechamento_Financeiro'
-    end
     object EmpresasEstado: TStringField
       FieldName = 'Estado'
       Origin = 'Estado'
       Size = 2
+    end
+    object EmpresasFechamento_Financeiro: TDateField
+      FieldName = 'Fechamento_Financeiro'
+      Origin = 'Fechamento_Financeiro'
     end
   end
   object dsEmpresas: TDataSource

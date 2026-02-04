@@ -2,7 +2,7 @@ object fCadProdutos: TfCadProdutos
   Left = 0
   Top = 0
   Width = 1284
-  Height = 819
+  Height = 900
   OnCreate = uniFrameCreate
   OnDestroy = uniFrameDestroy
   TabOrder = 0
@@ -123,22 +123,14 @@ object fCadProdutos: TfCadProdutos
     Left = 0
     Top = 35
     Width = 1284
-    Height = 784
+    Height = 865
     Hint = ''
-    ActivePage = tabProduto
+    ActivePage = TabParam
     Align = alClient
-    ClientEvents.UniEvents.Strings = (
-      
-        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-        's = '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 0
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
@@ -187,7 +179,7 @@ object fCadProdutos: TfCadProdutos
         Left = 0
         Top = 27
         Width = 1276
-        Height = 729
+        Height = 810
         Hint = ''
         HeaderTitleAlign = taCenter
         TitleFont.Height = -13
@@ -263,15 +255,11 @@ object fCadProdutos: TfCadProdutos
     object tabProduto: TUniTabSheet
       Hint = ''
       Caption = 'Dados do Produto'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
         Width = 1276
-        Height = 756
+        Height = 837
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -280,14 +268,15 @@ object fCadProdutos: TfCadProdutos
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1257
-          754)
-        ScrollHeight = 1070
+          1274
+          835)
+        ScrollHeight = 821
+        ScrollWidth = 555
         object pFicha: TUniPanel
-          Left = 269
-          Top = 13
-          Width = 924
-          Height = 1057
+          Left = 15
+          Top = 28
+          Width = 865
+          Height = 713
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -303,10 +292,10 @@ object fCadProdutos: TfCadProdutos
           Caption = ''
           Color = clTeal
           object cCodigo: TUniDBEdit
-            Left = 21
-            Top = 19
-            Width = 97
-            Height = 50
+            Left = 7
+            Top = 7
+            Width = 238
+            Height = 25
             Hint = ''
             Enabled = False
             ShowHint = True
@@ -314,44 +303,44 @@ object fCadProdutos: TfCadProdutos
             DataSource = dsProdutos
             TabOrder = 1
             FieldLabel = 'C'#243'digo Sistema'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object clTipo: TUniDBLookupComboBox
-            Left = 21
-            Top = 269
-            Width = 348
-            Height = 50
+            Left = 7
+            Top = 170
+            Width = 587
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dsTipoProduto
             KeyField = 'Codigo'
             ListFieldIndex = 0
+            BorderStyle = ubsInset
             DataField = 'Tipo'
             DataSource = dsProdutos
             AnyMatch = True
             TabOrder = 2
             Color = clWindow
-            MatchFieldWidth = False
             FieldLabel = 'Tipo de Produto'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
           end
           object clNCM: TUniDBLookupComboBox
-            Left = 21
-            Top = 69
+            Left = 7
+            Top = 62
             Width = 587
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'NCM;Produto'
             ListSource = dsNCM
             KeyField = 'NCM'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'NCM'
             DataSource = dsProdutos
             AnyMatch = True
@@ -359,16 +348,15 @@ object fCadProdutos: TfCadProdutos
             Color = clWindow
             MatchFieldWidth = False
             FieldLabel = 'NCM'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
           object cCodigo_Fabricante: TUniDBEdit
-            Left = 126
-            Top = 19
-            Width = 238
-            Height = 50
+            Left = 7
+            Top = 35
+            Width = 586
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Codigo_Fabricante'
@@ -376,22 +364,23 @@ object fCadProdutos: TfCadProdutos
             CharCase = ecUpperCase
             TabOrder = 4
             FieldLabel = 'C'#243'digo Fabrica'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cFabricante: TUniDBLookupComboBox
-            Left = 21
-            Top = 169
+            Left = 7
+            Top = 116
             Width = 587
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Nome'
             ListSource = dsFabricantes
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Fabricante'
             DataSource = dsProdutos
             AnyMatch = True
@@ -399,21 +388,21 @@ object fCadProdutos: TfCadProdutos
             Color = clWindow
             MatchFieldWidth = False
             FieldLabel = 'Fabricante'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
           end
           object cFornecedor: TUniDBLookupComboBox
-            Left = 21
-            Top = 219
+            Left = 7
+            Top = 143
             Width = 587
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Nome'
             ListSource = dsFornecedores
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Fornecedor'
             DataSource = dsProdutos
             AnyMatch = True
@@ -421,261 +410,239 @@ object fCadProdutos: TfCadProdutos
             Color = clWindow
             MatchFieldWidth = False
             FieldLabel = 'Fornecedor'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
           end
           object clLinha: TUniDBLookupComboBox
-            Left = 375
-            Top = 269
-            Width = 233
-            Height = 50
+            Left = 7
+            Top = 197
+            Width = 587
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo; Descricao'
             ListSource = dsLinhas
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Linha'
             DataSource = dsProdutos
             AnyMatch = True
             TabOrder = 7
             Color = clWindow
-            MatchFieldWidth = False
             FieldLabel = 'Linha'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
           end
           object cGTIN: TUniDBEdit
-            Left = 21
-            Top = 370
-            Width = 289
-            Height = 50
+            Left = 7
+            Top = 251
+            Width = 587
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'GTIN_Caixa'
             DataSource = dsProdutos
             TabOrder = 8
             FieldLabel = 'GTIN - Caixa (C'#243'd.Barras)'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cGTIN_Unidade: TUniDBEdit
-            Left = 319
-            Top = 370
-            Width = 289
-            Height = 50
+            Left = 7
+            Top = 278
+            Width = 587
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'GTIN_Unidade'
             DataSource = dsProdutos
             TabOrder = 9
             FieldLabel = 'GTIN - Unidade (C'#243'd.Barras)'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-          end
-          object cDesativado: TUniDBCheckBox
-            Left = 375
-            Top = 51
-            Width = 88
-            Height = 17
-            Hint = ''
-            ShowHint = True
-            DataField = 'Desativado'
-            DataSource = dsProdutos
-            ValueChecked = 'True'
-            ValueUnchecked = 'False'
-            Caption = 'Desativado'
-            ParentFont = False
-            Font.Color = clRed
-            TabOrder = 10
-            ParentColor = False
-            Color = clBtnFace
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object clTipo_Item: TUniDBLookupComboBox
-            Left = 21
-            Top = 319
+            Left = 7
+            Top = 224
             Width = 587
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Descricao;Codigo'
             KeyField = 'Codigo'
             ListFieldIndex = 0
+            BorderStyle = ubsInset
             DataField = 'Tipo_Item'
             DataSource = dsProdutos
             AnyMatch = True
-            TabOrder = 11
+            TabOrder = 10
             Color = clWindow
-            MatchFieldWidth = False
             FieldLabel = 'Tipo Item (SPED)'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
           end
           object cDescricao_Ingles: TUniDBMemo
-            Left = 21
-            Top = 823
-            Width = 881
-            Height = 200
+            Left = 7
+            Top = 596
+            Width = 587
+            Height = 100
             Hint = ''
             ShowHint = True
             DataField = 'Descricao_Ingles'
             DataSource = dsProdutos
-            TabOrder = 12
+            BorderStyle = ubsInset
+            TabOrder = 11
             FieldLabel = 'Descri'#231#227'o (Ingl'#234's)'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
           end
           object cDescricao: TUniDBMemo
-            Left = 21
-            Top = 623
-            Width = 881
-            Height = 200
+            Left = 7
+            Top = 494
+            Width = 587
+            Height = 100
             Hint = ''
             ShowHint = True
             DataField = 'Descricao'
             DataSource = dsProdutos
-            TabOrder = 13
+            BorderStyle = ubsInset
+            TabOrder = 12
             FieldLabel = 'Descri'#231#227'o (Portugu'#234's)'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
           end
           object cDescricao_Reduzida: TUniDBEdit
-            Left = 21
-            Top = 572
-            Width = 881
-            Height = 50
+            Left = 7
+            Top = 467
+            Width = 587
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Descricao_Reduzida'
             DataSource = dsProdutos
-            TabOrder = 14
+            TabOrder = 13
             FieldLabel = 'Descri'#231#227'o Reduzida'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cLargura: TUniDBEdit
-            Left = 129
-            Top = 521
-            Width = 100
-            Height = 50
+            Left = 305
+            Top = 385
+            Width = 289
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Largura'
             DataSource = dsProdutos
-            TabOrder = 15
+            TabOrder = 14
             FieldLabel = 'Largura'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cUnidade: TUniDBLookupComboBox
-            Left = 21
-            Top = 420
-            Width = 258
-            Height = 50
+            Left = 7
+            Top = 305
+            Width = 289
+            Height = 25
             Hint = ''
             ShowHint = True
-            ListField = 'Codigo;Descricao'
+            ListField = 'Codigo;Nome'
+            ListSource = dstUM
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'UM_Tributaria'
+            DataSource = dsProdutos
+            AnyMatch = True
+            TabOrder = 15
+            Color = clWindow
+            FieldLabel = 'Unidade Medida (Tributada)'
+            FieldLabelWidth = 140
+            FieldLabelSeparator = ' '
+          end
+          object clUnidade_Origem: TUniDBLookupComboBox
+            Left = 7
+            Top = 332
+            Width = 289
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListField = 'Codigo;Nome'
+            ListSource = dstUM
+            KeyField = 'Codigo'
+            ListFieldIndex = 1
+            BorderStyle = ubsInset
+            DataField = 'UM'
             DataSource = dsProdutos
             AnyMatch = True
             TabOrder = 16
             Color = clWindow
-            FieldLabel = 'Unidade Medida (Tributada)'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-          end
-          object clUnidade_Origem: TUniDBLookupComboBox
-            Left = 21
-            Top = 470
-            Width = 258
-            Height = 50
-            Hint = ''
-            ShowHint = True
-            ListField = 'Codigo;Descricao'
-            KeyField = 'Codigo'
-            ListFieldIndex = 1
-            DataField = 'UM'
-            DataSource = dsProdutos
-            AnyMatch = True
-            TabOrder = 17
-            Color = clWindow
-            FieldLabel = 'Unidade Medida (Faturamento)'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabel = 'Unidade Medida (Fatur.)'
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
           end
           object cQuantidade_Volumes: TUniDBEdit
-            Left = 285
-            Top = 420
-            Width = 127
-            Height = 50
+            Left = 305
+            Top = 305
+            Width = 289
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Quantidade_Volumes'
             DataSource = dsProdutos
-            TabOrder = 18
-            FieldLabel = 'Qtde.unidade Volumes'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            TabOrder = 17
+            FieldLabel = 'Qtde.Unid.Vol'
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cAltura: TUniDBEdit
-            Left = 21
-            Top = 521
-            Width = 100
-            Height = 50
+            Left = 7
+            Top = 386
+            Width = 289
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Altura'
             DataSource = dsProdutos
-            TabOrder = 19
+            TabOrder = 18
             FieldLabel = 'Altura/Espessura'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cComprimento: TUniDBEdit
-            Left = 237
-            Top = 521
-            Width = 100
-            Height = 50
+            Left = 7
+            Top = 413
+            Width = 289
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Comprimento'
             DataSource = dsProdutos
-            TabOrder = 20
+            TabOrder = 19
             FieldLabel = 'Comprimento'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cTipoConversao: TUniDBComboBox
-            Left = 418
-            Top = 470
-            Width = 190
-            Height = 50
+            Left = 7
+            Top = 359
+            Width = 289
+            Height = 25
             Hint = ''
             ShowHint = True
             AnyMatch = True
@@ -685,64 +652,66 @@ object fCadProdutos: TfCadProdutos
             Items.Strings = (
               'Divide'
               'Multiplica')
-            TabOrder = 21
+            TabOrder = 20
             FieldLabel = 'Tipo convers'#227'o'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
             IconItems = <>
             SelectOnFocus = True
           end
           object cQuantidade_Unidade: TUniDBEdit
-            Left = 285
-            Top = 470
-            Width = 127
-            Height = 50
+            Left = 305
+            Top = 332
+            Width = 289
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Quantidade_Unidade'
             DataSource = dsProdutos
-            TabOrder = 22
-            FieldLabel = 'Qtde.unidade Medida'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            TabOrder = 21
+            FieldLabel = 'Qtde.UM'
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object UniGroupBox1: TUniGroupBox
-            Left = 625
-            Top = 16
-            Width = 277
-            Height = 272
+            Left = 607
+            Top = 483
+            Width = 249
+            Height = 214
             Hint = ''
             ShowHint = True
+            BodyRTL = True
             Caption = 'Foto'
-            TabOrder = 23
+            TabOrder = 22
             ClientEvents.UniEvents.Strings = (
               
-                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-                '= '#39'Grupo'#39';'#13#10'}')
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                's = '#39'Grupo'#39';'#13#10'}')
             DesignSize = (
-              277
-              272)
+              249
+              214)
             object iFoto: TUniImage
-              Left = 12
-              Top = 21
-              Width = 253
-              Height = 238
+              Left = 2
+              Top = 15
+              Width = 245
+              Height = 197
               Hint = ''
               ShowHint = True
               Center = True
               Stretch = True
+              Align = alClient
               Transparent = True
               ClientEvents.UniEvents.Strings = (
                 
                   'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
                   '= '#39'CaixaSimples'#39';'#13#10'}')
+              ShowAltName = True
             end
             object bFoto: TUniSpeedButton
-              Left = 235
-              Top = 228
+              Left = 179
+              Top = 178
               Width = 25
               Height = 25
               Hint = ''
@@ -751,67 +720,449 @@ object fCadProdutos: TfCadProdutos
               Anchors = [akRight, akBottom]
               ParentFont = False
               ParentColor = False
-              IconAlign = iaTop
+              IconAlign = iaCenter
               Images = UniMainModule.imgBotoes
               ImageIndex = 13
               TabOrder = 2
               OnClick = bFotoClick
             end
+            object bLimpaFoto: TUniSpeedButton
+              Left = 210
+              Top = 178
+              Width = 25
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              Caption = ''
+              Anchors = [akRight, akBottom]
+              ParentFont = False
+              ParentColor = False
+              IconAlign = iaCenter
+              Images = UniMainModule.imgBotoes
+              ImageIndex = 25
+              TabOrder = 3
+              OnClick = bLimpaFotoClick
+            end
           end
           object cOrigem: TUniDBLookupComboBox
-            Left = 21
-            Top = 119
+            Left = 7
+            Top = 89
             Width = 587
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dsOrigem
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Origem'
             DataSource = dsProdutos
             AnyMatch = True
-            TabOrder = 24
+            TabOrder = 23
             Color = clWindow
             MatchFieldWidth = False
             FieldLabel = 'Origem'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
           end
           object cPeso_Liquido: TUniDBEdit
-            Left = 346
-            Top = 521
-            Width = 121
-            Height = 50
+            Left = 7
+            Top = 440
+            Width = 289
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Peso_Liquido'
             DataSource = dsProdutos
-            TabOrder = 25
+            TabOrder = 24
             FieldLabel = 'Peso L'#237'quido'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cPeso_Bruto: TUniDBEdit
-            Left = 475
-            Top = 521
-            Width = 133
-            Height = 50
+            Left = 305
+            Top = 440
+            Width = 289
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Peso_Bruto'
             DataSource = dsProdutos
-            TabOrder = 26
+            TabOrder = 25
             FieldLabel = 'Peso Bruto'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
+          object GroupBox6: TUniGroupBox
+            Left = 607
+            Top = 3
+            Width = 249
+            Height = 470
+            Hint = ''
+            ShowHint = True
+            Caption = 'Detalhes Diversos'
+            TabOrder = 26
+            ClientEvents.UniEvents.Strings = (
+              
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                's = '#39'Grupo'#39';'#13#10'}')
+            object cReciclavel: TUniDBCheckBox
+              Left = 7
+              Top = 115
+              Width = 227
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Reciclavel'
+              DataSource = dsProdutos
+              ValueChecked = 'True'
+              ValueUnchecked = 'False'
+              Caption = 'Recicl'#225'vel'
+              TabOrder = 3
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
+            object cEntrada_ST: TUniDBCheckBox
+              Left = 7
+              Top = 165
+              Width = 227
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Entrada_ST'
+              DataSource = dsProdutos
+              ValueChecked = 'True'
+              ValueUnchecked = 'False'
+              Caption = 'Entrada por substitui'#231#227'o Tribut'#225'ria'
+              TabOrder = 5
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
+            object cCusto_Seletivo: TUniDBCheckBox
+              Left = 7
+              Top = 190
+              Width = 227
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Custo_Seletivo'
+              DataSource = dsProdutos
+              ValueChecked = 'True'
+              ValueUnchecked = 'False'
+              Caption = 'Custo Seletivo'
+              TabOrder = 6
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
+            object cVisivel_Representa: TUniDBCheckBox
+              Left = 7
+              Top = 41
+              Width = 227
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Visivel_Representa'
+              DataSource = dsProdutos
+              ValueChecked = 'True'
+              ValueUnchecked = 'False'
+              Caption = 'Visivel Representante'
+              TabOrder = 0
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
+            object cLote_Obrigatorio: TUniDBCheckBox
+              Left = 7
+              Top = 66
+              Width = 227
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Lote_Obrigatorio'
+              DataSource = dsProdutos
+              ValueChecked = 'True'
+              ValueUnchecked = 'False'
+              Caption = 'Lote Obrigat'#243'rio'
+              TabOrder = 1
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
+            object cProducao_Nacional: TUniDBCheckBox
+              Left = 7
+              Top = 215
+              Width = 227
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Producao_Nacional'
+              DataSource = dsProdutos
+              ValueChecked = 'True'
+              ValueUnchecked = 'False'
+              Caption = 'Produ'#231#227'o Nacional'
+              TabOrder = 7
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
+            object cSerial_Obrigatorio: TUniDBCheckBox
+              Left = 7
+              Top = 90
+              Width = 227
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Serial_Obrigatorio'
+              DataSource = dsProdutos
+              ValueChecked = 'True'
+              ValueUnchecked = 'False'
+              Caption = 'Serial Obrigat'#243'rio'
+              TabOrder = 2
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
+            object cEscala_Relevante: TUniDBCheckBox
+              Left = 7
+              Top = 414
+              Width = 227
+              Height = 21
+              Hint = ''
+              ShowHint = True
+              DataField = 'Escala_Relevante'
+              DataSource = dsProdutos
+              ValueChecked = 'True'
+              ValueUnchecked = 'False'
+              Caption = 'Produzido em escala relevante'
+              TabOrder = 4
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+              OnClick = cEscala_RelevanteClick
+            end
+            object cCNPJ_Fabricante: TUniDBEdit
+              Left = 44
+              Top = 435
+              Width = 190
+              Height = 25
+              Hint = ''
+              Enabled = False
+              ShowHint = True
+              DataField = 'CNPJ_Fabricante'
+              DataSource = dsProdutos
+              MaxLength = 18
+              TabOrder = 8
+              FieldLabel = 'CNPJ Fab.'
+              FieldLabelWidth = 60
+              FieldLabelSeparator = ' '
+              SelectOnFocus = True
+              BorderStyle = ubsInset
+            end
+            object cMateria_Prima: TUniDBCheckBox
+              Left = 7
+              Top = 140
+              Width = 227
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Materia_Prima'
+              DataSource = dsProdutos
+              ValueChecked = 'True'
+              ValueUnchecked = 'False'
+              Caption = 'Mat'#233'ria Prima'
+              TabOrder = 10
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
+            object UniDBCheckBox1: TUniDBCheckBox
+              Left = 7
+              Top = 239
+              Width = 227
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'CAMEX'
+              DataSource = dsProdutos
+              ValueChecked = 'True'
+              ValueUnchecked = 'False'
+              Caption = 'Tabela CAMEX'
+              TabOrder = 11
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
+            object UniDBCheckBox2: TUniDBCheckBox
+              Left = 7
+              Top = 264
+              Width = 227
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'FCP'
+              DataSource = dsProdutos
+              ValueChecked = 'True'
+              ValueUnchecked = 'False'
+              Caption = 'Incid'#234'ncia de FCP'
+              TabOrder = 12
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
+            object UniDBCheckBox3: TUniDBCheckBox
+              Left = 7
+              Top = 289
+              Width = 227
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'ICMS_Desonerado'
+              DataSource = dsProdutos
+              ValueChecked = 'True'
+              ValueUnchecked = 'False'
+              Caption = 'ICMS Desonerado'
+              TabOrder = 13
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
+            object UniDBCheckBox4: TUniDBCheckBox
+              Left = 7
+              Top = 314
+              Width = 227
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Dumping'
+              DataSource = dsProdutos
+              ValueChecked = 'True'
+              ValueUnchecked = 'False'
+              Caption = 'Anti-Dumping'
+              TabOrder = 14
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
+            object UniDBCheckBox5: TUniDBCheckBox
+              Left = 7
+              Top = 339
+              Width = 227
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Servico'
+              DataSource = dsProdutos
+              ValueChecked = 'True'
+              ValueUnchecked = 'False'
+              Caption = 'Servi'#231'o'
+              TabOrder = 15
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
+            object UniDBCheckBox6: TUniDBCheckBox
+              Left = 7
+              Top = 364
+              Width = 227
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Requer_LI'
+              DataSource = dsProdutos
+              ValueChecked = 'True'
+              ValueUnchecked = 'False'
+              Caption = 'Requer Licensa de Importa'#231#227'o (LI)'
+              TabOrder = 16
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
+            object UniDBCheckBox7: TUniDBCheckBox
+              Left = 7
+              Top = 389
+              Width = 227
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Estoque_Navio'
+              DataSource = dsProdutos
+              ValueChecked = 'True'
+              ValueUnchecked = 'False'
+              Caption = 'Estoque por Navio'
+              TabOrder = 17
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelAlign = laTop
+              FieldLabelSeparator = ' '
+            end
+            object cDesativado: TUniDBCheckBox
+              Left = 7
+              Top = 16
+              Width = 227
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Desativado'
+              DataSource = dsProdutos
+              ValueChecked = 'True'
+              ValueUnchecked = 'False'
+              Caption = 'Desativado'
+              ParentFont = False
+              TabOrder = 18
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 140
+              FieldLabelSeparator = ' '
+            end
+          end
+        end
+        object UniContainerPanel2: TUniContainerPanel
+          Left = 324
+          Top = 799
+          Width = 231
+          Height = 22
+          Hint = ''
+          ParentColor = False
+          TabOrder = 1
         end
       end
     end
@@ -819,31 +1170,23 @@ object fCadProdutos: TfCadProdutos
       Hint = ''
       ImageIndex = 4
       Caption = 'Par'#226'metros'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox5: TUniScrollBox
         Left = 0
         Top = 0
         Width = 1276
-        Height = 756
+        Height = 837
         Hint = ''
         Align = alClient
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1257
-          754)
-        ScrollHeight = 1091
+          1274
+          835)
+        ScrollHeight = 683
         object UniPanel4: TUniPanel
-          Left = 285
-          Top = 17
-          Width = 704
-          Height = 1074
+          Left = 121
+          Top = 13
+          Width = 864
+          Height = 670
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -859,32 +1202,28 @@ object fCadProdutos: TfCadProdutos
           Caption = ''
           Color = clTeal
           object cDadosDetalhe: TUniPageControl
-            Left = 23
-            Top = 656
-            Width = 659
-            Height = 376
+            Left = 11
+            Top = 427
+            Width = 838
+            Height = 219
             Hint = ''
             ShowHint = True
             ActivePage = TabSheet2
             ClientEvents.UniEvents.Strings = (
               
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-                '= '#39'CaixaSimples'#39';'#13#10'}')
+                '= '#39'PastaItens'#39';'#13#10'}')
             TabOrder = 1
             object TabSheet2: TUniTabSheet
               Hint = ''
               Enabled = False
               ShowHint = True
               Caption = 'Autom'#243'vel Novo'
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 256
-              ExplicitHeight = 128
               object cPotencia_Motor: TUniDBEdit
-                Left = 221
-                Top = 15
-                Width = 126
-                Height = 55
+                Left = 11
+                Top = 43
+                Width = 371
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Potencia_Motor'
@@ -892,15 +1231,15 @@ object fCadProdutos: TfCadProdutos
                 TabOrder = 0
                 FieldLabel = 'Pot'#234'ncia Motor'
                 FieldLabelWidth = 120
-                FieldLabelAlign = laTop
                 FieldLabelSeparator = ' '
                 SelectOnFocus = True
+                BorderStyle = ubsInset
               end
               object cCilindradas: TUniDBEdit
-                Left = 354
-                Top = 15
-                Width = 133
-                Height = 55
+                Left = 388
+                Top = 43
+                Width = 210
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Cilindradas'
@@ -908,15 +1247,15 @@ object fCadProdutos: TfCadProdutos
                 TabOrder = 1
                 FieldLabel = 'Cilindradas'
                 FieldLabelWidth = 120
-                FieldLabelAlign = laTop
                 FieldLabelSeparator = ' '
                 SelectOnFocus = True
+                BorderStyle = ubsInset
               end
               object cCapacidade_Tracao: TUniDBEdit
-                Left = 492
-                Top = 15
-                Width = 141
-                Height = 55
+                Left = 605
+                Top = 43
+                Width = 208
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Capacidade_Tracao'
@@ -924,15 +1263,15 @@ object fCadProdutos: TfCadProdutos
                 TabOrder = 2
                 FieldLabel = 'Capacidade de Tra'#231#227'o'
                 FieldLabelWidth = 120
-                FieldLabelAlign = laTop
                 FieldLabelSeparator = ' '
                 SelectOnFocus = True
+                BorderStyle = ubsInset
               end
               object cDistancia_Eixos: TUniDBEdit
-                Left = 221
+                Left = 388
                 Top = 71
-                Width = 126
-                Height = 55
+                Width = 210
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Distancia_Eixos'
@@ -940,15 +1279,15 @@ object fCadProdutos: TfCadProdutos
                 TabOrder = 3
                 FieldLabel = 'Dist'#226'ncia entre Eixos'
                 FieldLabelWidth = 120
-                FieldLabelAlign = laTop
                 FieldLabelSeparator = ' '
                 SelectOnFocus = True
+                BorderStyle = ubsInset
               end
               object cTipo_Pintura: TUniDBEdit
-                Left = 492
-                Top = 71
-                Width = 141
-                Height = 55
+                Left = 388
+                Top = 15
+                Width = 425
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Tipo_Pintura'
@@ -956,15 +1295,15 @@ object fCadProdutos: TfCadProdutos
                 TabOrder = 4
                 FieldLabel = 'Tipo de Pintura'
                 FieldLabelWidth = 120
-                FieldLabelAlign = laTop
                 FieldLabelSeparator = ' '
                 SelectOnFocus = True
+                BorderStyle = ubsInset
               end
               object cCodigo_MarcaModelo: TUniDBEdit
-                Left = 354
+                Left = 605
                 Top = 71
-                Width = 133
-                Height = 55
+                Width = 208
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Codigo_MarcaModelo'
@@ -972,15 +1311,15 @@ object fCadProdutos: TfCadProdutos
                 TabOrder = 5
                 FieldLabel = 'C'#243'digo Marca/Modelo'
                 FieldLabelWidth = 120
-                FieldLabelAlign = laTop
                 FieldLabelSeparator = ' '
                 SelectOnFocus = True
+                BorderStyle = ubsInset
               end
               object cPassageiros: TUniDBEdit
-                Left = 17
+                Left = 11
                 Top = 71
-                Width = 198
-                Height = 55
+                Width = 371
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Passageiros'
@@ -988,53 +1327,53 @@ object fCadProdutos: TfCadProdutos
                 TabOrder = 6
                 FieldLabel = 'Capacidade de Lota'#231#227'o'
                 FieldLabelWidth = 120
-                FieldLabelAlign = laTop
                 FieldLabelSeparator = ' '
                 SelectOnFocus = True
+                BorderStyle = ubsInset
               end
               object cTipo_Combustivel: TUniDBLookupComboBox
-                Left = 17
+                Left = 11
                 Top = 15
-                Width = 198
-                Height = 55
+                Width = 371
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 ListField = 'Codigo;Descricao'
                 ListSource = UniMainModule.dsTipoCombustivel
                 KeyField = 'Codigo'
                 ListFieldIndex = 0
+                BorderStyle = ubsInset
                 DataField = 'Tipo_Combustivel'
                 DataSource = dsProdutos
                 TabOrder = 7
                 Color = clWindow
                 FieldLabel = 'Tipo de Combustivel'
                 FieldLabelWidth = 120
-                FieldLabelAlign = laTop
                 FieldLabelSeparator = ' '
               end
               object cTipo_Veiculo: TUniDBLookupComboBox
-                Left = 17
-                Top = 127
-                Width = 281
-                Height = 55
+                Left = 11
+                Top = 99
+                Width = 371
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 ListField = 'Codigo;Descricao'
                 ListSource = UniMainModule.dsTipoVeiculo
                 KeyField = 'Codigo'
                 ListFieldIndex = 0
+                BorderStyle = ubsInset
                 DataField = 'Tipo_Veiculo'
                 DataSource = dsProdutos
                 TabOrder = 8
                 Color = clWindow
                 FieldLabel = 'Tipo de Ve'#237'culo'
                 FieldLabelWidth = 120
-                FieldLabelAlign = laTop
                 FieldLabelSeparator = ' '
               end
               object UniDBRadioGroup1: TUniDBRadioGroup
-                Left = 416
-                Top = 189
+                Left = 388
+                Top = 102
                 Width = 164
                 Height = 75
                 Hint = ''
@@ -1055,43 +1394,43 @@ object fCadProdutos: TfCadProdutos
                   'N')
               end
               object cEspecie_Veiculo: TUniDBLookupComboBox
-                Left = 17
-                Top = 183
-                Width = 281
-                Height = 55
+                Left = 11
+                Top = 127
+                Width = 371
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 ListField = 'Codigo;Descricao'
                 ListSource = UniMainModule.dsEspecieVeiculo
                 KeyField = 'Codigo'
                 ListFieldIndex = 0
+                BorderStyle = ubsInset
                 DataField = 'Especie_Veiculo'
                 DataSource = dsProdutos
                 TabOrder = 10
                 Color = clWindow
                 FieldLabel = 'Esp'#233'cie de Ve'#237'culo'
                 FieldLabelWidth = 120
-                FieldLabelAlign = laTop
                 FieldLabelSeparator = ' '
               end
               object cCondicao_Veiculo: TUniDBLookupComboBox
-                Left = 18
-                Top = 239
-                Width = 281
-                Height = 55
+                Left = 11
+                Top = 154
+                Width = 371
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 ListField = 'Codigo;Descricao'
                 ListSource = UniMainModule.dsEspecieVeiculo
                 KeyField = 'Codigo'
                 ListFieldIndex = 0
+                BorderStyle = ubsInset
                 DataField = 'Condicao_Veiculo'
                 DataSource = dsProdutos
                 TabOrder = 11
                 Color = clWindow
                 FieldLabel = 'Condi'#231#227'o do Ve'#237'culo'
                 FieldLabelWidth = 120
-                FieldLabelAlign = laTop
                 FieldLabelSeparator = ' '
               end
             end
@@ -1101,50 +1440,46 @@ object fCadProdutos: TfCadProdutos
               ShowHint = True
               ImageIndex = 3
               Caption = 'Combust'#237'vel'
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 256
-              ExplicitHeight = 128
               object clCodigo_ANP: TUniDBLookupComboBox
-                Left = 19
-                Top = 20
+                Left = 11
+                Top = 12
                 Width = 614
-                Height = 55
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 ListField = 'Codigo; Produto;Familia'
                 ListSource = dsCombustiveis
                 KeyField = 'Codigo'
                 ListFieldIndex = 1
+                BorderStyle = ubsInset
                 DataField = 'Codigo_ANP'
                 DataSource = dsProdutos
                 TabOrder = 0
                 Color = clWindow
                 FieldLabel = 'C'#243'digo ANP'
                 FieldLabelWidth = 120
-                FieldLabelAlign = laTop
                 FieldLabelSeparator = ' '
               end
               object cDescricao_ANP: TUniDBMemo
-                Left = 19
-                Top = 76
+                Left = 11
+                Top = 39
                 Width = 614
-                Height = 133
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Descricao_ANP'
                 DataSource = dsProdutos
+                BorderStyle = ubsInset
                 TabOrder = 2
                 FieldLabel = 'Descri'#231#227'o ANP'
                 FieldLabelWidth = 120
-                FieldLabelAlign = laTop
                 FieldLabelSeparator = ' '
               end
               object cPercentual_GLGNN: TUniDBEdit
-                Left = 19
-                Top = 210
+                Left = 11
+                Top = 66
                 Width = 200
-                Height = 55
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Percentual_GLGNN'
@@ -1152,15 +1487,15 @@ object fCadProdutos: TfCadProdutos
                 TabOrder = 1
                 FieldLabel = 'Percentual GLGN (Nacional)'
                 FieldLabelWidth = 120
-                FieldLabelAlign = laTop
                 FieldLabelSeparator = ' '
                 SelectOnFocus = True
+                BorderStyle = ubsInset
               end
               object cPercentual_GLGNI: TUniDBEdit
-                Left = 225
-                Top = 210
+                Left = 217
+                Top = 66
                 Width = 200
-                Height = 56
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Percentual_GLGNI'
@@ -1168,15 +1503,15 @@ object fCadProdutos: TfCadProdutos
                 TabOrder = 3
                 FieldLabel = 'Percentual GLGN (Importado)'
                 FieldLabelWidth = 120
-                FieldLabelAlign = laTop
                 FieldLabelSeparator = ' '
                 SelectOnFocus = True
+                BorderStyle = ubsInset
               end
               object cValor_Partida: TUniDBEdit
-                Left = 19
-                Top = 266
+                Left = 11
+                Top = 93
                 Width = 200
-                Height = 55
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Valor_Partida'
@@ -1184,9 +1519,9 @@ object fCadProdutos: TfCadProdutos
                 TabOrder = 4
                 FieldLabel = 'Valor de Partida'
                 FieldLabelWidth = 120
-                FieldLabelAlign = laTop
                 FieldLabelSeparator = ' '
                 SelectOnFocus = True
+                BorderStyle = ubsInset
               end
             end
             object TabSheet4: TUniTabSheet
@@ -1195,25 +1530,21 @@ object fCadProdutos: TfCadProdutos
               ShowHint = True
               ImageIndex = 2
               Caption = 'Medicamento'
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 256
-              ExplicitHeight = 128
               object cPreco_MaxConsumidor: TUniDBEdit
-                Left = 18
-                Top = 20
-                Width = 130
-                Height = 55
+                Left = 10
+                Top = 13
+                Width = 362
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Preco_MaxConsumidor'
                 DataSource = dsProdutos
                 TabOrder = 0
                 FieldLabel = 'Pre'#231'o m'#225'ximo consumidor'
-                FieldLabelWidth = 120
-                FieldLabelAlign = laTop
+                FieldLabelWidth = 160
                 FieldLabelSeparator = ' '
                 SelectOnFocus = True
+                BorderStyle = ubsInset
               end
             end
             object TabSheet3: TUniTabSheet
@@ -1222,27 +1553,19 @@ object fCadProdutos: TfCadProdutos
               ShowHint = True
               ImageIndex = 1
               Caption = 'Armamento'
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 256
-              ExplicitHeight = 128
             end
             object UniTabSheet1: TUniTabSheet
               Hint = ''
               Enabled = False
               ShowHint = True
               Caption = 'Outros'
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 256
-              ExplicitHeight = 128
             end
           end
           object GroupBox10: TUniGroupBox
-            Left = 264
-            Top = 92
-            Width = 220
-            Height = 187
+            Left = 11
+            Top = 42
+            Width = 547
+            Height = 80
             Hint = ''
             ShowHint = True
             Caption = 'ANVISA'
@@ -1254,8 +1577,8 @@ object fCadProdutos: TfCadProdutos
             object cRegistro_ANVISA: TUniDBEdit
               Left = 8
               Top = 17
-              Width = 194
-              Height = 50
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Registro_ANVISA'
@@ -1263,15 +1586,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 0
               FieldLabel = 'Registro'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cProcesso_ANVISA: TUniDBEdit
               Left = 8
-              Top = 116
-              Width = 194
-              Height = 50
+              Top = 44
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Processo_ANVISA'
@@ -1279,15 +1602,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 1
               FieldLabel = 'Processo'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cVencimento_ANVISA: TUniDBDateTimePicker
-              Left = 8
-              Top = 66
-              Width = 194
-              Height = 50
+              Left = 314
+              Top = 17
+              Width = 219
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Vencimento_ANVISA'
@@ -1296,366 +1619,29 @@ object fCadProdutos: TfCadProdutos
               DateFormat = 'dd/MM/yyyy'
               TimeFormat = 'HH:mm:ss'
               TabOrder = 3
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               FieldLabel = 'Vencimento'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
             end
           end
-          object GroupBox6: TUniGroupBox
-            Left = 23
-            Top = 92
-            Width = 233
-            Height = 384
+          object GroupBox1: TUniGroupBox
+            Left = 11
+            Top = 277
+            Width = 376
+            Height = 80
             Hint = ''
             ShowHint = True
-            Caption = 'Detalhes Diversos'
+            Caption = 'Par'#226'mentros Comerciais do Produto'
             TabOrder = 3
             ClientEvents.UniEvents.Strings = (
               
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
                 's = '#39'Grupo'#39';'#13#10'}')
-            object cReciclavel: TUniDBCheckBox
-              Left = 16
-              Top = 77
-              Width = 205
-              Height = 17
-              Hint = ''
-              ShowHint = True
-              DataField = 'Reciclavel'
-              DataSource = dsProdutos
-              ValueChecked = 'True'
-              ValueUnchecked = 'False'
-              Caption = 'Recicl'#225'vel'
-              TabOrder = 3
-              ParentColor = False
-              Color = clBtnFace
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cEntrada_ST: TUniDBCheckBox
-              Left = 16
-              Top = 115
-              Width = 205
-              Height = 17
-              Hint = ''
-              ShowHint = True
-              DataField = 'Entrada_ST'
-              DataSource = dsProdutos
-              ValueChecked = 'True'
-              ValueUnchecked = 'False'
-              Caption = 'Entrada por substitui'#231#227'o Tribut'#225'ria'
-              TabOrder = 5
-              ParentColor = False
-              Color = clBtnFace
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cCusto_Seletivo: TUniDBCheckBox
-              Left = 16
-              Top = 134
-              Width = 205
-              Height = 17
-              Hint = ''
-              ShowHint = True
-              DataField = 'Custo_Seletivo'
-              DataSource = dsProdutos
-              ValueChecked = 'True'
-              ValueUnchecked = 'False'
-              Caption = 'Custo Seletivo'
-              TabOrder = 6
-              ParentColor = False
-              Color = clBtnFace
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cVisivel_Representa: TUniDBCheckBox
-              Left = 16
-              Top = 20
-              Width = 205
-              Height = 17
-              Hint = ''
-              ShowHint = True
-              DataField = 'Visivel_Representa'
-              DataSource = dsProdutos
-              ValueChecked = 'True'
-              ValueUnchecked = 'False'
-              Caption = 'Visivel Representante'
-              TabOrder = 0
-              ParentColor = False
-              Color = clBtnFace
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cLote_Obrigatorio: TUniDBCheckBox
-              Left = 16
-              Top = 39
-              Width = 205
-              Height = 17
-              Hint = ''
-              ShowHint = True
-              DataField = 'Lote_Obrigatorio'
-              DataSource = dsProdutos
-              ValueChecked = 'True'
-              ValueUnchecked = 'False'
-              Caption = 'Lote Obrigat'#243'rio'
-              TabOrder = 1
-              ParentColor = False
-              Color = clBtnFace
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cProducao_Nacional: TUniDBCheckBox
-              Left = 16
-              Top = 153
-              Width = 205
-              Height = 17
-              Hint = ''
-              ShowHint = True
-              DataField = 'Producao_Nacional'
-              DataSource = dsProdutos
-              ValueChecked = 'True'
-              ValueUnchecked = 'False'
-              Caption = 'Produ'#231#227'o Nacional'
-              TabOrder = 7
-              ParentColor = False
-              Color = clBtnFace
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cSerial_Obrigatorio: TUniDBCheckBox
-              Left = 16
-              Top = 58
-              Width = 205
-              Height = 17
-              Hint = ''
-              ShowHint = True
-              DataField = 'Serial_Obrigatorio'
-              DataSource = dsProdutos
-              ValueChecked = 'True'
-              ValueUnchecked = 'False'
-              Caption = 'Serial Obrigat'#243'rio'
-              TabOrder = 2
-              ParentColor = False
-              Color = clBtnFace
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cEscala_Relevante: TUniDBCheckBox
-              Left = 16
-              Top = 305
-              Width = 205
-              Height = 17
-              Hint = ''
-              ShowHint = True
-              DataField = 'Escala_Relevante'
-              DataSource = dsProdutos
-              ValueChecked = 'True'
-              ValueUnchecked = 'False'
-              Caption = 'Produzido em escala relevante'
-              TabOrder = 4
-              ParentColor = False
-              Color = clBtnFace
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cCNPJ_Fabricante: TUniDBEdit
-              Left = 37
-              Top = 323
-              Width = 184
-              Height = 50
-              Hint = ''
-              Enabled = False
-              ShowHint = True
-              DataField = 'CNPJ_Fabricante'
-              DataSource = dsProdutos
-              MaxLength = 18
-              TabOrder = 8
-              FieldLabel = 'CNPJ do Fabricante'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-              SelectOnFocus = True
-            end
-            object cMateria_Prima: TUniDBCheckBox
-              Left = 16
-              Top = 96
-              Width = 205
-              Height = 17
-              Hint = ''
-              ShowHint = True
-              DataField = 'Materia_Prima'
-              DataSource = dsProdutos
-              ValueChecked = 'True'
-              ValueUnchecked = 'False'
-              Caption = 'Mat'#233'ria Prima'
-              TabOrder = 10
-              ParentColor = False
-              Color = clBtnFace
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object UniDBCheckBox1: TUniDBCheckBox
-              Left = 16
-              Top = 172
-              Width = 205
-              Height = 17
-              Hint = ''
-              ShowHint = True
-              DataField = 'CAMEX'
-              DataSource = dsProdutos
-              ValueChecked = 'True'
-              ValueUnchecked = 'False'
-              Caption = 'Tabela CAMEX'
-              TabOrder = 11
-              ParentColor = False
-              Color = clBtnFace
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object UniDBCheckBox2: TUniDBCheckBox
-              Left = 16
-              Top = 191
-              Width = 205
-              Height = 17
-              Hint = ''
-              ShowHint = True
-              DataField = 'FCP'
-              DataSource = dsProdutos
-              ValueChecked = 'True'
-              ValueUnchecked = 'False'
-              Caption = 'Incid'#234'ncia de FCP'
-              TabOrder = 12
-              ParentColor = False
-              Color = clBtnFace
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object UniDBCheckBox3: TUniDBCheckBox
-              Left = 16
-              Top = 210
-              Width = 205
-              Height = 17
-              Hint = ''
-              ShowHint = True
-              DataField = 'ICMS_Desonerado'
-              DataSource = dsProdutos
-              ValueChecked = 'True'
-              ValueUnchecked = 'False'
-              Caption = 'ICMS Desonerado'
-              TabOrder = 13
-              ParentColor = False
-              Color = clBtnFace
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object UniDBCheckBox4: TUniDBCheckBox
-              Left = 16
-              Top = 229
-              Width = 205
-              Height = 17
-              Hint = ''
-              ShowHint = True
-              DataField = 'Dumping'
-              DataSource = dsProdutos
-              ValueChecked = 'True'
-              ValueUnchecked = 'False'
-              Caption = 'Anti-Dumping'
-              TabOrder = 14
-              ParentColor = False
-              Color = clBtnFace
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object UniDBCheckBox5: TUniDBCheckBox
-              Left = 16
-              Top = 248
-              Width = 205
-              Height = 17
-              Hint = ''
-              ShowHint = True
-              DataField = 'Servico'
-              DataSource = dsProdutos
-              ValueChecked = 'True'
-              ValueUnchecked = 'False'
-              Caption = 'Servi'#231'o'
-              TabOrder = 15
-              ParentColor = False
-              Color = clBtnFace
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object UniDBCheckBox6: TUniDBCheckBox
-              Left = 16
-              Top = 267
-              Width = 205
-              Height = 17
-              Hint = ''
-              ShowHint = True
-              DataField = 'Requer_LI'
-              DataSource = dsProdutos
-              ValueChecked = 'True'
-              ValueUnchecked = 'False'
-              Caption = 'Requer Licensa de Importa'#231#227'o (LI)'
-              TabOrder = 16
-              ParentColor = False
-              Color = clBtnFace
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object UniDBCheckBox7: TUniDBCheckBox
-              Left = 16
-              Top = 286
-              Width = 205
-              Height = 17
-              Hint = ''
-              ShowHint = True
-              DataField = 'Estoque_Navio'
-              DataSource = dsProdutos
-              ValueChecked = 'True'
-              ValueUnchecked = 'False'
-              Caption = 'Estoque por Navio'
-              TabOrder = 17
-              ParentColor = False
-              Color = clBtnFace
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-          end
-          object GroupBox1: TUniGroupBox
-            Left = 23
-            Top = 495
-            Width = 348
-            Height = 85
-            Hint = ''
-            ShowHint = True
-            Caption = 'Par'#226'mentros Comerciais do Produto'
-            TabOrder = 4
-            ClientEvents.UniEvents.Strings = (
-              
-                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-                's = '#39'Grupo'#39';'#13#10'}')
             object cPromocao: TUniDBCheckBox
-              Left = 18
+              Left = 8
               Top = 19
-              Width = 206
+              Width = 224
               Height = 19
               Hint = ''
               ShowHint = True
@@ -1673,30 +1659,31 @@ object fCadProdutos: TfCadProdutos
             end
             object cPromocao_Valor: TUniDBEdit
               Left = 40
-              Top = 40
-              Width = 281
-              Height = 28
+              Top = 39
+              Width = 318
+              Height = 25
               Hint = ''
               Enabled = False
               ShowHint = True
               DataField = 'Promocao_Valor'
               DataSource = dsProdutos
               TabOrder = 1
-              FieldLabel = 'Valor do Produto em Promo'#231#227'o'
-              FieldLabelWidth = 180
+              FieldLabel = 'Valor em Promo'#231#227'o'
+              FieldLabelWidth = 120
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
           end
           object GroupBox5: TUniGroupBox
-            Left = 498
-            Top = 94
-            Width = 182
-            Height = 225
+            Left = 11
+            Top = 131
+            Width = 376
+            Height = 131
             Hint = ''
             ShowHint = True
             Caption = 'Localiza'#231#227'o'
-            TabOrder = 5
+            TabOrder = 4
             ClientEvents.UniEvents.Strings = (
               
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
@@ -1704,8 +1691,8 @@ object fCadProdutos: TfCadProdutos
             object cArmazem_Nome: TUniDBEdit
               Left = 8
               Top = 16
-              Width = 160
-              Height = 50
+              Width = 350
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Armazem_Nome'
@@ -1713,15 +1700,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 0
               FieldLabel = 'Armaz'#233'm'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cArmazem_Rua: TUniDBEdit
               Left = 8
-              Top = 66
-              Width = 160
-              Height = 50
+              Top = 43
+              Width = 350
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Armazem_Rua'
@@ -1729,15 +1716,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 3
               FieldLabel = 'Rua'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cArmazem_Prateleira: TUniDBEdit
               Left = 8
-              Top = 116
-              Width = 160
-              Height = 50
+              Top = 70
+              Width = 350
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Armazem_Prateleira'
@@ -1745,15 +1732,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 2
               FieldLabel = 'Prateleira'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cArmazem_Posicao: TUniDBEdit
               Left = 8
-              Top = 166
-              Width = 160
-              Height = 50
+              Top = 97
+              Width = 350
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Armazem_Posicao'
@@ -1761,22 +1748,22 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 4
               FieldLabel = 'Posi'#231#227'o na Prateleira'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
           end
           object cDetalhe_Especifico: TUniDBRadioGroup
-            Left = 23
-            Top = 603
-            Width = 659
-            Height = 49
+            Left = 11
+            Top = 378
+            Width = 838
+            Height = 46
             Hint = ''
             ShowHint = True
             DataField = 'Detalhe_Especifico'
             DataSource = dsProdutos
             Caption = 'Detalhe Espec'#237'fico'
-            TabOrder = 6
+            TabOrder = 5
             ClientEvents.UniEvents.Strings = (
               
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'   config.cls' +
@@ -1797,22 +1784,22 @@ object fCadProdutos: TfCadProdutos
             OnChangeValue = cDetalhe_EspecificoChangeValue
           end
           object cClasseIPI: TUniDBLookupComboBox
-            Left = 20
-            Top = 19
+            Left = 11
+            Top = 9
             Width = 654
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Classe; Valor_IPI'
             KeyField = 'Classe'
             ListFieldIndex = 0
+            BorderStyle = ubsInset
             DataField = 'ClasseEnquadra_IPI'
             DataSource = dsProdutos
-            TabOrder = 7
+            TabOrder = 6
             Color = clWindow
             FieldLabel = 'Classe de Enq. IPI'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
         end
@@ -1822,15 +1809,11 @@ object fCadProdutos: TfCadProdutos
       Hint = ''
       ImageIndex = 1
       Caption = 'Valores'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox3: TUniScrollBox
         Left = 0
         Top = 0
         Width = 1276
-        Height = 756
+        Height = 837
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -1840,13 +1823,13 @@ object fCadProdutos: TfCadProdutos
         TabOrder = 0
         DesignSize = (
           1274
-          754)
-        ScrollHeight = 565
+          835)
+        ScrollHeight = 473
         object UniPanel2: TUniPanel
           Left = 230
           Top = 13
-          Width = 776
-          Height = 552
+          Width = 671
+          Height = 460
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -1861,71 +1844,25 @@ object fCadProdutos: TfCadProdutos
           Title = 'DADOS GERAIS'
           Caption = ''
           Color = clTeal
-          object GroupBox9: TUniGroupBox
-            Left = 167
-            Top = 11
-            Width = 195
-            Height = 182
+          object GroupBox11: TUniGroupBox
+            Left = 340
+            Top = 4
+            Width = 319
+            Height = 161
             Hint = ''
+            Enabled = False
             ShowHint = True
-            Caption = 'Estoque Min'#237'mo'
+            Caption = 'Estoque'
             TabOrder = 1
             ClientEvents.UniEvents.Strings = (
               
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
                 's = '#39'Grupo'#39';'#13#10'}')
-            object cEstoque_Minimo: TUniDBEdit
-              Left = 13
-              Top = 15
-              Width = 170
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DataField = 'Estoque_Minimo'
-              DataSource = dsProdutos
-              TabOrder = 0
-              FieldLabel = 'Por Quantidade'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-              SelectOnFocus = True
-            end
-            object cEstoque_MinimoPerc: TUniDBEdit
-              Left = 13
-              Top = 65
-              Width = 170
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DataField = 'Estoque_MinimoPerc'
-              DataSource = dsProdutos
-              TabOrder = 1
-              FieldLabel = 'Por Percentual'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-              SelectOnFocus = True
-            end
-          end
-          object GroupBox11: TUniGroupBox
-            Left = 382
-            Top = 11
-            Width = 195
-            Height = 181
-            Hint = ''
-            Enabled = False
-            ShowHint = True
-            Caption = 'Estoque Atual'
-            TabOrder = 2
-            ClientEvents.UniEvents.Strings = (
-              
-                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-                's = '#39'Grupo'#39';'#13#10'}')
             object UniDBFormattedNumberEdit1: TUniDBFormattedNumberEdit
-              Left = 13
-              Top = 15
-              Width = 170
-              Height = 50
+              Left = 8
+              Top = 71
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Estoque_Disponivel'
@@ -1933,17 +1870,17 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 1
               Color = 16765650
               FieldLabel = 'Estoque'
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 120
               DecimalPrecision = 3
               DecimalSeparator = ','
               ThousandSeparator = '.'
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object UniDBFormattedNumberEdit2: TUniDBFormattedNumberEdit
-              Left = 13
-              Top = 66
-              Width = 170
-              Height = 50
+              Left = 8
+              Top = 98
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Estoque_Terceiros'
@@ -1951,17 +1888,17 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 2
               Color = 16765650
               FieldLabel = 'Terceiros'
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 120
               DecimalPrecision = 3
               DecimalSeparator = ','
               ThousandSeparator = '.'
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object UniDBFormattedNumberEdit3: TUniDBFormattedNumberEdit
-              Left = 13
-              Top = 117
-              Width = 170
-              Height = 50
+              Left = 8
+              Top = 125
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Lancado_Pedidos'
@@ -1969,31 +1906,63 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 3
               Color = 16765650
               FieldLabel = 'Pedidos'
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 120
               DecimalPrecision = 3
               DecimalSeparator = ','
               ThousandSeparator = '.'
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
+            end
+            object cEstoque_MinimoPerc: TUniDBEdit
+              Left = 8
+              Top = 44
+              Width = 300
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Estoque_MinimoPerc'
+              DataSource = dsProdutos
+              TabOrder = 4
+              FieldLabel = 'M'#237'nimo Por Percentual'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+              SelectOnFocus = True
+              BorderStyle = ubsInset
+            end
+            object cEstoque_Minimo: TUniDBEdit
+              Left = 8
+              Top = 17
+              Width = 300
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Estoque_Minimo'
+              DataSource = dsProdutos
+              TabOrder = 5
+              FieldLabel = 'Quantidade M'#237'nima'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+              SelectOnFocus = True
+              BorderStyle = ubsInset
             end
           end
           object GroupBox12: TUniGroupBox
-            Left = 17
-            Top = 11
-            Width = 143
-            Height = 277
+            Left = 11
+            Top = 7
+            Width = 318
+            Height = 157
             Hint = ''
             ShowHint = True
             Caption = 'Valores'
-            TabOrder = 3
+            TabOrder = 2
             ClientEvents.UniEvents.Strings = (
               
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
                 's = '#39'Grupo'#39';'#13#10'}')
             object cValor_Entrada: TUniDBEdit
-              Left = 11
+              Left = 8
               Top = 15
-              Width = 120
-              Height = 50
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_Entrada'
@@ -2001,15 +1970,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 1
               FieldLabel = #218'ltimo Entrada'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cValor_CustoMedio: TUniDBEdit
-              Left = 11
-              Top = 65
-              Width = 120
-              Height = 50
+              Left = 8
+              Top = 42
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_CustoMedio'
@@ -2017,15 +1986,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 2
               FieldLabel = 'Custo M'#233'dio'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cValor_Venda: TUniDBEdit
-              Left = 11
-              Top = 115
-              Width = 120
-              Height = 50
+              Left = 8
+              Top = 69
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_Venda'
@@ -2033,15 +2002,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 5
               FieldLabel = 'Venda'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cValor_ConsumidorFinal: TUniDBEdit
-              Left = 11
-              Top = 165
-              Width = 120
-              Height = 50
+              Left = 8
+              Top = 96
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_ConsumidorFinal'
@@ -2049,15 +2018,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 3
               FieldLabel = 'Consumidor Final'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cValor_ME: TUniDBEdit
-              Left = 11
-              Top = 215
-              Width = 120
-              Height = 50
+              Left = 8
+              Top = 123
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_ME'
@@ -2065,16 +2034,16 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 4
               FieldLabel = 'Moeda Estrangeira'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
           end
           object GradeValores: TUniDBGrid
-            Left = 17
-            Top = 299
-            Width = 742
-            Height = 234
+            Left = 11
+            Top = 177
+            Width = 648
+            Height = 271
             Hint = ''
             Margins.Left = 0
             Margins.Top = 0
@@ -2090,7 +2059,7 @@ object fCadProdutos: TfCadProdutos
             ForceFit = True
             BorderStyle = ubsSingle
             TrackOver = False
-            TabOrder = 4
+            TabOrder = 3
             Columns = <
               item
                 FieldName = 'Nota'
@@ -2136,15 +2105,11 @@ object fCadProdutos: TfCadProdutos
     object UniTabSheet2: TUniTabSheet
       Hint = ''
       Caption = 'Tributos'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox6: TUniScrollBox
         Left = 0
         Top = 0
         Width = 1276
-        Height = 756
+        Height = 837
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -2154,13 +2119,13 @@ object fCadProdutos: TfCadProdutos
         TabOrder = 0
         DesignSize = (
           1274
-          754)
-        ScrollHeight = 404
+          835)
+        ScrollHeight = 585
         object UniPanel5: TUniPanel
-          Left = 156
-          Top = 32
-          Width = 829
-          Height = 372
+          Left = 180
+          Top = 20
+          Width = 685
+          Height = 565
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -2176,10 +2141,10 @@ object fCadProdutos: TfCadProdutos
           Caption = ''
           Color = clTeal
           object UniGroupBox10: TUniGroupBox
-            Left = 179
+            Left = 350
             Top = 15
-            Width = 143
-            Height = 329
+            Width = 320
+            Height = 160
             Hint = ''
             ShowHint = True
             Caption = 'IPI'
@@ -2191,8 +2156,8 @@ object fCadProdutos: TfCadProdutos
             object UniDBEdit32: TUniDBEdit
               Left = 11
               Top = 15
-              Width = 120
-              Height = 50
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Aliquota_IPI'
@@ -2200,15 +2165,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 1
               FieldLabel = 'Al'#237'quota'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBEdit33: TUniDBEdit
               Left = 11
-              Top = 115
-              Width = 120
-              Height = 50
+              Top = 69
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Reducao_IPI'
@@ -2216,15 +2181,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 3
               FieldLabel = 'Redu'#231#227'o'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBEdit34: TUniDBEdit
               Left = 11
-              Top = 165
-              Width = 120
-              Height = 50
+              Top = 96
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Acordo_TarifarioIPI'
@@ -2232,15 +2197,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 4
               FieldLabel = 'Acordo Tarif'#225'rio'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBEdit35: TUniDBEdit
               Left = 11
-              Top = 65
-              Width = 120
-              Height = 50
+              Top = 42
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_IPI'
@@ -2248,36 +2213,36 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 2
               FieldLabel = 'Valor'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBLookupComboBox2: TUniDBLookupComboBox
               Left = 11
-              Top = 215
-              Width = 120
-              Height = 50
+              Top = 123
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Descricao'
               ListSource = dsClasseIPI
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'ClasseEnquadra_IPI'
               DataSource = dsProdutos
               TabOrder = 5
               Color = clWindow
               FieldLabel = 'Classe Enquadramento'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
             end
           end
           object UniGroupBox11: TUniGroupBox
             Left = 17
             Top = 15
-            Width = 143
-            Height = 329
+            Width = 320
+            Height = 160
             Hint = ''
             ShowHint = True
             Caption = 'II'
@@ -2289,8 +2254,8 @@ object fCadProdutos: TfCadProdutos
             object UniDBEdit36: TUniDBEdit
               Left = 11
               Top = 15
-              Width = 120
-              Height = 50
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Aliquota_II'
@@ -2298,15 +2263,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 1
               FieldLabel = 'Al'#237'quota'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBEdit37: TUniDBEdit
               Left = 11
-              Top = 65
-              Width = 120
-              Height = 50
+              Top = 42
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_II'
@@ -2314,15 +2279,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 2
               FieldLabel = 'Valor'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBEdit38: TUniDBEdit
               Left = 11
-              Top = 165
-              Width = 120
-              Height = 50
+              Top = 96
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Acordo_TarifarioII'
@@ -2330,15 +2295,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 4
               FieldLabel = 'Acordo Tarif'#225'rio'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBEdit39: TUniDBEdit
               Left = 11
-              Top = 115
-              Width = 120
-              Height = 50
+              Top = 69
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Reducao_II'
@@ -2346,16 +2311,16 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 3
               FieldLabel = 'Redu'#231#227'o'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
           end
           object UniGroupBox12: TUniGroupBox
-            Left = 341
-            Top = 15
-            Width = 143
-            Height = 329
+            Left = 17
+            Top = 185
+            Width = 320
+            Height = 164
             Hint = ''
             ShowHint = True
             Caption = 'PIS'
@@ -2367,8 +2332,8 @@ object fCadProdutos: TfCadProdutos
             object UniDBEdit40: TUniDBEdit
               Left = 11
               Top = 15
-              Width = 120
-              Height = 50
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Aliquota_PIS'
@@ -2376,15 +2341,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 1
               FieldLabel = 'Al'#237'quota'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBEdit41: TUniDBEdit
               Left = 11
-              Top = 65
-              Width = 120
-              Height = 50
+              Top = 42
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Aliquota_PISEntrada'
@@ -2392,15 +2357,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 2
               FieldLabel = 'Al'#237'quota NF Entrada'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBEdit42: TUniDBEdit
               Left = 11
-              Top = 164
-              Width = 120
-              Height = 50
+              Top = 96
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_PIS'
@@ -2408,15 +2373,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 4
               FieldLabel = 'Valor'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBEdit43: TUniDBEdit
               Left = 11
-              Top = 115
-              Width = 120
-              Height = 50
+              Top = 69
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Aliquota_PISSaida'
@@ -2424,15 +2389,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 3
               FieldLabel = 'Al'#237'quota NF Sa'#237'da'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBEdit44: TUniDBEdit
               Left = 11
-              Top = 214
-              Width = 120
-              Height = 50
+              Top = 123
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Reducao_PIS'
@@ -2440,16 +2405,16 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 5
               FieldLabel = 'Redu'#231#227'o'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
           end
           object UniGroupBox13: TUniGroupBox
-            Left = 665
-            Top = 15
-            Width = 143
-            Height = 329
+            Left = 17
+            Top = 356
+            Width = 320
+            Height = 190
             Hint = ''
             ShowHint = True
             Caption = 'ICMS'
@@ -2461,8 +2426,8 @@ object fCadProdutos: TfCadProdutos
             object UniDBEdit45: TUniDBEdit
               Left = 11
               Top = 15
-              Width = 120
-              Height = 50
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'ICMS_DentroEstadoEnt'
@@ -2470,15 +2435,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 1
               FieldLabel = 'Dentro Estado (Entrada)'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBEdit46: TUniDBEdit
               Left = 11
-              Top = 65
-              Width = 120
-              Height = 50
+              Top = 42
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'ICMS_ForaEstadoEnt'
@@ -2486,15 +2451,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 2
               FieldLabel = 'Fora Estado (Entrada)'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBEdit47: TUniDBEdit
               Left = 11
-              Top = 165
-              Width = 120
-              Height = 50
+              Top = 96
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'ICMS_ForaEstadoSai'
@@ -2502,15 +2467,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 4
               FieldLabel = 'Fora Estado (Sa'#237'da)'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBEdit48: TUniDBEdit
               Left = 11
-              Top = 115
-              Width = 120
-              Height = 50
+              Top = 69
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'ICMS_DentroEstadoSai'
@@ -2518,15 +2483,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 3
               FieldLabel = 'Dentro Estado (Sa'#237'da)'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBEdit49: TUniDBEdit
               Left = 11
-              Top = 215
-              Width = 120
-              Height = 50
+              Top = 123
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'ICMS_DentroEstadoSimples'
@@ -2534,15 +2499,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 5
               FieldLabel = 'Dentro Estado (Simples)'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBEdit50: TUniDBEdit
               Left = 11
-              Top = 265
-              Width = 120
-              Height = 50
+              Top = 150
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'ICMS_Reducao'
@@ -2550,16 +2515,16 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 6
               FieldLabel = 'Redu'#231#227'o'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
           end
           object UniGroupBox14: TUniGroupBox
-            Left = 504
-            Top = 15
-            Width = 143
-            Height = 329
+            Left = 350
+            Top = 185
+            Width = 320
+            Height = 164
             Hint = ''
             ShowHint = True
             Caption = 'COFINS'
@@ -2571,8 +2536,8 @@ object fCadProdutos: TfCadProdutos
             object UniDBEdit51: TUniDBEdit
               Left = 11
               Top = 15
-              Width = 120
-              Height = 50
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Aliquota_COFINS'
@@ -2580,15 +2545,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 1
               FieldLabel = 'Al'#237'quota'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBEdit52: TUniDBEdit
               Left = 11
-              Top = 65
-              Width = 120
-              Height = 50
+              Top = 42
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Aliquota_COFINSEntrada'
@@ -2596,15 +2561,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 2
               FieldLabel = 'Al'#237'quota NF Entrada'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBEdit53: TUniDBEdit
               Left = 11
-              Top = 164
-              Width = 120
-              Height = 50
+              Top = 96
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_COFINS'
@@ -2612,15 +2577,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 4
               FieldLabel = 'Valor'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBEdit54: TUniDBEdit
               Left = 11
-              Top = 115
-              Width = 120
-              Height = 50
+              Top = 69
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Aliquota_COFINSSaida'
@@ -2628,15 +2593,15 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 3
               FieldLabel = 'Al'#237'quota NF Sa'#237'da'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBEdit55: TUniDBEdit
               Left = 10
-              Top = 214
-              Width = 120
-              Height = 50
+              Top = 123
+              Width = 300
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Reducao_COFINS'
@@ -2644,9 +2609,9 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 5
               FieldLabel = 'Redu'#231#227'o'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
           end
         end
@@ -2657,15 +2622,11 @@ object fCadProdutos: TfCadProdutos
       TabVisible = False
       ImageIndex = 9
       Caption = 'Tributos'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox9: TUniScrollBox
         Left = 0
         Top = 0
         Width = 1276
-        Height = 756
+        Height = 837
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -2675,13 +2636,13 @@ object fCadProdutos: TfCadProdutos
         TabOrder = 0
         DesignSize = (
           1274
-          754)
-        ScrollHeight = 665
+          835)
+        ScrollHeight = 571
         object UniPanel8: TUniPanel
-          Left = 293
-          Top = 7
-          Width = 630
-          Height = 658
+          Left = 180
+          Top = 17
+          Width = 624
+          Height = 554
           Hint = ''
           Enabled = False
           ShowHint = True
@@ -2698,9 +2659,9 @@ object fCadProdutos: TfCadProdutos
           Caption = ''
           Color = clTeal
           object RxDBGrid1: TUniDBGrid
-            Left = 21
-            Top = 258
-            Width = 588
+            Left = 6
+            Top = 172
+            Width = 612
             Height = 376
             Hint = ''
             ShowHint = True
@@ -2752,10 +2713,10 @@ object fCadProdutos: TfCadProdutos
               end>
           end
           object pTributo: TUniContainerPanel
-            Left = 22
-            Top = 22
-            Width = 586
-            Height = 189
+            Left = 6
+            Top = 6
+            Width = 612
+            Height = 111
             Hint = ''
             Enabled = False
             ShowHint = True
@@ -2769,7 +2730,7 @@ object fCadProdutos: TfCadProdutos
               Left = 14
               Top = 9
               Width = 555
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Descricao'
@@ -2780,15 +2741,14 @@ object fCadProdutos: TfCadProdutos
               Color = clWindow
               FieldLabel = 'Tributo'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               Style = csDropDown
             end
             object cUF: TUniDBLookupComboBox
               Left = 14
-              Top = 65
+              Top = 36
               Width = 276
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'UF;Nome'
@@ -2801,15 +2761,14 @@ object fCadProdutos: TfCadProdutos
               Color = clWindow
               FieldLabel = 'Estado'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               Style = csDropDown
             end
             object cModalidade: TUniDBLookupComboBox
               Left = 312
-              Top = 64
+              Top = 35
               Width = 257
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Descricao'
@@ -2822,37 +2781,36 @@ object fCadProdutos: TfCadProdutos
               Color = clWindow
               FieldLabel = 'Modalidade de Importa'#231#227'o'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               Style = csDropDown
             end
             object cAliquota: TUniDBFormattedNumberEdit
               Left = 14
-              Top = 121
-              Width = 88
-              Height = 55
+              Top = 65
+              Width = 280
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Aliquota'
               TabOrder = 4
               FieldLabel = 'Al'#237'quota'
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 120
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
               ThousandSeparator = '.'
               BorderStyle = ubsSolid
             end
             object UniDBFormattedNumberEdit17: TUniDBFormattedNumberEdit
-              Left = 124
-              Top = 122
-              Width = 93
-              Height = 55
+              Left = 314
+              Top = 66
+              Width = 280
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor'
               TabOrder = 5
               FieldLabel = 'Valor'
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 120
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
               ThousandSeparator = '.'
@@ -2860,9 +2818,9 @@ object fCadProdutos: TfCadProdutos
             end
           end
           object UniContainerPanel1: TUniContainerPanel
-            Left = 21
-            Top = 213
-            Width = 588
+            Left = 5
+            Top = 124
+            Width = 613
             Height = 43
             Hint = ''
             ShowHint = True
@@ -2875,7 +2833,7 @@ object fCadProdutos: TfCadProdutos
             object UniPanel9: TUniPanel
               Left = 0
               Top = 0
-              Width = 588
+              Width = 613
               Height = 43
               Hint = ''
               ShowHint = True
@@ -3039,15 +2997,11 @@ object fCadProdutos: TfCadProdutos
       Hint = ''
       ImageIndex = 1
       Caption = 'CST'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0
         Width = 1276
-        Height = 756
+        Height = 837
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -3057,13 +3011,13 @@ object fCadProdutos: TfCadProdutos
         TabOrder = 0
         DesignSize = (
           1274
-          754)
-        ScrollHeight = 547
+          835)
+        ScrollHeight = 470
         object UniPanel1: TUniPanel
-          Left = 293
-          Top = 26
-          Width = 779
-          Height = 521
+          Left = 121
+          Top = 23
+          Width = 818
+          Height = 447
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -3079,48 +3033,50 @@ object fCadProdutos: TfCadProdutos
           Caption = ''
           Color = clTeal
           object clCSTPIS_Entrada: TUniDBLookupComboBox
-            Left = 16
-            Top = 12
-            Width = 750
-            Height = 50
+            Left = 8
+            Top = 6
+            Width = 800
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dsCSTPIS
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'CSTPIS_Entrada'
             DataSource = dsProdutos
             TabOrder = 1
             Color = clWindow
+            MatchFieldWidth = False
             FieldLabel = 'CST PIS (Entrada)'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
           object clCSTCOFINS_Entrada: TUniDBLookupComboBox
-            Left = 16
-            Top = 62
-            Width = 750
-            Height = 50
+            Left = 8
+            Top = 33
+            Width = 800
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dsCSTCOFINS
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'CSTCOFINS_Entrada'
             DataSource = dsProdutos
             TabOrder = 2
             Color = clWindow
+            MatchFieldWidth = False
             FieldLabel = 'CST COFINS (Entrada)'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
           object GrupoPIS: TUniGroupBox
-            Left = 363
-            Top = 136
+            Left = 349
+            Top = 76
             Width = 305
             Height = 166
             Hint = ''
@@ -3136,6 +3092,7 @@ object fCadProdutos: TfCadProdutos
               Top = 22
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTPIS_AliquotaUM'
@@ -3155,6 +3112,7 @@ object fCadProdutos: TfCadProdutos
               Top = 41
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTPIS_Monofasica'
@@ -3174,6 +3132,7 @@ object fCadProdutos: TfCadProdutos
               Top = 60
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTPIS_AliquotaZero'
@@ -3193,6 +3152,7 @@ object fCadProdutos: TfCadProdutos
               Top = 98
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTPIS_Isenta'
@@ -3212,6 +3172,7 @@ object fCadProdutos: TfCadProdutos
               Top = 79
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTPIS_Suspensao'
@@ -3231,6 +3192,7 @@ object fCadProdutos: TfCadProdutos
               Top = 117
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTPIS_SemIncidencia'
@@ -3250,6 +3212,7 @@ object fCadProdutos: TfCadProdutos
               Top = 136
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTPIS_Outras'
@@ -3266,8 +3229,8 @@ object fCadProdutos: TfCadProdutos
             end
           end
           object GrupoCOFINS: TUniGroupBox
-            Left = 16
-            Top = 330
+            Left = 10
+            Top = 254
             Width = 305
             Height = 166
             Hint = ''
@@ -3283,6 +3246,7 @@ object fCadProdutos: TfCadProdutos
               Top = 22
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTCOFINS_AliquotaUMEnt'
@@ -3302,6 +3266,7 @@ object fCadProdutos: TfCadProdutos
               Top = 41
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTCOFINS_MonofasicaEnt'
@@ -3321,6 +3286,7 @@ object fCadProdutos: TfCadProdutos
               Top = 60
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTCOFINS_AliquotaZeroEnt'
@@ -3340,6 +3306,7 @@ object fCadProdutos: TfCadProdutos
               Top = 98
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTCOFINS_IsentaEnt'
@@ -3359,6 +3326,7 @@ object fCadProdutos: TfCadProdutos
               Top = 79
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTCOFINS_SuspensaoEnt'
@@ -3378,6 +3346,7 @@ object fCadProdutos: TfCadProdutos
               Top = 117
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTCOFINS_SemIncidenciaEnt'
@@ -3397,6 +3366,7 @@ object fCadProdutos: TfCadProdutos
               Top = 136
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTCOFINS_OutrasEnt'
@@ -3413,10 +3383,11 @@ object fCadProdutos: TfCadProdutos
             end
           end
           object GroupBox3: TUniGroupBox
-            Left = 16
-            Top = 136
+            Left = 10
+            Top = 76
             Width = 305
             Height = 166
+            Cursor = crArrow
             Hint = ''
             ShowHint = True
             Caption = 'Situa'#231#227'o Tribut'#225'ria do PIS (Entrada)'
@@ -3430,6 +3401,7 @@ object fCadProdutos: TfCadProdutos
               Top = 22
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTPIS_AliquotaUMEnt'
@@ -3449,6 +3421,7 @@ object fCadProdutos: TfCadProdutos
               Top = 41
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTPIS_MonofasicaEnt'
@@ -3468,6 +3441,7 @@ object fCadProdutos: TfCadProdutos
               Top = 60
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTPIS_AliquotaZeroEnt'
@@ -3487,6 +3461,7 @@ object fCadProdutos: TfCadProdutos
               Top = 98
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTPIS_IsentaEnt'
@@ -3506,6 +3481,7 @@ object fCadProdutos: TfCadProdutos
               Top = 79
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTPIS_SuspensaoEnt'
@@ -3525,6 +3501,7 @@ object fCadProdutos: TfCadProdutos
               Top = 117
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTPIS_SemIncidenciaEnt'
@@ -3544,6 +3521,7 @@ object fCadProdutos: TfCadProdutos
               Top = 136
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTPIS_OutrasEnt'
@@ -3560,8 +3538,8 @@ object fCadProdutos: TfCadProdutos
             end
           end
           object GroupBox4: TUniGroupBox
-            Left = 363
-            Top = 330
+            Left = 349
+            Top = 254
             Width = 305
             Height = 166
             Hint = ''
@@ -3577,6 +3555,7 @@ object fCadProdutos: TfCadProdutos
               Top = 22
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTCOFINS_AliquotaUM'
@@ -3596,6 +3575,7 @@ object fCadProdutos: TfCadProdutos
               Top = 41
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTCOFINS_Monofasica'
@@ -3615,6 +3595,7 @@ object fCadProdutos: TfCadProdutos
               Top = 60
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTCOFINS_AliquotaZero'
@@ -3634,6 +3615,7 @@ object fCadProdutos: TfCadProdutos
               Top = 98
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTCOFINS_Isenta'
@@ -3653,6 +3635,7 @@ object fCadProdutos: TfCadProdutos
               Top = 79
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTCOFINS_Suspensao'
@@ -3672,6 +3655,7 @@ object fCadProdutos: TfCadProdutos
               Top = 117
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTCOFINS_SemIncidencia'
@@ -3691,6 +3675,7 @@ object fCadProdutos: TfCadProdutos
               Top = 136
               Width = 280
               Height = 17
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               DataField = 'CSTCOFINS_Outras'
@@ -3713,15 +3698,11 @@ object fCadProdutos: TfCadProdutos
       Hint = ''
       ImageIndex = 7
       Caption = 'Comiss'#227'o / Desconto'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox4: TUniScrollBox
         Left = 0
         Top = 0
         Width = 1276
-        Height = 756
+        Height = 837
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -3731,13 +3712,13 @@ object fCadProdutos: TfCadProdutos
         TabOrder = 0
         DesignSize = (
           1274
-          754)
-        ScrollHeight = 550
+          835)
+        ScrollHeight = 354
         object UniPanel3: TUniPanel
-          Left = 227
-          Top = 17
-          Width = 559
-          Height = 533
+          Left = 117
+          Top = 24
+          Width = 717
+          Height = 330
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -3753,10 +3734,10 @@ object fCadProdutos: TfCadProdutos
           Caption = ''
           Color = clTeal
           object GroupBox8: TUniGroupBox
-            Left = 21
-            Top = 232
-            Width = 516
-            Height = 285
+            Left = 11
+            Top = 153
+            Width = 696
+            Height = 165
             Hint = ''
             ShowHint = True
             Caption = 'Comiss'#227'o e descontos pr'#233' fixados'
@@ -3767,169 +3748,169 @@ object fCadProdutos: TfCadProdutos
                 's = '#39'Grupo'#39';'#13#10'}')
             object cDesconto_A: TUniDBEdit
               Left = 90
-              Top = 18
-              Width = 80
-              Height = 50
+              Top = 20
+              Width = 160
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Desconto_A'
               DataSource = dsProdutos
               TabOrder = 1
               FieldLabel = 'Desconto'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cDesconto_B: TUniDBEdit
               Left = 90
-              Top = 68
-              Width = 80
-              Height = 50
+              Top = 47
+              Width = 160
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Desconto_B'
               DataSource = dsProdutos
               TabOrder = 5
               FieldLabel = 'Desconto'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cDesconto_C: TUniDBEdit
               Left = 90
-              Top = 118
-              Width = 80
-              Height = 50
+              Top = 74
+              Width = 160
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Desconto_C'
               DataSource = dsProdutos
               TabOrder = 9
               FieldLabel = 'Desconto'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cDesconto_D: TUniDBEdit
               Left = 90
-              Top = 168
-              Width = 80
-              Height = 50
+              Top = 101
+              Width = 160
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Desconto_D'
               DataSource = dsProdutos
               TabOrder = 13
               FieldLabel = 'Desconto'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cDesconto_E: TUniDBEdit
               Left = 90
-              Top = 218
-              Width = 80
-              Height = 50
+              Top = 128
+              Width = 160
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Desconto_E'
               DataSource = dsProdutos
               TabOrder = 17
               FieldLabel = 'Desconto'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cComissao_A: TUniDBEdit
-              Left = 177
-              Top = 18
-              Width = 64
-              Height = 50
+              Left = 257
+              Top = 20
+              Width = 160
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Comissao_A'
               DataSource = dsProdutos
               TabOrder = 2
               FieldLabel = 'Comiss'#227'o'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cComissao_B: TUniDBEdit
-              Left = 177
-              Top = 68
-              Width = 64
-              Height = 50
+              Left = 257
+              Top = 47
+              Width = 160
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Comissao_B'
               DataSource = dsProdutos
               TabOrder = 6
               FieldLabel = 'Comiss'#227'o'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cComissao_C: TUniDBEdit
-              Left = 177
-              Top = 118
-              Width = 64
-              Height = 50
+              Left = 257
+              Top = 74
+              Width = 160
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Comissao_C'
               DataSource = dsProdutos
               TabOrder = 10
               FieldLabel = 'Comiss'#227'o'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cComissao_D: TUniDBEdit
-              Left = 177
-              Top = 168
-              Width = 64
-              Height = 50
+              Left = 257
+              Top = 101
+              Width = 160
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Comissao_D'
               DataSource = dsProdutos
               TabOrder = 14
               FieldLabel = 'Comiss'#227'o'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cComissao_E: TUniDBEdit
-              Left = 177
-              Top = 218
-              Width = 64
-              Height = 50
+              Left = 257
+              Top = 128
+              Width = 160
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Comissao_E'
               DataSource = dsProdutos
               TabOrder = 18
               FieldLabel = 'Comiss'#227'o'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cBloqueio_A: TUniDBCheckBox
-              Left = 389
-              Top = 52
-              Width = 80
-              Height = 17
+              Left = 588
+              Top = 20
+              Width = 95
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Bloqueio_A'
@@ -3945,10 +3926,10 @@ object fCadProdutos: TfCadProdutos
               FieldLabelSeparator = ' '
             end
             object cBloqueio_B: TUniDBCheckBox
-              Left = 389
-              Top = 101
-              Width = 80
-              Height = 17
+              Left = 588
+              Top = 47
+              Width = 95
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Bloqueio_B'
@@ -3964,10 +3945,10 @@ object fCadProdutos: TfCadProdutos
               FieldLabelSeparator = ' '
             end
             object cBloqueio_C: TUniDBCheckBox
-              Left = 389
-              Top = 150
-              Width = 80
-              Height = 17
+              Left = 588
+              Top = 74
+              Width = 95
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Bloqueio_C'
@@ -3983,10 +3964,10 @@ object fCadProdutos: TfCadProdutos
               FieldLabelSeparator = ' '
             end
             object cBloqueio_D: TUniDBCheckBox
-              Left = 389
-              Top = 197
-              Width = 80
-              Height = 17
+              Left = 588
+              Top = 101
+              Width = 95
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Bloqueio_D'
@@ -4002,10 +3983,10 @@ object fCadProdutos: TfCadProdutos
               FieldLabelSeparator = ' '
             end
             object cBloqueio_E: TUniDBCheckBox
-              Left = 389
-              Top = 251
-              Width = 80
-              Height = 17
+              Left = 588
+              Top = 128
+              Width = 95
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Bloqueio_E'
@@ -4021,145 +4002,145 @@ object fCadProdutos: TfCadProdutos
               FieldLabelSeparator = ' '
             end
             object cValor_VendaA: TUniDBEdit
-              Left = 248
-              Top = 18
-              Width = 135
-              Height = 50
+              Left = 424
+              Top = 20
+              Width = 160
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_VendaA'
               DataSource = dsProdutos
               TabOrder = 3
               FieldLabel = 'Valor Venda'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cValor_VendaB: TUniDBEdit
-              Left = 248
-              Top = 68
-              Width = 135
-              Height = 50
+              Left = 424
+              Top = 47
+              Width = 160
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_VendaB'
               DataSource = dsProdutos
               TabOrder = 7
               FieldLabel = 'Valor Venda'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cValor_VendaC: TUniDBEdit
-              Left = 248
-              Top = 118
-              Width = 135
-              Height = 50
+              Left = 424
+              Top = 74
+              Width = 160
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_VendaC'
               DataSource = dsProdutos
               TabOrder = 11
               FieldLabel = 'Valor Venda'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cValor_VendaD: TUniDBEdit
-              Left = 248
-              Top = 168
-              Width = 135
-              Height = 50
+              Left = 424
+              Top = 101
+              Width = 160
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_VendaD'
               DataSource = dsProdutos
               TabOrder = 15
               FieldLabel = 'Valor Venda'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cValor_VendaE: TUniDBEdit
-              Left = 248
-              Top = 218
-              Width = 135
-              Height = 50
+              Left = 424
+              Top = 128
+              Width = 160
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Valor_VendaE'
               DataSource = dsProdutos
               TabOrder = 19
               FieldLabel = 'Valor Venda'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniLabel1: TUniLabel
               Left = 8
-              Top = 53
-              Width = 73
+              Top = 24
+              Width = 66
               Height = 16
               Hint = ''
               ShowHint = True
-              Caption = 'TABELA - A'
+              Caption = 'Tabela - A'
               ParentFont = False
               Font.Height = -13
               Font.Style = [fsBold]
               TabOrder = 21
             end
             object UniLabel2: TUniLabel
-              Left = 11
-              Top = 102
-              Width = 71
+              Left = 8
+              Top = 49
+              Width = 64
               Height = 16
               Hint = ''
               ShowHint = True
-              Caption = 'TABELA - B'
+              Caption = 'Tabela - B'
               ParentFont = False
               Font.Height = -13
               Font.Style = [fsBold]
               TabOrder = 22
             end
             object UniLabel3: TUniLabel
-              Left = 11
-              Top = 151
-              Width = 71
+              Left = 8
+              Top = 75
+              Width = 64
               Height = 16
               Hint = ''
               ShowHint = True
-              Caption = 'TABELA - C'
+              Caption = 'Tabela - C'
               ParentFont = False
               Font.Height = -13
               Font.Style = [fsBold]
               TabOrder = 23
             end
             object UniLabel4: TUniLabel
-              Left = 11
-              Top = 202
-              Width = 72
+              Left = 8
+              Top = 103
+              Width = 65
               Height = 16
               Hint = ''
               ShowHint = True
-              Caption = 'TABELA - D'
+              Caption = 'Tabela - D'
               ParentFont = False
               Font.Height = -13
               Font.Style = [fsBold]
               TabOrder = 24
             end
             object UniLabel5: TUniLabel
-              Left = 12
-              Top = 253
-              Width = 70
+              Left = 8
+              Top = 131
+              Width = 63
               Height = 16
               Hint = ''
               ShowHint = True
-              Caption = 'TABELA - E'
+              Caption = 'Tabela - E'
               ParentFont = False
               Font.Height = -13
               Font.Style = [fsBold]
@@ -4167,10 +4148,10 @@ object fCadProdutos: TfCadProdutos
             end
           end
           object GroupBox7: TUniGroupBox
-            Left = 21
-            Top = 90
-            Width = 224
-            Height = 131
+            Left = 11
+            Top = 50
+            Width = 263
+            Height = 88
             Hint = ''
             ShowHint = True
             Caption = 'Comiss'#227'o por redu'#231#227'o de desconto'
@@ -4182,8 +4163,8 @@ object fCadProdutos: TfCadProdutos
             object cComissao: TUniDBEdit
               Left = 11
               Top = 20
-              Width = 198
-              Height = 50
+              Width = 240
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Comissao'
@@ -4191,45 +4172,45 @@ object fCadProdutos: TfCadProdutos
               TabOrder = 1
               FieldLabel = 'Comiss'#227'o Venda '
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cReducao_Comissao: TUniDBEdit
               Left = 11
-              Top = 70
-              Width = 198
-              Height = 50
+              Top = 47
+              Width = 240
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Reducao_Comissao'
               DataSource = dsProdutos
               TabOrder = 2
-              FieldLabel = 'Percentual Redu'#231#227'o Comiss'#227'o'
+              FieldLabel = 'Perc.Redu'#231#227'o Comiss'#227'o'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
           end
           object clTabela: TUniDBLookupComboBox
-            Left = 21
-            Top = 22
-            Width = 516
-            Height = 50
+            Left = 11
+            Top = 9
+            Width = 407
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo; Descricao'
             ListSource = dsComissoes
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Tabela'
             DataSource = dsProdutos
             TabOrder = 3
             Color = clWindow
             FieldLabel = 'Tabela Comiss'#245'es'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
         end
@@ -4563,5 +4544,22 @@ object fCadProdutos: TfCadProdutos
     DataSet = ClasseIPI
     Left = 132
     Top = 696
+  end
+  object tUM: TFDQuery
+    Connection = UniMainModule.Conecta
+    FetchOptions.AssignedValues = [evMode, evRowsetSize, evLiveWindowParanoic]
+    FetchOptions.RowsetSize = 250
+    FetchOptions.LiveWindowParanoic = False
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select * from UnidadeMedida')
+    Left = 208
+    Top = 455
+  end
+  object dstUM: TDataSource
+    DataSet = tUM
+    Left = 208
+    Top = 503
   end
 end

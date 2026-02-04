@@ -76,6 +76,10 @@ function EstoqueDetalhe(pProduto: Integer; pLote: string): Real;
 function EstoqueProdutoEmb(pProduto, pEmbarque: Integer): Real;
 function InventarioProdutoEmb(pProduto, pEmbarque: Integer): Real;
 
+// Funcções de sistema.
+function GetDLLPath: string;
+
+
 implementation
 
 uses MainModule, Main;
@@ -2967,7 +2971,14 @@ begin
      tOpFiscal.Free;
 end;
 
-
+function GetDLLPath: string;
+var
+  Buffer: array[0..MAX_PATH] of Char;
+begin
+  // Obtém o handle da DLL atual
+  GetModuleFileName(HInstance, Buffer, Length(Buffer));
+  Result := ExtractFilePath(Buffer);
+end;
 
 
 

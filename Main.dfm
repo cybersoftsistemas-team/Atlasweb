@@ -35,6 +35,10 @@ object MainForm: TMainForm
       ActivePage = pInicio
       Plain = True
       Align = alClient
+      ClientEvents.UniEvents.Strings = (
+        
+          'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+          '= '#39'Pasta'#39';'#13#10'}')
       TabOrder = 1
       object pInicio: TUniTabSheet
         Hint = ''
@@ -57,8 +61,7 @@ object MainForm: TMainForm
               '= '#39'PastaInterna'#39';'#13#10'}')
           TabOrder = 0
           ScrollDirection = sdVertical
-          ScrollHeight = 140
-          ScrollWidth = 135
+          ScrollHeight = 50
           object pAtalhos: TUniContainerPanel
             Left = 0
             Top = 0
@@ -76,6 +79,7 @@ object MainForm: TMainForm
             Width = 115
             Height = 66
             Hint = ''
+            Visible = False
             Caption = 'Buscar DUIMP'
             TabOrder = 1
             OnClick = UniButton1Click

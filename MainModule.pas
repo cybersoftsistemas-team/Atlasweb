@@ -12,7 +12,7 @@ uses
 type
   TUniMainModule = class(TUniGUIMainModule)
     imgBotoes: TUniNativeImageList;
-    AtlasWeb: TFDConnection;
+    AtlasConect: TFDConnection;
     Meses: TFDMemTable;
     MesesMes: TSmallintField;
     MesesNome: TStringField;
@@ -57,12 +57,9 @@ var
    aINI:Tinifile;
 begin
       // Carregando os dados de conexão do banco de dados "ERPimporta.ini".
-      //mPath := 'c:\Projetos_WEB\erp_importa';
-      //mPath := 'v:\ERP_Importa';
-      //mPath := PastaDLL;
-      mPath := ExtractFileDir(GetCurrentDir)+'\AtlasWeb';
+      mPath := GetDLLPath;
       aINI  := Tinifile.Create(mPath+'\AtlasWeb.ini');
-      with AtlasWeb do begin
+      with AtlasConect do begin
            Connected := false;
            Params.Clear;
            Params.Values['DriverID']   := aINI.ReadString('SERVIDOR', 'DriverID'  , EmptyStr);
@@ -89,6 +86,7 @@ begin
           Meses.Post;
       end;
 end;
+
 
 initialization
   RegisterMainModuleClass(TUniMainModule);

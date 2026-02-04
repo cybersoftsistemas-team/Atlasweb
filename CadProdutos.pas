@@ -49,10 +49,6 @@ type
     clLinha: TUniDBLookupComboBox;
     cGTIN: TUniDBEdit;
     cGTIN_Unidade: TUniDBEdit;
-    cDesativado: TUniDBCheckBox;
-    GroupBox9: TUniGroupBox;
-    cEstoque_Minimo: TUniDBEdit;
-    cEstoque_MinimoPerc: TUniDBEdit;
     GroupBox11: TUniGroupBox;
     GroupBox12: TUniGroupBox;
     cValor_Entrada: TUniDBEdit;
@@ -114,7 +110,6 @@ type
     dsNCM: TDataSource;
     UniGroupBox1: TUniGroupBox;
     iFoto: TUniImage;
-    bFoto: TUniSpeedButton;
     cOrigem: TUniDBLookupComboBox;
     dsOrigem: TDataSource;
     Origem: TFDQuery;
@@ -179,17 +174,6 @@ type
     cRegistro_ANVISA: TUniDBEdit;
     cProcesso_ANVISA: TUniDBEdit;
     cVencimento_ANVISA: TUniDBDateTimePicker;
-    GroupBox6: TUniGroupBox;
-    cReciclavel: TUniDBCheckBox;
-    cEntrada_ST: TUniDBCheckBox;
-    cCusto_Seletivo: TUniDBCheckBox;
-    cVisivel_Representa: TUniDBCheckBox;
-    cLote_Obrigatorio: TUniDBCheckBox;
-    cProducao_Nacional: TUniDBCheckBox;
-    cSerial_Obrigatorio: TUniDBCheckBox;
-    cEscala_Relevante: TUniDBCheckBox;
-    cCNPJ_Fabricante: TUniDBEdit;
-    cMateria_Prima: TUniDBCheckBox;
     GroupBox1: TUniGroupBox;
     cPromocao: TUniDBCheckBox;
     cPromocao_Valor: TUniDBEdit;
@@ -245,7 +229,6 @@ type
     dsSeriaisNotas: TDataSource;
     Detalhes: TFDQuery;
     dsDetalhes: TDataSource;
-    UniDBCheckBox1: TUniDBCheckBox;
     CSTCOFINS: TFDQuery;
     dsCSTCOFINS: TDataSource;
     Alerta: TUniSweetAlert;
@@ -285,12 +268,32 @@ type
     UniDBEdit53: TUniDBEdit;
     UniDBEdit54: TUniDBEdit;
     UniDBEdit55: TUniDBEdit;
+    GroupBox6: TUniGroupBox;
+    cReciclavel: TUniDBCheckBox;
+    cEntrada_ST: TUniDBCheckBox;
+    cCusto_Seletivo: TUniDBCheckBox;
+    cVisivel_Representa: TUniDBCheckBox;
+    cLote_Obrigatorio: TUniDBCheckBox;
+    cProducao_Nacional: TUniDBCheckBox;
+    cSerial_Obrigatorio: TUniDBCheckBox;
+    cEscala_Relevante: TUniDBCheckBox;
+    cCNPJ_Fabricante: TUniDBEdit;
+    cMateria_Prima: TUniDBCheckBox;
+    UniDBCheckBox1: TUniDBCheckBox;
     UniDBCheckBox2: TUniDBCheckBox;
     UniDBCheckBox3: TUniDBCheckBox;
     UniDBCheckBox4: TUniDBCheckBox;
     UniDBCheckBox5: TUniDBCheckBox;
     UniDBCheckBox6: TUniDBCheckBox;
     UniDBCheckBox7: TUniDBCheckBox;
+    cDesativado: TUniDBCheckBox;
+    tUM: TFDQuery;
+    dstUM: TDataSource;
+    bFoto: TUniSpeedButton;
+    bLimpaFoto: TUniSpeedButton;
+    UniContainerPanel2: TUniContainerPanel;
+    cEstoque_MinimoPerc: TUniDBEdit;
+    cEstoque_Minimo: TUniDBEdit;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
@@ -313,6 +316,8 @@ type
     procedure bExcTribClick(Sender: TObject);
     procedure bCancTribClick(Sender: TObject);
     procedure SeriaisAfterScroll(DataSet: TDataSet);
+    procedure cEscala_RelevanteClick(Sender: TObject);
+    procedure bLimpaFotoClick(Sender: TObject);
   private
     procedure LigaBotoes2(Estado: boolean);
     { Private declarations }
@@ -415,6 +420,14 @@ begin
 //           post;
 //           LigaBotoes2(true);
 //      end;
+end;
+
+procedure TfCadProdutos.bLimpaFotoClick(Sender: TObject);
+begin
+     with Produtos do begin
+          fieldbyname('Imagem').clear;
+          iFoto.Picture := nil;
+     end;
 end;
 
 procedure TfCadProdutos.bCancelarClick(Sender: TObject);
@@ -528,15 +541,28 @@ begin
       LigaBotoes2(true);
       Pasta.ActivePageIndex := 0;
 
-      Produtos.sql.clear;
-      Produtos.sql.add('select *');
-      Produtos.sql.add('from  Produtos');
-      Produtos.sql.add('order by Codigo');
-      Produtos.open;
-
+      with Produtos do begin 
+           sql.clear;
+           sql.add('select *');
+           sql.add('from Produtos');
+           sql.add('order by Codigo');
+           open;
+      end;
+      with Linhas do begin 
+           sql.clear;
+           sql.add('select *');
+           sql.add('from ProdutosLinhas');
+           sql.add('order by Descricao');
+           open;
+      end;
       with ClasseIPI do begin
            sql.clear;
            sql.add('select * from ClasseEnquadramentoIPI order by Descricao');
+           open;
+      end;
+      with tUM do begin
+           sql.clear;
+           sql.add('select * from UnidadeMedida order by Nome');
            open;
       end;
 
@@ -590,6 +616,7 @@ begin
            EspecieVeiculo.Open;
            CondicaoVeiculo.Open;
       end;
+      cCNPJ_Fabricante.Enabled := cEscala_Relevante.Checked;
 end;
 
 procedure TfCadProdutos.cDetalhe_EspecificoChangeValue(Sender: TObject);
@@ -603,6 +630,11 @@ begin
         cDadosDetalhe.ActivePageIndex := cDetalhe_Especifico.ItemIndex
      else
         cDadosDetalhe.ActivePageIndex := 4;
+end;
+
+procedure TfCadProdutos.cEscala_RelevanteClick(Sender: TObject);
+begin
+     cCNPJ_Fabricante.Enabled := cEscala_Relevante.Checked;
 end;
 
 procedure TfCadProdutos.cPesquisaKeyDown(Sender: TObject; var Key: Word;Shift: TShiftState);

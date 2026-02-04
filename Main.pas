@@ -136,7 +136,7 @@ uses
  ,Embarques
  ,ConfigCampos
  ,Estoque_SaldoAbertura
- , DUIMP;(*uses p/gerador*)
+ ,DUIMP;(*uses p/gerador*)
 
 function MainForm: TMainForm;
 begin
@@ -175,7 +175,7 @@ var
     i: integer;
 begin
       PagePrincipal.Visible := True;
-      //Verificando se a tela já está aberto e redireciona a ela.
+      //Verificando se a tela já está aberta e redireciona a ela.
       for i := 0 to PagePrincipal.PageCount - 1 do begin
           with PagePrincipal do begin
                if Pages[i].Caption = dFrame  then begin
@@ -222,11 +222,11 @@ end;
 
 procedure TMainForm.bMenuClick(Sender: TObject);
 begin
-      Menu.Micro := not Menu.Micro;
-      if Menu.Micro then
-         pMenu.Width := bMenu.Width
-      else
-         pMenu.Width := 350;
+     Menu.Micro := not Menu.Micro;
+     if Menu.Micro then
+        pMenu.Width := bMenu.Width
+     else
+        pMenu.Width := 350;
 end;
 
 procedure TMainForm.bMudarEmpresaClick(Sender: TObject);
@@ -236,7 +236,7 @@ end;
 
 procedure TMainForm.UniButton1Click(Sender: TObject);
 begin
-      fDUIMP.ShowModal;
+     fDUIMP.ShowModal;
 end;
 
 procedure TMainForm.UniFormBeforeShow(Sender: TObject);
@@ -246,6 +246,7 @@ var
    mPath  : string;
 begin
      // Carrega os atalhos selecionados.
+     mPath := GetDLLPath+'files\';
      Atalhos := TFDQuery.Create(nil);
      with Atalhos do begin
           Connection := UniMainModule.Conecta;
@@ -255,30 +256,32 @@ begin
           open;
           first;
           while not eof do begin
-                bAtalho                  := TuniImage.Create(self);
-                bAtalho.Parent           := MainForm.pAtalhos;
-                bAtalho.visible          := true;
-                bAtalho.width            := 45;
-                bAtalho.Caption          := fieldbyname('Titulo').asstring;
-                bAtalho.Name             := fieldbyname('Form').asstring;
-                bAtalho.ImageIndex       := 21;
-                bAtalho.align            := alLeft;
-                bAtalho.AlignWithMargins := true;
-                bAtalho.center           := true;
-                bAtalho.FitWidth         := true;
-                bAtalho.Enabled          := true;
-                bAtalho.stretch          := true;
-                bAtalho.Cursor           := crHandPoint;
-                bAtalho.tag              := fieldbyname('Id').asinteger;
-                bAtalho.hint             := fieldbyname('Titulo').asstring;
-                bAtalho.ShowHint         := true;
+                bAtalho := TuniImage.Create(self);
+                with bAtalho do begin
+                     Parent           := MainForm.pAtalhos;
+                     visible          := true;
+                     width            := 45;
+                     Caption          := fieldbyname('Titulo').asstring;
+                     Name             := fieldbyname('Form').asstring;
+                     ImageIndex       := 21;
+                     align            := alLeft;
+                     AlignWithMargins := true;
+                     center           := true;
+                     FitWidth         := true;
+                     Enabled          := true;
+                     stretch          := true;
+                     Cursor           := crHandPoint;
+                     tag              := fieldbyname('Id').asinteger;
+                     hint             := fieldbyname('Titulo').asstring;
+                     ShowHint         := true;
 
-                if fileexists(fieldbyname('Icone').asstring) then begin
-                   bAtalho.Picture.LoadFromFile(fieldbyname('Icone').asstring);
-                end else begin
-                   bAtalho.Picture.LoadFromFile('c:\Projetos\AtlasWeb\files\Atalho0b.png');
+                     if fileexists(mPath+fieldbyname('Icone').asstring) then begin
+                        Picture.LoadFromFile(mPath+fieldbyname('Icone').asstring);
+                     end else begin
+                        Picture.LoadFromFile(mPath+'Atalho0b.png');
+                     end;
+                     OnClick := MainForm.Botao_Atalho;
                 end;
-                bAtalho.OnClick := MainForm.Botao_Atalho;
                 next;
           end;
      end;
@@ -295,7 +298,7 @@ end;
 
 procedure TMainForm.UniFormCreate(Sender: TObject);
 begin
-    CriaMenu(MenuPrincipal);
+     CriaMenu(MenuPrincipal);
 end;
 
 procedure TMainForm.CriaMenu(l_menu: TuniMenuItems);
@@ -311,36 +314,36 @@ begin
           open;
           first;
           try
-               // Pega os itens da tabela.
-               while not Eof do begin
-                     // Criar o item do menu
-                     MenuItem         := TUniMenuItem.Create(Self);
-                     MenuItem.Caption := FieldByName('Caption').AsString;
-                     MenuItem.Tag     := FieldByName('ID').AsInteger;
-                     MenuItem.Hint    := FieldByName('Form').AsString;
-                     MenuItem.Name    := FieldByName('Nome').AsString;
-                     // Associar um evento, se existir nome do frame informado.
-                     MenuItem.ImageIndex := iif(FieldByName('Icone').isnull, -1, FieldByName('Icone').AsInteger);
-                     if (not FieldByName('Form').isnull) and (fieldByName('Nome').AsString <> 'mnSair') then begin
-                        MenuItem.OnClick := MenuClick;
-                     end;
-                     if fieldByName('Nome').asstring = 'mnSair' then begin
-                        MenuItem.OnClick := mnSairClick; 
-                     end;
-                     // Encontrar o pai, se houver
-                     if not FieldByName('ParentID').IsNull then begin
-                        ParentMenuItem := MenuItemList[FieldByName('ParentID').AsInteger];
-                        if Assigned(ParentMenuItem) then
-                           ParentMenuItem.Add(MenuItem);
-                     end else begin
-                        MenuPrincipal.Items.Add(MenuItem);
-                     end;
-                     // Adicionar ao dicionário
-                     MenuItemList.Add(FieldByName('ID').AsInteger, MenuItem);
-                     Next;
-               end;
+             // Pega os itens da tabela.
+             while not Eof do begin
+                   // Criar o item do menu.
+                   MenuItem         := TUniMenuItem.Create(Self);
+                   MenuItem.Caption := FieldByName('Caption').AsString;
+                   MenuItem.Tag     := FieldByName('ID').AsInteger;
+                   MenuItem.Hint    := FieldByName('Form').AsString;
+                   MenuItem.Name    := FieldByName('Nome').AsString;
+                   // Associar um evento, se existir nome do frame informado.
+                   MenuItem.ImageIndex := iif(FieldByName('Icone').isnull, -1, FieldByName('Icone').AsInteger);
+                   if (not FieldByName('Form').isnull) and (fieldByName('Nome').AsString <> 'mnSair') then begin
+                      MenuItem.OnClick := MenuClick;
+                   end;
+                   if fieldByName('Nome').asstring = 'mnSair' then begin
+                      MenuItem.OnClick := mnSairClick; 
+                   end;
+                   // Encontrar o pai, se houver.
+                   if not FieldByName('ParentID').IsNull then begin
+                      ParentMenuItem := MenuItemList[FieldByName('ParentID').AsInteger];
+                      if Assigned(ParentMenuItem) then
+                         ParentMenuItem.Add(MenuItem);
+                   end else begin
+                      MenuPrincipal.Items.Add(MenuItem);
+                   end;
+                   // Adicionar ao dicionário.
+                   MenuItemList.Add(FieldByName('ID').AsInteger, MenuItem);
+                   Next;
+             end;
           finally
-               MenuItemList.Free;
+             MenuItemList.Free;
           end;
      end;
 end;
@@ -366,7 +369,7 @@ end;
 initialization
   RegisterAppFormClass(TMainForm);
 
-  // Devem ser registrados aqui todos os frames que serão chamados pelo menu principal.
+  (* Devem ser registrados aqui todos os frames que serão chamados pelo menu principal *)
   RegisterClass(TfCadEmpresas); 
   RegisterClass(TfCadUsuarios); 
   RegisterClass(TfCadPaises); 

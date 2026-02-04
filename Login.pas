@@ -70,7 +70,7 @@ begin
                        Connected := false;
                        Params.Clear;
                        Params.Values['DriverID']  := 'MSSQL';
-                       Params.Values['Server']    := fieldbyname('Server').asstring;
+                       Params.Values['Server']    := iif((NomeComputador = 'PROGRAMACAO1') or (NomeComputador = 'NOTE-DED'), fieldbyname('Server').asstring, fieldbyname('Server2').asstring);
                        Params.Values['Database']  := fieldbyname('Banco').asstring;
                        Params.Values['User_Name'] := 'sa';
                        Params.Values['Password']  := 'cybersoft@123';
@@ -120,7 +120,7 @@ begin
      //-----------------------------[ REMOVER APÓS TESTES ]--------------------------------\\
      cLogUser.text  := '';
      cLogSenha.Text := '';
-     if (NomeComputador = 'PROGRAMACAO') or (NomeComputador = 'NOTE-DED') then begin
+     if (NomeComputador = 'PROGRAMACAO') or (NomeComputador = 'NOTE-DED') or (NomeComputador = 'OMINIHOST') then begin
         cLogUser.text  := 'eder@cybersoftsistemas.com.br';
         cLogSenha.Text := 'Cybersoft@123';
      end;

@@ -157,9 +157,9 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
     TabOrder = 1
     object UniPanel2: TUniPanel
       Left = 0
-      Top = 110
+      Top = 114
       Width = 1333
-      Height = 569
+      Height = 565
       Hint = ''
       Align = alClient
       TabOrder = 1
@@ -168,215 +168,210 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
           'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
           '= '#39'FichaSemSombra'#39';'#13#10'}')
       Caption = 'UniPanel2'
+      ExplicitTop = 110
+      ExplicitHeight = 569
       object Pasta: TUniPageControl
-        Left = 1
-        Top = 1
-        Width = 1331
-        Height = 567
+        AlignWithMargins = True
+        Left = 4
+        Top = 4
+        Width = 1325
+        Height = 557
         Hint = ''
         ActivePage = UniTabSheet2
         Align = alClient
         TabOrder = 1
+        ExplicitHeight = 561
         object UniTabSheet1: TUniTabSheet
-          AlignWithMargins = True
           Hint = ''
           Caption = 'Itens do Pedido'
+          ExplicitHeight = 533
           object UniContainerPanel3: TUniContainerPanel
-            Left = 307
-            Top = 0
-            Width = 1016
-            Height = 539
+            AlignWithMargins = True
+            Left = 316
+            Top = 3
+            Width = 998
+            Height = 523
             Hint = ''
             ParentColor = False
             Align = alClient
+            ClientEvents.UniEvents.Strings = (
+              
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                '= '#39'Painel'#39';'#13#10'}')
             TabOrder = 0
-            object UniContainerPanel1: TUniContainerPanel
+            ExplicitHeight = 527
+            object gItens: TUniDBGrid
+              Left = 0
+              Top = 278
+              Width = 998
+              Height = 245
+              Hint = ''
+              HeaderTitle = 'ITENS DO PEDIDO'
+              HeaderTitleAlign = taCenter
+              DataSource = dsPedidosNFItens
+              Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgMultiSelect, dgAutoRefreshRow]
+              ReadOnly = True
+              WebOptions.Paged = False
+              LoadMask.Message = 'Carregando itens do Pedido...Aguarde'
+              ForceFit = True
+              BorderStyle = ubsInset
+              Align = alClient
+              TabOrder = 1
+              Columns = <
+                item
+                  FieldName = 'Item'
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Item'
+                  Title.Font.Style = [fsBold]
+                  Width = 40
+                end
+                item
+                  FieldName = 'Codigo_Mercadoria'
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Produto'
+                  Title.Font.Style = [fsBold]
+                  Width = 64
+                end
+                item
+                  FieldName = 'Descricao_Mercadoria'
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Descri'#231#227'o'
+                  Title.Font.Style = [fsBold]
+                  Width = 553
+                  DisplayMemo = True
+                end
+                item
+                  FieldName = 'NCM'
+                  Title.Alignment = taCenter
+                  Title.Caption = 'NCM'
+                  Title.Font.Style = [fsBold]
+                  Width = 70
+                  Alignment = taCenter
+                end
+                item
+                  FieldName = 'Quantidade'
+                  Title.Alignment = taCenter
+                  Title.Caption = 'QTDE'
+                  Title.Font.Style = [fsBold]
+                  Width = 100
+                end
+                item
+                  FieldName = 'Valor_Unitario'
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Unit'#225'rio'
+                  Title.Font.Style = [fsBold]
+                  Width = 106
+                end
+                item
+                  FieldName = 'CFOP'
+                  Title.Alignment = taCenter
+                  Title.Caption = 'CFOP'
+                  Title.Font.Style = [fsBold]
+                  Width = 60
+                  Alignment = taCenter
+                end>
+            end
+            object gAdicoes: TUniDBGrid
               Left = 0
               Top = 0
-              Width = 1016
-              Height = 217
+              Width = 998
+              Height = 278
               Hint = ''
-              ParentColor = False
+              HeaderTitle = 'ITENS DA DUIMP'
+              HeaderTitleAlign = taRightJustify
+              DataSource = dsProcessosImpItens
+              Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgMultiSelect, dgAutoRefreshRow]
+              ReadOnly = True
+              WebOptions.Paged = False
+              LoadMask.Message = 'Carregando itens da DUIMP...Aguarde'
+              ForceFit = True
+              BorderStyle = ubsInset
               Align = alTop
-              TabOrder = 1
-              object gAdicoes: TUniDBGrid
-                Left = 0
-                Top = 0
-                Width = 1016
-                Height = 217
-                Hint = ''
-                HeaderTitle = 'ITENS DA DUIMP'
-                HeaderTitleAlign = taRightJustify
-                DataSource = dsProcessosImpItens
-                Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgMultiSelect, dgAutoRefreshRow]
-                ReadOnly = True
-                WebOptions.Paged = False
-                LoadMask.Message = 'Carregando itens da DUIMP...Aguarde'
-                ForceFit = True
-                BorderStyle = ubsInset
-                Align = alClient
-                TabOrder = 1
-                Columns = <
-                  item
-                    FieldName = 'Item'
-                    Title.Alignment = taCenter
-                    Title.Caption = 'Item'
-                    Title.Font.Style = [fsBold]
-                    Width = 40
-                  end
-                  item
-                    FieldName = 'Codigo_Mercadoria'
-                    Title.Alignment = taCenter
-                    Title.Caption = 'Produto'
-                    Title.Font.Style = [fsBold]
-                    Width = 64
-                  end
-                  item
-                    FieldName = 'Descricao'
-                    Title.Alignment = taCenter
-                    Title.Caption = 'Descri'#231#227'o'
-                    Title.Font.Style = [fsBold]
-                    Width = 324
-                    ReadOnly = True
-                    MemoOptions.ConvertNewLineToBreak = True
-                  end
-                  item
-                    FieldName = 'NCM'
-                    Title.Alignment = taCenter
-                    Title.Caption = 'NCM'
-                    Title.Font.Style = [fsBold]
-                    Width = 70
-                    Alignment = taCenter
-                  end
-                  item
-                    FieldName = 'Quantidade'
-                    Title.Alignment = taCenter
-                    Title.Caption = 'QTDE'
-                    Title.Font.Style = [fsBold]
-                    Width = 100
-                    ForceStringFormat = True
-                  end
-                  item
-                    FieldName = 'Disponivel'
-                    Title.Alignment = taCenter
-                    Title.Caption = 'Dispon'#237'vel'
-                    Title.Font.Style = [fsBold]
-                    Width = 100
-                    ReadOnly = True
-                  end
-                  item
-                    FieldName = 'Valor_UnitarioME'
-                    Title.Alignment = taCenter
-                    Title.Caption = 'Unitario ME'
-                    Title.Font.Style = [fsBold]
-                    Width = 100
-                  end
-                  item
-                    FieldName = 'Valor_UnitarioReal'
-                    Title.Alignment = taCenter
-                    Title.Caption = 'Unit'#225'rio R$'
-                    Title.Font.Style = [fsBold]
-                    Width = 100
-                  end>
-              end
-            end
-            object UniContainerPanel2: TUniContainerPanel
-              Left = 0
-              Top = 217
-              Width = 1016
-              Height = 322
-              Hint = ''
-              ParentColor = False
-              Align = alClient
               TabOrder = 2
-              object gItens: TUniDBGrid
-                Left = 0
-                Top = 0
-                Width = 1016
-                Height = 322
-                Hint = ''
-                HeaderTitle = 'ITENS DO PEDIDO'
-                HeaderTitleAlign = taCenter
-                DataSource = dsPedidosNFItens
-                Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgMultiSelect, dgAutoRefreshRow]
-                ReadOnly = True
-                WebOptions.Paged = False
-                LoadMask.Message = 'Carregando itens do Pedido...Aguarde'
-                ForceFit = True
-                BorderStyle = ubsInset
-                Align = alClient
-                TabOrder = 1
-                Columns = <
-                  item
-                    FieldName = 'Item'
-                    Title.Alignment = taCenter
-                    Title.Caption = 'Item'
-                    Title.Font.Style = [fsBold]
-                    Width = 40
-                  end
-                  item
-                    FieldName = 'Codigo_Mercadoria'
-                    Title.Alignment = taCenter
-                    Title.Caption = 'Produto'
-                    Title.Font.Style = [fsBold]
-                    Width = 64
-                  end
-                  item
-                    FieldName = 'Descricao_Mercadoria'
-                    Title.Alignment = taCenter
-                    Title.Caption = 'Descri'#231#227'o'
-                    Title.Font.Style = [fsBold]
-                    Width = 553
-                    DisplayMemo = True
-                  end
-                  item
-                    FieldName = 'NCM'
-                    Title.Alignment = taCenter
-                    Title.Caption = 'NCM'
-                    Title.Font.Style = [fsBold]
-                    Width = 70
-                    Alignment = taCenter
-                  end
-                  item
-                    FieldName = 'Quantidade'
-                    Title.Alignment = taCenter
-                    Title.Caption = 'QTDE'
-                    Title.Font.Style = [fsBold]
-                    Width = 100
-                  end
-                  item
-                    FieldName = 'Valor_Unitario'
-                    Title.Alignment = taCenter
-                    Title.Caption = 'Unit'#225'rio'
-                    Title.Font.Style = [fsBold]
-                    Width = 106
-                  end
-                  item
-                    FieldName = 'CFOP'
-                    Title.Alignment = taCenter
-                    Title.Caption = 'CFOP'
-                    Title.Font.Style = [fsBold]
-                    Width = 60
-                    Alignment = taCenter
-                  end>
-              end
+              Columns = <
+                item
+                  FieldName = 'Item'
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Item'
+                  Title.Font.Style = [fsBold]
+                  Width = 40
+                end
+                item
+                  FieldName = 'Codigo_Mercadoria'
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Produto'
+                  Title.Font.Style = [fsBold]
+                  Width = 64
+                end
+                item
+                  FieldName = 'Descricao'
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Descri'#231#227'o'
+                  Title.Font.Style = [fsBold]
+                  Width = 324
+                  ReadOnly = True
+                  MemoOptions.ConvertNewLineToBreak = True
+                end
+                item
+                  FieldName = 'NCM'
+                  Title.Alignment = taCenter
+                  Title.Caption = 'NCM'
+                  Title.Font.Style = [fsBold]
+                  Width = 70
+                  Alignment = taCenter
+                end
+                item
+                  FieldName = 'Quantidade'
+                  Title.Alignment = taCenter
+                  Title.Caption = 'QTDE'
+                  Title.Font.Style = [fsBold]
+                  Width = 100
+                  ForceStringFormat = True
+                end
+                item
+                  FieldName = 'Disponivel'
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Dispon'#237'vel'
+                  Title.Font.Style = [fsBold]
+                  Width = 100
+                  ReadOnly = True
+                end
+                item
+                  FieldName = 'Valor_UnitarioME'
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Unitario ME'
+                  Title.Font.Style = [fsBold]
+                  Width = 100
+                end
+                item
+                  FieldName = 'Valor_UnitarioReal'
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Unit'#225'rio R$'
+                  Title.Font.Style = [fsBold]
+                  Width = 100
+                end>
             end
           end
           object UniPanel4: TUniPanel
-            Left = 0
-            Top = 0
+            AlignWithMargins = True
+            Left = 3
+            Top = 3
             Width = 307
-            Height = 539
+            Height = 523
             Hint = ''
-            Margins.Bottom = 0
             Align = alLeft
             TabOrder = 1
+            ClientEvents.UniEvents.Strings = (
+              
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                '= '#39'Painel'#39';'#13#10'}')
             BorderStyle = ubsInset
             ShowCaption = False
             Caption = ''
+            ExplicitHeight = 527
             object cQtdePerc: TUniFormattedNumberEdit
-              Left = 8
-              Top = 8
+              Left = 18
+              Top = 18
               Width = 270
               Height = 25
               Hint = ''
@@ -394,8 +389,8 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
               ThousandSeparator = '.'
             end
             object cValorUnitario: TUniFormattedNumberEdit
-              Left = 8
-              Top = 35
+              Left = 18
+              Top = 45
               Width = 270
               Height = 25
               Hint = ''
@@ -423,8 +418,8 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
               TabOrder = 3
             end
             object cLucroPerc: TUniFormattedNumberEdit
-              Left = 8
-              Top = 62
+              Left = 18
+              Top = 72
               Width = 270
               Height = 25
               Hint = ''
@@ -442,8 +437,8 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
               ThousandSeparator = '.'
             end
             object cLucroValor: TUniFormattedNumberEdit
-              Left = 8
-              Top = 89
+              Left = 18
+              Top = 99
               Width = 270
               Height = 25
               Hint = ''
@@ -461,8 +456,8 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
               ThousandSeparator = '.'
             end
             object cDescPerc: TUniFormattedNumberEdit
-              Left = 8
-              Top = 116
+              Left = 18
+              Top = 126
               Width = 270
               Height = 25
               Hint = ''
@@ -480,8 +475,8 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
               ThousandSeparator = '.'
             end
             object cDescValor: TUniFormattedNumberEdit
-              Left = 8
-              Top = 143
+              Left = 18
+              Top = 153
               Width = 270
               Height = 25
               Hint = ''
@@ -532,11 +527,12 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
         end
         object UniTabSheet2: TUniTabSheet
           Hint = ''
-          Caption = 'Ocorr'#234'ncias'
+          Caption = 'An'#225'lise'
+          ExplicitHeight = 533
           object cLog: TUniMemo
             Left = 0
-            Top = 335
-            Width = 1323
+            Top = 325
+            Width = 1317
             Height = 204
             Hint = ''
             BorderStyle = ubsInset
@@ -557,13 +553,14 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
             FieldLabel = 'F'#211'RMULAS DOS CALCULOS DO PEDIDO'
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            ExplicitTop = 329
           end
           object gFormula: TUniStringGrid
             AlignWithMargins = True
             Left = 3
             Top = 3
-            Width = 1317
-            Height = 329
+            Width = 1311
+            Height = 319
             Hint = ''
             HeaderTitle = 'F'#211'RMULAS DOS CALCULOS DO PEDIDO'
             HeaderTitleAlign = taCenter
@@ -602,17 +599,22 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
             ForceFit = True
             Align = alClient
             TabOrder = 1
+            ExplicitHeight = 323
           end
         end
       end
     end
     object UniPanel1: TUniPanel
       AlignWithMargins = True
-      Left = 3
-      Top = 3
-      Width = 1327
+      Left = 5
+      Top = 5
+      Width = 1323
       Height = 104
       Hint = ''
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Align = alTop
       TabOrder = 2
       ClientEvents.UniEvents.Strings = (
@@ -621,11 +623,14 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
           ' = '#39'Painel'#39';'#13#10'}')
       BorderStyle = ubsInset
       Caption = ''
+      ExplicitLeft = 3
+      ExplicitTop = 3
+      ExplicitWidth = 1327
       object cDUIMP: TUniDBLookupComboBox
         AlignWithMargins = True
-        Left = 363
+        Left = 13
         Top = 12
-        Width = 600
+        Width = 700
         Height = 25
         Hint = ''
         Margins.Left = 1
@@ -654,9 +659,9 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       end
       object cCFOP: TUniDBLookupComboBox
         AlignWithMargins = True
-        Left = 363
+        Left = 13
         Top = 39
-        Width = 600
+        Width = 700
         Height = 25
         Hint = ''
         Margins.Left = 1
@@ -685,9 +690,9 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       end
       object cEmbarque: TUniDBLookupComboBox
         AlignWithMargins = True
-        Left = 363
+        Left = 13
         Top = 66
-        Width = 600
+        Width = 700
         Height = 25
         Hint = ''
         Margins.Left = 1
@@ -729,7 +734,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       'from CFOP '
       'where Desativada <> 1')
     Left = 456
-    Top = 389
+    Top = 387
   end
   object PedidosNF: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1503,6 +1508,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       '      ,Pedido'
       '      ,Adicao'
       '      ,Ordem'
+      '      ,DUIMP'
       'from ProcessosImpItens')
     Left = 701
     Top = 388
@@ -1572,6 +1578,11 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
     object ProcessosImpItensOrdem: TIntegerField
       FieldName = 'Ordem'
       Origin = 'Ordem'
+    end
+    object ProcessosImpItensDUIMP: TStringField
+      FieldName = 'DUIMP'
+      Origin = 'DUIMP'
+      Size = 15
     end
   end
   object DUIMP: TFDQuery
@@ -1758,8 +1769,8 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
     CancelButtonText = 'Cancelar'
     Width = 400
     Padding = 20
-    Left = 608
-    Top = 165
+    Left = 599
+    Top = 224
   end
   object dsProcessosImpItens: TDataSource
     DataSet = ProcessosImpItens
@@ -1773,7 +1784,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
   end
   object dsCFOP: TDataSource
     DataSet = CFOP
-    Left = 455
+    Left = 456
     Top = 439
   end
   object dsEmbarques: TDataSource
@@ -1835,8 +1846,8 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
   end
   object Macro: TCalcExpress
     Formula = '0'
-    Left = 550
-    Top = 165
+    Left = 541
+    Top = 224
   end
   object tImpostos: TFDMemTable
     FieldDefs = <>
@@ -1945,8 +1956,8 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * FROM CSTIBS')
-    Left = 259
-    Top = 395
+    Left = 456
+    Top = 497
   end
   object CSTCBS: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1958,7 +1969,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
     SQL.Strings = (
       'select * FROM CSTCBS'
       '')
-    Left = 256
-    Top = 448
+    Left = 456
+    Top = 543
   end
 end

@@ -201,7 +201,6 @@ type
     EmpresasRazao_Social: TStringField;
     EmpresasCNPJ: TStringField;
     EmpresasUnidade: TStringField;
-    EmpresasFechamento_Financeiro: TDateField;
     EmpresasEstado: TStringField;
     cEmbarque: TUniDBLookupComboBox;
     Embarques: TFDQuery;
@@ -242,6 +241,7 @@ type
     bVeiculo: TUniButton;
     UniButton1: TUniButton;
     UniContainerPanel1: TUniContainerPanel;
+    EmpresasFechamento_Financeiro: TDateField;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);

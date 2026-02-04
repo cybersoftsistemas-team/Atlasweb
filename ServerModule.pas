@@ -24,7 +24,7 @@ implementation
 {$R *.dfm}
 
 uses
-  UniGUIVars;
+  UniGUIVars, Funcoes;
 
 function UniServerModule: TUniServerModule;
 begin
@@ -33,12 +33,14 @@ end;
 
 procedure TUniServerModule.FirstInit;
 begin
-  InitServerModule(Self);
+    InitServerModule(Self);
 end;
 
 procedure TUniServerModule.UniGUIServerModuleCreate(Sender: TObject);
 begin
-     ExploreWeb('http://localhost:8077');
+     if (NomeComputador = 'PROGRAMACAO1') or (NomeComputador = 'NOTE-DED') then begin
+        ExploreWeb('http://localhost:8077');
+     end;
 end;
 
 procedure ExploreWeb(page: PChar);

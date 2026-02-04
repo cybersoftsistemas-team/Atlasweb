@@ -5,9 +5,13 @@ object UniMainModule: TUniMainModule
   TouchTheme = 'neptune'
   MonitoredKeys.Keys = <>
   EnableSynchronousOperations = True
+  ServerMessages.UnavailableErrMsg = 'Erro de comunica'#231#227'o'
+  ServerMessages.LoadingMessage = 'Carregando...'
+  ServerMessages.InvalidSessionMessage = 'Sess'#227'o inv'#225'lida ou tempo limite da sess'#227'o excedido.'
+  ServerMessages.TerminateMessage = 'Sess'#227'o web terminada.'
   Title = 'ATLAS WEB'
-  Height = 322
-  Width = 586
+  Height = 346
+  Width = 584
   object imgBotoes: TUniNativeImageList
     Left = 300
     Top = 20
@@ -172,7 +176,7 @@ object UniMainModule: TUniMainModule
       FFFF1F060B0000006572617365723B66615F3BFFFFFF1F060800000062616E3B
       66615F3B}
   end
-  object AtlasWeb: TFDConnection
+  object AtlasConect: TFDConnection
     Params.Strings = (
       'Database=AtlasWeb'
       'User_Name=sa'
@@ -269,7 +273,7 @@ object UniMainModule: TUniMainModule
     Params.Strings = (
       'Database=EmpresaBase'
       'Password=cybersoft@123'
-      'Server=SERVER-DADOS'
+      'Server=server-dados'
       'User_Name=sa'
       'DriverID=MSSQL')
     FetchOptions.AssignedValues = [evMode, evRecsSkip, evRecsMax, evRowsetSize, evRecordCountMode, evCursorKind, evAutoFetchAll, evLiveWindowParanoic, evDetailCascade]
@@ -279,10 +283,9 @@ object UniMainModule: TUniMainModule
     FetchOptions.LiveWindowParanoic = False
     ResourceOptions.AssignedValues = [rvCmdExecMode]
     ResourceOptions.CmdExecMode = amNonBlocking
-    Connected = True
     LoginPrompt = False
     Left = 115
-    Top = 19
+    Top = 18
   end
   object Log: TFDQuery
     Connection = Conecta

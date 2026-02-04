@@ -224,10 +224,6 @@ type
     Pasta: TUniPageControl;
     UniTabSheet1: TUniTabSheet;
     UniContainerPanel3: TUniContainerPanel;
-    UniContainerPanel1: TUniContainerPanel;
-    gAdicoes: TUniDBGrid;
-    UniContainerPanel2: TUniContainerPanel;
-    gItens: TUniDBGrid;
     UniPanel4: TUniPanel;
     cQtdePerc: TUniFormattedNumberEdit;
     cValorUnitario: TUniFormattedNumberEdit;
@@ -268,6 +264,9 @@ type
     CSTICMSB: TFDQuery;
     CSTIBS: TFDQuery;
     CSTCBS: TFDQuery;
+    gItens: TUniDBGrid;
+    gAdicoes: TUniDBGrid;
+    ProcessosImpItensDUIMP: TStringField;
     procedure bSairClick(Sender: TObject);
     procedure UniFormShow(Sender: TObject);
     procedure cCFOPChange(Sender: TObject);
@@ -286,6 +285,7 @@ type
 //    procedure CalculaTudo;
     //function CalculaMacro(Campo: String): Real;
     function CalculaMacro(pForm: TComponent; pFormula: String): Real;
+    procedure FiltraTabelas(pProduto: integer);
     
     { Private declarations }
   public
@@ -316,6 +316,7 @@ end;
 
 procedure TfFatPedidoItensDUIMP.bAddItemClick(Sender: TObject);
 begin
+     FiltraTabelas(ProcessosImpItens.FieldByName('Codigo_Mercadoria').Value);
      AddItem;
      ProcessosImpItens.Refresh;
 end;
@@ -323,11 +324,98 @@ end;
 procedure TfFatPedidoItensDUIMP.bAddTudoClick(Sender: TObject);
 begin
      with ProcessosImpItens do begin
+          FiltraTabelas(0);
           first;
           while not eof do begin
                 Additem;
                 next;
           end;
+          refresh;
+     end;
+end;
+
+procedure TfFatPedidoItensDUIMP.FiltraTabelas(pProduto: integer);
+begin
+     with Produtos do begin
+          sql.Clear;
+          sql.Add('select Codigo');
+          sql.Add('      ,Codigo_Fabricante');
+          sql.Add('      ,Descricao');
+          sql.Add('      ,Peso_Bruto');
+          sql.Add('      ,UM');
+          sql.Add('      ,Valor_IPI');
+          sql.Add('      ,Aliquota_PISSaida');
+          sql.add('      ,CSTPIS_Entrada');
+          sql.add('      ,CSTPIS_AliquotaUM');
+          sql.add('      ,CSTPIS_Monofasica');
+          sql.add('      ,CSTPIS_AliquotaZero');
+          sql.add('      ,CSTPIS_Isenta');
+          sql.add('      ,CSTPIS_Suspensao');
+          sql.add('      ,CSTPIS_SemIncidencia');
+          sql.add('      ,CSTPIS_Outras');
+          sql.add('      ,CSTICMS_Saida');
+          sql.add('      ,Origem');
+          sql.add('      ,NCM');
+          sql.Add('from Produtos prd');
+          if pProduto <> 0 then begin
+             sql.Add('where prd.Codigo = :pCod');
+             ParamByName('pCod').asinteger := ProcessosImpItens.FieldByName('Codigo_Mercadoria').Value;
+          end else begin
+             sql.add('where prd.Codigo in(select distinct Codigo_Mercadoria from ProcessosImpItens pii where pii.DUIMP = :pDUIMP)');
+             ParamByName('pDUIMP').value := ProcessosImpItens.FieldByName('DUIMP').asstring;
+          end;
+          open;
+     end;
+     // Totalizando os contratos de câmbio para gerar o fator de rateio do valor unitário pelo câmbio.
+     with tCambio do begin
+          sql.clear;
+          sql.add('select Fator = isnull(sum((Valor_ME * Taxa_Cambial)) / sum(Valor_ME), 0)');
+          sql.add('from ContratoCambioItens');
+          sql.add('where Processo = :pProcesso');
+          parambyName('pProcesso').AsString := tProcesso.fieldbyname('Processo').asstring;
+          open;
+     end;
+     with tNCM do begin
+          sql.clear;
+          sql.add('select NCM');
+          sql.add('      ,IPI_TribAliquotaZero');
+          sql.add('      ,IPI_Isento');
+          sql.add('      ,IPI_Suspensao');
+          sql.add('      ,PIS_ST');
+          sql.add('      ,CodigoTrib_TabA');
+          sql.add('      ,CodigoTrib_TabA2');
+          sql.add('      ,CodigoTrib_TabA3');
+          sql.add('      ,Codigo_CredPres');
+          sql.add('      ,ICMS_Isento');
+          sql.Add('      ,ICMS_Imune');
+          sql.add('      ,ICMS_Suspensao');
+          sql.add('      ,Modalidade_BCICMS');
+          sql.add('      ,Modalidade_BCICMSST');
+          sql.add('      ,Codigo_EXTIPI');
+          sql.add('      ,CEST');
+          sql.add('      ,CBS_Isencao');
+          sql.add('      ,CBS_Imunidade');
+          sql.add('      ,CBS_Suspensao');
+          sql.add('      ,CBS_Diferido');
+          sql.add('      ,IBS_Isencao');
+          sql.add('      ,IBS_Imunidade');
+          sql.add('      ,IBS_Suspensao');
+          sql.add('      ,IBS_Diferido');
+          sql.add('from NCM');
+          if pProduto <> 0 then begin
+             sql.Add('where NCM = :pNCM');
+             ParamByName('pNCM').value := ProcessosImpItens.fieldbyname('NCM').AsString;
+          end else begin
+             sql.add('where NCM in(select distinct NCM from ProcessosImpItens pii where pii.DUIMP = :pDUIMP)');
+             ParamByName('pDUIMP').value := ProcessosImpItens.FieldByName('DUIMP').asstring;
+          end;
+          open;
+     end;
+     with tBeneficios do begin
+          sql.Clear;
+          sql.Add('select Percentual_Beneficio from BeneficioFiscal where Codigo = :pCod');
+          ParamByName('pCod').AsInteger := PedidosNF.FieldByName('Beneficio_Fiscal').Value;
+          open;
      end;
 end;
 
@@ -409,6 +497,7 @@ begin
              sql.add('      ,Pedido');
              sql.add('      ,Ordem');
              sql.add('      ,Adicao');
+             sql.add('      ,DUIMP');
              sql.add('from ProcessosImpItens pii');
              sql.Add('where pii.DUIMP = '+quotedstr(DUIMP.FieldByName('DUIMP').AsString));
              sql.Add('and pii.Exportador = '+DUIMP.FieldByName('Exportador').asstring);
@@ -659,78 +748,8 @@ procedure TfFatPedidoItensDUIMP.AddItem;
 var
    mDescricao: widestring;
 begin
-     with Produtos do begin
-          sql.Clear;
-          sql.Add('select Codigo');
-          sql.Add('      ,Codigo_Fabricante');
-          sql.Add('      ,Descricao');
-          sql.Add('      ,Peso_Bruto');
-          sql.Add('      ,UM');
-          sql.Add('      ,Valor_IPI');
-          sql.Add('      ,Aliquota_PISSaida');
-          sql.add('      ,CSTPIS_Entrada');
-          sql.add('      ,CSTPIS_AliquotaUM');
-          sql.add('      ,CSTPIS_Monofasica');
-          sql.add('      ,CSTPIS_AliquotaZero');
-          sql.add('      ,CSTPIS_Isenta');
-          sql.add('      ,CSTPIS_Suspensao');
-          sql.add('      ,CSTPIS_SemIncidencia');
-          sql.add('      ,CSTPIS_Outras');
-          sql.add('      ,CSTICMS_Saida');
-          sql.add('      ,Origem');
-          sql.add('      ,NCM');
-          sql.Add('from Produtos');
-          sql.Add('where Codigo = :pCod');
-          ParamByName('pCod').asinteger := ProcessosImpItens.FieldByName('Codigo_Mercadoria').Value;
-          open;
-     end;
-     // Totalizando os contratos de câmbio para gerar o fator de rateio do valor unitário pelo câmbio.
-     with tCambio do begin
-          sql.clear;
-          sql.add('select Fator = isnull(sum((Valor_ME * Taxa_Cambial)) / sum(Valor_ME), 0)');
-          sql.add('from   ContratoCambioItens');
-          sql.add('where  Processo = :pProcesso');
-          parambyName('pProcesso').AsString := tProcesso.fieldbyname('Processo').asstring;
-          open;
-     end;
-     // Sequencial do item no pedido.
-     with tTmp do begin
-          sql.Clear;
-          sql.Add('select Item = isnull(max(Item), 0)+1 from PedidosNFItens where Pedido = :pPedido');
-          ParamByName('pPedido').AsInteger := mPedido;
-          Open;
-     end;
-     with tNCM do begin
-          sql.clear;
-          sql.add('select NCM');
-          sql.add('      ,IPI_TribAliquotaZero');
-          sql.add('      ,IPI_Isento');
-          sql.add('      ,IPI_Suspensao');
-          sql.add('      ,PIS_ST');
-          sql.add('      ,CodigoTrib_TabA');
-          sql.add('      ,CodigoTrib_TabA2');
-          sql.add('      ,CodigoTrib_TabA3');
-          sql.add('      ,Codigo_CredPres');
-          sql.add('      ,ICMS_Isento');
-          sql.Add('      ,ICMS_Imune');
-          sql.add('      ,ICMS_Suspensao');
-          sql.add('      ,Modalidade_BCICMS');
-          sql.add('      ,Modalidade_BCICMSST');
-          sql.add('      ,Codigo_EXTIPI');
-          sql.add('      ,CEST');
-          sql.add('      ,CBS_Isencao');
-          sql.add('      ,CBS_Imunidade');
-          sql.add('      ,CBS_Suspensao');
-          sql.add('      ,CBS_Diferido');
-          sql.add('      ,IBS_Isencao');
-          sql.add('      ,IBS_Imunidade');
-          sql.add('      ,IBS_Suspensao');
-          sql.add('      ,IBS_Diferido');
-          sql.add('from NCM');
-          sql.Add('where NCM = :pNCM');
-          ParamByName('pNCM').value := ProcessosImpItens.fieldbyname('NCM').AsString;
-          open;
-     end;
+     Produtos.locate('Codigo', ProcessosImpItens.FieldByName('Codigo_Mercadoria').Value, [loCaseInsensitive]);
+     tNCM.locate('NCM', ProcessosImpItens.FieldByName('NCM').Value, [loCaseInsensitive]);
      with tNCMICMS do begin
           sql.Clear;
           sql.Add('select * from NCMICMS where NCM = :pNCM and Estado = :pEstado');
@@ -738,13 +757,15 @@ begin
           parambyname('pEstado').Value := mEstado;
           open;
      end;
-     with tBeneficios do begin
+     
+     // Sequencial do item no pedido.
+     with tTmp do begin
           sql.Clear;
-          sql.Add('select Percentual_Beneficio from BeneficioFiscal where Codigo = :pCod');
-          ParamByName('pCod').AsInteger := PedidosNF.FieldByName('Beneficio_Fiscal').Value;
-          open;
+          sql.Add('select Item = isnull(max(Item), 0)+1 from PedidosNFItens where Pedido = :pPedido');
+          ParamByName('pPedido').AsInteger := mPedido;
+          Open;
      end;
-
+     
      // Remove caracteres de controle da descrição do produto.
      mDescricao := stringreplace(Produtos.fieldbyname('Descricao').Value, #13, '', [rfReplaceAll]);
      mDescricao := stringreplace(mDescricao, #12, '', [rfReplaceAll]);

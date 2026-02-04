@@ -1,7 +1,7 @@
 object fCadDestinatarios: TfCadDestinatarios
   Left = 0
   Top = 0
-  Width = 1217
+  Width = 1402
   Height = 1001
   OnCreate = uniFrameCreate
   OnDestroy = uniFrameDestroy
@@ -10,7 +10,7 @@ object fCadDestinatarios: TfCadDestinatarios
   object pBarraNav: TUniPanel
     Left = 0
     Top = 0
-    Width = 1217
+    Width = 1402
     Height = 35
     Hint = ''
     Align = alTop
@@ -129,11 +129,11 @@ object fCadDestinatarios: TfCadDestinatarios
   object Pasta: TUniPageControl
     Left = 0
     Top = 35
-    Width = 1217
+    Width = 1402
     Height = 966
     Hint = ''
     BodyRTL = False
-    ActivePage = aLista
+    ActivePage = UniTabSheet1
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -153,7 +153,7 @@ object fCadDestinatarios: TfCadDestinatarios
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
-        Width = 1209
+        Width = 1394
         Height = 27
         Hint = ''
         Align = alTop
@@ -201,7 +201,7 @@ object fCadDestinatarios: TfCadDestinatarios
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
-        Width = 1209
+        Width = 1394
         Height = 911
         Hint = ''
         HeaderTitleAlign = taCenter
@@ -298,7 +298,7 @@ object fCadDestinatarios: TfCadDestinatarios
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1209
+        Width = 1394
         Height = 938
         Hint = ''
         Align = alClient
@@ -308,14 +308,14 @@ object fCadDestinatarios: TfCadDestinatarios
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1207
+          1392
           936)
-        ScrollHeight = 863
+        ScrollHeight = 836
         object pFicha1: TUniPanel
-          Left = 225
-          Top = 13
-          Width = 843
-          Height = 850
+          Left = 123
+          Top = 25
+          Width = 840
+          Height = 811
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -334,10 +334,10 @@ object fCadDestinatarios: TfCadDestinatarios
           Color = clTeal
           ParentAlignmentControl = False
           object cCodigo: TUniDBEdit
-            Left = 23
-            Top = 27
-            Width = 135
-            Height = 50
+            Left = 21
+            Top = 19
+            Width = 247
+            Height = 25
             Hint = ''
             Enabled = False
             ShowHint = True
@@ -348,17 +348,16 @@ object fCadDestinatarios: TfCadDestinatarios
             TabOrder = 1
             FieldLabel = 'C'#243'digo'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
             BorderStyle = ubsInset
             OnChangeValue = cCodigoChangeValue
           end
           object cNome: TUniDBEdit
-            Left = 23
-            Top = 76
-            Width = 540
-            Height = 50
+            Left = 21
+            Top = 46
+            Width = 563
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Nome'
@@ -368,16 +367,15 @@ object fCadDestinatarios: TfCadDestinatarios
             TabOrder = 2
             FieldLabel = 'Nome'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
             BorderStyle = ubsInset
           end
           object cNome_Fantasia: TUniDBEdit
-            Left = 23
-            Top = 125
-            Width = 540
-            Height = 50
+            Left = 21
+            Top = 73
+            Width = 563
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Nome_Fantasia'
@@ -387,16 +385,15 @@ object fCadDestinatarios: TfCadDestinatarios
             TabOrder = 3
             FieldLabel = 'Nome Fantasia'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
             BorderStyle = ubsInset
           end
           object cRua: TUniDBEdit
-            Left = 294
-            Top = 273
-            Width = 268
-            Height = 50
+            Left = 21
+            Top = 208
+            Width = 563
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Rua'
@@ -406,16 +403,15 @@ object fCadDestinatarios: TfCadDestinatarios
             TabOrder = 4
             FieldLabel = 'Rua'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
             BorderStyle = ubsInset
           end
           object cRua_Numero: TUniDBEdit
-            Left = 23
-            Top = 323
-            Width = 160
-            Height = 50
+            Left = 21
+            Top = 235
+            Width = 563
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Rua_Numero'
@@ -425,16 +421,15 @@ object fCadDestinatarios: TfCadDestinatarios
             TabOrder = 5
             FieldLabel = 'N'#250'mero'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
             BorderStyle = ubsInset
           end
           object cComplemento: TUniDBEdit
-            Left = 189
-            Top = 323
-            Width = 373
-            Height = 50
+            Left = 21
+            Top = 289
+            Width = 563
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Complemento'
@@ -444,16 +439,15 @@ object fCadDestinatarios: TfCadDestinatarios
             TabOrder = 6
             FieldLabel = 'Complemento'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
             BorderStyle = ubsInset
           end
           object cBairro: TUniDBEdit
-            Left = 23
-            Top = 273
-            Width = 265
-            Height = 50
+            Left = 21
+            Top = 262
+            Width = 563
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Bairro'
@@ -463,16 +457,15 @@ object fCadDestinatarios: TfCadDestinatarios
             TabOrder = 7
             FieldLabel = 'Bairro'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
             BorderStyle = ubsInset
           end
           object cMunicipio: TUniDBLookupComboBox
-            Left = 157
-            Top = 223
-            Width = 405
-            Height = 50
+            Left = 21
+            Top = 181
+            Width = 563
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Nome'
@@ -488,15 +481,14 @@ object fCadDestinatarios: TfCadDestinatarios
             Color = clWindow
             FieldLabel = 'Munic'#237'pio'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
           object cEstado: TUniDBLookupComboBox
-            Left = 295
-            Top = 174
-            Width = 267
-            Height = 50
+            Left = 21
+            Top = 127
+            Width = 563
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Nome'
@@ -513,16 +505,15 @@ object fCadDestinatarios: TfCadDestinatarios
             Color = clWindow
             FieldLabel = 'Estado'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
             OnChange = cEstadoChange
           end
           object cCEP: TUniDBEdit
-            Left = 23
-            Top = 223
-            Width = 128
-            Height = 50
+            Left = 21
+            Top = 154
+            Width = 563
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'CEP'
@@ -532,16 +523,15 @@ object fCadDestinatarios: TfCadDestinatarios
             TabOrder = 10
             FieldLabel = 'CEP'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
             BorderStyle = ubsInset
           end
           object cTelefone1: TUniDBEdit
-            Left = 256
-            Top = 373
-            Width = 150
-            Height = 50
+            Left = 21
+            Top = 343
+            Width = 265
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Telefone1'
@@ -551,16 +541,15 @@ object fCadDestinatarios: TfCadDestinatarios
             TabOrder = 11
             FieldLabel = 'Telefone'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
             BorderStyle = ubsInset
           end
           object cTelefone2: TUniDBEdit
-            Left = 412
-            Top = 373
-            Width = 150
-            Height = 50
+            Left = 292
+            Top = 343
+            Width = 292
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Telefone2'
@@ -570,16 +559,15 @@ object fCadDestinatarios: TfCadDestinatarios
             TabOrder = 12
             FieldLabel = 'Telefone'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
             BorderStyle = ubsInset
           end
           object cContato: TUniDBEdit
-            Left = 23
-            Top = 373
-            Width = 227
-            Height = 50
+            Left = 21
+            Top = 316
+            Width = 563
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Contato'
@@ -589,16 +577,15 @@ object fCadDestinatarios: TfCadDestinatarios
             TabOrder = 13
             FieldLabel = 'Contato'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
             BorderStyle = ubsInset
           end
           object cData_Cadastro: TUniDBDateTimePicker
-            Left = 164
-            Top = 26
-            Width = 165
-            Height = 50
+            Left = 273
+            Top = 20
+            Width = 243
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Data_Cadastro'
@@ -612,14 +599,13 @@ object fCadDestinatarios: TfCadDestinatarios
             BorderStyle = ubsInset
             FieldLabel = 'Data do Cadastro'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
           object gPerfil: TUniGroupBox
-            Left = 605
-            Top = 11
+            Left = 607
+            Top = 21
             Width = 216
-            Height = 467
+            Height = 501
             Hint = ''
             ShowHint = True
             Caption = 'Perfil / Caracter'#237'sticas'
@@ -630,7 +616,7 @@ object fCadDestinatarios: TfCadDestinatarios
                 '= '#39'Grupo'#39';'#13#10'}'#13#10)
             object cIsento: TUniDBCheckBox
               Left = 13
-              Top = 38
+              Top = 39
               Width = 190
               Height = 18
               Hint = ''
@@ -666,7 +652,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object cSimples_Nacional: TUniDBCheckBox
               Left = 13
-              Top = 57
+              Top = 59
               Width = 190
               Height = 18
               Hint = ''
@@ -684,7 +670,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object cZona_Franca: TUniDBCheckBox
               Left = 13
-              Top = 76
+              Top = 79
               Width = 190
               Height = 18
               Hint = ''
@@ -702,7 +688,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object cConsumidor_Final: TUniDBCheckBox
               Left = 13
-              Top = 95
+              Top = 99
               Width = 190
               Height = 18
               Hint = ''
@@ -720,7 +706,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object cMEI: TUniDBCheckBox
               Left = 13
-              Top = 133
+              Top = 139
               Width = 190
               Height = 18
               Hint = ''
@@ -738,7 +724,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object cInscricaoST: TUniDBCheckBox
               Left = 13
-              Top = 114
+              Top = 119
               Width = 190
               Height = 18
               Hint = ''
@@ -756,7 +742,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object cCliente: TUniDBCheckBox
               Left = 13
-              Top = 190
+              Top = 198
               Width = 190
               Height = 18
               Hint = ''
@@ -774,7 +760,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object cFornecedor: TUniDBCheckBox
               Left = 13
-              Top = 209
+              Top = 218
               Width = 190
               Height = 18
               Hint = ''
@@ -792,7 +778,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object cOrgao_Publico: TUniDBCheckBox
               Left = 13
-              Top = 228
+              Top = 238
               Width = 190
               Height = 18
               Hint = ''
@@ -810,7 +796,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object cTransportador: TUniDBCheckBox
               Left = 13
-              Top = 171
+              Top = 179
               Width = 190
               Height = 18
               Hint = ''
@@ -828,7 +814,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object cFabricante: TUniDBCheckBox
               Left = 13
-              Top = 247
+              Top = 258
               Width = 190
               Height = 18
               Hint = ''
@@ -846,7 +832,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object cRepresentante: TUniDBCheckBox
               Left = 13
-              Top = 266
+              Top = 278
               Width = 190
               Height = 18
               Hint = ''
@@ -864,7 +850,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object cConsignacao: TUniDBCheckBox
               Left = 13
-              Top = 285
+              Top = 298
               Width = 190
               Height = 18
               Hint = ''
@@ -882,7 +868,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object UniDBCheckBox2: TUniDBCheckBox
               Left = 13
-              Top = 152
+              Top = 159
               Width = 190
               Height = 18
               Hint = ''
@@ -900,7 +886,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object UniDBCheckBox3: TUniDBCheckBox
               Left = 13
-              Top = 304
+              Top = 318
               Width = 190
               Height = 18
               Hint = ''
@@ -918,7 +904,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object UniDBCheckBox4: TUniDBCheckBox
               Left = 13
-              Top = 323
+              Top = 338
               Width = 190
               Height = 18
               Hint = ''
@@ -936,7 +922,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object UniDBCheckBox5: TUniDBCheckBox
               Left = 13
-              Top = 342
+              Top = 358
               Width = 190
               Height = 18
               Hint = ''
@@ -954,7 +940,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object UniDBCheckBox6: TUniDBCheckBox
               Left = 13
-              Top = 361
+              Top = 378
               Width = 190
               Height = 18
               Hint = ''
@@ -972,7 +958,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object UniDBCheckBox7: TUniDBCheckBox
               Left = 13
-              Top = 380
+              Top = 398
               Width = 190
               Height = 18
               Hint = ''
@@ -990,7 +976,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object UniDBCheckBox8: TUniDBCheckBox
               Left = 13
-              Top = 399
+              Top = 418
               Width = 190
               Height = 18
               Hint = ''
@@ -1008,7 +994,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object UniDBCheckBox9: TUniDBCheckBox
               Left = 13
-              Top = 418
+              Top = 438
               Width = 190
               Height = 18
               Hint = ''
@@ -1026,7 +1012,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object UniDBCheckBox10: TUniDBCheckBox
               Left = 13
-              Top = 437
+              Top = 458
               Width = 190
               Height = 18
               Hint = ''
@@ -1043,24 +1029,24 @@ object fCadDestinatarios: TfCadDestinatarios
               FieldLabelSeparator = ' '
             end
           end
-          object gReg: TUniGroupBox
-            Left = 23
-            Top = 491
-            Width = 798
-            Height = 238
+          object gPJ: TUniGroupBox
+            Left = 12
+            Top = 431
+            Width = 585
+            Height = 245
             Hint = ''
             ShowHint = True
-            Caption = 'Registros / Inscri'#231#245'es'
+            Caption = 'Registros / Inscri'#231#245'es (Pessoa Juridica)'
             TabOrder = 16
             ClientEvents.UniEvents.Strings = (
               
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
                 '= '#39'Grupo'#39';'#13#10'}')
             object cCNPJ: TUniDBEdit
-              Left = 17
-              Top = 20
-              Width = 192
-              Height = 50
+              Left = 8
+              Top = 18
+              Width = 549
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'CNPJ'
@@ -1070,168 +1056,106 @@ object fCadDestinatarios: TfCadDestinatarios
               TabOrder = 1
               FieldLabel = 'CNPJ'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
               BorderStyle = ubsInset
-            end
-            object cCPF: TUniDBEdit
-              Left = 17
-              Top = 70
-              Width = 192
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DataField = 'CPF'
-              DataSource = dsDestinatarios
-              ParentFont = False
-              Font.Style = [fsBold]
-              TabOrder = 2
-              FieldLabel = 'CPF'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-              SelectOnFocus = True
-              BorderStyle = ubsInset
-            end
-            object cRG: TUniDBEdit
-              Left = 215
-              Top = 70
-              Width = 192
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DataField = 'RG'
-              DataSource = dsDestinatarios
-              ParentFont = False
-              Font.Style = [fsBold]
-              TabOrder = 3
-              FieldLabel = 'RG'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-              SelectOnFocus = True
-              BorderStyle = ubsInset
+              OnChange = cCNPJChange
             end
             object cInscricao_Estadual: TUniDBEdit
-              Left = 215
-              Top = 20
-              Width = 192
-              Height = 50
+              Left = 8
+              Top = 45
+              Width = 549
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Inscricao_Estadual'
               DataSource = dsDestinatarios
               ParentFont = False
               Font.Style = [fsBold]
-              TabOrder = 4
+              TabOrder = 2
               FieldLabel = 'Inscri'#231#227'o Estadual'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
               BorderStyle = ubsInset
             end
             object cInscricao_Municipal: TUniDBEdit
-              Left = 413
-              Top = 20
-              Width = 200
-              Height = 50
+              Left = 8
+              Top = 99
+              Width = 549
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Inscricao_Municipal'
               DataSource = dsDestinatarios
               ParentFont = False
               Font.Style = [fsBold]
-              TabOrder = 5
+              TabOrder = 3
               FieldLabel = 'Inscri'#231#227'o Municipal'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
               BorderStyle = ubsInset
             end
             object cSUFRAMA: TUniDBEdit
-              Left = 619
-              Top = 20
-              Width = 164
-              Height = 50
+              Left = 8
+              Top = 153
+              Width = 549
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'SUFRAMA'
               DataSource = dsDestinatarios
               ParentFont = False
               Font.Style = [fsBold]
-              TabOrder = 6
+              TabOrder = 4
               FieldLabel = 'SUFRAMA'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-              SelectOnFocus = True
-              BorderStyle = ubsInset
-            end
-            object cPassaporte: TUniDBEdit
-              Left = 413
-              Top = 70
-              Width = 200
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DataField = 'Passaporte'
-              DataSource = dsDestinatarios
-              ParentFont = False
-              Font.Style = [fsBold]
-              TabOrder = 7
-              FieldLabel = 'Passaporte'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
               BorderStyle = ubsInset
             end
             object cRegistro_Alfandega: TUniDBEdit
-              Left = 619
-              Top = 70
-              Width = 164
-              Height = 50
+              Left = 8
+              Top = 207
+              Width = 549
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Registro_Alfandega'
               DataSource = dsDestinatarios
               ParentFont = False
               Font.Style = [fsBold]
-              TabOrder = 8
+              TabOrder = 5
               FieldLabel = 'Registro Alfandega'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
               BorderStyle = ubsInset
             end
             object cCNAE: TUniDBEdit
-              Left = 619
-              Top = 119
-              Width = 164
-              Height = 50
+              Left = 8
+              Top = 126
+              Width = 549
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'CNAE'
               DataSource = dsDestinatarios
               ParentFont = False
               Font.Style = [fsBold]
-              TabOrder = 9
+              TabOrder = 6
               FieldLabel = 'CNAE Principal'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
               BorderStyle = ubsInset
             end
             object cDesoneracao: TUniDBLookupComboBox
-              Left = 17
-              Top = 168
-              Width = 766
-              Height = 50
+              Left = 8
+              Top = 180
+              Width = 549
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Descricao'
@@ -1243,19 +1167,18 @@ object fCadDestinatarios: TfCadDestinatarios
               DataSource = dsDestinatarios
               ParentFont = False
               Font.Style = [fsBold]
-              TabOrder = 10
+              TabOrder = 7
               Color = clWindow
               FieldLabel = 'Desoneracao'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               Style = csDropDown
             end
             object cIndicadorIE: TUniDBLookupComboBox
-              Left = 17
-              Top = 119
-              Width = 596
-              Height = 50
+              Left = 8
+              Top = 72
+              Width = 549
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Descricao'
@@ -1267,20 +1190,19 @@ object fCadDestinatarios: TfCadDestinatarios
               DataSource = dsDestinatarios
               ParentFont = False
               Font.Style = [fsBold]
-              TabOrder = 11
+              TabOrder = 8
               Color = clWindow
               FieldLabel = 'Indicador de IE'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               Style = csDropDown
             end
           end
           object gOrgao: TUniGroupBox
-            Left = 23
-            Top = 744
-            Width = 798
-            Height = 84
+            Left = 306
+            Top = 686
+            Width = 290
+            Height = 112
             Hint = ''
             ShowHint = True
             Caption = 'Org'#227'o P'#250'blico'
@@ -1290,10 +1212,10 @@ object fCadDestinatarios: TfCadDestinatarios
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
                 '= '#39'Grupo'#39';'#13#10'}')
             object cEstado_Municipio: TUniDBEdit
-              Left = 264
-              Top = 20
-              Width = 315
-              Height = 50
+              Left = 8
+              Top = 44
+              Width = 256
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Estado_Municipio'
@@ -1303,16 +1225,15 @@ object fCadDestinatarios: TfCadDestinatarios
               TabOrder = 1
               FieldLabel = 'Estado/Municipio'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
               BorderStyle = ubsInset
             end
             object cAbreviatura: TUniDBEdit
-              Left = 586
-              Top = 20
-              Width = 197
-              Height = 50
+              Left = 8
+              Top = 71
+              Width = 256
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Abreviatura'
@@ -1322,16 +1243,15 @@ object fCadDestinatarios: TfCadDestinatarios
               TabOrder = 2
               FieldLabel = 'Abreviatura'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
               BorderStyle = ubsInset
             end
             object UniDBComboBox1: TUniDBComboBox
-              Left = 17
-              Top = 20
-              Width = 240
-              Height = 50
+              Left = 8
+              Top = 17
+              Width = 256
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Ambito'
@@ -1343,7 +1263,7 @@ object fCadDestinatarios: TfCadDestinatarios
               ParentFont = False
               TabOrder = 3
               FieldLabel = #195'mbito'
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 120
               FieldLabelSeparator = ' '
               IconItems = <
                 item
@@ -1355,10 +1275,10 @@ object fCadDestinatarios: TfCadDestinatarios
             end
           end
           object cPais: TUniDBLookupComboBox
-            Left = 23
-            Top = 174
-            Width = 265
-            Height = 50
+            Left = 21
+            Top = 100
+            Width = 563
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Nome'
@@ -1374,25 +1294,14 @@ object fCadDestinatarios: TfCadDestinatarios
             Color = clWindow
             FieldLabel = 'Pa'#237's'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
-          object UniButton1: TUniButton
-            Left = 408
-            Top = 32
-            Width = 75
-            Height = 25
-            Hint = ''
-            ShowHint = True
-            Caption = 'UniButton1'
-            TabOrder = 19
-          end
           object cRamo_Atividade: TUniDBLookupComboBox
-            Left = 23
-            Top = 422
-            Width = 270
-            Height = 50
+            Left = 21
+            Top = 370
+            Width = 563
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Descricao'
@@ -1404,19 +1313,18 @@ object fCadDestinatarios: TfCadDestinatarios
             DataSource = dsDestinatarios
             ParentFont = False
             Font.Style = [fsBold]
-            TabOrder = 20
+            TabOrder = 19
             Color = clWindow
             FieldLabel = 'Ramo de Atividade'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
           object UniDBLookupComboBox1: TUniDBLookupComboBox
-            Left = 299
-            Top = 422
-            Width = 264
-            Height = 50
+            Left = 21
+            Top = 397
+            Width = 563
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Descricao'
@@ -1428,13 +1336,80 @@ object fCadDestinatarios: TfCadDestinatarios
             DataSource = dsDestinatarios
             ParentFont = False
             Font.Style = [fsBold]
-            TabOrder = 21
+            TabOrder = 20
             Color = clWindow
             FieldLabel = 'Tipo de Produto'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
+          end
+          object gPF: TUniGroupBox
+            Left = 12
+            Top = 686
+            Width = 276
+            Height = 110
+            Hint = ''
+            ShowHint = True
+            Caption = 'Registros / Inscri'#231#245'es (Pessoa F'#237'sica)'
+            TabOrder = 21
+            ClientEvents.UniEvents.Strings = (
+              
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                '= '#39'Grupo'#39';'#13#10'}')
+            object cCPF: TUniDBEdit
+              Left = 8
+              Top = 17
+              Width = 250
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'CPF'
+              DataSource = dsDestinatarios
+              ParentFont = False
+              Font.Style = [fsBold]
+              TabOrder = 1
+              FieldLabel = 'CPF'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+              SelectOnFocus = True
+              BorderStyle = ubsInset
+            end
+            object cRG: TUniDBEdit
+              Left = 8
+              Top = 44
+              Width = 250
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'RG'
+              DataSource = dsDestinatarios
+              ParentFont = False
+              Font.Style = [fsBold]
+              TabOrder = 2
+              FieldLabel = 'RG'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+              SelectOnFocus = True
+              BorderStyle = ubsInset
+            end
+            object cPassaporte: TUniDBEdit
+              Left = 8
+              Top = 71
+              Width = 250
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              DataField = 'Passaporte'
+              DataSource = dsDestinatarios
+              ParentFont = False
+              Font.Style = [fsBold]
+              TabOrder = 3
+              FieldLabel = 'Passaporte'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+              SelectOnFocus = True
+              BorderStyle = ubsInset
+            end
           end
         end
       end
@@ -1445,7 +1420,7 @@ object fCadDestinatarios: TfCadDestinatarios
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1209
+        Width = 1394
         Height = 938
         Hint = ''
         Align = alClient
@@ -1455,11 +1430,11 @@ object fCadDestinatarios: TfCadDestinatarios
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1207
+          1392
           936)
         ScrollHeight = 617
         object pFicha2: TUniPanel
-          Left = 158
+          Left = 240
           Top = 10
           Width = 751
           Height = 607
@@ -1825,7 +1800,7 @@ object fCadDestinatarios: TfCadDestinatarios
       object UniScrollBox3: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1209
+        Width = 1394
         Height = 938
         Hint = ''
         Align = alClient
@@ -1835,11 +1810,11 @@ object fCadDestinatarios: TfCadDestinatarios
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1207
+          1392
           936)
         ScrollHeight = 665
         object pFicha3: TUniPanel
-          Left = 185
+          Left = 269
           Top = 20
           Width = 725
           Height = 645
@@ -2284,7 +2259,7 @@ object fCadDestinatarios: TfCadDestinatarios
       object UniScrollBox4: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1209
+        Width = 1394
         Height = 938
         Hint = ''
         Align = alClient
@@ -2294,11 +2269,11 @@ object fCadDestinatarios: TfCadDestinatarios
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1207
+          1392
           936)
         ScrollHeight = 561
         object pFicha4: TUniPanel
-          Left = 143
+          Left = 204
           Top = 13
           Width = 510
           Height = 548
@@ -2506,7 +2481,7 @@ object fCadDestinatarios: TfCadDestinatarios
       object UniScrollBox5: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1209
+        Width = 1394
         Height = 938
         Hint = ''
         Align = alClient
@@ -2516,11 +2491,11 @@ object fCadDestinatarios: TfCadDestinatarios
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1207
+          1392
           936)
         ScrollHeight = 787
         object pFicha5: TUniPanel
-          Left = 190
+          Left = 284
           Top = 19
           Width = 850
           Height = 768
@@ -3167,7 +3142,7 @@ object fCadDestinatarios: TfCadDestinatarios
       object UniScrollBox7: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1209
+        Width = 1394
         Height = 938
         Hint = ''
         Align = alClient
@@ -3177,11 +3152,11 @@ object fCadDestinatarios: TfCadDestinatarios
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1207
+          1392
           936)
         ScrollHeight = 787
         object pFicha7: TUniPanel
-          Left = 137
+          Left = 205
           Top = 31
           Width = 616
           Height = 756
@@ -3642,10 +3617,10 @@ object fCadDestinatarios: TfCadDestinatarios
       Hint = ''
       Caption = 'COMEX'
       DesignSize = (
-        1209
+        1394
         938)
       object UniPanel2: TUniPanel
-        Left = 205
+        Left = 266
         Top = 33
         Width = 383
         Height = 219
@@ -3752,7 +3727,7 @@ object fCadDestinatarios: TfCadDestinatarios
       object UniScrollBox10: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1209
+        Width = 1394
         Height = 938
         Hint = ''
         Align = alClient
@@ -3762,11 +3737,11 @@ object fCadDestinatarios: TfCadDestinatarios
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1207
+          1392
           936)
         ScrollHeight = 393
         object pFicha10: TUniPanel
-          Left = 131
+          Left = 207
           Top = 13
           Width = 726
           Height = 380
@@ -4001,7 +3976,7 @@ object fCadDestinatarios: TfCadDestinatarios
       object UniScrollBox8: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1209
+        Width = 1394
         Height = 938
         Hint = ''
         Align = alClient
@@ -4011,11 +3986,11 @@ object fCadDestinatarios: TfCadDestinatarios
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1207
+          1392
           936)
         ScrollHeight = 653
         object UniPanel1: TUniPanel
-          Left = 141
+          Left = 205
           Top = 20
           Width = 548
           Height = 633
@@ -4303,7 +4278,7 @@ object fCadDestinatarios: TfCadDestinatarios
       object UniScrollBox11: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1209
+        Width = 1394
         Height = 938
         Hint = ''
         Align = alClient
@@ -4313,11 +4288,11 @@ object fCadDestinatarios: TfCadDestinatarios
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1207
+          1392
           936)
         ScrollHeight = 380
         object pFicha11: TUniPanel
-          Left = 128
+          Left = 210
           Top = 13
           Width = 815
           Height = 367
@@ -4418,7 +4393,7 @@ object fCadDestinatarios: TfCadDestinatarios
       object UniScrollBox12: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1209
+        Width = 1394
         Height = 938
         Hint = ''
         Align = alClient
@@ -4428,11 +4403,11 @@ object fCadDestinatarios: TfCadDestinatarios
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1207
+          1392
           936)
         ScrollHeight = 472
         object pFicha12: TUniPanel
-          Left = 137
+          Left = 200
           Top = 13
           Width = 548
           Height = 459
@@ -4621,7 +4596,7 @@ object fCadDestinatarios: TfCadDestinatarios
       object UniScrollBox9: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1209
+        Width = 1394
         Height = 938
         Hint = ''
         Align = alClient
@@ -4631,11 +4606,11 @@ object fCadDestinatarios: TfCadDestinatarios
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1207
+          1392
           936)
         ScrollHeight = 653
         object pFicha9: TUniPanel
-          Left = 263
+          Left = 350
           Top = 11
           Width = 613
           Height = 642
@@ -4969,7 +4944,7 @@ object fCadDestinatarios: TfCadDestinatarios
       object UniScrollBox6: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1209
+        Width = 1394
         Height = 938
         Hint = ''
         Align = alClient
@@ -4979,11 +4954,11 @@ object fCadDestinatarios: TfCadDestinatarios
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1207
+          1392
           936)
         ScrollHeight = 499
         object pFicha6: TUniPanel
-          Left = 124
+          Left = 212
           Top = 13
           Width = 902
           Height = 486

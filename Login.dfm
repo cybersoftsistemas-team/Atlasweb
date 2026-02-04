@@ -6121,7 +6121,7 @@ object TelaLogin: TTelaLogin
         Hint = ''
         PasswordChar = #186
         BorderStyle = ubsInset
-        Text = ''
+        Text = 'Cybersoft@123'
         ParentFont = False
         Font.Height = -13
         Font.Style = [fsBold]
@@ -6165,7 +6165,7 @@ object TelaLogin: TTelaLogin
         Height = 32
         Hint = ''
         BorderStyle = ubsInset
-        Text = ''
+        Text = 'eder@cybersoftsistemas.com.br'
         ParentFont = False
         Font.Height = -13
         Font.Style = [fsBold]
@@ -6178,7 +6178,7 @@ object TelaLogin: TTelaLogin
     end
   end
   object Clientes: TFDQuery
-    Connection = UniMainModule.AtlasWeb
+    Connection = UniMainModule.AtlasConect
     UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (

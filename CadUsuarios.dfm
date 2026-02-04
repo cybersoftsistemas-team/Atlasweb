@@ -184,6 +184,7 @@ object fCadUsuarios: TfCadUsuarios
             Width = 441
             Font.Height = -16
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Departamento'
@@ -195,6 +196,7 @@ object fCadUsuarios: TfCadUsuarios
             Font.Height = -16
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Cargo'
@@ -204,6 +206,7 @@ object fCadUsuarios: TfCadUsuarios
             Title.Font.Style = [fsBold]
             Width = 272
             Font.Name = 'Calibri'
+            ReadOnly = True
           end>
       end
       object UniPanel2: TUniPanel
