@@ -6875,6 +6875,24 @@ object MainForm: TMainForm
           '= '#39'Painel'#39';'#13#10'}')
       ScreenMask.Enabled = True
     end
+    object lVersao: TUniLabel
+      Left = 232
+      Top = 49
+      Width = 172
+      Height = 16
+      Hint = ''
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Vers'#227'o 1.00'
+      ParentFont = False
+      Font.Color = clInactiveBorder
+      Font.Height = -13
+      Font.Name = 'Calibri'
+      ParentColor = False
+      Color = 4227327
+      Transparent = False
+      TabOrder = 5
+    end
   end
   object pMenu: TUniContainerPanel
     Left = 0

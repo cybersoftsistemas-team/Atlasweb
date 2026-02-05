@@ -6,7 +6,7 @@ Uses
   Windows, Messages, SysUtils, Variants, Classes, Controls, Forms, uniGUITypes, uniGUIAbstractClasses, uniGUIClasses, uniGUIFrame, uniGUIBaseClasses, Data.DB, uniDBNavigator, uniPanel,
   FireDAC.Stan.Intf, uniComboBox, uniDBLookupComboBox, uniDBEdit, uniScrollBox, uniDBGrid, uniPageControl, uniSpeedButton, uniImage, Vcl.Dialogs, uniLabel, uniTreeView, Vcl.Imaging.jpeg,
   uniMainMenu, Vcl.ExtDlgs, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, Graphics, FireDAC.DatS, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  uniEdit, FireDAC.Phys.Intf, FireDAC.DApt.Intf, uniMultiItem, uniDBComboBox, uniBasicGrid, uniButton, uniBitBtn, uniSweetAlert, unimToggle, unimDBToggle, uniCheckBox, uniDBCheckBox;
+  uniEdit, FireDAC.Phys.Intf, FireDAC.DApt.Intf, uniMultiItem, uniDBComboBox, uniBasicGrid, uniButton, uniBitBtn, uniSweetAlert, unimToggle, unimDBToggle, uniCheckBox, uniDBCheckBox, uniFileUpload, uniRadioGroup, uniGroupBox;
 
 type
   TfCadUsuarios = class(TUniFrame)
@@ -17,7 +17,6 @@ type
     aLista: TUniTabSheet;
     aFicha: TUniTabSheet;
     sFicha: TUniScrollBox;
-    OpenPictureDialog1: TOpenPictureDialog;
     pFicha: TUniPanel;
     cNome: TUniDBEdit;
     cCargo: TUniDBEdit;
@@ -25,14 +24,7 @@ type
     cPswrd: TUniDBEdit;
     cMatricula: TUniDBEdit;
     cNivel: TUniDBLookupComboBox;
-    bFoto: TUniSpeedButton;
-    UniLabel1: TUniLabel;
     dsPermissoes: TDataSource;
-    iFoto: TUniImage;
-    tMenu: TUniTreeView;
-    UniLabel3: TUniLabel;
-    bSelTudo: TUniSpeedButton;
-    bDesTudo: TUniSpeedButton;
     Navega: TUniDBNavigator;
     bAdicionar: TUniSpeedButton;
     bEditar: TUniSpeedButton;
@@ -40,10 +32,7 @@ type
     bCancelar: TUniSpeedButton;
     bSalvar: TUniSpeedButton;
     bFechar: TUniSpeedButton;
-    bExpand: TUniSpeedButton;
-    bRecolhe: TUniSpeedButton;
     dsNiveis: TDataSource;
-    bRecarga: TUniSpeedButton;
     UniPanel2: TUniPanel;
     bPesquisa: TUniSpeedButton;
     cPesquisa: TUniEdit;
@@ -51,7 +40,54 @@ type
     Permissoes: TFDQuery;
     Niveis: TFDQuery;
     Alerta: TUniSweetAlert;
+    UniPanel3: TUniPanel;
+    iFoto: TUniImage;
+    UniPanel4: TUniPanel;
+    tMenu: TUniTreeView;
+    UniGroupBox1: TUniGroupBox;
     UniDBCheckBox1: TUniDBCheckBox;
+    UniDBCheckBox2: TUniDBCheckBox;
+    UniDBCheckBox3: TUniDBCheckBox;
+    UniDBCheckBox4: TUniDBCheckBox;
+    UniDBCheckBox5: TUniDBCheckBox;
+    UniDBCheckBox6: TUniDBCheckBox;
+    UniDBCheckBox7: TUniDBCheckBox;
+    UniDBCheckBox8: TUniDBCheckBox;
+    UniDBCheckBox9: TUniDBCheckBox;
+    UniDBCheckBox10: TUniDBCheckBox;
+    bFoto: TUniFileUploadButton;
+    UniGroupBox2: TUniGroupBox;
+    UniDBCheckBox11: TUniDBCheckBox;
+    UniDBCheckBox12: TUniDBCheckBox;
+    UniDBCheckBox13: TUniDBCheckBox;
+    UniDBCheckBox14: TUniDBCheckBox;
+    UniDBCheckBox15: TUniDBCheckBox;
+    UniDBCheckBox17: TUniDBCheckBox;
+    UniDBCheckBox18: TUniDBCheckBox;
+    UniDBCheckBox19: TUniDBCheckBox;
+    UniDBCheckBox20: TUniDBCheckBox;
+    UniDBCheckBox16: TUniDBCheckBox;
+    UniDBCheckBox21: TUniDBCheckBox;
+    UniDBCheckBox22: TUniDBCheckBox;
+    bSelTudo: TUniSpeedButton;
+    bDesTudo: TUniSpeedButton;
+    bExpand: TUniSpeedButton;
+    bRecolhe: TUniSpeedButton;
+    bRecarga: TUniSpeedButton;
+    UniDBEdit1: TUniDBEdit;
+    Representantes: TFDQuery;
+    cRepresent: TUniDBLookupComboBox;
+    dsRepresentantes: TDataSource;
+    UniDBEdit2: TUniDBEdit;
+    UniDBEdit3: TUniDBEdit;
+    UniGroupBox3: TUniGroupBox;
+    UniDBCheckBox23: TUniDBCheckBox;
+    UniDBCheckBox24: TUniDBCheckBox;
+    UniDBCheckBox25: TUniDBCheckBox;
+    UniDBCheckBox26: TUniDBCheckBox;
+    UniDBCheckBox27: TUniDBCheckBox;
+    UniDBCheckBox28: TUniDBCheckBox;
+    UniDBCheckBox30: TUniDBCheckBox;
     procedure UniFrameCreate(Sender: TObject);
     procedure UniFrameDestroy(Sender: TObject);
     procedure bAdicionarClick(Sender: TObject);
@@ -59,7 +95,6 @@ type
     procedure bSalvarClick(Sender: TObject);
     procedure bEditarClick(Sender: TObject);
     procedure bExcluirClick(Sender: TObject);
-    procedure bFotoClick(Sender: TObject);
     procedure iFotoMouseEnter(Sender: TObject);
     procedure bFecharClick(Sender: TObject);
     procedure bSelTudoClick(Sender: TObject);
@@ -72,6 +107,7 @@ type
     procedure UsuariosBeforeDelete(DataSet: TDataSet);
     procedure bPesquisaClick(Sender: TObject);
     procedure cMatriculaChangeValue(Sender: TObject);
+    procedure bFotoCompleted(Sender: TObject; AStream: TFileStream);
   private
     { Private declarations }
     procedure SelNode(Node: TuniTreeNode; Sel:boolean);
@@ -85,7 +121,7 @@ implementation
 
 {$R *.dfm}
 
-uses MainModule, Main, Funcoes;
+uses MainModule, Main, Funcoes, ServerModule;
 
 procedure TfCadUsuarios.bCancelarClick(Sender: TObject);
 begin
@@ -143,15 +179,28 @@ begin
      MainForm.PagePrincipal.Pages[MainForm.PagePrincipal.ActivePageIndex].Free;
 end;
 
-procedure TfCadUsuarios.bFotoClick(Sender: TObject);
+procedure TfCadUsuarios.bFotoCompleted(Sender: TObject; AStream: TFileStream);
+var
+  CaminhoDestino: string;
+  FS: TFileStream;
 begin
      with Usuarios do begin
-          if OpenPictureDialog1.Execute then begin
-             FieldByName('Foto').AsString := OpenPictureDialog1.FileName;
+          if bFoto.FileName <> '' then begin
+             if (NomeComputador = 'PROGRAMACAO1') or (NomeComputador = 'NOTE-DED') then begin
+                fieldbyname('Foto').AsString := UniServerModule.FilesFolder + 'images\'+bFoto.FileName;
+             end else begin
+                fieldbyname('Foto').AsString := 'c:\Aplicativos\Atlas\files\images\'+bFoto.FileName;
+             end;
              if fileexists(FieldByName('Foto').AsString) then
                 iFoto.Picture.LoadFromFile(FieldByName('Foto').AsString);
           end;
      end;
+     
+     // Salva o arquivo com o nome original
+     FS               := TFileStream.Create('c:\Aplicativos\Atlas\files\images\' + bFoto.FileName, fmCreate);
+     AStream.Position := 0;
+     FS.CopyFrom(AStream, AStream.Size);
+     FS.Free;
 end;
 
 procedure TfCadUsuarios.bPesquisaClick(Sender: TObject);
@@ -189,7 +238,6 @@ begin
              cMatricula.SetFocus;
              Abort;
           end;
-
           try
               Post;
                Alerta.Text := 'Registro salvo no banco de dados!';
@@ -270,29 +318,40 @@ var
 begin
       // Alinhando todas as ficha de dados ao centro do form.
       for i := 0 to ComponentCount -1 do begin
-          if Components[i] is TUniPanel then begin
+          if (Components[i] is TUniPanel) and (Components[i].Tag = 0) then begin
              TuniPanel(Components[i]).Top   := 30;
              TuniPanel(Components[i]).Left  := (Pasta.Width - TuniPanel(Components[i]).Width) div 2;
              TuniPanel(Components[i]).Color := clNone;
           end;
       end;
-
+      with Usuarios do begin
+           sql.clear;
+           sql.add('select * from Usuarios order by Nome');
+           open;
+      end;
+      with Niveis do begin
+           sql.clear;
+           sql.add('select * from UsuariosNivel order by Descricao');
+           open;
+      end;
+      with Permissoes do begin 
+           sql.Clear;
+           sql.Add('select * from UsuariosPermissoes order by Matricula, Indice');
+           open;
+      end;
+      with Representantes do begin 
+           sql.Clear;
+           sql.add('select Codigo');
+           sql.add('      ,Nome');
+           sql.add('from Destinatarios');
+           sql.add('where Representante = 1');
+           sql.add('and isnull(Desativado, 0) = 0');
+           Open;
+      end;
+      
       LigaBotoes(true);
       Pasta.ActivePageIndex := 0;
-
-      Usuarios.Close;
-      Usuarios.SQL.Clear;
-      Usuarios.SQL.Add('select * from Usuarios order by Nome');
-      Usuarios.Open;
-
-      Niveis.SQL.Clear;
-      Niveis.SQL.Add('select * from UsuariosNivel order by Descricao');
-      Niveis.Open;
-
-      Permissoes.SQL.Clear;
-      Permissoes.SQL.Add('select * from UsuariosPermissoes');
-      Permissoes.SQL.Add('order by Matricula, Indice');
-      Permissoes.Open;
+      tMenu.FullExpand
 end;
 
 procedure TfCadUsuarios.UniFrameDestroy(Sender: TObject);

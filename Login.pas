@@ -45,6 +45,8 @@ begin
 end;
 
 procedure TTelaLogin.bEntrarClick(Sender: TObject);
+var
+  Usuarios: TFDQuery;
 begin
      // Validando o login do usuário.
      with Clientes do begin
@@ -78,6 +80,15 @@ begin
                   end;
                   mEmpresaAtiva := FieldByName('Empresa_CNPJ').AsString;
                   mUsuarioAtivo := cLogUser.text;
+                  
+                  // Pegando a foto do usuario no cadastro de usuarios.
+                  Usuarios := TFDQuery.Create(self);
+                  with Usuarios do begin
+                       Connection := Conecta;
+                       sql.Clear;
+                       sql.add('select Foto from Usuarios where Email = '+quotedstr(Clientes.FieldByName('Email').asstring));
+                       open;
+                  end;
              end;
 
              ModalResult := mrOK;
@@ -88,8 +99,8 @@ begin
                   if FileExists(FieldByName('Logo').AsString) then begin
                      iLogo.Picture.LoadFromFile(FieldByName('Logo').AsString);
                   end;
-                  if FileExists(FieldByName('Foto').AsString) then begin
-                     iFoto.Picture.LoadFromFile(FieldByName('Foto').AsString);
+                  if FileExists(Usuarios.FieldByName('Foto').AsString) then begin
+                     iFoto.Picture.LoadFromFile(Usuarios.FieldByName('Foto').AsString);
                   end;
              end;
           end;

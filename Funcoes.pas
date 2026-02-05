@@ -78,7 +78,7 @@ function InventarioProdutoEmb(pProduto, pEmbarque: Integer): Real;
 
 // Funcções de sistema.
 function GetDLLPath: string;
-
+function VersaoExe(pEXE:String): String;
 
 implementation
 
@@ -2980,6 +2980,34 @@ begin
   Result := ExtractFilePath(Buffer);
 end;
 
+function VersaoExe(pEXE:String): String;
+type
+    PFFI = ^vs_FixedFileInfo;
+var
+    F       : PFFI;
+    Handle  : Dword;
+    Len     : Longint;
+    Data    : Pchar;
+    Buffer  : Pointer;
+    Tamanho : Dword;
+    pArquivo: Pchar;
+begin
+      pArquivo := StrAlloc(Length(pEXE) + 1);
+      StrPcopy(PArquivo, pEXE);
+      Len    := GetFileVersionInfoSize(pArquivo, Handle);
+      Result := '';
+
+      If Len > 0 then begin
+         Data := StrAlloc(Len+1);
+         If GetFileVersionInfo(pArquivo,Handle,Len,Data) then begin
+            VerQueryValue(Data, '\',Buffer,Tamanho);
+            F      := PFFI(Buffer);
+            Result := Format('%d.%d.%d.%d', [HiWord(F^.dwFileVersionMs), LoWord(F^.dwFileVersionMs), HiWord(F^.dwFileVersionLs), Loword(F^.dwFileVersionLs)]);
+         End;
+         StrDispose(Data);
+      End;
+      StrDispose(pArquivo);
+end;
 
 
 end.

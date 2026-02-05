@@ -42,6 +42,7 @@ type
     UniImage1: TUniImage;
     UniImage3: TUniImage;
     UniButton1: TUniButton;
+    lVersao: TUniLabel;
     procedure cPesquisaChange(Sender: TObject);
     procedure mnSairClick(Sender: TObject);
     procedure bFecharTodosClick(Sender: TObject);
@@ -246,8 +247,9 @@ var
    mPath  : string;
 begin
      // Carrega os atalhos selecionados.
-     mPath := GetDLLPath+'files\';
-     Atalhos := TFDQuery.Create(nil);
+     lVersao.Caption := 'Versão '+VersaoEXE(Application.ExeName);
+     mPath           := GetDLLPath+'files\';
+     Atalhos         := TFDQuery.Create(nil);
      with Atalhos do begin
           Connection := UniMainModule.Conecta;
           sql.clear;
