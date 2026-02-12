@@ -1611,6 +1611,7 @@ object fFinanceiro: TfFinanceiro
             Width = 280
             Height = 25
             Hint = ''
+            ParentRTL = False
             ShowHint = True
             InputRTL = False
             DataField = 'Valor_Parcela'
@@ -1767,9 +1768,9 @@ object fFinanceiro: TfFinanceiro
           end
           object cPago_Cliente: TUniDBCheckBox
             Left = 715
-            Top = 126
+            Top = 121
             Width = 113
-            Height = 17
+            Height = 25
             Cursor = crHandPoint
             Hint = ''
             ShowHint = True
@@ -1784,9 +1785,9 @@ object fFinanceiro: TfFinanceiro
           end
           object cRecuperavel: TUniDBCheckBox
             Left = 715
-            Top = 369
+            Top = 365
             Width = 94
-            Height = 17
+            Height = 25
             Cursor = crHandPoint
             Hint = ''
             ShowHint = True
@@ -1802,9 +1803,9 @@ object fFinanceiro: TfFinanceiro
           end
           object cProvisorio: TUniDBCheckBox
             Left = 715
-            Top = 180
+            Top = 176
             Width = 143
-            Height = 17
+            Height = 25
             Cursor = crHandPoint
             Hint = ''
             ShowHint = True
@@ -1820,9 +1821,9 @@ object fFinanceiro: TfFinanceiro
           end
           object UniDBCheckBox1: TUniDBCheckBox
             Left = 715
-            Top = 314
+            Top = 311
             Width = 143
-            Height = 17
+            Height = 25
             Cursor = crHandPoint
             Hint = ''
             ShowHint = True

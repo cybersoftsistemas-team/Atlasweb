@@ -8,7 +8,7 @@ Uses
   uniDBGrid, uniDBEdit, uniGroupBox, uniPageControl, uniDBCheckBox, uniDBComboBox, uniDBLookupComboBox, uniDBRadioGroup, uniScrollBox, uniSpeedButton, Funcoes, uniDBDateTimePicker, Vcl.Dialogs,
   Vcl.ExtDlgs, uniImage, uniDBMemo, IdTCPConnection, IdTCPClient, IdExplicitTLSClientServerBase, IdSMTP, IdIOHandler, IdIOHandlerStack, IdSSLOpenSSL, IdMessage, IdSSL, NFe_Util_2G_tlb, maskutils,
   Graphics, FireDAC.Phys.Intf, FireDAC.DApt.Intf, IdMessageClient, IdSMTPBase, IdComponent, IdIOHandlerSocket, IdBaseComponent, uniMemo, uniBitBtn, uniRadioGroup, uniDateTimePicker, uniMultiItem, 
-  uniComboBox, uniCheckBox, uniEdit, uniBasicGrid, uniSweetAlert;
+  uniComboBox, uniCheckBox, uniEdit, uniBasicGrid, uniSweetAlert, uniFileUpload;
 
 type
   TfCadEmpresas = class(TUniFrame)
@@ -44,24 +44,7 @@ type
     bFechar: TUniSpeedButton;
     UniScrollBox1: TUniScrollBox;
     pFicha: TUniPanel;
-    UniDBEdit3: TUniDBEdit;
-    UniDBEdit6: TUniDBEdit;
-    UniDBEdit7: TUniDBEdit;
-    UniDBEdit8: TUniDBEdit;
-    UniDBEdit11: TUniDBEdit;
-    cFilial: TUniDBEdit;
-    UniDBEdit16: TUniDBEdit;
-    UniDBCheckBox3: TUniDBCheckBox;
-    cCNPJ: TUniDBEdit;
-    UniDBLookupComboBox2: TUniDBLookupComboBox;
-    UniDBEdit1: TUniDBEdit;
-    UniDBLookupComboBox1: TUniDBLookupComboBox;
-    UniDBEdit2: TUniDBEdit;
-    UniDBEdit4: TUniDBEdit;
-    aRegistros: TUniTabSheet;
-    aRespon: TUniTabSheet;
     aContador: TUniTabSheet;
-    aRepresentante: TUniTabSheet;
     aParametros: TUniTabSheet;
     UniTabSheet1: TUniTabSheet;
     UniTabSheet2: TUniTabSheet;
@@ -84,7 +67,6 @@ type
     UniDBLookupComboBox15: TUniDBLookupComboBox;
     UniDBEdit59: TUniDBEdit;
     UniDBEdit60: TUniDBEdit;
-    UniDBCheckBox6: TUniDBCheckBox;
     UniDBEdit61: TUniDBEdit;
     UniDBEdit62: TUniDBEdit;
     UniDBDateTimePicker5: TUniDBDateTimePicker;
@@ -102,81 +84,14 @@ type
     UniDBRadioGroup3: TUniDBRadioGroup;
     UniDBRadioGroup4: TUniDBRadioGroup;
     UniDBRadioGroup5: TUniDBRadioGroup;
-    UniTabSheet3: TUniTabSheet;
     OpenPictureDialog1: TOpenPictureDialog;
-    UniScrollBox4: TUniScrollBox;
-    pDiretor: TUniPanel;
-    UniDBEdit24: TUniDBEdit;
-    UniDBEdit25: TUniDBEdit;
-    UniDBEdit19: TUniDBEdit;
-    UniDBEdit20: TUniDBEdit;
-    UniDBEdit22: TUniDBEdit;
-    UniScrollBox5: TUniScrollBox;
-    pReg: TUniPanel;
-    UniDBEdit12: TUniDBEdit;
-    cIE: TUniDBEdit;
-    UniDBEdit5: TUniDBEdit;
-    UniDBEdit10: TUniDBEdit;
-    UniDBEdit14: TUniDBEdit;
-    UniDBDateTimePicker1: TUniDBDateTimePicker;
-    UniDBEdit9: TUniDBEdit;
-    UniDBEdit13: TUniDBEdit;
-    UniDBEdit15: TUniDBEdit;
-    UniDBEdit17: TUniDBEdit;
-    UniDBDateTimePicker2: TUniDBDateTimePicker;
-    cBeneficio_Fiscal: TUniDBLookupComboBox;
-    UniDBEdit18: TUniDBEdit;
-    UniDBCheckBox1: TUniDBCheckBox;
-    UniDBCheckBox2: TUniDBCheckBox;
-    cApuracao_IPI: TUniDBRadioGroup;
     UniScrollBox6: TUniScrollBox;
     pContab: TUniPanel;
-    UniDBEdit23: TUniDBEdit;
-    UniDBEdit26: TUniDBEdit;
-    UniDBEdit27: TUniDBEdit;
-    UniDBEdit28: TUniDBEdit;
-    UniDBEdit30: TUniDBEdit;
-    UniDBDateTimePicker3: TUniDBDateTimePicker;
-    UniDBEdit31: TUniDBEdit;
-    UniDBEdit29: TUniDBEdit;
-    UniDBEdit32: TUniDBEdit;
-    UniDBEdit33: TUniDBEdit;
-    UniDBLookupComboBox6: TUniDBLookupComboBox;
-    UniDBLookupComboBox7: TUniDBLookupComboBox;
-    UniDBEdit34: TUniDBEdit;
-    UniDBEdit35: TUniDBEdit;
-    UniDBLookupComboBox8: TUniDBLookupComboBox;
-    UniDBEdit36: TUniDBEdit;
-    UniDBEdit38: TUniDBEdit;
-    UniDBCheckBox4: TUniDBCheckBox;
-    UniScrollBox7: TUniScrollBox;
-    pRepres: TUniPanel;
-    UniDBEdit39: TUniDBEdit;
-    UniDBEdit40: TUniDBEdit;
-    UniDBEdit41: TUniDBEdit;
-    UniDBEdit42: TUniDBEdit;
-    UniDBEdit43: TUniDBEdit;
-    UniDBDateTimePicker4: TUniDBDateTimePicker;
-    UniDBEdit44: TUniDBEdit;
-    UniDBEdit45: TUniDBEdit;
-    UniDBEdit46: TUniDBEdit;
-    UniDBEdit47: TUniDBEdit;
-    UniDBLookupComboBox9: TUniDBLookupComboBox;
-    UniDBLookupComboBox10: TUniDBLookupComboBox;
-    UniDBEdit48: TUniDBEdit;
-    UniDBEdit49: TUniDBEdit;
-    UniDBLookupComboBox11: TUniDBLookupComboBox;
-    UniDBEdit50: TUniDBEdit;
-    UniDBEdit51: TUniDBEdit;
-    UniDBCheckBox5: TUniDBCheckBox;
     UniScrollBox8: TUniScrollBox;
-    UniScrollBox9: TUniScrollBox;
     EmailMSG: TIdMessage;
     SSLSocket: TIdSSLIOHandlerSocketOpenSSL;
     SMTP: TIdSMTP;
     UniPanel2: TUniPanel;
-    cRegime_Tributario: TUniDBRadioGroup;
-    cRegime_Apuracao: TUniDBRadioGroup;
     UniGroupBox2: TUniGroupBox;
     UniDBRadioGroup6: TUniDBRadioGroup;
     UniDBRadioGroup7: TUniDBRadioGroup;
@@ -207,12 +122,6 @@ type
     UniDBRadioGroup17: TUniDBRadioGroup;
     UniDBRadioGroup18: TUniDBRadioGroup;
     UniDBEdit85: TUniDBEdit;
-    UniGroupBox6: TUniGroupBox;
-    iLogo: TUniImage;
-    UniGroupBox7: TUniGroupBox;
-    iAssinatura: TUniImage;
-    bLogo: TUniSpeedButton;
-    bAssinatura: TUniSpeedButton;
     UniScrollBox3: TUniScrollBox;
     pRede: TUniPanel;
     UniDBEdit78: TUniDBEdit;
@@ -237,6 +146,86 @@ type
     UniButton2: TUniButton;
     UniButton3: TUniButton;
     Alerta: TUniSweetAlert;
+    UniPanel1: TUniPanel;
+    bLogo: TUniFileUploadButton;
+    iLogo: TUniImage;
+    UniPanel4: TUniPanel;
+    UniDBEdit3: TUniDBEdit;
+    UniDBEdit6: TUniDBEdit;
+    UniDBEdit7: TUniDBEdit;
+    UniDBEdit8: TUniDBEdit;
+    UniDBEdit11: TUniDBEdit;
+    cFilial: TUniDBEdit;
+    UniDBEdit16: TUniDBEdit;
+    UniDBLookupComboBox2: TUniDBLookupComboBox;
+    UniDBEdit1: TUniDBEdit;
+    UniDBLookupComboBox1: TUniDBLookupComboBox;
+    UniDBEdit2: TUniDBEdit;
+    UniDBEdit4: TUniDBEdit;
+    UniPanel5: TUniPanel;
+    UniDBEdit24: TUniDBEdit;
+    UniDBEdit25: TUniDBEdit;
+    UniDBEdit19: TUniDBEdit;
+    UniDBEdit20: TUniDBEdit;
+    UniDBEdit22: TUniDBEdit;
+    UniPanel7: TUniPanel;
+    UniDBEdit12: TUniDBEdit;
+    cIE: TUniDBEdit;
+    cCNPJ: TUniDBEdit;
+    UniDBEdit10: TUniDBEdit;
+    UniDBEdit14: TUniDBEdit;
+    UniDBDateTimePicker1: TUniDBDateTimePicker;
+    UniDBEdit9: TUniDBEdit;
+    UniDBEdit13: TUniDBEdit;
+    UniDBEdit15: TUniDBEdit;
+    UniDBEdit17: TUniDBEdit;
+    UniDBDateTimePicker2: TUniDBDateTimePicker;
+    cBeneficio_Fiscal: TUniDBLookupComboBox;
+    UniDBEdit18: TUniDBEdit;
+    UniDBCheckBox2: TUniDBCheckBox;
+    UniDBCheckBox1: TUniDBCheckBox;
+    UniDBCheckBox3: TUniDBCheckBox;
+    cRegime_Tributario: TUniDBRadioGroup;
+    cRegime_Apuracao: TUniDBRadioGroup;
+    cApuracao_IPI: TUniDBRadioGroup;
+    UniPanel8: TUniPanel;
+    UniDBEdit39: TUniDBEdit;
+    UniDBEdit40: TUniDBEdit;
+    UniDBEdit41: TUniDBEdit;
+    UniDBEdit42: TUniDBEdit;
+    UniDBEdit43: TUniDBEdit;
+    UniDBDateTimePicker4: TUniDBDateTimePicker;
+    UniDBEdit44: TUniDBEdit;
+    UniDBEdit45: TUniDBEdit;
+    UniDBEdit46: TUniDBEdit;
+    UniDBEdit47: TUniDBEdit;
+    UniDBLookupComboBox9: TUniDBLookupComboBox;
+    UniDBLookupComboBox10: TUniDBLookupComboBox;
+    UniDBEdit48: TUniDBEdit;
+    UniDBEdit49: TUniDBEdit;
+    UniDBLookupComboBox11: TUniDBLookupComboBox;
+    UniDBEdit50: TUniDBEdit;
+    UniDBEdit51: TUniDBEdit;
+    UniDBCheckBox5: TUniDBCheckBox;
+    UniPanel6: TUniPanel;
+    UniDBEdit5: TUniDBEdit;
+    UniDBEdit23: TUniDBEdit;
+    UniDBEdit26: TUniDBEdit;
+    UniDBEdit27: TUniDBEdit;
+    UniDBEdit28: TUniDBEdit;
+    UniDBDateTimePicker3: TUniDBDateTimePicker;
+    UniDBEdit29: TUniDBEdit;
+    UniDBEdit30: TUniDBEdit;
+    UniDBEdit31: TUniDBEdit;
+    UniDBEdit32: TUniDBEdit;
+    UniDBLookupComboBox3: TUniDBLookupComboBox;
+    UniDBLookupComboBox4: TUniDBLookupComboBox;
+    UniDBEdit33: TUniDBEdit;
+    UniDBEdit34: TUniDBEdit;
+    UniDBLookupComboBox5: TUniDBLookupComboBox;
+    UniDBEdit35: TUniDBEdit;
+    UniDBEdit36: TUniDBEdit;
+    UniDBCheckBox4: TUniDBCheckBox;
     UniPanel3: TUniPanel;
     UniDBMemo8: TUniDBMemo;
     UniDBMemo9: TUniDBMemo;
@@ -251,11 +240,10 @@ type
     procedure bFecharClick(Sender: TObject);
     procedure UniButton2Click(Sender: TObject);
     procedure UniButton3Click(Sender: TObject);
-    procedure bLogoClick(Sender: TObject);
-    procedure bAssinaturaClick(Sender: TObject);
     procedure EmpresasBeforePost(DataSet: TDataSet);
     procedure EmpresasBeforeDelete(DataSet: TDataSet);
     procedure EmpresasAfterScroll(DataSet: TDataSet);
+    procedure bLogoCompleted(Sender: TObject; AStream: TFileStream);
   private
     { Private declarations }
   public
@@ -265,7 +253,7 @@ type
 implementation
 
 {$R *.dfm}
-uses MainModule, Main;
+uses MainModule, Main, ServerModule;
 
 procedure TfCadEmpresas.bAdicionarClick(Sender: TObject);
 begin
@@ -273,10 +261,10 @@ begin
            try
                Append;
                AtivaEdicao(Navega, bAdicionar, bEditar, bExcluir, bSalvar, bCancelar, Pasta);
-               cCNPJ.SetFocus;
+               //cCNPJ.SetFocus;
                Pasta.ActivePageIndex := 1;
                cCNPJ.Enabled := true;
-               cCNPJ.SetFocus;
+               //cCNPJ.SetFocus;
            except
                Showmessage('Não pode adicionar um novo registro!');
            end;
@@ -322,14 +310,24 @@ begin
      MainForm.PagePrincipal.Pages[MainForm.PagePrincipal.ActivePageIndex].Free;
 end;
 
-procedure TfCadEmpresas.bLogoClick(Sender: TObject);
+procedure TfCadEmpresas.bLogoCompleted(Sender: TObject; AStream: TFileStream);
+var
+  CaminhoDestino: string;
+  FS: TFileStream;
 begin
      with Empresas do begin
-          if OpenPictureDialog1.Execute then begin
-             FieldByName('Logo').Value := OpenPictureDialog1.FileName;
-             if fileexists(FieldByName('Logo').AsString) then begin
-                iLogo.Picture.LoadFromFile(FieldByName('Logo').AsString);
+          if bLogo.FileName <> '' then begin
+             if (NomeComputador = 'PROGRAMACAO1') or (NomeComputador = 'NOTE-DED') then begin
+                fieldbyname('Logo').AsString := uniMainModule.mPath + 'files\images\'+bLogo.FileName;
+             end else begin
+                fieldbyname('Logo').AsString := 'c:\Aplicativos\Atlas\files\images\'+bLogo.FileName;
+                // Salva o arquivo com o nome original
+                FS               := TFileStream.Create('c:\Aplicativos\Atlas\files\images\' + bLogo.FileName, fmCreate);
+                AStream.Position := 0;
+                FS.CopyFrom(AStream, AStream.Size);
+                FS.Free;
              end;
+             if fileexists(FieldByName('Logo').AsString) then iLogo.Picture.LoadFromFile(FieldByName('Logo').AsString);
           end;
      end;
 end;
@@ -344,12 +342,10 @@ begin
           end;
           if (Trim(FieldByName('Diretor_CPF').AsString) <> '') and (not ChecaCPF(FieldByName('Diretor_CPF').AsString)) then begin
              MessageDlg('CPF do diretor invalido!', mtError, [mbOK]);
-             //cDiretorCPF.Setfocus;
              Abort;
           end;
           if (FieldByName('Responsavel_CPF').AsString <> '') and (not ChecaCPF(FieldByName('Responsavel_CPF').AsString)) then begin
              MessageDlg('CPF do responsavel invalido!', mtError, [mbOK]);
-             //cResponsavelCPF.Setfocus;
              Abort;
           end;
           if (State = dsInsert) and ( Existe(Empresas, 'CNPJ', FieldByName('CNPJ').AsString) ) then begin
@@ -371,21 +367,19 @@ end;
 procedure TfCadEmpresas.EmpresasAfterScroll(DataSet: TDataSet);
 begin
      with Empresas do begin
-          iLogo.Picture       := nil;
-          iAssinatura.Picture := nil;
-          if fileexists(FieldByName('Logo').AsString)       then iLogo.Picture.LoadFromFile(FieldByName('Logo').AsString);
-          if fileexists(FieldByName('Assinatura').AsString) then iAssinatura.Picture.LoadFromFile(FieldByName('Assinatura').AsString);
+          iLogo.Picture := nil;
+          if fileexists(FieldByName('Logo').AsString) then iLogo.Picture.LoadFromFile(FieldByName('Logo').AsString);
      end;
 end;
 
 procedure TfCadEmpresas.EmpresasBeforePost(DataSet: TDataSet);
 begin
-       LogDados(DataSet, DataSet.FieldByName('Razao_Social').AsString, EstadoTabela(DataSet));
+     LogDados(DataSet, DataSet.FieldByName('Razao_Social').AsString, EstadoTabela(DataSet));
 end;
 
 procedure TfCadEmpresas.EmpresasBeforeDelete(DataSet: TDataSet);
 begin
-       LogDados(DataSet, DataSet.FieldByName('Razao_Social').AsString,'Delete');
+     LogDados(DataSet, DataSet.FieldByName('Razao_Social').AsString,'Delete');
 end;
 
 procedure TfCadEmpresas.UniButton2Click(Sender: TObject);
@@ -489,7 +483,7 @@ var
 begin
      // Alinhando todas as ficha de dados ao centro do form.
      for i := 0 to ComponentCount -1 do begin
-         if Components[i] is TUniPanel then begin
+         if (Components[i] is TUniPanel) and (Components[i].Tag = 0) then begin
             TuniPanel(Components[i]).Top   := 30;
             TuniPanel(Components[i]).Left  := (Pasta.Width - TuniPanel(Components[i]).Width) div 2;
             TuniPanel(Components[i]).Color := clNone;
@@ -502,52 +496,51 @@ begin
      AtivaEdicao(Navega, bAdicionar, bEditar, bExcluir, bSalvar, bCancelar, Pasta);
      
      Pasta.ActivePageIndex := 0;
-
-     Empresas.SQL.Clear;
-     Empresas.SQL.Add('select * from Empresas order by Razao_Social, CNPJ, Numero_Filial');
-     Empresas.Open;
-
-     Estados.SQL.Clear;
-     Estados.SQL.Add('select UF, Numero, Nome from Estados order by Nome');
-     Estados.Open;
-
-     Municipios.SQL.Clear;
-     Municipios.SQL.Add('select Codigo, Nome from Municipios where UF = :pUF order by Nome');
-     Municipios.ParamByName('pUF').AsString := Empresas.FieldByName('Estado').AsString;
-     Municipios.Open;
-
-     Beneficio.sql.clear;
-     Beneficio.sql.add('select Codigo, Nome, Estado from BeneficioFiscal order by Nome');
-     Beneficio.open;
-
-     ContribIPI.sql.clear;
-     ContribIPI.sql.add('select Codigo, Descricao from ContribuicaoIPI order by Codigo');
-     ContribIPI.open;
-
-     ClassTrib.sql.clear;
-     ClassTrib.sql.add('select Codigo, Descricao from ClassificacaoTributEmp order by Codigo');
-     ClassTrib.open;
+     with Empresas do begin
+          sql.clear;
+          sql.add('select * from Empresas order by Razao_Social, CNPJ, Numero_Filial');
+          open;
+     end;
+     with Estados do begin
+          sql.clear;
+          sql.add('select UF, Numero, Nome from Estados order by Nome');
+          open;
+     end;
+     with Municipios do begin
+          sql.clear;
+          sql.add('select Codigo, Nome from Municipios where UF = :pUF order by Nome');
+          paramByName('pUF').AsString := Empresas.FieldByName('Estado').AsString;
+          open;
+     end;
+     with Beneficio do begin
+          sql.clear;
+          sql.add('select Codigo, Nome, Estado from BeneficioFiscal order by Nome');
+          open;
+     end;
+     with ContribIPI do begin 
+          sql.clear;
+          sql.add('select Codigo, Descricao from ContribuicaoIPI order by Codigo');
+          open;
+     end;
+     with ClassTrib do begin 
+          sql.clear;
+          sql.add('select Codigo, Descricao from ClassificacaoTributEmp order by Codigo');
+          open;
+     end;
 end;
 
 procedure TfCadEmpresas.UniFrameDestroy(Sender: TObject);
 var
    i:integer;
 begin
-      // Fecha todas as tabelas do form.
-      for i := 0 to pred(ComponentCount) do begin
-          if Components[i] is TFDQuery then begin
-             TFDQuery(Components[i]).close;
-          end;
-      end;
+     // Fecha todas as tabelas do form.
+     for i := 0 to pred(ComponentCount) do begin
+         if Components[i] is TFDQuery then begin
+            TFDQuery(Components[i]).close;
+         end;
+     end;
 end;
 
-procedure TfCadEmpresas.bAssinaturaClick(Sender: TObject);
-begin
-      if OpenPictureDialog1.Execute then begin
-         iAssinatura.Picture.LoadFromFile(OpenPictureDialog1.FileName);
-         Empresas.FieldByName('Assinatura').Value := OpenPictureDialog1.FileName;
-      end;
-end;
 
 
 end.

@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, uniGUITypes, uniGUIAbstractClasses, uniGUIClasses, uniGUIFrame, FireDAC.Stan.Intf, FireDAC.Stan.Option, 
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, CalcExpress, Data.DB, FireDAC.Comp.DataSet, 
   FireDAC.Comp.Client, uniMemo, uniBasicGrid, uniStringGrid, uniCheckBox, uniDBCheckBox, uniGroupBox, uniLabel, uniEdit, uniDBEdit, uniMultiItem, uniComboBox, uniDBComboBox,
-  uniDBLookupComboBox, uniPageControl, uniButton, uniBitBtn, uniSpeedButton, uniGUIBaseClasses, uniPanel, System.RegularExpressions, uniDBGrid, FireDAC.Stan.StorageBin, uniSweetAlert, uniDateTimePicker, uniDBDateTimePicker;
+  uniDBLookupComboBox, uniPageControl, uniButton, uniBitBtn, uniSpeedButton, uniGUIBaseClasses, uniPanel, System.RegularExpressions, uniDBGrid, FireDAC.Stan.StorageBin, uniSweetAlert,
+  uniDateTimePicker, uniDBDateTimePicker;
 
 type
   TfFatPedidoNFItem = class(TUniFrame)
@@ -432,15 +433,12 @@ type
     mOper: string;
     mPed
    ,mItem: integer;
-//    procedure CalculaTudo;
-//    procedure PegaCST;
     function CalculoReverso: real;
     procedure ApuraEstoque;
     procedure TotalizaItens;
   public
     { Public declarations }
     constructor Create(AOwner: TComponent; pPed, pItem: integer; pOper: string); reintroduce;
-    
   end;
   
 implementation
@@ -533,6 +531,10 @@ begin
      ApuraEstoque;
 
      with PedidosNFItens do begin
+          gFormula.Cells[0, gFormula.RowCount-1] := 'Valor_Unitario';
+          gFormula.Cells[1, gFormula.RowCount-1] := 'Produtos_[Valor_Venda]';
+          gFormula.Cells[2, gFormula.RowCount-1] := floattostr(Produtos.fieldbyname('Valor_Venda').ascurrency);
+          gFormula.Cells[3, gFormula.RowCount-1] := floattostr(Produtos.fieldbyname('Valor_Venda').ascurrency);
           if State = dsInsert then begin
              fieldbyname('Valor_Unitario').value := Produtos.fieldbyname('Valor_Venda').ascurrency;
              if tFormulasItens.Locate('Campo', 'Valor_Unitario', [loCaseInsensitive]) then begin
@@ -541,6 +543,7 @@ begin
                 fieldbyname('Valor_Unitario').value    := CalculaMacro(self, tFormulasItens.fieldbyname('Formula').AsString);
              end;
           end;
+          gFormula.RowCount := gFormula.RowCount + 1;
           
           fieldbyname('NCM').value                 := Produtos.fieldbyname('NCM').asstring;
           fieldbyname('UM').value                  := Produtos.fieldbyname('UM').asstring;
@@ -700,8 +703,8 @@ begin
           if Produtos.fieldbyname('Origem').asstring = 'M' then fieldbyname('CSTICMS_TabA').value := tNCM.Fieldbyname('CodigoTrib_TabA3').Value;
           // Tabela B - Tributação.
           fieldbyname('CSTICMS_TabB').Value := PegaCSTICMS(PedidosNFItens, OpFiscal.fieldbyname('Codigo').asinteger, fieldbyname('Codigo_Mercadoria').asinteger, Empresas.fieldbyname('Regime_Tributario').asinteger, PedidosNF.FieldByName('Destinatario').asinteger);
-          fieldbyname('CSTCBS').Value := PegaCSTCBS(PedidosNFItens, PedidosNF.fieldbyname('Operacao').asinteger, Produtos.FieldByName('Codigo').asinteger);
-          fieldbyname('CSTIBS').Value := PegaCSTIBS(PedidosNFItens, PedidosNF.fieldbyname('Operacao').asinteger, Produtos.FieldByName('Codigo').asinteger);
+          fieldbyname('CSTCBS').Value       := PegaCSTCBS(PedidosNFItens, PedidosNF.fieldbyname('Operacao').asinteger, Produtos.FieldByName('Codigo').asinteger);
+          fieldbyname('CSTIBS').Value       := PegaCSTIBS(PedidosNFItens, PedidosNF.fieldbyname('Operacao').asinteger, Produtos.FieldByName('Codigo').asinteger);
 
           TotalizaItens;
      end;
@@ -1028,273 +1031,6 @@ begin
      Frm.ShowModal;
 end;
 
-(*
-procedure TfFatPedidoNFItem.PegaCST;
-var
-   mCST: string;
-   mBC, mTotal: real;
-begin
-     with PedidosNFItens do begin
-          // Código de Situação Tributaria do IPI.
-          mCST := '';
-          if (Fieldbyname('Valor_IPI').ascurrency > 0) or (Fieldbyname('Aliquota_IPI').ascurrency> 0)      then mCST := Trim(OpFiscal.FieldByName('ES').AsString)+'+IPI';
-          if Produtos.fieldbyname('Valor_IPI').asfloat <> 0                                                then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+V';
-          if tNCM.fieldbyname('IPI_TribAliquotaZero').asboolean                                            then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+V';
-          if (tNCM.fieldbyname('IPI_Isento').AsBoolean) or (OpFiscal.fieldbyname('Isencao_IPI').AsBoolean) then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+I';
-          if OpFiscal.fieldbyname('Nao_Tributada_IPI').asboolean                                           then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+NT';
-          if OpFiscal.fieldbyname('Imune_IPI').asboolean                                                   then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+IM';
-          if tNCM.fieldbyname('IPI_Suspensao').asboolean                                                   then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+SUS';
-          if OpFiscal.fieldbyname('Suspensao_IPI').asboolean                                               then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+SUS';
-          if mCST = ''                                                                                     then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+<>';
-          if not CSTIPI.Locate('Classificacao', mCST, [loCaseInsensitive]) then begin
-             mCST := '<>';
-             CSTIPI.Locate('Classificacao', mCST, [loCaseInsensitive]);
-          end;
-          Fieldbyname('CSTIPI').Value := CSTIPI.FieldByName('Codigo').Value;
-
-          // Código de Situação Tributaria do PIS/COFINS.
-          if TabPISCOFINS.Locate('Imposto', 'PIS', [loCaseInsensitive]) then begin
-             mCST := '';
-             if PedidosNF.fieldbyname('ES').AsInteger = 1 then begin
-                if (Produtos.fieldbyname('Aliquota_PISSaida').AsFloat > 0) and (Produtos.fieldbyname('Aliquota_PISSaida').AsFloat = TabPISCOFINS.fieldbyname('Saida').AsFloat) then
-                   mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+B';                                     // 01.
-                if (Produtos.fieldbyname('Aliquota_PISSaida').AsFloat > 0) and (Produtos.fieldbyname('Aliquota_PISSaida').AsFloat <> TabPISCOFINS.fieldbyname('Saida').AsFloat) then
-                   mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+D';                                     // 02.
-                if (OpFiscal.fieldbyname('CSTPIS_AliquotaUM').AsBoolean) or (Produtos.fieldbyname('CSTPIS_AliquotaUM').AsBoolean) then
-                   mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+UM';                                    // 03.
-                if (OpFiscal.fieldbyname('CSTPIS_Monofasica').AsBoolean) or (Produtos.fieldbyname('CSTPIS_Monofasica').AsBoolean) then
-                   mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+MONO+A0';                               // 04.
-                if (tNCM.fieldbyname('PIS_ST').asboolean) and (Destinatarios.fieldbyname('Varejista').AsBoolean) then
-                   mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+ST';                                    // 05.
-                if (OpFiscal.fieldbyname('CSTPIS_AliquotaZero').AsBoolean) or (Produtos.fieldbyname('CSTPIS_AliquotaZero').AsBoolean) then
-                   mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+A0';                                    // 06.
-                if (OpFiscal.fieldbyname('CSTPIS_Isenta').AsBoolean) or (Produtos.fieldbyname('CSTPIS_Isenta').AsBoolean) then
-                   mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+ISE';                                   // 07.
-                if (OpFiscal.fieldbyname('CSTPIS_SemIncidencia').AsBoolean) or (Produtos.fieldbyname('CSTPIS_SemIncidencia').AsBoolean) then
-                   mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+SINC';                                  // 08.
-                if (OpFiscal.fieldbyname('CSTPIS_Suspensao').AsBoolean) or (Produtos.fieldbyname('CSTPIS_Suspensao').AsBoolean) then
-                   mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+SUS';                                   // 09.
-                if (OpFiscal.fieldbyname('CSTPIS_Outras').AsBoolean) or (Produtos.fieldbyname('CSTPIS_Outras').AsBoolean) then
-                   mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+O';                                     // Outras.
-             end else begin
-                if Trim(Produtos.fieldbyname('CSTPIS_Entrada').AsString) <> '' then begin
-                   if CSTPIS.Locate('Codigo', Produtos.fieldbyname('CSTPIS_Entrada').Value, [loCaseInsensitive]) = true then begin
-                      mCST := CSTPIS.fieldbyname('Classificacao').Value;
-                   end;
-                end else begin
-                   if Trim(OpFiscal.fieldbyname('CST_PIS').Value) <> '' then begin
-                      if CSTPIS.Locate('Codigo', OpFiscal.fieldbyname('CST_PIS').Value, [loCaseInsensitive]) = true then begin
-                         mCST := CSTPIS.fieldbyname('Classificacao').Value;
-                      end;
-                   end else begin
-                      If (Produtos.fieldbyname('PIS_Nota').AsFloat > 0) then
-                         mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+RNTNTMIE'; // 56;
-                   end;
-                end;
-
-                If (OpFiscal.fieldbyname('CSTPIS_Isenta').AsBoolean        = true) or (Produtos.fieldbyname('CSTPIS_IsentaEnt').AsBoolean        = true) then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+ISE';  // 71.
-                If (OpFiscal.fieldbyname('CSTPIS_Suspensao').AsBoolean     = true) or (Produtos.fieldbyname('CSTPIS_SuspensaoEnt').AsBoolean     = true) then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+SUS';  // 72.
-                If (OpFiscal.fieldbyname('CSTPIS_AliquotaZero').AsBoolean  = true) or (Produtos.fieldbyname('CSTPIS_AliquotaZeroEnt').AsBoolean  = true) then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+A0';   // 73.
-                If (OpFiscal.fieldbyname('CSTPIS_SemIncidencia').AsBoolean = true) or (Produtos.fieldbyname('CSTPIS_SemIncidenciaEnt').AsBoolean = true) then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+SINC'; // 74.
-                If (OpFiscal.fieldbyname('CSTPIS_Outras').AsBoolean        = true) or (Produtos.fieldbyname('CSTPIS_OutrasEnt').AsBoolean        = true) then mCST := Trim(OpFiscal.fieldbyname('ES').AsString)+'+O';    // Outras.
-             end;
-          end else begin
-             Alerta.Title     := 'ATENÇÃO!';
-             Alerta.Text      := 'Alíquota básica do PIS/COFINS não cadastrada na tabela de PIS/COFINS.';
-             Alerta.AlertType := atWarning;
-             Alerta.Execute;
-          end;
-          with tTmp do begin
-               // CST PIS.
-               sql.clear;
-               sql.add('select Codigo from CSTPIS where Classificacao = '+quotedstr(mCST));
-               open;
-               if recordcount = 0 then begin
-                  mCST := '<>';
-                  sql.clear;
-                  sql.add('select * from CSTPIS where Codigo = '+quotedstr(mCST));
-                  open;
-               end;
-               PedidosNFItens.fieldbyname('CSTPIS').Value := fieldbyname('Codigo').Value;
-               // CST COFINS.
-               sql.clear;
-               sql.add('select Codigo from CSTCOFINS where Classificacao = '+quotedstr(mCST));
-               open;
-               if recordcount = 0 then begin
-                  mCST := '<>';
-                  sql.clear;
-                  sql.add('select * from CSTCOFINS where Codigo = '+quotedstr(mCST));
-                  open;
-               end;
-               PedidosNFItens.fieldbyname('CSTCOFINS').Value := fieldbyname('Codigo').Value;
-          end;
-
-          // CST ICMS Operacional.
-          mCST   := '';
-          mBC    := fieldbyname('Valor_BCICMSOp').asfloat;
-          mTotal := cValor_Produtos.Value;
-          if Empresas.fieldbyname('Regime_Tributario').asinteger = 3 then begin
-             // Empresas optantes do Regime normal.
-             if Fieldbyname('Valor_ICMSOp').Value <> 0 then
-                mCST := mCST + '+O'
-             else
-                mCST := mCST + '-O';     // ICMS Operacional.
-             if (Int(mBC) < Int(mTotal)) and (mBC > 0) then
-                mCST := mCST + '+R'
-             else
-                mCST := mCST + '-R';     // Reducao de base.
-             if OpFiscal.Fieldbyname('ES').asinteger = 0 then begin
-                mCST := mCST + '-S';     // ICMS ST na Entrada.
-             end else begin
-                if Fieldbyname('Valor_ICMSST').ascurrency <> 0 then
-                   mCST := mCST + '+S'
-                else
-                   mCST := mCST + '-S';  // ICMS ST na Saida.
-             end;
-             if OpFiscal.Fieldbyname('Isencao_ICMS').AsBoolean or tNCM.fieldbyname('ICMS_Isento').AsBoolean then mCST := '+I';
-             if OpFiscal.Fieldbyname('Nao_Tributada_ICMS').asboolean then mCST := '+NT';
-             if OpFiscal.Fieldbyname('Suspensao_ICMS').AsBoolean or tNCM.fieldbyname('ICMS_Suspensao').AsBoolean then mCST := '+SUS';
-             if Processos.fieldbyname('ICMS_Diferido').asboolean and (OpFiscal.Fieldbyname('ES').asinteger = 0) then mCST := '+D';
-             if OpFiscal.Fieldbyname('Diferido_ICMS').AsBoolean then mCST := '+D';
-             if cICMSAnt.Checked then mCST := mCST + '+SD';
-             
-             // CST para Detalhe especifico combustivel.
-             if OpFiscal.Fieldbyname('ES').asinteger = 0 then begin
-                if Produtos.fieldbyname('CSTICMS_Entrada').asstring <> '' then mCST := Produtos.fieldbyname('CSTICMS_Entrada').AsString;
-             end else begin
-                if Produtos.fieldbyname('CSTICMS_Saida').asstring <> '' then mCST := Produtos.fieldbyname('CSTICMS_Saida').AsString;
-             end;
-
-             if OpFiscal.Fieldbyname('Monofasico_Comb').asboolean         then mCST := '02';
-             if OpFiscal.Fieldbyname('Monofasico_CombRetencao').asboolean then mCST := '15';
-             if OpFiscal.Fieldbyname('Monofasico_CombDiferido').asboolean then mCST := '53';
-             if OpFiscal.Fieldbyname('Monofasico_CombAnterior').asboolean then mCST := '61';
-             with tTmp do begin
-                  sql.clear;
-                  sql.add('select Codigo from CSTICMSTabB where Classificacao = '+quotedstr(mCST));
-                  open;
-                  if recordcount = 0 then begin
-                     mCST := '<>';
-                     sql.clear;
-                     sql.add('select * from CSTICMSTabB where Codigo = '+quotedstr(mCST));
-                     open;
-                  end;
-                  if Produtos.Fieldbyname('Origem').asstring = 'I' then mCST := tNCM.Fieldbyname('CodigoTrib_TabA').Value;
-                  if Produtos.Fieldbyname('Origem').asstring = 'N' then mCST := tNCM.Fieldbyname('CodigoTrib_TabA2').Value;
-                  if Produtos.Fieldbyname('Origem').asstring = 'M' then mCST := tNCM.Fieldbyname('CodigoTrib_TabA3').Value;
-                  PedidosNFItens.fieldbyname('CSTICMS_TabA').Value := mCST;
-                  PedidosNFItens.fieldbyname('CSTICMS_TabB').Value := fieldbyname('Codigo').asstring;
-             end;
-          end else begin
-             // Empresas do Regime do Simples Nacional.
-             if tNCMICMS.RecordCount > 0 then begin
-                if OpFiscal.Fieldbyname('ES').asinteger = 1 then begin
-                   if (tNCMICMS.FieldByName('ST').AsFloat = 0) and (not Destinatarios.fieldbyname('Consumidor_Final').AsBoolean and not Destinatarios.fieldbyname('Simples_Nacional').AsBoolean) then mCST := '101';
-                end;
-                if OpFiscal.Fieldbyname('ES').asinteger = 0 then begin
-                   if tNCMICMS.FieldByName('ST').asfloat = 0 then mCST := '102';
-                end else begin
-                   if (tNCMICMS.FieldByName('ST').AsFloat = 0) and (Destinatarios.fieldbyname('Consumidor_Final').AsBoolean or Destinatarios.fieldbyname('Simples_Nacional').AsBoolean) then mCST := '102';
-                end;
-             end else begin
-                cLog.Lines.add('ERRO DE CST: Tabela de ICMS para "SIMPLES NACIONAL" não cadastrada.');
-             end;
-
-             if OpFiscal.Fieldbyname('Isencao_ICMS').AsBoolean or tNCM.fieldbyname('ICMS_Isento').AsBoolean then begin
-                if PedidosNF.Fieldbyname('ES').AsInteger = 0 then begin
-                   if tNCMICMS.FieldByName('ST').AsFloat = 0 then mCST := '103';
-                end else begin
-                   if tNCMICMS.FieldByName('ST').AsFloat = 0 then mCST := '103';
-                end;
-             end;
-             if OpFiscal.Fieldbyname('ES').asinteger = 1 then begin
-                if (tNCMICMS.FieldByName('ST').AsFloat > 0) and not Destinatarios.Fieldbyname('Consumidor_Final').AsBoolean and not Destinatarios.Fieldbyname('Simples_Nacional').AsBoolean then mCST := '201';
-             end;
-             if OpFiscal.Fieldbyname('ES').asinteger = 0 then begin
-                if tNCMICMS.FieldByName('ST').AsFloat > 0 then mCST := '202';
-             end else begin
-                if (tNCMICMS.FieldByName('ST').AsFloat > 0) and (Destinatarios.Fieldbyname('Consumidor_Final').AsBoolean or Destinatarios.Fieldbyname('Simples_Nacional').AsBoolean) then mCST := '202';
-             end;
-             if OpFiscal.Fieldbyname('Isencao_ICMS').AsBoolean or tNCM.Fieldbyname('ICMS_Isento').AsBoolean then begin
-                if PedidosNF.Fieldbyname('ES').AsInteger = 0 then begin         // NF de Entrada.
-                   if tNCMICMS.FieldByName('ST').AsFloat > 0 then mCST := '203';
-                end else begin                                           // NF de Saída.
-                   if tNCMICMS.FieldByName('ST').AsFloat > 0 then mCST := '203';
-                end;
-             end;
-             if OpFiscal.Fieldbyname('Imune_ICMS').AsBoolean or tNCM.Fieldbyname('ICMS_Imune').AsBoolean then mCST := '300';
-             if OpFiscal.Fieldbyname('Nao_Tributada_ICMS').AsBoolean then mCST := '400';
-             if cICMSAnt.Checked then mCST := '500';
-             if OpFiscal.Fieldbyname('Diferido_ICMS').AsBoolean then mCST := '900';
-
-             if PedidosNF.Fieldbyname('ES').AsInteger = 0 then begin
-                if Trim(OpFiscal.Fieldbyname('CSOSN_Entrada').AsString) <> '' then begin
-                   mCST := Trim(OpFiscal.Fieldbyname('CSOSN_Entrada').AsString);
-                end;
-             end else begin
-                if Trim(OpFiscal.Fieldbyname('CSOSN_Saida').AsString) <> '' then begin
-                   mCST := Trim(OpFiscal.Fieldbyname('CSOSN_Saida').AsString);
-                end;
-             end;
-
-             if OpFiscal.Fieldbyname('Monofasico_Comb').asboolean then mCST := '02';
-             if OpFiscal.Fieldbyname('Monofasico_CombRetencao').asboolean then mCST := '15';
-             if OpFiscal.Fieldbyname('Monofasico_CombDiferido').asboolean then mCST := '53';
-             if OpFiscal.Fieldbyname('Monofasico_CombAnterior').asboolean then mCST := '61';
-
-             with tTmp do begin
-                  sql.clear;
-                  sql.add('select Codigo from CSTICMSTabB where Classificacao = '+quotedstr(mCST));
-                  open;
-                  if recordcount = 0 then begin
-                     mCST := 'S<>';
-                     sql.clear;
-                     sql.add('select * from CSTICMSTabB where Codigo = '+quotedstr(mCST));
-                     //sql.SaveToFile('c:\temp\Atlas_CSTICMS.sql');
-                     open;
-                  end;
-                  if Produtos.Fieldbyname('Origem').asstring = 'I' then 
-                     mCST := tNCM.Fieldbyname('CodigoTrib_TabA').Value;
-                  if Produtos.Fieldbyname('Origem').asstring = 'N' then 
-                     mCST := tNCM.Fieldbyname('CodigoTrib_TabA2').Value;
-                  if Produtos.Fieldbyname('Origem').asstring = 'M' then 
-                     mCST := tNCM.Fieldbyname('CodigoTrib_TabA3').Value;
-                     
-                  PedidosNFItens.fieldbyname('CSTICMS_TabA').Value := mCST;
-                  PedidosNFItens.fieldbyname('CSTICMS_TabB').Value := fieldbyname('Codigo').asstring;
-             end;
-          end;
-          if (State = dsInsert) or (State = dsEdit) then begin
-             // CST DO CBS.
-             mCST := 'T+I';
-             if fieldbyname('Valor_CBS').Value > 0 then mCST := 'T+I';
-             if tNCM.fieldbyname('CBS_Isencao').AsBoolean        then mCST := 'IS';
-             if OpFiscal.fieldbyname('CBS_Isencao').AsBoolean   then mCST := 'IS';
-             if tNCM.fieldbyname('CBS_Imunidade').AsBoolean      then mCST := 'I+N+I';
-             if OpFiscal.fieldbyname('CBS_Imunidade').asboolean then mCST := 'I+N+I';
-             if tNCM.fieldbyname('CBS_Suspensao').asboolean      then mCST := 'S';
-             if OpFiscal.fieldbyname('CBS_Suspensao').asboolean then mCST := 'S';
-             if tNCM.fieldbyname('CBS_Diferido').AsBoolean       then mCST := 'D';
-             if OpFiscal.fieldbyname('CBS_Diferido').AsBoolean  then mCST := 'D';
-             CSTCBS.Locate('Classificacao', mCST, [loCaseInsensitive]) ;
-             fieldbyname('CSTCBS').Value := CSTCBS.fieldbyname('Codigo').Value;
-             // CST DO IBS
-             mCST := 'T+I';
-             if fieldbyname('Valor_IBS').Value > 0 then mCST := 'T+I';
-             if tNCM.fieldbyname('IBS_Isencao').AsBoolean        then mCST := 'IS';
-             if OpFiscal.fieldbyname('IBS_Isencao').AsBoolean   then mCST := 'IS';
-             if tNCM.fieldbyname('IBS_Imunidade').AsBoolean      then mCST := 'I+N+I';
-             if OpFiscal.fieldbyname('IBS_Imunidade').asboolean then mCST := 'I+N+I';
-             if tNCM.fieldbyname('IBS_Suspensao').asboolean      then mCST := 'S';
-             if OpFiscal.fieldbyname('IBS_Suspensao').asboolean then mCST := 'S';
-             if tNCM.fieldbyname('IBS_Diferido').AsBoolean       then mCST := 'D';
-             if OpFiscal.fieldbyname('IBS_Diferido').AsBoolean  then mCST := 'D';
-             CSTIBS.Locate('Classificacao', mCST, [loCaseInsensitive]) ;
-             fieldbyname('CSTIBS').Value := CSTIBS.fieldbyname('Codigo').Value;
-          end;
-     end;
-end;
-*)
 function TfFatPedidoNFItem.CalculoReverso: real;
 Var
     mUnitario
@@ -1379,6 +1115,7 @@ begin
           if state = dsEdit then ApuraEstoque;
      end;
 end;
+
 
 
 end.

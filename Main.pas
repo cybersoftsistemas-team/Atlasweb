@@ -22,7 +22,7 @@ type
     iFoto: TUniImage;
     lEmpresa: TUniLabel;
     UniPanel1: TUniPanel;
-    iLogo: TUniImage;
+    iLogoEmpresa: TUniImage;
     tEmpresas: TFDQuery;
     UniScreenMask1: TUniScreenMask;
     Alerta: TUniSweetAlert;
@@ -39,8 +39,8 @@ type
     TabMenu: TFDQuery;
     dstMenu: TDataSource;
     MenuPrincipal: TUniMenuItems;
-    UniImage1: TUniImage;
-    UniImage3: TUniImage;
+    iLogoAtlas: TUniImage;
+    iLogoCyber: TUniImage;
     UniButton1: TUniButton;
     lVersao: TUniLabel;
     procedure cPesquisaChange(Sender: TObject);
@@ -200,7 +200,7 @@ end;
 
 procedure TMainForm.mnSairClick(Sender: TObject);
 begin
-      Close;
+     Close;
 end;
 
 // Fecha todas as abas abertas.
@@ -276,11 +276,10 @@ begin
                      tag              := fieldbyname('Id').asinteger;
                      hint             := fieldbyname('Titulo').asstring;
                      ShowHint         := true;
-
-                     if fileexists(mPath+fieldbyname('Icone').asstring) then begin
-                        Picture.LoadFromFile(mPath+fieldbyname('Icone').asstring);
+                     if fileexists(fieldbyname('Icone').asstring) then begin
+                        Picture.LoadFromFile(fieldbyname('Icone').asstring);
                      end else begin
-                        Picture.LoadFromFile(mPath+'Atalho0b.png');
+                        Picture.LoadFromFile('Atalho0b.png');
                      end;
                      OnClick := MainForm.Botao_Atalho;
                 end;

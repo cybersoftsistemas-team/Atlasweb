@@ -86,7 +86,8 @@ uses
   FatPedidoVeiculo in 'FatPedidoVeiculo.pas' {fFatPedidoVeiculo: TUniForm},
   FatPedidoNFDetalhe in 'FatPedidoNFDetalhe.pas' {fFatPedidoNFDetalhe: TUniForm},
   FatPedidoNFLote in 'FatPedidoNFLote.pas' {fFatPedidoNFLote: TUniForm},
-  DUIMP in 'DUIMP.pas' {fDUIMP: TUniForm};
+  DUIMP in 'DUIMP.pas' {fDUIMP: TUniForm},
+  FatPedidoItensDUIMPItem in 'FatPedidoItensDUIMPItem.pas' {fFatPedidoItensDUIMPItem: TUniForm};
 
 (*uses p/gerador*)
 

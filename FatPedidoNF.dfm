@@ -167,7 +167,7 @@ object fFatPedidoNF: TfFatPedidoNF
     Width = 1272
     Height = 965
     Hint = ''
-    ActivePage = TabSheet1
+    ActivePage = UniTabSheet1
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -177,10 +177,6 @@ object fFatPedidoNF: TfFatPedidoNF
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -217,6 +213,7 @@ object fFatPedidoNF: TfFatPedidoNF
             Title.Font.Style = [fsBold]
             Width = 54
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'ES_Desc'
@@ -226,6 +223,7 @@ object fFatPedidoNF: TfFatPedidoNF
             Width = 74
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Op_Descricao'
@@ -252,6 +250,7 @@ object fFatPedidoNF: TfFatPedidoNF
             Title.Font.Style = [fsBold]
             Width = 269
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Destinatario_CNPJ_CPF'
@@ -261,6 +260,7 @@ object fFatPedidoNF: TfFatPedidoNF
             Width = 139
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Destinatario_Estado'
@@ -270,6 +270,7 @@ object fFatPedidoNF: TfFatPedidoNF
             Width = 30
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Valor_Pedido'
@@ -278,6 +279,7 @@ object fFatPedidoNF: TfFatPedidoNF
             Title.Font.Style = [fsBold]
             Width = 183
             Font.Name = 'Calibri'
+            ReadOnly = True
           end>
       end
       object pBarraPesq: TUniPanel
@@ -333,10 +335,6 @@ object fFatPedidoNF: TfFatPedidoNF
         
           'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
           '= '#39'Pasta'#39';'#13#10'}')
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -1245,10 +1243,6 @@ object fFatPedidoNF: TfFatPedidoNF
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Itens do Pedido'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object GradeItens: TUniDBGrid
         Left = 65
         Top = 0
@@ -1283,7 +1277,7 @@ object fFatPedidoNF: TfFatPedidoNF
         TabOrder = 0
         ParentColor = False
         Color = clBtnFace
-        OnDblClick = bEditarClick
+        OnDblClick = bEditItensClick
         Columns = <
           item
             FieldName = 'Pedido'
@@ -1293,6 +1287,7 @@ object fFatPedidoNF: TfFatPedidoNF
             Width = 73
             Font.Name = 'Calibri'
             Font.Style = [fsBold]
+            ReadOnly = True
           end
           item
             FieldName = 'Item'
@@ -1303,6 +1298,7 @@ object fFatPedidoNF: TfFatPedidoNF
             Font.Height = -13
             Font.Name = 'Calibri'
             Font.Style = [fsBold]
+            ReadOnly = True
           end
           item
             FieldName = 'CFOP'
@@ -1314,6 +1310,7 @@ object fFatPedidoNF: TfFatPedidoNF
             Font.Name = 'Calibri'
             Font.Style = [fsBold]
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Codigo_Mercadoria'
@@ -1324,6 +1321,7 @@ object fFatPedidoNF: TfFatPedidoNF
             Font.Height = -13
             Font.Name = 'Calibri'
             Font.Style = [fsBold]
+            ReadOnly = True
           end
           item
             FieldName = 'Descricao_Mercadoria'
@@ -1334,6 +1332,7 @@ object fFatPedidoNF: TfFatPedidoNF
             Font.Height = -13
             Font.Name = 'Calibri'
             Font.Style = [fsBold]
+            ReadOnly = True
             MemoOptions.ConvertNewLineToBreak = True
             DisplayMemo = True
           end
@@ -1347,6 +1346,7 @@ object fFatPedidoNF: TfFatPedidoNF
             Font.Name = 'Calibri'
             Font.Style = [fsBold]
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'UM'
@@ -1356,6 +1356,7 @@ object fFatPedidoNF: TfFatPedidoNF
             Width = 40
             Font.Name = 'Calibri'
             Font.Style = [fsBold]
+            ReadOnly = True
           end
           item
             FieldName = 'Quantidade'
@@ -1366,6 +1367,7 @@ object fFatPedidoNF: TfFatPedidoNF
             Font.Height = -13
             Font.Name = 'Calibri'
             Font.Style = [fsBold]
+            ReadOnly = True
           end
           item
             FieldName = 'Valor_Unitario'
@@ -1376,6 +1378,7 @@ object fFatPedidoNF: TfFatPedidoNF
             Font.Height = -13
             Font.Name = 'Calibri'
             Font.Style = [fsBold]
+            ReadOnly = True
           end
           item
             FieldName = 'Valor_Produtos'
@@ -1384,6 +1387,7 @@ object fFatPedidoNF: TfFatPedidoNF
             Title.Font.Style = [fsBold]
             Width = 136
             Font.Name = 'Calibri'
+            ReadOnly = True
           end>
       end
       object BarraItens: TUniPanel
@@ -1583,19 +1587,11 @@ object fFatPedidoNF: TfFatPedidoNF
       Hint = ''
       ImageIndex = 1
       Caption = 'Informa'#231#227'oes Complementares'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
     end
     object TabSheet3: TUniTabSheet
       Hint = ''
       ImageIndex = 2
       Caption = 'Movimenta'#231#227'o Financeira'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object Grade2: TUniDBGrid
         Left = 0
         Top = 0
@@ -1621,18 +1617,21 @@ object fFatPedidoNF: TfFatPedidoNF
             Title.Caption = 'Processo'
             Width = 64
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Classificacao'
             Title.Alignment = taCenter
             Title.Caption = 'Class'
             Width = 91
+            ReadOnly = True
           end
           item
             FieldName = 'DescricaoClassificacao'
             Title.Alignment = taCenter
             Title.Caption = 'Despesa'
             Width = 285
+            ReadOnly = True
           end
           item
             FieldName = 'Tipo'
@@ -1640,35 +1639,41 @@ object fFatPedidoNF: TfFatPedidoNF
             Title.Caption = 'P/R'
             Width = 26
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Valor_Total'
             Title.Alignment = taCenter
             Title.Caption = 'Valor'
             Width = 109
+            ReadOnly = True
           end
           item
             FieldName = 'Custo_Entrada'
             Title.Alignment = taCenter
             Title.Caption = 'C.Ent'
             Width = 32
+            ReadOnly = True
           end
           item
             FieldName = 'CustoConta'
             Title.Alignment = taCenter
             Title.Caption = 'C.Sai'
             Width = 32
+            ReadOnly = True
           end
           item
             FieldName = 'Custo_Seletivo'
             Title.Alignment = taCenter
             Title.Caption = 'C.Sel'
             Width = 32
+            ReadOnly = True
           end
           item
             FieldName = 'Custo_Outros'
             Title.Caption = 'C.Out'
             Width = 36
+            ReadOnly = True
           end>
       end
     end

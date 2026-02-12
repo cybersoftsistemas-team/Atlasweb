@@ -103,10 +103,10 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
-        <VerInfo_Keys>CompanyName=Cybersoft;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.21;InternalName=ERPImporta;LegalCopyright=;LegalTrademarks=;OriginalFilename=ERP Importa;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=Cybersoft;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.29;InternalName=ERPImporta;LegalCopyright=;LegalTrademarks=;OriginalFilename=ERP Importa;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <Icon_MainIcon>c_original_logo_icon_146611.ico</Icon_MainIcon>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
-        <VerInfo_Build>21</VerInfo_Build>
+        <VerInfo_Build>29</VerInfo_Build>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -414,6 +414,11 @@
             <FormType>dfm</FormType>
             <DesignClass>TUniForm</DesignClass>
         </DCCReference>
+        <DCCReference Include="FatPedidoItensDUIMPItem.pas">
+            <Form>fFatPedidoItensDUIMPItem</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TUniForm</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -456,7 +461,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="\AtlasWeb.exe" Configuration="Release" Class="ProjectOutput">
+                <DeployFile LocalName="AtlasWeb.exe" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>AtlasWeb.exe</RemoteName>
                         <Overwrite>true</Overwrite>

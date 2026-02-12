@@ -267,6 +267,7 @@ type
     gItens: TUniDBGrid;
     gAdicoes: TUniDBGrid;
     ProcessosImpItensDUIMP: TStringField;
+    UniSpeedButton1: TUniSpeedButton;
     procedure bSairClick(Sender: TObject);
     procedure UniFormShow(Sender: TObject);
     procedure cCFOPChange(Sender: TObject);
@@ -279,11 +280,8 @@ type
     procedure bAddTudoClick(Sender: TObject);
   private
     procedure AddItem;
-//    procedure PegaCST;
     procedure LigaBotoes;
     function CalculaCampos(Formula: widestring): real;
-//    procedure CalculaTudo;
-    //function CalculaMacro(Campo: String): Real;
     function CalculaMacro(pForm: TComponent; pFormula: String): Real;
     procedure FiltraTabelas(pProduto: integer);
     
@@ -293,6 +291,7 @@ type
     mPedido
    ,mOperacao: integer;
     mEstado: string;
+    mDescricao: widestring;
   end;
 
 function fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP;
@@ -302,7 +301,7 @@ implementation
 {$R *.dfm}
 
 uses
-  MainModule, uniGUIApplication, Funcoes, FatPedidoNF;
+  MainModule, uniGUIApplication, Funcoes, FatPedidoNF, FatPedidoItensDUIMPItem;
 
 function fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP;
 begin
@@ -316,6 +315,12 @@ end;
 
 procedure TfFatPedidoItensDUIMP.bAddItemClick(Sender: TObject);
 begin
+     fFatPedidoItensDUIMPItem.cProduto.Value  := ProcessosImpItens.FieldByName('Codigo_Mercadoria').asinteger;
+     fFatPedidoItensDUIMPItem.cDescricao.text := ProcessosImpItens.FieldByName('Descricao').asstring;
+     fFatPedidoItensDUIMPItem.mProcesso       := '1606875444'; //tProcesso.fieldbyname('Processo').asstring;
+     fFatPedidoItensDUIMPItem.ShowModal;
+
+//     unimemo1.Lines.Add(mDescricao);
      FiltraTabelas(ProcessosImpItens.FieldByName('Codigo_Mercadoria').Value);
      AddItem;
      ProcessosImpItens.Refresh;
@@ -680,13 +685,6 @@ begin
           sql.add('select Classificacao, Codigo from CSTCOFINS');
           open;
      end;
-     {
-     with CSTICMS do begin
-          sql.clear;
-          sql.add('select Classificacao, Codigo from CSTICMSTabB');
-          open;
-     end;
-     }
      with CSTICMSB do begin
           sql.clear;
           sql.add('select * from CSTICMSTabB order by Codigo');
@@ -712,19 +710,6 @@ begin
           sql.add('select * from CSTCBS order by Codigo');
           open;
      end;
-     
-     {
-     with tFormulas do begin
-          sql.clear;
-          sql.add('select *');
-          sql.add('from OperacaoFiscalFormulas');
-          sql.add('where Operacao = :pOp');
-          sql.add('and Desativada <> 1');
-          sql.add('order by Tipo, Ordem_Calculo, Campo');
-          parambyname('pOp').AsInteger := PedidosNF.FieldByName('Operacao').AsInteger;
-          open;
-     end;
-     }
      with tFormulasItens do begin
           sql.clear;
           sql.add('select Campo');
@@ -745,8 +730,6 @@ begin
 end;
 
 procedure TfFatPedidoItensDUIMP.AddItem;
-var
-   mDescricao: widestring;
 begin
      Produtos.locate('Codigo', ProcessosImpItens.FieldByName('Codigo_Mercadoria').Value, [loCaseInsensitive]);
      tNCM.locate('NCM', ProcessosImpItens.FieldByName('NCM').Value, [loCaseInsensitive]);
@@ -767,13 +750,15 @@ begin
      end;
      
      // Remove caracteres de controle da descrição do produto.
-     mDescricao := stringreplace(Produtos.fieldbyname('Descricao').Value, #13, '', [rfReplaceAll]);
-     mDescricao := stringreplace(mDescricao, #12, '', [rfReplaceAll]);
-     mDescricao := stringreplace(mDescricao, #10, '', [rfReplaceAll]);
-     mDescricao := RemoveCaracterXML(mDescricao);
+     if trim(mDescricao) = '' then begin
+        mDescricao := stringreplace(Produtos.fieldbyname('Descricao').Value, #13, '', [rfReplaceAll]);
+        mDescricao := stringreplace(mDescricao, #12, '', [rfReplaceAll]);
+        mDescricao := stringreplace(mDescricao, #10, '', [rfReplaceAll]);
+        mDescricao := RemoveCaracterXML(mDescricao);
+     end;
 
      // Adiciona Pedido e Ordem do item na descrição.Ajuste Para PRADOTEX.
-     if trim(ProcessosImpItens.FieldByName('Pedido').asstring) <> ''then begin
+     if trim(ProcessosImpItens.FieldByName('Pedido').asstring) <> '' then begin
         mDescricao := mDescricao + ' PO <['+ProcessosImpItens.FieldByName('Pedido').asstring+']> ITEM [<'+ProcessosImpItens.FieldByName('Ordem').asstring+'>]';
      end;
 
@@ -841,10 +826,6 @@ begin
                if Produtos.fieldbyname('Origem').asstring = 'M' then fieldbyname('CSTICMS_TabA').value := tNCM.Fieldbyname('CodigoTrib_TabA3').Value;
                // Tabela B - Tributação.
                fieldbyname('CSTICMS_TabB').Value := PegaCSTICMS(PedidosNFItens, OpFiscal.fieldbyname('Codigo').asinteger, fieldbyname('Codigo_Mercadoria').asinteger, Empresas.fieldbyname('Regime_Tributario').asinteger, PedidosNF.FieldByName('Destinatario').asinteger);
-               
-//               fieldbyname('CSTIPI').Value    := PegaCSTIPI(PedidosNF.fieldbyname('Operacao').asinteger, Produtos.FieldByName('Codigo').asinteger);
-//               fieldbyname('CSTIPI').Value    := PegaCSTIPI(PedidosNF.fieldbyname('Operacao').asinteger, Produtos.FieldByName('Codigo').asinteger);
-
           post;
      end;
 (*

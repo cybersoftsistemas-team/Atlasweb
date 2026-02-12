@@ -34,7 +34,9 @@ type
     { Public declarations }
     mEmpresaAtiva
    ,mUsuarioAtivo
-   ,mPath: string;
+   ,mPath
+   ,mLogoCyber
+   ,mLogoAtlas: string;
   end;
 
 function UniMainModule: TUniMainModule;
@@ -57,8 +59,10 @@ var
    aINI:Tinifile;
 begin
       // Carregando os dados de conexão do banco de dados "ERPimporta.ini".
-      mPath := GetDLLPath;
-      aINI  := Tinifile.Create(mPath+'\AtlasWeb.ini');
+      mPath      := GetDLLPath;
+      aINI       := Tinifile.Create(mPath+'\AtlasWeb.ini');
+      mLogoCyber := aINI.ReadString('SERVIDOR', 'LogoCyber', EmptyStr);
+      mLogoAtlas := aINI.ReadString('SERVIDOR', 'LogoAtlas', EmptyStr);
       with AtlasConect do begin
            Connected := false;
            Params.Clear;

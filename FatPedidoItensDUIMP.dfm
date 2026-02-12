@@ -55,7 +55,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       AlignWithMargins = True
       Left = 1
       Top = 1
-      Width = 120
+      Width = 110
       Height = 33
       Hint = 'Adicionar um Item'
       Margins.Left = 1
@@ -76,9 +76,9 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
     end
     object bAddTudo: TUniSpeedButton
       AlignWithMargins = True
-      Left = 123
+      Left = 113
       Top = 1
-      Width = 120
+      Width = 110
       Height = 33
       Hint = 'Adicionar Tudo'
       Margins.Left = 1
@@ -99,9 +99,9 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
     end
     object bRemItem: TUniSpeedButton
       AlignWithMargins = True
-      Left = 245
+      Left = 225
       Top = 1
-      Width = 120
+      Width = 110
       Height = 33
       Hint = 'Remover um item'
       Margins.Left = 1
@@ -121,9 +121,9 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
     end
     object bRemTudo: TUniSpeedButton
       AlignWithMargins = True
-      Left = 367
+      Left = 337
       Top = 1
-      Width = 120
+      Width = 110
       Height = 33
       Hint = 'Remover todos os itens'
       Margins.Left = 1
@@ -168,8 +168,6 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
           'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
           '= '#39'FichaSemSombra'#39';'#13#10'}')
       Caption = 'UniPanel2'
-      ExplicitTop = 110
-      ExplicitHeight = 569
       object Pasta: TUniPageControl
         AlignWithMargins = True
         Left = 4
@@ -177,14 +175,12 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
         Width = 1325
         Height = 557
         Hint = ''
-        ActivePage = UniTabSheet2
+        ActivePage = UniTabSheet1
         Align = alClient
         TabOrder = 1
-        ExplicitHeight = 561
         object UniTabSheet1: TUniTabSheet
           Hint = ''
           Caption = 'Itens do Pedido'
-          ExplicitHeight = 533
           object UniContainerPanel3: TUniContainerPanel
             AlignWithMargins = True
             Left = 316
@@ -199,7 +195,6 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
                 '= '#39'Painel'#39';'#13#10'}')
             TabOrder = 0
-            ExplicitHeight = 527
             object gItens: TUniDBGrid
               Left = 0
               Top = 278
@@ -224,6 +219,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
                   Title.Caption = 'Item'
                   Title.Font.Style = [fsBold]
                   Width = 40
+                  ReadOnly = True
                 end
                 item
                   FieldName = 'Codigo_Mercadoria'
@@ -231,6 +227,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
                   Title.Caption = 'Produto'
                   Title.Font.Style = [fsBold]
                   Width = 64
+                  ReadOnly = True
                 end
                 item
                   FieldName = 'Descricao_Mercadoria'
@@ -238,6 +235,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
                   Title.Caption = 'Descri'#231#227'o'
                   Title.Font.Style = [fsBold]
                   Width = 553
+                  ReadOnly = True
                   DisplayMemo = True
                 end
                 item
@@ -247,6 +245,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
                   Title.Font.Style = [fsBold]
                   Width = 70
                   Alignment = taCenter
+                  ReadOnly = True
                 end
                 item
                   FieldName = 'Quantidade'
@@ -254,6 +253,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
                   Title.Caption = 'QTDE'
                   Title.Font.Style = [fsBold]
                   Width = 100
+                  ReadOnly = True
                 end
                 item
                   FieldName = 'Valor_Unitario'
@@ -261,6 +261,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
                   Title.Caption = 'Unit'#225'rio'
                   Title.Font.Style = [fsBold]
                   Width = 106
+                  ReadOnly = True
                 end
                 item
                   FieldName = 'CFOP'
@@ -269,6 +270,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
                   Title.Font.Style = [fsBold]
                   Width = 60
                   Alignment = taCenter
+                  ReadOnly = True
                 end>
             end
             object gAdicoes: TUniDBGrid
@@ -295,6 +297,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
                   Title.Caption = 'Item'
                   Title.Font.Style = [fsBold]
                   Width = 40
+                  ReadOnly = True
                 end
                 item
                   FieldName = 'Codigo_Mercadoria'
@@ -302,6 +305,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
                   Title.Caption = 'Produto'
                   Title.Font.Style = [fsBold]
                   Width = 64
+                  ReadOnly = True
                 end
                 item
                   FieldName = 'Descricao'
@@ -319,6 +323,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
                   Title.Font.Style = [fsBold]
                   Width = 70
                   Alignment = taCenter
+                  ReadOnly = True
                 end
                 item
                   FieldName = 'Quantidade'
@@ -327,6 +332,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
                   Title.Font.Style = [fsBold]
                   Width = 100
                   ForceStringFormat = True
+                  ReadOnly = True
                 end
                 item
                   FieldName = 'Disponivel'
@@ -342,6 +348,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
                   Title.Caption = 'Unitario ME'
                   Title.Font.Style = [fsBold]
                   Width = 100
+                  ReadOnly = True
                 end
                 item
                   FieldName = 'Valor_UnitarioReal'
@@ -349,6 +356,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
                   Title.Caption = 'Unit'#225'rio R$'
                   Title.Font.Style = [fsBold]
                   Width = 100
+                  ReadOnly = True
                 end>
             end
           end
@@ -368,7 +376,6 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
             BorderStyle = ubsInset
             ShowCaption = False
             Caption = ''
-            ExplicitHeight = 527
             object cQtdePerc: TUniFormattedNumberEdit
               Left = 18
               Top = 18
@@ -528,7 +535,6 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
         object UniTabSheet2: TUniTabSheet
           Hint = ''
           Caption = 'An'#225'lise'
-          ExplicitHeight = 533
           object cLog: TUniMemo
             Left = 0
             Top = 325
@@ -553,7 +559,6 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
             FieldLabel = 'F'#211'RMULAS DOS CALCULOS DO PEDIDO'
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
-            ExplicitTop = 329
           end
           object gFormula: TUniStringGrid
             AlignWithMargins = True
@@ -599,7 +604,6 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
             ForceFit = True
             Align = alClient
             TabOrder = 1
-            ExplicitHeight = 323
           end
         end
       end
@@ -623,9 +627,6 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
           ' = '#39'Painel'#39';'#13#10'}')
       BorderStyle = ubsInset
       Caption = ''
-      ExplicitLeft = 3
-      ExplicitTop = 3
-      ExplicitWidth = 1327
       object cDUIMP: TUniDBLookupComboBox
         AlignWithMargins = True
         Left = 13
@@ -717,6 +718,27 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
         NormalizeString = True
         Style = csDropDown
         Mode = umNameValue
+      end
+      object UniSpeedButton1: TUniSpeedButton
+        AlignWithMargins = True
+        Left = 772
+        Top = 39
+        Width = 110
+        Height = 43
+        Hint = 'Adicionar um Item'
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 1
+        Margins.Bottom = 1
+        ShowHint = True
+        ParentShowHint = False
+        Caption = 'Adicionar Item'
+        ParentColor = False
+        IconAlign = iaCenter
+        Images = UniMainModule.imgBotoes
+        ImageIndex = 0
+        TabOrder = 4
+        OnClick = bAddItemClick
       end
     end
   end

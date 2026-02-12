@@ -1983,14 +1983,15 @@ begin
           mCalc := StringReplace(mCalc   , #12,'',[rfReplaceAll]);
           mCalc := StringReplace(mCalc   , #10,'',[rfReplaceAll]);
           first;
-          while not Eof do begin
-                mCalc := stringreplace(mCalc, fieldbyname('Campo').AsString, SubstituirCampos(pForm, fieldbyname('Campo').AsString), [rfReplaceAll]);
-                tcampos.Next;
+          if recordcount > 0 then begin
+             while not Eof do begin
+                   mCalc := stringreplace(mCalc, fieldbyname('Campo').AsString, SubstituirCampos(pForm, fieldbyname('Campo').AsString), [rfReplaceAll]);
+                   tcampos.Next;
+             end;
+             mCalc := SubstituirCondicao(mCalc);
+             mCalc := stringreplace(mCalc,' ', '', [rfReplaceAll]);
           end;
-          mCalc := SubstituirCondicao(mCalc);
-          mCalc := stringreplace(mCalc,' ', '', [rfReplaceAll]);
      end;
-     
      try
          Macro.Formula := mCalc;
          mResultado    := Macro.Calc([0]);
@@ -2026,20 +2027,19 @@ var
 begin
      Result      := '';
      NomeDataSet := copy(pCampo, 1, pos('_', pCampo)-1);
-     
+     Result      := '0';
      // Localiza componente pelo nome
-     DataSet := TDataSet(pForm.FindComponent(NomeDataset));
-     if not DataSet.Active then begin
-        result := '0';
-        exit;
-     end;
-     // Expressão regular para pegar o texto dentro dos colchetes
-     Match     := TRegEx.Match(pCampo, '\[(.*?)\]');
-     CampoNome := Match.Groups[1].Value;
-     if DataSet.FindField(CampoNome) <> nil then begin
-        Result := iif(DataSet.FieldByName(CampoNome).AsString = '', '0', DataSet.FieldByName(CampoNome).AsString);
-     end else begin
-        Result := '0';
+     if TDataSet(pForm.FindComponent(NomeDataset)) <> nil then begin
+        DataSet := TDataSet(pForm.FindComponent(NomeDataset));
+        if not DataSet.Active then begin
+           exit;
+        end;
+        // Expressão regular para pegar o texto dentro dos colchetes
+        Match     := TRegEx.Match(pCampo, '\[(.*?)\]');
+        CampoNome := Match.Groups[1].Value;
+        if DataSet.FindField(CampoNome) <> nil then begin
+           Result := iif(DataSet.FieldByName(CampoNome).AsString = '', '0', DataSet.FieldByName(CampoNome).AsString);
+        end;
      end;
 end;
 
@@ -2173,12 +2173,11 @@ begin
              parambyname('pOp').AsInteger  := pOper;
              parambyname('pTipo').asstring := pTipo;
              open;
-     
              first;
              while not eof do begin
                    // Pula o calculo do valor unitário pois ja foi calculado anteriormente.
                    if fieldbyname('Campo').AsString <> 'Valor_Unitario' then begin
-                      gFormula.Cells[0, gFormula.RowCount-1] := FieldByName('Campo').AsString;
+                      gFormula.Cells[0, gFormula.RowCount-1] := fieldbyname('Campo').AsString;
                       gFormula.Cells[1, gFormula.RowCount-1] := fieldbyname('Formula').AsString;
                       with Campos do begin
                            sql.clear;
@@ -2192,7 +2191,6 @@ begin
                            sql.add('order by Tabela');
                            open;
                       end;
-
                       // Faz o cálculo da formula e Acha o campo.
                       try
                          if pFrame <> nil then begin

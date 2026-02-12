@@ -17,10 +17,9 @@ type
     bEntrar: TUniBitBtn;
     bCancelar: TUniBitBtn;
     cLogUser: TUniEdit;
-    UniImage2: TUniImage;
+    iLogoCyber: TUniImage;
     UniHTMLFrame1: TUniHTMLFrame;
     Clientes: TFDQuery;
-    dsClientes: TDataSource;
     procedure bEntrarClick(Sender: TObject);
     procedure UniLoginFormShow(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
@@ -46,18 +45,18 @@ end;
 
 procedure TTelaLogin.bEntrarClick(Sender: TObject);
 var
-  Usuarios: TFDQuery;
+  tTmp: TFDQuery;
 begin
      // Validando o login do usuário.
      with Clientes do begin
           sql.clear;
           sql.Add('select *');
-          sql.Add('from  Clientes');
+          sql.Add('from Clientes');
           sql.Add('where Email = :pEmail');
-          sql.Add('and   Senha collate Latin1_General_CS_AS = :pSenha');
-          sql.Add('and   Ativa = 1');
-          sql.Add('and   Inadimplente = 0');
-          sql.Add('and   isnull(Banco, '''') <> '''' ');
+          sql.Add('and Senha collate Latin1_General_CS_AS = :pSenha');
+          sql.Add('and Ativa = 1');
+          sql.Add('and Inadimplente = 0');
+          sql.Add('and isnull(Banco, '''') <> '''' ');
           parambyname('pEmail').AsString := cLogUser.text;
           parambyname('pSenha').AsString := cLogSenha.text;
           //sql.savetofile('c:\temp\Clientes_WEB.sql');
@@ -72,7 +71,7 @@ begin
                        Connected := false;
                        Params.Clear;
                        Params.Values['DriverID']  := 'MSSQL';
-                       Params.Values['Server']    := iif((NomeComputador = 'PROGRAMACAO1') or (NomeComputador = 'NOTE-DED'), fieldbyname('Server').asstring, fieldbyname('Server2').asstring);
+                       Params.Values['Server']    := fieldbyname('Server').asstring;
                        Params.Values['Database']  := fieldbyname('Banco').asstring;
                        Params.Values['User_Name'] := 'sa';
                        Params.Values['Password']  := 'cybersoft@123';
@@ -82,11 +81,14 @@ begin
                   mUsuarioAtivo := cLogUser.text;
                   
                   // Pegando a foto do usuario no cadastro de usuarios.
-                  Usuarios := TFDQuery.Create(self);
-                  with Usuarios do begin
+                  tTmp := TFDQuery.Create(self);
+                  with tTmp do begin
                        Connection := Conecta;
                        sql.Clear;
-                       sql.add('select Foto from Usuarios where Email = '+quotedstr(Clientes.FieldByName('Email').asstring));
+                       sql.add('select Foto = (select Foto from Usuarios where Email = :pEmail)');
+                       sql.add('      ,Logo = (select Logo from Empresas where CNPJ  = :pCNPJ)');
+                       parambyname('pEmail').Value := Clientes.FieldByName('Email').asstring;
+                       parambyname('pCNPJ').Value  := Clientes.FieldByName('Empresa_CNPJ').asstring;
                        open;
                   end;
              end;
@@ -96,11 +98,17 @@ begin
              with MainForm do begin
                   lUser.Caption    := TelaLogin.cLogUser.Text;
                   lEmpresa.Caption := FormatMaskText('##.###.###/####-##;0', fieldByName('Empresa_CNPJ').asstring) + ' - '+fieldByName('Empresa').asstring;
-                  if FileExists(FieldByName('Logo').AsString) then begin
-                     iLogo.Picture.LoadFromFile(FieldByName('Logo').AsString);
+                  if FileExists(uniMainModule.mLogoCyber) then begin
+                     iLogoCyber.Picture.LoadFromFile(uniMainModule.mLogoCyber);
                   end;
-                  if FileExists(Usuarios.FieldByName('Foto').AsString) then begin
-                     iFoto.Picture.LoadFromFile(Usuarios.FieldByName('Foto').AsString);
+                  if FileExists(uniMainModule.mLogoAtlas) then begin
+                     iLogoAtlas.Picture.LoadFromFile(uniMainModule.mLogoAtlas);
+                  end;
+                  if FileExists(tTmp.FieldByName('Foto').AsString) then begin
+                     iFoto.Picture.LoadFromFile(tTmp.FieldByName('Foto').AsString);
+                  end;
+                  if FileExists(tTmp.FieldByName('Logo').AsString) then begin
+                     iLogoEmpresa.Picture.LoadFromFile(tTmp.FieldByName('Logo').AsString);
                   end;
              end;
           end;
@@ -127,6 +135,10 @@ begin
 
      pLogin.Left := (TelaLogin.Width - pLogin.Width) div 2;
      pLogin.Top  := (TelaLogin.Height- pLogin.Height) div 2;
+     
+     if FileExists(uniMainModule.mLogoCyber) then begin
+        iLogoCyber.Picture.LoadFromFile(uniMainModule.mLogoCyber);
+     end;
 
      //-----------------------------[ REMOVER APÓS TESTES ]--------------------------------\\
      cLogUser.text  := '';
