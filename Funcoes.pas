@@ -3,9 +3,8 @@ unit Funcoes;
 interface
 
 uses
-    SysUtils, Windows, FireDAC.Comp.Client, Dialogs, MaskUtils, System.Variants, DB, Forms, uniSpeedButton, uniPanel, UniPageControl, System.Classes,
-    uniGUIForm, uniGUIFrame, uniMemo, DBCommon, uniDBLookUpComboBox, uniDBComboBox, uniComboBox, uniDBDateTimePicker, uniDBEdit, uniEdit, CalcExpress,
-    uniGuiDialogs, TypInfo, uniSweetAlert, FireDAC.Stan.Param, uniMainMenu, uniDBNavigator, uniButton, uniScrollBox, System.RegularExpressions, System.Rtti, uniStringGrid;
+    SysUtils, Windows, FireDAC.Comp.Client, Dialogs, MaskUtils, System.Variants, DB, Forms, uniSpeedButton, uniPanel, UniPageControl, System.Classes, CalcExpress,
+    uniGUIForm, uniGUIFrame, uniMemo, DBCommon, uniDBLookUpComboBox, uniDBComboBox, uniComboBox, uniDBDateTimePicker, uniDBEdit, uniEdit, uniGuiDialogs, TypInfo, uniSweetAlert, FireDAC.Stan.Param, uniMainMenu, uniDBNavigator, uniButton, uniScrollBox, System.RegularExpressions, System.Rtti, uniStringGrid;
 
 
 // Funções de checagens.

@@ -268,6 +268,7 @@ type
     gAdicoes: TUniDBGrid;
     ProcessosImpItensDUIMP: TStringField;
     UniSpeedButton1: TUniSpeedButton;
+    tFOB: TFDQuery;
     procedure bSairClick(Sender: TObject);
     procedure UniFormShow(Sender: TObject);
     procedure cCFOPChange(Sender: TObject);
@@ -292,6 +293,9 @@ type
    ,mOperacao: integer;
     mEstado: string;
     mDescricao: widestring;
+    SelSerial: boolean;
+    mValorInformado
+   ,mQtdeInformado: real;
   end;
 
 function fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP;
@@ -315,15 +319,21 @@ end;
 
 procedure TfFatPedidoItensDUIMP.bAddItemClick(Sender: TObject);
 begin
-     fFatPedidoItensDUIMPItem.cProduto.Value  := ProcessosImpItens.FieldByName('Codigo_Mercadoria').asinteger;
-     fFatPedidoItensDUIMPItem.cDescricao.text := ProcessosImpItens.FieldByName('Descricao').asstring;
-     fFatPedidoItensDUIMPItem.mProcesso       := '1606875444'; //tProcesso.fieldbyname('Processo').asstring;
+     SelSerial       := false;
+     mValorInformado := 0;
+     mQtdeInformado  := 0;
+     fFatPedidoItensDUIMPItem.mProduto   := ProcessosImpItens.FieldByName('Codigo_Mercadoria').asinteger;
+     fFatPedidoItensDUIMPItem.mDescricao := ProcessosImpItens.FieldByName('Descricao').asstring;
+     fFatPedidoItensDUIMPItem.mProcesso  := DUIMP.fieldbyname('Processo').asstring;
+     fFatPedidoItensDUIMPItem.mPedido    := mPedido;
      fFatPedidoItensDUIMPItem.ShowModal;
 
-//     unimemo1.Lines.Add(mDescricao);
-     FiltraTabelas(ProcessosImpItens.FieldByName('Codigo_Mercadoria').Value);
-     AddItem;
-     ProcessosImpItens.Refresh;
+     if SelSerial then begin
+        FiltraTabelas(ProcessosImpItens.FieldByName('Codigo_Mercadoria').Value);
+        AddItem;
+        ProcessosImpItens.Refresh;
+        PedidosNFItens.Refresh;
+     end;
 end;
 
 procedure TfFatPedidoItensDUIMP.bAddTudoClick(Sender: TObject);
@@ -431,6 +441,13 @@ begin
                     procedure(Comp:TComponent; ARes: Integer)
                     begin
                           if ARes = mrYes then begin
+                             with ttmp do begin 
+                                  sql.Clear;
+                                  sql.Add('update ProdutosSeriais set Pedido = null where Produto = :pProduto and Pedido = :pPedido');
+                                  parambyname('pProduto').Value := PedidosNFItens.fieldbyname('Codigo_Mercadoria').AsInteger;
+                                  parambyname('pPedido').Value  := PedidosNFItens.fieldbyname('Pedido').AsInteger;
+                                  execute;
+                             end;
                              delete;
                              Alerta.Text := 'Itens removido do Pedido!';
                              Alerta.Execute;
@@ -522,6 +539,131 @@ begin
              //sql.SaveToFile('c:\temp\Pedidos_Itens_Processo.sql');
              open;
         end;
+
+        // Totalizando as despesas de custo do processo no financeiro.
+        // Totalizando o FOB_ME dos produtos com despesas seletiva.
+        {
+        tProcessoMestre.SQL.Clear;
+        tProcessoMestre.SQL.Add('SELECT Numero_Declaracao FROM ProcessosDocumentos WHERE Processo = :pMestre');
+        tProcessoMestre.ParamByName('pMestre').AsString := ProcessosDOCProcesso_Mestre.Value;
+        tProcessoMestre.Open;
+        }
+        (*
+        with tFOB do begin
+             sql.Clear;
+             sql.Add('select FOB_Total       = isnull((select round(sum(Valor_SemAdValorem * Quantidade), 2) from ProcessosImpItens where (DI = :pDI)), 0) ');
+             sql.Add('      ,FOB_Seletivo    = isnull((select round(sum(Valor_SemAdValorem * Quantidade), 2) from ProcessosImpItens where DI = :pDI and (select Custo_Seletivo from NCM where(NCM.NCM = ProcessosImpItens.NCM)) = 1), 0)');
+             sql.Add('      ,FOB_Mestre      = isnull((select round(sum(Valor_SemAdValorem * Quantidade), 2) from ProcessosImpItens where DI = :pDIMestre), 0)');
+             sql.Add('      ,CIF_Total       = isnull((select sum(FOB + Frete + Seguro + II) from ProcessosDocumentos where Numero_Declaracao = :pDI), 0)');
+             sql.Add('      ,CIF_Mestre      = nullif(0,(select sum(FOB + Frete + Seguro + II) from ProcessosDocumentos where Processo = :pProcessoMestre))');
+             sql.Add('      ,FOBPISCOFINS_ME = isnull((select sum(ad.Valor_Unitario * ad.Quantidade) from ProcessosImpItens ad where ad.DI = :pDI and Valor_PIS <> 0), 1)');
+             paramByName('pDI').AsString             := ProcessosDOCNumero_Declaracao.AsString;
+             paramByName('pDIMestre').AsString       := tProcessoMestre.FieldByName('Numero_Declaracao').AsString;
+             paramByName('pProcessoMestre').AsString := ProcessosDOCProcesso_Mestre.AsString;
+             //sqL.SaveToFile('c:\temp\Pedidos_Itens_tFOB.sql');
+             open;
+        end;
+        // Totalizando as despesas de custo do processo no financeiro.
+        tDespesas.SQL.Clear;
+        If PedidosSaida_Entrada.Value = 0 then begin
+           If ProcessosDOCEntreposto.AsBoolean = true then begin
+              // Pegando o FOB_ME do Processo MESTRE.
+              with tProcessoMestre do begin
+                   sql.clear;
+                   sql.add('select FOB_ME = isnull(FOB_ME,0)');
+                   sql.add('      ,Seguro_ME = isnull(Seguro_ME,0)');
+                   sql.add('      ,Frete_ME = isnull(Frete_ME,0)');
+                   sql.add('      ,Ad_Valorem = isnull(Ad_Valorem,0)');
+                   sql.add('      ,Taxa_FOB = isnull(Taxa_FOB,0)');
+                   sql.add('from ProcessosDocumentos pd');
+                   sql.add('where pd.Processo = :pProcesso');
+                   paramByName('pProcesso').AsString := ProcessosDOCProcesso_Mestre.Value;
+                   open;
+              end;
+              
+              // Somando as despesas do processo "MESTRE e do FILHO".
+              If ConfiguracaoValor_Despesas.AsInteger = 0 then begin
+                 tDespesas.SQL.Add('SELECT ISNULL((SELECT SUM(Valor_Total) FROM PagarReceber WHERE (Processo = :pProcesso      ) AND (PagarReceber.Custo_Entrada  = 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0) <> 1) AND (Tipo = ''P'')), 0) AS Valor_Despesas,');
+                 tDespesas.SQL.Add('       ISNULL((SELECT SUM(Valor_Total) FROM PagarReceber WHERE (Processo = :pProcesso      ) AND (PagarReceber.Custo_Entrada <> 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0)  = 1) AND (Tipo = ''P'')), 0) AS Valor_Seletivo,');
+                 tDespesas.SQL.Add('       ISNULL((SELECT SUM(Valor_Total) FROM PagarReceber WHERE (Processo = :pProcesso      ) AND (PagarReceber.Custo_Outros   = 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0) <> 1) AND (Tipo = ''P'')), 0) AS Valor_DespesasOutros,');
+                 tDespesas.SQL.Add('       ISNULL((SELECT SUM(Valor_Total) FROM PagarReceber WHERE (Processo = :pProcessoMestre) AND (Tipo = ''P'') AND (LTRIM(RTRIM(Processo)) <> '''') AND (PagarReceber.Custo_Entrada = 1)), 0)               AS Valor_DespesasMestre');
+              end else begin
+                 tDespesas.SQL.Add('SELECT ISNULL((SELECT SUM(Valor_Total+ISNULL(Desconto, 0)) FROM PagarReceber WHERE (Processo = :pProcesso      ) AND (PagarReceber.Custo_Entrada  = 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0) <> 1) AND (Tipo = ''P'')), 0) AS Valor_Despesas,');
+                 tDespesas.SQL.Add('       ISNULL((SELECT SUM(Valor_Total+ISNULL(Desconto, 0)) FROM PagarReceber WHERE (Processo = :pProcesso      ) AND (PagarReceber.Custo_Entrada <> 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0)  = 1) AND (Tipo = ''P'')), 0) AS Valor_Seletivo,');
+                 tDespesas.SQL.Add('       ISNULL((SELECT SUM(Valor_Total+ISNULL(Desconto, 0)) FROM PagarReceber WHERE (Processo = :pProcesso      ) AND (PagarReceber.Custo_Outros   = 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0) <> 1) AND (Tipo = ''P'')), 0) AS Valor_DespesasOutros,');
+                 tDespesas.SQL.Add('       ISNULL((SELECT SUM(Valor_Total+ISNULL(Desconto, 0)) FROM PagarReceber WHERE (Processo = :pProcessoMestre) AND (Tipo = ''P'') AND (LTRIM(RTRIM(Processo)) <> '''') AND (PagarReceber.Custo_Entrada = 1)), 0)               AS Valor_DespesasMestre');
+              End;
+
+              tDespesas.ParamByName('pProcessoMestre').AsString := ProcessosDOCProcesso_Mestre.Value;
+           end else begin
+              If ConfiguracaoValor_Despesas.AsInteger = 0 then begin
+                 tDespesas.SQL.Add('SELECT ISNULL((SELECT SUM(Valor_Total) FROM PagarReceber WHERE (Processo = :pProcesso) AND (PagarReceber.Custo_Entrada  = 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0) <> 1) AND (Tipo = ''P'')), 0) AS Valor_Despesas,');
+                 tDespesas.SQL.Add('       ISNULL((SELECT SUM(Valor_Total) FROM PagarReceber WHERE (Processo = :pProcesso) AND (PagarReceber.Custo_Outros   = 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0) <> 1) AND (Tipo = ''P'')), 0) AS Valor_DespesasOutros,');
+                 tDespesas.SQL.Add('       ISNULL((SELECT SUM(Valor_Total) FROM PagarReceber WHERE (Processo = :pProcesso) AND (PagarReceber.Custo_Entrada <> 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0)  = 1) AND (Tipo = ''P'')), 0) AS Valor_Seletivo,');
+                 tDespesas.SQL.Add('       0 AS Valor_DespesasMestre');
+              end else begin
+                 tDespesas.SQL.Add('SELECT ISNULL((SELECT SUM(Valor_Total+ISNULL(Desconto, 0)) FROM PagarReceber WHERE (Processo = :pProcesso) AND (PagarReceber.Custo_Entrada = 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0) <> 1) AND (Tipo = ''P'')), 0) AS Valor_Despesas,');
+                 tDespesas.SQL.Add('       ISNULL((SELECT SUM(Valor_Total+ISNULL(Desconto, 0)) FROM PagarReceber WHERE (Processo = :pProcesso) AND (PagarReceber.Custo_Outros  = 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0) <> 1) AND (Tipo = ''P'')), 0) AS Valor_DespesasOutros,');
+                 tDespesas.SQL.Add('       ISNULL((SELECT SUM(Valor_Total+ISNULL(Desconto, 0)) FROM PagarReceber WHERE (Processo = :pProcesso) AND (PagarReceber.Custo_Entrada<> 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0)  = 1) AND (Tipo = ''P'')), 0) AS Valor_Seletivo,');
+                 tDespesas.SQL.Add('       0 AS Valor_DespesasMestre');
+              End;
+           End;
+        end else begin
+           If ProcessosDOCEntreposto.AsBoolean = true then begin
+              // Pegando o FOB_ME do Processo MESTRE.
+              with tProcessoMestre do begin
+                   sql.clear;
+                   sql.add('select FOB_ME = isnull(FOB_ME,0)');
+                   sql.add('      ,Seguro_ME = isnull(Seguro_ME,0)');
+                   sql.add('      ,Frete_ME = isnull(Frete_ME,0)');
+                   sql.add('      ,Ad_Valorem = isnull(Ad_Valorem,0)');
+                   sql.add('      ,Taxa_FOB = isnull(Taxa_FOB,0)');
+                   sql.add('from ProcessosDocumentos pd');
+                   sql.add('where pd.Processo = :pProcesso');
+                   paramByName('pProcesso').AsString := ProcessosDOCProcesso_Mestre.Value;
+                   open;
+              end;
+               
+              // Somando as despesas do processo "MESTRE e do FILHO".
+              If ConfiguracaoValor_Despesas.AsInteger = 0 then begin
+                 tDespesas.SQL.Add('SELECT ISNULL((SELECT SUM(Valor_Total) FROM PagarReceber WHERE (Processo = :pProcesso      ) AND (PagarReceber.CustoConta   = 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0) <> 1) AND (Tipo = ''P'')), 0) AS Valor_Despesas,');
+                 tDespesas.SQL.Add('       ISNULL((SELECT SUM(Valor_Total) FROM PagarReceber WHERE (Processo = :pProcesso      ) AND (PagarReceber.Custo_Outros = 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0) <> 1) AND (Tipo = ''P'')), 0) AS Valor_DespesasOutros,');
+                 tDespesas.SQL.Add('       ISNULL((SELECT SUM(Valor_Total) FROM PagarReceber WHERE (Processo = :pProcesso      ) AND (PagarReceber.CustoConta  <> 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0)  = 1) AND (Tipo = ''P'')), 0) AS Valor_Seletivo,');
+                 tDespesas.SQL.Add('       ISNULL((SELECT SUM(Valor_Total) FROM PagarReceber WHERE (Processo = :pProcessoMestre) AND (Tipo = ''P'') AND (LTRIM(RTRIM(Processo)) <> '''') AND (PagarReceber.CustoConta = 1)), 0) AS Valor_DespesasMestre');
+              end else begin
+                 tDespesas.SQL.Add('SELECT ISNULL((SELECT SUM(Valor_Total+ISNULL(Desconto, 0)) FROM PagarReceber WHERE (Processo = :pProcesso      ) AND (PagarReceber.CustoConta   = 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0) <> 1) AND (Tipo = ''P'')), 0) AS Valor_Despesas,');
+                 tDespesas.SQL.Add('       ISNULL((SELECT SUM(Valor_Total+ISNULL(Desconto, 0)) FROM PagarReceber WHERE (Processo = :pProcesso      ) AND (PagarReceber.Custo_Outros = 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0) <> 1) AND (Tipo = ''P'')), 0) AS Valor_DespesasOutros,');
+                 tDespesas.SQL.Add('       ISNULL((SELECT SUM(Valor_Total+ISNULL(Desconto, 0)) FROM PagarReceber WHERE (Processo = :pProcesso      ) AND (PagarReceber.CustoConta  <> 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0)  = 1) AND (Tipo = ''P'')), 0) AS Valor_Seletivo,');
+                 tDespesas.SQL.Add('       ISNULL((SELECT SUM(Valor_Total+ISNULL(Desconto, 0)) FROM PagarReceber WHERE (Processo = :pProcessoMestre) AND (Tipo = ''P'') AND (LTRIM(RTRIM(Processo)) <> '''') AND (PagarReceber.CustoConta = 1)), 0) AS Valor_DespesasMestre');
+              End;
+
+              tDespesas.ParamByName('pProcessoMestre').AsString := ProcessosDOCProcesso_Mestre.Value;
+           end else begin
+              If ConfiguracaoValor_Despesas.AsInteger = 0 then begin
+                 tDespesas.SQL.Add('SELECT ISNULL((SELECT SUM(Valor_Total) FROM PagarReceber WHERE (Processo = :pProcesso) AND (PagarReceber.CustoConta   = 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0) <> 1) AND (Tipo = ''P'')), 0) AS Valor_Despesas,');
+                 tDespesas.SQL.Add('       ISNULL((SELECT SUM(Valor_Total) FROM PagarReceber WHERE (Processo = :pProcesso) AND (PagarReceber.Custo_Outros = 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0) <> 1) AND (Tipo = ''P'')), 0) AS Valor_DespesasOutros,');
+                 tDespesas.SQL.Add('       ISNULL((SELECT SUM(Valor_Total) FROM PagarReceber WHERE (Processo = :pProcesso) AND (PagarReceber.CustoConta  <> 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0)  = 1) AND (Tipo = ''P'')), 0) AS Valor_Seletivo,');
+                 tDespesas.SQL.Add('       0 AS Valor_DespesasMestre');
+              end else begin
+                 tDespesas.SQL.Add('SELECT ISNULL((SELECT SUM(Valor_Total+ISNULL(Desconto, 0)) FROM PagarReceber WHERE (Processo = :pProcesso) AND (PagarReceber.CustoConta   = 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0) <> 1) AND (Tipo = ''P'')), 0) AS Valor_Despesas,');
+                 tDespesas.SQL.Add('       ISNULL((SELECT SUM(Valor_Total+ISNULL(Desconto, 0)) FROM PagarReceber WHERE (Processo = :pProcesso) AND (PagarReceber.Custo_Outros = 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0) <> 1) AND (Tipo = ''P'')), 0) AS Valor_DespesasOutros,');
+                 tDespesas.SQL.Add('       ISNULL((SELECT SUM(Valor_Total+ISNULL(Desconto, 0)) FROM PagarReceber WHERE (Processo = :pProcesso) AND (PagarReceber.CustoConta  <> 1) AND (ISNULL(PagarReceber.Custo_Seletivo, 0)  = 1) AND (Tipo = ''P'')), 0) AS Valor_Seletivo,');
+                 tDespesas.SQL.Add('       0 AS Valor_DespesasMestre');
+              End;
+           End;
+        End;
+        tDespesas.ParamByName('pProcesso').AsString := ProcessosDOCProcesso.Value;
+        tDespesas.Open;
+
+        If (ProcessosDOCEntreposto.AsBoolean = true) then begin
+           If tFOB.FieldByName('FOB_Mestre').Value <= 0 then begin
+              MessageDlg('Houve falha na soma do "FOB" do Processo "MESTRE"'+#13+#13+'Verifique se existem os itens da "DA/DI".', mtError,[mbOK], 0);
+           End;
+        End;
+        *)
+
+
+        
      end;
 end;
 
@@ -740,7 +882,6 @@ begin
           parambyname('pEstado').Value := mEstado;
           open;
      end;
-     
      // Sequencial do item no pedido.
      with tTmp do begin
           sql.Clear;
@@ -748,7 +889,6 @@ begin
           ParamByName('pPedido').AsInteger := mPedido;
           Open;
      end;
-     
      // Remove caracteres de controle da descrição do produto.
      if trim(mDescricao) = '' then begin
         mDescricao := stringreplace(Produtos.fieldbyname('Descricao').Value, #13, '', [rfReplaceAll]);
@@ -756,7 +896,6 @@ begin
         mDescricao := stringreplace(mDescricao, #10, '', [rfReplaceAll]);
         mDescricao := RemoveCaracterXML(mDescricao);
      end;
-
      // Adiciona Pedido e Ordem do item na descrição.Ajuste Para PRADOTEX.
      if trim(ProcessosImpItens.FieldByName('Pedido').asstring) <> '' then begin
         mDescricao := mDescricao + ' PO <['+ProcessosImpItens.FieldByName('Pedido').asstring+']> ITEM [<'+ProcessosImpItens.FieldByName('Ordem').asstring+'>]';
@@ -797,16 +936,21 @@ begin
                fieldbyname('Item_DUIMP').Value            := ProcessosImpItens.FieldByName('Item').Value;
                fieldbyname('NCM').Value                   := ProcessosImpItens.FieldByName('NCM').Value;
                fieldbyname('Adicao').Value                := ProcessosImpItens.FieldByName('Adicao').Value;
-               fieldbyname('Quantidade').Value            := ProcessosImpItens.FieldByName('Quantidade').Value;
+               fieldbyname('Quantidade').Value            := iif(mQtdeInformado = 0, ProcessosImpItens.FieldByName('Quantidade').Value, mQtdeInformado);
                fieldbyname('Peso_Liquido').Value          := ProcessosImpItens.FieldByName('Peso_Liquido').Value;
                fieldbyname('PO').Value                    := ProcessosImpItens.Fieldbyname('Pedido').Value;
                fieldbyname('Ordem').Value                 := ProcessosImpItens.Fieldbyname('Ordem').Value;
 
-               //fieldbyname('Valor_Unitario').value := Produtos.fieldbyname('Valor_Venda').ascurrency;
-               if tFormulasItens.Locate('Campo', 'Valor_Unitario', [loCaseInsensitive]) then begin
-                  gFormula.Cells[0, gFormula.RowCount-1] := tFormulasItens.fieldbyname('Campo').AsString;
-                  gFormula.Cells[1, gFormula.RowCount-1] := tFormulasItens.fieldbyname('Formula').AsString;
-                  fieldbyname('Valor_Unitario').value    := CalculaMacro(self, tFormulasItens.fieldbyname('Formula').AsString);
+               if mValorINformado = 0 then begin
+                  if tFormulasItens.Locate('Campo', 'Valor_Unitario', [loCaseInsensitive]) then begin
+                     gFormula.Cells[0, gFormula.RowCount-1] := tFormulasItens.fieldbyname('Campo').AsString;
+                     gFormula.Cells[1, gFormula.RowCount-1] := tFormulasItens.fieldbyname('Formula').AsString;
+                     fieldbyname('Valor_Unitario').value    := CalculaMacro(self, tFormulasItens.fieldbyname('Formula').AsString);
+                  end;
+               end else begin
+                  gFormula.Cells[0, gFormula.RowCount-1] := 'Valor_Unitario';
+                  gFormula.Cells[1, gFormula.RowCount-1] := 'Informado pelo usuário';
+                  fieldbyname('Valor_Unitario').value    := mValorInformado;
                end;
 
                if not CalculaTudo(PedidosNF.fieldbyname('Operacao').asinteger, 'Item', gFormula, cLog, PedidosNFItens, nil, self) then begin

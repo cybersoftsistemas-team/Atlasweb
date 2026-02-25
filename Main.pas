@@ -279,7 +279,7 @@ begin
                      if fileexists(fieldbyname('Icone').asstring) then begin
                         Picture.LoadFromFile(fieldbyname('Icone').asstring);
                      end else begin
-                        Picture.LoadFromFile('Atalho0b.png');
+                        Picture.LoadFromFile(mpath+'images\Atalho0b.png');
                      end;
                      OnClick := MainForm.Botao_Atalho;
                 end;

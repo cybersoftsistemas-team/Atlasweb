@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, uniGUITypes, uniGUIAbstractClasses, uniGUIClasses, uniGUIForm, uniMemo,
   uniDBMemo, uniEdit, uniBasicGrid, uniDBGrid, uniGUIBaseClasses, uniPanel, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
   FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, uniButton,
-  uniBitBtn, uniSpeedButton, CalcExpress, uniSweetAlert, uniMultiItem, uniComboBox, uniSpinEdit, uniLabel;
+  uniBitBtn, uniSpeedButton, uniSweetAlert, uniMultiItem, uniComboBox, uniSpinEdit, uniLabel, CalcExpress;
 
 type
   TfCadOperacaoFiscalFormula = class(TUniForm)

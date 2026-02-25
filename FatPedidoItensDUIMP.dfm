@@ -184,10 +184,11 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
           object UniContainerPanel3: TUniContainerPanel
             AlignWithMargins = True
             Left = 316
-            Top = 3
+            Top = 8
             Width = 998
-            Height = 523
+            Height = 518
             Hint = ''
+            Margins.Top = 8
             ParentColor = False
             Align = alClient
             ClientEvents.UniEvents.Strings = (
@@ -195,11 +196,13 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
                 '= '#39'Painel'#39';'#13#10'}')
             TabOrder = 0
+            ExplicitTop = 3
+            ExplicitHeight = 523
             object gItens: TUniDBGrid
               Left = 0
               Top = 278
               Width = 998
-              Height = 245
+              Height = 240
               Hint = ''
               HeaderTitle = 'ITENS DO PEDIDO'
               HeaderTitleAlign = taCenter
@@ -363,10 +366,11 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
           object UniPanel4: TUniPanel
             AlignWithMargins = True
             Left = 3
-            Top = 3
+            Top = 8
             Width = 307
-            Height = 523
+            Height = 518
             Hint = ''
+            Margins.Top = 8
             Align = alLeft
             TabOrder = 1
             ClientEvents.UniEvents.Strings = (
@@ -376,6 +380,9 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
             BorderStyle = ubsInset
             ShowCaption = False
             Caption = ''
+            ExplicitLeft = -69
+            ExplicitTop = 87
+            ExplicitHeight = 516
             object cQtdePerc: TUniFormattedNumberEdit
               Left = 18
               Top = 18
@@ -1993,5 +2000,10 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
       '')
     Left = 456
     Top = 543
+  end
+  object tFOB: TFDQuery
+    Connection = UniMainModule.Conecta
+    Left = 609
+    Top = 556
   end
 end

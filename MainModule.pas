@@ -58,7 +58,7 @@ var
    i:integer;
    aINI:Tinifile;
 begin
-      // Carregando os dados de conexão do banco de dados "ERPimporta.ini".
+      // Carregando os dados de conexão do banco de dados "AtlasWeb.ini".
       mPath      := GetDLLPath;
       aINI       := Tinifile.Create(mPath+'\AtlasWeb.ini');
       mLogoCyber := aINI.ReadString('SERVIDOR', 'LogoCyber', EmptyStr);

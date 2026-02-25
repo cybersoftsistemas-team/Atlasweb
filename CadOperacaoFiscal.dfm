@@ -95,7 +95,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       ImageIndex = 7
       TabOrder = 6
       OnClick = bFecharClick
-      ExplicitLeft = 454
     end
     object bDuplicar: TUniButton
       Left = 369
@@ -155,7 +154,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       ImageIndex = 19
       TabOrder = 9
       OnClick = UniSpeedButton1Click
-      ExplicitLeft = 403
     end
     object PanelCopia: TUniContainerPanel
       AlignWithMargins = True
@@ -171,7 +169,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       ParentColor = False
       Align = alLeft
       TabOrder = 10
-      ExplicitLeft = 610
       object cCodOper: TUniNumberEdit
         AlignWithMargins = True
         Left = 3
@@ -192,7 +189,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
         FieldLabelSeparator = ' '
         DecimalPrecision = 0
         DecimalSeparator = #0
-        ExplicitLeft = -103
       end
       object bCancelFor: TUniSpeedButton
         AlignWithMargins = True
@@ -213,9 +209,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
         ImageIndex = 26
         TabOrder = 2
         OnClick = bCancelForClick
-        ExplicitLeft = 297
-        ExplicitTop = 3
-        ExplicitHeight = 25
       end
       object bCopiaFor: TUniSpeedButton
         AlignWithMargins = True
@@ -236,9 +229,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
         ImageIndex = 4
         TabOrder = 3
         OnClick = bCopiaForClick
-        ExplicitLeft = 297
-        ExplicitTop = 3
-        ExplicitHeight = 25
       end
     end
   end
@@ -248,7 +238,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     Width = 1407
     Height = 765
     Hint = ''
-    ActivePage = aLista
+    ActivePage = TabSheet1
     Plain = True
     Align = alClient
     ClientEvents.UniEvents.Strings = (
@@ -259,10 +249,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -297,6 +283,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             Title.Font.Style = [fsBold]
             Width = 60
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Descricao'
@@ -305,6 +292,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             Title.Font.Style = [fsBold]
             Width = 576
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'ES_Descricao'
@@ -314,6 +302,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             Width = 67
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Emissao_Descricao'
@@ -341,6 +330,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             Width = 50
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end>
       end
       object pBarraPesq: TUniPanel
@@ -392,10 +382,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     object TabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Par'#226'metros Diversos'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -411,10 +397,10 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
         DesignSize = (
           1397
           735)
-        ScrollHeight = 710
+        ScrollHeight = 702
         object pFicha1: TUniPanel
-          Left = 235
-          Top = 28
+          Left = 200
+          Top = 20
           Width = 686
           Height = 682
           Hint = ''
@@ -434,9 +420,9 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           Color = clTeal
           object cCodigo: TUniDBEdit
             Left = 14
-            Top = 17
-            Width = 87
-            Height = 50
+            Top = 13
+            Width = 213
+            Height = 25
             Hint = ''
             Enabled = False
             ShowHint = True
@@ -444,24 +430,20 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             DataSource = dsOperacaoFiscal
             TabOrder = 1
             FieldLabel = 'C'#243'digo'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             BorderStyle = ubsInset
           end
           object cDescricao: TUniDBEdit
-            Left = 107
-            Top = 17
-            Width = 565
-            Height = 50
+            Left = 14
+            Top = 41
+            Width = 658
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Descricao'
             DataSource = dsOperacaoFiscal
             TabOrder = 2
             FieldLabel = 'Descri'#231#227'o'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             BorderStyle = ubsInset
           end
@@ -1277,8 +1259,8 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           object UniDBLookupComboBox1: TUniDBLookupComboBox
             Left = 14
             Top = 69
-            Width = 250
-            Height = 50
+            Width = 658
+            Height = 25
             Hint = ''
             ShowHint = True
             ParentShowHint = False
@@ -1292,8 +1274,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             TabOrder = 10
             Color = clWindow
             FieldLabel = 'Beneficio Fiscal'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             NormalizeString = True
           end
@@ -1322,10 +1302,10 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
               'D')
           end
           object cFinalidade: TUniDBComboBox
-            Left = 279
-            Top = 69
-            Width = 250
-            Height = 50
+            Left = 14
+            Top = 97
+            Width = 658
+            Height = 25
             Hint = ''
             ShowHint = True
             AnyMatch = True
@@ -1342,9 +1322,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
               'Imobilizado'
               'Outras')
             TabOrder = 12
-            FieldLabel = 'Finalidade da Mercadoria'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabel = 'Finalidade'
             FieldLabelSeparator = ' '
             ClearButton = True
             IconItems = <>
@@ -1355,10 +1333,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     object UniTabSheet3: TUniTabSheet
       Hint = ''
       Caption = 'Par'#226'metros NF Terceiros'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox7: TUniScrollBox
         Left = 0
         Top = 0
@@ -1617,10 +1591,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       Hint = ''
       ImageIndex = 4
       Caption = 'Par'#226'metros Fiscais'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0
@@ -2460,6 +2430,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
                 Title.Font.Style = [fsBold]
                 Width = 70
                 Font.Name = 'Calibri'
+                ReadOnly = True
               end
               item
                 FieldName = 'Tipo'
@@ -2468,6 +2439,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
                 Title.Font.Style = [fsBold]
                 Width = 66
                 Font.Name = 'Calibri'
+                ReadOnly = True
               end
               item
                 FieldName = 'Descricao'
@@ -2476,6 +2448,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
                 Title.Font.Style = [fsBold]
                 Width = 256
                 Font.Name = 'Calibri'
+                ReadOnly = True
               end
               item
                 FieldName = 'Formula'
@@ -2484,6 +2457,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
                 Title.Font.Style = [fsBold]
                 Width = 823
                 Font.Name = 'Calibri'
+                ReadOnly = True
                 DisplayMemo = True
               end
               item
@@ -2493,6 +2467,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
                 Title.Font.Style = [fsBold]
                 Width = 43
                 Font.Name = 'Calibri'
+                ReadOnly = True
               end>
           end
           object UniPanel3: TUniPanel
@@ -2597,10 +2572,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       Hint = ''
       ImageIndex = 3
       Caption = 'Informa'#231#245'es Complementares'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox4: TUniScrollBox
         Left = 0
         Top = 0
@@ -2703,6 +2674,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
                 Title.Font.Style = [fsBold]
                 Width = 339
                 Font.Name = 'Calibri'
+                ReadOnly = True
               end
               item
                 FieldName = 'Referencia'
@@ -2711,6 +2683,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
                 Title.Font.Style = [fsBold]
                 Width = 133
                 Font.Name = 'Calibri'
+                ReadOnly = True
               end
               item
                 FieldName = 'Campo'
@@ -2719,6 +2692,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
                 Title.Font.Style = [fsBold]
                 Width = 234
                 Font.Name = 'Calibri'
+                ReadOnly = True
               end>
           end
           object UniDBMemo1: TUniDBMemo
@@ -2744,10 +2718,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Parametriza'#231#227'o Financeira'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox3: TUniScrollBox
         Left = 0
         Top = 0
@@ -2899,10 +2869,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       Hint = ''
       ImageIndex = 3
       Caption = 'Parametriza'#231#227'o Cont'#225'bil'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox6: TUniScrollBox
         Left = 0
         Top = 0
@@ -3237,6 +3203,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
                 Title.Caption = 'Lan'#231'amento'
                 Width = 141
                 Font.Name = 'Calibri'
+                ReadOnly = True
               end
               item
                 FieldName = 'Conta_Debito'
@@ -3244,6 +3211,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
                 Title.Caption = 'Conta (D)'
                 Width = 80
                 Font.Name = 'Calibri'
+                ReadOnly = True
               end
               item
                 FieldName = 'Conta_Credito'
@@ -3251,6 +3219,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
                 Title.Caption = 'Conta (C)'
                 Width = 80
                 Font.Name = 'Calibri'
+                ReadOnly = True
               end
               item
                 FieldName = 'Historico'
@@ -3258,6 +3227,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
                 Title.Caption = 'Hist'#243'rico'
                 Width = 75
                 Font.Name = 'Calibri'
+                ReadOnly = True
               end
               item
                 FieldName = 'Historico_Desc'
@@ -3265,6 +3235,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
                 Title.Caption = 'Descri'#231#227'o Hist'#243'rico'
                 Width = 342
                 Font.Name = 'Calibri'
+                ReadOnly = True
               end>
           end
         end

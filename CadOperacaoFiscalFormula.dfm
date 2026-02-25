@@ -664,6 +664,7 @@ object fCadOperacaoFiscalFormula: TfCadOperacaoFiscalFormula
           Width = 74
           Font.Name = 'Calibri'
           Alignment = taCenter
+          ReadOnly = True
         end
         item
           FieldName = 'Descricao'
@@ -672,6 +673,7 @@ object fCadOperacaoFiscalFormula: TfCadOperacaoFiscalFormula
           Title.Font.Style = [fsBold]
           Width = 304
           Font.Name = 'Calibri'
+          ReadOnly = True
         end>
     end
     object gCampos: TUniDBGrid
@@ -710,6 +712,7 @@ object fCadOperacaoFiscalFormula: TfCadOperacaoFiscalFormula
           Title.Font.Style = [fsBold]
           Width = 290
           Font.Name = 'Calibri'
+          ReadOnly = True
         end
         item
           FieldName = 'Referencia'
@@ -718,6 +721,7 @@ object fCadOperacaoFiscalFormula: TfCadOperacaoFiscalFormula
           Title.Font.Style = [fsBold]
           Width = 167
           Font.Name = 'Calibri'
+          ReadOnly = True
         end
         item
           FieldName = 'Campo'
@@ -726,6 +730,7 @@ object fCadOperacaoFiscalFormula: TfCadOperacaoFiscalFormula
           Title.Font.Style = [fsBold]
           Width = 245
           Font.Name = 'Calibri'
+          ReadOnly = True
         end>
     end
     object cPesqCampos: TUniEdit
@@ -823,6 +828,7 @@ object fCadOperacaoFiscalFormula: TfCadOperacaoFiscalFormula
           Title.Font.Style = [fsBold]
           Width = 45
           Font.Name = 'Calibri'
+          ReadOnly = True
         end
         item
           FieldName = 'Tipo'
@@ -832,6 +838,7 @@ object fCadOperacaoFiscalFormula: TfCadOperacaoFiscalFormula
           Width = 74
           Font.Name = 'Calibri'
           Alignment = taCenter
+          ReadOnly = True
         end
         item
           FieldName = 'Descricao'
@@ -840,6 +847,7 @@ object fCadOperacaoFiscalFormula: TfCadOperacaoFiscalFormula
           Title.Font.Style = [fsBold]
           Width = 313
           Font.Name = 'Calibri'
+          ReadOnly = True
         end>
     end
     object bAdicionarCalc: TUniSpeedButton

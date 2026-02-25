@@ -7,7 +7,7 @@ uses
   uniDBLookUpComboBox, uniDBCheckBox, uniScrollBox, uniSpeedButton, uniDateTimePicker, uniDBDateTimePicker, uniButton, uniBitBtn, uniDBNavigator, uniEdit, uniDBEdit, uniDBMemo, 
   uniBasicGrid, uniGUIBaseClasses, uniComboBox, UniGroupBox, uniSpinEdit, unimToggle, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, 
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, uniSweetAlert, Data.DB, Vcl.Menus, uniMainMenu, FireDAC.Comp.DataSet, FireDAC.Comp.Client, uniRadioGroup, 
-  uniMemo, uniMultiItem, uniDBComboBox, uniCheckBox, uniDBRadioGroup, Funcoes, uniSyntaxEditorBase, uniSyntaxEditor, uniListBox, uniDBListBox, uniDBLookupListBox, CalcExpress, unimMemo;
+  uniMemo, uniMultiItem, uniDBComboBox, uniCheckBox, uniDBRadioGroup, Funcoes, uniSyntaxEditorBase, uniSyntaxEditor, uniListBox, uniDBListBox, uniDBLookupListBox, unimMemo;
 
 type
   TfCadOperacaoFiscal = class(TUniFrame)
