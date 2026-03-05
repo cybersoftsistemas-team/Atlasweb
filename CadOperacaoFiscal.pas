@@ -166,7 +166,6 @@ type
     dstCentroCusto: TDataSource;
     tModalidade: TFDQuery;
     dstModalidade: TDataSource;
-    UniDBListBox1: TUniDBListBox;
     UniDBLookupComboBox2: TUniDBLookupComboBox;
     UniDBLookupComboBox3: TUniDBLookupComboBox;
     UniDBLookupComboBox4: TUniDBLookupComboBox;
@@ -342,11 +341,8 @@ type
     tOperCtb: TFDQuery;
     dstOperCtb: TDataSource;
     GrupoCtb: TUniGroupBox;
-    UniDBEdit2: TUniDBEdit;
     cContaD_Ctb: TUniDBLookupComboBox;
     cContaC_Ctb: TUniDBLookupComboBox;
-    UniDBEdit3: TUniDBEdit;
-    UniDBEdit4: TUniDBEdit;
     cHistCtb: TUniDBLookupComboBox;
     cCampoCtb: TUniDBComboBox;
     tHistorico: TFDQuery;

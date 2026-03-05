@@ -219,7 +219,7 @@ object fFinanceiro: TfFinanceiro
     Height = 795
     Hint = ''
     BodyRTL = False
-    ActivePage = UniTabSheet2
+    ActivePage = UniTabSheet1
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -231,11 +231,10 @@ object fFinanceiro: TfFinanceiro
       Hint = ''
       Caption = 'Movimento'
       object pFiltro: TUniPanel
-        AlignWithMargins = True
-        Left = 3
-        Top = 3
+        Left = 0
+        Top = 0
         Width = 400
-        Height = 761
+        Height = 767
         Hint = ''
         Align = alLeft
         TabOrder = 0
@@ -256,6 +255,9 @@ object fFinanceiro: TfFinanceiro
         ParentBackground = True
         Images = UniMainModule.imgBotoes
         ScrollDirection = sdVertical
+        ExplicitLeft = 3
+        ExplicitTop = 3
+        ExplicitHeight = 761
         object bFiltro: TUniSpeedButton
           Left = 109
           Top = 330
@@ -466,21 +468,24 @@ object fFinanceiro: TfFinanceiro
         end
       end
       object UniPanel6: TUniPanel
-        AlignWithMargins = True
-        Left = 409
-        Top = 3
-        Width = 795
-        Height = 761
+        Left = 400
+        Top = 0
+        Width = 807
+        Height = 767
         Hint = ''
         Align = alClient
         TabOrder = 1
         BorderStyle = ubsNone
         Caption = 'UniPanel6'
+        ExplicitLeft = 409
+        ExplicitTop = 3
+        ExplicitWidth = 795
+        ExplicitHeight = 761
         object UniPanel1: TUniPanel
           AlignWithMargins = True
           Left = 3
           Top = 3
-          Width = 789
+          Width = 801
           Height = 50
           Hint = ''
           Align = alTop
@@ -491,6 +496,7 @@ object fFinanceiro: TfFinanceiro
               '= '#39'Ficha'#39';'#13#10'}')
           BorderStyle = ubsNone
           Caption = ''
+          ExplicitWidth = 789
           object UniPanel2: TUniPanel
             Left = 0
             Top = 0
@@ -521,7 +527,7 @@ object fFinanceiro: TfFinanceiro
           object UniPanel3: TUniPanel
             Left = 141
             Top = 0
-            Width = 648
+            Width = 660
             Height = 50
             Hint = ''
             Align = alClient
@@ -529,10 +535,11 @@ object fFinanceiro: TfFinanceiro
             BorderStyle = ubsNone
             Caption = ''
             Color = clTeal
+            ExplicitWidth = 648
             object cMes: TUniSegmentedButton
               Left = 0
               Top = 0
-              Width = 648
+              Width = 660
               Height = 25
               Cursor = crHandPoint
               Hint = ''
@@ -597,11 +604,12 @@ object fFinanceiro: TfFinanceiro
                   'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
                   '= '#39'BotaoCor'#39';'#13#10'}')
               OnClick = cMesClick
+              ExplicitWidth = 648
             end
             object cDia: TUniSegmentedButton
               Left = 0
               Top = 25
-              Width = 648
+              Width = 660
               Height = 25
               Cursor = crHandPoint
               Hint = ''
@@ -711,14 +719,15 @@ object fFinanceiro: TfFinanceiro
                   'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
                   '= '#39'BotaoDegrade'#39';'#13#10'}')
               OnClick = cDiaClick
+              ExplicitWidth = 648
             end
           end
         end
         object UniPanel10: TUniPanel
           Left = 0
           Top = 56
-          Width = 795
-          Height = 591
+          Width = 807
+          Height = 597
           Hint = ''
           Align = alClient
           TabOrder = 2
@@ -728,11 +737,13 @@ object fFinanceiro: TfFinanceiro
               ' '#39'Painel'#39';'#13#10'}')
           BorderStyle = ubsNone
           Caption = ''
+          ExplicitWidth = 795
+          ExplicitHeight = 591
           object GradeLan: TUniDBGrid
             Left = 0
             Top = 0
-            Width = 795
-            Height = 452
+            Width = 807
+            Height = 458
             Hint = ''
             ShowHint = True
             ParentShowHint = False
@@ -854,11 +865,18 @@ object fFinanceiro: TfFinanceiro
                 ReadOnly = True
               end
               item
+                FieldName = 'Valor_Baixas'
+                Title.Alignment = taCenter
+                Title.Caption = 'Valor Baixado'
+                Width = 80
+                ReadOnly = True
+              end
+              item
                 FieldName = 'Valor_Aberto'
                 Title.Alignment = taCenter
-                Title.Caption = 'Valor Aberto'
+                Title.Caption = 'Saldo'
                 Title.Font.Style = [fsBold]
-                Width = 90
+                Width = 80
                 ReadOnly = True
               end
               item
@@ -872,8 +890,8 @@ object fFinanceiro: TfFinanceiro
           end
           object UniDBGrid1: TUniDBGrid
             Left = 0
-            Top = 452
-            Width = 795
+            Top = 458
+            Width = 807
             Height = 139
             Hint = ''
             ShowHint = True
@@ -966,8 +984,8 @@ object fFinanceiro: TfFinanceiro
         object UniPanel4: TUniPanel
           AlignWithMargins = True
           Left = 3
-          Top = 650
-          Width = 789
+          Top = 656
+          Width = 801
           Height = 108
           Hint = ''
           Align = alBottom
@@ -978,11 +996,13 @@ object fFinanceiro: TfFinanceiro
               ' '#39'Painel'#39';'#13#10'}')
           BorderStyle = ubsNone
           Caption = ''
+          ExplicitTop = 650
+          ExplicitWidth = 789
           object UniDBMemo1: TUniDBMemo
             AlignWithMargins = True
             Left = 3
             Top = 3
-            Width = 783
+            Width = 795
             Height = 73
             Hint = ''
             Align = alClient
@@ -990,11 +1010,12 @@ object fFinanceiro: TfFinanceiro
             FieldLabel = 'Obeserva'#231#245'es do t'#237'tulo'
             FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            ExplicitWidth = 783
           end
           object brTotais: TUniSegmentedButton
             Left = 0
             Top = 79
-            Width = 789
+            Width = 801
             Height = 29
             Hint = ''
             Items = <
@@ -1044,6 +1065,7 @@ object fFinanceiro: TfFinanceiro
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
                 ' '#39'BotaoCor'#39';'#13#10'}')
             AllowToggle = False
+            ExplicitWidth = 789
           end
         end
       end
@@ -3206,16 +3228,18 @@ object fFinanceiro: TfFinanceiro
       '      ,Baixa = Cast(0 as bit)'
       
         '      ,Nome = (select Nome_Financeiro from PlanoContas where Con' +
-        'ta = PR.Conta)'
+        'ta = pr.Conta)'
       
-        '      ,Beneficiario = (select Nome from Destinatarios where Codi' +
-        'go = PR.Destinatario)'
+        '      ,Beneficiario = (select Nome from Destinatarios dst where ' +
+        'dst.Codigo = pr.Beneficiario)'
       '      ,Valor_Juros'
       '      ,Valor_Multa'
       '      ,Valor_Desconto'
-      '      ,Valor_Parcela'
       '      ,Valor_Total'
       '      ,Valor_Operacao'
+      
+        '      ,Valor_Baixas = (select sum(isnull(Valor, 0)) from PagarRe' +
+        'ceberBaixas prb where prb.Titulo = pr.Titulo)'
       
         '      ,Valor_Aberto = Valor_Parcela - (select sum(isnull(Valor, ' +
         '0)) from PagarReceberBaixas prb where prb.Titulo = pr.Titulo)'
@@ -3321,6 +3345,22 @@ object fFinanceiro: TfFinanceiro
       Origin = 'Valor_Baixado'
       ReadOnly = True
       DisplayFormat = ',##0.00'
+    end
+    object ListaValor_Baixas: TCurrencyField
+      FieldName = 'Valor_Baixas'
+      Origin = 'Valor_Baixas'
+      ReadOnly = True
+      DisplayFormat = ',##0.00'
+    end
+    object ListaOrigem: TStringField
+      FieldName = 'Origem'
+      Origin = 'Origem'
+      FixedChar = True
+      Size = 2
+    end
+    object ListaVinculo: TIntegerField
+      FieldName = 'Vinculo'
+      Origin = 'Vinculo'
     end
   end
   object dsLista: TDataSource

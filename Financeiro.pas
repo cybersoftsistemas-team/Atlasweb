@@ -242,6 +242,9 @@ type
     UniButton1: TUniButton;
     UniContainerPanel1: TUniContainerPanel;
     EmpresasFechamento_Financeiro: TDateField;
+    ListaValor_Baixas: TCurrencyField;
+    ListaOrigem: TStringField;
+    ListaVinculo: TIntegerField;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
@@ -377,9 +380,9 @@ begin
      with tTmp do begin
           sql.Clear;
           sql.Add('select Total_Baixado = isnull(sum(prb.Valor), 0)');
-          sql.Add('from   PagarReceberBaixas prb');
-          sql.Add('where  Empresa = '+quotedstr(UniMainModule.mEmpresaAtiva) );
-          sql.Add('and    Titulo = '+Lista.FieldByName('Titulo').asstring);
+          sql.Add('from PagarReceberBaixas prb');
+          sql.Add('where Empresa = '+quotedstr(UniMainModule.mEmpresaAtiva) );
+          sql.Add('and Titulo = '+Lista.FieldByName('Titulo').asstring);
           Open;
 
           // Verifica se ainda existe saldo a liquidar.
@@ -1149,11 +1152,11 @@ begin
             sql.Add('      ,Valor_Juros');
             sql.Add('      ,Valor_Multa');
             sql.Add('      ,Valor_Desconto');
-            sql.Add('      ,Valor_Parcela');
             sql.Add('      ,Valor_Total');
             sql.Add('      ,Valor_Operacao');
-            sql.Add('      ,Valor_Aberto = pr.Valor_Parcela - isnull((select sum(isnull(Valor, 0)) from PagarReceberBaixas prb where prb.Titulo = pr.Titulo), 0)');
-            sql.Add('      ,Baixa = cast(case when (select isnull(sum(Valor), 0) from PagarReceberBaixas prb where prb.Titulo = pr.Titulo) = 0 then 0 else 1 end as bit)');
+            sql.Add('      ,Valor_Aberto = pr.Valor_Parcela - isnull((select isnull(sum(Valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo), 0)');
+            sql.Add('      ,Valor_Baixas = (select isnull(sum(Valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo)');
+            sql.Add('      ,Baixa = cast(case when (select isnull(sum(Valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo) = 0 then 0 else 1 end as bit)');
             sql.Add('      ,Nome = (select Nome_Financeiro from PlanoContas pc where pc.Conta = pr.Conta)');
             sql.Add('      ,Beneficiario = case when isnull(Transferencia, 0) = 0 then');
             sql.Add('                           (select Nome from Destinatarios dst where dst.Codigo = pr.Beneficiario)');
@@ -1176,14 +1179,14 @@ begin
                sql.Add('and pr.Tipo = ''R''');
             end;
             if cSituacao.itemindex = 0 then begin
-               sql.Add('and (select isnull(sum(valor), 0) from PagarReceberBaixas prb where prb.Titulo= pr.Titulo) = 0');
+               sql.Add('and (select isnull(sum(valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo) = 0');
             end;
             if cSituacao.itemindex = 1 then begin
-               sql.Add('and (select isnull(sum(valor), 0) from PagarReceberBaixas prb where PRB.Titulo = pr.Titulo) = Valor_Total');
+               sql.Add('and (select isnull(sum(valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo) = Valor_Total');
             end;
             if cSituacao.itemindex = 2 then begin
-               sql.Add('and ((select isnull(sum(valor), 0) from PagarReceberBaixas prb where prb.Titulo = pr.Titulo) > 0 and');
-               sql.Add('     (select isnull(sum(valor), 0) from PagarReceberBaixas prb where prb.Titulo = pr.Titulo) < Valor_Total)');
+               sql.Add('and ((select isnull(sum(valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo) > 0 and');
+               sql.Add('     (select isnull(sum(valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo) < Valor_Total)');
             end;
             if trim(cBenefFiltro.Text) <> '' then begin
                sql.Add('and pr.Beneficiario = '+inttostr(cBenefFiltro.KeyValue));
@@ -1286,7 +1289,7 @@ begin
            sql.Add('      ,pr.Adiantamento_Numero');
            sql.Add('      ,pr.Banco');
            sql.Add('      ,pr.Tipo');
-           sql.Add('      ,Valor_Baixado = isnull((select sum(Valor) from PagarReceberBaixas prb where prb.Titulo = pr.Titulo), 0)');
+           sql.Add('      ,Valor_Baixado = isnull((select sum(Valor) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo), 0)');
            sql.add('      ,Beneficiario = (select Nome from Destinatarios dst where dst.Codigo = pr.Adiantamento_Numero)');
            sql.Add('from  PagarReceber pr');
            sql.Add('where pr.Processo = '+ quotedstr(trim(Lista.FieldByName('Processo').AsString)) );

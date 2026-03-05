@@ -238,7 +238,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     Width = 1407
     Height = 765
     Hint = ''
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Plain = True
     Align = alClient
     ClientEvents.UniEvents.Strings = (
@@ -435,7 +435,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           end
           object cDescricao: TUniDBEdit
             Left = 14
-            Top = 41
+            Top = 40
             Width = 658
             Height = 25
             Hint = ''
@@ -1258,7 +1258,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           end
           object UniDBLookupComboBox1: TUniDBLookupComboBox
             Left = 14
-            Top = 69
+            Top = 67
             Width = 658
             Height = 25
             Hint = ''
@@ -1303,7 +1303,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           end
           object cFinalidade: TUniDBComboBox
             Left = 14
-            Top = 97
+            Top = 94
             Width = 658
             Height = 25
             Hint = ''
@@ -1348,13 +1348,13 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
         DesignSize = (
           1397
           735)
-        ScrollHeight = 648
+        ScrollHeight = 260
         object pFicha7: TUniPanel
           AlignWithMargins = True
-          Left = 332
-          Top = 3
+          Left = 117
+          Top = 21
           Width = 722
-          Height = 645
+          Height = 239
           Hint = ''
           Enabled = False
           ShowHint = True
@@ -1373,14 +1373,15 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           object cConta: TUniDBLookupComboBox
             Left = 15
             Top = 8
-            Width = 569
-            Height = 50
+            Width = 689
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dstServicos
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             ClearButton = True
             DataField = 'Servico'
             DataSource = dsOperacaoFiscal
@@ -1391,22 +1392,22 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             RemoteQuery = True
             FieldLabel = 'Servi'#231'o'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
           end
           object cCFOPDentro: TUniDBLookupComboBox
             Left = 15
-            Top = 58
+            Top = 62
             Width = 689
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dstCFOP
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             ClearButton = True
             DataField = 'CFOP_Dentro'
             DataSource = dsOperacaoFiscal
@@ -1417,43 +1418,39 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             RemoteQuery = True
             FieldLabel = 'CFOP Dentro do Estado'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
           end
           object UniDBEdit1: TUniDBEdit
-            Left = 600
-            Top = 8
-            Width = 104
-            Height = 50
+            Left = 15
+            Top = 35
+            Width = 247
+            Height = 25
             Hint = ''
             ShowHint = True
-            BodyRTL = True
+            BodyRTL = False
             DataField = 'Aliquota_ISS'
             DataSource = dsOperacaoFiscal
-            ParentFont = False
-            Font.Height = -13
-            Font.Name = 'DejaVu Sans'
-            Font.Style = [fsBold]
             TabOrder = 3
             FieldLabel = 'Al'#237'quota ISS'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object UniDBLookupComboBox5: TUniDBLookupComboBox
             Left = 15
-            Top = 259
+            Top = 170
             Width = 689
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Nome'
             ListSource = dstTipoDoc
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             ClearButton = True
             DataField = 'Especie'
             DataSource = dsOperacaoFiscal
@@ -1464,22 +1461,22 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             RemoteQuery = True
             FieldLabel = 'Esp'#233'cie de Documento'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
           end
           object UniDBLookupComboBox6: TUniDBLookupComboBox
             Left = 15
-            Top = 309
+            Top = 197
             Width = 689
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dstCSTTabelaB
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             ClearButton = True
             DataField = 'CST_ICMS'
             DataSource = dsOperacaoFiscal
@@ -1490,35 +1487,50 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             RemoteQuery = True
             FieldLabel = 'CST ICMS'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
           end
-          object UniDBListBox1: TUniDBListBox
-            Left = 16
-            Top = 368
-            Width = 481
-            Height = 257
-            Hint = ''
-            ShowHint = True
-            DataField = 'Descricao'
-            DataSource = dstCFOP
-            TabOrder = 6
-          end
           object UniDBLookupComboBox2: TUniDBLookupComboBox
             Left = 15
-            Top = 108
+            Top = 89
             Width = 689
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dstCFOP
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             ClearButton = True
             DataField = 'CFOP_Fora'
+            DataSource = dsOperacaoFiscal
+            ParentFont = False
+            AnyMatch = True
+            TabOrder = 6
+            Color = clWindow
+            RemoteQuery = True
+            FieldLabel = 'CFOP Dentro do Estado'
+            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
+            NormalizeString = True
+            Style = csDropDown
+          end
+          object UniDBLookupComboBox3: TUniDBLookupComboBox
+            Left = 15
+            Top = 116
+            Width = 689
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListField = 'Codigo;Descricao'
+            ListSource = dstCFOP
+            KeyField = 'Codigo'
+            ListFieldIndex = 1
+            BorderStyle = ubsInset
+            ClearButton = True
+            DataField = 'CFOP_IndEntrada'
             DataSource = dsOperacaoFiscal
             ParentFont = False
             AnyMatch = True
@@ -1527,24 +1539,24 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             RemoteQuery = True
             FieldLabel = 'CFOP Dentro do Estado'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
           end
-          object UniDBLookupComboBox3: TUniDBLookupComboBox
+          object UniDBLookupComboBox4: TUniDBLookupComboBox
             Left = 15
-            Top = 158
+            Top = 143
             Width = 689
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dstCFOP
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             ClearButton = True
-            DataField = 'CFOP_IndEntrada'
+            DataField = 'CFOP_IndSaida'
             DataSource = dsOperacaoFiscal
             ParentFont = False
             AnyMatch = True
@@ -1553,33 +1565,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             RemoteQuery = True
             FieldLabel = 'CFOP Dentro do Estado'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-            NormalizeString = True
-            Style = csDropDown
-          end
-          object UniDBLookupComboBox4: TUniDBLookupComboBox
-            Left = 15
-            Top = 209
-            Width = 689
-            Height = 50
-            Hint = ''
-            ShowHint = True
-            ListField = 'Codigo;Descricao'
-            ListSource = dstCFOP
-            KeyField = 'Codigo'
-            ListFieldIndex = 1
-            ClearButton = True
-            DataField = 'CFOP_IndSaida'
-            DataSource = dsOperacaoFiscal
-            ParentFont = False
-            AnyMatch = True
-            TabOrder = 9
-            Color = clWindow
-            RemoteQuery = True
-            FieldLabel = 'CFOP Dentro do Estado'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
@@ -1604,15 +1589,15 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1380
+          1397
           735)
-        ScrollHeight = 754
+        ScrollHeight = 603
         object pFicha2: TUniPanel
           AlignWithMargins = True
-          Left = 244
-          Top = 20
-          Width = 1034
-          Height = 734
+          Left = 107
+          Top = 19
+          Width = 1057
+          Height = 584
           Hint = ''
           Enabled = False
           ShowHint = True
@@ -1630,9 +1615,9 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           Color = clTeal
           object cCST: TUniGroupBox
             Left = 12
-            Top = 65
-            Width = 771
-            Height = 182
+            Top = 81
+            Width = 1030
+            Height = 110
             Hint = ''
             ShowHint = True
             Caption = ' C'#243'digos de Situa'#231#245'es Tribut'#225'rias (NF Entrada) '
@@ -1644,14 +1629,15 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             object clCST_PIS: TUniDBLookupComboBox
               Left = 10
               Top = 19
-              Width = 746
-              Height = 50
+              Width = 1010
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Descricao'
               ListSource = dstCSTPIS
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               ClearButton = True
               DataField = 'CST_PIS'
               DataSource = dsOperacaoFiscal
@@ -1660,22 +1646,22 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
               Color = clWindow
               FieldLabel = 'PIS'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               NormalizeString = True
               Style = csDropDown
             end
             object clCST_COFINS: TUniDBLookupComboBox
               Left = 10
-              Top = 69
-              Width = 746
-              Height = 50
+              Top = 46
+              Width = 1010
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Descricao'
               ListSource = dstCSTCOFINS
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               ClearButton = True
               DataField = 'CST_COFINS'
               DataSource = dsOperacaoFiscal
@@ -1684,22 +1670,22 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
               Color = clWindow
               FieldLabel = 'COFINS'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               NormalizeString = True
               Style = csDropDown
             end
             object cTipoCredito: TUniDBLookupComboBox
               Left = 10
-              Top = 119
-              Width = 746
-              Height = 50
+              Top = 73
+              Width = 1010
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo; Descricao'
               ListSource = dstBCCredito
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               ClearButton = True
               DataField = 'Tipo_Credito'
               DataSource = dsOperacaoFiscal
@@ -1707,16 +1693,15 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
               Color = clWindow
               FieldLabel = 'Tipo de B.C.Cr'#233'dito'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               NormalizeString = True
             end
           end
           object GrupoPIS: TUniGroupBox
-            Left = 473
-            Top = 465
-            Width = 272
-            Height = 195
+            Left = 484
+            Top = 320
+            Width = 273
+            Height = 234
             Hint = ''
             ShowHint = True
             Caption = ' Situa'#231#227'o Tribut'#225'ria (PIS) '
@@ -1744,7 +1729,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cCSTPIS_Monofasica: TUniDBCheckBox
               Left = 10
-              Top = 34
+              Top = 36
               Width = 251
               Height = 17
               Hint = ''
@@ -1761,7 +1746,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cCSTPIS_AliquotaZero: TUniDBCheckBox
               Left = 10
-              Top = 53
+              Top = 57
               Width = 251
               Height = 17
               Hint = ''
@@ -1778,7 +1763,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cCSTPIS_Isenta: TUniDBCheckBox
               Left = 10
-              Top = 91
+              Top = 99
               Width = 251
               Height = 17
               Hint = ''
@@ -1795,7 +1780,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cCSTPIS_Suspensao: TUniDBCheckBox
               Left = 10
-              Top = 72
+              Top = 78
               Width = 251
               Height = 17
               Hint = ''
@@ -1812,7 +1797,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cCSTPIS_SemIncidencia: TUniDBCheckBox
               Left = 10
-              Top = 110
+              Top = 120
               Width = 251
               Height = 17
               Hint = ''
@@ -1829,7 +1814,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cCSTPIS_Outras: TUniDBCheckBox
               Left = 10
-              Top = 129
+              Top = 141
               Width = 251
               Height = 17
               Hint = ''
@@ -1846,10 +1831,10 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
           end
           object GrupoCOFINS: TUniGroupBox
-            Left = 754
-            Top = 465
-            Width = 264
-            Height = 195
+            Left = 765
+            Top = 320
+            Width = 277
+            Height = 234
             Hint = ''
             ShowHint = True
             Caption = ' Situa'#231#227'o Tribut'#225'ria (COFINS) '
@@ -1877,7 +1862,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cCSTCOFINS_Monofasica: TUniDBCheckBox
               Left = 10
-              Top = 34
+              Top = 36
               Width = 243
               Height = 17
               Hint = ''
@@ -1894,7 +1879,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cCSTCOFINS_AliquotaZero: TUniDBCheckBox
               Left = 10
-              Top = 53
+              Top = 57
               Width = 243
               Height = 17
               Hint = ''
@@ -1911,7 +1896,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cCSTCOFINS_Isenta: TUniDBCheckBox
               Left = 10
-              Top = 91
+              Top = 99
               Width = 243
               Height = 17
               Hint = ''
@@ -1928,7 +1913,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cCSTCOFINS_Suspensao: TUniDBCheckBox
               Left = 10
-              Top = 72
+              Top = 78
               Width = 243
               Height = 17
               Hint = ''
@@ -1945,7 +1930,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cCSTCOFINS_SemIncidencia: TUniDBCheckBox
               Left = 10
-              Top = 110
+              Top = 120
               Width = 243
               Height = 17
               Hint = ''
@@ -1962,7 +1947,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cCSTCOFINS_Outras: TUniDBCheckBox
               Left = 10
-              Top = 129
+              Top = 141
               Width = 243
               Height = 17
               Hint = ''
@@ -1980,9 +1965,9 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           end
           object GroupBox4: TUniGroupBox
             Left = 12
-            Top = 465
+            Top = 320
             Width = 160
-            Height = 195
+            Height = 234
             Hint = ''
             ShowHint = True
             Caption = 'Situa'#231#227'o Tribut'#225'ria (IPI)'
@@ -1993,7 +1978,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
                 's = '#39'Grupo'#39';'#13#10'}')
             object cImune_IPI: TUniDBCheckBox
               Left = 10
-              Top = 34
+              Top = 36
               Width = 140
               Height = 17
               Hint = ''
@@ -2027,7 +2012,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cSuspensao_IPI: TUniDBCheckBox
               Left = 10
-              Top = 53
+              Top = 57
               Width = 140
               Height = 17
               Hint = ''
@@ -2044,7 +2029,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object cIsencao_IPI: TUniDBCheckBox
               Left = 10
-              Top = 72
+              Top = 78
               Width = 140
               Height = 17
               Hint = ''
@@ -2062,9 +2047,9 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           end
           object GroupBox6: TUniGroupBox
             Left = 12
-            Top = 253
-            Width = 771
-            Height = 131
+            Top = 212
+            Width = 1030
+            Height = 83
             Hint = ''
             ShowHint = True
             Caption = 
@@ -2078,14 +2063,15 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             object RxDBLookupCombo1: TUniDBLookupComboBox
               Left = 10
               Top = 19
-              Width = 746
-              Height = 50
+              Width = 1010
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Descricao'
               ListSource = dstCSTTabelaB
               KeyField = 'Codigo'
               ListFieldIndex = 0
+              BorderStyle = ubsInset
               ClearButton = True
               DataField = 'CSOSN_Entrada'
               DataSource = dsOperacaoFiscal
@@ -2093,21 +2079,21 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
               Color = clWindow
               FieldLabel = 'Entrada'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               NormalizeString = True
             end
             object RxDBLookupCombo2: TUniDBLookupComboBox
               Left = 10
-              Top = 68
-              Width = 746
-              Height = 50
+              Top = 46
+              Width = 1010
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Descricao'
               ListSource = dstCSTTabelaB
               KeyField = 'Codigo'
               ListFieldIndex = 0
+              BorderStyle = ubsInset
               ClearButton = True
               DataField = 'CSOSN_Saida'
               DataSource = dsOperacaoFiscal
@@ -2115,7 +2101,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
               Color = clWindow
               FieldLabel = 'Sa'#237'da'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               NormalizeString = True
             end
@@ -2123,8 +2108,8 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           object cEnquadra: TUniDBLookupComboBox
             Left = 12
             Top = 9
-            Width = 766
-            Height = 50
+            Width = 1010
+            Height = 25
             Hint = ''
             ShowHint = True
             ParentShowHint = False
@@ -2132,22 +2117,22 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             ListSource = dstEnqIPI
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             ClearButton = True
             DataField = 'Enquadramento_IPI'
             DataSource = dsOperacaoFiscal
             TabOrder = 6
             Color = clWindow
-            FieldLabel = 'C'#243'd.Enquadram.Legal IPI'
+            FieldLabel = 'C'#243'd.Enquadramento IPI'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             NormalizeString = True
           end
           object UniGroupBox1: TUniGroupBox
-            Left = 179
-            Top = 465
-            Width = 286
-            Height = 224
+            Left = 181
+            Top = 320
+            Width = 295
+            Height = 234
             Hint = ''
             ShowHint = True
             Caption = 'Situa'#231#227'o Tribut'#225'ria (ICMS)'
@@ -2175,7 +2160,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object UniDBCheckBox2: TUniDBCheckBox
               Left = 10
-              Top = 129
+              Top = 141
               Width = 264
               Height = 17
               Hint = ''
@@ -2192,7 +2177,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object UniDBCheckBox3: TUniDBCheckBox
               Left = 10
-              Top = 110
+              Top = 120
               Width = 264
               Height = 17
               Hint = ''
@@ -2209,7 +2194,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object UniDBCheckBox4: TUniDBCheckBox
               Left = 10
-              Top = 34
+              Top = 36
               Width = 264
               Height = 17
               Hint = ''
@@ -2226,7 +2211,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object UniDBCheckBox5: TUniDBCheckBox
               Left = 10
-              Top = 148
+              Top = 162
               Width = 264
               Height = 17
               Hint = ''
@@ -2243,7 +2228,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object UniDBCheckBox6: TUniDBCheckBox
               Left = 10
-              Top = 53
+              Top = 57
               Width = 264
               Height = 17
               Hint = ''
@@ -2260,7 +2245,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object UniDBCheckBox7: TUniDBCheckBox
               Left = 10
-              Top = 72
+              Top = 78
               Width = 264
               Height = 17
               Hint = ''
@@ -2277,7 +2262,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object UniDBCheckBox8: TUniDBCheckBox
               Left = 10
-              Top = 167
+              Top = 183
               Width = 264
               Height = 17
               Hint = ''
@@ -2294,7 +2279,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object UniDBCheckBox12: TUniDBCheckBox
               Left = 10
-              Top = 186
+              Top = 204
               Width = 264
               Height = 17
               Hint = ''
@@ -2311,7 +2296,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
             object UniDBCheckBox13: TUniDBCheckBox
               Left = 11
-              Top = 91
+              Top = 99
               Width = 264
               Height = 17
               Hint = ''
@@ -2329,9 +2314,9 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           end
           object UniDBLookupComboBox7: TUniDBLookupComboBox
             Left = 12
-            Top = 393
-            Width = 772
-            Height = 50
+            Top = 36
+            Width = 1010
+            Height = 25
             Hint = ''
             ShowHint = True
             ParentShowHint = False
@@ -2339,13 +2324,13 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             ListSource = dstClassTribut
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Classificacao_Tributaria'
             DataSource = dsOperacaoFiscal
             TabOrder = 8
             Color = clWindow
             FieldLabel = 'Classifica'#231#227'o Tribut'#225'ria'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             NormalizeString = True
           end
@@ -2625,7 +2610,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             ClearButton = True
             FieldLabel = 'Informa'#231#245'es Complementares:'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
           end
           object cPesqInf: TUniEdit
             Left = 11
@@ -2658,6 +2642,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             LoadMask.Message = 'Carregando dados...'
             RowHeight = 24
             ForceFit = True
+            BorderStyle = ubsInset
             TrackOver = False
             Font.Height = -13
             Font.Name = 'Calibri'
@@ -2710,7 +2695,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             ClearButton = True
             FieldLabel = 'Informa'#231#245'es Complementares: (FISCO)'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
           end
         end
       end
@@ -2733,13 +2717,13 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
         DesignSize = (
           1397
           735)
-        ScrollHeight = 312
+        ScrollHeight = 212
         object pFicha5: TUniPanel
           AlignWithMargins = True
-          Left = 325
-          Top = 29
-          Width = 546
-          Height = 283
+          Left = 214
+          Top = 41
+          Width = 782
+          Height = 171
           Hint = ''
           Enabled = False
           ShowHint = True
@@ -2758,8 +2742,8 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           object GroupBox5: TUniGroupBox
             Left = 15
             Top = 11
-            Width = 515
-            Height = 232
+            Width = 750
+            Height = 145
             Hint = ''
             ShowHint = True
             ParentShowHint = False
@@ -2772,91 +2756,91 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             object cClassificacao_Saida: TUniDBLookupComboBox
               Left = 11
               Top = 20
-              Width = 488
-              Height = 50
+              Width = 725
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Nome_Financeiro'
               ListSource = dstPlano
               KeyField = 'Conta'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'Classificacao_Saida'
               DataSource = dsOperacaoFiscal
               AnyMatch = True
               TabOrder = 0
               Color = clWindow
-              FieldLabel = 'Classifica'#231#227'o Financeira Pagar/Receber'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabel = 'Classifica'#231#227'o Financeira'
+              FieldLabelWidth = 140
               FieldLabelSeparator = ' '
               NormalizeString = True
               Style = csDropDown
             end
             object clTipo_Documento: TUniDBLookupComboBox
               Left = 11
-              Top = 120
-              Width = 488
-              Height = 50
+              Top = 74
+              Width = 725
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Nome'
               ListSource = dstTipoDoc
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'Tipo_Documento'
               DataSource = dsOperacaoFiscal
               AnyMatch = True
               TabOrder = 2
               Color = clWindow
               FieldLabel = 'Tipo de Documento'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 140
               FieldLabelSeparator = ' '
               NormalizeString = True
               Style = csDropDown
             end
             object clCentro_Custo: TUniDBLookupComboBox
               Left = 11
-              Top = 70
-              Width = 488
-              Height = 50
+              Top = 47
+              Width = 725
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo; Nome'
               ListSource = dstCentroCusto
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'Centro_Custo'
               DataSource = dsOperacaoFiscal
               AnyMatch = True
               TabOrder = 1
               Color = clWindow
               FieldLabel = 'Centro de Custo'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 140
               FieldLabelSeparator = ' '
               NormalizeString = True
               Style = csDropDown
             end
             object clModalidade_Pagamento: TUniDBLookupComboBox
               Left = 11
-              Top = 170
-              Width = 488
-              Height = 50
+              Top = 101
+              Width = 725
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Descricao'
               ListSource = dstModalidade
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'Modalidade_Pagamento'
               DataSource = dsOperacaoFiscal
               AnyMatch = True
               TabOrder = 4
               Color = clWindow
               FieldLabel = 'Modalidade de Pagamento'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 140
               FieldLabelSeparator = ' '
               NormalizeString = True
               Style = csDropDown
@@ -2906,35 +2890,20 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           Caption = ''
           Color = clTeal
           object GrupoCtb: TUniGroupBox
-            Left = 13
-            Top = 6
+            Left = 11
+            Top = 9
             Width = 743
-            Height = 228
+            Height = 135
             Hint = ''
             Enabled = False
             ShowHint = True
             Caption = 'Lan'#231'amentos Contabeis'
             TabOrder = 1
-            object UniDBEdit2: TUniDBEdit
-              Left = 11
-              Top = 64
-              Width = 127
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DataField = 'Conta_Debito'
-              DataSource = dstOperCtb
-              TabOrder = 1
-              FieldLabel = 'Conta D'#201'bito'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
             object cContaD_Ctb: TUniDBLookupComboBox
-              Left = 140
-              Top = 64
-              Width = 585
-              Height = 50
+              Left = 11
+              Top = 45
+              Width = 715
+              Height = 25
               Hint = ''
               ShowHint = True
               ParentShowHint = False
@@ -2942,23 +2911,23 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
               ListSource = dstPlano
               KeyField = 'Conta'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               ClearButton = True
               DataField = 'Conta_Debito'
               DataSource = dstOperCtb
-              TabOrder = 2
+              TabOrder = 1
               Color = clWindow
-              FieldLabel = 'Plano de Contas'
+              FieldLabel = 'Conta D'#233'bito'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               NormalizeString = True
               DontUpdateOnKeyEvents = True
             end
             object cContaC_Ctb: TUniDBLookupComboBox
-              Left = 140
-              Top = 114
-              Width = 585
-              Height = 50
+              Left = 11
+              Top = 72
+              Width = 715
+              Height = 25
               Hint = ''
               ShowHint = True
               ParentShowHint = False
@@ -2966,53 +2935,23 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
               ListSource = dstPlano
               KeyField = 'Conta'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               ClearButton = True
               DataField = 'Conta_Credito'
               DataSource = dstOperCtb
-              TabOrder = 3
+              TabOrder = 2
               Color = clWindow
               FieldLabel = 'Plano de Contas'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               NormalizeString = True
               DontUpdateOnKeyEvents = True
             end
-            object UniDBEdit3: TUniDBEdit
-              Left = 11
-              Top = 114
-              Width = 127
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DataField = 'Conta_Credito'
-              DataSource = dstOperCtb
-              TabOrder = 4
-              FieldLabel = 'Conta Cr'#233'dito'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object UniDBEdit4: TUniDBEdit
-              Left = 11
-              Top = 164
-              Width = 127
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              DataField = 'Historico'
-              DataSource = dstOperCtb
-              TabOrder = 5
-              FieldLabel = 'Hist'#243'rico'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
             object cHistCtb: TUniDBLookupComboBox
-              Left = 140
-              Top = 164
-              Width = 585
-              Height = 50
+              Left = 11
+              Top = 99
+              Width = 715
+              Height = 25
               Hint = ''
               ShowHint = True
               ParentShowHint = False
@@ -3020,25 +2959,26 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
               ListSource = dstHistorico
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               ClearButton = True
               DataField = 'Historico'
               DataSource = dstOperCtb
-              TabOrder = 6
+              TabOrder = 3
               Color = clWindow
               FieldLabel = 'Hist'#243'rico Padr'#227'o'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               NormalizeString = True
               DontUpdateOnKeyEvents = True
             end
             object cCampoCtb: TUniDBComboBox
               Left = 11
-              Top = 14
-              Width = 342
-              Height = 50
+              Top = 18
+              Width = 715
+              Height = 25
               Hint = ''
               ShowHint = True
+              BodyRTL = False
               DataField = 'Campo'
               DataSource = dstOperCtb
               Items.Strings = (
@@ -3058,9 +2998,9 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
                 'Valor do FOB Processo'
                 'Valor do FOB Fornecedor'
                 'Valor do Estoque')
-              TabOrder = 7
+              TabOrder = 4
               FieldLabel = 'Lan'#231'amento'
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 120
               ClearButton = True
               IconItems = <>
             end
@@ -3172,9 +3112,9 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           object GradeCtb: TUniDBGrid
             AlignWithMargins = True
             Left = 13
-            Top = 240
+            Top = 150
             Width = 743
-            Height = 184
+            Height = 274
             Hint = ''
             ShowHint = True
             HeaderTitleAlign = taCenter
@@ -3188,6 +3128,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             LoadMask.Message = 'Carregando dados...'
             RowHeight = 24
             ForceFit = True
+            BorderStyle = ubsInset
             TrackOver = False
             Font.Height = -13
             Font.Name = 'Calibri'
