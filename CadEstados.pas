@@ -17,7 +17,7 @@ type
     UniPanel2: TUniPanel;
     cPesquisa: TUniEdit;
     bPesquisa: TUniSpeedButton;
-    aFicha2: TUniTabSheet;
+    aFicha2: TUniTabSheet;                                                
     UniScrollBox2: TUniScrollBox;
     pFicha: TUniPanel;
     cNumero: TUniDBEdit;

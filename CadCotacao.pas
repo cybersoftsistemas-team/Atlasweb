@@ -7,7 +7,7 @@ uses
   uniGUITypes, uniGUIAbstractClasses, uniGUIClasses, uniGUIFrame, UniPageControl, uniDBGrid, uniPanel, uniDBLookUpComboBox,
   uniDBCheckBox, uniScrollBox, uniSpeedButton, uniDateTimePicker, uniDBDateTimePicker, uniButton, uniBitBtn, uniDBNavigator, uniEdit,
   uniDBEdit, uniDBMemo, uniBasicGrid, uniGUIBaseClasses, FireDAC.Comp.Client, Funcoes, Data.DB, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async,
-  FireDAC.DApt, FireDAC.Comp.DataSet, uniMultiItem, uniComboBox, uniDBComboBox, uniSweetAlert;
+  FireDAC.DApt, FireDAC.Comp.DataSet, uniMultiItem, uniComboBox, uniDBComboBox, uniSweetAlert, uniCheckBox;
 
 type
   TfCadCotacao = class(TUniFrame)
@@ -20,9 +20,6 @@ type
     bGravar: TUniSpeedButton;
     bCancelar: TUniSpeedButton;
     bFechar: TUniSpeedButton;
-    pBarraPesq: TUniPanel;
-    bPesquisa: TUniSpeedButton;
-    cPesquisa: TUniEdit;
     Pasta: TUnipageControl;
     UniTabSheet1: TUniTabSheet;
     Cotacao: TFDQuery;
@@ -36,13 +33,17 @@ type
     CotacaoMoeda: TIntegerField;
     CotacaoData: TSQLTimeStampField;
     CotacaoValor: TFloatField;
+    Alerta: TUniSweetAlert;
+    UniContainerPanel1: TUniContainerPanel;
     pFicha: TUniPanel;
     cPais: TUniDBEdit;
     cData: TUniDBDateTimePicker;
     cSimbolo: TUniDBEdit;
     cCodigo: TUniDBEdit;
     cValor: TUniDBFormattedNumberEdit;
-    Alerta: TUniSweetAlert;
+    pBarraPesq: TUniPanel;
+    cPesquisa: TUniEdit;
+    bPesquisa: TUniSpeedButton;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
@@ -157,7 +158,7 @@ var
 begin
       // Fecha todas as tabelas do form.
       for i := 0 to pred(ComponentCount) do begin
-          if Components[i] is TFDQuery then begin
+          if (Components[i] is TFDQuery) and (Components[i].tag = 0)then begin
              TFDQuery(Components[i]).close;
          end;
       end;
@@ -221,8 +222,7 @@ var
 begin
       // Alinhando todas as ficha de dados ao centro do form.
       for i := 0 to ComponentCount -1 do begin
-          if Components[i] is TUniPanel then begin
-             TuniPanel(Components[i]).Top   := 30;
+          if (Components[i] is TUniPanel) and (Components[i].Tag = 0) then begin
              TuniPanel(Components[i]).Left  := (Pasta.Width - TuniPanel(Components[i]).Width) div 2;
              TuniPanel(Components[i]).Color := clNone
           end;

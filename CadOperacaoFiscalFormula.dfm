@@ -646,7 +646,7 @@ object fCadOperacaoFiscalFormula: TfCadOperacaoFiscalFormula
       LoadMask.Message = 'Carregando dados...'
       RowHeight = 24
       ForceFit = True
-      BorderStyle = ubsSolid
+      BorderStyle = ubsInset
       TrackOver = False
       Font.Height = -13
       Font.Name = 'Calibri'
@@ -695,7 +695,7 @@ object fCadOperacaoFiscalFormula: TfCadOperacaoFiscalFormula
       LoadMask.Message = 'Carregando dados...'
       RowHeight = 24
       ForceFit = True
-      BorderStyle = ubsSolid
+      BorderStyle = ubsInset
       TrackOver = False
       Font.Height = -13
       Font.Name = 'Calibri'
@@ -741,7 +741,7 @@ object fCadOperacaoFiscalFormula: TfCadOperacaoFiscalFormula
       Hint = ''
       ShowHint = True
       ParentShowHint = False
-      BorderStyle = ubsSolid
+      BorderStyle = ubsInset
       Text = ''
       TabOrder = 3
       EmptyText = 'Pesquisar'
@@ -757,7 +757,7 @@ object fCadOperacaoFiscalFormula: TfCadOperacaoFiscalFormula
       Hint = ''
       ShowHint = True
       ParentShowHint = False
-      BorderStyle = ubsSolid
+      BorderStyle = ubsInset
       Text = ''
       TabOrder = 4
       EmptyText = 'Pesquisar'
@@ -812,7 +812,7 @@ object fCadOperacaoFiscalFormula: TfCadOperacaoFiscalFormula
       LoadMask.Message = 'Carregando dados...'
       RowHeight = 24
       ForceFit = True
-      BorderStyle = ubsSolid
+      BorderStyle = ubsInset
       TrackOver = False
       Font.Height = -13
       Font.Name = 'Calibri'
@@ -883,6 +883,7 @@ object fCadOperacaoFiscalFormula: TfCadOperacaoFiscalFormula
       Width = 727
       Height = 191
       Hint = ''
+      BorderStyle = ubsInset
       Lines.Strings = (
         'cFormula')
       ParentFont = False
@@ -931,7 +932,7 @@ object fCadOperacaoFiscalFormula: TfCadOperacaoFiscalFormula
       Hint = ''
       ShowHint = True
       ParentShowHint = False
-      BorderStyle = ubsSolid
+      BorderStyle = ubsInset
       Text = ''
       TabOrder = 13
       EmptyText = 'Pesquisar'

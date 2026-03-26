@@ -24,10 +24,6 @@ object fCadMunicipios: TfCadMunicipios
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -61,6 +57,7 @@ object fCadMunicipios: TfCadMunicipios
             Title.Font.Style = [fsBold]
             Width = 387
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Estado'
@@ -70,6 +67,7 @@ object fCadMunicipios: TfCadMunicipios
             Width = 100
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'UF'
@@ -79,6 +77,7 @@ object fCadMunicipios: TfCadMunicipios
             Width = 100
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Codigo'
@@ -88,6 +87,7 @@ object fCadMunicipios: TfCadMunicipios
             Width = 100
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end>
       end
       object UniPanel2: TUniPanel
@@ -136,10 +136,6 @@ object fCadMunicipios: TfCadMunicipios
     object aFicha2: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0
@@ -152,17 +148,17 @@ object fCadMunicipios: TfCadMunicipios
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
-        ExplicitLeft = -32
-        ExplicitTop = 16
+        ExplicitLeft = 1
+        ExplicitTop = 1
         DesignSize = (
           981
           936)
-        ScrollHeight = 232
+        ScrollHeight = 141
         object pFicha: TUniPanel
           Left = 153
           Top = 31
-          Width = 585
-          Height = 201
+          Width = 632
+          Height = 110
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -179,9 +175,9 @@ object fCadMunicipios: TfCadMunicipios
           Color = clTeal
           object cCodigo: TUniDBEdit
             Left = 17
-            Top = 71
-            Width = 137
-            Height = 55
+            Top = 42
+            Width = 161
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Codigo'
@@ -192,16 +188,16 @@ object fCadMunicipios: TfCadMunicipios
             Font.Style = [fsBold]
             TabOrder = 4
             FieldLabel = 'C'#243'digo'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 60
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cNumero: TUniDBEdit
-            Left = 391
-            Top = 16
-            Width = 82
-            Height = 55
+            Left = 323
+            Top = 15
+            Width = 159
+            Height = 25
             Hint = ''
             Enabled = False
             ShowHint = True
@@ -213,16 +209,16 @@ object fCadMunicipios: TfCadMunicipios
             Font.Style = [fsBold]
             TabOrder = 2
             FieldLabel = 'Estado'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 60
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cNome: TUniDBEdit
             Left = 17
-            Top = 127
-            Width = 552
-            Height = 55
+            Top = 69
+            Width = 300
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Nome'
@@ -233,16 +229,16 @@ object fCadMunicipios: TfCadMunicipios
             Font.Style = [fsBold]
             TabOrder = 5
             FieldLabel = 'Nome'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 60
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cUF: TUniDBEdit
-            Left = 479
-            Top = 16
-            Width = 90
-            Height = 55
+            Left = 488
+            Top = 15
+            Width = 129
+            Height = 25
             Hint = ''
             Enabled = False
             ShowHint = True
@@ -254,22 +250,23 @@ object fCadMunicipios: TfCadMunicipios
             Font.Style = [fsBold]
             TabOrder = 3
             FieldLabel = 'UF'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 60
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cEstado: TUniDBLookupComboBox
             Left = 17
             Top = 15
-            Width = 368
-            Height = 55
+            Width = 300
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Nome;UF'
             ListSource = dsEstados
             KeyField = 'UF'
             ListFieldIndex = 0
+            BorderStyle = ubsInset
             DataField = 'UF'
             DataSource = dsMunicipios
             ParentFont = False
@@ -279,8 +276,7 @@ object fCadMunicipios: TfCadMunicipios
             TabOrder = 1
             Color = clWindow
             FieldLabel = 'Estado'
-            FieldLabelWidth = 110
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 60
             FieldLabelSeparator = ' '
             ForceSelection = True
             Style = csSimple
@@ -481,7 +477,7 @@ object fCadMunicipios: TfCadMunicipios
     CancelButtonText = 'Cancelar'
     Width = 400
     Padding = 20
-    Left = 100
-    Top = 75
+    Left = 38
+    Top = 78
   end
 end

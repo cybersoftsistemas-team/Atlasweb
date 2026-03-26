@@ -25,10 +25,6 @@ object fCadPaises: TfCadPaises
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -62,6 +58,7 @@ object fCadPaises: TfCadPaises
             Title.Font.Style = [fsBold]
             Width = 400
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Nome_Ingles'
@@ -70,6 +67,7 @@ object fCadPaises: TfCadPaises
             Title.Font.Style = [fsBold]
             Width = 400
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Codigo'
@@ -79,6 +77,7 @@ object fCadPaises: TfCadPaises
             Width = 100
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end>
       end
       object UniPanel2: TUniPanel
@@ -130,10 +129,6 @@ object fCadPaises: TfCadPaises
     object aFicha: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0
@@ -149,12 +144,12 @@ object fCadPaises: TfCadPaises
         DesignSize = (
           981
           936)
-        ScrollHeight = 230
+        ScrollHeight = 145
         object pFicha: TUniPanel
           Left = 114
           Top = 26
           Width = 545
-          Height = 204
+          Height = 119
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -171,9 +166,9 @@ object fCadPaises: TfCadPaises
           Color = clTeal
           object cCodigo: TUniDBEdit
             Left = 23
-            Top = 13
-            Width = 146
-            Height = 55
+            Top = 20
+            Width = 203
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Codigo'
@@ -184,16 +179,15 @@ object fCadPaises: TfCadPaises
             Font.Style = [fsBold]
             TabOrder = 1
             FieldLabel = 'Codigo'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cNome: TUniDBEdit
             Left = 23
-            Top = 69
+            Top = 47
             Width = 500
-            Height = 55
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Nome'
@@ -204,16 +198,15 @@ object fCadPaises: TfCadPaises
             Font.Style = [fsBold]
             TabOrder = 2
             FieldLabel = 'Nome'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cNome_Ingles: TUniDBEdit
             Left = 23
-            Top = 125
+            Top = 74
             Width = 500
-            Height = 55
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Nome_Ingles'
@@ -224,10 +217,9 @@ object fCadPaises: TfCadPaises
             Font.Style = [fsBold]
             TabOrder = 3
             FieldLabel = 'Nome Internacional'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
         end
       end

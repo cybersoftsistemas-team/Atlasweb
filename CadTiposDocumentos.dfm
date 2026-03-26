@@ -25,10 +25,6 @@ object fCadTiposDocumentos: TfCadTiposDocumentos
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -62,6 +58,7 @@ object fCadTiposDocumentos: TfCadTiposDocumentos
             Title.Font.Style = [fsBold]
             Width = 100
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Nome'
@@ -70,6 +67,7 @@ object fCadTiposDocumentos: TfCadTiposDocumentos
             Title.Font.Style = [fsBold]
             Width = 531
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'SINTEGRA'
@@ -79,6 +77,7 @@ object fCadTiposDocumentos: TfCadTiposDocumentos
             Width = 70
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Tributo'
@@ -88,6 +87,7 @@ object fCadTiposDocumentos: TfCadTiposDocumentos
             Width = 70
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Desativada'
@@ -97,6 +97,7 @@ object fCadTiposDocumentos: TfCadTiposDocumentos
             Width = 70
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end>
       end
       object pBarraPesq: TUniPanel
@@ -147,10 +148,6 @@ object fCadTiposDocumentos: TfCadTiposDocumentos
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -163,15 +160,17 @@ object fCadTiposDocumentos: TfCadTiposDocumentos
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
+        ExplicitLeft = -28
+        ExplicitTop = -59
         DesignSize = (
           981
           936)
-        ScrollHeight = 257
+        ScrollHeight = 209
         object pFicha1: TUniPanel
           Left = 113
           Top = 18
           Width = 596
-          Height = 239
+          Height = 191
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -189,8 +188,8 @@ object fCadTiposDocumentos: TfCadTiposDocumentos
           object cCodigo: TUniDBEdit
             Left = 25
             Top = 27
-            Width = 147
-            Height = 55
+            Width = 193
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Codigo'
@@ -201,16 +200,16 @@ object fCadTiposDocumentos: TfCadTiposDocumentos
             Font.Style = [fsBold]
             TabOrder = 1
             FieldLabel = 'C'#243'digo'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 60
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cNome: TUniDBEdit
             Left = 25
-            Top = 88
+            Top = 54
             Width = 544
-            Height = 55
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Nome'
@@ -221,16 +220,16 @@ object fCadTiposDocumentos: TfCadTiposDocumentos
             Font.Style = [fsBold]
             TabOrder = 2
             FieldLabel = 'Nome'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 60
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cSINTEGRA: TUniDBCheckBox
             Left = 25
-            Top = 158
-            Width = 80
-            Height = 15
+            Top = 121
+            Width = 120
+            Height = 20
             Hint = ''
             ShowHint = True
             DataField = 'SINTEGRA'
@@ -246,9 +245,9 @@ object fCadTiposDocumentos: TfCadTiposDocumentos
           end
           object cTributo: TUniDBCheckBox
             Left = 25
-            Top = 190
-            Width = 80
-            Height = 17
+            Top = 144
+            Width = 120
+            Height = 20
             Hint = ''
             ShowHint = True
             DataField = 'Tributo'
@@ -263,9 +262,9 @@ object fCadTiposDocumentos: TfCadTiposDocumentos
             FieldLabelSeparator = ' '
           end
           object cDesativada: TUniDBCheckBox
-            Left = 178
-            Top = 62
-            Width = 87
+            Left = 25
+            Top = 98
+            Width = 120
             Height = 20
             Hint = ''
             ShowHint = True

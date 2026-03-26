@@ -307,7 +307,7 @@ object fCadUsuarios: TfCadUsuarios
             InputMask.UnmaskText = True
             InputMask.RemoveWhiteSpace = True
             FieldLabel = 'Nome'
-            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
             SelectOnFocus = True
             BorderStyle = ubsInset
           end
@@ -325,7 +325,7 @@ object fCadUsuarios: TfCadUsuarios
             Font.Style = [fsBold]
             TabOrder = 3
             FieldLabel = 'Cargo'
-            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
             SelectOnFocus = True
             BorderStyle = ubsInset
           end
@@ -346,7 +346,7 @@ object fCadUsuarios: TfCadUsuarios
             InputMask.UnmaskText = True
             InputMask.RemoveWhiteSpace = True
             FieldLabel = 'Departamento'
-            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
             SelectOnFocus = True
             BorderStyle = ubsInset
           end
@@ -364,7 +364,7 @@ object fCadUsuarios: TfCadUsuarios
             Font.Style = [fsBold]
             TabOrder = 6
             FieldLabel = 'Senha'
-            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
             SelectOnFocus = True
             BorderStyle = ubsInset
           end
@@ -385,7 +385,7 @@ object fCadUsuarios: TfCadUsuarios
             InputMask.UnmaskText = True
             InputMask.RemoveWhiteSpace = True
             FieldLabel = 'Matr'#237'cula'
-            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
             SelectOnFocus = True
             BorderStyle = ubsInset
             OnChangeValue = cMatriculaChangeValue
@@ -407,7 +407,7 @@ object fCadUsuarios: TfCadUsuarios
             TabOrder = 5
             Color = clWindow
             FieldLabel = 'N'#237'vel de Acesso'
-            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
           end
           object UniPanel3: TUniPanel
             Tag = 1
@@ -583,7 +583,7 @@ object fCadUsuarios: TfCadUsuarios
           end
           object UniGroupBox1: TUniGroupBox
             Left = 12
-            Top = 259
+            Top = 275
             Width = 287
             Height = 268
             Hint = ''
@@ -733,7 +733,7 @@ object fCadUsuarios: TfCadUsuarios
           end
           object UniGroupBox2: TUniGroupBox
             Left = 317
-            Top = 259
+            Top = 275
             Width = 278
             Height = 268
             Hint = ''
@@ -923,7 +923,7 @@ object fCadUsuarios: TfCadUsuarios
             Font.Style = [fsBold]
             TabOrder = 11
             FieldLabel = 'Email'
-            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
             SelectOnFocus = True
             BorderStyle = ubsInset
           end
@@ -944,7 +944,7 @@ object fCadUsuarios: TfCadUsuarios
             TabOrder = 12
             Color = clWindow
             FieldLabel = 'N'#237'vel de Acesso'
-            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
           end
           object UniDBEdit2: TUniDBEdit
             Left = 11
@@ -963,7 +963,7 @@ object fCadUsuarios: TfCadUsuarios
             InputMask.UnmaskText = True
             InputMask.RemoveWhiteSpace = True
             FieldLabel = 'Lucro % M'#237'nimo'
-            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
             SelectOnFocus = True
             BorderStyle = ubsInset
           end
@@ -984,13 +984,13 @@ object fCadUsuarios: TfCadUsuarios
             InputMask.UnmaskText = True
             InputMask.RemoveWhiteSpace = True
             FieldLabel = 'Lucro % Max'#237'mo'
-            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
             SelectOnFocus = True
             BorderStyle = ubsInset
           end
           object UniGroupBox3: TUniGroupBox
             Left = 12
-            Top = 543
+            Top = 559
             Width = 287
             Height = 175
             Hint = ''

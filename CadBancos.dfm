@@ -14,7 +14,7 @@ object fCadBancos: TfCadBancos
     Height = 966
     Hint = ''
     BodyRTL = False
-    ActivePage = UniTabSheet1
+    ActivePage = aLista
     Plain = True
     Align = alClient
     ClientEvents.UniEvents.Strings = (
@@ -25,10 +25,6 @@ object fCadBancos: TfCadBancos
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -62,6 +58,7 @@ object fCadBancos: TfCadBancos
             Title.Font.Style = [fsBold]
             Width = 100
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Nome'
@@ -70,6 +67,7 @@ object fCadBancos: TfCadBancos
             Title.Font.Style = [fsBold]
             Width = 313
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Conta'
@@ -79,6 +77,7 @@ object fCadBancos: TfCadBancos
             Width = 100
             Font.Name = 'Calibri'
             Alignment = taLeftJustify
+            ReadOnly = True
           end
           item
             FieldName = 'Agencia'
@@ -88,6 +87,7 @@ object fCadBancos: TfCadBancos
             Width = 100
             Font.Name = 'Calibri'
             Alignment = taLeftJustify
+            ReadOnly = True
           end
           item
             FieldName = 'Saldo'
@@ -96,6 +96,7 @@ object fCadBancos: TfCadBancos
             Title.Font.Style = [fsBold]
             Width = 100
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Desativado'
@@ -105,6 +106,7 @@ object fCadBancos: TfCadBancos
             Width = 76
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end>
       end
       object pBarraPesq: TUniPanel
@@ -155,10 +157,6 @@ object fCadBancos: TfCadBancos
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -174,12 +172,12 @@ object fCadBancos: TfCadBancos
         DesignSize = (
           1050
           936)
-        ScrollHeight = 608
+        ScrollHeight = 582
         object pFicha1: TUniPanel
           Left = 217
-          Top = 26
-          Width = 480
-          Height = 582
+          Top = 32
+          Width = 660
+          Height = 550
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -197,8 +195,8 @@ object fCadBancos: TfCadBancos
           object cCodigo: TUniDBNumberEdit
             Left = 16
             Top = 13
-            Width = 112
-            Height = 55
+            Width = 271
+            Height = 25
             Hint = ''
             Enabled = False
             ShowHint = True
@@ -213,16 +211,15 @@ object fCadBancos: TfCadBancos
             SelectOnFocus = True
             FieldLabel = 'C'#243'digo'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             DecimalSeparator = ','
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
           end
           object cNome: TUniDBEdit
             Left = 16
-            Top = 69
-            Width = 448
-            Height = 55
+            Top = 67
+            Width = 449
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Nome'
@@ -234,15 +231,15 @@ object fCadBancos: TfCadBancos
             TabOrder = 5
             FieldLabel = 'Nome'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cConta: TUniDBEdit
             Left = 16
-            Top = 181
-            Width = 144
-            Height = 55
+            Top = 121
+            Width = 271
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Conta'
@@ -254,15 +251,15 @@ object fCadBancos: TfCadBancos
             TabOrder = 6
             FieldLabel = 'Conta Corrente'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cAgencia: TUniDBEdit
-            Left = 253
-            Top = 181
-            Width = 137
-            Height = 55
+            Left = 16
+            Top = 148
+            Width = 271
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Agencia'
@@ -274,15 +271,15 @@ object fCadBancos: TfCadBancos
             TabOrder = 7
             FieldLabel = 'Ag'#234'ncia'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cSaldo: TUniDBFormattedNumberEdit
             Left = 16
-            Top = 460
-            Width = 144
-            Height = 55
+            Top = 310
+            Width = 271
+            Height = 25
             Hint = ''
             ShowHint = True
             InputRTL = False
@@ -296,17 +293,16 @@ object fCadBancos: TfCadBancos
             SelectOnFocus = True
             FieldLabel = 'Saldo'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             DecimalSeparator = ','
             ThousandSeparator = '.'
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
           end
           object cNumero_Banco: TUniDBNumberEdit
-            Left = 134
-            Top = 13
-            Width = 112
-            Height = 55
+            Left = 16
+            Top = 40
+            Width = 271
+            Height = 25
             Hint = ''
             ShowHint = True
             InputRTL = False
@@ -319,16 +315,15 @@ object fCadBancos: TfCadBancos
             SelectOnFocus = True
             FieldLabel = 'C'#243'digo do Banco'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             DecimalSeparator = ','
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
           end
           object cCheque: TUniDBNumberEdit
             Left = 16
-            Top = 237
-            Width = 144
-            Height = 55
+            Top = 175
+            Width = 271
+            Height = 25
             Hint = ''
             ShowHint = True
             InputRTL = False
@@ -342,22 +337,22 @@ object fCadBancos: TfCadBancos
             SelectOnFocus = True
             FieldLabel = 'N'#186' '#218'ltimo Cheque'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             DecimalSeparator = ','
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
           end
           object cCodigo_Destinatario: TUniDBLookupComboBox
             Left = 16
-            Top = 404
-            Width = 448
-            Height = 55
+            Top = 283
+            Width = 624
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Nome'
             ListSource = dsDest
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Codigo_Destinatario'
             DataSource = dsBancos
             ParentFont = False
@@ -369,15 +364,14 @@ object fCadBancos: TfCadBancos
             Color = clWindow
             FieldLabel = 'C'#243'digo de Destinat'#225'rio'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
           object cData_Fechamento: TUniDBDateTimePicker
-            Left = 320
-            Top = 459
-            Width = 144
-            Height = 55
+            Left = 16
+            Top = 337
+            Width = 271
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Data_Fechamento'
@@ -390,15 +384,15 @@ object fCadBancos: TfCadBancos
             Font.Height = -13
             Font.Name = 'DejaVu Sans'
             Font.Style = [fsBold]
-            FieldLabel = 'Data de Fechamento'
+            BorderStyle = ubsInset
+            FieldLabel = 'Data Fechamento'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
           object cDesativado: TUniDBCheckBox
             Left = 367
             Top = 13
-            Width = 92
+            Width = 104
             Height = 21
             Hint = ''
             ShowHint = True
@@ -415,9 +409,9 @@ object fCadBancos: TfCadBancos
           end
           object cSwift_Code: TUniDBEdit
             Left = 16
-            Top = 293
-            Width = 144
-            Height = 55
+            Top = 202
+            Width = 271
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Swift_Code'
@@ -429,15 +423,15 @@ object fCadBancos: TfCadBancos
             TabOrder = 9
             FieldLabel = 'Swift Code'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cIBAN: TUniDBEdit
-            Left = 164
-            Top = 293
-            Width = 300
-            Height = 55
+            Left = 16
+            Top = 229
+            Width = 271
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'IBAN'
@@ -449,21 +443,22 @@ object fCadBancos: TfCadBancos
             TabOrder = 10
             FieldLabel = 'N'#186' IBAN'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cContaContabil: TUniDBLookupComboBox
             Left = 16
-            Top = 348
-            Width = 448
-            Height = 55
+            Top = 256
+            Width = 624
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Nome_Contabil;Conta;Codigo'
             ListSource = dsPlano
             KeyField = 'Codigo'
             ListFieldIndex = 0
+            BorderStyle = ubsInset
             DataField = 'Conta'
             DataSource = dsBancos
             ParentFont = False
@@ -475,15 +470,14 @@ object fCadBancos: TfCadBancos
             Color = clWindow
             FieldLabel = 'Conta Contabil'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
           object cTipoConta: TUniDBRadioGroup
             Left = 16
-            Top = 518
-            Width = 449
-            Height = 48
+            Top = 390
+            Width = 170
+            Height = 130
             Hint = ''
             ShowHint = True
             DataField = 'Tipo_Conta'
@@ -499,7 +493,6 @@ object fCadBancos: TfCadBancos
               'Investimentos'
               'Empr'#233'stimos'
               'Administrativa')
-            Columns = 4
             Values.Strings = (
               'CORRENTE'
               'INVESTIMENTOS'
@@ -507,10 +500,10 @@ object fCadBancos: TfCadBancos
               'ADMINISTRATIVA')
           end
           object cDigito_cc: TUniDBEdit
-            Left = 164
-            Top = 181
-            Width = 84
-            Height = 55
+            Left = 292
+            Top = 121
+            Width = 172
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Digito_cc'
@@ -521,16 +514,16 @@ object fCadBancos: TfCadBancos
             Font.Style = [fsBold]
             TabOrder = 15
             FieldLabel = 'Digito CC'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 60
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cDigito_ag: TUniDBEdit
-            Left = 395
-            Top = 181
-            Width = 69
-            Height = 55
+            Left = 292
+            Top = 148
+            Width = 172
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Digito_Ag'
@@ -541,22 +534,23 @@ object fCadBancos: TfCadBancos
             Font.Style = [fsBold]
             TabOrder = 16
             FieldLabel = 'Digito Ag'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 60
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object UniDBLookupComboBox1: TUniDBLookupComboBox
             Left = 16
-            Top = 125
-            Width = 448
-            Height = 55
+            Top = 94
+            Width = 624
+            Height = 25
             Hint = ''
             ShowHint = True
-            ListField = 'CNPJ.Razao_Social'
+            ListField = 'CNPJ;Razao_Social'
             ListSource = dsEmpresas
             KeyField = 'CNPJ'
             ListFieldIndex = 0
+            BorderStyle = ubsInset
             DataField = 'Empresa'
             DataSource = dsBancos
             ParentFont = False
@@ -566,9 +560,9 @@ object fCadBancos: TfCadBancos
             AnyMatch = True
             TabOrder = 17
             Color = clWindow
+            MatchFieldWidth = False
             FieldLabel = 'Empresa'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
@@ -578,10 +572,6 @@ object fCadBancos: TfCadBancos
     object UniTabSheet2: TUniTabSheet
       Hint = ''
       Caption = 'Dados de Boleto'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0
@@ -597,12 +587,12 @@ object fCadBancos: TfCadBancos
         DesignSize = (
           1050
           936)
-        ScrollHeight = 553
+        ScrollHeight = 300
         object pFicha2: TUniPanel
           Left = 209
           Top = 13
-          Width = 470
-          Height = 540
+          Width = 600
+          Height = 287
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -619,9 +609,9 @@ object fCadBancos: TfCadBancos
           Color = clTeal
           object cCarteira: TUniDBEdit
             Left = 22
-            Top = 239
-            Width = 157
-            Height = 55
+            Top = 123
+            Width = 250
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Carteira'
@@ -633,15 +623,15 @@ object fCadBancos: TfCadBancos
             TabOrder = 1
             FieldLabel = 'Carteira Boleto'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cCodigo_Cedente: TUniDBEdit
             Left = 22
             Top = 15
-            Width = 157
-            Height = 55
+            Width = 250
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Codigo_Cedente'
@@ -653,15 +643,15 @@ object fCadBancos: TfCadBancos
             TabOrder = 2
             FieldLabel = 'C'#243'digo Cedente'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cNome_Boleto: TUniDBEdit
             Left = 22
-            Top = 127
-            Width = 426
-            Height = 55
+            Top = 69
+            Width = 560
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Nome_Boleto'
@@ -673,15 +663,15 @@ object fCadBancos: TfCadBancos
             TabOrder = 3
             FieldLabel = 'Nome Impress'#227'o Boleto'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cConvenio: TUniDBEdit
             Left = 22
-            Top = 71
-            Width = 157
-            Height = 55
+            Top = 42
+            Width = 250
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Convenio'
@@ -693,15 +683,15 @@ object fCadBancos: TfCadBancos
             TabOrder = 4
             FieldLabel = 'Conv'#234'nio'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cBoleto_LocalPagamento: TUniDBEdit
             Left = 22
-            Top = 183
-            Width = 426
-            Height = 55
+            Top = 96
+            Width = 560
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Boleto_LocalPgto'
@@ -713,15 +703,15 @@ object fCadBancos: TfCadBancos
             TabOrder = 5
             FieldLabel = 'Local Pagto.Boleto'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cBoletos_Remessa: TUniDBNumberEdit
             Left = 22
-            Top = 351
-            Width = 157
-            Height = 55
+            Top = 177
+            Width = 250
+            Height = 25
             Hint = ''
             ShowHint = True
             InputRTL = False
@@ -735,16 +725,15 @@ object fCadBancos: TfCadBancos
             SelectOnFocus = True
             FieldLabel = 'N'#186' '#218'ltima Remessa'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             DecimalSeparator = ','
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
           end
           object cNome_Remessa: TUniDBEdit
             Left = 22
-            Top = 295
-            Width = 426
-            Height = 55
+            Top = 150
+            Width = 560
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Nome_Remessa'
@@ -756,15 +745,15 @@ object fCadBancos: TfCadBancos
             TabOrder = 7
             FieldLabel = 'Nome arquivo remessa'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cCarteira_Remessa: TUniDBEdit
             Left = 22
-            Top = 407
-            Width = 157
-            Height = 55
+            Top = 204
+            Width = 250
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Carteira_Remessa'
@@ -776,15 +765,15 @@ object fCadBancos: TfCadBancos
             TabOrder = 8
             FieldLabel = 'Carteira Remessa'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cCodigo_Transmissao: TUniDBEdit
             Left = 22
-            Top = 463
-            Width = 426
-            Height = 55
+            Top = 231
+            Width = 250
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Codigo_Transmissao'
@@ -796,9 +785,9 @@ object fCadBancos: TfCadBancos
             TabOrder = 9
             FieldLabel = 'Codigo de Transmiss'#227'o'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
         end
       end

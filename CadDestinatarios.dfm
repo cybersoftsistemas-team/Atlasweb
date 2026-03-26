@@ -133,7 +133,7 @@ object fCadDestinatarios: TfCadDestinatarios
     Height = 966
     Hint = ''
     BodyRTL = False
-    ActivePage = UniTabSheet1
+    ActivePage = aLista
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -237,6 +237,7 @@ object fCadDestinatarios: TfCadDestinatarios
             Title.Font.Style = [fsBold]
             Width = 68
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Desativado'
@@ -246,6 +247,7 @@ object fCadDestinatarios: TfCadDestinatarios
             Width = 40
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Nome'
@@ -254,6 +256,7 @@ object fCadDestinatarios: TfCadDestinatarios
             Title.Font.Style = [fsBold]
             Width = 419
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Estado'
@@ -263,6 +266,7 @@ object fCadDestinatarios: TfCadDestinatarios
             Width = 40
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Telefone1'
@@ -271,6 +275,7 @@ object fCadDestinatarios: TfCadDestinatarios
             Title.Font.Style = [fsBold]
             Width = 140
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Email'
@@ -279,6 +284,7 @@ object fCadDestinatarios: TfCadDestinatarios
             Title.Font.Style = [fsBold]
             Width = 261
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Contato'
@@ -287,6 +293,7 @@ object fCadDestinatarios: TfCadDestinatarios
             Title.Font.Style = [fsBold]
             Width = 167
             Font.Name = 'Calibri'
+            ReadOnly = True
           end>
       end
     end
@@ -1045,7 +1052,7 @@ object fCadDestinatarios: TfCadDestinatarios
             object cCNPJ: TUniDBEdit
               Left = 8
               Top = 18
-              Width = 549
+              Width = 306
               Height = 25
               Hint = ''
               ShowHint = True
@@ -1064,7 +1071,7 @@ object fCadDestinatarios: TfCadDestinatarios
             object cInscricao_Estadual: TUniDBEdit
               Left = 8
               Top = 45
-              Width = 549
+              Width = 306
               Height = 25
               Hint = ''
               ShowHint = True
@@ -1082,7 +1089,7 @@ object fCadDestinatarios: TfCadDestinatarios
             object cInscricao_Municipal: TUniDBEdit
               Left = 8
               Top = 99
-              Width = 549
+              Width = 306
               Height = 25
               Hint = ''
               ShowHint = True
@@ -1100,7 +1107,7 @@ object fCadDestinatarios: TfCadDestinatarios
             object cSUFRAMA: TUniDBEdit
               Left = 8
               Top = 153
-              Width = 549
+              Width = 306
               Height = 25
               Hint = ''
               ShowHint = True
@@ -1118,7 +1125,7 @@ object fCadDestinatarios: TfCadDestinatarios
             object cRegistro_Alfandega: TUniDBEdit
               Left = 8
               Top = 207
-              Width = 549
+              Width = 306
               Height = 25
               Hint = ''
               ShowHint = True
@@ -1136,7 +1143,7 @@ object fCadDestinatarios: TfCadDestinatarios
             object cCNAE: TUniDBEdit
               Left = 8
               Top = 126
-              Width = 549
+              Width = 306
               Height = 25
               Hint = ''
               ShowHint = True
@@ -1154,7 +1161,7 @@ object fCadDestinatarios: TfCadDestinatarios
             object cDesoneracao: TUniDBLookupComboBox
               Left = 8
               Top = 180
-              Width = 549
+              Width = 563
               Height = 25
               Hint = ''
               ShowHint = True
@@ -1177,7 +1184,7 @@ object fCadDestinatarios: TfCadDestinatarios
             object cIndicadorIE: TUniDBLookupComboBox
               Left = 8
               Top = 72
-              Width = 549
+              Width = 563
               Height = 25
               Hint = ''
               ShowHint = True

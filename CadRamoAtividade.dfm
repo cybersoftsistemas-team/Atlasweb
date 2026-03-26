@@ -25,10 +25,6 @@ object fCadRamoAtividade: TfCadRamoAtividade
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -62,6 +58,7 @@ object fCadRamoAtividade: TfCadRamoAtividade
             Title.Font.Style = [fsBold]
             Width = 81
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Descricao'
@@ -70,6 +67,7 @@ object fCadRamoAtividade: TfCadRamoAtividade
             Title.Font.Style = [fsBold]
             Width = 816
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Comissionado'
@@ -80,6 +78,7 @@ object fCadRamoAtividade: TfCadRamoAtividade
             Font.Name = 'Calibri'
             Alignment = taCenter
             ForceStringFormat = True
+            ReadOnly = True
           end>
       end
       object pBarraPesq: TUniPanel
@@ -130,10 +129,6 @@ object fCadRamoAtividade: TfCadRamoAtividade
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -149,12 +144,12 @@ object fCadRamoAtividade: TfCadRamoAtividade
         DesignSize = (
           981
           936)
-        ScrollHeight = 217
+        ScrollHeight = 173
         object pFicha1: TUniPanel
           Left = 154
           Top = 16
           Width = 596
-          Height = 201
+          Height = 157
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -172,8 +167,8 @@ object fCadRamoAtividade: TfCadRamoAtividade
           object cCodigo: TUniDBNumberEdit
             Left = 21
             Top = 22
-            Width = 103
-            Height = 55
+            Width = 176
+            Height = 25
             Hint = ''
             Enabled = False
             ShowHint = True
@@ -187,17 +182,16 @@ object fCadRamoAtividade: TfCadRamoAtividade
             TabOrder = 1
             SelectOnFocus = True
             FieldLabel = 'C'#243'digo'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 60
             FieldLabelSeparator = ' '
             DecimalSeparator = ','
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
           end
           object cDescricao: TUniDBEdit
             Left = 21
-            Top = 78
+            Top = 49
             Width = 552
-            Height = 55
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Descricao'
@@ -208,15 +202,15 @@ object fCadRamoAtividade: TfCadRamoAtividade
             Font.Style = [fsBold]
             TabOrder = 2
             FieldLabel = 'Descri'#231#227'o'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 60
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cComissionado: TUniDBCheckBox
             Left = 21
-            Top = 160
-            Width = 103
+            Top = 104
+            Width = 142
             Height = 21
             Hint = ''
             ShowHint = True

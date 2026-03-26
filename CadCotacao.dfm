@@ -121,12 +121,12 @@ object fCadCotacao: TfCadCotacao
   end
   object Pasta: TUniPageControl
     Left = 0
-    Top = 35
+    Top = 62
     Width = 1288
-    Height = 966
+    Height = 939
     Hint = ''
     BodyRTL = False
-    ActivePage = UniTabSheet1
+    ActivePage = aLista
     Plain = True
     Align = alClient
     ClientEvents.UniEvents.Strings = (
@@ -134,71 +134,152 @@ object fCadCotacao: TfCadCotacao
         'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
         's = '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 0
+    ExplicitTop = 35
+    ExplicitHeight = 966
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
-      object pBarraPesq: TUniPanel
+      ExplicitHeight = 938
+      object UniContainerPanel1: TUniContainerPanel
+        Tag = 1
         Left = 0
         Top = 0
         Width = 1280
-        Height = 27
+        Height = 120
         Hint = ''
+        CreateOrder = 1
+        ParentColor = False
         Align = alTop
-        TabOrder = 0
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
-        BorderStyle = ubsNone
-        Caption = ''
-        Color = clNone
-        object cPesquisa: TUniEdit
-          Left = 0
-          Top = 0
-          Width = 520
-          Height = 27
+        TabOrder = 1
+        DesignSize = (
+          1280
+          120)
+        object pFicha: TUniPanel
+          Left = 218
+          Top = 12
+          Width = 755
+          Height = 95
           Hint = ''
-          BorderStyle = ubsNone
-          Text = ''
-          Align = alLeft
+          ShowHint = True
+          ParentShowHint = False
+          Anchors = [akTop]
           TabOrder = 1
-          EmptyText = 'Pesquisar'
-          OnKeyDown = cPesquisaKeyDown
-        end
-        object bPesquisa: TUniSpeedButton
-          Left = 520
-          Top = 0
-          Width = 25
-          Height = 27
-          Hint = ''
+          ClientEvents.UniEvents.Strings = (
+            
+              'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
+              ' '#39'Ficha'#39';'#13#10'}')
+          BorderStyle = ubsNone
+          TitleAlign = taCenter
+          Title = 'DADOS GERAIS'
           Caption = ''
-          Align = alLeft
-          ParentColor = False
-          IconAlign = iaCenter
-          Images = UniMainModule.imgBotoes
-          ImageIndex = 10
-          TabOrder = 2
-          OnClick = bPesquisaClick
+          Color = clTeal
+          object cPais: TUniDBEdit
+            Left = 326
+            Top = 8
+            Width = 385
+            Height = 25
+            Hint = ''
+            Enabled = False
+            ShowHint = True
+            DataField = 'Pais'
+            DataSource = dsMoedas
+            TabOrder = 1
+            FieldLabel = 'Pa'#237's'
+            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
+            SelectOnFocus = True
+            BorderStyle = ubsInset
+          end
+          object cData: TUniDBDateTimePicker
+            Left = 8
+            Top = 35
+            Width = 250
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            DataField = 'Data'
+            DataSource = dsCotacao
+            DateTime = 44182.000000000000000000
+            DateFormat = 'dd/MM/yyyy'
+            TimeFormat = 'HH:mm:ss'
+            TabOrder = 2
+            BorderStyle = ubsInset
+            FieldLabel = 'Data'
+            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
+          end
+          object cSimbolo: TUniDBEdit
+            Left = 151
+            Top = 8
+            Width = 139
+            Height = 25
+            Hint = ''
+            Enabled = False
+            ShowHint = True
+            DataField = 'Simbolo'
+            DataSource = dsMoedas
+            TabOrder = 3
+            FieldLabel = 'Simbolo'
+            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
+            SelectOnFocus = True
+            BorderStyle = ubsInset
+          end
+          object cCodigo: TUniDBEdit
+            Left = 8
+            Top = 8
+            Width = 139
+            Height = 25
+            Hint = ''
+            Enabled = False
+            ShowHint = True
+            DataField = 'Codigo'
+            DataSource = dsMoedas
+            TabOrder = 4
+            InputType = 'text'
+            FieldLabel = 'C'#243'digo'
+            FieldLabelWidth = 120
+            FieldLabelSeparator = ' '
+            SelectOnFocus = True
+            BorderStyle = ubsInset
+          end
+          object cValor: TUniDBFormattedNumberEdit
+            Left = 8
+            Top = 62
+            Width = 250
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            DataField = 'Valor'
+            DataSource = dsCotacao
+            TabOrder = 5
+            FieldLabel = 'Valor'
+            FieldLabelWidth = 120
+            DecimalPrecision = 4
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
+            BorderStyle = ubsInset
+          end
         end
       end
       object UniPanel1: TUniPanel
+        Tag = 1
         Left = 0
-        Top = 27
+        Top = 120
         Width = 1280
-        Height = 911
+        Height = 791
         Hint = ''
+        CreateOrder = 2
         Align = alClient
-        TabOrder = 1
+        TabOrder = 0
         Caption = ''
+        ExplicitTop = 175
+        ExplicitHeight = 763
         object GradeMoedas: TUniDBGrid
           Left = 1
           Top = 1
           Width = 1024
-          Height = 909
+          Height = 789
           Hint = ''
           TitleFont.Style = [fsBold]
           DataSource = dsMoedas
@@ -217,6 +298,7 @@ object fCadCotacao: TfCadCotacao
               Title.Caption = 'C'#243'digo'
               Title.Font.Style = [fsBold]
               Width = 60
+              ReadOnly = True
             end
             item
               FieldName = 'Nome'
@@ -224,6 +306,7 @@ object fCadCotacao: TfCadCotacao
               Title.Caption = 'Nome'
               Title.Font.Style = [fsBold]
               Width = 261
+              ReadOnly = True
             end
             item
               FieldName = 'Simbolo'
@@ -231,6 +314,7 @@ object fCadCotacao: TfCadCotacao
               Title.Caption = 'Simbolo'
               Title.Font.Style = [fsBold]
               Width = 64
+              ReadOnly = True
             end
             item
               FieldName = 'Pais'
@@ -238,13 +322,14 @@ object fCadCotacao: TfCadCotacao
               Title.Caption = 'Pais'
               Title.Font.Style = [fsBold]
               Width = 243
+              ReadOnly = True
             end>
         end
         object GradeCotacao: TUniDBGrid
           Left = 1025
           Top = 1
           Width = 254
-          Height = 909
+          Height = 789
           Hint = ''
           DataSource = dsCotacao
           Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
@@ -273,11 +358,12 @@ object fCadCotacao: TfCadCotacao
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
+      ExplicitHeight = 938
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
         Width = 1280
-        Height = 938
+        Height = 911
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -285,119 +371,56 @@ object fCadCotacao: TfCadCotacao
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
-        DesignSize = (
-          1278
-          936)
-        ScrollHeight = 248
-        object pFicha: TUniPanel
-          Left = 125
-          Top = 32
-          Width = 644
-          Height = 216
-          Hint = ''
-          ShowHint = True
-          ParentShowHint = False
-          Anchors = [akTop]
-          TabOrder = 0
-          ClientEvents.UniEvents.Strings = (
-            
-              'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-              ' '#39'Ficha'#39';'#13#10'}')
-          BorderStyle = ubsNone
-          TitleAlign = taCenter
-          Title = 'DADOS GERAIS'
-          Caption = ''
-          Color = clTeal
-          object cPais: TUniDBEdit
-            Left = 230
-            Top = 24
-            Width = 385
-            Height = 55
-            Hint = ''
-            Enabled = False
-            ShowHint = True
-            DataField = 'Pais'
-            DataSource = dsMoedas
-            TabOrder = 1
-            FieldLabel = 'Pa'#237's'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-            SelectOnFocus = True
-          end
-          object cData: TUniDBDateTimePicker
-            Left = 24
-            Top = 79
-            Width = 160
-            Height = 55
-            Hint = ''
-            ShowHint = True
-            DataField = 'Data'
-            DataSource = dsCotacao
-            DateTime = 44182.000000000000000000
-            DateFormat = 'dd/MM/yyyy'
-            TimeFormat = 'HH:mm:ss'
-            TabOrder = 2
-            BorderStyle = ubsSolid
-            FieldLabel = 'Data'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-          end
-          object cSimbolo: TUniDBEdit
-            Left = 127
-            Top = 24
-            Width = 100
-            Height = 55
-            Hint = ''
-            Enabled = False
-            ShowHint = True
-            DataField = 'Simbolo'
-            DataSource = dsMoedas
-            TabOrder = 3
-            FieldLabel = 'Simbolo'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-            SelectOnFocus = True
-          end
-          object cCodigo: TUniDBEdit
-            Left = 24
-            Top = 24
-            Width = 100
-            Height = 55
-            Hint = ''
-            Enabled = False
-            ShowHint = True
-            DataField = 'Codigo'
-            DataSource = dsMoedas
-            TabOrder = 4
-            InputType = 'text'
-            FieldLabel = 'C'#243'digo'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-            SelectOnFocus = True
-          end
-          object cValor: TUniDBFormattedNumberEdit
-            Left = 24
-            Top = 133
-            Width = 160
-            Height = 55
-            Hint = ''
-            ShowHint = True
-            DataField = 'Valor'
-            DataSource = dsCotacao
-            TabOrder = 5
-            FieldLabel = 'Valor'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            DecimalPrecision = 4
-            DecimalSeparator = ','
-            ThousandSeparator = '.'
-          end
-        end
+        ExplicitHeight = 938
       end
+    end
+  end
+  object pBarraPesq: TUniPanel
+    Left = 0
+    Top = 35
+    Width = 1288
+    Height = 27
+    Hint = ''
+    Align = alTop
+    TabOrder = 2
+    ClientEvents.UniEvents.Strings = (
+      
+        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
+        ' '#39'Pasta'#39';'#13#10'}')
+    BorderStyle = ubsNone
+    Caption = ''
+    Color = clWhite
+    ExplicitLeft = 16
+    ExplicitTop = 16
+    ExplicitWidth = 1052
+    object cPesquisa: TUniEdit
+      Left = 0
+      Top = 0
+      Width = 520
+      Height = 27
+      Hint = ''
+      BorderStyle = ubsNone
+      Text = ''
+      Align = alLeft
+      TabOrder = 1
+      Color = clWhite
+      EmptyText = 'Pesquisar'
+      OnKeyDown = cPesquisaKeyDown
+    end
+    object bPesquisa: TUniSpeedButton
+      Left = 520
+      Top = 0
+      Width = 25
+      Height = 27
+      Hint = ''
+      Caption = ''
+      Align = alLeft
+      ParentColor = False
+      IconAlign = iaCenter
+      Images = UniMainModule.imgBotoes
+      ImageIndex = 10
+      TabOrder = 2
+      OnClick = bPesquisaClick
     end
   end
   object Cotacao: TFDQuery

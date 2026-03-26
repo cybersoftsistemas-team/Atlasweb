@@ -13,7 +13,7 @@ object fCadEstados: TfCadEstados
     Height = 777
     Hint = ''
     BodyRTL = False
-    ActivePage = aFicha2
+    ActivePage = UniTabSheet1
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -23,10 +23,6 @@ object fCadEstados: TfCadEstados
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -60,6 +56,7 @@ object fCadEstados: TfCadEstados
             Width = 80
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Codigo'
@@ -69,6 +66,7 @@ object fCadEstados: TfCadEstados
             Width = 80
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Nome'
@@ -77,6 +75,7 @@ object fCadEstados: TfCadEstados
             Title.Font.Style = [fsBold]
             Width = 393
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Regiao'
@@ -85,6 +84,7 @@ object fCadEstados: TfCadEstados
             Title.Font.Style = [fsBold]
             Width = 84
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Inscricao'
@@ -93,6 +93,7 @@ object fCadEstados: TfCadEstados
             Title.Font.Style = [fsBold]
             Width = 166
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'MVA'
@@ -102,6 +103,7 @@ object fCadEstados: TfCadEstados
             Width = 52
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end>
       end
       object UniPanel2: TUniPanel
@@ -150,10 +152,6 @@ object fCadEstados: TfCadEstados
     object aFicha2: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0
@@ -166,15 +164,17 @@ object fCadEstados: TfCadEstados
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
+        ExplicitLeft = 3
+        ExplicitTop = 1
         DesignSize = (
           1190
           747)
-        ScrollHeight = 417
+        ScrollHeight = 519
         object pFicha: TUniPanel
-          Left = 105
-          Top = 26
-          Width = 610
-          Height = 391
+          Left = 144
+          Top = 31
+          Width = 536
+          Height = 488
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -190,10 +190,10 @@ object fCadEstados: TfCadEstados
           Caption = ''
           Color = clTeal
           object cNumero: TUniDBEdit
-            Left = 98
-            Top = 24
-            Width = 71
-            Height = 55
+            Left = 218
+            Top = 17
+            Width = 139
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Numero'
@@ -202,16 +202,16 @@ object fCadEstados: TfCadEstados
             Font.Style = [fsBold]
             TabOrder = 1
             FieldLabel = 'C'#243'digo'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 80
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cNome: TUniDBEdit
-            Left = 25
-            Top = 80
-            Width = 264
-            Height = 55
+            Left = 18
+            Top = 44
+            Width = 339
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Nome'
@@ -220,16 +220,16 @@ object fCadEstados: TfCadEstados
             Font.Style = [fsBold]
             TabOrder = 3
             FieldLabel = 'Nome'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 80
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cUF: TUniDBEdit
-            Left = 25
-            Top = 24
-            Width = 67
-            Height = 55
+            Left = 18
+            Top = 17
+            Width = 195
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'UF'
@@ -239,16 +239,16 @@ object fCadEstados: TfCadEstados
             Font.Style = [fsBold]
             TabOrder = 2
             FieldLabel = 'UF'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 80
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cDed_Do: TUniDBEdit
-            Left = 295
-            Top = 80
-            Width = 90
-            Height = 55
+            Left = 18
+            Top = 71
+            Width = 195
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'De_Do'
@@ -257,16 +257,16 @@ object fCadEstados: TfCadEstados
             Font.Style = [fsBold]
             TabOrder = 4
             FieldLabel = 'de/do'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 80
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cRegiao: TUniDBRadioGroup
-            Left = 434
-            Top = 24
-            Width = 152
-            Height = 145
+            Left = 374
+            Top = 11
+            Width = 140
+            Height = 149
             Hint = ''
             ShowHint = True
             DataField = 'Regiao'
@@ -291,10 +291,10 @@ object fCadEstados: TfCadEstados
               'SE')
           end
           object cMascara_IE: TUniDBEdit
-            Left = 25
-            Top = 136
-            Width = 186
-            Height = 55
+            Left = 18
+            Top = 98
+            Width = 338
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Mascara_IE'
@@ -302,16 +302,16 @@ object fCadEstados: TfCadEstados
             ParentFont = False
             Font.Style = [fsBold]
             TabOrder = 6
-            FieldLabel = 'Mascara Inscri'#231#227'o Estadual'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabel = 'Mascara IE'
+            FieldLabelWidth = 80
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object GroupBox1: TUniGroupBox
-            Left = 26
-            Top = 209
-            Width = 273
+            Left = 18
+            Top = 156
+            Width = 326
             Height = 150
             Hint = ''
             ShowHint = True
@@ -323,8 +323,8 @@ object fCadEstados: TfCadEstados
                 's = '#39'Grupo'#39';'#13#10'}')
             object cImp_Contribuinte: TUniDBEdit
               Left = 11
-              Top = 49
-              Width = 250
+              Top = 48
+              Width = 300
               Height = 28
               Hint = ''
               ShowHint = True
@@ -332,14 +332,15 @@ object fCadEstados: TfCadEstados
               DataSource = dsEstados
               TabOrder = 1
               FieldLabel = 'Contribuinte (Diferenciada)'
-              FieldLabelWidth = 180
+              FieldLabelWidth = 160
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cImp_NContribuinte: TUniDBEdit
               Left = 11
-              Top = 111
-              Width = 250
+              Top = 108
+              Width = 300
               Height = 28
               Hint = ''
               ShowHint = True
@@ -347,14 +348,15 @@ object fCadEstados: TfCadEstados
               DataSource = dsEstados
               TabOrder = 3
               FieldLabel = 'N'#227'o Contribuinte (Diferenciada)'
-              FieldLabelWidth = 180
+              FieldLabelWidth = 160
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cImp_ContribuinteCheia: TUniDBEdit
               Left = 11
               Top = 18
-              Width = 250
+              Width = 300
               Height = 28
               Hint = ''
               ShowHint = True
@@ -362,14 +364,15 @@ object fCadEstados: TfCadEstados
               DataSource = dsEstados
               TabOrder = 0
               FieldLabel = 'Contribuinte (Integral)'
-              FieldLabelWidth = 180
+              FieldLabelWidth = 160
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cImp_NContribuinteCheia: TUniDBEdit
               Left = 11
-              Top = 80
-              Width = 250
+              Top = 78
+              Width = 300
               Height = 28
               Hint = ''
               ShowHint = True
@@ -377,15 +380,16 @@ object fCadEstados: TfCadEstados
               DataSource = dsEstados
               TabOrder = 2
               FieldLabel = 'N'#227'o Contribuinte (Integral)'
-              FieldLabelWidth = 180
+              FieldLabelWidth = 160
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
           end
           object GroupBox2: TUniGroupBox
-            Left = 313
-            Top = 209
-            Width = 273
+            Left = 18
+            Top = 320
+            Width = 326
             Height = 150
             Hint = ''
             ShowHint = True
@@ -398,7 +402,7 @@ object fCadEstados: TfCadEstados
             object cNac_ContribuinteCheia: TUniDBEdit
               Left = 11
               Top = 18
-              Width = 250
+              Width = 300
               Height = 28
               Hint = ''
               ShowHint = True
@@ -406,14 +410,15 @@ object fCadEstados: TfCadEstados
               DataSource = dsEstados
               TabOrder = 0
               FieldLabel = 'Contribuinte (Integral)'
-              FieldLabelWidth = 180
+              FieldLabelWidth = 160
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cNac_NContribuinteCheia: TUniDBEdit
               Left = 11
-              Top = 80
-              Width = 250
+              Top = 78
+              Width = 300
               Height = 28
               Hint = ''
               ShowHint = True
@@ -421,14 +426,15 @@ object fCadEstados: TfCadEstados
               DataSource = dsEstados
               TabOrder = 2
               FieldLabel = 'N'#227'o Contribuinte (Integral)'
-              FieldLabelWidth = 180
+              FieldLabelWidth = 160
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cNac_Contribuinte: TUniDBEdit
               Left = 11
-              Top = 49
-              Width = 250
+              Top = 48
+              Width = 300
               Height = 28
               Hint = ''
               ShowHint = True
@@ -436,14 +442,15 @@ object fCadEstados: TfCadEstados
               DataSource = dsEstados
               TabOrder = 1
               FieldLabel = 'Contribuinte (Diferenciada)'
-              FieldLabelWidth = 180
+              FieldLabelWidth = 160
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cNac_NContribuinte: TUniDBEdit
               Left = 11
-              Top = 111
-              Width = 250
+              Top = 108
+              Width = 300
               Height = 28
               Hint = ''
               ShowHint = True
@@ -451,9 +458,10 @@ object fCadEstados: TfCadEstados
               DataSource = dsEstados
               TabOrder = 3
               FieldLabel = 'N'#227'o Contribuinte (Diferenciada)'
-              FieldLabelWidth = 180
+              FieldLabelWidth = 160
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
           end
         end
@@ -462,10 +470,6 @@ object fCadEstados: TfCadEstados
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'GNRE'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -478,17 +482,15 @@ object fCadEstados: TfCadEstados
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
-        ExplicitLeft = 1
-        ExplicitTop = 1
         DesignSize = (
           1190
           747)
-        ScrollHeight = 577
+        ScrollHeight = 363
         object pFicha2: TUniPanel
-          Left = 105
+          Left = 144
           Top = 14
-          Width = 671
-          Height = 563
+          Width = 714
+          Height = 349
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -504,8 +506,8 @@ object fCadEstados: TfCadEstados
           Caption = ''
           Color = clTeal
           object UniDBCheckBox1: TUniDBCheckBox
-            Left = 478
-            Top = 17
+            Left = 14
+            Top = 156
             Width = 168
             Height = 17
             Hint = ''
@@ -518,10 +520,10 @@ object fCadEstados: TfCadEstados
             Color = clBtnFace
           end
           object cGNRE_ST: TUniDBEdit
-            Left = 209
-            Top = 209
-            Width = 180
-            Height = 55
+            Left = 241
+            Top = 98
+            Width = 220
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'GNRE_CodigoST'
@@ -531,15 +533,15 @@ object fCadEstados: TfCadEstados
             TabOrder = 2
             FieldLabel = 'C'#243'd.Receita ICMS ST'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cCodigo_GNRE: TUniDBEdit
-            Left = 22
-            Top = 41
-            Width = 180
-            Height = 55
+            Left = 14
+            Top = 17
+            Width = 220
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'GNRE_Codigo'
@@ -549,15 +551,15 @@ object fCadEstados: TfCadEstados
             TabOrder = 3
             FieldLabel = 'C'#243'digo GNRE'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cConvenio: TUniDBEdit
-            Left = 208
-            Top = 41
-            Width = 180
-            Height = 55
+            Left = 240
+            Top = 17
+            Width = 220
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'GNRE_Convenio'
@@ -567,15 +569,15 @@ object fCadEstados: TfCadEstados
             TabOrder = 4
             FieldLabel = 'N'#186' do Conv'#234'nio'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cGNRE_AdicCod: TUniDBEdit
-            Left = 395
-            Top = 153
-            Width = 180
-            Height = 55
+            Left = 467
+            Top = 71
+            Width = 220
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'GNRE_AdicCod'
@@ -585,15 +587,15 @@ object fCadEstados: TfCadEstados
             TabOrder = 5
             FieldLabel = 'Campo Adicional C'#243'digo'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cGNRE_AdicTipo: TUniDBEdit
-            Left = 209
-            Top = 153
-            Width = 180
-            Height = 55
+            Left = 241
+            Top = 71
+            Width = 220
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'GNRE_AdicTipo'
@@ -603,15 +605,15 @@ object fCadEstados: TfCadEstados
             TabOrder = 6
             FieldLabel = 'Campo Adicional Tipo'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cGNRE_Imp: TUniDBEdit
-            Left = 22
-            Top = 209
-            Width = 180
-            Height = 55
+            Left = 14
+            Top = 98
+            Width = 220
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'GNRE_CodigoImp'
@@ -621,15 +623,15 @@ object fCadEstados: TfCadEstados
             TabOrder = 7
             FieldLabel = 'C'#243'd.Receita ICMS Importa'#231#227'o'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cGNRE_DIFAL: TUniDBEdit
-            Left = 22
-            Top = 153
-            Width = 180
-            Height = 55
+            Left = 14
+            Top = 71
+            Width = 220
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'GNRE_CodigoDIFAL'
@@ -639,15 +641,15 @@ object fCadEstados: TfCadEstados
             TabOrder = 8
             FieldLabel = 'C'#243'd.Receita ICMS DIFAL'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cICMS_Interno: TUniDBEdit
-            Left = 22
-            Top = 97
-            Width = 180
-            Height = 55
+            Left = 14
+            Top = 44
+            Width = 220
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'GNRE_ICMSInterno'
@@ -657,15 +659,15 @@ object fCadEstados: TfCadEstados
             TabOrder = 9
             FieldLabel = 'Al'#237'quota ICMS Interna'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object GroupBox20: TUniGroupBox
-            Left = 22
-            Top = 283
-            Width = 627
-            Height = 254
+            Left = 14
+            Top = 191
+            Width = 685
+            Height = 137
             Hint = ''
             ShowHint = True
             Caption = 'Lan'#231'amento Financeiro (Pagamento GNRE)'
@@ -675,86 +677,86 @@ object fCadEstados: TfCadEstados
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
                 's = '#39'Grupo'#39';'#13#10'}')
             object cGNRE_Orgao: TUniDBLookupComboBox
-              Left = 9
-              Top = 181
-              Width = 600
-              Height = 55
+              Left = 11
+              Top = 97
+              Width = 660
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Nome'
               ListSource = dsOrgaos
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'GNRE_Orgao'
               DataSource = dsEstados
               TabOrder = 1
               Color = clWindow
               FieldLabel = 'Org'#227'o Arrecadador'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 140
               FieldLabelSeparator = ' '
               Style = csDropDown
             end
             object clGNRE_TipoDocumento: TUniDBLookupComboBox
-              Left = 9
-              Top = 126
-              Width = 600
-              Height = 55
+              Left = 11
+              Top = 70
+              Width = 660
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Nome'
               ListSource = dsDocs
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'GNRE_TipoDocumento'
               DataSource = dsEstados
               TabOrder = 2
               Color = clWindow
               FieldLabel = 'Documento'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 140
               FieldLabelSeparator = ' '
               Style = csDropDown
             end
             object cGNRE_CentroCusto: TUniDBLookupComboBox
-              Left = 9
-              Top = 71
-              Width = 600
-              Height = 55
+              Left = 11
+              Top = 43
+              Width = 660
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo; Nome'
               ListSource = dsCentroCusto
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'GNRE_CentroCusto'
               DataSource = dsEstados
               TabOrder = 3
               Color = clWindow
               FieldLabel = 'Centro de Custo'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 140
               FieldLabelSeparator = ' '
               Style = csDropDown
             end
             object cGNRE_Classificacao: TUniDBLookupComboBox
-              Left = 9
+              Left = 11
               Top = 16
-              Width = 600
-              Height = 55
+              Width = 660
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Nome'
               ListSource = dsPlanoFin
               KeyField = 'Codigo'
               ListFieldIndex = 0
+              BorderStyle = ubsInset
               DataField = 'GNRE_Classificacao'
               DataSource = dsEstados
               TabOrder = 4
               Color = clWindow
               FieldLabel = 'Classifica'#231#227'o Financeira'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 140
               Style = csDropDown
             end
           end

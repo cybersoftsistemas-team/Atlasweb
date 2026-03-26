@@ -25,10 +25,6 @@ object fCadAlugueis: TfCadAlugueis
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -62,6 +58,7 @@ object fCadAlugueis: TfCadAlugueis
             Title.Font.Style = [fsBold]
             Width = 100
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Descricao'
@@ -70,6 +67,7 @@ object fCadAlugueis: TfCadAlugueis
             Title.Font.Style = [fsBold]
             Width = 100
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Valor'
@@ -78,6 +76,7 @@ object fCadAlugueis: TfCadAlugueis
             Title.Font.Style = [fsBold]
             Width = 100
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Dia_Vencimento'
@@ -86,6 +85,7 @@ object fCadAlugueis: TfCadAlugueis
             Title.Font.Style = [fsBold]
             Width = 100
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Aliquota_COFINS'
@@ -94,6 +94,7 @@ object fCadAlugueis: TfCadAlugueis
             Title.Font.Style = [fsBold]
             Width = 100
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Aliquota_PIS'
@@ -102,6 +103,7 @@ object fCadAlugueis: TfCadAlugueis
             Title.Font.Style = [fsBold]
             Width = 100
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Inicio'
@@ -110,6 +112,7 @@ object fCadAlugueis: TfCadAlugueis
             Title.Font.Style = [fsBold]
             Width = 100
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Termino'
@@ -118,6 +121,7 @@ object fCadAlugueis: TfCadAlugueis
             Title.Font.Style = [fsBold]
             Width = 100
             Font.Name = 'Calibri'
+            ReadOnly = True
           end>
       end
       object pBarraPesq: TUniPanel
@@ -168,10 +172,6 @@ object fCadAlugueis: TfCadAlugueis
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -179,7 +179,7 @@ object fCadAlugueis: TfCadAlugueis
         Height = 938
         Hint = ''
         Align = alClient
-        Color = clTeal
+        Color = clBtnFace
         ClientEvents.UniEvents.Strings = (
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
@@ -188,12 +188,12 @@ object fCadAlugueis: TfCadAlugueis
         DesignSize = (
           981
           936)
-        ScrollHeight = 510
+        ScrollHeight = 279
         object pFicha1: TUniPanel
           Left = 176
           Top = 26
           Width = 641
-          Height = 484
+          Height = 253
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -211,8 +211,8 @@ object fCadAlugueis: TfCadAlugueis
           object cCodigo: TUniDBEdit
             Left = 17
             Top = 14
-            Width = 112
-            Height = 55
+            Width = 300
+            Height = 25
             Hint = ''
             Enabled = False
             ShowHint = True
@@ -225,15 +225,15 @@ object fCadAlugueis: TfCadAlugueis
             TabOrder = 1
             FieldLabel = 'C'#243'digo'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cDescricao: TUniDBEdit
             Left = 17
-            Top = 70
+            Top = 41
             Width = 600
-            Height = 55
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Descricao'
@@ -245,15 +245,15 @@ object fCadAlugueis: TfCadAlugueis
             TabOrder = 2
             FieldLabel = 'Descri'#231#227'o'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cValor: TUniDBFormattedNumberEdit
             Left = 17
-            Top = 126
-            Width = 150
-            Height = 55
+            Top = 68
+            Width = 300
+            Height = 25
             Hint = ''
             ShowHint = True
             InputRTL = False
@@ -267,17 +267,16 @@ object fCadAlugueis: TfCadAlugueis
             SelectOnFocus = True
             FieldLabel = 'Valor'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             DecimalSeparator = ','
             ThousandSeparator = '.'
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
           end
           object cDia_Vencimento: TUniDBNumberEdit
             Left = 17
-            Top = 182
-            Width = 150
-            Height = 55
+            Top = 95
+            Width = 300
+            Height = 25
             Hint = ''
             ShowHint = True
             InputRTL = False
@@ -291,16 +290,15 @@ object fCadAlugueis: TfCadAlugueis
             SelectOnFocus = True
             FieldLabel = 'Dia de Vencimento'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             DecimalSeparator = ','
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
           end
           object cAliquota_COFINS: TUniDBFormattedNumberEdit
             Left = 17
-            Top = 294
-            Width = 150
-            Height = 55
+            Top = 149
+            Width = 300
+            Height = 25
             Hint = ''
             ShowHint = True
             InputRTL = False
@@ -314,17 +312,16 @@ object fCadAlugueis: TfCadAlugueis
             SelectOnFocus = True
             FieldLabel = 'Al'#237'quota da COFINS'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             DecimalSeparator = ','
             ThousandSeparator = '.'
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
           end
           object cAliquota_PIS: TUniDBFormattedNumberEdit
             Left = 17
-            Top = 238
-            Width = 150
-            Height = 55
+            Top = 122
+            Width = 300
+            Height = 25
             Hint = ''
             ShowHint = True
             InputRTL = False
@@ -338,17 +335,16 @@ object fCadAlugueis: TfCadAlugueis
             SelectOnFocus = True
             FieldLabel = 'Al'#237'quota do PIS'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             DecimalSeparator = ','
             ThousandSeparator = '.'
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
           end
           object cInicio: TUniDBDateTimePicker
             Left = 17
-            Top = 349
-            Width = 150
-            Height = 55
+            Top = 176
+            Width = 300
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Inicio'
@@ -361,16 +357,16 @@ object fCadAlugueis: TfCadAlugueis
             Font.Height = -13
             Font.Name = 'DejaVu Sans'
             Font.Style = [fsBold]
+            BorderStyle = ubsInset
             FieldLabel = 'Data de Inicio'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
           object cTermino: TUniDBDateTimePicker
             Left = 17
-            Top = 403
-            Width = 150
-            Height = 55
+            Top = 203
+            Width = 300
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Termino'
@@ -383,9 +379,9 @@ object fCadAlugueis: TfCadAlugueis
             Font.Height = -13
             Font.Name = 'DejaVu Sans'
             Font.Style = [fsBold]
+            BorderStyle = ubsInset
             FieldLabel = 'Data de T'#233'rmino'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
         end
