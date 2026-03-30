@@ -132,7 +132,6 @@ object fCadModalidadesImportacao: TfCadModalidadesImportacao
         'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
         's = '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 1
-    ExplicitWidth = 1288
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
@@ -160,6 +159,7 @@ object fCadModalidadesImportacao: TfCadModalidadesImportacao
             Title.Font.Style = [fsBold]
             Width = 84
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Descricao'
@@ -167,6 +167,7 @@ object fCadModalidadesImportacao: TfCadModalidadesImportacao
             Title.Caption = 'Descri'#231#227'o'
             Title.Font.Style = [fsBold]
             Width = 584
+            ReadOnly = True
           end
           item
             FieldName = 'CentroCusto'
@@ -175,6 +176,7 @@ object fCadModalidadesImportacao: TfCadModalidadesImportacao
             Title.Font.Style = [fsBold]
             Width = 112
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Documento'
@@ -183,6 +185,7 @@ object fCadModalidadesImportacao: TfCadModalidadesImportacao
             Title.Font.Style = [fsBold]
             Width = 109
             Alignment = taCenter
+            ReadOnly = True
           end>
       end
     end
@@ -201,17 +204,17 @@ object fCadModalidadesImportacao: TfCadModalidadesImportacao
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
-        ExplicitWidth = 1280
-        ExplicitHeight = 1772
+        ExplicitLeft = -3
+        ExplicitTop = 3
         DesignSize = (
           1338
           936)
-        ScrollHeight = 786
+        ScrollHeight = 475
         object pFicha: TUniPanel
           Left = 127
           Top = 11
           Width = 1161
-          Height = 775
+          Height = 464
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -228,9 +231,9 @@ object fCadModalidadesImportacao: TfCadModalidadesImportacao
           Color = clTeal
           object cCodigo: TUniDBEdit
             Left = 10
-            Top = 10
-            Width = 85
-            Height = 55
+            Top = 22
+            Width = 181
+            Height = 25
             Hint = ''
             Enabled = False
             ShowHint = True
@@ -238,39 +241,31 @@ object fCadModalidadesImportacao: TfCadModalidadesImportacao
             DataSource = dsModal
             TabOrder = 1
             FieldLabel = 'C'#243'digo'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 60
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
+            BorderStyle = ubsInset
           end
           object cDescricao: TUniDBEdit
-            Left = 101
-            Top = 10
+            Left = 10
+            Top = 49
             Width = 540
-            Height = 55
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Descricao'
             DataSource = dsModal
             TabOrder = 2
             FieldLabel = 'Descri'#231#227'o'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 60
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
-            BorderStyle = ubsDefault
+            BorderStyle = ubsInset
           end
           object cApuracao_PISCOFINS: TUniDBCheckBox
-            Left = 656
-            Top = 41
-            Width = 117
+            Left = 738
+            Top = 18
+            Width = 150
             Height = 17
             Hint = ''
             ShowHint = True
@@ -287,9 +282,9 @@ object fCadModalidadesImportacao: TfCadModalidadesImportacao
             FieldLabelSeparator = ' '
           end
           object cExige_Cliente: TUniDBCheckBox
-            Left = 791
+            Left = 738
             Top = 41
-            Width = 117
+            Width = 150
             Height = 17
             Hint = ''
             ShowHint = True
@@ -307,9 +302,9 @@ object fCadModalidadesImportacao: TfCadModalidadesImportacao
           end
           object UniGroupBox1: TUniGroupBox
             Left = 10
-            Top = 72
+            Top = 96
             Width = 566
-            Height = 689
+            Height = 353
             Hint = ''
             ShowHint = True
             Caption = 'Par'#226'metriza'#231#227'o Financeira para Importa'#231#227'o de DI'
@@ -322,296 +317,248 @@ object fCadModalidadesImportacao: TfCadModalidadesImportacao
               Left = 12
               Top = 19
               Width = 540
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Nome'
               ListSource = dsDocumentos
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSingle
+              BorderStyle = ubsInset
               DataField = 'Documento'
               DataSource = dsModal
               TabOrder = 1
               Color = clWindow
               FieldLabel = 'Documento'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 150
               FieldLabelSeparator = ' '
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object UniDBLookupComboBox2: TUniDBLookupComboBox
               Left = 12
-              Top = 74
+              Top = 46
               Width = 540
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo; Nome'
               ListSource = dsCentroCusto
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSingle
+              BorderStyle = ubsInset
               DataField = 'CentroCusto'
               DataSource = dsModal
               TabOrder = 2
               Color = clWindow
               FieldLabel = 'Centro de Custo'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 150
               FieldLabelSeparator = ' '
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object UniDBLookupComboBox3: TUniDBLookupComboBox
               Left = 12
-              Top = 129
+              Top = 73
               Width = 540
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo; Nome'
               ListSource = dsDestinatarios
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSingle
+              BorderStyle = ubsInset
               DataField = 'Destinatario'
               DataSource = dsModal
               TabOrder = 3
               Color = clWindow
               FieldLabel = 'Org'#227'o'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 150
               FieldLabelSeparator = ' '
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object UniDBLookupComboBox4: TUniDBLookupComboBox
               Left = 12
-              Top = 294
+              Top = 154
               Width = 540
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome'
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSingle
+              BorderStyle = ubsInset
               DataField = 'Conta_II'
               DataSource = dsModal
               TabOrder = 4
               Color = clWindow
               FieldLabel = 'Classifica'#231#227'o (II)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 150
               FieldLabelSeparator = ' '
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object UniDBLookupComboBox5: TUniDBLookupComboBox
               Left = 12
-              Top = 349
+              Top = 181
               Width = 540
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome'
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSingle
+              BorderStyle = ubsInset
               DataField = 'Conta_IPI'
               DataSource = dsModal
               TabOrder = 5
               Color = clWindow
               FieldLabel = 'Classifica'#231#227'o (IPI)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 150
               FieldLabelSeparator = ' '
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object UniDBLookupComboBox6: TUniDBLookupComboBox
               Left = 12
-              Top = 404
+              Top = 208
               Width = 540
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome'
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSingle
+              BorderStyle = ubsInset
               DataField = 'Conta_PIS'
               DataSource = dsModal
               TabOrder = 6
               Color = clWindow
               FieldLabel = 'Classifica'#231#227'o (PIS)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 150
               FieldLabelSeparator = ' '
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object UniDBLookupComboBox7: TUniDBLookupComboBox
               Left = 12
-              Top = 459
+              Top = 235
               Width = 540
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome'
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSingle
+              BorderStyle = ubsInset
               DataField = 'Conta_COFINS'
               DataSource = dsModal
               TabOrder = 7
               Color = clWindow
               FieldLabel = 'Classifica'#231#227'o (COFINS)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 150
               FieldLabelSeparator = ' '
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object UniDBLookupComboBox8: TUniDBLookupComboBox
               Left = 12
-              Top = 514
+              Top = 262
               Width = 540
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome'
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSingle
+              BorderStyle = ubsInset
               DataField = 'Conta_TaxaSISCOMEX'
               DataSource = dsModal
               TabOrder = 8
               Color = clWindow
-              FieldLabel = 'Classifica'#231#227'o (Taxa SISCOMEX)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabel = 'Classifica'#231#227'o (Tx SISCOMEX)'
+              FieldLabelWidth = 150
               FieldLabelSeparator = ' '
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object UniDBLookupComboBox9: TUniDBLookupComboBox
               Left = 12
-              Top = 569
+              Top = 289
               Width = 540
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome'
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSingle
+              BorderStyle = ubsInset
               DataField = 'Conta_ANTIDUMPING'
               DataSource = dsModal
               TabOrder = 9
               Color = clWindow
               FieldLabel = 'Classifica'#231#227'o (ANTIDUMPING)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 150
               FieldLabelSeparator = ' '
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object UniDBLookupComboBox10: TUniDBLookupComboBox
               Left = 12
-              Top = 184
+              Top = 100
               Width = 540
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome'
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSingle
+              BorderStyle = ubsInset
               DataField = 'Conta_DifPIS'
               DataSource = dsModal
               TabOrder = 10
               Color = clWindow
               FieldLabel = 'Classifica'#231#227'o (Difer.PIS'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 150
               FieldLabelSeparator = ' '
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object UniDBLookupComboBox11: TUniDBLookupComboBox
               Left = 12
-              Top = 239
+              Top = 127
               Width = 540
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome'
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSingle
+              BorderStyle = ubsInset
               DataField = 'Conta_DifCOFINS'
               DataSource = dsModal
               TabOrder = 11
               Color = clWindow
               FieldLabel = 'Classifica'#231#227'o (Difer.COFINS)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 150
               FieldLabelSeparator = ' '
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object UniDBLookupComboBox12: TUniDBLookupComboBox
               Left = 12
-              Top = 624
+              Top = 316
               Width = 540
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome'
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSingle
+              BorderStyle = ubsInset
               DataField = 'Conta_AFRMM'
               DataSource = dsModal
               TabOrder = 12
               Color = clWindow
-              FieldLabel = 'Classifica'#231#227'o Financeira AFRMM'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabel = 'Classifica'#231#227'o (AFRMM)'
+              FieldLabelWidth = 150
               FieldLabelSeparator = ' '
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
           end
           object UniGroupBox2: TUniGroupBox
             Left = 582
-            Top = 72
+            Top = 96
             Width = 566
-            Height = 689
+            Height = 353
             Hint = ''
             ShowHint = True
             Caption = 'Par'#226'metriza'#231#227'o Contabil'
@@ -621,173 +568,149 @@ object fCadModalidadesImportacao: TfCadModalidadesImportacao
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
                 '= '#39'Grupo'#39';'#13#10'}')
             object UniDBLookupComboBox16: TUniDBLookupComboBox
-              Left = 3
-              Top = 129
+              Left = 12
+              Top = 73
               Width = 540
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome'
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSingle
+              BorderStyle = ubsInset
               DataField = 'Conta_Cli_Devolucao'
               DataSource = dsModal
               AnyMatch = True
               TabOrder = 1
               Color = clWindow
               FieldLabel = 'Clientes (Devolu'#231#227'o)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 150
               FieldLabelSeparator = ' '
               Style = csDropDown
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object UniDBLookupComboBox17: TUniDBLookupComboBox
-              Left = 3
-              Top = 184
+              Left = 12
+              Top = 100
               Width = 540
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome'
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSingle
+              BorderStyle = ubsInset
               DataField = 'Conta_Forn_Passivo'
               DataSource = dsModal
               AnyMatch = True
               TabOrder = 2
               Color = clWindow
               FieldLabel = 'Fornecedores (Passivo)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 150
               FieldLabelSeparator = ' '
               Style = csDropDown
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object UniDBLookupComboBox18: TUniDBLookupComboBox
-              Left = 3
-              Top = 239
+              Left = 12
+              Top = 127
               Width = 540
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome'
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSingle
+              BorderStyle = ubsInset
               DataField = 'Conta_Forn_Adiantamento'
               DataSource = dsModal
               AnyMatch = True
               TabOrder = 3
               Color = clWindow
               FieldLabel = 'Fornecedores (Adiantamento)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 150
               FieldLabelSeparator = ' '
               Style = csDropDown
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object UniDBLookupComboBox19: TUniDBLookupComboBox
-              Left = 3
-              Top = 294
+              Left = 12
+              Top = 154
               Width = 540
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome'
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSingle
+              BorderStyle = ubsInset
               DataField = 'Conta_Forn_Devolucao'
               DataSource = dsModal
               AnyMatch = True
               TabOrder = 4
               Color = clWindow
               FieldLabel = 'Fornecedores (Devolu'#231#227'o)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 150
               FieldLabelSeparator = ' '
               Style = csDropDown
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object UniDBLookupComboBox20: TUniDBLookupComboBox
-              Left = 3
-              Top = 349
+              Left = 12
+              Top = 181
               Width = 540
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome'
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSingle
+              BorderStyle = ubsInset
               DataField = 'Conta_Proc_Despesas'
               DataSource = dsModal
               AnyMatch = True
               TabOrder = 5
               Color = clWindow
               FieldLabel = 'Processos (Despesas)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 150
               FieldLabelSeparator = ' '
               Style = csDropDown
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object UniDBLookupComboBox21: TUniDBLookupComboBox
-              Left = 3
-              Top = 404
+              Left = 12
+              Top = 208
               Width = 540
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome'
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSingle
+              BorderStyle = ubsInset
               DataField = 'Conta_Proc_Impostos'
               DataSource = dsModal
               AnyMatch = True
               TabOrder = 6
               Color = clWindow
               FieldLabel = 'Processos (Impostos)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 150
               FieldLabelSeparator = ' '
               Style = csDropDown
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object UniDBLookupComboBox22: TUniDBLookupComboBox
-              Left = 3
+              Left = 12
               Top = 19
               Width = 540
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome'
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSingle
+              BorderStyle = ubsInset
               ClearButton = True
               DataField = 'Conta_Cli_Ativo'
               DataSource = dsModal
@@ -795,72 +718,60 @@ object fCadModalidadesImportacao: TfCadModalidadesImportacao
               TabOrder = 7
               Color = clWindow
               FieldLabel = 'Clientes (Ativo)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 150
               FieldLabelSeparator = ' '
               NormalizeString = True
               Style = csDropDown
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object UniDBLookupComboBox23: TUniDBLookupComboBox
-              Left = 3
-              Top = 74
+              Left = 12
+              Top = 46
               Width = 540
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome'
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSingle
+              BorderStyle = ubsInset
               DataField = 'Conta_Cli_Adiantamento'
               DataSource = dsModal
               AnyMatch = True
               TabOrder = 8
               Color = clWindow
               FieldLabel = 'Clientes (Adiantamento)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 150
               FieldLabelSeparator = ' '
               Style = csDropDown
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
             object UniDBLookupComboBox24: TUniDBLookupComboBox
-              Left = 3
-              Top = 459
+              Left = 12
+              Top = 235
               Width = 540
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome'
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSingle
+              BorderStyle = ubsInset
               DataField = 'Conta_Proc_Adiantamento'
               DataSource = dsModal
               AnyMatch = True
               TabOrder = 9
               Color = clWindow
               FieldLabel = 'Processos (Adiantamento)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 150
               FieldLabelSeparator = ' '
               Style = csDropDown
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
-              BorderStyle = ubsDefault
             end
           end
           object UniDBCheckBox1: TUniDBCheckBox
-            Left = 927
-            Top = 41
-            Width = 138
+            Left = 738
+            Top = 64
+            Width = 150
             Height = 17
             Hint = ''
             ShowHint = True
@@ -976,6 +887,3 @@ object fCadModalidadesImportacao: TfCadModalidadesImportacao
     Top = 3
   end
 end
-
-
-

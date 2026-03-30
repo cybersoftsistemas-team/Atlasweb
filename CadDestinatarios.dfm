@@ -161,7 +161,7 @@ object fCadDestinatarios: TfCadDestinatarios
         ClientEvents.UniEvents.Strings = (
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
+            ' '#39'BarraPesquisa'#39';'#13#10'}')
         BorderStyle = ubsNone
         Caption = ''
         Color = clNone
@@ -177,7 +177,6 @@ object fCadDestinatarios: TfCadDestinatarios
           Font.Color = cl3DDkShadow
           Align = alLeft
           TabOrder = 1
-          Color = 15066597
           EmptyText = 'Pesquisar'
           ClearButton = True
           OnKeyDown = cPesquisaKeyDown

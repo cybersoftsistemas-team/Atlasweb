@@ -117,7 +117,6 @@ begin
               cDescricao.SetFocus;
               Abort;
            end;
-
            try
                if (State = dsInsert) then begin
                   CondicaoCambial.FieldByName('Codigo').Value := GeraCodigo('CondicaoCambial', 'Codigo');
@@ -203,10 +202,10 @@ begin
 
       Plano.open;
       Plano.sql.clear;
-      Plano.sql.add('select Codigo');
-      Plano.sql.add('      ,Nome');
-      Plano.sql.add('from PlanoFinanceiro');
-      Plano.sql.add('order by Nome');
+      Plano.sql.add('select Conta');
+      Plano.sql.add('      ,Nome_Financeiro');
+      Plano.sql.add('from PlanoContas');
+      Plano.sql.add('order by Nome_Financeiro');
       Plano.open;
 end;
 procedure TfCadCondicaoCambial.cPesquisaKeyDown(Sender: TObject; var Key: Word;Shift: TShiftState);
@@ -219,7 +218,6 @@ end;
 procedure TfCadCondicaoCambial.bPesquisaClick(Sender: TObject);
 begin
       CondicaoCambial.Cancel;
-      LigaBotoes(true);
       Pesquisa(CondicaoCambial, 'Codigo', 'Descricao',cPesquisa.text)
 end;
 

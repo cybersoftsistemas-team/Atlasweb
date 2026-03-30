@@ -238,7 +238,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     Width = 1407
     Height = 765
     Hint = ''
-    ActivePage = TabSheet2
+    ActivePage = aLista
     Plain = True
     Align = alClient
     ClientEvents.UniEvents.Strings = (
@@ -344,7 +344,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
         ClientEvents.UniEvents.Strings = (
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
+            ' '#39'BarraPesquisa'#39';'#13#10'}')
         BorderStyle = ubsNone
         Caption = ''
         Color = clNone
@@ -354,7 +354,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           Width = 520
           Height = 27
           Hint = ''
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Text = ''
           Align = alLeft
           TabOrder = 1

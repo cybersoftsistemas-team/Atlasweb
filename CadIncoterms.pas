@@ -27,7 +27,6 @@ type
     Pasta: TUnipageControl;
     UniTabSheet1: TUniTabSheet;
     pFicha: TUniPanel;
-    Panel1: TuniPanel;
     Incoterms: TFDQuery;
     dsIncoterms: TDataSource;
     cCodigo: TUniDBEdit;

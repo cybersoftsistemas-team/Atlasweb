@@ -25,10 +25,6 @@ object fCadNivelClassificacao: TfCadNivelClassificacao
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -62,6 +58,7 @@ object fCadNivelClassificacao: TfCadNivelClassificacao
             Title.Font.Style = [fsBold]
             Width = 100
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Nivel'
@@ -70,6 +67,7 @@ object fCadNivelClassificacao: TfCadNivelClassificacao
             Title.Font.Style = [fsBold]
             Width = 70
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Descricao'
@@ -78,6 +76,7 @@ object fCadNivelClassificacao: TfCadNivelClassificacao
             Title.Font.Style = [fsBold]
             Width = 763
             Font.Name = 'Calibri'
+            ReadOnly = True
           end>
       end
       object pBarraPesq: TUniPanel
@@ -91,7 +90,7 @@ object fCadNivelClassificacao: TfCadNivelClassificacao
         ClientEvents.UniEvents.Strings = (
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
+            ' '#39'BarraPesquisa'#39';'#13#10'}')
         BorderStyle = ubsNone
         Caption = ''
         Color = clNone
@@ -101,7 +100,7 @@ object fCadNivelClassificacao: TfCadNivelClassificacao
           Width = 520
           Height = 27
           Hint = ''
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Text = ''
           Align = alLeft
           TabOrder = 1
@@ -128,10 +127,6 @@ object fCadNivelClassificacao: TfCadNivelClassificacao
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -147,12 +142,12 @@ object fCadNivelClassificacao: TfCadNivelClassificacao
         DesignSize = (
           981
           936)
-        ScrollHeight = 193
+        ScrollHeight = 105
         object pFicha1: TUniPanel
           Left = 159
           Top = 16
-          Width = 554
-          Height = 177
+          Width = 663
+          Height = 89
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -170,8 +165,8 @@ object fCadNivelClassificacao: TfCadNivelClassificacao
           object cCodigo: TUniDBNumberEdit
             Left = 26
             Top = 20
-            Width = 80
-            Height = 55
+            Width = 145
+            Height = 25
             Hint = ''
             Enabled = False
             ShowHint = True
@@ -185,17 +180,16 @@ object fCadNivelClassificacao: TfCadNivelClassificacao
             TabOrder = 1
             SelectOnFocus = True
             FieldLabel = 'C'#211'digo'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 50
             FieldLabelSeparator = ' '
             DecimalSeparator = ','
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
           end
           object cNivel: TUniDBNumberEdit
             Left = 26
-            Top = 81
-            Width = 80
-            Height = 55
+            Top = 47
+            Width = 145
+            Height = 25
             Hint = ''
             ShowHint = True
             InputRTL = False
@@ -208,17 +202,16 @@ object fCadNivelClassificacao: TfCadNivelClassificacao
             TabOrder = 2
             SelectOnFocus = True
             FieldLabel = 'N'#237'vel'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 50
             FieldLabelSeparator = ' '
             DecimalSeparator = ','
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
           end
           object cDescricao: TUniDBEdit
-            Left = 112
-            Top = 81
-            Width = 417
-            Height = 55
+            Left = 177
+            Top = 47
+            Width = 470
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Descricao'
@@ -229,10 +222,10 @@ object fCadNivelClassificacao: TfCadNivelClassificacao
             Font.Style = [fsBold]
             TabOrder = 3
             FieldLabel = 'Descri'#231#227'o'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 50
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
         end
       end

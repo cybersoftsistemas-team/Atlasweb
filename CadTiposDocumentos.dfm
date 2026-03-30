@@ -14,7 +14,7 @@ object fCadTiposDocumentos: TfCadTiposDocumentos
     Height = 966
     Hint = ''
     BodyRTL = False
-    ActivePage = UniTabSheet1
+    ActivePage = aLista
     Plain = True
     Align = alClient
     ClientEvents.UniEvents.Strings = (
@@ -111,7 +111,7 @@ object fCadTiposDocumentos: TfCadTiposDocumentos
         ClientEvents.UniEvents.Strings = (
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
+            ' '#39'BarraPesquisa'#39';'#13#10'}')
         BorderStyle = ubsNone
         Caption = ''
         Color = clNone
@@ -121,7 +121,7 @@ object fCadTiposDocumentos: TfCadTiposDocumentos
           Width = 520
           Height = 27
           Hint = ''
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Text = ''
           Align = alLeft
           TabOrder = 1
@@ -160,8 +160,6 @@ object fCadTiposDocumentos: TfCadTiposDocumentos
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
-        ExplicitLeft = -28
-        ExplicitTop = -59
         DesignSize = (
           981
           936)

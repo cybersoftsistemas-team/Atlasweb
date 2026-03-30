@@ -6,6 +6,7 @@ object fCadLocaisDesembaraco: TfCadLocaisDesembaraco
   OnCreate = uniFrameCreate
   OnDestroy = uniFrameDestroy
   TabOrder = 0
+  AutoScroll = True
   object pBarraNav: TUniPanel
     Left = 0
     Top = 0
@@ -125,7 +126,7 @@ object fCadLocaisDesembaraco: TfCadLocaisDesembaraco
     Height = 966
     Hint = ''
     BodyRTL = False
-    ActivePage = UniTabSheet1
+    ActivePage = aLista
     Plain = True
     Align = alClient
     ClientEvents.UniEvents.Strings = (
@@ -136,10 +137,6 @@ object fCadLocaisDesembaraco: TfCadLocaisDesembaraco
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
@@ -151,7 +148,7 @@ object fCadLocaisDesembaraco: TfCadLocaisDesembaraco
         ClientEvents.UniEvents.Strings = (
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
+            ' '#39'BarraPesquisa'#39';'#13#10'}')
         BorderStyle = ubsNone
         Caption = ''
         Color = clNone
@@ -161,10 +158,11 @@ object fCadLocaisDesembaraco: TfCadLocaisDesembaraco
           Width = 520
           Height = 27
           Hint = ''
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Text = ''
           Align = alLeft
           TabOrder = 1
+          Color = clWhite
           EmptyText = 'Pesquisar'
           OnKeyDown = cPesquisaKeyDown
         end
@@ -192,6 +190,7 @@ object fCadLocaisDesembaraco: TfCadLocaisDesembaraco
         Hint = ''
         DataSource = dsLocais
         Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        WebOptions.PageSize = 35
         LoadMask.Message = 'Loading data...'
         ForceFit = True
         Align = alClient
@@ -201,24 +200,36 @@ object fCadLocaisDesembaraco: TfCadLocaisDesembaraco
           item
             FieldName = 'Codigo'
             Title.Alignment = taCenter
-            Title.Caption = 'C'#243'digo'
-            Width = 60
+            Title.Caption = 'Codigo'
+            Title.Font.Style = [fsBold]
+            Width = 64
           end
           item
-            FieldName = 'Descricao'
+            FieldName = 'Nome'
             Title.Alignment = taCenter
-            Title.Caption = 'Descri'#231#227'o'
-            Width = 480
+            Title.Caption = 'Nome'
+            Title.Font.Style = [fsBold]
+            Width = 64
+          end
+          item
+            FieldName = 'Prazo_Registro'
+            Title.Alignment = taCenter
+            Title.Caption = 'Prazo Registro'
+            Title.Font.Style = [fsBold]
+            Width = 64
+          end
+          item
+            FieldName = 'Prazo_Faturamento'
+            Title.Alignment = taCenter
+            Title.Caption = 'Prazo Faturamento'
+            Title.Font.Style = [fsBold]
+            Width = 64
           end>
       end
     end
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -234,12 +245,12 @@ object fCadLocaisDesembaraco: TfCadLocaisDesembaraco
         DesignSize = (
           1278
           936)
-        ScrollHeight = 289
+        ScrollHeight = 187
         object pFicha: TUniPanel
-          Left = 80
-          Top = 14
+          Left = 115
+          Top = 26
           Width = 561
-          Height = 275
+          Height = 161
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -256,67 +267,63 @@ object fCadLocaisDesembaraco: TfCadLocaisDesembaraco
           Color = clTeal
           object cDescricao: TUniDBEdit
             Left = 23
-            Top = 82
+            Top = 53
             Width = 514
-            Height = 55
+            Height = 25
             Hint = ''
             ShowHint = True
-            DataField = 'Descricao'
+            DataField = 'Nome'
             DataSource = dsLocais
             TabOrder = 1
-            FieldLabel = 'Descri'#231#227'o'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabel = 'Nome'
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cCodigo: TUniDBEdit
             Left = 23
             Top = 26
-            Width = 106
-            Height = 55
+            Width = 200
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Codigo'
             DataSource = dsLocais
             TabOrder = 2
             FieldLabel = 'C'#243'digo'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cPrazo_Registro: TUniDBEdit
             Left = 23
-            Top = 138
-            Width = 106
-            Height = 55
+            Top = 80
+            Width = 200
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Prazo_Registro'
             DataSource = dsLocais
             TabOrder = 3
             FieldLabel = 'Prazo Registro'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cPrazo_Faturamento: TUniDBEdit
             Left = 23
-            Top = 194
-            Width = 106
-            Height = 55
+            Top = 107
+            Width = 200
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Prazo_Faturamento'
             DataSource = dsLocais
             TabOrder = 4
             FieldLabel = 'Prazo Faturamento'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
         end
       end

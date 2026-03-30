@@ -2,7 +2,7 @@ object fCadIncoterms: TfCadIncoterms
   Left = 0
   Top = 0
   Width = 1288
-  Height = 1001
+  Height = 763
   OnCreate = uniFrameCreate
   OnDestroy = uniFrameDestroy
   TabOrder = 0
@@ -123,10 +123,10 @@ object fCadIncoterms: TfCadIncoterms
     Left = 0
     Top = 35
     Width = 1288
-    Height = 966
+    Height = 728
     Hint = ''
-    BodyRTL = False
-    ActivePage = UniTabSheet1
+    BodyRTL = True
+    ActivePage = aLista
     Plain = True
     Align = alClient
     ClientEvents.UniEvents.Strings = (
@@ -137,10 +137,6 @@ object fCadIncoterms: TfCadIncoterms
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
@@ -148,11 +144,11 @@ object fCadIncoterms: TfCadIncoterms
         Height = 27
         Hint = ''
         Align = alTop
-        TabOrder = 1
+        TabOrder = 0
         ClientEvents.UniEvents.Strings = (
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
+            ' '#39'BarraPesquisa'#39';'#13#10'}')
         BorderStyle = ubsNone
         Caption = ''
         Color = clNone
@@ -162,10 +158,11 @@ object fCadIncoterms: TfCadIncoterms
           Width = 520
           Height = 27
           Hint = ''
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Text = ''
           Align = alLeft
           TabOrder = 1
+          Color = clWhite
           EmptyText = 'Pesquisar'
           OnKeyDown = cPesquisaKeyDown
         end
@@ -185,31 +182,21 @@ object fCadIncoterms: TfCadIncoterms
           OnClick = bPesquisaClick
         end
       end
-      object Panel1: TUniPanel
-        Left = 0
-        Top = 907
-        Width = 1280
-        Height = 31
-        Hint = ''
-        Align = alBottom
-        TabOrder = 0
-        Caption = ''
-      end
       object Grade: TUniDBGrid
         AlignWithMargins = True
         Left = 3
         Top = 30
         Width = 1274
-        Height = 874
+        Height = 667
         Hint = ''
         DataSource = dsIncoterms
         Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         ReadOnly = True
         LoadMask.Message = 'Loading data...'
         ForceFit = True
-        BorderStyle = ubsNone
+        BorderStyle = ubsInset
         Align = alClient
-        TabOrder = 2
+        TabOrder = 1
         OnDblClick = bEditarClick
         Columns = <
           item
@@ -219,6 +206,7 @@ object fCadIncoterms: TfCadIncoterms
             Title.Font.Style = [fsBold]
             Width = 84
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Descricao'
@@ -226,6 +214,7 @@ object fCadIncoterms: TfCadIncoterms
             Title.Caption = 'Descri'#231#227'o'
             Title.Font.Style = [fsBold]
             Width = 903
+            ReadOnly = True
           end
           item
             FieldName = 'Frete'
@@ -234,6 +223,7 @@ object fCadIncoterms: TfCadIncoterms
             Title.Font.Style = [fsBold]
             Width = 95
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Seguro'
@@ -242,21 +232,18 @@ object fCadIncoterms: TfCadIncoterms
             Title.Font.Style = [fsBold]
             Width = 100
             Alignment = taCenter
+            ReadOnly = True
           end>
       end
     end
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
         Width = 1280
-        Height = 938
+        Height = 700
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -266,13 +253,13 @@ object fCadIncoterms: TfCadIncoterms
         TabOrder = 0
         DesignSize = (
           1278
-          936)
-        ScrollHeight = 233
+          698)
+        ScrollHeight = 172
         object pFicha: TUniPanel
           Left = 80
           Top = 14
           Width = 633
-          Height = 219
+          Height = 158
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -290,38 +277,38 @@ object fCadIncoterms: TfCadIncoterms
           object cCodigo: TUniDBEdit
             Left = 29
             Top = 24
-            Width = 71
-            Height = 55
+            Width = 149
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Codigo'
             DataSource = dsIncoterms
             TabOrder = 1
             FieldLabel = 'C'#243'digo '
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 60
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cDescricao: TUniDBEdit
             Left = 29
-            Top = 80
+            Top = 51
             Width = 574
-            Height = 55
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Descricao'
             DataSource = dsIncoterms
             TabOrder = 2
             FieldLabel = 'Descri'#231#227'o'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 60
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cFrete: TUniDBCheckBox
             Left = 29
-            Top = 154
+            Top = 90
             Width = 111
             Height = 17
             Hint = ''
@@ -340,7 +327,7 @@ object fCadIncoterms: TfCadIncoterms
           end
           object cSeguro: TUniDBCheckBox
             Left = 29
-            Top = 177
+            Top = 113
             Width = 111
             Height = 17
             Hint = ''

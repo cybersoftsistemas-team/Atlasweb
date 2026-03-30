@@ -137,10 +137,6 @@ object fCadCFOP: TfCadCFOP
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
@@ -152,7 +148,7 @@ object fCadCFOP: TfCadCFOP
         ClientEvents.UniEvents.Strings = (
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
+            ' '#39'BarraPesquisa'#39';'#13#10'}')
         BorderStyle = ubsNone
         Caption = ''
         Color = clNone
@@ -162,7 +158,7 @@ object fCadCFOP: TfCadCFOP
           Width = 520
           Height = 27
           Hint = ''
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Text = ''
           Align = alLeft
           TabOrder = 1
@@ -193,7 +189,7 @@ object fCadCFOP: TfCadCFOP
         Hint = ''
         DataSource = dsCFOP
         Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgTabs, dgCancelOnExit]
-        WebOptions.PageSize = 30
+        WebOptions.PageSize = 35
         LoadMask.Message = 'Loading data...'
         ForceFit = True
         Align = alClient
@@ -283,10 +279,6 @@ object fCadCFOP: TfCadCFOP
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -302,12 +294,12 @@ object fCadCFOP: TfCadCFOP
         DesignSize = (
           1278
           936)
-        ScrollHeight = 377
+        ScrollHeight = 282
         object pFicha: TUniPanel
           Left = 112
           Top = 26
-          Width = 757
-          Height = 351
+          Width = 988
+          Height = 256
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -323,10 +315,10 @@ object fCadCFOP: TfCadCFOP
           Caption = ''
           Color = clTeal
           object GroupBox1: TUniGroupBox
-            Left = 507
-            Top = 207
-            Width = 235
-            Height = 129
+            Left = 707
+            Top = 8
+            Width = 266
+            Height = 168
             Hint = ''
             ShowHint = True
             Caption = 'Par'#226'metros'
@@ -337,8 +329,8 @@ object fCadCFOP: TfCadCFOP
                 's = '#39'Grupo'#39';'#13#10'}')
             object cServico: TUniDBCheckBox
               Left = 9
-              Top = 42
-              Width = 217
+              Top = 46
+              Width = 250
               Height = 17
               Hint = ''
               ShowHint = True
@@ -354,8 +346,8 @@ object fCadCFOP: TfCadCFOP
             end
             object cDiferencial_ICMS: TUniDBCheckBox
               Left = 9
-              Top = 80
-              Width = 217
+              Top = 92
+              Width = 250
               Height = 17
               Hint = ''
               ShowHint = True
@@ -371,8 +363,8 @@ object fCadCFOP: TfCadCFOP
             end
             object cImobilizado: TUniDBCheckBox
               Left = 9
-              Top = 99
-              Width = 217
+              Top = 115
+              Width = 250
               Height = 17
               Hint = ''
               ShowHint = True
@@ -388,8 +380,8 @@ object fCadCFOP: TfCadCFOP
             end
             object cApuracao_PISCOFINS: TUniDBCheckBox
               Left = 9
-              Top = 61
-              Width = 217
+              Top = 69
+              Width = 250
               Height = 17
               Hint = ''
               ShowHint = True
@@ -406,7 +398,7 @@ object fCadCFOP: TfCadCFOP
             object cAtivo: TUniDBCheckBox
               Left = 9
               Top = 23
-              Width = 79
+              Width = 250
               Height = 17
               Hint = ''
               ShowHint = True
@@ -422,10 +414,10 @@ object fCadCFOP: TfCadCFOP
             end
           end
           object cSaida_Entrada: TUniDBRadioGroup
-            Left = 507
-            Top = 8
-            Width = 235
-            Height = 75
+            Left = 15
+            Top = 182
+            Width = 266
+            Height = 54
             Hint = ''
             ShowHint = True
             DataField = 'ES'
@@ -439,15 +431,16 @@ object fCadCFOP: TfCadCFOP
             Items.Strings = (
               'Entrada'
               'Sa'#237'da')
+            Columns = 2
             Values.Strings = (
               '0'
               '1')
           end
           object UniDBRadioGroup1: TUniDBRadioGroup
-            Left = 507
-            Top = 94
-            Width = 235
-            Height = 99
+            Left = 298
+            Top = 182
+            Width = 389
+            Height = 54
             Hint = ''
             ShowHint = True
             DataField = 'Estado'
@@ -462,6 +455,7 @@ object fCadCFOP: TfCadCFOP
               'Dentro do Estado'
               'Fora do Estado'
               'Ambos')
+            Columns = 3
             Values.Strings = (
               'D'
               'F'
@@ -470,8 +464,8 @@ object fCadCFOP: TfCadCFOP
           object UniGroupBox1: TUniGroupBox
             Left = 15
             Top = 8
-            Width = 478
-            Height = 328
+            Width = 672
+            Height = 168
             Hint = ''
             ShowHint = True
             Caption = 'CFOP'
@@ -479,8 +473,8 @@ object fCadCFOP: TfCadCFOP
             object cCodigo: TUniDBEdit
               Left = 11
               Top = 19
-              Width = 91
-              Height = 50
+              Width = 250
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Codigo'
@@ -488,15 +482,14 @@ object fCadCFOP: TfCadCFOP
               TabOrder = 1
               FieldLabel = 'C'#243'digo '
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
             end
             object cDescricao: TUniDBEdit
               Left = 11
-              Top = 70
-              Width = 455
-              Height = 50
+              Top = 46
+              Width = 649
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Descricao'
@@ -506,15 +499,14 @@ object fCadCFOP: TfCadCFOP
               InputType = 'text'
               FieldLabel = 'Descri'#231#227'o'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
             end
             object cPrazo_Retorno: TUniDBEdit
               Left = 11
-              Top = 223
-              Width = 130
-              Height = 50
+              Top = 127
+              Width = 250
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Prazo_Retorno'
@@ -522,15 +514,14 @@ object fCadCFOP: TfCadCFOP
               TabOrder = 3
               FieldLabel = 'Prazo p/Retorno (Dias)'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
             end
             object UniDBEdit1: TUniDBEdit
               Left = 11
-              Top = 121
-              Width = 130
-              Height = 50
+              Top = 73
+              Width = 250
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Codigo_Devolucao'
@@ -538,15 +529,14 @@ object fCadCFOP: TfCadCFOP
               TabOrder = 4
               FieldLabel = 'CFOP (Devolu'#231#227'o)'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
             end
             object UniDBEdit2: TUniDBEdit
               Left = 11
-              Top = 172
-              Width = 130
-              Height = 50
+              Top = 100
+              Width = 250
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Codigo_Estorno'
@@ -554,7 +544,6 @@ object fCadCFOP: TfCadCFOP
               TabOrder = 5
               FieldLabel = 'CFOP (Estorno)'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
             end

@@ -11,7 +11,6 @@ uses
 
 type
   TfCadCotacao = class(TUniFrame)
-    aLista: TUniTabSheet;
     pBarraNav: TUniPanel;
     Navega: TUniDBNavigator;
     bAdicionar: TUniSpeedButton;
@@ -20,36 +19,30 @@ type
     bGravar: TUniSpeedButton;
     bCancelar: TUniSpeedButton;
     bFechar: TUniSpeedButton;
-    Pasta: TUnipageControl;
-    UniTabSheet1: TUniTabSheet;
     Cotacao: TFDQuery;
     dsCotacao: TDataSource;
     Moedas: TFDQuery;
     dsMoedas: TDataSource;
-    UniPanel1: TUniPanel;
-    GradeMoedas: TUniDBGrid;
-    GradeCotacao: TUniDBGrid;
-    UniScrollBox1: TUniScrollBox;
     CotacaoMoeda: TIntegerField;
     CotacaoData: TSQLTimeStampField;
     CotacaoValor: TFloatField;
     Alerta: TUniSweetAlert;
-    UniContainerPanel1: TUniContainerPanel;
-    pFicha: TUniPanel;
-    cPais: TUniDBEdit;
-    cData: TUniDBDateTimePicker;
-    cSimbolo: TUniDBEdit;
-    cCodigo: TUniDBEdit;
-    cValor: TUniDBFormattedNumberEdit;
     pBarraPesq: TUniPanel;
     cPesquisa: TUniEdit;
     bPesquisa: TUniSpeedButton;
+    pCotacao: TUniPanel;
+    pFicha: TUniContainerPanel;
+    cData: TUniDBDateTimePicker;
+    cValor: TUniDBFormattedNumberEdit;
+    pMoedas: TUniPanel;
+    GradeMoedas: TUniDBGrid;
+    UniPanel1: TUniPanel;
+    GradeCotacao: TUniDBGrid;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
     procedure bGravarClick(Sender: TObject);
     procedure bExcluirClick(Sender: TObject);
-    procedure UniFrameDestroy(Sender: TObject);
     procedure bAdicionarClick(Sender: TObject);
     procedure bEditarClick(Sender: TObject);
     procedure bFecharClick(Sender: TObject);
@@ -146,22 +139,10 @@ begin
      try
          LigaBotoes(false);
          Cotacao.Edit;
-         cCodigo.setfocus;
+         //cCodigo.setfocus;
      except
         Showmessage('Não pode editar o registro corrente!');
      end;
-end;
-
-procedure TfCadCotacao.UniFrameDestroy(Sender: TObject);
-var
-   i:integer;
-begin
-      // Fecha todas as tabelas do form.
-      for i := 0 to pred(ComponentCount) do begin
-          if (Components[i] is TFDQuery) and (Components[i].tag = 0)then begin
-             TFDQuery(Components[i]).close;
-         end;
-      end;
 end;
 
 procedure TfCadCotacao.bFecharClick(Sender: TObject);
@@ -178,7 +159,6 @@ begin
      bCancelar.Enabled     := not Estado;
      bGravar.Enabled       := not Estado;
      pFicha.Enabled        := not Estado;
-     Pasta.ActivePageIndex := 1;
 end;
 
 procedure TfCadCotacao.MoedasAfterScroll(DataSet: TDataSet);
@@ -223,13 +203,11 @@ begin
       // Alinhando todas as ficha de dados ao centro do form.
       for i := 0 to ComponentCount -1 do begin
           if (Components[i] is TUniPanel) and (Components[i].Tag = 0) then begin
-             TuniPanel(Components[i]).Left  := (Pasta.Width - TuniPanel(Components[i]).Width) div 2;
              TuniPanel(Components[i]).Color := clNone
           end;
       end;
 
       LigaBotoes(true);
-      Pasta.ActivePageIndex := 0;
 
       Moedas.sql.clear;
       Moedas.sql.add('select Codigo');

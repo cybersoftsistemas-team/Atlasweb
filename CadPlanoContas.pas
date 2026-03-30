@@ -71,8 +71,6 @@ type
     Empresas: TFDQuery;
     CSTCOFINS: TFDQuery;
     dsCSTCOFINS: TDataSource;
-    cProvisao_ContraPartida: TUniDBComboBox;
-    cLiquidacao_ContraPartida: TUniDBComboBox;
     cTipo_Partida: TUniDBRadioGroup;
     UniDBRadioGroup2: TUniDBRadioGroup;
     cConta: TUniDBEdit;
@@ -118,6 +116,9 @@ type
     cDRE_Juros: TUniDBLookupComboBox;
     tContas: TFDQuery;
     dstContas: TDataSource;
+    UniDBCheckBox3: TUniDBCheckBox;
+    UniDBCheckBox8: TUniDBCheckBox;
+    UniDBCheckBox9: TUniDBCheckBox;
     procedure UniframeCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado, Edita:boolean);
@@ -270,8 +271,8 @@ begin
            if Trim(FieldByName('CST_COFINS').AsString) <> '' then begin
               if CampoVazio(cCST_PIS, 'Campo obrigatório!'+#13+#13+'CST de PIS é campo obrigatório quando há CST de COFINS informada.') then Abort;
            end;
-           if ValidaCampo(cProvisao_ContraPartida, cCodigo.text, cProvisao_ContraPartida.Text, '=', 'Conta contabil e a "Contra-Partida" da provisão não podem ser iguais!', 'Erro de campo') then Abort;
-           if ValidaCampo(cLiquidacao_ContraPartida, cCodigo.text, cLiquidacao_ContraPartida.Text, '=', 'Conta contabil e a "Contra-Partida" da liquidação não podem ser iguais!', 'Erro de campo') then Abort;
+//           if ValidaCampo(cProvisao_ContraPartida, cCodigo.text, cProvisao_ContraPartida.Text, '=', 'Conta contabil e a "Contra-Partida" da provisão não podem ser iguais!', 'Erro de campo') then Abort;
+//           if ValidaCampo(cLiquidacao_ContraPartida, cCodigo.text, cLiquidacao_ContraPartida.Text, '=', 'Conta contabil e a "Contra-Partida" da liquidação não podem ser iguais!', 'Erro de campo') then Abort;
 
            if Trim(FieldByName('Nome_Financeiro').AsString) = '' then begin
               FieldByName('Nome_Financeiro').value := Trim(FieldByName('Nome_Contabil').AsString);

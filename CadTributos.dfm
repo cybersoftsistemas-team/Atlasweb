@@ -25,10 +25,6 @@ object fCadTributos: TfCadTributos
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -62,6 +58,7 @@ object fCadTributos: TfCadTributos
             Title.Font.Style = [fsBold]
             Width = 98
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Codigo_SRF'
@@ -70,6 +67,7 @@ object fCadTributos: TfCadTributos
             Title.Font.Style = [fsBold]
             Width = 100
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Descricao'
@@ -78,6 +76,7 @@ object fCadTributos: TfCadTributos
             Title.Font.Style = [fsBold]
             Width = 538
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Documento'
@@ -86,6 +85,7 @@ object fCadTributos: TfCadTributos
             Title.Font.Style = [fsBold]
             Width = 113
             Font.Name = 'Calibri'
+            ReadOnly = True
           end>
       end
       object pBarraPesq: TUniPanel
@@ -99,7 +99,7 @@ object fCadTributos: TfCadTributos
         ClientEvents.UniEvents.Strings = (
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
+            ' '#39'BarraPesquisa'#39';'#13#10'}')
         BorderStyle = ubsNone
         Caption = ''
         Color = clNone
@@ -109,7 +109,7 @@ object fCadTributos: TfCadTributos
           Width = 520
           Height = 27
           Hint = ''
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Text = ''
           Align = alLeft
           TabOrder = 1
@@ -136,10 +136,6 @@ object fCadTributos: TfCadTributos
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -155,12 +151,12 @@ object fCadTributos: TfCadTributos
         DesignSize = (
           981
           688)
-        ScrollHeight = 649
+        ScrollHeight = 413
         object pFicha1: TUniPanel
           Left = 176
           Top = 18
           Width = 601
-          Height = 631
+          Height = 395
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -176,10 +172,10 @@ object fCadTributos: TfCadTributos
           Caption = ''
           Color = clTeal
           object cCodigo: TUniDBEdit
-            Left = 27
+            Left = 11
             Top = 11
-            Width = 135
-            Height = 55
+            Width = 250
+            Height = 25
             Hint = ''
             Enabled = False
             ShowHint = True
@@ -191,16 +187,15 @@ object fCadTributos: TfCadTributos
             Font.Style = [fsBold]
             TabOrder = 1
             FieldLabel = 'C'#243'digo'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cCodigo_SRF: TUniDBEdit
-            Left = 168
-            Top = 11
-            Width = 135
-            Height = 55
+            Left = 11
+            Top = 38
+            Width = 250
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Codigo_SRF'
@@ -211,16 +206,15 @@ object fCadTributos: TfCadTributos
             Font.Style = [fsBold]
             TabOrder = 2
             FieldLabel = 'C'#243'digo Org'#227'o'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cDescricao: TUniDBEdit
-            Left = 27
-            Top = 67
+            Left = 11
+            Top = 65
             Width = 550
-            Height = 55
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Descricao'
@@ -231,16 +225,15 @@ object fCadTributos: TfCadTributos
             Font.Style = [fsBold]
             TabOrder = 3
             FieldLabel = 'Descri'#231#227'o'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cValor: TUniDBFormattedNumberEdit
-            Left = 27
-            Top = 123
-            Width = 110
-            Height = 56
+            Left = 11
+            Top = 92
+            Width = 250
+            Height = 25
             Hint = ''
             ShowHint = True
             InputRTL = False
@@ -253,18 +246,16 @@ object fCadTributos: TfCadTributos
             TabOrder = 4
             SelectOnFocus = True
             FieldLabel = 'Al'#237'quota'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             DecimalSeparator = ','
             ThousandSeparator = '.'
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
           end
           object cDia_Vencimento: TUniDBNumberEdit
-            Left = 143
-            Top = 123
-            Width = 110
-            Height = 55
+            Left = 11
+            Top = 119
+            Width = 250
+            Height = 25
             Hint = ''
             ShowHint = True
             InputRTL = False
@@ -277,17 +268,15 @@ object fCadTributos: TfCadTributos
             TabOrder = 5
             SelectOnFocus = True
             FieldLabel = 'Vencimento (Dia)'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             DecimalSeparator = ','
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
           end
           object UniGroupBox1: TUniGroupBox
-            Left = 27
-            Top = 407
-            Width = 550
-            Height = 198
+            Left = 11
+            Top = 271
+            Width = 575
+            Height = 110
             Hint = ''
             ShowHint = True
             Caption = 'Par'#226'metriza'#231#227'o Contabil'
@@ -297,16 +286,17 @@ object fCadTributos: TfCadTributos
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
                 's = '#39'Grupo'#39';'#13#10'}')
             object cConta_D: TUniDBLookupComboBox
-              Left = 15
-              Top = 15
-              Width = 514
-              Height = 55
+              Left = 7
+              Top = 19
+              Width = 552
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Nome_Contabil'
               ListSource = dsPlanoContas
               KeyField = 'Codigo'
               ListFieldIndex = 2
+              BorderStyle = ubsInset
               DataField = 'Conta_D'
               DataSource = dsTributos
               ParentFont = False
@@ -317,22 +307,21 @@ object fCadTributos: TfCadTributos
               TabOrder = 1
               Color = clWindow
               FieldLabel = 'Conta (D'#233'bito)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               Style = csDropDown
             end
             object cConta_C: TUniDBLookupComboBox
-              Left = 15
-              Top = 70
-              Width = 514
-              Height = 55
+              Left = 7
+              Top = 45
+              Width = 552
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Nome_Contabil'
               ListSource = dsPlanoContas
               KeyField = 'Codigo'
               ListFieldIndex = 2
+              BorderStyle = ubsInset
               DataField = 'Conta_C'
               DataSource = dsTributos
               ParentFont = False
@@ -343,22 +332,21 @@ object fCadTributos: TfCadTributos
               TabOrder = 2
               Color = clWindow
               FieldLabel = 'Conta (Cr'#233'dito'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               Style = csDropDown
             end
             object cHistorico: TUniDBLookupComboBox
-              Left = 15
-              Top = 125
-              Width = 514
-              Height = 55
+              Left = 7
+              Top = 71
+              Width = 552
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Descricao'
               ListSource = dsHistorico
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'Historico'
               DataSource = dsTributos
               ParentFont = False
@@ -369,17 +357,15 @@ object fCadTributos: TfCadTributos
               TabOrder = 3
               Color = clWindow
               FieldLabel = 'Hist'#243'rico'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               Style = csDropDown
             end
           end
           object UniGroupBox4: TUniGroupBox
-            Left = 27
-            Top = 195
-            Width = 550
-            Height = 198
+            Left = 11
+            Top = 155
+            Width = 575
+            Height = 110
             Hint = ''
             ShowHint = True
             Caption = 'Par'#226'metriza'#231#227'o Financeira'
@@ -389,16 +375,17 @@ object fCadTributos: TfCadTributos
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
                 's = '#39'Grupo'#39';'#13#10'}')
             object cOrgao: TUniDBLookupComboBox
-              Left = 15
-              Top = 71
-              Width = 514
-              Height = 55
+              Left = 7
+              Top = 45
+              Width = 552
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Nome'
               ListSource = dsDest
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'Orgao'
               DataSource = dsTributos
               ParentFont = False
@@ -409,22 +396,21 @@ object fCadTributos: TfCadTributos
               TabOrder = 2
               Color = clWindow
               FieldLabel = 'Org'#227'o'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               Style = csDropDown
             end
             object cClassificacao_Financeira: TUniDBLookupComboBox
-              Left = 15
-              Top = 16
-              Width = 514
-              Height = 55
+              Left = 7
+              Top = 19
+              Width = 552
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Nome_Financeiro'
               ListSource = dsPlanoContas
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'Classificacao_Financeira'
               DataSource = dsTributos
               ParentFont = False
@@ -435,22 +421,21 @@ object fCadTributos: TfCadTributos
               TabOrder = 1
               Color = clWindow
               FieldLabel = 'Plano Financeiro'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               Style = csDropDown
             end
             object cDocumento: TUniDBLookupComboBox
-              Left = 15
-              Top = 126
-              Width = 514
-              Height = 55
+              Left = 7
+              Top = 71
+              Width = 552
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Nome'
               ListSource = dsTiposDoc
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               DataField = 'Documento'
               DataSource = dsTributos
               ParentFont = False
@@ -461,8 +446,6 @@ object fCadTributos: TfCadTributos
               TabOrder = 3
               Color = clWindow
               FieldLabel = 'Documento'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               Style = csDropDown
             end

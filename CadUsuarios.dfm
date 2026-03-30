@@ -127,7 +127,7 @@ object fCadUsuarios: TfCadUsuarios
     Height = 945
     Hint = ''
     BodyRTL = False
-    ActivePage = aFicha
+    ActivePage = aLista
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -144,8 +144,6 @@ object fCadUsuarios: TfCadUsuarios
         Height = 890
         Hint = ''
         HeaderTitleAlign = taCenter
-        TitleFont.Height = -13
-        TitleFont.Style = [fsBold]
         DataSource = dsUsuarios
         Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgTitleClick, dgFilterClearButton, dgAutoRefreshRow]
         ReadOnly = True
@@ -155,7 +153,6 @@ object fCadUsuarios: TfCadUsuarios
         ForceFit = True
         TrackOver = False
         Align = alClient
-        Font.Height = -16
         Font.Name = 'Calibri'
         ParentFont = False
         TabOrder = 0
@@ -167,8 +164,6 @@ object fCadUsuarios: TfCadUsuarios
             FieldName = 'Matricula'
             Title.Alignment = taCenter
             Title.Caption = 'Matr'#237'cula'
-            Title.Font.Height = -13
-            Title.Font.Style = [fsBold]
             Width = 139
             Font.Name = 'Calibri'
             ReadOnly = True
@@ -177,8 +172,6 @@ object fCadUsuarios: TfCadUsuarios
             FieldName = 'Nome'
             Title.Alignment = taCenter
             Title.Caption = 'Nome'
-            Title.Font.Height = -13
-            Title.Font.Style = [fsBold]
             Width = 441
             Font.Height = -16
             Font.Name = 'Calibri'
@@ -188,8 +181,6 @@ object fCadUsuarios: TfCadUsuarios
             FieldName = 'Departamento'
             Title.Alignment = taCenter
             Title.Caption = 'Departamento'
-            Title.Font.Height = -13
-            Title.Font.Style = [fsBold]
             Width = 180
             Font.Height = -16
             Font.Name = 'Calibri'
@@ -200,8 +191,6 @@ object fCadUsuarios: TfCadUsuarios
             FieldName = 'Cargo'
             Title.Alignment = taCenter
             Title.Caption = 'Cargo'
-            Title.Font.Height = -13
-            Title.Font.Style = [fsBold]
             Width = 272
             Font.Name = 'Calibri'
             ReadOnly = True
@@ -218,14 +207,15 @@ object fCadUsuarios: TfCadUsuarios
         ClientEvents.UniEvents.Strings = (
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
+            ' '#39'BarraPesquisa'#39';'#13#10'}')
+        BorderStyle = ubsNone
         Caption = ''
         Color = clNone
         object bPesquisa: TUniSpeedButton
-          Left = 521
-          Top = 1
+          Left = 520
+          Top = 0
           Width = 25
-          Height = 25
+          Height = 27
           Hint = ''
           Caption = ''
           Align = alLeft
@@ -237,16 +227,15 @@ object fCadUsuarios: TfCadUsuarios
           OnClick = bPesquisaClick
         end
         object cPesquisa: TUniEdit
-          Left = 1
-          Top = 1
+          Left = 0
+          Top = 0
           Width = 520
-          Height = 25
+          Height = 27
           Hint = ''
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Text = ''
           Align = alLeft
           TabOrder = 2
-          Color = clWhite
           EmptyText = 'Pesquisar'
         end
       end

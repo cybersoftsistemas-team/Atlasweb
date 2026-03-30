@@ -134,15 +134,9 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
         'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
         's = '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 0
-    ExplicitWidth = 1288
-    ExplicitHeight = 966
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
@@ -154,7 +148,7 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
         ClientEvents.UniEvents.Strings = (
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
+            ' '#39'BarraPesquisa'#39';'#13#10'}')
         BorderStyle = ubsNone
         Caption = ''
         Color = clNone
@@ -164,10 +158,11 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
           Width = 520
           Height = 27
           Hint = ''
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Text = ''
           Align = alLeft
           TabOrder = 1
+          Color = clWhite
           EmptyText = 'Pesquisar'
           OnKeyDown = cPesquisaKeyDown
         end
@@ -241,10 +236,6 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -257,8 +248,6 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
-        ExplicitWidth = 1280
-        ExplicitHeight = 938
         object UniScrollBox2: TUniScrollBox
           Left = 0
           Top = 0
@@ -274,12 +263,12 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
           DesignSize = (
             1236
             734)
-          ScrollHeight = 590
+          ScrollHeight = 311
           object pFicha: TUniPanel
-            Left = 97
-            Top = 25
-            Width = 690
-            Height = 565
+            Left = 134
+            Top = 31
+            Width = 906
+            Height = 280
             Hint = ''
             ShowHint = True
             ParentShowHint = False
@@ -294,28 +283,26 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
             Title = 'DADOS GERAIS'
             Caption = ''
             Color = clTeal
-            ExplicitLeft = 111
             object cDescricao: TUniDBEdit
-              Left = 27
-              Top = 79
-              Width = 635
-              Height = 55
+              Left = 19
+              Top = 46
+              Width = 866
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Descricao'
               DataSource = dsCondicaoCambial
               TabOrder = 2
               FieldLabel = 'Descri'#231#227'o'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cCodigo: TUniDBEdit
-              Left = 27
-              Top = 23
-              Width = 100
-              Height = 55
+              Left = 19
+              Top = 19
+              Width = 160
+              Height = 25
               Hint = ''
               Enabled = False
               ShowHint = True
@@ -323,143 +310,140 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               DataSource = dsCondicaoCambial
               TabOrder = 1
               FieldLabel = 'C'#243'digo'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cPercentual1: TUniDBEdit
-              Left = 27
-              Top = 135
-              Width = 78
-              Height = 55
+              Left = 19
+              Top = 73
+              Width = 160
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Percentual1'
               DataSource = dsCondicaoCambial
               TabOrder = 3
               FieldLabel = 'Percentual 1'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
               OnChange = cPercentual1Change
             end
             object cPercentual2: TUniDBEdit
-              Left = 27
-              Top = 191
-              Width = 78
-              Height = 55
+              Left = 19
+              Top = 100
+              Width = 160
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Percentual2'
               DataSource = dsCondicaoCambial
               TabOrder = 6
               FieldLabel = 'Percentual 2'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
               OnChange = cPercentual1Change
             end
             object cPercentual3: TUniDBEdit
-              Left = 27
-              Top = 247
-              Width = 78
-              Height = 55
+              Left = 19
+              Top = 127
+              Width = 160
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Percentual3'
               DataSource = dsCondicaoCambial
               TabOrder = 9
               FieldLabel = 'Percentual 3'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
               OnChange = cPercentual1Change
             end
             object cVencimento1: TUniDBEdit
-              Left = 112
-              Top = 135
-              Width = 78
-              Height = 55
+              Left = 184
+              Top = 73
+              Width = 110
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Vencimento1'
               DataSource = dsCondicaoCambial
               TabOrder = 4
               FieldLabel = 'Dias'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 40
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
               OnChange = cVencimento1Change
               OnExit = cVencimento1Change
             end
             object cVencimento2: TUniDBEdit
-              Left = 112
-              Top = 191
-              Width = 78
-              Height = 55
+              Left = 184
+              Top = 100
+              Width = 110
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Vencimento2'
               DataSource = dsCondicaoCambial
               TabOrder = 7
               FieldLabel = 'Dias'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 40
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
               OnChange = cVencimento1Change
             end
             object cVencimento3: TUniDBEdit
-              Left = 112
-              Top = 247
-              Width = 78
-              Height = 55
+              Left = 184
+              Top = 127
+              Width = 110
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Vencimento3'
               DataSource = dsCondicaoCambial
               TabOrder = 10
               FieldLabel = 'Dias'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 40
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
               OnChange = cVencimento1Change
             end
             object cVencimento4: TUniDBEdit
-              Left = 112
-              Top = 304
-              Width = 78
-              Height = 55
+              Left = 184
+              Top = 154
+              Width = 110
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Vencimento4'
               DataSource = dsCondicaoCambial
               TabOrder = 12
               FieldLabel = 'Dias'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 40
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
               OnChange = cVencimento1Change
             end
             object RxDBLookupCombo1: TUniDBLookupComboBox
-              Left = 197
-              Top = 135
-              Width = 465
-              Height = 55
+              Left = 298
+              Top = 73
+              Width = 587
+              Height = 25
               Hint = ''
               ShowHint = True
               ListOnlyMode = lmFollowSource
-              ListField = 'Codigo; Nome'
+              ListField = 'Conta; Nome_Financeiro'
               ListSource = dsPlano
-              KeyField = 'Codigo'
+              KeyField = 'Conta'
               ListFieldIndex = 0
+              BorderStyle = ubsInset
               ClearButton = True
               DataField = 'Classificacao1'
               DataSource = dsCondicaoCambial
@@ -467,23 +451,22 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               TabOrder = 5
               Color = clWindow
               FieldLabel = 'Classifica'#231#227'o'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               Style = csSimple
             end
             object RxDBLookupCombo2: TUniDBLookupComboBox
-              Left = 197
-              Top = 191
-              Width = 465
-              Height = 55
+              Left = 298
+              Top = 100
+              Width = 587
+              Height = 25
               Hint = ''
               ShowHint = True
               ListOnlyMode = lmFollowSource
-              ListField = 'Codigo; Nome'
+              ListField = 'Conta; Nome_Financeiro'
               ListSource = dsPlano
-              KeyField = 'Codigo'
+              KeyField = 'Conta'
               ListFieldIndex = 0
+              BorderStyle = ubsInset
               ClearButton = True
               DataField = 'Classificacao2'
               DataSource = dsCondicaoCambial
@@ -491,23 +474,22 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               TabOrder = 8
               Color = clWindow
               FieldLabel = 'Classifica'#231#227'o'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               Style = csSimple
             end
             object RxDBLookupCombo3: TUniDBLookupComboBox
-              Left = 197
-              Top = 304
-              Width = 465
-              Height = 55
+              Left = 298
+              Top = 154
+              Width = 587
+              Height = 25
               Hint = ''
               ShowHint = True
               ListOnlyMode = lmFollowSource
-              ListField = 'Codigo; Nome'
+              ListField = 'Conta; Nome_Financeiro'
               ListSource = dsPlano
-              KeyField = 'Codigo'
+              KeyField = 'Conta'
               ListFieldIndex = 0
+              BorderStyle = ubsInset
               ClearButton = True
               DataField = 'Classificacao4'
               DataSource = dsCondicaoCambial
@@ -515,23 +497,22 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               TabOrder = 13
               Color = clWindow
               FieldLabel = 'Classifica'#231#227'o'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               Style = csSimple
             end
             object RxDBLookupCombo4: TUniDBLookupComboBox
-              Left = 197
-              Top = 247
-              Width = 465
-              Height = 55
+              Left = 298
+              Top = 127
+              Width = 587
+              Height = 25
               Hint = ''
               ShowHint = True
               ListOnlyMode = lmFollowSource
-              ListField = 'Codigo; Nome'
+              ListField = 'Conta; Nome_Financeiro'
               ListSource = dsPlano
-              KeyField = 'Codigo'
+              KeyField = 'Conta'
               ListFieldIndex = 0
+              BorderStyle = ubsInset
               ClearButton = True
               DataField = 'Classificacao3'
               DataSource = dsCondicaoCambial
@@ -539,69 +520,64 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
               TabOrder = 11
               Color = clWindow
               FieldLabel = 'Classifica'#231#227'o'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               Style = csSimple
             end
             object cTermos_Comerciais: TUniDBMemo
-              Left = 27
-              Top = 414
-              Width = 635
-              Height = 55
+              Left = 19
+              Top = 208
+              Width = 866
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Termos_Comerciais'
               DataSource = dsCondicaoCambial
+              BorderStyle = ubsInset
               TabOrder = 14
               FieldLabel = 'Termos Cormerciais'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
             end
             object cObservacao: TUniDBMemo
-              Left = 27
-              Top = 470
-              Width = 635
-              Height = 55
+              Left = 19
+              Top = 235
+              Width = 866
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Observacao'
               DataSource = dsCondicaoCambial
+              BorderStyle = ubsInset
               TabOrder = 15
               FieldLabel = 'Observa'#231#227'o'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
             end
             object cTotalPercentual: TUniFormattedNumberEdit
-              Left = 27
-              Top = 359
-              Width = 78
-              Height = 55
+              Left = 19
+              Top = 181
+              Width = 160
+              Height = 25
               Hint = ''
               Enabled = False
               ShowHint = True
+              BorderStyle = ubsInset
               TabOrder = 16
               FieldLabel = 'Total'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
               ThousandSeparator = '.'
             end
             object cTotalDias: TUniFormattedNumberEdit
-              Left = 112
-              Top = 359
-              Width = 78
-              Height = 55
+              Left = 184
+              Top = 181
+              Width = 110
+              Height = 25
               Hint = ''
               Enabled = False
               ShowHint = True
+              BorderStyle = ubsInset
               TabOrder = 17
               FieldLabel = 'Total'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 40
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
               ThousandSeparator = '.'
@@ -620,13 +596,13 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from CondicaoCambial')
-    Left = 40
-    Top = 134
+    Left = 51
+    Top = 80
   end
   object dsCondicaoCambial: TDataSource
     DataSet = CondicaoCambial
-    Left = 42
-    Top = 182
+    Left = 51
+    Top = 128
   end
   object Plano: TFDQuery
     Connection = UniMainModule.Conecta
@@ -636,14 +612,15 @@ object fCadCondicaoCambial: TfCadCondicaoCambial
     UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
-      'select * from PlanoFinanceiro')
-    Left = 40
-    Top = 238
+      'select * '
+      'from PlanoContas')
+    Left = 51
+    Top = 176
   end
   object dsPlano: TDataSource
     DataSet = Plano
-    Left = 42
-    Top = 286
+    Left = 51
+    Top = 224
   end
   object Alerta: TUniSweetAlert
     Title = ' '

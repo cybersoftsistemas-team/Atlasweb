@@ -22,14 +22,9 @@ object fCadDRE: TfCadDRE
         'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
         's = '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 0
-    ExplicitLeft = 16
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -64,6 +59,7 @@ object fCadDRE: TfCadDRE
             Title.Font.Style = [fsBold]
             Width = 100
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Nome'
@@ -72,6 +68,7 @@ object fCadDRE: TfCadDRE
             Title.Font.Style = [fsBold]
             Width = 419
             Font.Name = 'Calibri'
+            ReadOnly = True
           end>
       end
       object pBarraPesq: TUniPanel
@@ -85,7 +82,7 @@ object fCadDRE: TfCadDRE
         ClientEvents.UniEvents.Strings = (
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
+            ' '#39'BarraPesquisa'#39';'#13#10'}')
         BorderStyle = ubsNone
         Caption = ''
         Color = clNone
@@ -95,7 +92,7 @@ object fCadDRE: TfCadDRE
           Width = 520
           Height = 27
           Hint = ''
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Text = ''
           Align = alLeft
           TabOrder = 1
@@ -122,10 +119,6 @@ object fCadDRE: TfCadDRE
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -141,12 +134,12 @@ object fCadDRE: TfCadDRE
         DesignSize = (
           981
           936)
-        ScrollHeight = 217
+        ScrollHeight = 133
         object pFicha1: TUniPanel
           Left = 184
           Top = 13
           Width = 513
-          Height = 204
+          Height = 120
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -163,9 +156,9 @@ object fCadDRE: TfCadDRE
           Color = clTeal
           object cCodigo: TUniDBNumberEdit
             Left = 18
-            Top = 18
-            Width = 87
-            Height = 55
+            Top = 19
+            Width = 138
+            Height = 25
             Hint = ''
             Enabled = False
             ShowHint = True
@@ -179,17 +172,16 @@ object fCadDRE: TfCadDRE
             TabOrder = 1
             SelectOnFocus = True
             FieldLabel = 'C'#243'digo'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 50
             FieldLabelSeparator = ' '
             DecimalSeparator = ','
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
           end
           object cNome: TUniDBEdit
             Left = 18
-            Top = 74
+            Top = 45
             Width = 478
-            Height = 55
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Nome'
@@ -200,22 +192,23 @@ object fCadDRE: TfCadDRE
             Font.Style = [fsBold]
             TabOrder = 2
             FieldLabel = 'Nome'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 50
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cGrupo: TUniDBLookupComboBox
             Left = 18
-            Top = 130
+            Top = 71
             Width = 478
-            Height = 55
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Nome'
             ListSource = dsDREGrupos
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Grupo'
             DataSource = dsDRE
             ParentFont = False
@@ -226,8 +219,7 @@ object fCadDRE: TfCadDRE
             TabOrder = 3
             Color = clWindow
             FieldLabel = 'Grupo'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 50
             FieldLabelSeparator = ' '
             Style = csDropDown
           end

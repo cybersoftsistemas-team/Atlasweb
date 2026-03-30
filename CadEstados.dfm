@@ -6,6 +6,7 @@ object fCadEstados: TfCadEstados
   OnCreate = UniFrameCreate
   OnDestroy = UniFrameDestroy
   TabOrder = 0
+  AutoScroll = True
   object Pasta: TUniPageControl
     Left = 0
     Top = 35
@@ -13,7 +14,7 @@ object fCadEstados: TfCadEstados
     Height = 777
     Hint = ''
     BodyRTL = False
-    ActivePage = UniTabSheet1
+    ActivePage = aLista
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -117,15 +118,17 @@ object fCadEstados: TfCadEstados
         ClientEvents.UniEvents.Strings = (
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
+            ' '#39'BarraPesquisa'#39';'#13#10'}')
+        BorderStyle = ubsNone
         Caption = ''
         Color = clNone
         object cPesquisa: TUniEdit
-          Left = 1
-          Top = 1
+          Left = 0
+          Top = 0
           Width = 520
-          Height = 25
+          Height = 27
           Hint = ''
+          BorderStyle = ubsInset
           Text = ''
           Align = alLeft
           TabOrder = 1
@@ -133,10 +136,10 @@ object fCadEstados: TfCadEstados
           OnKeyDown = cPesquisaKeyDown
         end
         object bPesquisa: TUniSpeedButton
-          Left = 521
-          Top = 1
+          Left = 520
+          Top = 0
           Width = 25
-          Height = 25
+          Height = 27
           Hint = ''
           Caption = ''
           Align = alLeft
@@ -164,8 +167,6 @@ object fCadEstados: TfCadEstados
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
-        ExplicitLeft = 3
-        ExplicitTop = 1
         DesignSize = (
           1190
           747)

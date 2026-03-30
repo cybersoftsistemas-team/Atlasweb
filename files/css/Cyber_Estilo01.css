@@ -55,6 +55,14 @@ video {
    text-shadow: #000 0.1em 0.1em 0.2em;
 }
 
+/*-------------------------------------------------------[ BARRA DE PESQUISA ]-----------------------------------------------------*/
+.BarraPesquisa {
+   background-color: #8b949d;
+   background-image: url("/files/images/Painel1.jpg");
+   border-width: 5px;
+   border-style: solid;
+}
+
 /*--------------------------------------------------------[ MENU ]-----------------------------------------------------------------*/
 /* Aqui ira determinar a cor de Fundo do menu */
 

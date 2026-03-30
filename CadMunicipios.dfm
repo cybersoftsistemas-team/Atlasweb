@@ -14,7 +14,7 @@ object fCadMunicipios: TfCadMunicipios
     Height = 966
     Hint = ''
     BodyRTL = False
-    ActivePage = aFicha2
+    ActivePage = aLista
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -101,15 +101,17 @@ object fCadMunicipios: TfCadMunicipios
         ClientEvents.UniEvents.Strings = (
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
+            ' '#39'BarraPesquisa'#39';'#13#10'}')
+        BorderStyle = ubsNone
         Caption = ''
         Color = clNone
         object cPesquisa: TUniEdit
-          Left = 1
-          Top = 1
+          Left = 0
+          Top = 0
           Width = 520
-          Height = 25
+          Height = 27
           Hint = ''
+          BorderStyle = ubsInset
           Text = ''
           Align = alLeft
           TabOrder = 1
@@ -117,10 +119,10 @@ object fCadMunicipios: TfCadMunicipios
           OnKeyDown = cPesquisaKeyDown
         end
         object bPesquisa: TUniSpeedButton
-          Left = 521
-          Top = 1
+          Left = 520
+          Top = 0
           Width = 25
-          Height = 25
+          Height = 27
           Hint = ''
           Caption = ''
           Align = alLeft
@@ -148,8 +150,6 @@ object fCadMunicipios: TfCadMunicipios
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
-        ExplicitLeft = 1
-        ExplicitTop = 1
         DesignSize = (
           981
           936)

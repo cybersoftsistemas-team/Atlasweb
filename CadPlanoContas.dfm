@@ -25,10 +25,6 @@ object fCadPlanoContas: TfCadPlanoContas
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -62,6 +58,7 @@ object fCadPlanoContas: TfCadPlanoContas
             Title.Font.Style = [fsBold]
             Width = 117
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Codigo'
@@ -70,6 +67,7 @@ object fCadPlanoContas: TfCadPlanoContas
             Title.Font.Style = [fsBold]
             Width = 65
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Nome_Contabil'
@@ -78,6 +76,7 @@ object fCadPlanoContas: TfCadPlanoContas
             Title.Font.Style = [fsBold]
             Width = 300
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Nome_Financeiro'
@@ -86,6 +85,7 @@ object fCadPlanoContas: TfCadPlanoContas
             Title.Font.Style = [fsBold]
             Width = 300
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Tipo'
@@ -95,6 +95,7 @@ object fCadPlanoContas: TfCadPlanoContas
             Width = 35
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Custo_Entrada'
@@ -104,6 +105,7 @@ object fCadPlanoContas: TfCadPlanoContas
             Width = 62
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Custo_Seletivo'
@@ -113,6 +115,7 @@ object fCadPlanoContas: TfCadPlanoContas
             Width = 62
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Custo_Outros'
@@ -122,6 +125,7 @@ object fCadPlanoContas: TfCadPlanoContas
             Width = 62
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Custo_Saida'
@@ -131,6 +135,7 @@ object fCadPlanoContas: TfCadPlanoContas
             Width = 62
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Desativada'
@@ -140,6 +145,7 @@ object fCadPlanoContas: TfCadPlanoContas
             Width = 44
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end>
       end
       object pBarraPesq: TUniPanel
@@ -153,7 +159,7 @@ object fCadPlanoContas: TfCadPlanoContas
         ClientEvents.UniEvents.Strings = (
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
+            ' '#39'BarraPesquisa'#39';'#13#10'}')
         BorderStyle = ubsNone
         Caption = ''
         Color = clNone
@@ -163,7 +169,7 @@ object fCadPlanoContas: TfCadPlanoContas
           Width = 520
           Height = 27
           Hint = ''
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Text = ''
           Align = alLeft
           TabOrder = 1
@@ -191,10 +197,6 @@ object fCadPlanoContas: TfCadPlanoContas
     object UniTabSheet2: TUniTabSheet
       Hint = ''
       Caption = 'Plano de Contas'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0
@@ -210,12 +212,12 @@ object fCadPlanoContas: TfCadPlanoContas
         DesignSize = (
           1177
           862)
-        ScrollHeight = 670
+        ScrollHeight = 534
         object pFicha2: TUniPanel
-          Left = 176
-          Top = 7
-          Width = 760
-          Height = 663
+          Left = 16
+          Top = 3
+          Width = 1055
+          Height = 531
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -232,9 +234,9 @@ object fCadPlanoContas: TfCadPlanoContas
           Color = clTeal
           object UniGroupBox3: TUniGroupBox
             Left = 16
-            Top = 302
-            Width = 500
-            Height = 145
+            Top = 325
+            Width = 605
+            Height = 85
             Hint = ''
             ShowHint = True
             Caption = 'Lan'#231'amento Contabil Provis'#227'o [Contra Partida]'
@@ -244,16 +246,17 @@ object fCadPlanoContas: TfCadPlanoContas
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
                 's = '#39'Grupo'#39';'#13#10'}')
             object cProvisao_ContaC: TUniDBLookupComboBox
-              Left = 175
+              Left = 6
               Top = 17
-              Width = 313
-              Height = 55
+              Width = 580
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome'
               ListSource = dstContas
               KeyField = 'Codigo'
               ListFieldIndex = 2
+              BorderStyle = ubsInset
               ClearButton = True
               DataField = 'Provisao_Contrapartida'
               DataSource = dsPlanoContas
@@ -262,26 +265,26 @@ object fCadPlanoContas: TfCadPlanoContas
               Font.Name = 'DejaVu Sans'
               Font.Style = [fsBold]
               AnyMatch = True
-              TabOrder = 1
+              TabOrder = 0
               Color = clWindow
               FieldLabel = 'Conta'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               NormalizeString = True
               Style = csDropDown
             end
             object cProvisao_Historico: TUniDBLookupComboBox
-              Left = 13
-              Top = 72
-              Width = 475
-              Height = 55
+              Left = 6
+              Top = 44
+              Width = 580
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Descricao'
               ListSource = dsHistoricos
               KeyField = 'Codigo'
               ListFieldIndex = 1
+              BorderStyle = ubsInset
               ClearButton = True
               DataField = 'Provisao_Historico'
               DataSource = dsPlanoContas
@@ -290,44 +293,20 @@ object fCadPlanoContas: TfCadPlanoContas
               Font.Name = 'DejaVu Sans'
               Font.Style = [fsBold]
               AnyMatch = True
-              TabOrder = 2
+              TabOrder = 1
               Color = clWindow
               FieldLabel = 'Hist'#243'rico:'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               NormalizeString = True
               Style = csDropDown
             end
-            object cProvisao_ContraPartida: TUniDBComboBox
-              Left = 13
-              Top = 17
-              Width = 156
-              Height = 55
-              Hint = ''
-              ShowHint = True
-              DataField = 'Provisao_Contrapartida'
-              DataSource = dsPlanoContas
-              Items.Strings = (
-                'BENEFICI'#193'RIO'
-                'PROCESSO'
-                'BANCO')
-              TabOrder = 0
-              ClientEvents.UniEvents.Strings = (
-                
-                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-                  '= '#39'Campo'#39';'#13#10'}')
-              FieldLabel = 'Conta'
-              FieldLabelAlign = laTop
-              ClearButton = True
-              IconItems = <>
-            end
           end
           object UniGroupBox4: TUniGroupBox
             Left = 16
-            Top = 466
-            Width = 500
-            Height = 146
+            Top = 429
+            Width = 605
+            Height = 85
             Hint = ''
             ShowHint = True
             Caption = 'Lan'#231'amento Contabil Liquida'#231#227'o - [Contra-Partida Banco]'
@@ -337,16 +316,17 @@ object fCadPlanoContas: TfCadPlanoContas
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
                 's = '#39'Grupo'#39';'#13#10'}')
             object cLiquidacao_Historico: TUniDBLookupComboBox
-              Left = 13
-              Top = 72
-              Width = 475
-              Height = 55
+              Left = 6
+              Top = 44
+              Width = 580
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Descricao'
               ListSource = dsHistoricos
               KeyField = 'Codigo'
               ListFieldIndex = 2
+              BorderStyle = ubsInset
               ClearButton = True
               DataField = 'Liquidacao_Historico'
               DataSource = dsPlanoContas
@@ -359,22 +339,22 @@ object fCadPlanoContas: TfCadPlanoContas
               Color = clWindow
               FieldLabel = 'Hist'#243'rico:'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               NormalizeString = True
               Style = csDropDown
             end
             object UniDBLookupComboBox6: TUniDBLookupComboBox
-              Left = 175
+              Left = 6
               Top = 17
-              Width = 313
-              Height = 55
+              Width = 580
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome'
               ListSource = dstContas
               KeyField = 'Codigo'
               ListFieldIndex = 2
+              BorderStyle = ubsInset
               ClearButton = True
               DataField = 'Liquidacao_ContraPartida'
               DataSource = dsPlanoContas
@@ -387,40 +367,16 @@ object fCadPlanoContas: TfCadPlanoContas
               Color = clWindow
               FieldLabel = 'Contas:'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               NormalizeString = True
               Style = csDropDown
             end
-            object cLiquidacao_ContraPartida: TUniDBComboBox
-              Left = 13
-              Top = 17
-              Width = 156
-              Height = 55
-              Hint = ''
-              ShowHint = True
-              DataField = 'Liquidacao_ContraPartida'
-              DataSource = dsPlanoContas
-              Items.Strings = (
-                'BENEFICI'#193'RIO'
-                'PROCESSO'
-                'BANCO')
-              TabOrder = 3
-              ClientEvents.UniEvents.Strings = (
-                
-                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-                  '= '#39'Campo'#39';'#13#10'}')
-              FieldLabel = 'Conta'
-              FieldLabelAlign = laTop
-              ClearButton = True
-              IconItems = <>
-            end
           end
           object cTipo_Partida: TUniDBRadioGroup
-            Left = 536
-            Top = 8
-            Width = 209
-            Height = 46
+            Left = 223
+            Top = 251
+            Width = 151
+            Height = 55
             Hint = ''
             ShowHint = True
             DataField = 'Partida'
@@ -440,10 +396,10 @@ object fCadPlanoContas: TfCadPlanoContas
               'M')
           end
           object UniDBRadioGroup2: TUniDBRadioGroup
-            Left = 537
-            Top = 108
-            Width = 208
-            Height = 95
+            Left = 380
+            Top = 251
+            Width = 240
+            Height = 55
             Hint = ''
             ShowHint = True
             DataField = 'Natureza'
@@ -460,6 +416,7 @@ object fCadPlanoContas: TfCadPlanoContas
               'Credora'
               'Devedora'
               'Indefinida')
+            Columns = 3
             Values.Strings = (
               'C'
               'D'
@@ -468,8 +425,8 @@ object fCadPlanoContas: TfCadPlanoContas
           object cConta: TUniDBEdit
             Left = 16
             Top = 16
-            Width = 148
-            Height = 55
+            Width = 300
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Conta'
@@ -483,15 +440,15 @@ object fCadPlanoContas: TfCadPlanoContas
             InputType = 'text'
             FieldLabel = 'Conta Contabil'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cNomeContabil: TUniDBEdit
             Left = 16
-            Top = 71
-            Width = 500
-            Height = 55
+            Top = 97
+            Width = 605
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Nome_Contabil'
@@ -503,15 +460,15 @@ object fCadPlanoContas: TfCadPlanoContas
             TabOrder = 3
             FieldLabel = 'Nome Contabil'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cCodigo: TUniDBEdit
-            Left = 169
-            Top = 16
-            Width = 104
-            Height = 55
+            Left = 16
+            Top = 43
+            Width = 300
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Codigo'
@@ -523,15 +480,15 @@ object fCadPlanoContas: TfCadPlanoContas
             TabOrder = 1
             FieldLabel = 'C'#243'digo Reduzido:'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object UniDBEdit3: TUniDBEdit
-            Left = 279
-            Top = 16
-            Width = 148
-            Height = 55
+            Left = 16
+            Top = 70
+            Width = 300
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Conta_ECF'
@@ -545,15 +502,15 @@ object fCadPlanoContas: TfCadPlanoContas
             InputType = 'text'
             FieldLabel = 'Conta Contabil (ECF)'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cNomeFinanceiro: TUniDBEdit
             Left = 16
-            Top = 126
-            Width = 500
-            Height = 55
+            Top = 124
+            Width = 605
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Nome_Financeiro'
@@ -565,16 +522,16 @@ object fCadPlanoContas: TfCadPlanoContas
             TabOrder = 4
             FieldLabel = 'Nome Financeiro'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
             OnExit = cNomeExit
           end
           object UniDBRadioGroup1: TUniDBRadioGroup
-            Left = 537
-            Top = 56
-            Width = 208
-            Height = 46
+            Left = 16
+            Top = 251
+            Width = 200
+            Height = 55
             Hint = ''
             ShowHint = True
             DataField = 'Tipo'
@@ -594,10 +551,10 @@ object fCadPlanoContas: TfCadPlanoContas
               'R')
           end
           object UniGroupBox1: TUniGroupBox
-            Left = 536
-            Top = 210
-            Width = 209
-            Height = 441
+            Left = 645
+            Top = 15
+            Width = 393
+            Height = 499
             Hint = ''
             ShowHint = True
             Caption = 'Par'#226'metros'
@@ -608,8 +565,8 @@ object fCadPlanoContas: TfCadPlanoContas
                 '= '#39'Grupo'#39';'#13#10'}')
             object cRelatorio: TUniDBCheckBox
               Left = 12
-              Top = 77
-              Width = 180
+              Top = 108
+              Width = 170
               Height = 20
               Hint = ''
               ShowHint = True
@@ -626,8 +583,8 @@ object fCadPlanoContas: TfCadPlanoContas
             end
             object cCambio: TUniDBCheckBox
               Left = 12
-              Top = 61
-              Width = 180
+              Top = 86
+              Width = 170
               Height = 20
               Hint = ''
               ShowHint = True
@@ -644,8 +601,8 @@ object fCadPlanoContas: TfCadPlanoContas
             end
             object cCusto: TUniDBCheckBox
               Left = 12
-              Top = 237
-              Width = 180
+              Top = 284
+              Width = 170
               Height = 20
               Hint = ''
               ShowHint = True
@@ -662,8 +619,8 @@ object fCadPlanoContas: TfCadPlanoContas
             end
             object cSomente_Faturamento: TUniDBCheckBox
               Left = 12
-              Top = 93
-              Width = 180
+              Top = 130
+              Width = 170
               Height = 20
               Hint = ''
               ShowHint = True
@@ -680,8 +637,8 @@ object fCadPlanoContas: TfCadPlanoContas
             end
             object cAdiantamento: TUniDBCheckBox
               Left = 12
-              Top = 125
-              Width = 180
+              Top = 174
+              Width = 170
               Height = 20
               Hint = ''
               ShowHint = True
@@ -699,8 +656,8 @@ object fCadPlanoContas: TfCadPlanoContas
             end
             object cDevolucao: TUniDBCheckBox
               Left = 12
-              Top = 109
-              Width = 180
+              Top = 152
+              Width = 170
               Height = 20
               Hint = ''
               ShowHint = True
@@ -718,8 +675,8 @@ object fCadPlanoContas: TfCadPlanoContas
             end
             object cCusto_Seletivo: TUniDBCheckBox
               Left = 12
-              Top = 253
-              Width = 180
+              Top = 306
+              Width = 170
               Height = 20
               Hint = ''
               ShowHint = True
@@ -736,8 +693,8 @@ object fCadPlanoContas: TfCadPlanoContas
             end
             object cTransferencia: TUniDBCheckBox
               Left = 12
-              Top = 173
-              Width = 180
+              Top = 240
+              Width = 170
               Height = 20
               Hint = ''
               ShowHint = True
@@ -753,9 +710,9 @@ object fCadPlanoContas: TfCadPlanoContas
               FieldLabelSeparator = ' '
             end
             object cFechamento_Processo: TUniDBCheckBox
-              Left = 12
-              Top = 205
-              Width = 180
+              Left = 193
+              Top = 152
+              Width = 190
               Height = 20
               Hint = ''
               ShowHint = True
@@ -772,8 +729,8 @@ object fCadPlanoContas: TfCadPlanoContas
             end
             object cCusto_Entrada: TUniDBCheckBox
               Left = 12
-              Top = 221
-              Width = 180
+              Top = 262
+              Width = 170
               Height = 20
               Hint = ''
               ShowHint = True
@@ -790,8 +747,8 @@ object fCadPlanoContas: TfCadPlanoContas
             end
             object cBoleto: TUniDBCheckBox
               Left = 12
-              Top = 285
-              Width = 180
+              Top = 350
+              Width = 170
               Height = 20
               Hint = ''
               ShowHint = True
@@ -808,8 +765,8 @@ object fCadPlanoContas: TfCadPlanoContas
             end
             object cDespesa_Fixa: TUniDBCheckBox
               Left = 12
-              Top = 141
-              Width = 180
+              Top = 196
+              Width = 170
               Height = 20
               Hint = ''
               ShowHint = True
@@ -826,8 +783,8 @@ object fCadPlanoContas: TfCadPlanoContas
             end
             object cNota_Referencia: TUniDBCheckBox
               Left = 12
-              Top = 157
-              Width = 180
+              Top = 218
+              Width = 170
               Height = 20
               Hint = ''
               ShowHint = True
@@ -843,9 +800,9 @@ object fCadPlanoContas: TfCadPlanoContas
               FieldLabelSeparator = ' '
             end
             object cProcesso_Obrigatorio: TUniDBCheckBox
-              Left = 12
-              Top = 189
-              Width = 180
+              Left = 193
+              Top = 174
+              Width = 190
               Height = 20
               Hint = ''
               ShowHint = True
@@ -862,8 +819,8 @@ object fCadPlanoContas: TfCadPlanoContas
             end
             object cDesativada: TUniDBCheckBox
               Left = 12
-              Top = 12
-              Width = 180
+              Top = 20
+              Width = 170
               Height = 20
               Hint = ''
               ShowHint = True
@@ -880,8 +837,8 @@ object fCadPlanoContas: TfCadPlanoContas
             end
             object cCusto_Outros: TUniDBCheckBox
               Left = 12
-              Top = 269
-              Width = 180
+              Top = 328
+              Width = 170
               Height = 20
               Hint = ''
               ShowHint = True
@@ -898,8 +855,8 @@ object fCadPlanoContas: TfCadPlanoContas
             end
             object cTributo: TUniDBCheckBox
               Left = 12
-              Top = 301
-              Width = 180
+              Top = 372
+              Width = 170
               Height = 20
               Hint = ''
               ShowHint = True
@@ -916,8 +873,8 @@ object fCadPlanoContas: TfCadPlanoContas
             end
             object cTaxa: TUniDBCheckBox
               Left = 12
-              Top = 317
-              Width = 180
+              Top = 394
+              Width = 170
               Height = 20
               Hint = ''
               ShowHint = True
@@ -934,8 +891,8 @@ object fCadPlanoContas: TfCadPlanoContas
             end
             object UniDBCheckBox4: TUniDBCheckBox
               Left = 12
-              Top = 29
-              Width = 180
+              Top = 42
+              Width = 170
               Height = 20
               Hint = ''
               ShowHint = True
@@ -952,8 +909,8 @@ object fCadPlanoContas: TfCadPlanoContas
             end
             object UniDBCheckBox1: TUniDBCheckBox
               Left = 12
-              Top = 333
-              Width = 180
+              Top = 416
+              Width = 170
               Height = 20
               Hint = ''
               ShowHint = True
@@ -970,8 +927,8 @@ object fCadPlanoContas: TfCadPlanoContas
             end
             object UniDBCheckBox2: TUniDBCheckBox
               Left = 12
-              Top = 45
-              Width = 180
+              Top = 64
+              Width = 170
               Height = 20
               Hint = ''
               ShowHint = True
@@ -988,8 +945,8 @@ object fCadPlanoContas: TfCadPlanoContas
             end
             object UniDBCheckBox5: TUniDBCheckBox
               Left = 12
-              Top = 349
-              Width = 180
+              Top = 438
+              Width = 170
               Height = 20
               Hint = ''
               ShowHint = True
@@ -1005,9 +962,9 @@ object fCadPlanoContas: TfCadPlanoContas
               FieldLabelSeparator = ' '
             end
             object UniDBCheckBox6: TUniDBCheckBox
-              Left = 12
-              Top = 381
-              Width = 180
+              Left = 193
+              Top = 20
+              Width = 190
               Height = 20
               Hint = ''
               ShowHint = True
@@ -1025,8 +982,8 @@ object fCadPlanoContas: TfCadPlanoContas
             end
             object UniDBCheckBox7: TUniDBCheckBox
               Left = 12
-              Top = 365
-              Width = 180
+              Top = 460
+              Width = 170
               Height = 20
               Hint = ''
               ShowHint = True
@@ -1043,9 +1000,9 @@ object fCadPlanoContas: TfCadPlanoContas
               OnClick = cDevolucaoClick
             end
             object UniDBCheckBox13: TUniDBCheckBox
-              Left = 12
-              Top = 397
-              Width = 180
+              Left = 193
+              Top = 42
+              Width = 190
               Height = 20
               Hint = ''
               ShowHint = True
@@ -1061,9 +1018,9 @@ object fCadPlanoContas: TfCadPlanoContas
               FieldLabelSeparator = ' '
             end
             object UniDBCheckBox14: TUniDBCheckBox
-              Left = 12
-              Top = 413
-              Width = 180
+              Left = 193
+              Top = 64
+              Width = 190
               Height = 20
               Hint = ''
               ShowHint = True
@@ -1078,18 +1035,73 @@ object fCadPlanoContas: TfCadPlanoContas
               FieldLabelWidth = 120
               FieldLabelSeparator = ' '
             end
+            object UniDBCheckBox3: TUniDBCheckBox
+              Left = 193
+              Top = 86
+              Width = 190
+              Height = 20
+              Hint = ''
+              ShowHint = True
+              DataField = 'Baixa_Automatica'
+              DataSource = dsPlanoContas
+              Caption = 'Baixa Autom'#225'tica'
+              ParentFont = False
+              Font.Height = -13
+              TabOrder = 27
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+            end
+            object UniDBCheckBox8: TUniDBCheckBox
+              Left = 193
+              Top = 108
+              Width = 190
+              Height = 20
+              Hint = ''
+              ShowHint = True
+              DataField = 'Despesa_AgMaritima'
+              DataSource = dsPlanoContas
+              Caption = 'Despesa Ag'#234'ncia Mar'#237'tima'
+              ParentFont = False
+              Font.Height = -13
+              TabOrder = 28
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+            end
+            object UniDBCheckBox9: TUniDBCheckBox
+              Left = 193
+              Top = 130
+              Width = 190
+              Height = 20
+              Hint = ''
+              ShowHint = True
+              DataField = 'Juros_SPED'
+              DataSource = dsPlanoContas
+              Caption = 'Gera Juros SPED PIS/COFINS'
+              ParentFont = False
+              Font.Height = -13
+              TabOrder = 29
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+            end
           end
           object cModalidade_Importacao: TUniDBLookupComboBox
             Left = 16
-            Top = 181
-            Width = 257
-            Height = 55
+            Top = 151
+            Width = 605
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dsModalidade
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             ClearButton = True
             DataField = 'Modalidade_Importacao'
             DataSource = dsPlanoContas
@@ -1102,22 +1114,22 @@ object fCadPlanoContas: TfCadPlanoContas
             Color = clWindow
             FieldLabel = 'Modalidade de Importa'#231#227'o'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
           end
           object cNivel: TUniDBLookupComboBox
-            Left = 279
-            Top = 181
-            Width = 237
-            Height = 55
+            Left = 16
+            Top = 178
+            Width = 605
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dsNivel
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             ClearButton = True
             DataField = 'Nivel'
             DataSource = dsPlanoContas
@@ -1130,22 +1142,22 @@ object fCadPlanoContas: TfCadPlanoContas
             Color = clWindow
             FieldLabel = 'N'#237'vel de Acesso'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
           end
           object cTipo_Documento: TUniDBLookupComboBox
             Left = 16
-            Top = 236
-            Width = 500
-            Height = 55
+            Top = 205
+            Width = 605
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Nome'
             ListSource = dsTiposDoc
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             ClearButton = True
             DataField = 'Tipo_Documento'
             DataSource = dsPlanoContas
@@ -1158,7 +1170,6 @@ object fCadPlanoContas: TfCadPlanoContas
             Color = clWindow
             FieldLabel = 'Documento'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             NormalizeString = True
             Style = csDropDown
@@ -1169,10 +1180,6 @@ object fCadPlanoContas: TfCadPlanoContas
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Par'#226'metros'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0

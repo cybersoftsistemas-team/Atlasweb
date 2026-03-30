@@ -14,8 +14,7 @@ object fCadPaises: TfCadPaises
     Height = 966
     Hint = ''
     BodyRTL = False
-    ActivePage = aFicha
-    Plain = True
+    ActivePage = aLista
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -91,7 +90,7 @@ object fCadPaises: TfCadPaises
         ClientEvents.UniEvents.Strings = (
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
+            ' '#39'BarraPesquisa'#39';'#13#10'}')
         BorderStyle = ubsNone
         Caption = ''
         Color = clNone
@@ -101,11 +100,10 @@ object fCadPaises: TfCadPaises
           Width = 520
           Height = 27
           Hint = ''
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Text = ''
           Align = alLeft
           TabOrder = 1
-          Color = clWhite
           EmptyText = 'Pesquisar'
           OnKeyDown = cPesquisaKeyDown
         end
