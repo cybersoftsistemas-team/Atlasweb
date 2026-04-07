@@ -388,7 +388,7 @@ begin
              with ttmp do begin
                   sql.clear;
                   sql.add('select Empresas = count(*)');
-                  sql.add('from Cybersoft_Cadastros.dbo.Empresas');
+                  sql.add('from Empresas');
                   sql.add('where  CNPJ like '+QuotedStr(Copy(Destinatarios.FieldByName('CNPJ_CPF').AsString, 1, 8)+'%'));
                   open;
                   if ValidaCampo(cDestinatario, FieldByName('Empresas').AsInteger, 0, '=', 'CNPJ inválido para Pedido de transferência.'+#13+#13+'CNPJ do destinatário não compatível com o da empresa atual.', 'TRANSFERÊNCIA') then Abort;

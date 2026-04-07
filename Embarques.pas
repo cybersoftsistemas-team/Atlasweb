@@ -618,7 +618,7 @@ begin
            sql.add('      ,Descricao_Reduzida');
            sql.add('from Produtos');
            sql.Add('where isnull(Desativado, 0) = 0');
-           sql.Add('and Origem_Mercadoria in(1,2,6,7)');
+           //sql.Add('and Origem_Mercadoria in(1,2,6,7)');
            sql.Add('order by Descricao_Reduzida');
            open;
       end;

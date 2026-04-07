@@ -210,14 +210,14 @@ begin
       with Processos do begin
            sql.clear;
            sql.add('select Processo');
-           sql.add('      ,Declaracao = DI');
-           sql.add('  	  ,Tipo = ''IMPORTA플O'' ');
+           sql.add('      ,Declaracao = DUIMP');
+           sql.add('      ,Tipo = ''IMPORTA플O'' ');
            sql.add('from ProcessosImp PI');
            sql.add('where Data_Encerramento is null');
            sql.add('union all');
            sql.add('select Processo');
            sql.add('      ,Declaracao = DE');
-           sql.add('  	  ,Tipo = ''EXPORTA플O'' ');
+           sql.add('      ,Tipo = ''EXPORTA플O'' ');
            sql.add('from ProcessosExp PE');
            sql.add('where Data_Encerramento is null');
            sql.add('order by Tipo, Declaracao');

@@ -130,7 +130,7 @@ uses
  ,CadOperacaoFiscal
  ,ComexProcessoImp
  ,LogisticaContainer
- ,DespRegistroDI
+ ,DespRegistroDUIMP
  ,FatPedidoNF
  ,CadDREContabil
  ,CadNavios
@@ -279,7 +279,7 @@ begin
                      if fileexists(fieldbyname('Icone').asstring) then begin
                         Picture.LoadFromFile(fieldbyname('Icone').asstring);
                      end else begin
-                        Picture.LoadFromFile(mpath+'images\Atalho0b.png');
+                        Picture.LoadFromFile(mpath+'images\icones\Atalho0b.png');
                      end;
                      OnClick := MainForm.Botao_Atalho;
                 end;
@@ -427,7 +427,7 @@ initialization
   RegisterClass(TfCadOperacaoFiscal);
   RegisterClass(TfComexProcessoImp);
   RegisterClass(TfConfigAtalhos);
-  RegisterClass(TfDespRegistroDI);
+  RegisterClass(TfDespRegistroDUIMP);
   RegisterClass(TfFatPedidoNF);
   RegisterClass(TfCadNavios);
   RegisterClass(TfEmbarques);

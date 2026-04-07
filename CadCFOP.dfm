@@ -126,7 +126,7 @@ object fCadCFOP: TfCadCFOP
     Height = 966
     Hint = ''
     BodyRTL = False
-    ActivePage = aLista
+    ActivePage = UniTabSheet1
     Plain = True
     Align = alClient
     ClientEvents.UniEvents.Strings = (
@@ -298,7 +298,7 @@ object fCadCFOP: TfCadCFOP
         object pFicha: TUniPanel
           Left = 112
           Top = 26
-          Width = 988
+          Width = 981
           Height = 256
           Hint = ''
           ShowHint = True
@@ -315,8 +315,8 @@ object fCadCFOP: TfCadCFOP
           Caption = ''
           Color = clTeal
           object GroupBox1: TUniGroupBox
-            Left = 707
-            Top = 8
+            Left = 699
+            Top = 14
             Width = 266
             Height = 168
             Hint = ''
@@ -415,7 +415,7 @@ object fCadCFOP: TfCadCFOP
           end
           object cSaida_Entrada: TUniDBRadioGroup
             Left = 15
-            Top = 182
+            Top = 188
             Width = 266
             Height = 54
             Hint = ''
@@ -438,7 +438,7 @@ object fCadCFOP: TfCadCFOP
           end
           object UniDBRadioGroup1: TUniDBRadioGroup
             Left = 298
-            Top = 182
+            Top = 188
             Width = 389
             Height = 54
             Hint = ''
@@ -463,7 +463,7 @@ object fCadCFOP: TfCadCFOP
           end
           object UniGroupBox1: TUniGroupBox
             Left = 15
-            Top = 8
+            Top = 14
             Width = 672
             Height = 168
             Hint = ''
@@ -484,6 +484,7 @@ object fCadCFOP: TfCadCFOP
               FieldLabelWidth = 120
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cDescricao: TUniDBEdit
               Left = 11
@@ -501,6 +502,7 @@ object fCadCFOP: TfCadCFOP
               FieldLabelWidth = 120
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cPrazo_Retorno: TUniDBEdit
               Left = 11
@@ -516,6 +518,7 @@ object fCadCFOP: TfCadCFOP
               FieldLabelWidth = 120
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBEdit1: TUniDBEdit
               Left = 11
@@ -531,6 +534,7 @@ object fCadCFOP: TfCadCFOP
               FieldLabelWidth = 120
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object UniDBEdit2: TUniDBEdit
               Left = 11
@@ -546,6 +550,7 @@ object fCadCFOP: TfCadCFOP
               FieldLabelWidth = 120
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
           end
         end

@@ -74,7 +74,7 @@ uses
   CadOperacaoFiscal in 'CadOperacaoFiscal.pas' {fCadOperacaoFiscal: TUniFrame},
   ComexProcessoImp in 'ComexProcessoImp.pas' {fComexProcessoImp: TUniFrame},
   ConfigAtalhos in 'ConfigAtalhos.pas' {fConfigAtalhos: TUniFrame},
-  DespRegistroDI in 'DespRegistroDI.pas' {fDespRegistroDI: TUniFrame},
+  DespRegistroDUIMP in 'DespRegistroDUIMP.pas' {fDespRegistroDUIMP: TUniFrame},
   FatPedidoNF in 'FatPedidoNF.pas' {fFatPedidoNF: TUniFrame},
   CadNavios in 'CadNavios.pas' {fCadNavios: TUniFrame},
   Embarques in 'Embarques.pas' {fEmbarques: TUniFrame},

@@ -343,7 +343,6 @@ end;
 procedure TfCadBeneficiosFiscais.bPesquisaClick(Sender: TObject);
 begin
      Beneficio.Cancel;
-     LigaBotoes(true);
      Pesquisa(Beneficio, 'Codigo', 'Nome',cPesquisa.text)
 end;
 

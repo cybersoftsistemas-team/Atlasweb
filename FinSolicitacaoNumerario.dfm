@@ -126,19 +126,13 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
     Height = 966
     Hint = ''
     BodyRTL = False
-    ActivePage = UniTabSheet1
+    ActivePage = aLista
     Plain = True
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = 75
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
@@ -150,7 +144,7 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
         ClientEvents.UniEvents.Strings = (
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
+            ' '#39'BarraPesquisa'#39';'#13#10'}')
         BorderStyle = ubsNone
         Caption = ''
         Color = clNone
@@ -160,12 +154,13 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
           Width = 520
           Height = 27
           Hint = ''
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Text = ''
           Align = alLeft
           TabOrder = 1
           EmptyText = 'Pesquisar'
           OnKeyDown = cPesquisaKeyDown
+          ExplicitLeft = -6
         end
         object bPesquisa: TUniSpeedButton
           Left = 520
@@ -266,12 +261,12 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
         DesignSize = (
           1278
           936)
-        ScrollHeight = 585
+        ScrollHeight = 484
         object pFicha: TUniPanel
-          Left = 232
-          Top = 26
-          Width = 513
-          Height = 559
+          Left = 231
+          Top = 32
+          Width = 623
+          Height = 452
           Hint = ''
           Enabled = False
           ShowHint = True
@@ -288,10 +283,10 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
           Caption = ''
           Color = clTeal
           object cData: TUniDBEdit
-            Left = 106
-            Top = 7
-            Width = 80
-            Height = 55
+            Left = 21
+            Top = 46
+            Width = 250
+            Height = 25
             Hint = ''
             Enabled = False
             ShowHint = True
@@ -300,14 +295,14 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             TabOrder = 1
             FieldLabel = 'Data'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cData_Previsao: TUniDBDateTimePicker
-            Left = 11
-            Top = 173
-            Width = 123
-            Height = 55
+            Left = 21
+            Top = 154
+            Width = 250
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Data_Previsao'
@@ -316,17 +311,16 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             DateFormat = 'dd/MM/yyyy'
             TimeFormat = 'HH:mm:ss'
             TabOrder = 2
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
             FieldLabel = 'Previs'#227'o'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
           object cData_Vencimento: TUniDBDateTimePicker
-            Left = 138
-            Top = 173
-            Width = 123
-            Height = 55
+            Left = 21
+            Top = 181
+            Width = 250
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Data_Vencimento'
@@ -335,17 +329,16 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             DateFormat = 'dd/MM/yyyy'
             TimeFormat = 'HH:mm:ss'
             TabOrder = 3
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
             FieldLabel = 'Vencimento'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
           object cHora_Cadastro: TUniDBEdit
-            Left = 192
-            Top = 7
-            Width = 59
-            Height = 55
+            Left = 21
+            Top = 73
+            Width = 250
+            Height = 25
             Hint = ''
             Enabled = False
             ShowHint = True
@@ -354,20 +347,21 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             TabOrder = 4
             FieldLabel = 'Hora'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object clBanco: TUniDBLookupComboBox
-            Left = 11
-            Top = 393
-            Width = 490
-            Height = 55
+            Left = 21
+            Top = 316
+            Width = 580
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Conta; Nome'
             ListSource = dsBancos
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Banco'
             DataSource = dsSolicitacaoNumerario
             AnyMatch = True
@@ -375,21 +369,21 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             Color = clWindow
             FieldLabel = 'Banco'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
           object clCentro_Custo: TUniDBLookupComboBox
-            Left = 11
-            Top = 338
-            Width = 490
-            Height = 55
+            Left = 21
+            Top = 289
+            Width = 580
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo; Nome'
             ListSource = dsCentroCusto
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             ClearButton = True
             DataField = 'Centro_Custo'
             DataSource = dsSolicitacaoNumerario
@@ -398,44 +392,44 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             Color = clWindow
             FieldLabel = 'Centro Custo'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
           object clClassificacao: TUniDBLookupComboBox
-            Left = 11
-            Top = 283
-            Width = 490
-            Height = 55
+            Left = 21
+            Top = 262
+            Width = 580
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Nome_Financeiro'
             ListSource = dsPlanoFin
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             ClearButton = True
             DataField = 'Classificacao'
             DataSource = dsSolicitacaoNumerario
             AnyMatch = True
             TabOrder = 7
             Color = clWindow
-            FieldLabel = 'Classif.Financeira'
+            FieldLabel = 'Classifica'#231#227'o Financeira'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
           object clCliente: TUniDBLookupComboBox
-            Left = 11
-            Top = 228
-            Width = 490
-            Height = 55
+            Left = 21
+            Top = 235
+            Width = 580
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo; Nome'
             ListSource = dsClientes
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             ClearButton = True
             DataField = 'Cliente'
             DataSource = dsSolicitacaoNumerario
@@ -444,21 +438,21 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             Color = clWindow
             FieldLabel = 'Cliente'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
           object clDocumento: TUniDBLookupComboBox
-            Left = 11
-            Top = 117
-            Width = 490
-            Height = 55
+            Left = 21
+            Top = 127
+            Width = 580
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Nome'
             ListSource = dsTipoDoc
             KeyField = 'Codigo'
             ListFieldIndex = 0
+            BorderStyle = ubsInset
             ClearButton = True
             DataField = 'Documento'
             DataSource = dsSolicitacaoNumerario
@@ -467,15 +461,14 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             Color = clWindow
             FieldLabel = 'Documento'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
           object cNumero: TUniDBEdit
-            Left = 11
-            Top = 7
-            Width = 89
-            Height = 55
+            Left = 21
+            Top = 19
+            Width = 250
+            Height = 25
             Hint = ''
             Enabled = False
             ShowHint = True
@@ -484,35 +477,36 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             TabOrder = 10
             FieldLabel = 'Solicita'#231#227'o N'#186
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cObservacao: TUniDBMemo
-            Left = 11
-            Top = 449
-            Width = 490
-            Height = 88
+            Left = 21
+            Top = 343
+            Width = 580
+            Height = 84
             Hint = ''
             ShowHint = True
             DataField = 'Observacao'
             DataSource = dsSolicitacaoNumerario
+            BorderStyle = ubsInset
             TabOrder = 11
             FieldLabel = 'Observa'#231#227'o'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
           object cProcesso: TUniDBLookupComboBox
-            Left = 11
-            Top = 62
-            Width = 490
-            Height = 55
+            Left = 21
+            Top = 100
+            Width = 580
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Processo; Declaracao'
             ListSource = dsProcesso
             KeyField = 'Processo'
             ListFieldIndex = 0
+            BorderStyle = ubsInset
             ClearButton = True
             DataField = 'Processo'
             DataSource = dsSolicitacaoNumerario
@@ -521,15 +515,14 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             Color = clWindow
             FieldLabel = 'N'#186' Processo'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
           object cValor_Total: TUniDBEdit
-            Left = 267
-            Top = 173
-            Width = 150
-            Height = 55
+            Left = 21
+            Top = 208
+            Width = 250
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Valor_Total'
@@ -537,8 +530,8 @@ object fFinSolicitacaoNumerario: TfFinSolicitacaoNumerario
             TabOrder = 13
             FieldLabel = 'Valor'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
         end
       end

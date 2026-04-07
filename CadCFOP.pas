@@ -3,11 +3,11 @@ unit CadCFOP;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  uniGUITypes, uniGUIAbstractClasses, uniGUIClasses, uniGUIFrame, UniPageControl, uniDBGrid, uniPanel, uniDBLookUpComboBox,
-  uniDBCheckBox, uniScrollBox, uniSpeedButton, uniDateTimePicker, uniDBDateTimePicker, uniButton, uniBitBtn, uniDBNavigator, uniEdit,
-  uniDBEdit, uniDBMemo, uniBasicGrid, uniGUIBaseClasses, FireDAC.Comp.Client, Funcoes, Data.DB, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
-  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, uniRadioGroup, uniDBRadioGroup, uniGroupBox, uniMultiItem, uniComboBox, uniDBComboBox, uniCheckBox, uniMemo, uniSweetAlert;
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, uniGUITypes, uniGUIAbstractClasses, uniGUIClasses, uniGUIFrame, UniPageControl, 
+  uniDBGrid, uniPanel, uniDBLookUpComboBox, uniDBCheckBox, uniScrollBox, uniSpeedButton, uniDateTimePicker, uniDBDateTimePicker, uniButton, uniBitBtn, uniDBNavigator, uniEdit,
+  uniDBEdit, uniDBMemo, uniBasicGrid, uniGUIBaseClasses, FireDAC.Comp.Client, Funcoes, Data.DB, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
+  FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, uniRadioGroup, uniDBRadioGroup, uniGroupBox, uniMultiItem, 
+  uniComboBox, uniDBComboBox, uniCheckBox, uniMemo, uniSweetAlert;
 
 type
   TfCadCFOP = class(TUniFrame)
@@ -207,6 +207,7 @@ begin
            open;
       end;
 end;
+
 procedure TfCadCFOP.cPesquisaKeyDown(Sender: TObject; var Key: Word;Shift: TShiftState);
 begin
       if Key = VK_RETURN then begin
@@ -222,12 +223,12 @@ end;
 
 procedure TfCadCFOP.CFOPBeforePost(DataSet: TDataSet);
 begin
-      LogDados(DataSet, DataSet.FieldByName('Descricao').AsString, EstadoTabela(DataSet));
+     LogDados(DataSet, DataSet.FieldByName('Descricao').AsString, EstadoTabela(DataSet));
 end;
 
 procedure TfCadCFOP.CFOPBeforeDelete(DataSet: TDataSet);
 begin
-       LogDados(DataSet, DataSet.FieldByName('Descricao').AsString,'Delete');
+     LogDados(DataSet, DataSet.FieldByName('Descricao').AsString,'Delete');
 end;
 
 

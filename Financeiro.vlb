@@ -178,9 +178,6 @@ Coordinates=1358,832,185,36
 [UniPanel8]
 Coordinates=1274,832,74,36
 
-[UniDBEdit5]
-Coordinates=1183,832,81,36
-
 [BaixasOrigem_Multa]
 Coordinates=960,826,134,36
 
@@ -470,9 +467,6 @@ Coordinates=741,740,93,36
 [cDia]
 Coordinates=691,740,40,36
 
-[UniDateTimePicker2]
-Coordinates=549,740,132,36
-
 [cNumero]
 Coordinates=473,740,66,36
 
@@ -693,5 +687,5 @@ Coordinates=165,924,46,36
 Coordinates=92,924,63,36
 
 []
-Coordinates=1622,1376,91,36
+Coordinates=549,740,132,36
 

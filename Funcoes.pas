@@ -574,7 +574,7 @@ var
   tTemp: TFDQuery;
   tab: string;
 begin
-     Tab      := Tabela.Table.Name;
+     Tab      := GetTableNameFromSQL(Tabela.text);
      Pesquisa := '';
      tTemp    := TFDQuery.Create(nil);
      with tTemp do begin
@@ -596,8 +596,8 @@ function Filtra(Tabela:TFDQuery; CampoPesq, Busca:string):string;
 var
    scr: string;
 begin
-     scr := 'select * from '+Tabela.Table.Name+' where '+CampoPesq+' like '+quotedstr('%'+Busca+'%');
-     with Tabela do begin
+    scr := 'select * from '+GetTableNameFromSQL(Tabela.text)+' where '+CampoPesq+' like '+quotedstr('%'+Busca+'%');
+    with Tabela do begin
           sql.Clear;
           sql.add(scr);
           Open;

@@ -130,7 +130,7 @@ object fEmbarques: TfEmbarques
     Margins.Top = 1
     Margins.Right = 1
     Margins.Bottom = 1
-    ActivePage = TabSheet5
+    ActivePage = aLista
     Align = alClient
     TabOrder = 0
     object aLista: TUniTabSheet
@@ -172,6 +172,7 @@ object fEmbarques: TfEmbarques
             Title.Font.Style = [fsBold]
             Width = 84
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Navio_Nome'
@@ -189,6 +190,7 @@ object fEmbarques: TfEmbarques
             Title.Font.Style = [fsBold]
             Width = 124
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Processo'
@@ -197,6 +199,7 @@ object fEmbarques: TfEmbarques
             Title.Font.Style = [fsBold]
             Width = 171
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Filial'
@@ -205,6 +208,7 @@ object fEmbarques: TfEmbarques
             Title.Font.Style = [fsBold]
             Width = 60
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'UF'
@@ -214,6 +218,7 @@ object fEmbarques: TfEmbarques
             Width = 40
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Data_Partida'
@@ -223,6 +228,7 @@ object fEmbarques: TfEmbarques
             Width = 100
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Data_Chegada'
@@ -232,6 +238,7 @@ object fEmbarques: TfEmbarques
             Width = 100
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Data_Atracacao'
@@ -241,6 +248,7 @@ object fEmbarques: TfEmbarques
             Width = 100
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Total_ME'
@@ -249,6 +257,7 @@ object fEmbarques: TfEmbarques
             Title.Font.Style = [fsBold]
             Width = 161
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Status'
@@ -258,6 +267,7 @@ object fEmbarques: TfEmbarques
             Width = 130
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end>
       end
       object pBarraPesq: TUniPanel
@@ -271,7 +281,7 @@ object fEmbarques: TfEmbarques
         ClientEvents.UniEvents.Strings = (
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
+            ' '#39'BarraPesquisa'#39';'#13#10'}')
         BorderStyle = ubsSingle
         Caption = ''
         Color = clNone
@@ -281,7 +291,7 @@ object fEmbarques: TfEmbarques
           Width = 520
           Height = 27
           Hint = ''
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Text = ''
           ParentFont = False
           Align = alLeft
@@ -397,6 +407,7 @@ object fEmbarques: TfEmbarques
           ListSource = dstFiliais
           KeyField = 'CNPJ'
           ListFieldIndex = 0
+          BorderStyle = ubsInset
           ClearButton = True
           Align = alLeft
           EmptyText = 'FILIAL DE DESTINO'
@@ -940,6 +951,7 @@ object fEmbarques: TfEmbarques
               Title.Alignment = taCenter
               Title.Caption = 'BL'
               Width = 72
+              ReadOnly = True
             end
             item
               FieldName = 'Data_Emissao'
@@ -947,30 +959,35 @@ object fEmbarques: TfEmbarques
               Title.Caption = 'Emiss'#227'o'
               Width = 65
               Alignment = taCenter
+              ReadOnly = True
             end
             item
               FieldName = 'Ton_Vac'
               Title.Alignment = taCenter
               Title.Caption = 'Ton Vac'
               Width = 95
+              ReadOnly = True
             end
             item
               FieldName = 'Ton_Air'
               Title.Alignment = taCenter
               Title.Caption = 'Ton Air'
               Width = 95
+              ReadOnly = True
             end
             item
               FieldName = 'Quantidade_LT15'
               Title.Alignment = taCenter
               Title.Caption = 'Qtde LT 15'#186
               Width = 108
+              ReadOnly = True
             end
             item
               FieldName = 'Quantidade_LT20'
               Title.Alignment = taCenter
               Title.Caption = 'Qtde LT 20'#186
               Width = 108
+              ReadOnly = True
             end
             item
               FieldName = 'DI'
@@ -978,6 +995,7 @@ object fEmbarques: TfEmbarques
               Title.Caption = 'DI'
               Width = 73
               Alignment = taCenter
+              ReadOnly = True
             end
             item
               FieldName = 'Endossado'
@@ -986,6 +1004,7 @@ object fEmbarques: TfEmbarques
               Title.Color = clBlack
               Width = 60
               Alignment = taCenter
+              ReadOnly = True
             end
             item
               FieldName = 'Bloqueado'
@@ -994,6 +1013,7 @@ object fEmbarques: TfEmbarques
               Title.Color = clBlack
               Width = 60
               Alignment = taCenter
+              ReadOnly = True
             end
             item
               FieldName = 'Entreposto'
@@ -1001,12 +1021,14 @@ object fEmbarques: TfEmbarques
               Title.Caption = 'Entreposto'
               Width = 60
               Alignment = taCenter
+              ReadOnly = True
             end
             item
               FieldName = 'Laudo'
               Title.Alignment = taCenter
               Title.Caption = 'Laudo'
               Width = 100
+              ReadOnly = True
             end>
         end
       end
@@ -1750,6 +1772,7 @@ object fEmbarques: TfEmbarques
               Title.Alignment = taCenter
               Title.Caption = 'Laudo'
               Width = 105
+              ReadOnly = True
             end
             item
               FieldName = 'Data_Atracacao'
@@ -1757,6 +1780,7 @@ object fEmbarques: TfEmbarques
               Title.Caption = 'Atraca'#231#227'o'
               Width = 80
               Alignment = taCenter
+              ReadOnly = True
             end
             item
               FieldName = 'Data_Operacao'
@@ -1764,18 +1788,21 @@ object fEmbarques: TfEmbarques
               Title.Caption = 'Opera'#231#227'o'
               Width = 80
               Alignment = taCenter
+              ReadOnly = True
             end
             item
               FieldName = 'Variacao_DesLT'
               Title.Alignment = taCenter
               Title.Caption = 'Varia'#231#227'o (LT)'
               Width = 119
+              ReadOnly = True
             end
             item
               FieldName = 'Variacao_DesPerc'
               Title.Alignment = taCenter
               Title.Caption = 'Varia'#231#227'o (M'#179')'
               Width = 119
+              ReadOnly = True
             end>
         end
       end
@@ -1818,6 +1845,7 @@ object fEmbarques: TfEmbarques
               Title.Caption = 'BL'
               Title.Font.Style = [fsBold]
               Width = 76
+              ReadOnly = True
             end
             item
               FieldName = 'Data_Emissao'
@@ -1826,6 +1854,7 @@ object fEmbarques: TfEmbarques
               Title.Font.Style = [fsBold]
               Width = 88
               Alignment = taCenter
+              ReadOnly = True
             end
             item
               FieldName = 'Endossado'
@@ -1834,6 +1863,7 @@ object fEmbarques: TfEmbarques
               Title.Font.Style = [fsBold]
               Width = 30
               Alignment = taCenter
+              ReadOnly = True
             end
             item
               FieldName = 'Bloqueado'
@@ -1842,6 +1872,7 @@ object fEmbarques: TfEmbarques
               Title.Font.Style = [fsBold]
               Width = 30
               Alignment = taCenter
+              ReadOnly = True
             end
             item
               FieldName = 'Entreposto'
@@ -1849,6 +1880,7 @@ object fEmbarques: TfEmbarques
               Title.Caption = 'Ent'
               Title.Font.Style = [fsBold]
               Width = 30
+              ReadOnly = True
             end>
         end
         object Panel10: TUniPanel
@@ -1932,6 +1964,7 @@ object fEmbarques: TfEmbarques
             Title.Caption = 'Nota'
             Title.Font.Style = [fsBold]
             Width = 64
+            ReadOnly = True
           end
           item
             FieldName = 'Data'
@@ -1940,6 +1973,7 @@ object fEmbarques: TfEmbarques
             Title.Font.Style = [fsBold]
             Width = 64
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'SE'
@@ -1965,6 +1999,7 @@ object fEmbarques: TfEmbarques
             Title.Caption = 'Destinat'#225'rio'
             Title.Font.Style = [fsBold]
             Width = 364
+            ReadOnly = True
           end
           item
             FieldName = 'CNPJ'
@@ -1973,6 +2008,7 @@ object fEmbarques: TfEmbarques
             Title.Font.Style = [fsBold]
             Width = 120
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Processo'
@@ -1980,6 +2016,7 @@ object fEmbarques: TfEmbarques
             Title.Caption = 'Processo'
             Title.Font.Style = [fsBold]
             Width = 94
+            ReadOnly = True
           end
           item
             FieldName = 'Quantidade'
@@ -1987,6 +2024,7 @@ object fEmbarques: TfEmbarques
             Title.Caption = 'Quantidade'
             Title.Font.Style = [fsBold]
             Width = 106
+            ReadOnly = True
           end
           item
             FieldName = 'Total'
@@ -1994,6 +2032,7 @@ object fEmbarques: TfEmbarques
             Title.Caption = 'Total'
             Title.Font.Style = [fsBold]
             Width = 120
+            ReadOnly = True
           end>
       end
       object UniPanel4: TUniPanel

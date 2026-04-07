@@ -137,10 +137,6 @@ object fCadCodigosRFB: TfCadCodigosRFB
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
@@ -152,7 +148,7 @@ object fCadCodigosRFB: TfCadCodigosRFB
         ClientEvents.UniEvents.Strings = (
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
+            ' '#39'BarraPesquisa'#39';'#13#10'}')
         BorderStyle = ubsNone
         Caption = ''
         Color = clNone
@@ -162,7 +158,7 @@ object fCadCodigosRFB: TfCadCodigosRFB
           Width = 520
           Height = 27
           Hint = ''
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Text = ''
           Align = alLeft
           TabOrder = 1
@@ -193,7 +189,7 @@ object fCadCodigosRFB: TfCadCodigosRFB
         Hint = ''
         DataSource = dsCodigosRFB
         Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
-        WebOptions.PageSize = 30
+        WebOptions.PageSize = 35
         LoadMask.Message = 'Loading data...'
         ForceFit = True
         Align = alClient
@@ -235,10 +231,6 @@ object fCadCodigosRFB: TfCadCodigosRFB
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -251,15 +243,16 @@ object fCadCodigosRFB: TfCadCodigosRFB
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
+        ExplicitTop = -3
         DesignSize = (
           1278
           936)
-        ScrollHeight = 253
+        ScrollHeight = 151
         object pFicha: TUniPanel
-          Left = 96
-          Top = 26
-          Width = 638
-          Height = 227
+          Left = 101
+          Top = 32
+          Width = 653
+          Height = 119
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -275,41 +268,41 @@ object fCadCodigosRFB: TfCadCodigosRFB
           Caption = ''
           Color = clTeal
           object cCodigo: TUniDBEdit
-            Left = 13
-            Top = 13
-            Width = 82
-            Height = 55
+            Left = 20
+            Top = 22
+            Width = 161
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Codigo'
             DataSource = dsCodigosRFB
             TabOrder = 1
             FieldLabel = 'C'#243'digo'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 60
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cDescricao: TUniDBMemo
-            Left = 13
-            Top = 69
+            Left = 20
+            Top = 49
             Width = 612
-            Height = 92
+            Height = 44
             Hint = ''
             ShowHint = True
             DataField = 'Descricao'
             DataSource = dsCodigosRFB
+            BorderStyle = ubsInset
             TabOrder = 2
             FieldLabel = 'Descri'#231#227'o'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 60
             FieldLabelSeparator = ' '
           end
           object cComex: TUniDBCheckBox
-            Left = 13
-            Top = 182
+            Left = 327
+            Top = 22
             Width = 118
-            Height = 17
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Comex'
@@ -323,10 +316,10 @@ object fCadCodigosRFB: TfCadCodigosRFB
             FieldLabelSeparator = ' '
           end
           object cAtivo: TUniDBCheckBox
-            Left = 107
-            Top = 44
-            Width = 49
-            Height = 17
+            Left = 207
+            Top = 22
+            Width = 82
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Inativo'

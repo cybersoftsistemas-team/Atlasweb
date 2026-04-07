@@ -42,22 +42,12 @@ type
     cProv: TUniRadioGroup;
     UniScrollBox1: TUniScrollBox;
     pFicha1: TUniPanel;
-    cConta: TUniDBLookupComboBox;
-    cData_Previsao: TUniDBDateTimePicker;
-    cDocumento_Data: TUniDBDateTimePicker;
-    cData_Vencimento: TUniDBDateTimePicker;
-    cBeneficiario: TUniDBLookupComboBox;
-    cDocumento: TUniDBLookupComboBox;
-    cModalidade_Pgto: TUniDBLookupComboBox;
-    cObservacao: TUniDBMemo;
-    cCentro_Custo: TUniDBLookupComboBox;
     CentroCusto: TFDQuery;
     dsCentroCusto: TDataSource;
     Modal: TFDQuery;
     dsModal: TDataSource;
     Processos: TFDQuery;
     dsProcessos: TDataSource;
-    cProcesso: TUniDBLookupComboBox;
     cBenefFiltro: TUniDBLookupComboBox;
     cContaFiltro: TUniDBLookupComboBox;
     cBancoFiltro: TUniDBLookupComboBox;
@@ -65,10 +55,8 @@ type
     bPesquisa: TUniSpeedButton;
     TipoDoc: TFDQuery;
     dsTipoDoc: TDataSource;
-    cAdiantamento: TUniDBLookupComboBox;
     Adiantamentos: TFDQuery;
     dsAdiantamentos: TDataSource;
-    cNumero_Documento: TUniDBEdit;
     FormaPgto: TFDQuery;
     dsFormaPgto: TDataSource;
     bBaixar: TUniButton;
@@ -88,7 +76,6 @@ type
     cMes: TUniSegmentedButton;
     cDia: TUniSegmentedButton;
     cAno: TUniSpinEdit;
-    cEmpresa: TUniDBLookupComboBox;
     BaixasRegistro: TLargeintField;
     BaixasTipo: TStringField;
     BaixasValor: TCurrencyField;
@@ -137,7 +124,6 @@ type
     cTaxa_FechamentoCambio: TUniFormattedNumberEdit;
     Cotacao: TFDQuery;
     dsCotacao: TDataSource;
-    cNumero: TUniDBEdit;
     Config: TFDQuery;
     cBxData: TUniDateTimePicker;
     cBxForma_PgtoDoc: TUniEdit;
@@ -202,21 +188,51 @@ type
     EmpresasCNPJ: TStringField;
     EmpresasUnidade: TStringField;
     EmpresasEstado: TStringField;
-    cEmbarque: TUniDBLookupComboBox;
     Embarques: TFDQuery;
     dsEmbarques: TDataSource;
     AdiantamentosCNPJ: TStringField;
     AdiantamentosAdiantamento_Numero: TSmallintField;
     AdiantamentosNome: TStringField;
-    cCodigoBarras: TUniDBEdit;
     UniPanel4: TUniPanel;
     UniPanel10: TUniPanel;
     GradeLan: TUniDBGrid;
     UniDBGrid1: TUniDBGrid;
     UniDBMemo1: TUniDBMemo;
     brTotais: TUniSegmentedButton;
-    UniDBEdit5: TUniDBEdit;
-    UniDateTimePicker2: TUniDateTimePicker;
+    UniContainerPanel1: TUniContainerPanel;
+    EmpresasFechamento_Financeiro: TDateField;
+    ListaValor_Baixas: TCurrencyField;
+    ListaOrigem: TStringField;
+    ListaVinculo: TIntegerField;
+    UniTabSheet7: TUniTabSheet;
+    UniDBGrid3: TUniDBGrid;
+    PagarReceberDocs: TFDQuery;
+    dsPagarReceberDocs: TDataSource;
+    cConta: TUniDBLookupComboBox;
+    cData_Previsao: TUniDBDateTimePicker;
+    cDocumento_Data: TUniDBDateTimePicker;
+    cData_Vencimento: TUniDBDateTimePicker;
+    cBeneficiario: TUniDBLookupComboBox;
+    cDocumento: TUniDBLookupComboBox;
+    cModalidade_Pgto: TUniDBLookupComboBox;
+    cCentro_Custo: TUniDBLookupComboBox;
+    cProcesso: TUniDBLookupComboBox;
+    cAdiantamento: TUniDBLookupComboBox;
+    cNumero_Documento: TUniDBEdit;
+    cEmpresa: TUniDBLookupComboBox;
+    cNumero: TUniDBEdit;
+    cEmbarque: TUniDBLookupComboBox;
+    cPago_Cliente: TUniDBCheckBox;
+    cProvisorio: TUniDBCheckBox;
+    UniDBCheckBox1: TUniDBCheckBox;
+    bVeiculo: TUniButton;
+    UniButton1: TUniButton;
+    cValor_Documento: TUniDBFormattedNumberEdit;
+    cRecuperavel: TUniDBCheckBox;
+    UniDBFormattedNumberEdit1: TUniDBFormattedNumberEdit;
+    UniDBFormattedNumberEdit2: TUniDBFormattedNumberEdit;
+    cObservacao: TUniDBMemo;
+    cCodigoBarras: TUniDBEdit;
     cSaldoDoc: TUniFormattedNumberEdit;
     cValor_Desconto: TUniDBFormattedNumberEdit;
     cDesconto_Liquidacao: TUniDBFormattedNumberEdit;
@@ -224,27 +240,13 @@ type
     cValor_Multa: TUniDBFormattedNumberEdit;
     cValor_Total: TUniDBFormattedNumberEdit;
     cValor_Parcela: TUniDBFormattedNumberEdit;
-    cValor_Documento: TUniDBFormattedNumberEdit;
     cValorBaixa: TUniFormattedNumberEdit;
     cSaldo: TUniFormattedNumberEdit;
     cNumeroPgto: TUniDBEdit;
     cDataBaixa: TUniDateTimePicker;
     cBanco: TUniDBLookupComboBox;
     UniDBLookupComboBox11: TUniDBLookupComboBox;
-    cPago_Cliente: TUniDBCheckBox;
-    cRecuperavel: TUniDBCheckBox;
-    cProvisorio: TUniDBCheckBox;
-    UniDBCheckBox1: TUniDBCheckBox;
-    UniDBFormattedNumberEdit1: TUniDBFormattedNumberEdit;
-    UniDBFormattedNumberEdit2: TUniDBFormattedNumberEdit;
     cValor_Baixado: TUniFormattedNumberEdit;
-    bVeiculo: TUniButton;
-    UniButton1: TUniButton;
-    UniContainerPanel1: TUniContainerPanel;
-    EmpresasFechamento_Financeiro: TDateField;
-    ListaValor_Baixas: TCurrencyField;
-    ListaOrigem: TStringField;
-    ListaVinculo: TIntegerField;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
@@ -289,15 +291,13 @@ type
     procedure bBloquearClick(Sender: TObject);
     procedure bBlocPerClick(Sender: TObject);
     procedure bBlocCancClick(Sender: TObject);
+    procedure pFiltroExpand(Sender: TObject);
   private
     procedure FiltraLancamentos;
-    procedure PegaBaixas;
     procedure Totaliza;
     procedure TotalizaBaixa;
     procedure LigaBotoesBx(Estado: boolean);
-    procedure PegaContratos;
     procedure CalculaCambio;
-    procedure PegaAdiantamentos;
     procedure LigaBotoesEst(Estado: boolean);
     procedure FiltraBenef(Tipo:string);
     { Private declarations }
@@ -439,7 +439,6 @@ begin
                   sql.Add('      ,Total_Juros    = 0');
                   sql.Add('      ,Total_Desconto = 0');
                end;
-               //sql.SaveToFile('c:\temp\Total_Baixas.sql');
                Open;
                cBxValor_Baixado.Value := tTmp.FieldByName('Total_Baixado').AsCurrency;
           end;
@@ -518,7 +517,9 @@ begin
           sql.add('select * from PagarReceber where Titulo = '+Lista.FieldByName('Titulo').asstring);
           open;
      end;
-     PegaBaixas;
+     Baixas.open;
+     Contratos.Open;
+     ListaAd.Open;
 end;
 
 procedure TfFinanceiro.bCancelarClick(Sender: TObject);
@@ -553,45 +554,38 @@ end;
 
 procedure TfFinanceiro.bEstornarClick(Sender: TObject);
 begin
-     with Baixas do begin
-          with tTmp do begin
-               sql.Clear;
-               sql.Add('select Total_Baixado = isnull(sum(prb.Valor), 0)');
-               sql.Add('from   PagarReceberBaixas prb');
-               sql.Add('where  Empresa = '+quotedstr(UniMainModule.mEmpresaAtiva) );
-               sql.Add('and    Titulo = '+Lista.FieldByName('Titulo').asstring);
-               Open;
+     with tTmp do begin
+          // Verifica se ainda existe saldo a liquidar.
+          sql.Clear;
+          sql.Add('select Total_Baixado = isnull(sum(prb.Valor), 0)');
+          sql.Add('from   PagarReceberBaixas prb');
+          sql.Add('where  Empresa = '+quotedstr(UniMainModule.mEmpresaAtiva) );
+          sql.Add('and    Titulo = '+Lista.FieldByName('Titulo').asstring);
+          Open;
+          if Aviso(Fieldbyname('Total_Baixado').AsCurrency, 0, '=', 'Não há liquidação para estornar!', 'Aviso') then Abort;
+     end;
 
-               // Verifica se ainda existe saldo a liquidar.
-               if Aviso(Fieldbyname('Total_Baixado').AsCurrency, 0, '=', 'Não há liquidação para estornar!', 'Aviso') then Abort;
-          end;
-
-          if ValidaCampo(cData_Vencimento, cData_Vencimento.DateTime, Empresas.FieldByName('Fechamento_Financeiro').AsDateTime, '<=', 'Título dentro de um período fechado!', 'Período Fechado') then Abort;
+     if ValidaCampo(cData_Vencimento, cData_Vencimento.DateTime, Empresas.FieldByName('Fechamento_Financeiro').AsDateTime, '<=', 'Título dentro de um período fechado!', 'Período Fechado') then Abort;
      
-          if recordCount > 0 then begin
-             MessageDlg('Deseja realmente estornar este valor?'+#13+#13+'Valor : R$ '+formatfloat(',##0.00;0', FieldByName('Valor').Ascurrency), mtConfirmation, mbYesNo,
-                       procedure(Comp:TComponent; ARes: Integer)
-                       begin
-                            if ARes = mrYes then begin
-                               // Exclui o lançamento contabil da baixa estornada.
-                               tTmp.sql.Clear;
-                               tTmp.sql.Add('delete from Lancamentos where Empresa = :pEmp and Origem = ''FNLIQ'' and Origem_Numero = :pNum');
-                               tTmp.ParamByName('pEmp').Asstring := fieldbyname('Empresa').AsString;
-                               tTmp.ParamByName('pNum').Asstring := PagarReceber.fieldbyname('Titulo').asstring;
-                               tTmp.Execute;
-                               // Exclui o lançamento de baixa..
-                               tTmp.sql.Clear;
-                               tTmp.sql.Add('delete from PagarReceberBaixas where Registro = :pReg');
-                               tTmp.ParamByName('pReg').AsInteger := fieldbyname('Registro').AsInteger;
-                               tTmp.Execute;
-                               MessageBeep(MB_ICONINFORMATION);
-                               Alerta.Text := 'Valor estornado!';
-                               Lista.Refresh;
-                               Baixas.Refresh;
-                               Alerta.Execute;
-                            end;
-                       end);
-          end;
+     if Baixas.recordCount > 0 then begin
+        MessageDlg('Deseja realmente estornar este valor?'+#13+#13+'Valor : R$ '+formatfloat(',##0.00;0', Baixas.FieldByName('Valor').Ascurrency), mtConfirmation, mbYesNo,
+                  procedure(Comp:TComponent; ARes: Integer)
+                  begin
+                       if ARes = mrYes then begin
+                          // Exclui o lançamento de baixa..
+                          with tTmp do begin
+                               sql.Clear;
+                               sql.Add('delete from PagarReceberBaixas where Registro = :pReg');
+                               ParamByName('pReg').AsInteger := Baixas.fieldbyname('Registro').AsInteger;
+                               Execute;
+                          end;
+                          MessageBeep(MB_ICONINFORMATION);
+                          Alerta.Text := 'Valor estornado!';
+                          Lista.Refresh;
+                          Baixas.Refresh;
+                          Alerta.Execute;
+                       end;
+                  end);
      end;
 end;
 
@@ -776,7 +770,6 @@ begin
            sql.add('where Empresa = '+ quotedstr(uniMainModule.mEmpresaAtiva));
            sql.add('and   Data_Encerramento is null');
            sql.add('order by Tipo, Declaracao');
-           //sql.savetofile('c:\temp\Financeiro_Processos.sql');
            open;
       end;
       with TipoDoc do begin
@@ -797,7 +790,6 @@ begin
            sql.add('where (select isnull(Adiantamento, 0) from PlanoContas pc where pc.Codigo = pr.Conta) = 1');
            sql.add('and (select CNPJ from Destinatarios fr where fr.Codigo = pr.Beneficiario) <> '''' ');
            sql.Add('order by Nome, CNPJ');
-           //sql.SaveToFile('c:\temp\Beneficiario_Adiantamentos.SQL');
            Open;
       end;
       with FormaPgto do begin
@@ -843,6 +835,50 @@ begin
            sql.add('where status <> ''ENCERRADO'' ');
            sql.add('order by cast(Referencia as int), Navio');
            open;
+      end;
+      with Baixas do begin
+           sql.clear;
+           sql.add('select prb.*');
+           sql.add('      ,Bancos.Nome as Banco_Nome');
+           sql.add('from PagarReceberBaixas prb');
+           sql.add('left join Bancos on Bancos.Codigo = prb.Banco');
+           sql.add('where prb.Empresa = :Empresa');
+           sql.add('and prb.Titulo = :Titulo');  
+      end;
+      with Contratos do begin
+           sql.Clear;
+           sql.Add('select cc.Numero');
+           sql.Add('      ,cc.Data');
+           sql.Add('      ,cc.DUIMP');
+           sql.Add('      ,bc.Nome as Banco_Nome');
+           sql.add('      ,dst.Nome as Exportador');
+           sql.add('      ,cdc.Descricao as Condicao_Cambial');
+           sql.add('      ,md.Nome as Moeda');
+           sql.Add('      ,cc.Taxa_Cambial');
+           sql.Add('      ,cc.Total_ME');
+           sql.Add('from ContratoCambio cc');
+           sql.add('left join Bancos bc on bc.Codigo = cc.Banco');
+           sql.add('left join Moedas md on md.Codigo = cc.Moeda');
+           sql.add('left join Destinatarios dst on dst.Codigo = cc.Exportador');
+           sql.add('left join CondicaoCambial cdc on cdc.Codigo = cc.Condicao_Cambio');
+           sql.Add('where cc.Empresa = :Empresa');
+           sql.Add('and cc.Numero = :Documento_Numero');
+      end;
+      with ListaAd do begin
+           sql.clear;
+           sql.Add('select pr.Titulo');
+           sql.Add('      ,pr.Valor_Total');
+           sql.Add('      ,pr.Documento_Data');
+           sql.Add('      ,pr.Adiantamento_Numero');
+           sql.Add('      ,pr.Banco');
+           sql.Add('      ,pr.Tipo');
+           sql.Add('      ,Valor_Baixado = isnull((select sum(Valor) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo), 0)');
+           sql.add('      ,Beneficiario = (select Nome from Destinatarios dst where dst.Codigo = pr.Adiantamento_Numero)');
+           sql.Add('from  PagarReceber pr');
+           sql.Add('where pr.Processo = :Processo');
+           sql.Add('and Adiantamento = 1');
+           sql.Add('order by Tipo, Titulo');
+           //sql.SaveToFile('c:\temp\Adiantamentos.sql');
       end;
 
       LigaBotoes(true);
@@ -960,6 +996,11 @@ end;
 procedure TfFinanceiro.PastaChange(Sender: TObject);
 begin
      pFiltro.Collapsed := true;
+end;
+
+procedure TfFinanceiro.pFiltroExpand(Sender: TObject);
+begin
+     FiltraBenef('');
 end;
 
 procedure TfFinanceiro.cAgruparChange(Sender: TObject);
@@ -1109,202 +1150,138 @@ procedure TfFinanceiro.FiltraLancamentos;
 var
    i: integer;
 begin
-       // Pega os dias com movimento.
-       with tDias do begin
-            sql.clear;
-            sql.add('select distinct Dia = day(Data_Vencimento)');
-            sql.add('from  PagarReceber');
-            sql.add('where Empresa = '+quotedstr(uniMainModule.mEmpresaAtiva));
-            sql.add('and   Year(Data_Vencimento) = '+cAno.Text +' and month(Data_Vencimento) = '+inttostr(mMes));
-            sql.add('order by Dia');
-            //sql.SaveToFile('c:\temp\Financeiro_dias_Movimento.sql');
-            Open;
-            first;
-            for i := 0 to 30 do begin
-                cDia.Items[i].Caption := Formatfloat('00', i+1);
-            end;
-            while not eof do begin
-                  cDia.Items[FieldByName('Dia').AsInteger-1].Caption := FormatFloat('00', FieldByName('Dia').asinteger)+'<i class="fa fa-circle" style="margin-left:4px; font-size:7px; color: #FFFF00"></i>';
-//                  cDia.Items[FieldByName('Dia').AsInteger-1].Caption := FormatFloat('00', FieldByName('Dia').asinteger)+' <i class="fa fa-star" aria-hidden="true"></i>';
-                  //cDia.Items[FieldByName('Dia').AsInteger-1].Caption := '<span style="text-decoration:underline #000 solid 2px"> '+FormatFloat('00', FieldByName('Dia').asinteger); //+' <i class="fa fa-check-circle" aria-hidden="true"></i>';
-                  next;
-            end;
-       end;
-
-       pFiltro.Title := 'FILTRO: '+FormatFloat('00', mDia) + ' de '+NomeMes(mMes) +' de '+cAno.Text;
-
-       if (trim(cBenefFiltro.text) = '') and (trim(cContaFiltro.text) = '') and (trim(cBancoFiltro.text) = '') and (trim(cProcesso.text) = '') and (cProv.ItemIndex <> 1) and (trim(cDocNumFiltro.Text) = '') and (trim(cProcessoFiltro.Text) = '') then begin
-          cAgrupar.Checked := false;
-       end;
-
-       with Lista do begin
-            sql.clear;
-            sql.Add('select Titulo');
-            sql.Add('      ,Conta');
-            sql.Add('      ,Tipo');
-            sql.Add('      ,Centro_Custo');
-            sql.Add('      ,Data_Vencimento');
-            sql.Add('      ,Valor_Documento');
-            sql.Add('      ,Valor_Parcela');
-            sql.Add('      ,Documento_Numero');
-            sql.Add('      ,Processo');
-            sql.Add('      ,Parcela');
-            sql.Add('      ,Valor_Juros');
-            sql.Add('      ,Valor_Multa');
-            sql.Add('      ,Valor_Desconto');
-            sql.Add('      ,Valor_Total');
-            sql.Add('      ,Valor_Operacao');
-            sql.Add('      ,Valor_Aberto = pr.Valor_Parcela - isnull((select isnull(sum(Valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo), 0)');
-            sql.Add('      ,Valor_Baixas = (select isnull(sum(Valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo)');
-            sql.Add('      ,Baixa = cast(case when (select isnull(sum(Valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo) = 0 then 0 else 1 end as bit)');
-            sql.Add('      ,Nome = (select Nome_Financeiro from PlanoContas pc where pc.Conta = pr.Conta)');
-            sql.Add('      ,Beneficiario = case when isnull(Transferencia, 0) = 0 then');
-            sql.Add('                           (select Nome from Destinatarios dst where dst.Codigo = pr.Beneficiario)');
-            sql.Add('                      else');
-            sql.Add('                           (select Nome from Bancos where Codigo = PR.Banco)');
-            sql.Add('                      end');
-            sql.Add('      ,Observacao');
-            sql.Add('      ,Origem');
-            sql.Add('      ,Vinculo');
-            sql.Add('from PagarReceber pr');
-            sql.Add('where Empresa = '+quotedstr(uniMainModule.mEmpresaAtiva));
-            if not cAgrupar.checked then begin
-               sql.Add('and pr.Data_Vencimento = :pData');
-               parambyName('pData').AsDate := cCalend.DateTime;
-            end;
-            if cTipo.itemindex = 0 then begin
-               sql.Add('and pr.Tipo = ''P''');
-            end;
-            if cTipo.itemindex = 1 then begin
-               sql.Add('and pr.Tipo = ''R''');
-            end;
-            if cSituacao.itemindex = 0 then begin
-               sql.Add('and (select isnull(sum(valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo) = 0');
-            end;
-            if cSituacao.itemindex = 1 then begin
-               sql.Add('and (select isnull(sum(valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo) = Valor_Total');
-            end;
-            if cSituacao.itemindex = 2 then begin
-               sql.Add('and ((select isnull(sum(valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo) > 0 and');
-               sql.Add('     (select isnull(sum(valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo) < Valor_Total)');
-            end;
-            if trim(cBenefFiltro.Text) <> '' then begin
-               sql.Add('and pr.Beneficiario = '+inttostr(cBenefFiltro.KeyValue));
-            end;
-            if trim(cContaFiltro.Text) <> '' then begin
-               sql.Add('and pr.Conta = '+quotedstr(Plano.fieldbyname('Conta').AsString));
-            end;
-            if trim(cBancoFiltro.Text) <> '' then begin
-               sql.Add('and Banco = '+inttostr(cBanco.KeyValue));
-            end;
-            if trim(cProcessoFiltro.Text) <> '' then begin
-               sql.Add('and pr.Processo like '+ quotedstr('%'+cProcessoFiltro.text+'%'));
-            end;
-            if cProv.itemindex = 0 then begin
-               sql.Add('and isnull(pr.Provisorio,0) = 0');
-            end;
-            if cProv.itemindex = 1 then begin
-               sql.Add('and isnull(pr.Provisorio,0) = 1');
-            end;
-            if trim(cDocNumFiltro.Text) <> '' then begin
-               sql.Add('and pr.Documento_Numero like '+ quotedstr('%'+cDocNumFiltro.text+'%'));
-            end;
-            sql.Add('order by Data_Vencimento desc');
-            //sql.savetofile('c:\temp\Financeiro.sql');
-            open;
-
-            PegaBaixas;
-            PegaContratos;
-            PegaAdiantamentos;
-
-            bEditar.Enabled  := RecordCount > 0;
-            bExcluir.Enabled := RecordCount > 0;
-       end;
-       with tTmp do begin  
-            sql.clear;
-            sql.Add('select Custo_Entrada  = sum(iif(Tipo = ''P'' and Custo_Entrada  = 1, Valor_Parcela, 0))');
-            sql.Add('      ,Custo_Saida    = sum(iif(Tipo = ''P'' and Custo_Saida    = 1, Valor_Parcela, 0))');
-            sql.Add('      ,Custo_Seletivo = sum(iif(Tipo = ''P'' and Custo_Seletivo = 1, Valor_Parcela, 0))');
-            sql.Add('      ,Custo_Outros   = sum(iif(Tipo = ''P'' and Custo_Outros   = 1, Valor_Parcela, 0))');
-            sql.Add('      ,Recebimentos   = sum(iif(Tipo = ''R'', Valor_Parcela, 0))');
-            sql.Add('      ,Pagamentos     = sum(iif(Tipo = ''P'', Valor_Parcela, 0))');
-            sql.Add('from PagarReceber pr');
-            sql.Add('where Empresa = '+quotedstr(uniMainModule.mEmpresaAtiva));
-            sql.Add('and pr.Data_Vencimento = :pData');
-            parambyName('pData').AsDate := cCalend.DateTime;
-            open;
-            brTotais.Items[0].Caption := 'Custo Entrada: ' + FormatFloat(',##0.00', fieldbyname('Custo_Entrada').AsCurrency);
-            brTotais.Items[1].Caption := 'Custo Saída: '   + FormatFloat(',##0.00', fieldbyname('Custo_Saida').AsCurrency);
-            brTotais.Items[2].Caption := 'Custo Seletivo: '+ FormatFloat(',##0.00', fieldbyname('Custo_Seletivo').AsCurrency);
-            brTotais.Items[3].Caption := 'Custo Outros: '  + FormatFloat(',##0.00', fieldbyname('Custo_Outros').AsCurrency);
-            brTotais.Items[4].Caption := 'Recebimentos: '  + FormatFloat(',##0.00', fieldbyname('Recebimentos').AsCurrency);
-            brTotais.Items[5].Caption := 'Pagamentos: '    + FormatFloat(',##0.00', fieldbyname('Pagamentos').AsCurrency);
-            brTotais.Items[6].Caption := 'Pedido Pai: '    + 'R-0000000';
-            brTotais.Items[7].Caption := 'Pedido Filho 1: '+ 'R-0000001';
-            brTotais.Items[8].Caption := 'Pedido Filho 2: '+ 'R-0000002';
-            brTotais.Items[9].Caption := 'Bloqueado: '     + '00/00/0000';
-       end;
-end;
-
-procedure TfFinanceiro.PegaBaixas;
-begin
-      with Baixas do begin
-           if PagarReceber.Tag = 0 then begin
-              sql.clear;
-              sql.add('select *');
-              sql.add('      ,Banco_Nome = (select Nome from Bancos where Codigo = Banco)');
-              sql.add('from  PagarReceberBaixas');
-              sql.Add('where Empresa = '+quotedstr(uniMainModule.mEmpresaAtiva));
-              sql.add('and   Titulo = :pTitulo');
-              parambyname('pTitulo').asinteger := Lista.fieldbyname('Titulo').asinteger;
-              //sql.savetofile('c:\temp\Gerenciador_Financeiro_Baixas.sql');
-              open;
+      // Pega os dias com movimento.
+      with tDias do begin
+           sql.clear;
+           sql.add('select distinct Dia = day(Data_Vencimento)');
+           sql.add('from  PagarReceber');
+           sql.add('where Empresa = '+quotedstr(uniMainModule.mEmpresaAtiva));
+           sql.add('and   Year(Data_Vencimento) = '+cAno.Text +' and month(Data_Vencimento) = '+inttostr(mMes));
+           sql.add('order by Dia');
+           //sql.SaveToFile('c:\temp\Financeiro_dias_Movimento.sql');
+           Open;
+           first;
+           for i := 0 to 30 do begin
+               cDia.Items[i].Caption := Formatfloat('00', i+1);
+           end;
+           while not eof do begin
+                 cDia.Items[FieldByName('Dia').AsInteger-1].Caption := FormatFloat('00', FieldByName('Dia').asinteger)+'<i class="fa fa-circle" style="margin-left:4px; font-size:7px; color: #FFFF00"></i>';
+                 next;
            end;
       end;
-end;
 
-procedure TfFinanceiro.PegaContratos;
-begin
-      with Contratos do begin
-           sql.Clear;
-           sql.Add('select Numero');
-           sql.Add('      ,Data');
-           sql.Add('      ,Moeda');
-           sql.Add('      ,Taxa_Cambial');
-           sql.Add('from  ContratoCambio');
-           sql.Add('where Empresa = '+quotedstr(uniMainModule.mEmpresaAtiva));
-           sql.Add('and   Numero = :pContrato');
-           ParamByName('pContrato').AsString := Lista.FieldByName('Documento_Numero').AsString;
-           Open;
+      pFiltro.Title := 'FILTRO: '+FormatFloat('00', mDia) + ' de '+NomeMes(mMes) +' de '+cAno.Text;
+
+      if (trim(cBenefFiltro.text) = '') and (trim(cContaFiltro.text) = '') and (trim(cBancoFiltro.text) = '') and (trim(cProcesso.text) = '') and (cProv.ItemIndex <> 1) and (trim(cDocNumFiltro.Text) = '') and (trim(cProcessoFiltro.Text) = '') then begin
+         cAgrupar.Checked := false;
       end;
-end;
 
-procedure TfFinanceiro.PegaAdiantamentos;
-begin
-      with ListaAd do begin
+      with Lista do begin
            sql.clear;
-           sql.Add('select pr.Titulo');
-           sql.Add('      ,pr.Valor_Total');
-           sql.Add('      ,pr.Documento_Data');
-           sql.Add('      ,pr.Adiantamento_Numero');
-           sql.Add('      ,pr.Banco');
-           sql.Add('      ,pr.Tipo');
-           sql.Add('      ,Valor_Baixado = isnull((select sum(Valor) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo), 0)');
-           sql.add('      ,Beneficiario = (select Nome from Destinatarios dst where dst.Codigo = pr.Adiantamento_Numero)');
-           sql.Add('from  PagarReceber pr');
-           sql.Add('where pr.Processo = '+ quotedstr(trim(Lista.FieldByName('Processo').AsString)) );
-           sql.Add('and Adiantamento = 1');
-           sql.Add('order by Tipo, Titulo');
-           //sql.SaveToFile('c:\temp\Adiantamentos.sql');
+           sql.Add('select Titulo');
+           sql.Add('      ,Conta');
+           sql.Add('      ,Tipo');
+           sql.Add('      ,Centro_Custo');
+           sql.Add('      ,Data_Vencimento');
+           sql.Add('      ,Valor_Documento');
+           sql.Add('      ,Valor_Parcela');
+           sql.Add('      ,Documento_Numero');
+           sql.Add('      ,Processo');
+           sql.Add('      ,Parcela');
+           sql.Add('      ,Valor_Juros');
+           sql.Add('      ,Valor_Multa');
+           sql.Add('      ,Valor_Desconto');
+           sql.Add('      ,Valor_Total');
+           sql.Add('      ,Valor_Operacao');
+           sql.Add('      ,Valor_Aberto = pr.Valor_Parcela - isnull((select isnull(sum(Valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo), 0)');
+           sql.Add('      ,Valor_Baixas = (select isnull(sum(Valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo)');
+           sql.Add('      ,Baixa = cast(case when (select isnull(sum(Valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo) = 0 then 0 else 1 end as bit)');
+           sql.Add('      ,Nome = (select Nome_Financeiro from PlanoContas pc where pc.Conta = pr.Conta)');
+           sql.Add('      ,Beneficiario = case when isnull(Transferencia, 0) = 0 then');
+           sql.Add('                           (select Nome from Destinatarios dst where dst.Codigo = pr.Beneficiario)');
+           sql.Add('                      else');
+           sql.Add('                           (select Nome from Bancos where Codigo = PR.Banco)');
+           sql.Add('                      end');
+           sql.Add('      ,Observacao');
+           sql.Add('      ,Origem');
+           sql.Add('      ,Vinculo');
+           sql.Add('from PagarReceber pr');
+           sql.Add('where Empresa = '+quotedstr(uniMainModule.mEmpresaAtiva));
+           if not cAgrupar.checked then begin
+              sql.Add('and pr.Data_Vencimento = :pData');
+              parambyName('pData').AsDate := cCalend.DateTime;
+           end;
+           if cTipo.itemindex = 0 then begin
+              sql.Add('and pr.Tipo = ''P''');
+           end;
+           if cTipo.itemindex = 1 then begin
+              sql.Add('and pr.Tipo = ''R''');
+           end;
+           if cSituacao.itemindex = 0 then begin
+              sql.Add('and (select isnull(sum(valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo) = 0');
+           end;
+           if cSituacao.itemindex = 1 then begin
+              sql.Add('and (select isnull(sum(valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo) = Valor_Total');
+           end;
+           if cSituacao.itemindex = 2 then begin
+              sql.Add('and ((select isnull(sum(valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo) > 0 and');
+              sql.Add('     (select isnull(sum(valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo) < Valor_Total)');
+           end;
+           if trim(cBenefFiltro.Text) <> '' then begin
+              sql.Add('and pr.Beneficiario = '+inttostr(cBenefFiltro.KeyValue));
+           end;
+           if trim(cContaFiltro.Text) <> '' then begin
+              sql.Add('and pr.Conta = '+quotedstr(Plano.fieldbyname('Conta').AsString));
+           end;
+           if trim(cBancoFiltro.Text) <> '' then begin
+              sql.Add('and Banco = '+inttostr(cBanco.KeyValue));
+           end;
+           if trim(cProcessoFiltro.Text) <> '' then begin
+              sql.Add('and pr.Processo like '+ quotedstr('%'+cProcessoFiltro.text+'%'));
+           end;
+           if cProv.itemindex = 0 then begin
+              sql.Add('and isnull(pr.Provisorio,0) = 0');
+           end;
+           if cProv.itemindex = 1 then begin
+              sql.Add('and isnull(pr.Provisorio,0) = 1');
+           end;
+           if trim(cDocNumFiltro.Text) <> '' then begin
+              sql.Add('and pr.Documento_Numero like '+ quotedstr('%'+cDocNumFiltro.text+'%'));
+           end;
+           sql.Add('order by Data_Vencimento desc');
            open;
+
+           bEditar.Enabled  := RecordCount > 0;
+           bExcluir.Enabled := RecordCount > 0;
+      end;
+      with tTmp do begin  
+           sql.clear;
+           sql.Add('select Custo_Entrada  = sum(iif(Tipo = ''P'' and Custo_Entrada  = 1, Valor_Parcela, 0))');
+           sql.Add('      ,Custo_Saida    = sum(iif(Tipo = ''P'' and Custo_Saida    = 1, Valor_Parcela, 0))');
+           sql.Add('      ,Custo_Seletivo = sum(iif(Tipo = ''P'' and Custo_Seletivo = 1, Valor_Parcela, 0))');
+           sql.Add('      ,Custo_Outros   = sum(iif(Tipo = ''P'' and Custo_Outros   = 1, Valor_Parcela, 0))');
+           sql.Add('      ,Recebimentos   = sum(iif(Tipo = ''R'', Valor_Parcela, 0))');
+           sql.Add('      ,Pagamentos     = sum(iif(Tipo = ''P'', Valor_Parcela, 0))');
+           sql.Add('from PagarReceber pr');
+           sql.Add('where Empresa = '+quotedstr(uniMainModule.mEmpresaAtiva));
+           sql.Add('and pr.Data_Vencimento = :pData');
+           parambyName('pData').AsDate := cCalend.DateTime;
+           open;
+           brTotais.Items[0].Caption := 'Custo Entrada: ' + FormatFloat(',##0.00', fieldbyname('Custo_Entrada').AsCurrency);
+           brTotais.Items[1].Caption := 'Custo Saída: '   + FormatFloat(',##0.00', fieldbyname('Custo_Saida').AsCurrency);
+           brTotais.Items[2].Caption := 'Custo Seletivo: '+ FormatFloat(',##0.00', fieldbyname('Custo_Seletivo').AsCurrency);
+           brTotais.Items[3].Caption := 'Custo Outros: '  + FormatFloat(',##0.00', fieldbyname('Custo_Outros').AsCurrency);
+           brTotais.Items[4].Caption := 'Recebimentos: '  + FormatFloat(',##0.00', fieldbyname('Recebimentos').AsCurrency);
+           brTotais.Items[5].Caption := 'Pagamentos: '    + FormatFloat(',##0.00', fieldbyname('Pagamentos').AsCurrency);
+           brTotais.Items[6].Caption := 'Pedido Pai: '    + 'R-0000000';
+           brTotais.Items[7].Caption := 'Pedido Filho 1: '+ 'R-0000001';
+           brTotais.Items[8].Caption := 'Pedido Filho 2: '+ 'R-0000002';
+           brTotais.Items[9].Caption := 'Bloqueado: '     + '00/00/0000';
       end;
 end;
 
 procedure TfFinanceiro.bGravarClick(Sender: TObject);
-var
-   mContas: TStringList;
 begin
-     mContas := TStringList.create;
      Screen.Cursor := crSQLWait;
 
      with PagarReceber do begin
@@ -1324,16 +1301,16 @@ begin
           // Verifica se já existe documento lançado com o mesmo número e valor e beneficiário, para evitar duplicidade.
           if State = dsInsert then begin
              with tTmp do begin
-                  SQL.Clear;
-                  SQL.Add('select Beneficiario = (select Nome from Destinatarios where Codigo = Beneficiario)');
-                  SQL.Add('from   PagarReceber');
-                  SQL.Add('where  Empresa = '+quotedstr(uniMainModule.mEmpresaAtiva));
-                  SQL.Add('and   Valor_Documento = :pValor');
-                  SQL.Add('and   Beneficiario = :pBenef');
-                  SQL.Add('and   Documento_Numero LIKE '+QuotedStr('%'+Trim(FieldByName('Documento_Numero').AsString)+'%'));
-                  ParamByName('pValor').AsCurrency := PagarReceber.FieldByName('Valor_Documento').AsCurrency;
-                  ParamByName('pBenef').AsINteger  := PagarReceber.FieldByName('Destinatario').AsInteger;
-                  Open;
+                  sql.clear;
+                  sql.add('select Beneficiario = (select Nome from Destinatarios where Codigo = Beneficiario)');
+                  sql.add('from PagarReceber');
+                  sql.add('where Empresa = '+quotedstr(uniMainModule.mEmpresaAtiva));
+                  sql.add('and Valor_Documento = :pValor');
+                  sql.add('and Beneficiario = :pBenef');
+                  sql.add('and Documento_Numero LIKE '+QuotedStr('%'+Trim(PagarReceber.FieldByName('Documento_Numero').AsString)+'%'));
+                  paramByName('pValor').AsCurrency := PagarReceber.FieldByName('Valor_Documento').AsCurrency;
+                  paramByName('pBenef').AsINteger  := PagarReceber.FieldByName('Beneficiario').AsInteger;
+                  open;
 
                   if RecordCount > 0 then begin
                      MessageBeep(MB_ICONWARNING);
@@ -1418,7 +1395,6 @@ begin
           end;
 
           Lista.Refresh;
-          PegaBaixas;
 
           MessageBeep(MB_ICONINFORMATION);
           Alerta.Text := 'Lançamento financeiro salvo no banco de dados!';
@@ -1457,11 +1433,13 @@ begin
            sql.add('from Destinatarios');
            sql.add('where (isnull(CNPJ,'''')+isnull(CPF,'''')) <> '''' ');
            if Tipo = 'P' then begin
-              sql.Add('and isnull(Fornecedor,0) = 1');
-           end else begin
-              sql.Add('and isnull(Cliente,0) = 1');
+              sql.Add('and isnull(Fornecedor, 0) = 1');
+           end;
+           if Tipo = 'R' then begin
+              sql.Add('and isnull(Cliente, 0) = 1');
            end;
            sql.add('order by Nome');
+           //sql.savetofile('c:\temp\Financeiro_Beneficiario.sql');
            open;
       end;
 end;

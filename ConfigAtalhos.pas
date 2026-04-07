@@ -218,7 +218,7 @@ begin
                                              ',', inttostr(tMenu.Items[i].Id),
                                              ',', quotedstr(tMenu.Items[i].Text),
                                              ',',
-                                             quotedstr(UniMainModule.mPath+'files\images\'+TabMenu.fieldbyname('Form').asstring+'.png'),
+                                             quotedstr(UniMainModule.mPath+'files\images\icones\'+TabMenu.fieldbyname('Form').asstring+'.png'),
                                              ',',
                                              quotedstr(TabMenu.fieldbyname('Form').asstring),
                                              ',',

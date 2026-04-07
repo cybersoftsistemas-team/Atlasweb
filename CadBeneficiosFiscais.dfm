@@ -135,10 +135,6 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
@@ -150,7 +146,7 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
         ClientEvents.UniEvents.Strings = (
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
+            ' '#39'BarraPesquisa'#39';'#13#10'}')
         BorderStyle = ubsNone
         Caption = ''
         Color = clNone
@@ -160,7 +156,7 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
           Width = 520
           Height = 27
           Hint = ''
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Text = ''
           Align = alLeft
           TabOrder = 1
@@ -228,10 +224,6 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
     object TabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Benef'#237'cios'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -247,12 +239,12 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
         DesignSize = (
           1156
           718)
-        ScrollHeight = 617
+        ScrollHeight = 433
         object pFicha: TUniPanel
           Left = 137
           Top = 16
-          Width = 556
-          Height = 601
+          Width = 748
+          Height = 417
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -268,43 +260,43 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
           Caption = ''
           Color = clTeal
           object cCodigo: TUniDBEdit
-            Left = 22
-            Top = 13
-            Width = 91
-            Height = 55
+            Left = 18
+            Top = 18
+            Width = 284
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Codigo'
             DataSource = dsBenificio
             TabOrder = 1
             FieldLabel = 'C'#243'digo '
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 185
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
             OnChangeValue = cCodigoChangeValue
           end
           object cNome: TUniDBEdit
-            Left = 22
-            Top = 69
-            Width = 370
-            Height = 55
+            Left = 18
+            Top = 45
+            Width = 544
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Nome'
             DataSource = dsBenificio
             TabOrder = 2
             FieldLabel = 'Nome'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 185
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object GroupBox1: TUniGroupBox
-            Left = 418
-            Top = 21
+            Left = 610
+            Top = 212
             Width = 119
-            Height = 215
+            Height = 190
             Hint = ''
             ShowHint = True
             Caption = 'BC ICMS(Entrada)'
@@ -315,7 +307,7 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
                 's = '#39'Grupo'#39';'#13#10'}')
             object cBCICMSEnt_FOB: TUniDBCheckBox
               Left = 11
-              Top = 20
+              Top = 16
               Width = 49
               Height = 17
               Hint = ''
@@ -332,7 +324,7 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             end
             object cBCICMSEnt_Frete: TUniDBCheckBox
               Left = 11
-              Top = 43
+              Top = 36
               Width = 58
               Height = 17
               Hint = ''
@@ -349,7 +341,7 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             end
             object cBCICMSEnt_Seguro: TUniDBCheckBox
               Left = 11
-              Top = 66
+              Top = 56
               Width = 67
               Height = 17
               Hint = ''
@@ -366,7 +358,7 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             end
             object cBCICMSEnt_II: TUniDBCheckBox
               Left = 11
-              Top = 89
+              Top = 76
               Width = 36
               Height = 17
               Hint = ''
@@ -383,7 +375,7 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             end
             object cBCICMSEnt_IPI: TUniDBCheckBox
               Left = 11
-              Top = 112
+              Top = 96
               Width = 42
               Height = 17
               Hint = ''
@@ -400,7 +392,7 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             end
             object cBCICMSEnt_PIS: TUniDBCheckBox
               Left = 11
-              Top = 135
+              Top = 116
               Width = 44
               Height = 17
               Hint = ''
@@ -417,7 +409,7 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             end
             object cBCICMSEnt_COFINS: TUniDBCheckBox
               Left = 11
-              Top = 158
+              Top = 136
               Width = 61
               Height = 17
               Hint = ''
@@ -434,7 +426,7 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             end
             object cBCICMSEnt_Despesas: TUniDBCheckBox
               Left = 11
-              Top = 181
+              Top = 156
               Width = 68
               Height = 17
               Hint = ''
@@ -451,9 +443,9 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             end
           end
           object cVencimento_ICMS: TUniDBEdit
-            Left = 22
-            Top = 242
-            Width = 370
+            Left = 18
+            Top = 126
+            Width = 350
             Height = 25
             Hint = ''
             ShowHint = True
@@ -461,35 +453,36 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             DataSource = dsBenificio
             TabOrder = 4
             FieldLabel = 'Vencimento ICMS Operacional'
-            FieldLabelWidth = 230
+            FieldLabelWidth = 185
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cEstado: TUniDBLookupComboBox
-            Left = 22
-            Top = 125
-            Width = 370
-            Height = 55
+            Left = 18
+            Top = 72
+            Width = 544
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'UF;Nome'
             ListSource = dsEstados
             KeyField = 'UF'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Estado'
             DataSource = dsBenificio
             TabOrder = 5
             Color = clWindow
             FieldLabel = 'Estado'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 185
             FieldLabelSeparator = ' '
             OnChangeValue = cEstadoChangeValue
           end
           object cReducaoICMS_Entrada: TUniDBEdit
-            Left = 22
-            Top = 310
-            Width = 370
+            Left = 18
+            Top = 180
+            Width = 350
             Height = 25
             Hint = ''
             ShowHint = True
@@ -497,14 +490,15 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             DataSource = dsBenificio
             TabOrder = 6
             FieldLabel = 'Redu'#231#227'o BC ICMS Entrada (%)'
-            FieldLabelWidth = 230
+            FieldLabelWidth = 185
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cReducaoICMS_Saida: TUniDBEdit
-            Left = 22
-            Top = 344
-            Width = 370
+            Left = 18
+            Top = 207
+            Width = 350
             Height = 25
             Hint = ''
             ShowHint = True
@@ -512,15 +506,16 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             DataSource = dsBenificio
             TabOrder = 7
             FieldLabel = 'Redu'#231#227'o BC ICMS Sa'#237'da (%)'
-            FieldLabelWidth = 230
+            FieldLabelWidth = 185
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cICMS_Diferido: TUniDBCheckBox
-            Left = 241
-            Top = 46
+            Left = 429
+            Top = 18
             Width = 89
-            Height = 17
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'ICMS_Diferido'
@@ -534,9 +529,9 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             FieldLabelSeparator = ' '
           end
           object cVencimento_ICMSSub: TUniDBEdit
-            Left = 22
-            Top = 276
-            Width = 370
+            Left = 18
+            Top = 153
+            Width = 350
             Height = 25
             Hint = ''
             ShowHint = True
@@ -544,14 +539,15 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             DataSource = dsBenificio
             TabOrder = 9
             FieldLabel = 'Vencimento ICMS Substitutivo'
-            FieldLabelWidth = 230
+            FieldLabelWidth = 185
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cReducao_AliquotaICMS: TUniDBEdit
-            Left = 22
-            Top = 378
-            Width = 370
+            Left = 18
+            Top = 234
+            Width = 350
             Height = 25
             Hint = ''
             ShowHint = True
@@ -559,18 +555,19 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             DataSource = dsBenificio
             TabOrder = 10
             FieldLabel = 'Redu'#231#227'o Aliquota ICMS (%)'
-            FieldLabelWidth = 230
+            FieldLabelWidth = 185
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cInativa: TUniDBCheckBox
-            Left = 124
-            Top = 46
+            Left = 336
+            Top = 18
             Width = 68
-            Height = 17
+            Height = 25
             Hint = ''
             ShowHint = True
-            DataField = 'Inativa'
+            DataField = 'Desativada'
             DataSource = dsBenificio
             Caption = 'Inativa'
             TabOrder = 11
@@ -581,31 +578,31 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             FieldLabelSeparator = ' '
           end
           object cCodigo_Receita: TUniDBLookupComboBox
-            Left = 22
-            Top = 181
-            Width = 370
-            Height = 55
+            Left = 18
+            Top = 99
+            Width = 544
+            Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
             ListSource = dsCodigosRFBSPED
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Codigo_Receita'
             DataSource = dsBenificio
             AnyMatch = True
             TabOrder = 12
             Color = clWindow
             FieldLabel = 'C'#243'digo da Receita'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 185
             FieldLabelSeparator = ' '
             NormalizeString = True
           end
           object cCaucao_RetBANDES: TUniDBEdit
-            Left = 22
-            Top = 412
-            Width = 370
+            Left = 18
+            Top = 261
+            Width = 350
             Height = 25
             Hint = ''
             ShowHint = True
@@ -613,29 +610,31 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             DataSource = dsBenificio
             TabOrder = 13
             FieldLabel = 'Cau'#231#227'o Reten'#231#227'o BANDES'
-            FieldLabelWidth = 230
+            FieldLabelWidth = 185
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cValor_TaxaCartorio: TUniDBEdit
-            Left = 22
-            Top = 480
-            Width = 370
+            Left = 18
+            Top = 315
+            Width = 350
             Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Valor_TaxaCartorio'
             DataSource = dsBenificio
             TabOrder = 14
-            FieldLabel = 'Valor Taxa Registro Contrato Cart'#243'rio'
-            FieldLabelWidth = 230
+            FieldLabel = 'Taxa Registro Contrato Cart'#243'rio'
+            FieldLabelWidth = 185
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cPercentual_TaxaCartorio: TUniDBEdit
-            Left = 22
-            Top = 514
-            Width = 370
+            Left = 18
+            Top = 342
+            Width = 350
             Height = 25
             Hint = ''
             ShowHint = True
@@ -643,14 +642,15 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             DataSource = dsBenificio
             TabOrder = 15
             FieldLabel = 'Percentual Registro Contrato Cart'#243'rio'
-            FieldLabelWidth = 230
+            FieldLabelWidth = 185
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cTaxa_LeilaoBANDES: TUniDBEdit
-            Left = 22
-            Top = 446
-            Width = 370
+            Left = 18
+            Top = 288
+            Width = 350
             Height = 25
             Hint = ''
             ShowHint = True
@@ -658,14 +658,15 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             DataSource = dsBenificio
             TabOrder = 16
             FieldLabel = 'Taxa Leil'#227'o BANDES'
-            FieldLabelWidth = 230
+            FieldLabelWidth = 185
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object cLimite_Contrato: TUniDBEdit
-            Left = 22
-            Top = 548
-            Width = 370
+            Left = 18
+            Top = 369
+            Width = 350
             Height = 25
             Hint = ''
             ShowHint = True
@@ -673,15 +674,16 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             DataSource = dsBenificio
             TabOrder = 17
             FieldLabel = 'Limite Valor Taxa Contrato'
-            FieldLabelWidth = 230
+            FieldLabelWidth = 185
             FieldLabelSeparator = ' '
             SelectOnFocus = True
+            BorderStyle = ubsInset
           end
           object UniGroupBox1: TUniGroupBox
-            Left = 418
-            Top = 254
+            Left = 610
+            Top = 15
             Width = 119
-            Height = 215
+            Height = 190
             Hint = ''
             ShowHint = True
             Caption = 'BC ICMS(Sa'#237'da)'
@@ -692,7 +694,7 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
                 's = '#39'Grupo'#39';'#13#10'}')
             object UniDBCheckBox1: TUniDBCheckBox
               Left = 11
-              Top = 20
+              Top = 16
               Width = 49
               Height = 17
               Hint = ''
@@ -709,7 +711,7 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             end
             object UniDBCheckBox2: TUniDBCheckBox
               Left = 11
-              Top = 43
+              Top = 36
               Width = 58
               Height = 17
               Hint = ''
@@ -726,7 +728,7 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             end
             object UniDBCheckBox3: TUniDBCheckBox
               Left = 11
-              Top = 66
+              Top = 56
               Width = 67
               Height = 17
               Hint = ''
@@ -743,7 +745,7 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             end
             object UniDBCheckBox4: TUniDBCheckBox
               Left = 11
-              Top = 89
+              Top = 76
               Width = 36
               Height = 17
               Hint = ''
@@ -760,7 +762,7 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             end
             object UniDBCheckBox5: TUniDBCheckBox
               Left = 11
-              Top = 112
+              Top = 96
               Width = 42
               Height = 17
               Hint = ''
@@ -777,7 +779,7 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             end
             object UniDBCheckBox6: TUniDBCheckBox
               Left = 11
-              Top = 135
+              Top = 116
               Width = 44
               Height = 17
               Hint = ''
@@ -794,7 +796,7 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             end
             object UniDBCheckBox7: TUniDBCheckBox
               Left = 11
-              Top = 158
+              Top = 136
               Width = 61
               Height = 17
               Hint = ''
@@ -811,7 +813,7 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
             end
             object UniDBCheckBox8: TUniDBCheckBox
               Left = 11
-              Top = 181
+              Top = 156
               Width = 68
               Height = 17
               Hint = ''
@@ -834,10 +836,6 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
       Hint = ''
       ImageIndex = 1
       Caption = 'Tabela ICMS Recuperar'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0
@@ -853,12 +851,12 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
         DesignSize = (
           1156
           718)
-        ScrollHeight = 357
+        ScrollHeight = 345
         object pFicha2: TUniPanel
-          Left = 127
-          Top = 26
-          Width = 529
-          Height = 331
+          Left = 203
+          Top = 37
+          Width = 498
+          Height = 308
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -874,25 +872,25 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
           Caption = ''
           Color = clTeal
           object pFicha3: TUniContainerPanel
-            Left = 10
-            Top = 9
-            Width = 509
-            Height = 277
+            Left = 8
+            Top = 8
+            Width = 481
+            Height = 256
             Hint = ''
             Enabled = False
             ShowHint = True
             ParentColor = False
             TabOrder = 1
             object cBase_Calculo: TUniDBRadioGroup
-              Left = 14
-              Top = 100
+              Left = 2
+              Top = 88
               Width = 276
-              Height = 117
+              Height = 102
               Hint = ''
               ShowHint = True
               DataField = 'Base_Calculo'
               DataSource = dsRecuperarICMS
-              Caption = 'Base de Calculo '
+              Caption = 'Base de C'#225'lculo '
               TabOrder = 3
               ClientEvents.UniEvents.Strings = (
                 
@@ -908,8 +906,8 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
                 'BCICMS')
             end
             object cAliquota_Recuperar: TUniDBEdit
-              Left = 14
-              Top = 52
+              Left = 2
+              Top = 29
               Width = 276
               Height = 25
               Hint = ''
@@ -918,13 +916,14 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
               DataSource = dsRecuperarICMS
               TabOrder = 2
               FieldLabel = 'Al'#237'quota de ICMS a Recuperar'
-              FieldLabelWidth = 190
+              FieldLabelWidth = 160
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object cAliquota_ICMS: TUniDBEdit
-              Left = 14
-              Top = 14
+              Left = 2
+              Top = 2
               Width = 276
               Height = 25
               Hint = ''
@@ -933,13 +932,14 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
               DataSource = dsRecuperarICMS
               TabOrder = 1
               FieldLabel = 'Al'#237'quota de ICMS na Sa'#237'da'
-              FieldLabelWidth = 190
+              FieldLabelWidth = 160
               FieldLabelSeparator = ' '
               SelectOnFocus = True
+              BorderStyle = ubsInset
             end
             object gRetorno: TUniDBGrid
-              Left = 300
-              Top = 14
+              Left = 288
+              Top = 2
               Width = 194
               Height = 250
               Hint = ''
@@ -949,6 +949,7 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
               WebOptions.Paged = False
               LoadMask.Message = 'Loading data...'
               ForceFit = True
+              BorderStyle = ubsInset
               TabOrder = 4
               Columns = <
                 item
@@ -967,8 +968,8 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
           end
           object PanelNav: TUniPanel
             Left = 0
-            Top = 296
-            Width = 529
+            Top = 273
+            Width = 498
             Height = 35
             Hint = ''
             ShowHint = True
