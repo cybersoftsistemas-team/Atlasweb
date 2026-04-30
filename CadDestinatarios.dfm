@@ -133,7 +133,7 @@ object fCadDestinatarios: TfCadDestinatarios
     Height = 966
     Hint = ''
     BodyRTL = False
-    ActivePage = aLista
+    ActivePage = UniTabSheet1
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -316,10 +316,10 @@ object fCadDestinatarios: TfCadDestinatarios
         DesignSize = (
           1392
           936)
-        ScrollHeight = 836
+        ScrollHeight = 834
         object pFicha1: TUniPanel
           Left = 123
-          Top = 25
+          Top = 23
           Width = 840
           Height = 811
           Hint = ''
@@ -4962,10 +4962,10 @@ object fCadDestinatarios: TfCadDestinatarios
         DesignSize = (
           1392
           936)
-        ScrollHeight = 499
+        ScrollHeight = 495
         object pFicha6: TUniPanel
-          Left = 212
-          Top = 13
+          Left = 254
+          Top = 9
           Width = 902
           Height = 486
           Hint = ''

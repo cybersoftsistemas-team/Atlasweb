@@ -130,7 +130,7 @@ object fEmbarques: TfEmbarques
     Margins.Top = 1
     Margins.Right = 1
     Margins.Bottom = 1
-    ActivePage = aLista
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
     object aLista: TUniTabSheet
@@ -445,12 +445,12 @@ object fEmbarques: TfEmbarques
         DesignSize = (
           1385
           704)
-        ScrollHeight = 677
+        ScrollHeight = 690
         object Panel2: TUniPanel
-          Left = 122
-          Top = 19
-          Width = 1034
-          Height = 658
+          Left = 119
+          Top = 3
+          Width = 1072
+          Height = 687
           Hint = ''
           AutoScroll = True
           Anchors = [akTop]
@@ -463,184 +463,13 @@ object fEmbarques: TfEmbarques
           Caption = ''
           Color = clTeal
           ScrollDirection = sdVertical
-          ScrollHeight = 658
-          ScrollWidth = 1034
-          object cData_Estimada: TUniDBDateTimePicker
-            Left = 155
-            Top = 261
-            Width = 125
-            Height = 50
-            Hint = ''
-            DataField = 'Data_Estimada'
-            DataSource = dsEmbarques
-            DateTime = 45656.000000000000000000
-            DateFormat = 'dd/MM/yyyy'
-            TimeFormat = 'HH:mm:ss'
-            TabOrder = 5
-            FieldLabel = 'Previs'#227'o  Chegada (ETA)'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-          end
-          object cData_Chegada: TUniDBDateTimePicker
-            Left = 298
-            Top = 261
-            Width = 125
-            Height = 50
-            Hint = ''
-            DataField = 'Data_Chegada'
-            DataSource = dsEmbarques
-            DateTime = 45656.000000000000000000
-            DateFormat = 'dd/MM/yyyy'
-            TimeFormat = 'HH:mm:ss'
-            TabOrder = 6
-            FieldLabel = 'Chegada'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-          end
-          object cData_Atracacao: TUniDBDateTimePicker
-            Left = 13
-            Top = 310
-            Width = 125
-            Height = 50
-            Hint = ''
-            DataField = 'Data_Atracacao'
-            DataSource = dsEmbarques
-            DateTime = 45656.000000000000000000
-            DateFormat = 'dd/MM/yyyy'
-            TimeFormat = 'HH:mm:ss'
-            TabOrder = 7
-            FieldLabel = 'Atraca'#231#227'o (ETB)'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-          end
-          object cData_Descarga: TUniDBDateTimePicker
-            Left = 155
-            Top = 310
-            Width = 125
-            Height = 50
-            Hint = ''
-            DataField = 'Data_Descarga'
-            DataSource = dsEmbarques
-            DateTime = 45656.000000000000000000
-            DateFormat = 'dd/MM/yyyy'
-            TimeFormat = 'HH:mm:ss'
-            TabOrder = 8
-            FieldLabel = 'Descarga'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-          end
-          object cTipo_Descarga: TUniDBEdit
-            Left = 13
-            Top = 212
-            Width = 409
-            Height = 50
-            Hint = ''
-            DataField = 'Tipo_Descarga'
-            DataSource = dsEmbarques
-            TabOrder = 3
-            FieldLabel = 'Tipo de Descarga'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-          end
-          object cPremium: TUniDBEdit
-            Left = 13
-            Top = 360
-            Width = 160
-            Height = 50
-            Hint = ''
-            DataField = 'Premium'
-            DataSource = dsEmbarques
-            Alignment = taRightJustify
-            TabOrder = 9
-            FieldLabel = 'Desconto (Premium CPG)'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-          end
-          object cTranshipment: TUniDBEdit
-            Left = 190
-            Top = 360
-            Width = 160
-            Height = 50
-            Hint = ''
-            DataField = 'Transhipment'
-            DataSource = dsEmbarques
-            Alignment = taRightJustify
-            TabOrder = 10
-            FieldLabel = 'Custo Transporte (Transhipment)'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-          end
-          object cFator_Conversao: TUniDBEdit
-            Left = 13
-            Top = 410
-            Width = 160
-            Height = 50
-            Hint = ''
-            DataField = 'Fator_Conversao'
-            DataSource = dsEmbarques
-            Alignment = taRightJustify
-            TabOrder = 11
-            FieldLabel = 'Fator Convers'#227'o'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-          end
-          object cValor_Demurrage: TUniDBEdit
-            Left = 13
-            Top = 459
-            Width = 160
-            Height = 50
-            Hint = ''
-            DataField = 'Valor_Demurrage'
-            DataSource = dsEmbarques
-            Alignment = taRightJustify
-            TabOrder = 12
-            FieldLabel = 'Valor Demurrage (ME)'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-          end
-          object cTempo_Demurrage: TUniDBEdit
-            Left = 189
-            Top = 459
-            Width = 160
-            Height = 50
-            Hint = ''
-            DataField = 'Tempo_Demurrage'
-            DataSource = dsEmbarques
-            Alignment = taRightJustify
-            TabOrder = 13
-            FieldLabel = 'Tempo Demurrage'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-          end
-          object cObservacao: TUniDBMemo
-            Left = 13
-            Top = 558
-            Width = 410
-            Height = 83
-            Hint = ''
-            DataField = 'Observacao'
-            DataSource = dsEmbarques
-            TabOrder = 15
-            FieldLabel = 'Observa'#231#227'o'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-          end
+          ScrollHeight = 687
+          ScrollWidth = 1072
           object cStatus: TUniDBComboBox
-            Left = 232
-            Top = 112
-            Width = 190
-            Height = 50
+            Left = 11
+            Top = 93
+            Width = 477
+            Height = 24
             Hint = ''
             DataField = 'Status'
             DataSource = dsEmbarques
@@ -649,267 +478,424 @@ object fEmbarques: TfEmbarques
               'ATIVO'
               'EM ANDAMENTO'
               'ENCERRADO')
-            TabOrder = 2
+            TabOrder = 1
             FieldLabel = 'Status'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 160
             FieldLabelSeparator = ' '
             IconItems = <>
           end
+          object cReferencia: TUniDBEdit
+            Left = 11
+            Top = 66
+            Width = 477
+            Height = 25
+            Hint = ''
+            DataField = 'Referencia'
+            DataSource = dsEmbarques
+            TabOrder = 0
+            FieldLabel = 'Refer'#234'ncia'
+            FieldLabelWidth = 160
+            FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
+          end
+          object cFilial: TUniDBLookupComboBox
+            Left = 11
+            Top = 12
+            Width = 477
+            Height = 25
+            Hint = ''
+            ListField = 'CNPJ;Filial;Nome;Estado;Cidade'
+            ListSource = dstFiliais
+            KeyField = 'CNPJ'
+            ListFieldIndex = 0
+            BorderStyle = ubsInset
+            DataField = 'Empresa'
+            DataSource = dsEmbarques
+            AnyMatch = True
+            TabOrder = 3
+            Color = clWindow
+            FieldLabel = 'Filial de Destino'
+            FieldLabelWidth = 160
+            FieldLabelSeparator = ' '
+            NormalizeString = True
+            Style = csDropDown
+          end
+          object cNavio: TUniDBLookupComboBox
+            Left = 11
+            Top = 39
+            Width = 477
+            Height = 25
+            Hint = ''
+            ListField = 'Codigo;Nome'
+            ListSource = dsNavios
+            KeyField = 'Codigo'
+            ListFieldIndex = 0
+            BorderStyle = ubsInset
+            DataField = 'Navio'
+            DataSource = dsEmbarques
+            AnyMatch = True
+            TabOrder = 4
+            Color = clWindow
+            FieldLabel = 'Navio'
+            FieldLabelWidth = 160
+            FieldLabelSeparator = ' '
+            NormalizeString = True
+            Style = csDropDown
+          end
+          object cData_Estimada: TUniDBDateTimePicker
+            Left = 11
+            Top = 201
+            Width = 300
+            Height = 25
+            Hint = ''
+            DataField = 'Data_Estimada'
+            DataSource = dsEmbarques
+            DateTime = 45656.000000000000000000
+            DateFormat = 'dd/MM/yyyy'
+            TimeFormat = 'HH:mm:ss'
+            TabOrder = 5
+            BorderStyle = ubsInset
+            FieldLabel = 'Previs'#227'o  Chegada (ETA)'
+            FieldLabelWidth = 160
+            FieldLabelSeparator = ' '
+          end
+          object cData_Chegada: TUniDBDateTimePicker
+            Left = 11
+            Top = 228
+            Width = 300
+            Height = 25
+            Hint = ''
+            DataField = 'Data_Chegada'
+            DataSource = dsEmbarques
+            DateTime = 45656.000000000000000000
+            DateFormat = 'dd/MM/yyyy'
+            TimeFormat = 'HH:mm:ss'
+            TabOrder = 6
+            BorderStyle = ubsInset
+            FieldLabel = 'Chegada'
+            FieldLabelWidth = 160
+            FieldLabelSeparator = ' '
+          end
+          object cData_Atracacao: TUniDBDateTimePicker
+            Left = 11
+            Top = 255
+            Width = 300
+            Height = 25
+            Hint = ''
+            DataField = 'Data_Atracacao'
+            DataSource = dsEmbarques
+            DateTime = 45656.000000000000000000
+            DateFormat = 'dd/MM/yyyy'
+            TimeFormat = 'HH:mm:ss'
+            TabOrder = 7
+            BorderStyle = ubsInset
+            FieldLabel = 'Atraca'#231#227'o (ETB)'
+            FieldLabelWidth = 160
+            FieldLabelSeparator = ' '
+          end
+          object cData_Descarga: TUniDBDateTimePicker
+            Left = 11
+            Top = 282
+            Width = 300
+            Height = 25
+            Hint = ''
+            DataField = 'Data_Descarga'
+            DataSource = dsEmbarques
+            DateTime = 45656.000000000000000000
+            DateFormat = 'dd/MM/yyyy'
+            TimeFormat = 'HH:mm:ss'
+            TabOrder = 8
+            BorderStyle = ubsInset
+            FieldLabel = 'Descarga'
+            FieldLabelWidth = 160
+            FieldLabelSeparator = ' '
+          end
+          object cTipo_Descarga: TUniDBEdit
+            Left = 11
+            Top = 147
+            Width = 477
+            Height = 25
+            Hint = ''
+            DataField = 'Tipo_Descarga'
+            DataSource = dsEmbarques
+            TabOrder = 9
+            FieldLabel = 'Tipo de Descarga'
+            FieldLabelWidth = 160
+            FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
+          end
+          object cPremium: TUniDBEdit
+            Left = 11
+            Top = 309
+            Width = 300
+            Height = 25
+            Hint = ''
+            DataField = 'Premium'
+            DataSource = dsEmbarques
+            Alignment = taRightJustify
+            TabOrder = 10
+            FieldLabel = 'Desconto (Premium CPG)'
+            FieldLabelWidth = 160
+            FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
+          end
+          object cTranshipment: TUniDBEdit
+            Left = 11
+            Top = 336
+            Width = 300
+            Height = 25
+            Hint = ''
+            DataField = 'Transhipment'
+            DataSource = dsEmbarques
+            Alignment = taRightJustify
+            TabOrder = 11
+            FieldLabel = 'Custo Transporte (Transhipment)'
+            FieldLabelWidth = 160
+            FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
+          end
+          object cFator_Conversao: TUniDBEdit
+            Left = 11
+            Top = 363
+            Width = 300
+            Height = 25
+            Hint = ''
+            DataField = 'Fator_Conversao'
+            DataSource = dsEmbarques
+            Alignment = taRightJustify
+            TabOrder = 12
+            FieldLabel = 'Fator Convers'#227'o'
+            FieldLabelWidth = 160
+            FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
+          end
+          object cValor_Demurrage: TUniDBEdit
+            Left = 11
+            Top = 390
+            Width = 300
+            Height = 25
+            Hint = ''
+            DataField = 'Valor_Demurrage'
+            DataSource = dsEmbarques
+            Alignment = taRightJustify
+            TabOrder = 13
+            FieldLabel = 'Valor Demurrage (ME)'
+            FieldLabelWidth = 160
+            FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
+          end
+          object cTempo_Demurrage: TUniDBEdit
+            Left = 11
+            Top = 417
+            Width = 300
+            Height = 25
+            Hint = ''
+            DataField = 'Tempo_Demurrage'
+            DataSource = dsEmbarques
+            Alignment = taRightJustify
+            TabOrder = 14
+            FieldLabel = 'Tempo Demurrage'
+            FieldLabelWidth = 160
+            FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
+          end
+          object cObservacao: TUniDBMemo
+            Left = 11
+            Top = 606
+            Width = 1044
+            Height = 66
+            Hint = ''
+            DataField = 'Observacao'
+            DataSource = dsEmbarques
+            BorderStyle = ubsInset
+            TabOrder = 15
+            FieldLabel = 'Observa'#231#227'o'
+            FieldLabelWidth = 160
+            FieldLabelSeparator = ' '
+          end
           object cData_Partida: TUniDBDateTimePicker
-            Left = 13
-            Top = 261
-            Width = 125
-            Height = 50
+            Left = 11
+            Top = 174
+            Width = 300
+            Height = 25
             Hint = ''
             DataField = 'Data_Partida'
             DataSource = dsEmbarques
             DateTime = 45656.000000000000000000
             DateFormat = 'dd/MM/yyyy'
             TimeFormat = 'HH:mm:ss'
-            TabOrder = 4
+            TabOrder = 16
+            BorderStyle = ubsInset
             FieldLabel = 'Partida'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 160
             FieldLabelSeparator = ' '
           end
           object cQuantidade_Carga: TUniDBEdit
-            Left = 13
-            Top = 508
-            Width = 160
-            Height = 50
+            Left = 11
+            Top = 444
+            Width = 300
+            Height = 25
             Hint = ''
             DataField = 'Quantidade_Carga'
             DataSource = dsEmbarques
             Alignment = taRightJustify
-            TabOrder = 14
+            TabOrder = 17
             FieldLabel = 'Carga Total'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 160
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cDifer: TUniFormattedNumberEdit
-            Left = 189
-            Top = 508
-            Width = 160
-            Height = 50
+            Left = 11
+            Top = 471
+            Width = 300
+            Height = 25
             Hint = ''
+            BorderStyle = ubsInset
             Alignment = taRightJustify
-            TabOrder = 16
+            TabOrder = 18
             TabStop = False
             Color = 16771255
             ReadOnly = True
             FieldLabel = '(Carga Total - Total BL)'
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 160
             DecimalPrecision = 3
             DecimalSeparator = ','
             ThousandSeparator = '.'
           end
-          object cReferencia: TUniDBEdit
-            Left = 13
-            Top = 112
-            Width = 202
-            Height = 50
-            Hint = ''
-            DataField = 'Referencia'
-            DataSource = dsEmbarques
-            TabOrder = 1
-            FieldLabel = 'Refer'#234'ncia'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-          end
-          object UniSimplePanel1: TUniSimplePanel
-            Left = 445
-            Top = 14
-            Width = 576
-            Height = 627
-            Hint = ''
-            Enabled = False
-            ParentColor = False
-            Color = 15658734
-            ClientEvents.UniEvents.Strings = (
-              
-                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-                '= '#39'CaixaSimples'#39';'#13#10'}')
-            TabOrder = 17
-            object cDescargaLT: TUniFormattedNumberEdit
-              Left = 14
-              Top = 312
-              Width = 160
-              Height = 50
-              Hint = ''
-              Alignment = taRightJustify
-              TabOrder = 1
-              TabStop = False
-              Color = 16771255
-              ReadOnly = True
-              FieldLabel = 'Descarga em LT'
-              FieldLabelAlign = laTop
-              DecimalPrecision = 3
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-            end
-            object cVariacao_Termica: TUniDBEdit
-              Left = 14
-              Top = 264
-              Width = 160
-              Height = 50
-              Hint = ''
-              DataField = 'Variacao_Termica'
-              DataSource = dsEmbarques
-              Alignment = taRightJustify
-              TabOrder = 2
-              TabStop = False
-              Color = 16771255
-              ReadOnly = True
-              FieldLabel = 'Varia'#231#227'o T'#233'rmica'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object cTotal_ME: TUniDBEdit
-              Left = 14
-              Top = 408
-              Width = 160
-              Height = 50
-              Hint = ''
-              DataField = 'Custo_Navio'
-              DataSource = dsEmbarques
-              Alignment = taRightJustify
-              TabOrder = 3
-              TabStop = False
-              Color = 16771255
-              ReadOnly = True
-              FieldLabel = 'Custo Navio'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object UniDBEdit1: TUniDBEdit
-              Left = 14
-              Top = 360
-              Width = 160
-              Height = 50
-              Hint = ''
-              DataField = 'Total_ME'
-              DataSource = dsEmbarques
-              Alignment = taRightJustify
-              TabOrder = 4
-              TabStop = False
-              Color = 16771255
-              ReadOnly = True
-              FieldLabel = 'Total ME'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
-              FieldLabelSeparator = ' '
-            end
-            object GradeSoma: TUniDBGrid
-              Left = 12
-              Top = 9
-              Width = 550
-              Height = 234
-              Hint = ''
-              Enabled = False
-              DataSource = dstSoma
-              Options = [dgTitles, dgColLines, dgRowLines, dgConfirmDelete, dgAutoRefreshRow, dgDontShowSelected]
-              ReadOnly = True
-              WebOptions.Paged = False
-              WebOptions.PageSize = 30
-              WebOptions.KeyNavigation = knDisabled
-              LoadMask.Message = 'Totalizando navio...'
-              RowHeight = 20
-              ForceFit = True
-              BorderStyle = ubsNone
-              TrackOver = False
-              TabOrder = 5
-              TabStop = False
-              ParentColor = False
-              Color = 16771255
-              Columns = <
-                item
-                  FieldName = 'Descricao'
-                  Title.Alignment = taCenter
-                  Title.Caption = 'Descri'#231#227'o'
-                  Title.Color = 7293440
-                  Width = 243
-                  ReadOnly = True
-                end
-                item
-                  FieldName = 'M3'
-                  Title.Alignment = taCenter
-                  Title.Caption = 'Volume em M'#179
-                  Title.Color = 7293440
-                  Width = 136
-                  ReadOnly = True
-                end
-                item
-                  FieldName = 'LITROS'
-                  Title.Alignment = taCenter
-                  Title.Caption = 'Volume em Litros'
-                  Title.Color = 7293440
-                  Width = 136
-                  ReadOnly = True
-                end>
-            end
-          end
-          object cNavio: TUniDBLookupComboBox
-            Left = 13
-            Top = 62
-            Width = 409
-            Height = 50
-            Hint = ''
-            ListField = 'Codigo;Nome'
-            ListSource = dsNavios
-            KeyField = 'Codigo'
-            ListFieldIndex = 0
-            DataField = 'Navio'
-            DataSource = dsEmbarques
-            AnyMatch = True
-            TabOrder = 0
-            Color = clWindow
-            FieldLabel = 'Navio'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
-            FieldLabelSeparator = ' '
-            NormalizeString = True
-            Style = csDropDown
-          end
           object cProcesso: TUniDBEdit
-            Left = 13
-            Top = 162
-            Width = 409
-            Height = 50
+            Left = 11
+            Top = 120
+            Width = 477
+            Height = 25
             Hint = ''
             DataField = 'Processo'
             DataSource = dsEmbarques
             TabOrder = 19
             FieldLabel = 'Processo'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 160
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
-          object cFilial: TUniDBLookupComboBox
-            Left = 13
-            Top = 12
-            Width = 409
-            Height = 50
+          object cVariacao_Termica: TUniDBEdit
+            Left = 11
+            Top = 498
+            Width = 300
+            Height = 25
             Hint = ''
-            ListField = 'CNPJ;Filial;Nome;Estado;Cidade'
-            ListSource = dstFiliais
-            KeyField = 'CNPJ'
-            ListFieldIndex = 0
-            DataField = 'Empresa'
+            DataField = 'Variacao_Termica'
             DataSource = dsEmbarques
-            AnyMatch = True
+            Alignment = taRightJustify
             TabOrder = 20
-            Color = clWindow
-            FieldLabel = 'Filial de Destino'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            TabStop = False
+            Color = 16771255
+            ReadOnly = True
+            FieldLabel = 'Varia'#231#227'o T'#233'rmica'
+            FieldLabelWidth = 160
             FieldLabelSeparator = ' '
-            NormalizeString = True
-            Style = csDropDown
+            BorderStyle = ubsInset
+          end
+          object UniDBEdit1: TUniDBEdit
+            Left = 11
+            Top = 552
+            Width = 300
+            Height = 25
+            Hint = ''
+            DataField = 'Total_ME'
+            DataSource = dsEmbarques
+            Alignment = taRightJustify
+            TabOrder = 21
+            TabStop = False
+            Color = 16771255
+            ReadOnly = True
+            FieldLabel = 'Total ME'
+            FieldLabelWidth = 160
+            FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
+          end
+          object cTotal_ME: TUniDBEdit
+            Left = 11
+            Top = 579
+            Width = 300
+            Height = 25
+            Hint = ''
+            DataField = 'Custo_Navio'
+            DataSource = dsEmbarques
+            Alignment = taRightJustify
+            TabOrder = 22
+            TabStop = False
+            Color = 16771255
+            ReadOnly = True
+            FieldLabel = 'Custo Navio'
+            FieldLabelWidth = 160
+            FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
+          end
+          object cDescargaLT: TUniFormattedNumberEdit
+            Left = 11
+            Top = 525
+            Width = 300
+            Height = 25
+            Hint = ''
+            BorderStyle = ubsInset
+            Alignment = taRightJustify
+            TabOrder = 23
+            TabStop = False
+            Color = 16771255
+            ReadOnly = True
+            FieldLabel = 'Descarga em LT'
+            FieldLabelWidth = 160
+            DecimalPrecision = 3
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
+          end
+          object GradeSoma: TUniDBGrid
+            Left = 505
+            Top = 12
+            Width = 550
+            Height = 278
+            Hint = ''
+            Enabled = False
+            DataSource = dstSoma
+            Options = [dgTitles, dgColLines, dgRowLines, dgConfirmDelete, dgAutoRefreshRow, dgDontShowSelected]
+            ReadOnly = True
+            WebOptions.Paged = False
+            WebOptions.PageSize = 30
+            WebOptions.KeyNavigation = knDisabled
+            LoadMask.Message = 'Totalizando navio...'
+            RowHeight = 20
+            ForceFit = True
+            BorderStyle = ubsInset
+            TrackOver = False
+            TabOrder = 24
+            TabStop = False
+            ParentColor = False
+            Color = 16771255
+            Columns = <
+              item
+                FieldName = 'Descricao'
+                Title.Alignment = taCenter
+                Title.Caption = 'Descri'#231#227'o'
+                Title.Color = 7293440
+                Width = 243
+                ReadOnly = True
+              end
+              item
+                FieldName = 'M3'
+                Title.Alignment = taCenter
+                Title.Caption = 'Volume em M'#179
+                Title.Color = 7293440
+                Width = 136
+                ReadOnly = True
+              end
+              item
+                FieldName = 'LITROS'
+                Title.Alignment = taCenter
+                Title.Caption = 'Volume em Litros'
+                Title.Color = 7293440
+                Width = 136
+                ReadOnly = True
+              end>
           end
         end
       end
@@ -920,19 +906,22 @@ object fEmbarques: TfEmbarques
       Caption = 'BL'#39's'
       object Panel6: TUniPanel
         AlignWithMargins = True
-        Left = 446
+        Left = 578
         Top = 3
-        Width = 938
+        Width = 806
         Height = 700
         Hint = ''
         Align = alClient
         TabOrder = 0
         Caption = ''
+        ExplicitLeft = 446
+        ExplicitWidth = 938
         object GradeBL: TUniDBGrid
-          Left = 1
-          Top = 1
-          Width = 936
-          Height = 698
+          AlignWithMargins = True
+          Left = 4
+          Top = 2
+          Width = 798
+          Height = 694
           Hint = ''
           Margins.Top = 1
           DataSource = dsBL
@@ -942,9 +931,11 @@ object fEmbarques: TfEmbarques
           WebOptions.PageSize = 30
           LoadMask.Message = 'Buscando BL'#39's...'
           ForceFit = True
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Align = alClient
           TabOrder = 0
+          ParentColor = False
+          Color = 16771255
           Columns = <
             item
               FieldName = 'BL'
@@ -1036,7 +1027,7 @@ object fEmbarques: TfEmbarques
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 437
+        Width = 569
         Height = 700
         Hint = ''
         Align = alLeft
@@ -1051,31 +1042,32 @@ object fEmbarques: TfEmbarques
         object PanelBL: TUniContainerPanel
           Left = 0
           Top = 35
-          Width = 437
+          Width = 569
           Height = 665
           Hint = ''
           ParentColor = False
           Align = alClient
           TabOrder = 1
+          ExplicitWidth = 437
           object cBL: TUniDBEdit
             Left = 13
-            Top = 159
-            Width = 130
-            Height = 50
+            Top = 92
+            Width = 265
+            Height = 25
             Hint = ''
             DataField = 'BL'
             DataSource = dsBL
             TabOrder = 3
             FieldLabel = 'N'#186' do BL'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cData_Emissao: TUniDBDateTimePicker
-            Left = 152
-            Top = 159
-            Width = 130
-            Height = 50
+            Left = 13
+            Top = 119
+            Width = 265
+            Height = 25
             Hint = ''
             DataField = 'Data_Emissao'
             DataSource = dsBL
@@ -1083,59 +1075,59 @@ object fEmbarques: TfEmbarques
             DateFormat = 'dd/MM/yyyy'
             TimeFormat = 'HH:mm:ss'
             TabOrder = 4
+            BorderStyle = ubsInset
             FieldLabel = 'Data do BL'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
           object cTon_Vac: TUniDBEdit
             Left = 13
-            Top = 208
-            Width = 130
-            Height = 50
+            Top = 173
+            Width = 265
+            Height = 25
             Hint = ''
             DataField = 'Ton_Vac'
             DataSource = dsBL
             TabOrder = 6
             FieldLabel = 'Ton Vac'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cTon_Air: TUniDBEdit
             Left = 13
-            Top = 257
-            Width = 130
-            Height = 50
+            Top = 200
+            Width = 265
+            Height = 25
             Hint = ''
             DataField = 'Ton_Air'
             DataSource = dsBL
             TabOrder = 7
             FieldLabel = 'Ton Air'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cQuantidade_M315: TUniDBEdit
             Left = 13
-            Top = 306
-            Width = 130
-            Height = 50
+            Top = 227
+            Width = 265
+            Height = 25
             Hint = ''
             DataField = 'Quantidade_M315'
             DataSource = dsBL
             TabOrder = 8
             FieldLabel = 'Quantidade BL M'#179' (15'#176') '
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
             OnExit = cQuantidade_M315Exit
           end
           object cQuantidade_LT20: TUniDBEdit
-            Left = 148
-            Top = 355
-            Width = 130
-            Height = 50
+            Left = 284
+            Top = 254
+            Width = 265
+            Height = 25
             Hint = ''
             DataField = 'Quantidade_LT20'
             DataSource = dsBL
@@ -1145,29 +1137,29 @@ object fEmbarques: TfEmbarques
             ReadOnly = True
             FieldLabel = 'Quantidade BL LT (20'#186')'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cQuantidade_M320: TUniDBEdit
             Left = 13
-            Top = 355
-            Width = 130
-            Height = 50
+            Top = 254
+            Width = 265
+            Height = 25
             Hint = ''
             DataField = 'Quantidade_M320'
             DataSource = dsBL
             TabOrder = 9
             FieldLabel = 'Quantidade BL M'#179' (20'#176') '
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
             OnExit = cQuantidade_M320Exit
           end
           object cQuantidade_LT15: TUniDBEdit
-            Left = 148
-            Top = 306
-            Width = 130
-            Height = 50
+            Left = 284
+            Top = 227
+            Width = 265
+            Height = 25
             Hint = ''
             DataField = 'Quantidade_LT15'
             DataSource = dsBL
@@ -1179,34 +1171,34 @@ object fEmbarques: TfEmbarques
             ReadOnly = True
             FieldLabel = 'Quantidade BL LT (15'#186')'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cPorto: TUniDBComboBox
             Left = 13
-            Top = 12
-            Width = 408
-            Height = 50
+            Top = 11
+            Width = 536
+            Height = 25
             Hint = ''
             DataField = 'Porto'
             DataSource = dsBL
             TabOrder = 0
             FieldLabel = 'Porto'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
             IconItems = <>
           end
           object cArmazem: TUniDBLookupComboBox
             Left = 13
-            Top = 61
-            Width = 408
-            Height = 50
+            Top = 38
+            Width = 536
+            Height = 25
             Hint = ''
             ListField = 'CNPJ;Nome'
             ListSource = dsArmazens
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Armazem'
             DataSource = dsBL
             TabOrder = 1
@@ -1214,28 +1206,27 @@ object fEmbarques: TfEmbarques
             MatchFieldWidth = False
             FieldLabel = 'Armaz'#233'm'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
           object cQuantidade_EmbM315: TUniDBEdit
             Left = 13
-            Top = 404
-            Width = 130
-            Height = 50
+            Top = 281
+            Width = 265
+            Height = 25
             Hint = ''
             DataField = 'Quantidade_EmbM315'
             DataSource = dsBL
             TabOrder = 10
             FieldLabel = 'Quantidade Emb M'#179' (15'#176') '
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cQuantidade_EmbLT20: TUniDBEdit
-            Left = 148
-            Top = 453
-            Width = 130
-            Height = 50
+            Left = 284
+            Top = 308
+            Width = 265
+            Height = 25
             Hint = ''
             DataField = 'Quantidade_EmbLT20'
             DataSource = dsBL
@@ -1245,28 +1236,28 @@ object fEmbarques: TfEmbarques
             ReadOnly = True
             FieldLabel = 'Quantidade Emb LT (20'#186')'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cQuantidade_EmbM320: TUniDBEdit
             Left = 13
-            Top = 453
-            Width = 130
-            Height = 50
+            Top = 308
+            Width = 265
+            Height = 25
             Hint = ''
             DataField = 'Quantidade_EmbM320'
             DataSource = dsBL
             TabOrder = 11
             FieldLabel = 'Quantidade Emb M'#179' (20'#176') '
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cQuantidade_EmbLT15: TUniDBEdit
-            Left = 148
-            Top = 404
-            Width = 130
-            Height = 50
+            Left = 284
+            Top = 281
+            Width = 265
+            Height = 25
             Hint = ''
             DataField = 'Quantidade_EmbLT15'
             DataSource = dsBL
@@ -1276,19 +1267,20 @@ object fEmbarques: TfEmbarques
             ReadOnly = True
             FieldLabel = 'Quantidade Emb LT (15'#186')'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object cProduto: TUniDBLookupComboBox
             Left = 13
-            Top = 110
-            Width = 408
-            Height = 50
+            Top = 65
+            Width = 536
+            Height = 25
             Hint = ''
             ListField = 'Codigo;Descricao_Reduzida'
             ListSource = dsProdutos
             KeyField = 'Codigo'
             ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Codigo_Mercadoria'
             DataSource = dsBL
             ParentFont = False
@@ -1298,28 +1290,27 @@ object fEmbarques: TfEmbarques
             MatchFieldWidth = False
             FieldLabel = 'Produto'
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
           end
           object cDI: TUniDBEdit
-            Left = 291
-            Top = 159
-            Width = 130
-            Height = 50
+            Left = 13
+            Top = 146
+            Width = 265
+            Height = 25
             Hint = ''
             DataField = 'DUIMP'
             DataSource = dsBL
             TabOrder = 5
             FieldLabel = 'N'#186' do DUIMP '
             FieldLabelWidth = 120
-            FieldLabelAlign = laTop
             FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
           end
           object UniDBCheckBox1: TUniDBCheckBox
-            Left = 165
-            Top = 13
+            Left = 23
+            Top = 346
             Width = 80
-            Height = 17
+            Height = 25
             Hint = ''
             DataField = 'Endossado'
             DataSource = dsBL
@@ -1329,10 +1320,10 @@ object fEmbarques: TfEmbarques
             Color = clBtnFace
           end
           object UniDBCheckBox2: TUniDBCheckBox
-            Left = 258
-            Top = 13
+            Left = 23
+            Top = 375
             Width = 77
-            Height = 17
+            Height = 25
             Hint = ''
             DataField = 'Bloqueado'
             DataSource = dsBL
@@ -1342,10 +1333,10 @@ object fEmbarques: TfEmbarques
             Color = clBtnFace
           end
           object UniDBCheckBox3: TUniDBCheckBox
-            Left = 346
-            Top = 13
+            Left = 23
+            Top = 402
             Width = 77
-            Height = 17
+            Height = 25
             Hint = ''
             DataField = 'Entreposto'
             DataSource = dsBL
@@ -1358,7 +1349,7 @@ object fEmbarques: TfEmbarques
         object UniPanel1: TUniPanel
           Left = 0
           Top = 0
-          Width = 437
+          Width = 569
           Height = 35
           Hint = ''
           Align = alTop
@@ -1370,6 +1361,7 @@ object fEmbarques: TfEmbarques
           BorderStyle = ubsNone
           Caption = ''
           Color = 5526569
+          ExplicitWidth = 437
           object NavegaBL: TUniDBNavigator
             Left = 0
             Top = 0
@@ -1761,11 +1753,11 @@ object fEmbarques: TfEmbarques
           WebOptions.PageSize = 30
           LoadMask.Message = 'Buscando laudos...'
           ForceFit = True
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Align = alClient
           TabOrder = 0
           ParentColor = False
-          Color = 15198155
+          Color = 16771255
           Columns = <
             item
               FieldName = 'Laudo'
@@ -1833,11 +1825,11 @@ object fEmbarques: TfEmbarques
           WebOptions.PageSize = 30
           LoadMask.Message = 'Buscando BL'#39's do laudo...'
           ForceFit = True
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Align = alClient
           TabOrder = 2
           ParentColor = False
-          Color = clBtnFace
+          Color = 16771255
           Columns = <
             item
               FieldName = 'BL'
@@ -1941,10 +1933,11 @@ object fEmbarques: TfEmbarques
       ImageIndex = 4
       Caption = 'Notas Fiscais'
       object UniDBGrid1: TUniDBGrid
-        Left = 0
-        Top = 0
-        Width = 1387
-        Height = 680
+        AlignWithMargins = True
+        Left = 3
+        Top = 3
+        Width = 1381
+        Height = 674
         Hint = ''
         DataSource = dstNotas
         Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
@@ -1952,11 +1945,13 @@ object fEmbarques: TfEmbarques
         WebOptions.Paged = False
         LoadMask.Message = 'Buscando as notas fiscais...'
         ForceFit = True
-        BorderStyle = ubsNone
+        BorderStyle = ubsInset
         TrackOver = False
         StripeRows = False
         Align = alClient
         TabOrder = 0
+        ParentColor = False
+        Color = 16771255
         Columns = <
           item
             FieldName = 'Nota'
@@ -2438,152 +2433,6 @@ object fEmbarques: TfEmbarques
     Left = 117
     Top = 409
   end
-  object tEmbarques: TFDQuery
-    BeforePost = tEmbarquesBeforePost
-    BeforeDelete = tEmbarquesBeforeDelete
-    AfterScroll = tEmbarquesAfterScroll
-    Connection = UniMainModule.Conecta
-    FetchOptions.AssignedValues = [evMode, evRowsetSize, evLiveWindowParanoic]
-    FetchOptions.RowsetSize = 250
-    FetchOptions.LiveWindowParanoic = False
-    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
-    UpdateOptions.AutoCommitUpdates = True
-    SQL.Strings = (
-      'select * '
-      
-        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
-        'o)'
-      'from Embarques')
-    Left = 37
-    Top = 148
-    object tEmbarquesRegistro: TIntegerField
-      FieldName = 'Registro'
-      Origin = 'Registro'
-    end
-    object tEmbarquesEmpresa: TStringField
-      FieldName = 'Empresa'
-      Origin = 'Empresa'
-      Size = 50
-    end
-    object tEmbarquesNavio: TSmallintField
-      FieldName = 'Navio'
-      Origin = 'Navio'
-    end
-    object tEmbarquesNavio_Nome: TStringField
-      FieldName = 'Navio_Nome'
-      Origin = 'Navio_Nome'
-      ReadOnly = True
-      Size = 60
-    end
-    object tEmbarquesOrdem: TIntegerField
-      FieldName = 'Ordem'
-      Origin = 'Ordem'
-    end
-    object tEmbarquesProcesso: TStringField
-      FieldName = 'Processo'
-      Origin = 'Processo'
-      Size = 15
-    end
-    object tEmbarquesPremium: TFloatField
-      FieldName = 'Premium'
-      Origin = 'Premium'
-    end
-    object tEmbarquesTranshipment: TFloatField
-      FieldName = 'Transhipment'
-      Origin = 'Transhipment'
-    end
-    object tEmbarquesFator_Conversao: TFloatField
-      FieldName = 'Fator_Conversao'
-      Origin = 'Fator_Conversao'
-    end
-    object tEmbarquesDescarga_Trigger: TFloatField
-      FieldName = 'Descarga_Trigger'
-      Origin = 'Descarga_Trigger'
-    end
-    object tEmbarquesVariacao_Termica: TIntegerField
-      FieldName = 'Variacao_Termica'
-      Origin = 'Variacao_Termica'
-      DisplayFormat = ',##0.000'
-    end
-    object tEmbarquesData_Chegada: TSQLTimeStampField
-      FieldName = 'Data_Chegada'
-      Origin = 'Data_Chegada'
-    end
-    object tEmbarquesData_Estimada: TSQLTimeStampField
-      FieldName = 'Data_Estimada'
-      Origin = 'Data_Estimada'
-    end
-    object tEmbarquesData_Atracacao: TSQLTimeStampField
-      FieldName = 'Data_Atracacao'
-      Origin = 'Data_Atracacao'
-    end
-    object tEmbarquesData_Descarga: TSQLTimeStampField
-      FieldName = 'Data_Descarga'
-      Origin = 'Data_Descarga'
-    end
-    object tEmbarquesFilial: TSmallintField
-      FieldName = 'Filial'
-      Origin = 'Filial'
-    end
-    object tEmbarquesQuantidade_15: TFloatField
-      FieldName = 'Quantidade_15'
-      Origin = 'Quantidade_15'
-      DisplayFormat = ',##0.000'
-    end
-    object tEmbarquesQuantidade_20: TFloatField
-      FieldName = 'Quantidade_20'
-      Origin = 'Quantidade_20'
-      DisplayFormat = ',##0.000'
-    end
-    object tEmbarquesTipo_Descarga: TStringField
-      FieldName = 'Tipo_Descarga'
-      Origin = 'Tipo_Descarga'
-      Size = 30
-    end
-    object tEmbarquesValor_Demurrage: TCurrencyField
-      FieldName = 'Valor_Demurrage'
-      Origin = 'Valor_Demurrage'
-      DisplayFormat = ',##0.00'
-    end
-    object tEmbarquesTempo_Demurrage: TFloatField
-      FieldName = 'Tempo_Demurrage'
-      Origin = 'Tempo_Demurrage'
-    end
-    object tEmbarquesTotal_ME: TCurrencyField
-      FieldName = 'Total_ME'
-      Origin = 'Total_ME'
-      DisplayFormat = ',##0.00'
-    end
-    object tEmbarquesCusto_Navio: TCurrencyField
-      FieldName = 'Custo_Navio'
-      Origin = 'Custo_Navio'
-      DisplayFormat = ',##0.00'
-    end
-    object tEmbarquesObservacao: TMemoField
-      FieldName = 'Observacao'
-      Origin = 'Observacao'
-      BlobType = ftMemo
-    end
-    object tEmbarquesStatus: TStringField
-      FieldName = 'Status'
-      Origin = 'Status'
-      Size = 15
-    end
-    object tEmbarquesData_Partida: TSQLTimeStampField
-      FieldName = 'Data_Partida'
-      Origin = 'Data_Partida'
-    end
-    object tEmbarquesQuantidade_Carga: TFloatField
-      FieldName = 'Quantidade_Carga'
-      Origin = 'Quantidade_Carga'
-      DisplayFormat = ',##0.000'
-    end
-    object tEmbarquesReferencia: TStringField
-      FieldName = 'Referencia'
-      Origin = 'Referencia'
-      Size = 15
-    end
-  end
   object dsEmbarques: TDataSource
     DataSet = tEmbarques
     Left = 38
@@ -2811,6 +2660,148 @@ object fEmbarques: TfEmbarques
       FieldName = 'Variacao_EmbPerc'
       Origin = 'Variacao_EmbPerc'
       DisplayFormat = ',##0.000'
+    end
+  end
+  object tEmbarques: TFDQuery
+    Connection = UniMainModule.Conecta
+    SQL.Strings = (
+      'select * '
+      
+        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
+        'o)'
+      'from Embarques')
+    Left = 37
+    Top = 151
+    object tEmbarquesRegistro: TFDAutoIncField
+      FieldName = 'Registro'
+      Origin = 'Registro'
+      ReadOnly = True
+    end
+    object tEmbarquesCodigo: TIntegerField
+      FieldName = 'Codigo'
+      Origin = 'Codigo'
+    end
+    object tEmbarquesEmpresa: TStringField
+      FieldName = 'Empresa'
+      Origin = 'Empresa'
+      Size = 50
+    end
+    object tEmbarquesNavio: TSmallintField
+      FieldName = 'Navio'
+      Origin = 'Navio'
+    end
+    object tEmbarquesOrdem: TIntegerField
+      FieldName = 'Ordem'
+      Origin = 'Ordem'
+    end
+    object tEmbarquesProcesso: TStringField
+      FieldName = 'Processo'
+      Origin = 'Processo'
+      Size = 15
+    end
+    object tEmbarquesUF: TStringField
+      FieldName = 'UF'
+      Origin = 'UF'
+      FixedChar = True
+      Size = 2
+    end
+    object tEmbarquesPremium: TFloatField
+      FieldName = 'Premium'
+      Origin = 'Premium'
+    end
+    object tEmbarquesTranshipment: TFloatField
+      FieldName = 'Transhipment'
+      Origin = 'Transhipment'
+    end
+    object tEmbarquesFator_Conversao: TFloatField
+      FieldName = 'Fator_Conversao'
+      Origin = 'Fator_Conversao'
+    end
+    object tEmbarquesDescarga_Trigger: TFloatField
+      FieldName = 'Descarga_Trigger'
+      Origin = 'Descarga_Trigger'
+    end
+    object tEmbarquesVariacao_Termica: TIntegerField
+      FieldName = 'Variacao_Termica'
+      Origin = 'Variacao_Termica'
+    end
+    object tEmbarquesData_Chegada: TSQLTimeStampField
+      FieldName = 'Data_Chegada'
+      Origin = 'Data_Chegada'
+    end
+    object tEmbarquesData_Estimada: TSQLTimeStampField
+      FieldName = 'Data_Estimada'
+      Origin = 'Data_Estimada'
+    end
+    object tEmbarquesData_Atracacao: TSQLTimeStampField
+      FieldName = 'Data_Atracacao'
+      Origin = 'Data_Atracacao'
+    end
+    object tEmbarquesData_Descarga: TSQLTimeStampField
+      FieldName = 'Data_Descarga'
+      Origin = 'Data_Descarga'
+    end
+    object tEmbarquesFilial: TSmallintField
+      FieldName = 'Filial'
+      Origin = 'Filial'
+    end
+    object tEmbarquesQuantidade_15: TFloatField
+      FieldName = 'Quantidade_15'
+      Origin = 'Quantidade_15'
+    end
+    object tEmbarquesQuantidade_20: TFloatField
+      FieldName = 'Quantidade_20'
+      Origin = 'Quantidade_20'
+    end
+    object tEmbarquesTipo_Descarga: TStringField
+      FieldName = 'Tipo_Descarga'
+      Origin = 'Tipo_Descarga'
+      Size = 30
+    end
+    object tEmbarquesValor_Demurrage: TCurrencyField
+      FieldName = 'Valor_Demurrage'
+      Origin = 'Valor_Demurrage'
+    end
+    object tEmbarquesTempo_Demurrage: TFloatField
+      FieldName = 'Tempo_Demurrage'
+      Origin = 'Tempo_Demurrage'
+    end
+    object tEmbarquesTotal_ME: TCurrencyField
+      FieldName = 'Total_ME'
+      Origin = 'Total_ME'
+    end
+    object tEmbarquesCusto_Navio: TCurrencyField
+      FieldName = 'Custo_Navio'
+      Origin = 'Custo_Navio'
+    end
+    object tEmbarquesObservacao: TMemoField
+      FieldName = 'Observacao'
+      Origin = 'Observacao'
+      BlobType = ftMemo
+    end
+    object tEmbarquesStatus: TStringField
+      FieldName = 'Status'
+      Origin = 'Status'
+      Size = 15
+    end
+    object tEmbarquesData_Partida: TSQLTimeStampField
+      FieldName = 'Data_Partida'
+      Origin = 'Data_Partida'
+    end
+    object tEmbarquesQuantidade_Carga: TFloatField
+      FieldName = 'Quantidade_Carga'
+      Origin = 'Quantidade_Carga'
+    end
+    object tEmbarquesReferencia: TStringField
+      FieldName = 'Referencia'
+      Origin = 'Referencia'
+      Size = 15
+    end
+    object tEmbarquesNavio_Nome: TStringField
+      FieldName = 'Navio_Nome'
+      Origin = 'Navio_Nome'
+      ReadOnly = True
+      Size = 60
     end
   end
 end

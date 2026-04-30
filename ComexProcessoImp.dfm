@@ -139,16 +139,12 @@ object fComexProcessoImp: TfComexProcessoImp
     Width = 1300
     Height = 1165
     Hint = ''
-    ActivePage = TabSheet1
+    ActivePage = aLista
     Align = alClient
     TabOrder = 0
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
@@ -274,10 +270,6 @@ object fComexProcessoImp: TfComexProcessoImp
     object TabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Dados do Processo'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0
@@ -1913,10 +1905,6 @@ object fComexProcessoImp: TfComexProcessoImp
       Hint = ''
       ImageIndex = 2
       Caption = 'Outras Informa'#231#245'es'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox3: TUniScrollBox
         Left = 0
         Top = 0
@@ -2615,10 +2603,6 @@ object fComexProcessoImp: TfComexProcessoImp
       Hint = ''
       ImageIndex = 7
       Caption = 'Inf Compl'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox4: TUniScrollBox
         Left = 0
         Top = 0
@@ -2687,10 +2671,6 @@ object fComexProcessoImp: TfComexProcessoImp
       Hint = ''
       ImageIndex = 7
       Caption = ' Financeiro'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox5: TUniScrollBox
         Left = 0
         Top = 0
@@ -2766,12 +2746,14 @@ object fComexProcessoImp: TfComexProcessoImp
                 Title.Alignment = taCenter
                 Title.Caption = 'Class'
                 Width = 117
+                ReadOnly = True
               end
               item
                 FieldName = 'DescricaoClassificacao'
                 Title.Alignment = taCenter
                 Title.Caption = 'Despesa'
                 Width = 372
+                ReadOnly = True
               end
               item
                 FieldName = 'Tipo'
@@ -2779,35 +2761,41 @@ object fComexProcessoImp: TfComexProcessoImp
                 Title.Caption = 'P/R'
                 Width = 26
                 Alignment = taCenter
+                ReadOnly = True
               end
               item
                 FieldName = 'Valor_Total'
                 Title.Alignment = taCenter
                 Title.Caption = 'Valor'
                 Width = 109
+                ReadOnly = True
               end
               item
                 FieldName = 'Custo_Entrada'
                 Title.Alignment = taCenter
                 Title.Caption = 'C.Ent'
                 Width = 32
+                ReadOnly = True
               end
               item
                 FieldName = 'CustoConta'
                 Title.Alignment = taCenter
                 Title.Caption = 'C.Sai'
                 Width = 32
+                ReadOnly = True
               end
               item
                 FieldName = 'Custo_Seletivo'
                 Title.Alignment = taCenter
                 Title.Caption = 'C.Sel'
                 Width = 32
+                ReadOnly = True
               end
               item
                 FieldName = 'Custo_Outros'
                 Title.Caption = 'C.Out'
                 Width = 36
+                ReadOnly = True
               end>
           end
           object UniGroupBox1: TUniGroupBox
@@ -3039,10 +3027,6 @@ object fComexProcessoImp: TfComexProcessoImp
       Hint = ''
       ImageIndex = 8
       Caption = 'Seriais'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox6: TUniScrollBox
         Left = 0
         Top = 0
@@ -3107,6 +3091,7 @@ object fComexProcessoImp: TfComexProcessoImp
                 Title.Caption = 'DI'
                 Width = 87
                 Alignment = taCenter
+                ReadOnly = True
               end
               item
                 FieldName = 'Adicao'
@@ -3114,6 +3099,7 @@ object fComexProcessoImp: TfComexProcessoImp
                 Title.Caption = 'Adi'#231#227'o'
                 Width = 44
                 Alignment = taCenter
+                ReadOnly = True
               end
               item
                 FieldName = 'Item'
@@ -3121,6 +3107,7 @@ object fComexProcessoImp: TfComexProcessoImp
                 Title.Caption = 'Item'
                 Width = 42
                 Alignment = taCenter
+                ReadOnly = True
               end
               item
                 FieldName = 'NCM'
@@ -3128,18 +3115,21 @@ object fComexProcessoImp: TfComexProcessoImp
                 Title.Caption = 'NCM'
                 Width = 74
                 Alignment = taCenter
+                ReadOnly = True
               end
               item
                 FieldName = 'Produto_Codigo'
                 Title.Alignment = taCenter
                 Title.Caption = 'Produto'
                 Width = 119
+                ReadOnly = True
               end
               item
                 FieldName = 'Serial'
                 Title.Alignment = taCenter
                 Title.Caption = 'Serial/Chassi'
                 Width = 64
+                ReadOnly = True
               end>
           end
         end
@@ -3149,10 +3139,6 @@ object fComexProcessoImp: TfComexProcessoImp
       Hint = ''
       ImageIndex = 6
       Caption = 'Containers'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox7: TUniScrollBox
         Left = 0
         Top = 0
@@ -3291,10 +3277,6 @@ object fComexProcessoImp: TfComexProcessoImp
       Hint = ''
       ImageIndex = 3
       Caption = 'Hist'#243'rico'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox10: TUniScrollBox
         Left = 0
         Top = 0
@@ -3356,6 +3338,7 @@ object fComexProcessoImp: TfComexProcessoImp
                 Title.Caption = 'Data'
                 Width = 120
                 Alignment = taCenter
+                ReadOnly = True
               end
               item
                 FieldName = 'Hora'
@@ -3363,24 +3346,28 @@ object fComexProcessoImp: TfComexProcessoImp
                 Title.Caption = 'Hora'
                 Width = 60
                 Alignment = taCenter
+                ReadOnly = True
               end
               item
                 FieldName = 'Processo'
                 Title.Alignment = taCenter
                 Title.Caption = 'Processo'
                 Width = 120
+                ReadOnly = True
               end
               item
                 FieldName = 'Documento'
                 Title.Alignment = taCenter
                 Title.Caption = 'Documento'
                 Width = 120
+                ReadOnly = True
               end
               item
                 FieldName = 'Descricao'
                 Title.Alignment = taCenter
                 Title.Caption = 'Descricao'
                 Width = 606
+                ReadOnly = True
               end>
           end
           object bHistorico: TUniButton
@@ -3401,10 +3388,6 @@ object fComexProcessoImp: TfComexProcessoImp
     object TabSheet10: TUniTabSheet
       Hint = ''
       Caption = 'Documentos'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox9: TUniScrollBox
         Left = 0
         Top = 0

@@ -27,9 +27,9 @@ object fCadBancos: TfCadBancos
       Caption = 'Lista'
       object Grade: TUniDBGrid
         Left = 0
-        Top = 27
+        Top = 33
         Width = 1052
-        Height = 911
+        Height = 905
         Hint = ''
         HeaderTitleAlign = taCenter
         TitleFont.Height = -13
@@ -110,38 +110,45 @@ object fCadBancos: TfCadBancos
           end>
       end
       object pBarraPesq: TUniPanel
-        Left = 0
-        Top = 0
-        Width = 1052
+        AlignWithMargins = True
+        Left = 3
+        Top = 3
+        Width = 1046
         Height = 27
         Hint = ''
         Align = alTop
         TabOrder = 1
         ClientEvents.UniEvents.Strings = (
           
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
-        BorderStyle = ubsNone
+            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'config.cls = ' +
+            #39'BarraPesquisa'#39';'#13#10'}')
+        BorderStyle = ubsInset
         Caption = ''
         Color = clNone
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 1052
         object cPesquisa: TUniEdit
-          Left = 0
-          Top = 0
+          Left = 1
+          Top = 1
           Width = 520
-          Height = 27
+          Height = 25
           Hint = ''
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Text = ''
           Align = alLeft
           TabOrder = 1
           EmptyText = 'Pesquisar'
           OnKeyDown = cPesquisaKeyDown
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitHeight = 27
         end
         object bPesquisa: TUniSpeedButton
-          Left = 520
-          Top = 0
+          Left = 521
+          Top = 1
           Width = 25
-          Height = 27
+          Height = 25
           Hint = ''
           Caption = ''
           Align = alLeft
@@ -151,6 +158,9 @@ object fCadBancos: TfCadBancos
           ImageIndex = 10
           TabOrder = 2
           OnClick = bPesquisaClick
+          ExplicitLeft = 520
+          ExplicitTop = 0
+          ExplicitHeight = 27
         end
       end
     end

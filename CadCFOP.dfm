@@ -2,7 +2,7 @@ object fCadCFOP: TfCadCFOP
   Left = 0
   Top = 0
   Width = 1288
-  Height = 1001
+  Height = 779
   OnCreate = uniFrameCreate
   OnDestroy = uniFrameDestroy
   TabOrder = 0
@@ -35,12 +35,13 @@ object fCadCFOP: TfCadCFOP
       TabOrder = 1
     end
     object bAdicionar: TUniSpeedButton
-      Left = 140
+      Left = 143
       Top = 0
       Width = 41
       Height = 35
       Hint = 'Adicionar novo registro.'
       Caption = ''
+      Align = alLeft
       ParentColor = False
       IconAlign = iaCenter
       Images = UniMainModule.imgBotoes
@@ -49,12 +50,13 @@ object fCadCFOP: TfCadCFOP
       OnClick = bAdicionarClick
     end
     object bEditar: TUniSpeedButton
-      Left = 181
+      Left = 184
       Top = 0
       Width = 41
       Height = 35
       Hint = 'Editar registro corrente.'
       Caption = ''
+      Align = alLeft
       ParentColor = False
       IconAlign = iaCenter
       Images = UniMainModule.imgBotoes
@@ -63,12 +65,13 @@ object fCadCFOP: TfCadCFOP
       OnClick = bEditarClick
     end
     object bExcluir: TUniSpeedButton
-      Left = 222
+      Left = 225
       Top = 0
       Width = 41
       Height = 35
       Hint = 'Excluir registro corrente.'
       Caption = ''
+      Align = alLeft
       ParentColor = False
       IconAlign = iaCenter
       Images = UniMainModule.imgBotoes
@@ -77,12 +80,13 @@ object fCadCFOP: TfCadCFOP
       OnClick = bExcluirClick
     end
     object bCancelar: TUniSpeedButton
-      Left = 304
+      Left = 307
       Top = 0
       Width = 41
       Height = 35
       Hint = 'Cancelar modifica'#231#245'es feitas no registro corrente.'
       Caption = ''
+      Align = alLeft
       ParentColor = False
       IconAlign = iaCenter
       Images = UniMainModule.imgBotoes
@@ -91,12 +95,13 @@ object fCadCFOP: TfCadCFOP
       OnClick = bCancelarClick
     end
     object bGravar: TUniSpeedButton
-      Left = 263
+      Left = 266
       Top = 0
       Width = 41
       Height = 35
       Hint = 'Salva o registro corrente.'
       Caption = ''
+      Align = alLeft
       ParentColor = False
       IconAlign = iaCenter
       Images = UniMainModule.imgBotoes
@@ -105,12 +110,13 @@ object fCadCFOP: TfCadCFOP
       OnClick = bGravarClick
     end
     object bFechar: TUniSpeedButton
-      Left = 345
+      Left = 348
       Top = 0
       Width = 41
       Height = 35
       Hint = 'Fecha a tela de cadastro atual.'
       Caption = ''
+      Align = alLeft
       ParentColor = False
       IconAlign = iaCenter
       Images = UniMainModule.imgBotoes
@@ -123,7 +129,7 @@ object fCadCFOP: TfCadCFOP
     Left = 0
     Top = 35
     Width = 1288
-    Height = 966
+    Height = 744
     Hint = ''
     BodyRTL = False
     ActivePage = UniTabSheet1
@@ -185,7 +191,7 @@ object fCadCFOP: TfCadCFOP
         Left = 0
         Top = 27
         Width = 1280
-        Height = 911
+        Height = 689
         Hint = ''
         DataSource = dsCFOP
         Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgTabs, dgCancelOnExit]
@@ -283,7 +289,7 @@ object fCadCFOP: TfCadCFOP
         Left = 0
         Top = 0
         Width = 1280
-        Height = 938
+        Height = 716
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -293,7 +299,7 @@ object fCadCFOP: TfCadCFOP
         TabOrder = 0
         DesignSize = (
           1278
-          936)
+          714)
         ScrollHeight = 282
         object pFicha: TUniPanel
           Left = 112

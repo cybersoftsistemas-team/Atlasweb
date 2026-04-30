@@ -64,72 +64,20 @@ type
     TabSheet2: TuniTabSheet;
     TabSheet4: TuniTabSheet;
     TabSheet5: TuniTabSheet;
-    tEmbarques: TFDQuery;
     dsEmbarques: TDataSource;
-    tEmbarquesRegistro: TIntegerField;
-    tEmbarquesNavio: TSmallintField;
-    tEmbarquesOrdem: TIntegerField;
-    tEmbarquesProcesso: TStringField;
-    tEmbarquesPremium: TFloatField;
-    tEmbarquesTranshipment: TFloatField;
-    tEmbarquesFator_Conversao: TFloatField;
-    tEmbarquesDescarga_Trigger: TFloatField;
-    tEmbarquesVariacao_Termica: TIntegerField;
-    tEmbarquesData_Chegada: TSQLTimeStampField;
-    tEmbarquesData_Estimada: TSQLTimeStampField;
-    tEmbarquesData_Atracacao: TSQLTimeStampField;
-    tEmbarquesData_Descarga: TSQLTimeStampField;
-    tEmbarquesFilial: TSmallintField;
-    tEmbarquesQuantidade_15: TFloatField;
-    tEmbarquesQuantidade_20: TFloatField;
-    tEmbarquesTipo_Descarga: TStringField;
-    tEmbarquesValor_Demurrage: TCurrencyField;
-    tEmbarquesTempo_Demurrage: TFloatField;
-    tEmbarquesTotal_ME: TCurrencyField;
-    tEmbarquesCusto_Navio: TCurrencyField;
-    tEmbarquesObservacao: TMemoField;
-    tEmbarquesStatus: TStringField;
-    tEmbarquesData_Partida: TSQLTimeStampField;
-    tEmbarquesQuantidade_Carga: TFloatField;
-    tEmbarquesReferencia: TStringField;
-    tEmbarquesNavio_Nome: TStringField;
     Panel11: TUniPanel;
     cFiltroStatus: TUniRadioGroup;
     cFiltroBL: TUniRadioGroup;
     cFiltroLaudo: TUniRadioGroup;
     cFiltroFilial: TUniDBLookupComboBox;
     UniScrollBox1: TUniScrollBox;
-    Panel2: TUniPanel;
-    cData_Estimada: TUniDBDateTimePicker;
-    cData_Chegada: TUniDBDateTimePicker;
-    cData_Atracacao: TUniDBDateTimePicker;
-    cData_Descarga: TUniDBDateTimePicker;
-    cTipo_Descarga: TUniDBEdit;
-    cPremium: TUniDBEdit;
-    cTranshipment: TUniDBEdit;
-    cFator_Conversao: TUniDBEdit;
-    cValor_Demurrage: TUniDBEdit;
-    cTempo_Demurrage: TUniDBEdit;
-    cObservacao: TUniDBMemo;
-    cStatus: TUniDBComboBox;
-    cData_Partida: TUniDBDateTimePicker;
-    cQuantidade_Carga: TUniDBEdit;
-    cDifer: TUniFormattedNumberEdit;
-    cReferencia: TUniDBEdit;
-    UniSimplePanel1: TUniSimplePanel;
     tBL: TFDQuery;
     dsBL: TDataSource;
     dsLaudos: TDataSource;
     tLaudos: TFDQuery;
-    cDescargaLT: TUniFormattedNumberEdit;
-    cVariacao_Termica: TUniDBEdit;
-    cTotal_ME: TUniDBEdit;
-    UniDBEdit1: TUniDBEdit;
-    GradeSoma: TUniDBGrid;
     tSomaDescricao: TStringField;
     tSomaM3: TFloatField;
     tSomaLITROS: TFloatField;
-    cNavio: TUniDBLookupComboBox;
     tBLRegistro: TIntegerField;
     tBLNavio1: TIntegerField;
     tBLNavio: TIntegerField;
@@ -169,7 +117,6 @@ type
     tLaudosVariacao_EmbPerc: TFloatField;
     tFiliaisCNPJ: TStringField;
     tFiliaisFilial: TSmallintField;
-    tEmbarquesEmpresa: TStringField;
     PanelBL: TUniContainerPanel;
     cBL: TUniDBEdit;
     cData_Emissao: TUniDBDateTimePicker;
@@ -222,8 +169,6 @@ type
     bExcluirLaudo: TUniSpeedButton;
     bCancelarLaudo: TUniSpeedButton;
     bGravarLaudo: TUniSpeedButton;
-    cProcesso: TUniDBEdit;
-    cFilial: TUniDBLookupComboBox;
     tNotasNota: TIntegerField;
     tNotasData: TDateField;
     tNotasSE: TStringField;
@@ -236,6 +181,62 @@ type
     UniDBGrid1: TUniDBGrid;
     UniPanel4: TUniPanel;
     brTotais: TUniSegmentedButton;
+    Panel2: TUniPanel;
+    cStatus: TUniDBComboBox;
+    cReferencia: TUniDBEdit;
+    cFilial: TUniDBLookupComboBox;
+    cNavio: TUniDBLookupComboBox;
+    cData_Estimada: TUniDBDateTimePicker;
+    cData_Chegada: TUniDBDateTimePicker;
+    cData_Atracacao: TUniDBDateTimePicker;
+    cData_Descarga: TUniDBDateTimePicker;
+    cTipo_Descarga: TUniDBEdit;
+    cPremium: TUniDBEdit;
+    cTranshipment: TUniDBEdit;
+    cFator_Conversao: TUniDBEdit;
+    cValor_Demurrage: TUniDBEdit;
+    cTempo_Demurrage: TUniDBEdit;
+    cObservacao: TUniDBMemo;
+    cData_Partida: TUniDBDateTimePicker;
+    cQuantidade_Carga: TUniDBEdit;
+    cDifer: TUniFormattedNumberEdit;
+    cProcesso: TUniDBEdit;
+    cVariacao_Termica: TUniDBEdit;
+    UniDBEdit1: TUniDBEdit;
+    cTotal_ME: TUniDBEdit;
+    cDescargaLT: TUniFormattedNumberEdit;
+    GradeSoma: TUniDBGrid;
+    tEmbarques: TFDQuery;
+    tEmbarquesRegistro: TFDAutoIncField;
+    tEmbarquesCodigo: TIntegerField;
+    tEmbarquesEmpresa: TStringField;
+    tEmbarquesNavio: TSmallintField;
+    tEmbarquesOrdem: TIntegerField;
+    tEmbarquesProcesso: TStringField;
+    tEmbarquesUF: TStringField;
+    tEmbarquesPremium: TFloatField;
+    tEmbarquesTranshipment: TFloatField;
+    tEmbarquesFator_Conversao: TFloatField;
+    tEmbarquesDescarga_Trigger: TFloatField;
+    tEmbarquesVariacao_Termica: TIntegerField;
+    tEmbarquesData_Chegada: TSQLTimeStampField;
+    tEmbarquesData_Estimada: TSQLTimeStampField;
+    tEmbarquesData_Atracacao: TSQLTimeStampField;
+    tEmbarquesData_Descarga: TSQLTimeStampField;
+    tEmbarquesFilial: TSmallintField;
+    tEmbarquesQuantidade_15: TFloatField;
+    tEmbarquesQuantidade_20: TFloatField;
+    tEmbarquesTipo_Descarga: TStringField;
+    tEmbarquesValor_Demurrage: TCurrencyField;
+    tEmbarquesTempo_Demurrage: TFloatField;
+    tEmbarquesTotal_ME: TCurrencyField;
+    tEmbarquesCusto_Navio: TCurrencyField;
+    tEmbarquesObservacao: TMemoField;
+    tEmbarquesStatus: TStringField;
+    tEmbarquesData_Partida: TSQLTimeStampField;
+    tEmbarquesQuantidade_Carga: TFloatField;
+    tEmbarquesReferencia: TStringField;
+    tEmbarquesNavio_Nome: TStringField;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure bGravarClick(Sender: TObject);
@@ -560,70 +561,70 @@ begin
      // Alinhando todas as ficha de dados ao centro do form.
      DirOrdem   := 'desc';
      CampoOrdem := 'Navio';
-      for i := 0 to ComponentCount -1 do begin
-          if Components[i] is TUniPanel then begin
-             //TuniPanel(Components[i]).Top   := 30;
-             //TuniPanel(Components[i]).Left  := (Pasta.Width - TuniPanel(Components[i]).Width) div 2;
-             TuniPanel(Components[i]).Color := clNone
+     for i := 0 to ComponentCount -1 do begin
+         if Components[i] is TUniPanel then begin
+            TuniPanel(Components[i]).Top   := 30;
+            TuniPanel(Components[i]).Left  := (Pasta.Width - TuniPanel(Components[i]).Width) div 2;
+            TuniPanel(Components[i]).Color := clNone
+         end;
+     end;
+     
+     AtivaEdicao(Navega, bAdicionar, bEditar, bExcluir, bGravar, bCancelar, Pasta);
+     AtivaEdicao(NavegaBL, bAdicionarBL, bEditarBL, bExcluirBL, bGravarBL, bCancelarBL, Pasta);
+     AtivaEdicao(NavegaLaudo, bAdicionarLaudo, bEditarLaudo, bExcluirLaudo, bGravarLaudo, bCancelarLaudo, Pasta);
+     LigaForms;
+
+     Pasta.ActivePageIndex := 0;
+     with tNavios do begin
+          sql.clear;
+          sql.add('select *');
+          sql.add('from Navios');
+          sql.add('order by Nome');
+          open;
+     end;
+     with tFiliais do begin
+          sql.Clear;
+          sql.Add('select distinct');
+          sql.Add('       CNPJ');
+          sql.Add('      ,Filial = Numero_Filial');
+          sql.Add('      ,Nome   = cast(iif(Numero_Filial > 0, ''FILIAL ''+cast(Numero_Filial as varchar(6)), ''MATRIZ'') as varchar(10))');
+          sql.Add('      ,Cidade = cast(upper((select Nome from Municipios where Codigo = Municipio_Codigo)) as varchar(30))');
+          sql.Add('      ,Estado = cast(Estado as varchar(4))');
+          sql.Add('from Empresas');
+          sql.add('where SUBSTRING(CNPJ, 1, 8) = '+quotedstr(Copy(UniMainModule.mEmpresaAtiva, 1, 8)));
+          sql.add('order by Numero_Filial');
+          open;
+     end;
+     with tPortos do begin
+          sql.clear;
+          sql.add('select distinct Porto from EmbarquesBL where isnull(Porto, '''') <> '''' order by Porto');
+          open;
+          first;
+          cPorto.Clear;
+          while not eof do begin
+                cPorto.Items.add(fieldbyname('Porto').asstring);
+                next;
           end;
-      end;
-      
-      AtivaEdicao(Navega, bAdicionar, bEditar, bExcluir, bGravar, bCancelar, Pasta);
-      AtivaEdicao(NavegaBL, bAdicionarBL, bEditarBL, bExcluirBL, bGravarBL, bCancelarBL, Pasta);
-      AtivaEdicao(NavegaLaudo, bAdicionarLaudo, bEditarLaudo, bExcluirLaudo, bGravarLaudo, bCancelarLaudo, Pasta);
-      LigaForms;
+     end;
+     with tArmazens do begin
+          sql.Clear;
+          sql.Add('select Codigo, CNPJ, Nome, Municipio from Destinatarios');
+          sql.Add('where Armazem = 1');
+          sql.Add('order by Nome');
+          open;
+     end;
+     with tProdutos do begin
+          sql.Clear;
+          sql.Add('select Codigo');
+          sql.add('      ,Descricao_Reduzida');
+          sql.add('from Produtos');
+          sql.Add('where isnull(Desativado, 0) = 0');
+          //sql.Add('and Origem_Mercadoria in(1,2,6,7)');
+          sql.Add('order by Descricao_Reduzida');
+          open;
+     end;
 
-      Pasta.ActivePageIndex := 0;
-      with tNavios do begin
-           sql.clear;
-           sql.add('select *');
-           sql.add('from Navios');
-           sql.add('order by Nome');
-           open;
-      end;
-      with tFiliais do begin
-           sql.Clear;
-           sql.Add('select distinct');
-           sql.Add('       CNPJ');
-           sql.Add('      ,Filial = Numero_Filial');
-           sql.Add('      ,Nome   = cast(iif(Numero_Filial > 0, ''FILIAL ''+cast(Numero_Filial as varchar(6)), ''MATRIZ'') as varchar(10))');
-           sql.Add('      ,Cidade = cast(upper((select Nome from Municipios where Codigo = Municipio_Codigo)) as varchar(30))');
-           sql.Add('      ,Estado = cast(Estado as varchar(4))');
-           sql.Add('from Empresas');
-           sql.add('where SUBSTRING(CNPJ, 1, 8) = '+quotedstr(Copy(UniMainModule.mEmpresaAtiva, 1, 8)));
-           sql.add('order by Numero_Filial');
-           open;
-      end;
-      with tPortos do begin
-           sql.clear;
-           sql.add('select distinct Porto from EmbarquesBL where isnull(Porto, '''') <> '''' order by Porto');
-           open;
-           first;
-           cPorto.Clear;
-           while not eof do begin
-                 cPorto.Items.add(fieldbyname('Porto').asstring);
-                 next;
-           end;
-      end;
-      with tArmazens do begin
-           sql.Clear;
-           sql.Add('select Codigo, CNPJ, Nome, Municipio from Destinatarios');
-           sql.Add('where Armazem = 1');
-           sql.Add('order by Nome');
-           open;
-      end;
-      with tProdutos do begin
-           sql.Clear;
-           sql.Add('select Codigo');
-           sql.add('      ,Descricao_Reduzida');
-           sql.add('from Produtos');
-           sql.Add('where isnull(Desativado, 0) = 0');
-           //sql.Add('and Origem_Mercadoria in(1,2,6,7)');
-           sql.Add('order by Descricao_Reduzida');
-           open;
-      end;
-
-      Filtra;
+     Filtra;
 end;
 procedure TfEmbarques.cPesquisaClick(Sender: TObject);
 begin
@@ -797,7 +798,6 @@ begin
           //sql.SaveToFile('c:\temp\Embarques.sql');
           open;
      end;
-          
 end;
                           
 procedure TfEmbarques.GradeDblClick(Sender: TObject);

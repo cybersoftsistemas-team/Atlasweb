@@ -461,6 +461,18 @@ video {
     margin-left: 2px;
 }
 
+
+/* Campo especial com fonte do tipo courrier new/ Jet brain */
+.CampoEspecial {
+   padding: 1px;
+   background: #621a7f21;
+   color: #000; 
+   font: bold 11px helvetica !important;
+   font-family: jet brain mono, courrier new;
+   border-radius: 0px;
+}
+
+
 /*--------------------------------------------------------[ CAMPOS DESTACADOS ]------------------------------------------------------*/
 .CampoDestaque {
    padding: 1px;

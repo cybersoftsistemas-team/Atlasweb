@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, uniGUITypes, uniGUIAbstractClasses, uniGUIClasses, uniGUIRegClasses, uniGUIForm, uniGUIBaseClasses, uniPanel, uniPageControl,
   uniGUIFrame, Vcl.Imaging.pngimage, uniImage, Vcl.Imaging.jpeg, uniImageList, uniTreeView, uniTreeMenu, uniMainMenu, Vcl.Menus, uniLabel, uniScrollBox, uniEdit, Funcoes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, uniScreenMask, 
-  System.Generics.Collections, uniSweetAlert, uniButton;
+  System.Generics.Collections, uniSweetAlert, uniButton, uniBitBtn, uniSpeedButton;
 
 type
   TMainForm = class(TUniForm)
@@ -52,6 +52,7 @@ type
     procedure UniFormBeforeShow(Sender: TObject);
     procedure UniFormCreate(Sender: TObject);
     procedure UniButton1Click(Sender: TObject);
+    procedure mnComexOrdemCompraClick(Sender: TObject);
   private
     { Private declarations }
     procedure CriaAba(nFrame: TuniFrame; dFrame: string; Fechar: Boolean);
@@ -137,7 +138,8 @@ uses
  ,Embarques
  ,ConfigCampos
  ,Estoque_SaldoAbertura
- ,DUIMP;(*uses p/gerador*)
+ ,DUIMP
+ ,ComexPO;(*uses p/gerador*)
 
 function MainForm: TMainForm;
 begin
@@ -239,7 +241,56 @@ procedure TMainForm.UniButton1Click(Sender: TObject);
 begin
      fDUIMP.ShowModal;
 end;
-
+{
+procedure TMainForm.UniFormBeforeShow(Sender: TObject);
+var
+   bAtalho: TuniImage;
+   Atalhos: TFDQuery;
+   mPath  : string;
+begin
+     // Carrega os atalhos selecionados.
+     lVersao.Caption := 'Versão '+VersaoEXE(Application.ExeName);
+     mPath           := GetDLLPath+'files\';
+     Atalhos         := TFDQuery.Create(nil);
+     with Atalhos do begin
+          Connection := UniMainModule.Conecta;
+          sql.clear;
+          sql.add('select * from Atalhos where Usuario = :pUsuario');
+          parambyname('pUsuario').asstring := UniMainModule.mUsuarioAtivo;
+          open;
+          first;
+          while not eof do begin
+                bAtalho := TuniImage.Create(self);
+                with bAtalho do begin
+                     Parent           := MainForm.pAtalhos;
+                     visible          := true;
+                     width            := 45;
+                     Caption          := fieldbyname('Titulo').asstring;
+                     Name             := fieldbyname('Form').asstring;
+                     ImageIndex       := 21;
+                     align            := alLeft;
+                     AlignWithMargins := true;
+                     center           := true;
+                     FitWidth         := true;
+                     Enabled          := true;
+                     stretch          := true;
+                     Cursor           := crHandPoint;
+                     tag              := fieldbyname('Id').asinteger;
+                     hint             := fieldbyname('Titulo').asstring;
+                     ShowHint         := true;
+                     if fileexists(fieldbyname('Icone').asstring) then begin
+                        Picture.LoadFromFile(fieldbyname('Icone').asstring);
+                     end else begin
+                        Picture.LoadFromFile(mpath+'images\icones\Atalho0b.png');
+                     end;
+                     OnClick := MainForm.Botao_Atalho;
+                end;
+                next;
+          end;
+     end;
+     freeandnil(Atalhos);
+end;
+}
 procedure TMainForm.UniFormBeforeShow(Sender: TObject);
 var
    bAtalho: TuniImage;
@@ -367,6 +418,11 @@ begin
      end;
 end;
                                                               
+procedure TMainForm.mnComexOrdemCompraClick(Sender: TObject);
+begin
+//     CriaAba(TFrame(TfComexPO),'Purchase Order (PO)', true);
+end;
+
 initialization
   RegisterAppFormClass(TMainForm);
 
@@ -433,8 +489,11 @@ initialization
   RegisterClass(TfEmbarques);
   RegisterClass(TfConfigCampos);
   RegisterClass(TfEstoque_SaldoAbertura);
+  RegisterClass(TfComexPO);
   (*RegisterClass p/gerador*)
 
   
 end.
+
+
 

@@ -40,6 +40,8 @@ uses
 
 function TelaLogin: TTelaLogin;
 begin
+//     keybd_event(VK_F11, 0, 0, 0);
+//     keybd_event(VK_F11, 0, KEYEVENTF_KEYUP, 0);
      Result := TTelaLogin(UniMainModule.GetFormInstance(TTelaLogin));
 end;
 

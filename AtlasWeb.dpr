@@ -87,7 +87,8 @@ uses
   FatPedidoNFDetalhe in 'FatPedidoNFDetalhe.pas' {fFatPedidoNFDetalhe: TUniForm},
   FatPedidoNFLote in 'FatPedidoNFLote.pas' {fFatPedidoNFLote: TUniForm},
   DUIMP in 'DUIMP.pas' {fDUIMP: TUniForm},
-  FatPedidoItensDUIMPItem in 'FatPedidoItensDUIMPItem.pas' {fFatPedidoItensDUIMPItem: TUniForm};
+  FatPedidoItensDUIMPItem in 'FatPedidoItensDUIMPItem.pas' {fFatPedidoItensDUIMPItem: TUniForm},
+  ComexPO in 'ComexPO.pas' {fComex: TUniForm};
 
 (*uses p/gerador*)
 
