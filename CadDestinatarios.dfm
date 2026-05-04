@@ -513,7 +513,7 @@ object fCadDestinatarios: TfCadDestinatarios
             FieldLabelWidth = 120
             FieldLabelSeparator = ' '
             Style = csDropDown
-            OnChange = cEstadoChange
+            OnChangeValue = cEstadoChangeValue
           end
           object cCEP: TUniDBEdit
             Left = 21
@@ -611,7 +611,7 @@ object fCadDestinatarios: TfCadDestinatarios
             Left = 607
             Top = 21
             Width = 216
-            Height = 501
+            Height = 517
             Hint = ''
             ShowHint = True
             Caption = 'Perfil / Caracter'#237'sticas'
@@ -910,7 +910,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object UniDBCheckBox4: TUniDBCheckBox
               Left = 13
-              Top = 338
+              Top = 358
               Width = 190
               Height = 18
               Hint = ''
@@ -928,7 +928,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object UniDBCheckBox5: TUniDBCheckBox
               Left = 13
-              Top = 358
+              Top = 378
               Width = 190
               Height = 18
               Hint = ''
@@ -946,7 +946,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object UniDBCheckBox6: TUniDBCheckBox
               Left = 13
-              Top = 378
+              Top = 398
               Width = 190
               Height = 18
               Hint = ''
@@ -964,7 +964,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object UniDBCheckBox7: TUniDBCheckBox
               Left = 13
-              Top = 398
+              Top = 418
               Width = 190
               Height = 18
               Hint = ''
@@ -982,7 +982,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object UniDBCheckBox8: TUniDBCheckBox
               Left = 13
-              Top = 418
+              Top = 438
               Width = 190
               Height = 18
               Hint = ''
@@ -1000,7 +1000,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object UniDBCheckBox9: TUniDBCheckBox
               Left = 13
-              Top = 438
+              Top = 458
               Width = 190
               Height = 18
               Hint = ''
@@ -1018,7 +1018,7 @@ object fCadDestinatarios: TfCadDestinatarios
             end
             object UniDBCheckBox10: TUniDBCheckBox
               Left = 13
-              Top = 458
+              Top = 478
               Width = 190
               Height = 18
               Hint = ''
@@ -1029,6 +1029,24 @@ object fCadDestinatarios: TfCadDestinatarios
               ParentFont = False
               Font.Height = -13
               TabOrder = 23
+              ParentColor = False
+              Color = clBtnFace
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+            end
+            object UniDBCheckBox11: TUniDBCheckBox
+              Left = 13
+              Top = 338
+              Width = 190
+              Height = 18
+              Hint = ''
+              ShowHint = True
+              DataField = 'Importador'
+              DataSource = dsDestinatarios
+              Caption = 'Importador'
+              ParentFont = False
+              Font.Height = -13
+              TabOrder = 24
               ParentColor = False
               Color = clBtnFace
               FieldLabelWidth = 120

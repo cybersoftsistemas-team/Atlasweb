@@ -177,10 +177,6 @@ object fFatPedidoNF: TfFatPedidoNF
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -339,10 +335,6 @@ object fFatPedidoNF: TfFatPedidoNF
         
           'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
           '= '#39'Pasta'#39';'#13#10'}')
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -1251,10 +1243,6 @@ object fFatPedidoNF: TfFatPedidoNF
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Itens do Pedido'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object GradeItens: TUniDBGrid
         Left = 65
         Top = 0
@@ -1599,19 +1587,11 @@ object fFatPedidoNF: TfFatPedidoNF
       Hint = ''
       ImageIndex = 1
       Caption = 'Informa'#231#227'oes Complementares'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
     end
     object TabSheet3: TUniTabSheet
       Hint = ''
       ImageIndex = 2
       Caption = 'Movimenta'#231#227'o Financeira'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object Grade2: TUniDBGrid
         Left = 0
         Top = 0
@@ -2969,17 +2949,17 @@ object fFatPedidoNF: TfFatPedidoNF
       FixedChar = True
       Size = 3
     end
-    object PedidosNFItensQuantidade: TFloatField
+    object PedidosNFItensQuantidade: TBCDField
       FieldName = 'Quantidade'
       Origin = 'Quantidade'
       DisplayFormat = ',##0.000'
     end
-    object PedidosNFItensValor_Unitario: TFloatField
+    object PedidosNFItensValor_Unitario: TBCDField
       FieldName = 'Valor_Unitario'
       Origin = 'Valor_Unitario'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_Produtos: TCurrencyField
+    object PedidosNFItensValor_Produtos: TBCDField
       FieldName = 'Valor_Produtos'
       Origin = 'Valor_Produtos'
       DisplayFormat = ',##0.00'

@@ -778,7 +778,7 @@ object fCadEmpresas: TfCadEmpresas
               ShowHint = True
               ListField = 'Estado;Nome'
               ListSource = dsBeneficio
-              KeyField = 'Nome'
+              KeyField = 'Codigo'
               ListFieldIndex = 2
               BorderStyle = ubsInset
               DataField = 'Beneficio_Fiscal'

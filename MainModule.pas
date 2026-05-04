@@ -34,6 +34,7 @@ type
     { Public declarations }
     mEmpresaAtiva
    ,mUsuarioAtivo
+   ,mUsuarioMatricula
    ,mPath
    ,mLogoCyber
    ,mLogoAtlas: string;

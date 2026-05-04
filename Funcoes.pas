@@ -4,7 +4,8 @@ interface
 
 uses
     SysUtils, Windows, FireDAC.Comp.Client, Dialogs, MaskUtils, System.Variants, DB, Forms, uniSpeedButton, uniPanel, UniPageControl, System.Classes, CalcExpress,
-    uniGUIForm, uniGUIFrame, uniMemo, DBCommon, uniDBLookUpComboBox, uniDBComboBox, uniComboBox, uniDBDateTimePicker, uniDBEdit, uniEdit, uniGuiDialogs, TypInfo, uniSweetAlert, FireDAC.Stan.Param, uniMainMenu, uniDBNavigator, uniButton, uniScrollBox, System.RegularExpressions, System.Rtti, uniStringGrid;
+    uniGUIForm, uniGUIFrame, uniMemo, DBCommon, uniDBLookUpComboBox, uniDBComboBox, uniComboBox, uniDBDateTimePicker, uniDBEdit, uniEdit, uniGuiDialogs, TypInfo, 
+    uniSweetAlert, FireDAC.Stan.Param, uniMainMenu, uniDBNavigator, uniButton, uniScrollBox, System.RegularExpressions, System.Rtti, uniStringGrid, DateUtils;
 
 
 // Funções de checagens.
@@ -15,13 +16,13 @@ function ValidaCampo(Campo:TObject; Valor1, Valor2:Variant; Condicao, msg, Titul
 function Aviso(Valor1, Valor2:Variant; Condicao, msg, Titulo:string): boolean;
 
 // Funções de ordem gerais.
+procedure LimpaMemoria;
+procedure AtivaEdicao(Nav, bAdi, bEdi, bExc, bGra, bCan: TObject; aPageControl: TuniPageControl);
+procedure AtivaBotoes(Nav, bAdi, bEdi, bExc, bGra, bCan: TObject);
 function NomeComputador:string;
 function RemoveAcentos(Str:String): String;
 function IIf(Expressao: Variant; ParteTRUE, ParteFALSE: Variant): Variant;
 function PastaDLL: string;
-procedure LimpaMemoria;
-procedure AtivaEdicao(Nav, bAdi, bEdi, bExc, bGra, bCan: TObject; aPageControl: TuniPageControl);
-procedure AtivaBotoes(Nav, bAdi, bEdi, bExc, bGra, bCan: TObject);
 function Calculo(Formula: widestring): string;
 function Percentual(Valor:real;Percent:Real):Real;
 function CalculaMacro(pForm: TComponent; pFormula: String): Real;
@@ -56,6 +57,7 @@ function Filtra(Tabela:TFDQuery; CampoPesq, Busca:string):string;
 function NomeTabela(Tabela:TFDQuery):string;
 function EstadoTabela(DataSet: TDataSet): String;
 function ListaCampos(pFormula: string; pCampo:Integer): WideString;
+function GeraProcPO(Empresa: string; Cliente: integer; ProcPO: string): string;
 
 // Funções contabeis.
 function CriaConta(Nome, Origem, Origem_Cod, Nac_Est, Natureza, CNPJ_CPF, Pessoa: string; Consig:Boolean):integer;
@@ -3005,6 +3007,77 @@ begin
       End;
       StrDispose(pArquivo);
 end;
+
+{ Gera o número do processo de importação. }
+Function GeraProcPO(Empresa: string; Cliente: integer; ProcPO: string): String;
+var
+   mAno
+  ,Mascara
+  ,Forma: string;
+   DigitosAno
+  ,Processo: integer;
+   tEmpresa,
+   tConfig: TFDQuery;
+begin
+     tEmpresa            := TFDQuery.Create(nil);
+     tEmpresa.Connection := uniMainModule.Conecta;
+     with tEmpresa do begin
+          sql.clear;
+          sql.add('select Mascara_Processo, Processo, Mascara_PO, PO, Mascara_Cliente = (select Mascara_Processo from Destinatarios where Codigo = :pCliente) from Empresas where CNPJ = :pEmpresa');
+          parambyname('pEmpresa').value := Empresa;
+          parambyname('pCliente').value := Cliente;
+          open;
+          if ProcPO = 'PR' then begin
+             Mascara  := iif(trim(fieldbyname('Mascara_Processo').asstring) <> '', fieldbyname('Mascara_Processo').asstring, fieldbyname('Mascara_Cliente').asstring);
+             Processo := fieldbyname('Processo').asinteger;
+          end else begin
+             Mascara  := fieldbyname('Mascara_PO').asstring;
+             Processo := fieldbyname('PO').asinteger;
+          end;
+     end;
+     tConfig            := TFDQuery.Create(nil);
+     tConfig.Connection := uniMainModule.Conecta;
+     with tConfig do begin
+          sql.clear;
+          sql.add('select Processo_Numero, Processo_DigitosAno from Config where Empresa = :pEmpresa');
+          parambyname('pEmpresa').value := Empresa;
+          open;
+          Forma      := fieldbyname('Processo_Numero').asstring;
+          DigitosAno := fieldbyname('Processo_DigitosAno').asinteger;
+     end;
+     if DigitosAno = 4 then begin
+        mAno    := InttoStr(YearOf(Date));
+        Mascara := Copy(Mascara, 1, 5);
+     end else begin
+        mAno    := Copy(InttoStr(YearOf(Date)),3,2);
+        Mascara := Copy(Mascara, 1, 7);
+     end;
+     // Mascara + Número.
+     if (Forma = 'MN') or (Forma = '')  then begin
+        if Trim(Mascara) <> '' then 
+           Result := Trim(Mascara) + ' ' + Format('%4.4d',[Processo])
+        else 
+           Result := Trim(Mascara) + ' ' + InttoStr(Processo);
+     end;
+     // Mascara + Número + Ano.
+     if Forma = 'MNA' then 
+        Result := Trim(Mascara) + ' ' + Format('%4.4d',[Processo]) + '/' + mAno;
+     // Mascara + Ano + Número.
+     if Forma = 'MAN' then 
+        Result := Trim(Mascara) + ' ' + mAno + '/' + Format('%4.4d',[Processo]);
+     // Número + Ano + Mascara.
+     if Forma = 'NAM' then 
+        Result := Format('%4.4d',[Processo]) + '/' + mAno + ' ' + Trim(Mascara);
+     // Ano + Número + Mascara.
+     if Forma = 'ANM' then 
+        Result := mAno + '/' + Format('%4.4d',[Processo]) +  ' ' + Trim(Mascara);
+     // Mascara + Referencia do Navio + BL
+     if Forma = 'MNB' then 
+        Result := concat(Mascara, inttostr(Processo), ' - BL', inttostr(yearof(Date)) );
+        
+     Result := Trim(Result);
+end;
+
 
 
 end.

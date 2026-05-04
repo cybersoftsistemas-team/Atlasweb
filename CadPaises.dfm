@@ -121,6 +121,8 @@ object fCadPaises: TfCadPaises
           ImageIndex = 10
           TabOrder = 2
           OnClick = bPesquisaClick
+          ExplicitLeft = 519
+          ExplicitTop = -6
         end
       end
     end

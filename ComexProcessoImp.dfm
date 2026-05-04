@@ -139,7 +139,7 @@ object fComexProcessoImp: TfComexProcessoImp
     Width = 1300
     Height = 1165
     Hint = ''
-    ActivePage = aLista
+    ActivePage = TabSheet3
     Align = alClient
     TabOrder = 0
     object aLista: TUniTabSheet
@@ -1920,10 +1920,10 @@ object fComexProcessoImp: TfComexProcessoImp
         DesignSize = (
           1290
           1135)
-        ScrollHeight = 940
+        ScrollHeight = 862
         object UniPanel3: TUniPanel
-          Left = 62
-          Top = 96
+          Left = 96
+          Top = 18
           Width = 805
           Height = 844
           Hint = ''
@@ -4716,17 +4716,6 @@ object fComexProcessoImp: TfComexProcessoImp
       FieldName = 'Numero_TFA'
       Origin = 'Numero_TFA'
       Size = 15
-    end
-    object ProcessosImpOrigem: TStringField
-      FieldName = 'Origem'
-      Origin = 'Origem'
-      Size = 30
-    end
-    object ProcessosImpPais: TStringField
-      FieldName = 'Pais'
-      Origin = 'Pais'
-      FixedChar = True
-      Size = 4
     end
     object ProcessosImpPrioridade_Carga: TIntegerField
       FieldName = 'Prioridade_Carga'

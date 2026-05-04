@@ -316,8 +316,9 @@ type
     cCPF: TUniDBEdit;
     cRG: TUniDBEdit;
     cPassaporte: TUniDBEdit;
+    UniDBCheckBox11: TUniDBCheckBox;
     procedure bCancelarClick(Sender: TObject);
-    procedure LigaBotoes(Estado, Edita:boolean);
+    procedure LigaBotoes(Estado: boolean);
     procedure bSalvarClick(Sender: TObject);
     procedure bExcluirClick(Sender: TObject);
     procedure UniFrameDestroy(Sender: TObject);
@@ -333,7 +334,6 @@ type
     function  Obriga(NomeCampo:TObject; NomeField:string):boolean;
     procedure DestinatariosBeforePost(DataSet: TDataSet);
     procedure DestinatariosBeforeDelete(DataSet: TDataSet);
-    procedure cEstadoChange(Sender: TObject);
     procedure cCodigoChangeValue(Sender: TObject);
     procedure bEditTribClick(Sender: TObject);
     procedure bAddTribClick(Sender: TObject);
@@ -341,6 +341,7 @@ type
     procedure bGravTribClick(Sender: TObject);
     procedure bCancTribClick(Sender: TObject);
     procedure cCNPJChange(Sender: TObject);
+    procedure cEstadoChangeValue(Sender: TObject);
   private
     procedure LigaBotoes2(Estado: boolean);
     { Private declarations }
@@ -371,7 +372,7 @@ procedure TfCadDestinatarios.bAdicionarClick(Sender: TObject);
 begin
       with Destinatarios do begin
            try
-               LigaBotoes(false, true);
+               LigaBotoes(false);
                Append;
                cCodigo.setfocus;
            except
@@ -383,7 +384,7 @@ end;
 procedure TfCadDestinatarios.bCancelarClick(Sender: TObject);
 begin
       Destinatarios.Cancel;
-      LigaBotoes(true, true);
+      LigaBotoes(true);
 end;
 
 procedure TfCadDestinatarios.bCancTribClick(Sender: TObject);
@@ -403,7 +404,7 @@ begin
           end;
 
           try
-              LigaBotoes(false, true);
+              LigaBotoes(false);
               Destinatarios.Edit;
               cCodigo.setfocus;
           except
@@ -542,6 +543,7 @@ begin
                end;
 
                Post;
+               LigaBotoes(true);
                Alerta.Text := 'Registro salvo no banco de dados!';
                Alerta.Execute;
 
@@ -587,14 +589,13 @@ begin
                      end;
                   end;
                end;
-               LigaBotoes(true,true);
            except
                Showmessage('Falha desconhecida, não pode salvar o registro corrente!');
            end;
       end;
 end;
 
-procedure TfCadDestinatarios.LigaBotoes(Estado, Edita:boolean);
+procedure TfCadDestinatarios.LigaBotoes(Estado: boolean);
 begin
      Navega.Enabled        := Estado;
      bEditar.Enabled       := Estado;
@@ -642,7 +643,7 @@ begin
           end;
       end;
 
-      LigaBotoes(true,true);
+      LigaBotoes(true);
       LigaBotoes2(true);
       Pasta.ActivePageIndex := 0;
       
@@ -696,6 +697,12 @@ begin
            sql.add('select Codigo, Descricao from IndicadorIE');
            open;
       end;
+      with Municipios do begin
+           sql.clear;
+           sql.add('select Codigo, UF, Nome from Municipios where UF = :pUF order by Nome');
+           ParamByName('pUF').AsString := Destinatarios.FieldByName('Estado').AsString;
+           open;
+      end;
       {
       with Regioes do begin 
            sql.clear;
@@ -735,7 +742,7 @@ begin
       end;
 end;
 
-procedure TfCadDestinatarios.cEstadoChange(Sender: TObject);
+procedure TfCadDestinatarios.cEstadoChangeValue(Sender: TObject);
 begin
       with Municipios do begin
            sql.clear;

@@ -191,9 +191,9 @@ type
     PedidosNFItensDescricao_Mercadoria: TMemoField;
     PedidosNFItensNCM: TStringField;
     PedidosNFItensUM: TStringField;
-    PedidosNFItensQuantidade: TFloatField;
-    PedidosNFItensValor_Unitario: TFloatField;
-    PedidosNFItensValor_Produtos: TCurrencyField;
+    PedidosNFItensQuantidade: TBCDField;
+    PedidosNFItensValor_Unitario: TBCDField;
+    PedidosNFItensValor_Produtos: TBCDField;
     cEmpresa: TUniDBLookupComboBox;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);

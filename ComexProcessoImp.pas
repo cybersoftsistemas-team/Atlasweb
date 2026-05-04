@@ -436,8 +436,6 @@ type
     ProcessosImpNumero_BL: TStringField;
     ProcessosImpNumero_HouseBL: TStringField;
     ProcessosImpNumero_TFA: TStringField;
-    ProcessosImpOrigem: TStringField;
-    ProcessosImpPais: TStringField;
     ProcessosImpPrioridade_Carga: TIntegerField;
     ProcessosImpRecinto_AlfandegarioCod: TIntegerField;
     ProcessosImpTransporte_Viagem: TStringField;

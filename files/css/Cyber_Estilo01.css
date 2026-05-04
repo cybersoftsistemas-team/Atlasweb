@@ -722,4 +722,20 @@ element.style {
     border: none !important;
 }
 
+/*-----------------------------| ICONES DOS DBLOOKUP E DB COMBOBOX |------------------------------*/
+/* NÃO remove o ícone */
+.x-form-trigger {
+    background-color: transparent !important;
+    border: none !important;
+}
 
+/* remove aquele fundo branco da área direita */
+.x-form-trigger-wrap {
+    background-color: transparent !important;
+}
+
+/* melhora hover */
+.x-form-trigger:hover {
+    background-color: #e6e6e6 !important;
+    border-radius: 4px;
+}

@@ -87,11 +87,13 @@ begin
                   with tTmp do begin
                        Connection := Conecta;
                        sql.Clear;
-                       sql.add('select Foto = (select Foto from Usuarios where Email = :pEmail)');
-                       sql.add('      ,Logo = (select Logo from Empresas where CNPJ  = :pCNPJ)');
+                       sql.add('select Foto      = (select Foto from Usuarios where Email = :pEmail)');
+                       sql.add('      ,Logo      = (select Logo from Empresas where CNPJ  = :pCNPJ)');
+                       sql.add('      ,Matricula = (select Matricula from Usuarios where Email = :pEmail)');
                        parambyname('pEmail').Value := Clientes.FieldByName('Email').asstring;
                        parambyname('pCNPJ').Value  := Clientes.FieldByName('Empresa_CNPJ').asstring;
                        open;
+                       mUsuarioMatricula := fieldbyname('Matricula').value;
                   end;
              end;
 

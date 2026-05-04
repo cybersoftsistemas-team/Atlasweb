@@ -55,6 +55,14 @@ video {
    text-shadow: #000 0.1em 0.1em 0.2em;
 }
 
+/*-------------------------------------------------------[ BARRA DE PESQUISA ]-----------------------------------------------------*/
+.BarraPesquisa {
+   background-color: #8b949d;
+   background-image: url("/files/images/Painel1.jpg");
+   border-width: 5px;
+   border-style: solid;
+}
+
 /*--------------------------------------------------------[ MENU ]-----------------------------------------------------------------*/
 /* Aqui ira determinar a cor de Fundo do menu */
 
@@ -139,7 +147,7 @@ video {
    text-shadow: 1px 1px white, -1px -1px #000; 
    */
    color: #000;
-   font: normal 10px helvetica, helvetica, arial, verdana, sans-serif;
+   font: bold 10px helvetica, helvetica, arial, verdana, sans-serif;
    text-transform: uppercase;      
    outline: 0;
    background-color: #E6E6FA;
@@ -157,11 +165,14 @@ video {
    border-radius: 3px 0px 0px;
    /* 
     height: 20px;
+    text-shadow: black 1px 1px 2px;
    */
 }
 
 .x-panel-header-default-horizontal.x-header-noborder {
    padding: 2px 2px 2px 2px;
+   height: 20px;
+   /*background-color: blue;*/
 }
 
 .x-column-header-inner {
@@ -210,7 +221,7 @@ video {
    border-width: 1px solid #000;
    border-radius: 5px;
    background-color: #EEE9E9;
-   background-image: url("/files/images/4832ff02.png");
+   background-image: url("/files/images/Painel1.jpg");
    background-repeat: repeat;
 }
 
@@ -218,11 +229,11 @@ video {
    padding: 10px 15px 22px;
    background-color: #216287;
 }        
-
+/*
 .x-tab.x-tab-active.x-tab-default .x-tab-inner-default {
    color: #000000;
 }
-
+*/
 .x-tab-default-top {
     -moz-border-radius-topleft: 6px;
     -webkit-border-top-left-radius: 6px;
@@ -289,7 +300,12 @@ video {
    border-width: 1px solid inset #000;
    border-radius: 5px;
    background-color: #EEE9E9;
-   background-image: url("/files/images/4832ff02.png");
+/*
+   background-image: url("/files/images/Green Speckled.bmp");
+   background-image: url("/files/images/Painel1.jpg");
+   background-image: url("/files/images/painel2.jpg");
+*/
+   background-image: url("/files/images/Painel1.jpg");
    background-repeat: repeat;
 }
 
@@ -297,7 +313,7 @@ video {
    border-width: 1px solid #000;
    border-radius: 5px;
    background-color: #EEE9E9;
-   background-image:url("/files/images/4832ff02.png");
+   background-image:url("/files/images/Painel1.jpg");
    background-repeat: repeat;
 }
 
@@ -317,7 +333,7 @@ video {
 .PastaInterna {
    box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 40px 0 rgba(0, 0, 0, 0.19);
    background-color: #4f5e6b !important;
-   border-style: none;
+   border-style: solid;
    border-width: 3px;
    border-color: #43666c63;
    transition: .5s ease;
@@ -331,10 +347,12 @@ video {
       
 .PastaItens {
    border-style: solid;
-   border-width: 1px;
-   border-color: black;
+   border-width: 1px 0px 1px 1px;
+   border-color: silver;
+   /* 
    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 40px 0 rgba(0, 0, 0, 0.19);
    background-color: #006666;
+   */
    font: bold 10px helvetica !important;
  } 
  
@@ -346,22 +364,22 @@ video {
 }
        
 .x-tab-inner-default {
-    font: bold 10px/16px helvetica, arial, verdana, sans-serif;
+    font: bold 11px/16px helvetica, arial, verdana, sans-serif;
     color: #fff;
     max-width: 100%;
 }
 
 .x-tab-bar {
   background-color: #f5f5f5 !important;
-  background-image: url("/files/images/4832ff02.png");
+  background-image: url("/files/images/Painel1.jpg");
 }
 
 
 /*--------------------------------------------------------[ CAMPOS ]--------------------------------------------------------------*/
 /* Caixa dos campos */
 .x-form-field {
-   border-radius: 1px;
-   font: bold 10px helvetica,courrier new !important;*/
+   border-radius: 0px;
+   font: bold 11px helvetica,courrier new !important;*/
    font-color: black;
 }
 
@@ -369,7 +387,7 @@ video {
 .x-form-text {
    /*border: 1px 1px 0px 1px groove inset rgba(204,225,229,0.17);*/
    min-height: 100%! Importante;
-   border-radius: 1px;
+   border-radius: 0px;
    background-color: #608d8417;
 }
              
@@ -383,7 +401,7 @@ video {
   border-width: 1px;
   border-style: solid;
   border-color: #c2c2c2 #dadada #dadada;
-  border-radius: 5px;
+  border-radius: 0px;
   /*
    box-shadow: -1px 0px 2px 0px #696969;
   */
@@ -393,14 +411,14 @@ video {
    color: #000;
    font: bold 10px helvetica !important;
    background: linear-gradient(356deg, #28b7c9, #8ebedb, #9dcae1);
-   border-radius: 1px;
+   border-radius: 0px;
    padding-top: 6px;
    padding-left: 4px;
 }
 
 .x-form-text-default {
    color: #000;
-   font: bold 10px helvetica,courrier new,arial,verdana,sans-serif;
+   font: bold 11px helvetica,courrier new,arial,verdana,sans-serif;
    min-height: 22px;
    background-color: #608d8417;
 }
@@ -411,34 +429,57 @@ video {
     padding: 3px 6px 2px;
     background: rgb(30 117 229 / 0%);
     background-color: #5566732e;
-    font: bold 10px helvetica, arial, verdana, sans-serif;
+    font: bold 11px helvetica, arial, verdana, sans-serif;
     min-height: 22px;
 }
 */
 
 .x-panel-body-default {
-    background: none;
     /*
     background: #E6E6FA;
-    background-color: #4f5e6b !important;
-    */
-    border-color: #c2c2c2;
+    background-color: #e0e7e600 !important;
     color: #4682B4;
+    background-color: #4f5e6b !important;
+    background-color: #e0e7e600 !important;
+    background-image: url("/files/images/Painel1.jpg");
+    background: #E6E6FA;
+    background-opacity: 50%;
+    padding: 10px 0 0;
+    */
+    background: none;
+    border-color: #c2c2c2;
     font-size: 10px;
     font-weight: normal;
     font-family: helvetica, arial, verdana, sans-serif;
     border-width: 1px;
     border-style: none;
-    /*padding: 10px 0 0;*/
 }
+
+/* Espaço entre o label do campo e a caixa de edição */
+.x-form-item-body > .x-form-field,
+.x-form-item-body > .x-form-trigger-wrap {
+    margin-left: 2px;
+}
+
+
+/* Campo especial com fonte do tipo courrier new/ Jet brain */
+.CampoEspecial {
+   padding: 1px;
+   background: #621a7f21;
+   color: #000; 
+   font: bold 11px helvetica !important;
+   font-family: jet brain mono, courrier new;
+   border-radius: 0px;
+}
+
 
 /*--------------------------------------------------------[ CAMPOS DESTACADOS ]------------------------------------------------------*/
 .CampoDestaque {
    padding: 1px;
    background: #621a7f21;
    color: #000; 
-   font: bold 10px helvetica !important;
-   border-radius: 3px;
+   font: bold 11px helvetica !important;
+   border-radius: 0px;
 }
 
 /*--------------------------------------------------------[ CAMPOS DESATIVADO ]------------------------------------------------------*/
@@ -447,16 +488,16 @@ video {
    background: #D8BFD8;
    min-height: 22px;
    color: #000;
-   border-radius: 3px;
+   border-radius: 0px;
    background-color: none;
-   font: bold 10px helvetica, arial, verdana, sans-serif;
+   font: bold 11px helvetica, arial, verdana, sans-serif;
    background-opacity: 50%;
 }
 
 /*---------------------------------------------------------[ CAMPOS SIMPLES ]---------------------------------------------------------*/
 .CampoSimples {
    padding: 2px;
-   border-radius: 3px;
+   border-radius: 0px;
    font: 10px helvetica !important;
 }
 
@@ -465,7 +506,13 @@ video {
    font: bold 10px helvetica !important;
    color: #000;
    border-radius: 3px;
+   /*
+   line-height: 14px;
+   padding-top: 0px;
+   padding-bottom: 0px;
+   */
 }
+
                  
 /* Titulos dos Groups */
 .x-fieldset-header-text {
@@ -505,7 +552,7 @@ video {
    background: linear-gradient(#ADD8E6, #4682B4) url(/files/images/form/trigger.png) no-repeat;
    color: #000;
    font-size: 10px;
-   border-radius: 3px;
+   border-radius: 0px;
    border-style: default;
    border: default;
    border-color: #000;
@@ -522,7 +569,7 @@ video {
 
 /*--------------------------------------------------------[ LABELS ]---------------------------------------------------------------*/
 .LabelDestaque {
-    border-radius: 3px;
+    border-radius: 0px;
     padding-block: 4px;
     padding: 6px;
     font: bold 10px helvetica, arial, verdana, sans-serif;
@@ -566,14 +613,13 @@ video {
     background-image: linear-gradient(top,#4c9dd8, #3892d4 50%, #358bc9 51%, #3892d4);
 }
 */
-/*
+
 element.style {
     width: 628px;
     left: 0px;
-    height: 461px;
+    height: 33px;
     top: 25px;
 }
-*/
 
 
 
@@ -590,6 +636,7 @@ element.style {
 .x-form-cb-label {
   display: inline-block;
   margin-left: 18px;    /* espaço para o toggle */
+  margin-top: 11px;
   line-height: 16px;
   white-space: nowrap;
 }
@@ -650,8 +697,29 @@ element.style {
 /* Corrige espaçamento do RadioButton */
 .x-form-type-radio label {
   padding-left: 5px !important; /* valor padrão */
+  padding-top: 0px !important; /* valor padrão */
+
 }
 
 .x-form-type-radio input {
   margin-left: 0 !important;
 }
+
+/* Remove a barra azul abaixo das abas APENAS desse PageControl */
+.pcSemBarraAzul .x-tab-bar-default {
+    background: transparent !important;
+    border-bottom: none !important;
+}
+
+/* Remove a borda superior do conteúdo */
+.pcSemBarraAzul .x-tab-panel-body-default {
+    border-top: none !important;
+}
+
+/* Garante que não sobre sombra/linha */
+.pcSemBarraAzul .x-panel-header {
+    background: transparent !important;
+    border: none !important;
+}
+
+
