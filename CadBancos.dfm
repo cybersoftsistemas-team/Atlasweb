@@ -986,7 +986,7 @@ object fCadBancos: TfCadBancos
       FixedChar = True
       Size = 1
     end
-    object BancosSaldo: TCurrencyField
+    object BancosSaldo: TBCDField
       FieldName = 'Saldo'
       Origin = 'Saldo'
       DisplayFormat = ',##0.00'

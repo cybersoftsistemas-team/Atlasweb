@@ -373,12 +373,12 @@ object dmDespacho: TdmDespacho
       FieldName = 'Data_Embarque'
       Origin = 'Cybersoft_ALEPH..DI.Data_Embarque'
     end
-    object DIPeso_Bruto: TFloatField
+    object DIPeso_Bruto: TBCDField
       FieldName = 'Peso_Bruto'
       Origin = 'Cybersoft_ALEPH..DI.Peso_Bruto'
       DisplayFormat = ',##0.000'
     end
-    object DIPeso_Liquido: TFloatField
+    object DIPeso_Liquido: TBCDField
       FieldName = 'Peso_Liquido'
       Origin = 'Cybersoft_ALEPH..DI.Peso_Liquido'
       DisplayFormat = ',##0.000'
@@ -401,17 +401,17 @@ object dmDespacho: TdmDespacho
       Origin = 'Cybersoft_ALEPH..DI.Recinto_Aduaneiro'
       Size = 7
     end
-    object DIFrete_PrePaid: TCurrencyField
+    object DIFrete_PrePaid: TBCDField
       FieldName = 'Frete_PrePaid'
       Origin = 'Cybersoft_ALEPH..DI.Frete_PrePaid'
       DisplayFormat = ',##0.00'
     end
-    object DIFrete_Collect: TCurrencyField
+    object DIFrete_Collect: TBCDField
       FieldName = 'Frete_Collect'
       Origin = 'Cybersoft_ALEPH..DI.Frete_Collect'
       DisplayFormat = ',##0.00'
     end
-    object DIFrete_Real: TCurrencyField
+    object DIFrete_Real: TBCDField
       FieldName = 'Frete_Real'
       Origin = 'Cybersoft_ALEPH..DI.Frete_Real'
       DisplayFormat = ',##0.00'
@@ -420,12 +420,12 @@ object dmDespacho: TdmDespacho
       FieldName = 'Moeda_Frete'
       Origin = 'Cybersoft_ALEPH..DI.Moeda_Frete'
     end
-    object DISeguro_ME: TCurrencyField
+    object DISeguro_ME: TBCDField
       FieldName = 'Seguro_ME'
       Origin = 'Cybersoft_ALEPH..DI.Seguro_ME'
       DisplayFormat = ',##0.00'
     end
-    object DISeguro_Real: TCurrencyField
+    object DISeguro_Real: TBCDField
       FieldName = 'Seguro_Real'
       Origin = 'Cybersoft_ALEPH..DI.Seguro_Real'
       DisplayFormat = ',##0.00'
@@ -434,7 +434,7 @@ object dmDespacho: TdmDespacho
       FieldName = 'Moeda_Seguro'
       Origin = 'Cybersoft_ALEPH..DI.Moeda_Seguro'
     end
-    object DIDespesas_ME: TCurrencyField
+    object DIDespesas_ME: TBCDField
       FieldName = 'Despesas_ME'
       Origin = 'Cybersoft_ALEPH..DI.Despesas_ME'
       DisplayFormat = ',##0.00'
@@ -443,12 +443,12 @@ object dmDespacho: TdmDespacho
       FieldName = 'Moeda_Despesas'
       Origin = 'Cybersoft_ALEPH..DI.Moeda_Despesas'
     end
-    object DIDespesas_Real: TCurrencyField
+    object DIDespesas_Real: TBCDField
       FieldName = 'Despesas_Real'
       Origin = 'Cybersoft_ALEPH..DI.Despesas_Real'
       DisplayFormat = ',##0.00'
     end
-    object DITotal_MercadoriaME: TCurrencyField
+    object DITotal_MercadoriaME: TBCDField
       FieldName = 'Total_MercadoriaME'
       Origin = 'Cybersoft_ALEPH..DI.Total_MercadoriaME'
       DisplayFormat = ',##0.00'
@@ -508,7 +508,7 @@ object dmDespacho: TdmDespacho
     object DIVolumes: TStringField
       FieldName = 'Volumes'
     end
-    object DITotal_AcrescimoReal: TCurrencyField
+    object DITotal_AcrescimoReal: TBCDField
       FieldName = 'Total_AcrescimoReal'
     end
     object DIFundamento_Legal: TSmallintField
@@ -540,12 +540,12 @@ object dmDespacho: TdmDespacho
     object DIVolumes_Embalagem: TSmallintField
       FieldName = 'Volumes_Embalagem'
     end
-    object DIFrete_TerritorioNac: TCurrencyField
+    object DIFrete_TerritorioNac: TBCDField
       FieldName = 'Frete_TerritorioNac'
       DisplayFormat = ',##0.00'
       EditFormat = ',##0.00'
     end
-    object DITotal_MercadoriaReal: TCurrencyField
+    object DITotal_MercadoriaReal: TBCDField
       FieldName = 'Total_MercadoriaReal'
     end
     object DIRegime_TributacaoII: TSmallintField
@@ -1377,27 +1377,27 @@ object dmDespacho: TdmDespacho
       FieldName = 'Codigo_Mercadoria'
       Origin = 'SLIItens.Codigo_Mercadoria'
     end
-    object SLIItensPeso_Liquido: TFloatField
+    object SLIItensPeso_Liquido: TBCDField
       FieldName = 'Peso_Liquido'
       Origin = 'SLIItens.Peso_Liquido'
       DisplayFormat = ',##0.000'
     end
-    object SLIItensQtde_UnidadeCom: TFloatField
+    object SLIItensQtde_UnidadeCom: TBCDField
       FieldName = 'Qtde_UnidadeCom'
       Origin = 'SLIItens.Qtde_UnidadeCom'
       DisplayFormat = ',##0.000'
     end
-    object SLIItensQtde_MedidaEst: TFloatField
+    object SLIItensQtde_MedidaEst: TBCDField
       FieldName = 'Qtde_MedidaEst'
       Origin = 'SLIItens.Qtde_MedidaEst'
       DisplayFormat = ',##0.000'
     end
-    object SLIItensValor_LocEmbarque: TCurrencyField
+    object SLIItensValor_LocEmbarque: TBCDField
       FieldName = 'Valor_LocEmbarque'
       Origin = 'SLIItens.Valor_LocEmbarque'
       DisplayFormat = ',##0.00'
     end
-    object SLIItensValor_CondVenda: TCurrencyField
+    object SLIItensValor_CondVenda: TBCDField
       FieldName = 'Valor_CondVenda'
       Origin = 'SLIItens.Valor_CondVenda'
       DisplayFormat = ',##0.00'
@@ -1814,11 +1814,11 @@ object dmDespacho: TdmDespacho
       Size = 60
       Lookup = True
     end
-    object DIAcrescimoValor_ME: TCurrencyField
+    object DIAcrescimoValor_ME: TBCDField
       FieldName = 'Valor_ME'
       DisplayFormat = ',##0.00'
     end
-    object DIAcrescimoValor_Real: TCurrencyField
+    object DIAcrescimoValor_Real: TBCDField
       FieldName = 'Valor_Real'
       DisplayFormat = ',##0.00'
     end
@@ -2083,11 +2083,11 @@ object dmDespacho: TdmDespacho
     object DIAdicoesTipo_Fabricante: TSmallintField
       FieldName = 'Tipo_Fabricante'
     end
-    object DIAdicoesPeso_Liquido: TFloatField
+    object DIAdicoesPeso_Liquido: TBCDField
       FieldName = 'Peso_Liquido'
       DisplayFormat = ',##0.000'
     end
-    object DIAdicoesQuantidade: TFloatField
+    object DIAdicoesQuantidade: TBCDField
       FieldName = 'Quantidade'
     end
     object DIAdicoesMoeda_FOB: TSmallintField
@@ -2111,17 +2111,17 @@ object dmDespacho: TdmDespacho
       FieldName = 'Local_CondicaoVenda'
       Size = 60
     end
-    object DIAdicoesValor_Frete: TCurrencyField
+    object DIAdicoesValor_Frete: TBCDField
       FieldName = 'Valor_Frete'
       DisplayFormat = ',##0.00'
     end
-    object DIAdicoesParidade: TFloatField
+    object DIAdicoesParidade: TBCDField
       FieldName = 'Paridade'
     end
-    object DIAdicoesTaxa_Cambio: TFloatField
+    object DIAdicoesTaxa_Cambio: TBCDField
       FieldName = 'Taxa_Cambio'
     end
-    object DIAdicoesValor_Seguro: TCurrencyField
+    object DIAdicoesValor_Seguro: TBCDField
       FieldName = 'Valor_Seguro'
       DisplayFormat = ',##0.00'
     end
@@ -2141,20 +2141,20 @@ object dmDespacho: TdmDespacho
       FieldName = 'Documento_Reducao'
       Size = 8
     end
-    object DIAdicoesValor_MercadoriaME: TCurrencyField
+    object DIAdicoesValor_MercadoriaME: TBCDField
       FieldName = 'Valor_MercadoriaME'
       DisplayFormat = ',##0.00'
     end
-    object DIAdicoesValor_DespesasME: TCurrencyField
+    object DIAdicoesValor_DespesasME: TBCDField
       FieldName = 'Valor_DespesasME'
     end
-    object DIAdicoesPercentual_RedII: TFloatField
+    object DIAdicoesPercentual_RedII: TBCDField
       FieldName = 'Percentual_RedII'
     end
-    object DIAdicoesValor_II: TCurrencyField
+    object DIAdicoesValor_II: TBCDField
       FieldName = 'Valor_II'
     end
-    object DIAdicoesValor_IIZFM: TCurrencyField
+    object DIAdicoesValor_IIZFM: TBCDField
       FieldName = 'Valor_IIZFM'
     end
     object DIAdicoesCobertura_Cambial: TSmallintField
@@ -2175,16 +2175,16 @@ object dmDespacho: TdmDespacho
     object DIAdicoesIntervalo_Parcela: TSmallintField
       FieldName = 'Intervalo_Parcela'
     end
-    object DIAdicoesValor_TotalPrazo: TCurrencyField
+    object DIAdicoesValor_TotalPrazo: TBCDField
       FieldName = 'Valor_TotalPrazo'
     end
-    object DIAdicoesTaxa_Juros: TFloatField
+    object DIAdicoesTaxa_Juros: TBCDField
       FieldName = 'Taxa_Juros'
     end
     object DIAdicoesTaxa_JurosCodigo: TSmallintField
       FieldName = 'Taxa_JurosCodigo'
     end
-    object DIAdicoesValor_TotalFin: TCurrencyField
+    object DIAdicoesValor_TotalFin: TBCDField
       FieldName = 'Valor_TotalFin'
     end
     object DIAdicoesNumero_ROF: TStringField
@@ -2197,10 +2197,10 @@ object dmDespacho: TdmDespacho
     object DIAdicoesIncidencia_Juros: TBooleanField
       FieldName = 'Incidencia_Juros'
     end
-    object DIAdicoesPercentual_Comissao: TFloatField
+    object DIAdicoesPercentual_Comissao: TBCDField
       FieldName = 'Percentual_Comissao'
     end
-    object DIAdicoesValor_Comissao: TCurrencyField
+    object DIAdicoesValor_Comissao: TBCDField
       FieldName = 'Valor_Comissao'
     end
     object DIAdicoesAgente: TSmallintField
@@ -2219,10 +2219,10 @@ object dmDespacho: TdmDespacho
     object DIAdicoesMotivo_Admissao: TSmallintField
       FieldName = 'Motivo_Admissao'
     end
-    object DIAdicoesValor_DCRME: TCurrencyField
+    object DIAdicoesValor_DCRME: TBCDField
       FieldName = 'Valor_DCRME'
     end
-    object DIAdicoesAliquota_ICMS: TFloatField
+    object DIAdicoesAliquota_ICMS: TBCDField
       FieldName = 'Aliquota_ICMS'
     end
     object DIAdicoesFundamento_LegalReduc: TSmallintField
@@ -2250,19 +2250,19 @@ object dmDespacho: TdmDespacho
     object DIAdicoesRelacao_ExpFab: TSmallintField
       FieldName = 'Relacao_ExpFab'
     end
-    object DIAdicoesPeso_Bruto: TFloatField
+    object DIAdicoesPeso_Bruto: TBCDField
       FieldName = 'Peso_Bruto'
     end
-    object DIAdicoesAliquota_COFINS: TFloatField
+    object DIAdicoesAliquota_COFINS: TBCDField
       FieldName = 'Aliquota_COFINS'
     end
-    object DIAdicoesAliquota_PIS: TFloatField
+    object DIAdicoesAliquota_PIS: TBCDField
       FieldName = 'Aliquota_PIS'
     end
-    object DIAdicoesValor_MercadoriaReal: TCurrencyField
+    object DIAdicoesValor_MercadoriaReal: TBCDField
       FieldName = 'Valor_MercadoriaReal'
     end
-    object DIAdicoesAliquota_RedCOFINS: TFloatField
+    object DIAdicoesAliquota_RedCOFINS: TBCDField
       FieldName = 'Aliquota_RedCOFINS'
     end
     object DIAdicoesMetodo_ValNome: TStringField
@@ -2301,55 +2301,55 @@ object dmDespacho: TdmDespacho
     object DIAdicoesAcordo_TarifarioIICod: TSmallintField
       FieldName = 'Acordo_TarifarioIICod'
     end
-    object DIAdicoesAliquota_II: TFloatField
+    object DIAdicoesAliquota_II: TBCDField
       FieldName = 'Aliquota_II'
     end
-    object DIAdicoesAliquota_ReducaoII: TFloatField
+    object DIAdicoesAliquota_ReducaoII: TBCDField
       FieldName = 'Aliquota_ReducaoII'
     end
-    object DIAdicoesII_Reduzida: TFloatField
+    object DIAdicoesII_Reduzida: TBCDField
       FieldName = 'II_Reduzida'
     end
-    object DIAdicoesValor_BCII: TCurrencyField
+    object DIAdicoesValor_BCII: TBCDField
       FieldName = 'Valor_BCII'
     end
-    object DIAdicoesAliquota_IPI: TFloatField
+    object DIAdicoesAliquota_IPI: TBCDField
       FieldName = 'Aliquota_IPI'
     end
-    object DIAdicoesValor_BCIPI: TCurrencyField
+    object DIAdicoesValor_BCIPI: TBCDField
       FieldName = 'Valor_BCIPI'
     end
-    object DIAdicoesValor_IPI: TCurrencyField
+    object DIAdicoesValor_IPI: TBCDField
       FieldName = 'Valor_IPI'
     end
-    object DIAdicoesValor_BCPIS: TCurrencyField
+    object DIAdicoesValor_BCPIS: TBCDField
       FieldName = 'Valor_BCPIS'
     end
-    object DIAdicoesValor_PIS: TCurrencyField
+    object DIAdicoesValor_PIS: TBCDField
       FieldName = 'Valor_PIS'
     end
-    object DIAdicoesValor_BCCOFINS: TCurrencyField
+    object DIAdicoesValor_BCCOFINS: TBCDField
       FieldName = 'Valor_BCCOFINS'
     end
-    object DIAdicoesValor_COFINS: TCurrencyField
+    object DIAdicoesValor_COFINS: TBCDField
       FieldName = 'Valor_COFINS'
     end
-    object DIAdicoesValor_BCICMS: TCurrencyField
+    object DIAdicoesValor_BCICMS: TBCDField
       FieldName = 'Valor_BCICMS'
     end
-    object DIAdicoesValor_ICMS: TCurrencyField
+    object DIAdicoesValor_ICMS: TBCDField
       FieldName = 'Valor_ICMS'
     end
-    object DIAdicoesAliquota_RedPIS: TFloatField
+    object DIAdicoesAliquota_RedPIS: TBCDField
       FieldName = 'Aliquota_RedPIS'
     end
-    object DIAdicoesAliquota_IPIEspRec: TFloatField
+    object DIAdicoesAliquota_IPIEspRec: TBCDField
       FieldName = 'Aliquota_IPIEspRec'
     end
-    object DIAdicoesAliquota_IPIEspUnid: TFloatField
+    object DIAdicoesAliquota_IPIEspUnid: TBCDField
       FieldName = 'Aliquota_IPIEspUnid'
     end
-    object DIAdicoesReducao_BCPISCOFINS: TFloatField
+    object DIAdicoesReducao_BCPISCOFINS: TBCDField
       FieldName = 'Reducao_BCPISCOFINS'
     end
     object DIAdicoesRegime_TribII: TSmallintField
@@ -2527,10 +2527,10 @@ object dmDespacho: TdmDespacho
     object AdicoesAcreMoeda: TSmallintField
       FieldName = 'Moeda'
     end
-    object AdicoesAcreValor_ME: TCurrencyField
+    object AdicoesAcreValor_ME: TBCDField
       FieldName = 'Valor_ME'
     end
-    object AdicoesAcreValor_Real: TCurrencyField
+    object AdicoesAcreValor_Real: TBCDField
       FieldName = 'Valor_Real'
     end
   end
@@ -2925,16 +2925,16 @@ object dmDespacho: TdmDespacho
     object POItensItem: TSmallintField
       FieldName = 'Item'
     end
-    object POItensQuantidade: TFloatField
+    object POItensQuantidade: TBCDField
       FieldName = 'Quantidade'
     end
-    object POItensValor: TFloatField
+    object POItensValor: TBCDField
       FieldName = 'Valor'
     end
-    object POItensQuantidade_Unidade: TFloatField
+    object POItensQuantidade_Unidade: TBCDField
       FieldName = 'Quantidade_Unidade'
     end
-    object POItensQuantidade_Volumes: TFloatField
+    object POItensQuantidade_Volumes: TBCDField
       FieldName = 'Quantidade_Volumes'
     end
     object POItensNCM: TStringField
@@ -2948,7 +2948,7 @@ object dmDespacho: TdmDespacho
       FieldName = 'Sel'
       ReadOnly = True
     end
-    object POItensSaldo: TFloatField
+    object POItensSaldo: TBCDField
       FieldName = 'Saldo'
       ReadOnly = True
     end

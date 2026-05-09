@@ -511,7 +511,7 @@ object fCadLancamentoPadrao: TfCadLancamentoPadrao
       Origin = 'Documento'
       Size = 10
     end
-    object LancamentoPadraoValor: TCurrencyField
+    object LancamentoPadraoValor: TBCDField
       FieldName = 'Valor'
       Origin = 'Valor'
     end

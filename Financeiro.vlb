@@ -16,9 +16,6 @@ Coordinates=446,10,140,168
 [Lista]
 Coordinates=172,10,120,476
 
-[ListaValor_Baixado]
-Coordinates=711,188,126,36
-
 [ListaValor_Multa]
 Coordinates=711,243,111,36
 
@@ -138,9 +135,6 @@ Coordinates=2317,832,105,36
 
 [bExcluir]
 Coordinates=2246,832,61,36
-
-[ListaAdValor_Baixado]
-Coordinates=960,111,141,36
 
 [BaixasForma_Pgto]
 Coordinates=960,166,124,36
@@ -687,5 +681,5 @@ Coordinates=165,924,46,36
 Coordinates=92,924,63,36
 
 []
-Coordinates=549,740,132,36
+Coordinates=960,111,141,36
 

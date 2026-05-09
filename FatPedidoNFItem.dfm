@@ -2884,11 +2884,11 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       FieldName = 'Adicao'
       Origin = 'Adicao'
     end
-    object PedidosNFItensPeso_Liquido: TFloatField
+    object PedidosNFItensPeso_Liquido: TBCDField
       FieldName = 'Peso_Liquido'
       Origin = 'Peso_Liquido'
     end
-    object PedidosNFItensPeso_Bruto: TFloatField
+    object PedidosNFItensPeso_Bruto: TBCDField
       FieldName = 'Peso_Bruto'
       Origin = 'Peso_Bruto'
     end
@@ -2913,7 +2913,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       Origin = 'Processo'
       Size = 15
     end
-    object PedidosNFItensRateio_ICMSProcesso: TFloatField
+    object PedidosNFItensRateio_ICMSProcesso: TBCDField
       FieldName = 'Rateio_ICMSProcesso'
       Origin = 'Rateio_ICMSProcesso'
     end
@@ -2974,7 +2974,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       FieldName = 'Ordem'
       Origin = 'Ordem'
     end
-    object PedidosNFItensFator_Cambio: TFloatField
+    object PedidosNFItensFator_Cambio: TBCDField
       FieldName = 'Fator_Cambio'
       Origin = 'Fator_Cambio'
     end
@@ -2987,499 +2987,499 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       Origin = 'Numero_BL'
       Size = 15
     end
-    object PedidosNFItensValor_BCDIFAL: TCurrencyField
+    object PedidosNFItensValor_BCDIFAL: TBCDField
       FieldName = 'Valor_BCDIFAL'
       Origin = 'Valor_BCDIFAL'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_BCDIFALST: TCurrencyField
+    object PedidosNFItensValor_BCDIFALST: TBCDField
       FieldName = 'Valor_BCDIFALST'
       Origin = 'Valor_BCDIFALST'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_BCICMSMono: TCurrencyField
+    object PedidosNFItensValor_BCICMSMono: TBCDField
       FieldName = 'Valor_BCICMSMono'
       Origin = 'Valor_BCICMSMono'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_BCICMSMonoRet: TCurrencyField
+    object PedidosNFItensValor_BCICMSMonoRet: TBCDField
       FieldName = 'Valor_BCICMSMonoRet'
       Origin = 'Valor_BCICMSMonoRet'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_BCICMSPresumido: TCurrencyField
+    object PedidosNFItensValor_BCICMSPresumido: TBCDField
       FieldName = 'Valor_BCICMSPresumido'
       Origin = 'Valor_BCICMSPresumido'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_COFINSST: TCurrencyField
+    object PedidosNFItensValor_COFINSST: TBCDField
       FieldName = 'Valor_COFINSST'
       Origin = 'Valor_COFINSST'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_ICMSMono: TCurrencyField
+    object PedidosNFItensValor_ICMSMono: TBCDField
       FieldName = 'Valor_ICMSMono'
       Origin = 'Valor_ICMSMono'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_ICMSMonoRet: TCurrencyField
+    object PedidosNFItensValor_ICMSMonoRet: TBCDField
       FieldName = 'Valor_ICMSMonoRet'
       Origin = 'Valor_ICMSMonoRet'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_ICMSPresumido: TCurrencyField
+    object PedidosNFItensValor_ICMSPresumido: TBCDField
       FieldName = 'Valor_ICMSPresumido'
       Origin = 'Valor_ICMSPresumido'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_PISST: TCurrencyField
+    object PedidosNFItensValor_PISST: TBCDField
       FieldName = 'Valor_PISST'
       Origin = 'Valor_PISST'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensFator_Produto: TFloatField
+    object PedidosNFItensFator_Produto: TBCDField
       FieldName = 'Fator_Produto'
       Origin = 'Fator_Produto'
     end
-    object PedidosNFItensValor_Unitario: TFloatField
+    object PedidosNFItensValor_Unitario: TBCDField
       FieldName = 'Valor_Unitario'
       Origin = 'Valor_Unitario'
       Required = True
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensQuantidade: TFloatField
+    object PedidosNFItensQuantidade: TBCDField
       FieldName = 'Quantidade'
       Origin = 'Quantidade'
       Required = True
       DisplayFormat = ',##0.000'
     end
-    object PedidosNFItensValor_BCIPI: TCurrencyField
+    object PedidosNFItensValor_BCIPI: TBCDField
       FieldName = 'Valor_BCIPI'
       Origin = 'Valor_BCIPI'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensAliquota_IPI: TFloatField
+    object PedidosNFItensAliquota_IPI: TBCDField
       FieldName = 'Aliquota_IPI'
       Origin = 'Aliquota_IPI'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_IPI: TCurrencyField
+    object PedidosNFItensValor_IPI: TBCDField
       FieldName = 'Valor_IPI'
       Origin = 'Valor_IPI'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensAliquota_II: TFloatField
+    object PedidosNFItensAliquota_II: TBCDField
       FieldName = 'Aliquota_II'
       Origin = 'Aliquota_II'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_II: TFloatField
+    object PedidosNFItensValor_II: TBCDField
       FieldName = 'Valor_II'
       Origin = 'Valor_II'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_BCICMSST: TCurrencyField
+    object PedidosNFItensValor_BCICMSST: TBCDField
       FieldName = 'Valor_BCICMSST'
       Origin = 'Valor_BCICMSST'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensAliquota_ICMSST: TFloatField
+    object PedidosNFItensAliquota_ICMSST: TBCDField
       FieldName = 'Aliquota_ICMSST'
       Origin = 'Aliquota_ICMSST'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_ICMSST: TCurrencyField
+    object PedidosNFItensValor_ICMSST: TBCDField
       FieldName = 'Valor_ICMSST'
       Origin = 'Valor_ICMSST'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_BCMVA: TCurrencyField
+    object PedidosNFItensValor_BCMVA: TBCDField
       FieldName = 'Valor_BCMVA'
       Origin = 'Valor_BCMVA'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensAliquota_MVA: TFloatField
+    object PedidosNFItensAliquota_MVA: TBCDField
       FieldName = 'Aliquota_MVA'
       Origin = 'Aliquota_MVA'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_MVA: TCurrencyField
+    object PedidosNFItensValor_MVA: TBCDField
       FieldName = 'Valor_MVA'
       Origin = 'Valor_MVA'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensAliquota_PIS: TFloatField
+    object PedidosNFItensAliquota_PIS: TBCDField
       FieldName = 'Aliquota_PIS'
       Origin = 'Aliquota_PIS'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_BCPIS: TCurrencyField
+    object PedidosNFItensValor_BCPIS: TBCDField
       FieldName = 'Valor_BCPIS'
       Origin = 'Valor_BCPIS'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_PIS: TCurrencyField
+    object PedidosNFItensValor_PIS: TBCDField
       FieldName = 'Valor_PIS'
       Origin = 'Valor_PIS'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensAliquota_COFINS: TFloatField
+    object PedidosNFItensAliquota_COFINS: TBCDField
       FieldName = 'Aliquota_COFINS'
       Origin = 'Aliquota_COFINS'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_BCCOFINS: TCurrencyField
+    object PedidosNFItensValor_BCCOFINS: TBCDField
       FieldName = 'Valor_BCCOFINS'
       Origin = 'Valor_BCCOFINS'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_COFINS: TCurrencyField
+    object PedidosNFItensValor_COFINS: TBCDField
       FieldName = 'Valor_COFINS'
       Origin = 'Valor_COFINS'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_Frete: TCurrencyField
+    object PedidosNFItensValor_Frete: TBCDField
       FieldName = 'Valor_Frete'
       Origin = 'Valor_Frete'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_Seguro: TCurrencyField
+    object PedidosNFItensValor_Seguro: TBCDField
       FieldName = 'Valor_Seguro'
       Origin = 'Valor_Seguro'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_Despesa: TCurrencyField
+    object PedidosNFItensValor_Despesa: TBCDField
       FieldName = 'Valor_Despesa'
       Origin = 'Valor_Despesa'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_BCFCPST: TCurrencyField
+    object PedidosNFItensValor_BCFCPST: TBCDField
       FieldName = 'Valor_BCFCPST'
       Origin = 'Valor_BCFCPST'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_FCPST: TCurrencyField
+    object PedidosNFItensValor_FCPST: TBCDField
       FieldName = 'Valor_FCPST'
       Origin = 'Valor_FCPST'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_BCFCP: TCurrencyField
+    object PedidosNFItensValor_BCFCP: TBCDField
       FieldName = 'Valor_BCFCP'
       Origin = 'Valor_BCFCP'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_FCP: TCurrencyField
+    object PedidosNFItensValor_FCP: TBCDField
       FieldName = 'Valor_FCP'
       Origin = 'Valor_FCP'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_BCICMSDest: TCurrencyField
+    object PedidosNFItensValor_BCICMSDest: TBCDField
       FieldName = 'Valor_BCICMSDest'
       Origin = 'Valor_BCICMSDest'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensAliquota_ICMSDest: TFloatField
+    object PedidosNFItensAliquota_ICMSDest: TBCDField
       FieldName = 'Aliquota_ICMSDest'
       Origin = 'Aliquota_ICMSDest'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_ICMSDest: TCurrencyField
+    object PedidosNFItensValor_ICMSDest: TBCDField
       FieldName = 'Valor_ICMSDest'
       Origin = 'Valor_ICMSDest'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_DIFAL: TCurrencyField
+    object PedidosNFItensValor_DIFAL: TBCDField
       FieldName = 'Valor_DIFAL'
       Origin = 'Valor_DIFAL'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensPercentual_DIFALOrig: TFloatField
+    object PedidosNFItensPercentual_DIFALOrig: TBCDField
       FieldName = 'Percentual_DIFALOrig'
       Origin = 'Percentual_DIFALOrig'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_DIFALOrig: TCurrencyField
+    object PedidosNFItensValor_DIFALOrig: TBCDField
       FieldName = 'Valor_DIFALOrig'
       Origin = 'Valor_DIFALOrig'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensPercentual_DIFALDest: TFloatField
+    object PedidosNFItensPercentual_DIFALDest: TBCDField
       FieldName = 'Percentual_DIFALDest'
       Origin = 'Percentual_DIFALDest'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_DIFALDest: TCurrencyField
+    object PedidosNFItensValor_DIFALDest: TBCDField
       FieldName = 'Valor_DIFALDest'
       Origin = 'Valor_DIFALDest'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_DIFALST: TCurrencyField
+    object PedidosNFItensValor_DIFALST: TBCDField
       FieldName = 'Valor_DIFALST'
       Origin = 'Valor_DIFALST'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensAliquota_FCP: TFloatField
+    object PedidosNFItensAliquota_FCP: TBCDField
       FieldName = 'Aliquota_FCP'
       Origin = 'Aliquota_FCP'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_FCPDest: TCurrencyField
+    object PedidosNFItensValor_FCPDest: TBCDField
       FieldName = 'Valor_FCPDest'
       Origin = 'Valor_FCPDest'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensPercentual_FCPICMSOrig: TFloatField
+    object PedidosNFItensPercentual_FCPICMSOrig: TBCDField
       FieldName = 'Percentual_FCPICMSOrig'
       Origin = 'Percentual_FCPICMSOrig'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_FCPICMSDest: TCurrencyField
+    object PedidosNFItensValor_FCPICMSDest: TBCDField
       FieldName = 'Valor_FCPICMSDest'
       Origin = 'Valor_FCPICMSDest'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_ICMSDesonerado: TCurrencyField
+    object PedidosNFItensValor_ICMSDesonerado: TBCDField
       FieldName = 'Valor_ICMSDesonerado'
       Origin = 'Valor_ICMSDesonerado'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_ICMSSTAnt: TCurrencyField
+    object PedidosNFItensValor_ICMSSTAnt: TBCDField
       FieldName = 'Valor_ICMSSTAnt'
       Origin = 'Valor_ICMSSTAnt'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_ICMSAnt: TCurrencyField
+    object PedidosNFItensValor_ICMSAnt: TBCDField
       FieldName = 'Valor_ICMSAnt'
       Origin = 'Valor_ICMSAnt'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_CIF: TCurrencyField
+    object PedidosNFItensValor_CIF: TBCDField
       FieldName = 'Valor_CIF'
       Origin = 'Valor_CIF'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_Pauta: TCurrencyField
+    object PedidosNFItensValor_Pauta: TBCDField
       FieldName = 'Valor_Pauta'
       Origin = 'Valor_Pauta'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_AFRMM: TCurrencyField
+    object PedidosNFItensValor_AFRMM: TBCDField
       FieldName = 'Valor_AFRMM'
       Origin = 'Valor_AFRMM'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_BCII: TCurrencyField
+    object PedidosNFItensValor_BCII: TBCDField
       FieldName = 'Valor_BCII'
       Origin = 'Valor_BCII'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_IsentasICMS: TCurrencyField
+    object PedidosNFItensValor_IsentasICMS: TBCDField
       FieldName = 'Valor_IsentasICMS'
       Origin = 'Valor_IsentasICMS'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_OutrasICMS: TCurrencyField
+    object PedidosNFItensValor_OutrasICMS: TBCDField
       FieldName = 'Valor_OutrasICMS'
       Origin = 'Valor_OutrasICMS'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_IsentasIPI: TCurrencyField
+    object PedidosNFItensValor_IsentasIPI: TBCDField
       FieldName = 'Valor_IsentasIPI'
       Origin = 'Valor_IsentasIPI'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_OutrasIPI: TCurrencyField
+    object PedidosNFItensValor_OutrasIPI: TBCDField
       FieldName = 'Valor_OutrasIPI'
       Origin = 'Valor_OutrasIPI'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_BCICMSOp: TCurrencyField
+    object PedidosNFItensValor_BCICMSOp: TBCDField
       FieldName = 'Valor_BCICMSOp'
       Origin = 'Valor_BCICMSOp'
     end
-    object PedidosNFItensAliquota_ICMSOp: TFloatField
+    object PedidosNFItensAliquota_ICMSOp: TBCDField
       FieldName = 'Aliquota_ICMSOp'
       Origin = 'Aliquota_ICMSOp'
     end
-    object PedidosNFItensValor_ICMSOp: TCurrencyField
+    object PedidosNFItensValor_ICMSOp: TBCDField
       FieldName = 'Valor_ICMSOp'
       Origin = 'Valor_ICMSOp'
     end
-    object PedidosNFItensAliquota_ICMSEntrada: TFloatField
+    object PedidosNFItensAliquota_ICMSEntrada: TBCDField
       FieldName = 'Aliquota_ICMSEntrada'
       Origin = 'Aliquota_ICMSEntrada'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensAliquota_ICMSPresumido: TFloatField
+    object PedidosNFItensAliquota_ICMSPresumido: TBCDField
       FieldName = 'Aliquota_ICMSPresumido'
       Origin = 'Aliquota_ICMSPresumido'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensAliquota_ICMSDif: TFloatField
+    object PedidosNFItensAliquota_ICMSDif: TBCDField
       FieldName = 'Aliquota_ICMSDif'
       Origin = 'Aliquota_ICMSDif'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_BCICMSApuracao: TCurrencyField
+    object PedidosNFItensValor_BCICMSApuracao: TBCDField
       FieldName = 'Valor_BCICMSApuracao'
       Origin = 'Valor_BCICMSApuracao'
       DisplayFormat = ',##0.00'
       currency = False
     end
-    object PedidosNFItensValor_ICMSApuracao: TCurrencyField
+    object PedidosNFItensValor_ICMSApuracao: TBCDField
       FieldName = 'Valor_ICMSApuracao'
       Origin = 'Valor_ICMSApuracao'
       DisplayFormat = ',##0.00'
       currency = False
     end
-    object PedidosNFItensValor_MediaBCR: TCurrencyField
+    object PedidosNFItensValor_MediaBCR: TBCDField
       FieldName = 'Valor_MediaBCR'
       Origin = 'Valor_MediaBCR'
       DisplayFormat = ',##0.00'
       currency = False
     end
-    object PedidosNFItensValor_TotalNota: TCurrencyField
+    object PedidosNFItensValor_TotalNota: TBCDField
       FieldName = 'Valor_TotalNota'
       Origin = 'Valor_TotalNota'
       DisplayFormat = ',##0.00'
       currency = False
     end
-    object PedidosNFItensValor_Inventario: TCurrencyField
+    object PedidosNFItensValor_Inventario: TBCDField
       FieldName = 'Valor_Inventario'
       Origin = 'Valor_Inventario'
       DisplayFormat = ',##0.00'
       currency = False
     end
-    object PedidosNFItensValor_Dumping: TCurrencyField
+    object PedidosNFItensValor_Dumping: TBCDField
       FieldName = 'Valor_Dumping'
       Origin = 'Valor_Dumping'
       DisplayFormat = ',##0.00'
       currency = False
     end
-    object PedidosNFItensPercentual_Lucro: TFloatField
+    object PedidosNFItensPercentual_Lucro: TBCDField
       FieldName = 'Percentual_Lucro'
       Origin = 'Percentual_Lucro'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_Lucro: TCurrencyField
+    object PedidosNFItensValor_Lucro: TBCDField
       FieldName = 'Valor_Lucro'
       Origin = 'Valor_Lucro'
       DisplayFormat = ',##0.00'
       currency = False
     end
-    object PedidosNFItensValor_PIS2: TFloatField
+    object PedidosNFItensValor_PIS2: TBCDField
       FieldName = 'Valor_PIS2'
       Origin = 'Valor_PIS2'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_COFINS2: TFloatField
+    object PedidosNFItensValor_COFINS2: TBCDField
       FieldName = 'Valor_COFINS2'
       Origin = 'Valor_COFINS2'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensAliquota_IRPJ: TFloatField
+    object PedidosNFItensAliquota_IRPJ: TBCDField
       FieldName = 'Aliquota_IRPJ'
       Origin = 'Aliquota_IRPJ'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_IRPJ: TCurrencyField
+    object PedidosNFItensValor_IRPJ: TBCDField
       FieldName = 'Valor_IRPJ'
       Origin = 'Valor_IRPJ'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensAliquota_CSLL: TFloatField
+    object PedidosNFItensAliquota_CSLL: TBCDField
       FieldName = 'Aliquota_CSLL'
       Origin = 'Aliquota_CSLL'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_CSLL: TCurrencyField
+    object PedidosNFItensValor_CSLL: TBCDField
       FieldName = 'Valor_CSLL'
       Origin = 'Valor_CSLL'
       DisplayFormat = ',##0.00'
       currency = False
     end
-    object PedidosNFItensRateio_FreteTerrNac: TFloatField
+    object PedidosNFItensRateio_FreteTerrNac: TBCDField
       FieldName = 'Rateio_FreteTerrNac'
       Origin = 'Rateio_FreteTerrNac'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensPercentual_Desconto: TFloatField
+    object PedidosNFItensPercentual_Desconto: TBCDField
       FieldName = 'Percentual_Desconto'
       Origin = 'Percentual_Desconto'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_Desconto: TFloatField
+    object PedidosNFItensValor_Desconto: TBCDField
       FieldName = 'Valor_Desconto'
       Origin = 'Valor_Desconto'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensAliquota_PISRed: TFloatField
+    object PedidosNFItensAliquota_PISRed: TBCDField
       FieldName = 'Aliquota_PISRed'
       Origin = 'Aliquota_PISRed'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensAliquota_COFINSRed: TFloatField
+    object PedidosNFItensAliquota_COFINSRed: TBCDField
       FieldName = 'Aliquota_COFINSRed'
       Origin = 'Aliquota_COFINSRed'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensRateio_SISCOMEX: TFloatField
+    object PedidosNFItensRateio_SISCOMEX: TBCDField
       FieldName = 'Rateio_SISCOMEX'
       Origin = 'Rateio_SISCOMEX'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensPercentual_Comissao: TFloatField
+    object PedidosNFItensPercentual_Comissao: TBCDField
       FieldName = 'Percentual_Comissao'
       Origin = 'Percentual_Comissao'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_Comissao: TCurrencyField
+    object PedidosNFItensValor_Comissao: TBCDField
       FieldName = 'Valor_Comissao'
       Origin = 'Valor_Comissao'
       DisplayFormat = ',##0.00'
       currency = False
     end
-    object PedidosNFItensPercentual_RedICMSST: TFloatField
+    object PedidosNFItensPercentual_RedICMSST: TBCDField
       FieldName = 'Percentual_RedICMSST'
       Origin = 'Percentual_RedICMSST'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensValor_ICMSDif: TCurrencyField
+    object PedidosNFItensValor_ICMSDif: TBCDField
       FieldName = 'Valor_ICMSDif'
       Origin = 'Valor_ICMSDif'
       DisplayFormat = ',##0.00'
       currency = False
     end
-    object PedidosNFItensPercentual_Beneficio: TFloatField
+    object PedidosNFItensPercentual_Beneficio: TBCDField
       FieldName = 'Percentual_Beneficio'
       Origin = 'Percentual_Beneficio'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensPercentual_ICMSMono: TFloatField
+    object PedidosNFItensPercentual_ICMSMono: TBCDField
       FieldName = 'Percentual_ICMSMono'
       Origin = 'Percentual_ICMSMono'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensPercentual_ICMSMonoRet: TFloatField
+    object PedidosNFItensPercentual_ICMSMonoRet: TBCDField
       FieldName = 'Percentual_ICMSMonoRet'
       Origin = 'Percentual_ICMSMonoRet'
       DisplayFormat = ',##0.00'
     end
-    object PedidosNFItensAliquota_ICMSOpRed: TFloatField
+    object PedidosNFItensAliquota_ICMSOpRed: TBCDField
       FieldName = 'Aliquota_ICMSOpRed'
       Origin = 'Aliquota_ICMSOpRed'
     end
-    object PedidosNFItensValor_ICMSOpRed: TCurrencyField
+    object PedidosNFItensValor_ICMSOpRed: TBCDField
       FieldName = 'Valor_ICMSOpRed'
       Origin = 'Valor_ICMSOpRed'
       DisplayFormat = ',##0.00'
       currency = False
     end
-    object PedidosNFItensAliquota_ICMSOpIntegral: TFloatField
+    object PedidosNFItensAliquota_ICMSOpIntegral: TBCDField
       FieldName = 'Aliquota_ICMSOpIntegral'
       Origin = 'Aliquota_ICMSOpIntegral'
     end
-    object PedidosNFItensAliquota_ICMSOPRed2: TFloatField
+    object PedidosNFItensAliquota_ICMSOPRed2: TBCDField
       FieldName = 'Aliquota_ICMSOPRed2'
       Origin = 'Aliquota_ICMSOPRed2'
     end
@@ -3508,53 +3508,53 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       Origin = 'BL'
       Size = 15
     end
-    object PedidosNFItensValor_BCIBS: TCurrencyField
+    object PedidosNFItensValor_BCIBS: TBCDField
       FieldName = 'Valor_BCIBS'
       Origin = 'Valor_BCIBS'
       DisplayFormat = ',##0.00'
       currency = False
     end
-    object PedidosNFItensAliquota_IBS: TFloatField
+    object PedidosNFItensAliquota_IBS: TBCDField
       FieldName = 'Aliquota_IBS'
       Origin = 'Aliquota_IBS'
       DisplayFormat = ',##0.00'
       currency = True
     end
-    object PedidosNFItensValor_IBS: TCurrencyField
+    object PedidosNFItensValor_IBS: TBCDField
       FieldName = 'Valor_IBS'
       Origin = 'Valor_IBS'
       DisplayFormat = ',##0.00'
       currency = False
     end
-    object PedidosNFItensValor_BCCBS: TCurrencyField
+    object PedidosNFItensValor_BCCBS: TBCDField
       FieldName = 'Valor_BCCBS'
       Origin = 'Valor_BCCBS'
       DisplayFormat = ',##0.00'
       currency = False
     end
-    object PedidosNFItensAliquota_CBS: TFloatField
+    object PedidosNFItensAliquota_CBS: TBCDField
       FieldName = 'Aliquota_CBS'
       Origin = 'Aliquota_CBS'
     end
-    object PedidosNFItensValor_CBS: TCurrencyField
+    object PedidosNFItensValor_CBS: TBCDField
       FieldName = 'Valor_CBS'
       Origin = 'Valor_CBS'
       DisplayFormat = ',##0.00'
       currency = False
     end
-    object PedidosNFItensValor_BCIS: TCurrencyField
+    object PedidosNFItensValor_BCIS: TBCDField
       FieldName = 'Valor_BCIS'
       Origin = 'Valor_BCIS'
       DisplayFormat = ',##0.00'
       currency = False
     end
-    object PedidosNFItensAliquota_IS: TFloatField
+    object PedidosNFItensAliquota_IS: TBCDField
       FieldName = 'Aliquota_IS'
       Origin = 'Aliquota_IS'
       DisplayFormat = ',##0.00'
       currency = True
     end
-    object PedidosNFItensValor_IS: TCurrencyField
+    object PedidosNFItensValor_IS: TBCDField
       FieldName = 'Valor_IS'
       Origin = 'Valor_IS'
       DisplayFormat = ',##0.00'
@@ -3570,29 +3570,29 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       Origin = 'CSTCBS'
       Size = 3
     end
-    object PedidosNFItensAliquota_ICMSSTAnt: TFloatField
+    object PedidosNFItensAliquota_ICMSSTAnt: TBCDField
       FieldName = 'Aliquota_ICMSSTAnt'
       Origin = 'Aliquota_ICMSSTAnt'
     end
-    object PedidosNFItensValor_BCICMSSTAnt: TCurrencyField
+    object PedidosNFItensValor_BCICMSSTAnt: TBCDField
       FieldName = 'Valor_BCICMSSTAnt'
       Origin = 'Valor_BCICMSSTAnt'
       DisplayFormat = ',##0.00'
       currency = False
     end
-    object PedidosNFItensValor_BCICMSDif: TCurrencyField
+    object PedidosNFItensValor_BCICMSDif: TBCDField
       FieldName = 'Valor_BCICMSDif'
       Origin = 'Valor_BCICMSDif'
       DisplayFormat = ',##0.00'
       currency = False
     end
-    object PedidosNFItensValor_IPIDevol: TCurrencyField
+    object PedidosNFItensValor_IPIDevol: TBCDField
       FieldName = 'Valor_IPIDevol'
       Origin = 'Valor_IPIDevol'
       DisplayFormat = ',##0.00'
       currency = False
     end
-    object PedidosNFItensPercentual_IPIDevol: TFloatField
+    object PedidosNFItensPercentual_IPIDevol: TBCDField
       FieldName = 'Percentual_IPIDevol'
       Origin = 'Percentual_IPIDevol'
     end
@@ -3616,19 +3616,19 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       Origin = 'Codigo_CredPres'
       Size = 8
     end
-    object PedidosNFItensValor_Produtos: TCurrencyField
+    object PedidosNFItensValor_Produtos: TBCDField
       FieldName = 'Valor_Produtos'
       Origin = 'Valor_Produtos'
       DisplayFormat = ',##0.00'
       currency = False
     end
-    object PedidosNFItensValor_FCPICMSOrig: TCurrencyField
+    object PedidosNFItensValor_FCPICMSOrig: TBCDField
       FieldName = 'Valor_FCPICMSOrig'
       Origin = 'Valor_FCPICMSOrig'
       DisplayFormat = ',##0.00'
       currency = False
     end
-    object PedidosNFItensValor_TotalImpostos: TCurrencyField
+    object PedidosNFItensValor_TotalImpostos: TBCDField
       FieldName = 'Valor_TotalImpostos'
       Origin = 'Valor_TotalImpostos'
       DisplayFormat = ',##0.00'
@@ -3718,23 +3718,23 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       Origin = 'Descricao'
       Size = 60
     end
-    object ProdutosValor_Venda: TCurrencyField
+    object ProdutosValor_Venda: TBCDField
       FieldName = 'Valor_Venda'
       Origin = 'Valor_Venda'
     end
-    object ProdutosValor_ConsumidorFinal: TCurrencyField
+    object ProdutosValor_ConsumidorFinal: TBCDField
       FieldName = 'Valor_ConsumidorFinal'
       Origin = 'Valor_ConsumidorFinal'
     end
-    object ProdutosValor_CustoMedio: TCurrencyField
+    object ProdutosValor_CustoMedio: TBCDField
       FieldName = 'Valor_CustoMedio'
       Origin = 'Valor_CustoMedio'
     end
-    object ProdutosValor_Entrada: TCurrencyField
+    object ProdutosValor_Entrada: TBCDField
       FieldName = 'Valor_Entrada'
       Origin = 'Valor_Entrada'
     end
-    object ProdutosValor_IPI: TCurrencyField
+    object ProdutosValor_IPI: TBCDField
       FieldName = 'Valor_IPI'
       Origin = 'Valor_IPI'
     end
@@ -3745,47 +3745,47 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       EditMask = '####.##.####;0'
       Size = 10
     end
-    object ProdutosAliquota_IPI: TFloatField
+    object ProdutosAliquota_IPI: TBCDField
       FieldName = 'Aliquota_IPI'
       Origin = 'Aliquota_IPI'
     end
-    object ProdutosAliquota_II: TFloatField
+    object ProdutosAliquota_II: TBCDField
       FieldName = 'Aliquota_II'
       Origin = 'Aliquota_II'
     end
-    object ProdutosValor_II: TCurrencyField
+    object ProdutosValor_II: TBCDField
       FieldName = 'Valor_II'
       Origin = 'Valor_II'
     end
-    object ProdutosReducao_PIS: TFloatField
+    object ProdutosReducao_PIS: TBCDField
       FieldName = 'Reducao_PIS'
       Origin = 'Reducao_PIS'
     end
-    object ProdutosReducao_COFINS: TFloatField
+    object ProdutosReducao_COFINS: TBCDField
       FieldName = 'Reducao_COFINS'
       Origin = 'Reducao_COFINS'
     end
-    object ProdutosAliquota_PIS: TFloatField
+    object ProdutosAliquota_PIS: TBCDField
       FieldName = 'Aliquota_PIS'
       Origin = 'Aliquota_PIS'
     end
-    object ProdutosAliquota_COFINS: TFloatField
+    object ProdutosAliquota_COFINS: TBCDField
       FieldName = 'Aliquota_COFINS'
       Origin = 'Aliquota_COFINS'
     end
-    object ProdutosAliquota_PISEntrada: TFloatField
+    object ProdutosAliquota_PISEntrada: TBCDField
       FieldName = 'Aliquota_PISEntrada'
       Origin = 'Aliquota_PISEntrada'
     end
-    object ProdutosAliquota_COFINSEntrada: TFloatField
+    object ProdutosAliquota_COFINSEntrada: TBCDField
       FieldName = 'Aliquota_COFINSEntrada'
       Origin = 'Aliquota_COFINSEntrada'
     end
-    object ProdutosAliquota_PISSaida: TFloatField
+    object ProdutosAliquota_PISSaida: TBCDField
       FieldName = 'Aliquota_PISSaida'
       Origin = 'Aliquota_PISSaida'
     end
-    object ProdutosAliquota_COFINSSaida: TFloatField
+    object ProdutosAliquota_COFINSSaida: TBCDField
       FieldName = 'Aliquota_COFINSSaida'
       Origin = 'Aliquota_COFINSSaida'
     end
@@ -3823,23 +3823,23 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       FixedChar = True
       Size = 1
     end
-    object ProdutosICMS_ForaEstadoEnt: TFloatField
+    object ProdutosICMS_ForaEstadoEnt: TBCDField
       FieldName = 'ICMS_ForaEstadoEnt'
       Origin = 'ICMS_ForaEstadoEnt'
     end
-    object ProdutosICMS_ForaEstadoSai: TFloatField
+    object ProdutosICMS_ForaEstadoSai: TBCDField
       FieldName = 'ICMS_ForaEstadoSai'
       Origin = 'ICMS_ForaEstadoSai'
     end
-    object ProdutosICMS_DentroEstadoEnt: TFloatField
+    object ProdutosICMS_DentroEstadoEnt: TBCDField
       FieldName = 'ICMS_DentroEstadoEnt'
       Origin = 'ICMS_DentroEstadoEnt'
     end
-    object ProdutosICMS_DentroEstadoSai: TFloatField
+    object ProdutosICMS_DentroEstadoSai: TBCDField
       FieldName = 'ICMS_DentroEstadoSai'
       Origin = 'ICMS_DentroEstadoSai'
     end
-    object ProdutosICMS_DentroEstadoSimples: TFloatField
+    object ProdutosICMS_DentroEstadoSimples: TBCDField
       FieldName = 'ICMS_DentroEstadoSimples'
       Origin = 'ICMS_DentroEstadoSimples'
     end
@@ -3876,19 +3876,19 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       Origin = 'UM'
       Size = 3
     end
-    object ProdutosPeso_Liquido: TFloatField
+    object ProdutosPeso_Liquido: TBCDField
       FieldName = 'Peso_Liquido'
       Origin = 'Peso_Liquido'
     end
-    object ProdutosPeso_Bruto: TFloatField
+    object ProdutosPeso_Bruto: TBCDField
       FieldName = 'Peso_Bruto'
       Origin = 'Peso_Bruto'
     end
-    object ProdutosAliquota_IBS: TFloatField
+    object ProdutosAliquota_IBS: TBCDField
       FieldName = 'Aliquota_IBS'
       Origin = 'Aliquota_IBS'
     end
-    object ProdutosEstoque_Minimo: TFloatField
+    object ProdutosEstoque_Minimo: TBCDField
       FieldName = 'Estoque_Minimo'
       Origin = 'Estoque_Minimo'
     end
@@ -4276,15 +4276,15 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       FieldName = 'Campo'
       Size = 60
     end
-    object tImpostosAliquota: TFloatField
+    object tImpostosAliquota: TBCDField
       FieldName = 'Aliquota'
       DisplayFormat = ',##0.0000'
     end
-    object tImpostosValor: TCurrencyField
+    object tImpostosValor: TBCDField
       FieldName = 'Valor'
       DisplayFormat = ',##0.0000'
     end
-    object tImpostosTotal: TCurrencyField
+    object tImpostosTotal: TBCDField
       FieldName = 'Total'
       DisplayFormat = ',##0.0000'
     end

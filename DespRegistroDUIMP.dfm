@@ -2045,7 +2045,7 @@ object fDespRegistroDUIMP: TfDespRegistroDUIMP
       FieldName = 'Codigo'
       Origin = 'Codigo'
     end
-    object DUIMPAcrescimoValor_ME: TCurrencyField
+    object DUIMPAcrescimoValor_ME: TBCDField
       FieldName = 'Valor_ME'
       Origin = 'Valor_ME'
       DisplayFormat = ',##0.00'
@@ -2054,7 +2054,7 @@ object fDespRegistroDUIMP: TfDespRegistroDUIMP
       FieldName = 'Moeda'
       Origin = 'Moeda'
     end
-    object DUIMPAcrescimoValor_Real: TCurrencyField
+    object DUIMPAcrescimoValor_Real: TBCDField
       FieldName = 'Valor_Real'
       Origin = 'Valor_Real'
       DisplayFormat = ',##0.00'
@@ -2103,13 +2103,13 @@ object fDespRegistroDUIMP: TfDespRegistroDUIMP
       FieldName = 'Moeda'
       Origin = 'Moeda'
     end
-    object TotalAcrTotalME: TCurrencyField
+    object TotalAcrTotalME: TBCDField
       FieldName = 'TotalME'
       Origin = 'TotalME'
       ReadOnly = True
       DisplayFormat = ',##0.00'
     end
-    object TotalAcrTotalReal: TFloatField
+    object TotalAcrTotalReal: TBCDField
       FieldName = 'TotalReal'
       Origin = 'TotalReal'
       ReadOnly = True

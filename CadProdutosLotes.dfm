@@ -485,7 +485,7 @@ object fCadProdutosLotes: TfCadProdutosLotes
       FieldName = 'Data_Validade'
       Origin = 'Data_Validade'
     end
-    object ProdutosLotesQuantidade_Entrada: TFloatField
+    object ProdutosLotesQuantidade_Entrada: TBCDField
       FieldName = 'Quantidade_Entrada'
       Origin = 'Quantidade_Entrada'
       DisplayFormat = '##0.000'

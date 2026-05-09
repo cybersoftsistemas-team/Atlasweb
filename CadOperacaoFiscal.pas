@@ -297,7 +297,7 @@ type
     OperacaoFiscalVisiveis_AFRMM: TBooleanField;
     OperacaoFiscalVisivel_AFRMM: TBooleanField;
     OperacaoFiscalEmpresa: TStringField;
-    OperacaoFiscalAliquota_ISS: TFloatField;
+    OperacaoFiscalAliquota_ISS: TBCDField;
     OperacaoFiscalPlano_COFINS: TStringField;
     OperacaoFiscalPlano_ICMSOper: TStringField;
     OperacaoFiscalPlano_ICMSST: TStringField;

@@ -865,12 +865,12 @@ object fCadServicos: TfCadServicos
       'SELECT * FROM Servicos')
     Left = 36
     Top = 74
-    object ServicosAliquota_PIS: TFloatField
+    object ServicosAliquota_PIS: TBCDField
       FieldName = 'Aliquota_PIS'
       Origin = 'Aliquota_PIS'
       DisplayFormat = ',##0.00%'
     end
-    object ServicosAliquota_COFINS: TFloatField
+    object ServicosAliquota_COFINS: TBCDField
       FieldName = 'Aliquota_COFINS'
       Origin = 'Aliquota_COFINS'
       DisplayFormat = ',##0.00%'
@@ -927,7 +927,7 @@ object fCadServicos: TfCadServicos
       Origin = 'PIS_Recolher'
       Size = 10
     end
-    object ServicosLimite_PIS: TCurrencyField
+    object ServicosLimite_PIS: TBCDField
       FieldName = 'Limite_PIS'
       Origin = 'Limite_PIS'
       EditFormat = ',##0.00'
@@ -942,7 +942,7 @@ object fCadServicos: TfCadServicos
       Origin = 'COFINS_Recolher'
       Size = 10
     end
-    object ServicosLimite_COFINS: TCurrencyField
+    object ServicosLimite_COFINS: TBCDField
       FieldName = 'Limite_COFINS'
       Origin = 'Limite_COFINS'
       EditFormat = ',##0.00'
@@ -957,7 +957,7 @@ object fCadServicos: TfCadServicos
       Origin = 'CSLL_Recolher'
       Size = 10
     end
-    object ServicosLimite_CSLL: TCurrencyField
+    object ServicosLimite_CSLL: TBCDField
       FieldName = 'Limite_CSLL'
       Origin = 'Limite_CSLL'
       EditFormat = ',##0.00'
@@ -972,7 +972,7 @@ object fCadServicos: TfCadServicos
       Origin = 'IR_Recolher'
       Size = 10
     end
-    object ServicosLimite_IR: TCurrencyField
+    object ServicosLimite_IR: TBCDField
       FieldName = 'Limite_IR'
       Origin = 'Limite_IR'
       EditFormat = ',##0.00'
@@ -987,7 +987,7 @@ object fCadServicos: TfCadServicos
       Origin = 'INSS_Recolher'
       Size = 10
     end
-    object ServicosLimite_INSS: TCurrencyField
+    object ServicosLimite_INSS: TBCDField
       FieldName = 'Limite_INSS'
       Origin = 'Limite_INSS'
       EditFormat = ',##0.00'

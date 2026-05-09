@@ -128,7 +128,7 @@ type
     POItensFabricante: TSmallintField;
     POItensEmpresa: TStringField;
     POItensDescricao: TStringField;
-    POItensTotal: TCurrencyField;
+    POItensTotal: TBCDField;
     POModalidade: TSmallintField;
     Beneficios: TFDQuery;
     dsBeneficios: TDataSource;
@@ -172,7 +172,7 @@ type
 
 implementation
 
-uses MainModule, Main;
+uses MainModule, Main, ComexPOImportar;
 
 {$R *.dfm}
 
@@ -474,12 +474,7 @@ end;
 
 procedure TfComexPO.bImportarClick(Sender: TObject);
 begin
-(*
-        Processo_POImportaItens := TfComexPOImportaItens.Create(Self);
-        Processo_POImportaItens.Caption := Caption;
-        Processo_POImportaItens.ShowModal;     
-        dmDespacho.POItens.Refresh;
-*)
+    fComexPOImportar.ShowModal;
 end;
 
 procedure TfComexPO.bAddItemClick(Sender: TObject);
@@ -519,7 +514,7 @@ begin
                        if not Empresas.fieldbyname('PO_Automatico').asboolean then begin
                           cPO.SetFocus;
                        end else begin
-                          cData.Setfocus;
+                          cModalidade.Setfocus;
                        end
                     end;
            except on E: Exception do
@@ -538,32 +533,28 @@ begin
              MessageDlg('Deseja realmente excluir estes dados?'+#13+#13+FieldByName('Numero').AsString, mtConfirmation, mbYesNo,
                        procedure(Comp:TComponent; ARes: Integer)
                        begin
-                             if ARes = mrYes then begin
-                                Delete;
-                                Alerta.Text := 'Registro excluído do banco de dados!';
-                                Alerta.Execute;
-                             end;
+                            if ARes = mrYes then begin
+                               with POItens do begin
+                                    try
+                                       sql.clear;
+                                       sql.add('delete from POItens where Empresa = :pEmp and PO = :pPO');
+                                       parambyname('pEmp').AsString := PO.fieldbyname('Empresa').AsString;
+                                       parambyname('pPO').AsString  := PO.fieldbyname('Numero').AsString;
+                                       execute;
+                                    except on E: Exception do
+                                       begin
+                                            abort;
+                                            MessageDlgN('Erro desconhecida, não pode excluir os itens do PO!'+#13+E.Message, mtError, [mbOK]);
+                                       end;
+                                    end;
+                               end;
+                               Delete;
+                               Alerta.Text := 'PO excluído do banco de dados!';
+                               Alerta.Execute;
+                            end;
                        end);
-           
-           
-           (*
-           if Button = nbDelete then begin
-              if MessageDlg('Deseja realmente excluir este registro?', mtConfirmation, [mbYes, mbNo], 0) = mrNo then begin
-                 Abort;
-              end else begin
-                sql.Clear;
-                sql.Add('DELETE from POItens where PO = :pPO');
-                ParamByName('pPO').AsString :=FieldByName('Numero').AsString;
-                Execute;
-              end;
-              LogDados(PO, 'Purchase Order (PO): '+cPO.Text, dsInactive);
-           end;
-      end;
-*)
-
-                       
           except on E: Exception do
-             MessageDlgN('Falha desconhecida, não pode excluir o registro!'+#13+E.Message, mtError, [mbOK]);
+             MessageDlgN('Falha desconhecida, não pode excluir o PO!'+#13+E.Message, mtError, [mbOK]);
           end;
      end;
 end;
@@ -667,7 +658,7 @@ begin
          Pasta.ActivePageIndex := 1;
          LigaBotoes(false);
          PO.Edit;
-         cProcesso.setfocus;
+         cModalidade.setfocus;
      except on E: Exception do
          MessageDlgN('Falha desconhecida, não pode editar o registro corrente!'+#13+E.Message, mtError, [mbOK]);
      end;

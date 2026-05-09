@@ -1107,12 +1107,12 @@ object fCadBeneficiosFiscais: TfCadBeneficiosFiscais
       'select * from RecuperarICMS')
     Left = 48
     Top = 230
-    object RecuperarICMSAliquota_ICMS: TFloatField
+    object RecuperarICMSAliquota_ICMS: TBCDField
       FieldName = 'Aliquota_ICMS'
       Origin = 'Aliquota_ICMS'
       DisplayFormat = ',##0.00%'
     end
-    object RecuperarICMSAliquota_Recuperar: TFloatField
+    object RecuperarICMSAliquota_Recuperar: TBCDField
       FieldName = 'Aliquota_Recuperar'
       Origin = 'Aliquota_Recuperar'
       DisplayFormat = ',##0.00%'

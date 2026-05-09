@@ -219,7 +219,7 @@ object fFinanceiro: TfFinanceiro
     Height = 795
     Hint = ''
     BodyRTL = False
-    ActivePage = UniTabSheet2
+    ActivePage = UniTabSheet1
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -230,6 +230,10 @@ object fFinanceiro: TfFinanceiro
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Movimento'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object pFiltro: TUniPanel
         Left = 0
         Top = 0
@@ -1919,6 +1923,10 @@ object fFinanceiro: TfFinanceiro
     object UniTabSheet4: TUniTabSheet
       Hint = ''
       Caption = 'Adiantamentos'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object cGrade: TUniDBGrid
         Left = 0
         Top = 0
@@ -1997,6 +2005,10 @@ object fFinanceiro: TfFinanceiro
     object UniTabSheet5: TUniTabSheet
       Hint = ''
       Caption = 'Contratos de C'#226'mbio'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniDBGrid2: TUniDBGrid
         Left = 0
         Top = 0
@@ -2586,6 +2598,10 @@ object fFinanceiro: TfFinanceiro
     object UniTabSheet7: TUniTabSheet
       Hint = ''
       Caption = 'Documentos Anexados'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniDBGrid3: TUniDBGrid
         Left = 0
         Top = 0
@@ -2815,7 +2831,7 @@ object fFinanceiro: TfFinanceiro
       FixedChar = True
       Size = 1
     end
-    object BaixasValor: TCurrencyField
+    object BaixasValor: TBCDField
       FieldName = 'Valor'
       Origin = 'Valor'
       DisplayFormat = ',##0.00'
@@ -2824,17 +2840,17 @@ object fFinanceiro: TfFinanceiro
       FieldName = 'Banco'
       Origin = 'Banco'
     end
-    object BaixasValor_Multa: TCurrencyField
+    object BaixasValor_Multa: TBCDField
       FieldName = 'Valor_Multa'
       Origin = 'Valor_Multa'
       DisplayFormat = ',##0.00'
     end
-    object BaixasValor_Juros: TCurrencyField
+    object BaixasValor_Juros: TBCDField
       FieldName = 'Valor_Juros'
       Origin = 'Valor_Juros'
       DisplayFormat = ',##0.00'
     end
-    object BaixasValor_Desconto: TCurrencyField
+    object BaixasValor_Desconto: TBCDField
       FieldName = 'Valor_Desconto'
       Origin = 'Valor_Desconto'
       DisplayFormat = ',##0.00'
@@ -2882,7 +2898,7 @@ object fFinanceiro: TfFinanceiro
       FieldName = 'Cheque_Cruzado'
       Origin = 'Cheque_Cruzado'
     end
-    object BaixasTaxa_FechamentoCambio: TFloatField
+    object BaixasTaxa_FechamentoCambio: TBCDField
       FieldName = 'Taxa_FechamentoCambio'
       Origin = 'Taxa_FechamentoCambio'
     end
@@ -3297,12 +3313,12 @@ object fFinanceiro: TfFinanceiro
       FieldName = 'Data_Vencimento'
       Origin = 'Data_Vencimento'
     end
-    object ListaValor_Documento: TCurrencyField
+    object ListaValor_Documento: TBCDField
       FieldName = 'Valor_Documento'
       Origin = 'Valor_Documento'
       DisplayFormat = ',##0.00'
     end
-    object ListaValor_Parcela: TCurrencyField
+    object ListaValor_Parcela: TBCDField
       FieldName = 'Valor_Parcela'
       Origin = 'Valor_Parcela'
       DisplayFormat = ',##0.00'
@@ -3333,27 +3349,27 @@ object fFinanceiro: TfFinanceiro
       ReadOnly = True
       Size = 60
     end
-    object ListaValor_Juros: TCurrencyField
+    object ListaValor_Juros: TBCDField
       FieldName = 'Valor_Juros'
       Origin = 'Valor_Juros'
       DisplayFormat = ',##0.00'
     end
-    object ListaValor_Multa: TCurrencyField
+    object ListaValor_Multa: TBCDField
       FieldName = 'Valor_Multa'
       Origin = 'Valor_Multa'
       DisplayFormat = ',##0.00'
     end
-    object ListaValor_Desconto: TCurrencyField
+    object ListaValor_Desconto: TBCDField
       FieldName = 'Valor_Desconto'
       Origin = 'Valor_Desconto'
       DisplayFormat = ',##0.00'
     end
-    object ListaValor_Total: TCurrencyField
+    object ListaValor_Total: TBCDField
       FieldName = 'Valor_Total'
       Origin = 'Valor_Total'
       DisplayFormat = ',##0.00'
     end
-    object ListaValor_Operacao: TCurrencyField
+    object ListaValor_Operacao: TBCDField
       FieldName = 'Valor_Operacao'
       Origin = 'Valor_Operacao'
     end
@@ -3362,18 +3378,6 @@ object fFinanceiro: TfFinanceiro
       Origin = 'Nome'
       ReadOnly = True
       Size = 60
-    end
-    object ListaValor_Baixado: TCurrencyField
-      FieldName = 'Valor_Aberto'
-      Origin = 'Valor_Baixado'
-      ReadOnly = True
-      DisplayFormat = ',##0.00'
-    end
-    object ListaValor_Baixas: TCurrencyField
-      FieldName = 'Valor_Baixas'
-      Origin = 'Valor_Baixas'
-      ReadOnly = True
-      DisplayFormat = ',##0.00'
     end
     object ListaOrigem: TStringField
       FieldName = 'Origem'
@@ -3384,6 +3388,22 @@ object fFinanceiro: TfFinanceiro
     object ListaVinculo: TIntegerField
       FieldName = 'Vinculo'
       Origin = 'Vinculo'
+    end
+    object ListaValor_Aberto: TFMTBCDField
+      FieldName = 'Valor_Aberto'
+      Origin = 'Valor_Aberto'
+      ReadOnly = True
+      DisplayFormat = ',##0.00'
+      Precision = 38
+      Size = 4
+    end
+    object ListaValor_Baixas: TFMTBCDField
+      FieldName = 'Valor_Baixas'
+      Origin = 'Valor_Baixas'
+      ReadOnly = True
+      DisplayFormat = ',##0.00'
+      Precision = 38
+      Size = 4
     end
   end
   object dsLista: TDataSource
@@ -3421,7 +3441,7 @@ object fFinanceiro: TfFinanceiro
       Origin = 'Titulo'
       Required = True
     end
-    object ListaAdValor_Total: TCurrencyField
+    object ListaAdValor_Total: TBCDField
       FieldName = 'Valor_Total'
       Origin = 'Valor_Total'
       DisplayFormat = ',##0.00'
@@ -3444,18 +3464,20 @@ object fFinanceiro: TfFinanceiro
       FixedChar = True
       Size = 1
     end
-    object ListaAdValor_Baixado: TCurrencyField
-      FieldName = 'Valor_Baixado'
-      Origin = 'Valor_Baixado'
-      ReadOnly = True
-      Required = True
-      DisplayFormat = ',##0.00'
-    end
     object ListaAdBeneficiario: TStringField
       FieldName = 'Beneficiario'
       Origin = 'Beneficiario'
       ReadOnly = True
       Size = 60
+    end
+    object ListaAdValor_Baixado: TFMTBCDField
+      FieldName = 'Valor_Baixado'
+      Origin = 'Valor_Baixado'
+      ReadOnly = True
+      Required = True
+      DisplayFormat = ',##0.00'
+      Precision = 38
+      Size = 4
     end
   end
   object dsListaAd: TDataSource

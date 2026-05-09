@@ -2208,12 +2208,12 @@ object fEmbarques: TfEmbarques
       Origin = 'Processo'
       Size = 15
     end
-    object tNotasTotal: TCurrencyField
+    object tNotasTotal: TBCDField
       FieldName = 'Total'
       Origin = 'Total'
       DisplayFormat = ',##0.00'
     end
-    object tNotasQuantidade: TFloatField
+    object tNotasQuantidade: TBCDField
       FieldName = 'Quantidade'
       Origin = 'Quantidade'
       DisplayFormat = ',##0.000'
@@ -2393,13 +2393,13 @@ object fEmbarques: TfEmbarques
       Required = True
       Size = 23
     end
-    object tSomaM3: TFloatField
+    object tSomaM3: TBCDField
       FieldName = 'M3'
       Origin = 'M3'
       ReadOnly = True
       DisplayFormat = ',##0.000'
     end
-    object tSomaLITROS: TFloatField
+    object tSomaLITROS: TBCDField
       FieldName = 'LITROS'
       Origin = 'LITROS'
       ReadOnly = True
@@ -2475,27 +2475,27 @@ object fEmbarques: TfEmbarques
       FieldName = 'Data_Emissao'
       Origin = 'Data_Emissao'
     end
-    object tBLTon_Vac: TFloatField
+    object tBLTon_Vac: TBCDField
       FieldName = 'Ton_Vac'
       Origin = 'Ton_Vac'
       DisplayFormat = ',##0.000'
     end
-    object tBLTon_Air: TFloatField
+    object tBLTon_Air: TBCDField
       FieldName = 'Ton_Air'
       Origin = 'Ton_Air'
       DisplayFormat = ',##0.000'
     end
-    object tBLQuantidade_M315: TFloatField
+    object tBLQuantidade_M315: TBCDField
       FieldName = 'Quantidade_M315'
       Origin = 'Quantidade_M315'
       DisplayFormat = ',##0.000'
     end
-    object tBLQuantidade_M320: TFloatField
+    object tBLQuantidade_M320: TBCDField
       FieldName = 'Quantidade_M320'
       Origin = 'Quantidade_M320'
       DisplayFormat = ',##0.000'
     end
-    object tBLQuantidade_LT20: TFloatField
+    object tBLQuantidade_LT20: TBCDField
       FieldName = 'Quantidade_LT20'
       Origin = 'Quantidade_LT20'
       DisplayFormat = ',##0.000'
@@ -2518,7 +2518,7 @@ object fEmbarques: TfEmbarques
       Origin = 'Laudo'
       Size = 15
     end
-    object tBLQuantidade_LT15: TFloatField
+    object tBLQuantidade_LT15: TBCDField
       FieldName = 'Quantidade_LT15'
       Origin = 'Quantidade_LT15'
       DisplayFormat = ',##0.000'
@@ -2532,22 +2532,22 @@ object fEmbarques: TfEmbarques
       FieldName = 'Armazem'
       Origin = 'Armazem'
     end
-    object tBLQuantidade_EmbM315: TFloatField
+    object tBLQuantidade_EmbM315: TBCDField
       FieldName = 'Quantidade_EmbM315'
       Origin = 'Quantidade_EmbM315'
       DisplayFormat = ',##0.000'
     end
-    object tBLQuantidade_EmbLT15: TFloatField
+    object tBLQuantidade_EmbLT15: TBCDField
       FieldName = 'Quantidade_EmbLT15'
       Origin = 'Quantidade_EmbLT15'
       DisplayFormat = ',##0.000'
     end
-    object tBLQuantidade_EmbM320: TFloatField
+    object tBLQuantidade_EmbM320: TBCDField
       FieldName = 'Quantidade_EmbM320'
       Origin = 'Quantidade_EmbM320'
       DisplayFormat = ',##0.000'
     end
-    object tBLQuantidade_EmbLT20: TFloatField
+    object tBLQuantidade_EmbLT20: TBCDField
       FieldName = 'Quantidade_EmbLT20'
       Origin = 'Quantidade_EmbLT20'
       DisplayFormat = ',##0.000'
@@ -2614,34 +2614,34 @@ object fEmbarques: TfEmbarques
       FieldName = 'Data_Operacao'
       Origin = 'Data_Operacao'
     end
-    object tLaudosQuantidade_M320: TFloatField
+    object tLaudosQuantidade_M320: TBCDField
       FieldName = 'Quantidade_M320'
       Origin = 'Quantidade_M320'
       DisplayFormat = ',##0.000'
     end
-    object tLaudosQuantidade_LT20: TFloatField
+    object tLaudosQuantidade_LT20: TBCDField
       FieldName = 'Quantidade_LT20'
       Origin = 'Quantidade_LT20'
       DisplayFormat = ',##0.000'
     end
-    object tLaudosQuantidade_RecebidaM320: TFloatField
+    object tLaudosQuantidade_RecebidaM320: TBCDField
       FieldName = 'Quantidade_RecebidaM320'
       Origin = 'Quantidade_RecebidaM320'
       DisplayFormat = ',##0.000'
       EditFormat = ',##0.000'
     end
-    object tLaudosQuantidade_RecebidaLT20: TFloatField
+    object tLaudosQuantidade_RecebidaLT20: TBCDField
       FieldName = 'Quantidade_RecebidaLT20'
       Origin = 'Quantidade_RecebidaLT20'
       DisplayFormat = ',##0.000'
       EditFormat = ',##0.000'
     end
-    object tLaudosVariacao_DesLT: TFloatField
+    object tLaudosVariacao_DesLT: TBCDField
       FieldName = 'Variacao_DesLT'
       Origin = 'Variacao_DesLT'
       DisplayFormat = ',##0.000'
     end
-    object tLaudosVariacao_DesPerc: TFloatField
+    object tLaudosVariacao_DesPerc: TBCDField
       FieldName = 'Variacao_DesPerc'
       Origin = 'Variacao_DesPerc'
       DisplayFormat = ',##0.000'
@@ -2651,12 +2651,12 @@ object fEmbarques: TfEmbarques
       Origin = 'Observacao'
       BlobType = ftMemo
     end
-    object tLaudosVariacao_EmbLT: TFloatField
+    object tLaudosVariacao_EmbLT: TBCDField
       FieldName = 'Variacao_EmbLT'
       Origin = 'Variacao_EmbLT'
       DisplayFormat = ',##0.000'
     end
-    object tLaudosVariacao_EmbPerc: TFloatField
+    object tLaudosVariacao_EmbPerc: TBCDField
       FieldName = 'Variacao_EmbPerc'
       Origin = 'Variacao_EmbPerc'
       DisplayFormat = ',##0.000'
@@ -2705,19 +2705,19 @@ object fEmbarques: TfEmbarques
       FixedChar = True
       Size = 2
     end
-    object tEmbarquesPremium: TFloatField
+    object tEmbarquesPremium: TBCDField
       FieldName = 'Premium'
       Origin = 'Premium'
     end
-    object tEmbarquesTranshipment: TFloatField
+    object tEmbarquesTranshipment: TBCDField
       FieldName = 'Transhipment'
       Origin = 'Transhipment'
     end
-    object tEmbarquesFator_Conversao: TFloatField
+    object tEmbarquesFator_Conversao: TBCDField
       FieldName = 'Fator_Conversao'
       Origin = 'Fator_Conversao'
     end
-    object tEmbarquesDescarga_Trigger: TFloatField
+    object tEmbarquesDescarga_Trigger: TBCDField
       FieldName = 'Descarga_Trigger'
       Origin = 'Descarga_Trigger'
     end
@@ -2745,11 +2745,11 @@ object fEmbarques: TfEmbarques
       FieldName = 'Filial'
       Origin = 'Filial'
     end
-    object tEmbarquesQuantidade_15: TFloatField
+    object tEmbarquesQuantidade_15: TBCDField
       FieldName = 'Quantidade_15'
       Origin = 'Quantidade_15'
     end
-    object tEmbarquesQuantidade_20: TFloatField
+    object tEmbarquesQuantidade_20: TBCDField
       FieldName = 'Quantidade_20'
       Origin = 'Quantidade_20'
     end
@@ -2758,19 +2758,19 @@ object fEmbarques: TfEmbarques
       Origin = 'Tipo_Descarga'
       Size = 30
     end
-    object tEmbarquesValor_Demurrage: TCurrencyField
+    object tEmbarquesValor_Demurrage: TBCDField
       FieldName = 'Valor_Demurrage'
       Origin = 'Valor_Demurrage'
     end
-    object tEmbarquesTempo_Demurrage: TFloatField
+    object tEmbarquesTempo_Demurrage: TBCDField
       FieldName = 'Tempo_Demurrage'
       Origin = 'Tempo_Demurrage'
     end
-    object tEmbarquesTotal_ME: TCurrencyField
+    object tEmbarquesTotal_ME: TBCDField
       FieldName = 'Total_ME'
       Origin = 'Total_ME'
     end
-    object tEmbarquesCusto_Navio: TCurrencyField
+    object tEmbarquesCusto_Navio: TBCDField
       FieldName = 'Custo_Navio'
       Origin = 'Custo_Navio'
     end
@@ -2788,7 +2788,7 @@ object fEmbarques: TfEmbarques
       FieldName = 'Data_Partida'
       Origin = 'Data_Partida'
     end
-    object tEmbarquesQuantidade_Carga: TFloatField
+    object tEmbarquesQuantidade_Carga: TBCDField
       FieldName = 'Quantidade_Carga'
       Origin = 'Quantidade_Carga'
     end

@@ -46,9 +46,9 @@ type
     TransfData: TSQLTimeStampField;
     TransfProduto_Entrada: TIntegerField;
     TransfProduto_Saida: TIntegerField;
-    TransfQuantidade_Entrada: TFloatField;
-    TransfQuantidade_Saida: TFloatField;
-    TransfValor_Unitario: TCurrencyField;
+    TransfQuantidade_Entrada: TBCDField;
+    TransfQuantidade_Saida: TBCDField;
+    TransfValor_Unitario: TBCDField;
     TransfInventario: TBooleanField;
     TransfEstoque: TBooleanField;
     TransfProcesso_Entrada: TStringField;

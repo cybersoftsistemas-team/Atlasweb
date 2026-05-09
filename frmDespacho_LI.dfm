@@ -2288,17 +2288,17 @@ object Despacho_LI: TDespacho_LI
     FetchRows = 1
     Left = 651
     Top = 8
-    object tTotaisValor_TotalEmb: TFloatField
+    object tTotaisValor_TotalEmb: TBCDField
       FieldName = 'Valor_TotalEmb'
       ReadOnly = True
       DisplayFormat = ',##0.00'
     end
-    object tTotaisValor_TotalCond: TFloatField
+    object tTotaisValor_TotalCond: TBCDField
       FieldName = 'Valor_TotalCond'
       ReadOnly = True
       DisplayFormat = ',##0.00'
     end
-    object tTotaisPeso_Total: TFloatField
+    object tTotaisPeso_Total: TBCDField
       FieldName = 'Peso_Total'
       ReadOnly = True
       DisplayFormat = ',##0.000'

@@ -51,7 +51,7 @@ type
     ProdutosLotesLote: TStringField;
     ProdutosLotesData_Fabricacao: TSQLTimeStampField;
     ProdutosLotesData_Validade: TSQLTimeStampField;
-    ProdutosLotesQuantidade_Entrada: TFloatField;
+    ProdutosLotesQuantidade_Entrada: TBCDField;
     cData_Validade: TUniDBDateTimePicker;
     ProdutosLotesProduto_Descricao: TStringField;
     cLote: TUniDBEdit;

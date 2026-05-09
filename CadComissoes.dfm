@@ -339,7 +339,7 @@ object fCadComissoes: TfCadComissoes
       Origin = 'Descricao'
       Size = 50
     end
-    object ComissoesValor: TFloatField
+    object ComissoesValor: TBCDField
       FieldName = 'Valor'
       Origin = 'Valor'
       DisplayFormat = ',##0.00%'

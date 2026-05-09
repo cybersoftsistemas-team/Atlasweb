@@ -55,19 +55,19 @@ object dmComercial: TdmComercial
       Origin = 'TabelaComissoes.Descricao'
       Size = 50
     end
-    object TabelaComissoesComissao: TFloatField
+    object TabelaComissoesComissao: TBCDField
       FieldName = 'Comissao'
       Origin = 'TabelaComissoes.Comissao'
       DisplayFormat = ',##0.0000'
       EditFormat = ',#00.0000'
     end
-    object TabelaComissoesDesconto: TFloatField
+    object TabelaComissoesDesconto: TBCDField
       FieldName = 'Desconto'
       Origin = 'TabelaComissoes.Desconto'
       DisplayFormat = ',##0.0000'
       EditFormat = ',#00.0000'
     end
-    object TabelaComissoesPercentual_Venda: TFloatField
+    object TabelaComissoesPercentual_Venda: TBCDField
       FieldName = 'Percentual_Venda'
       DisplayFormat = ',##0.0000'
       EditFormat = ',#00.0000'
@@ -265,19 +265,19 @@ object dmComercial: TdmComercial
     object PedidoCompraItens2: TSmallintField
       FieldName = 'Itens'
     end
-    object PedidoCompraTotal_Produtos: TCurrencyField
+    object PedidoCompraTotal_Produtos: TBCDField
       FieldName = 'Total_Produtos'
       DisplayFormat = ',##0.00'
     end
-    object PedidoCompraTotal_IPI: TCurrencyField
+    object PedidoCompraTotal_IPI: TBCDField
       FieldName = 'Total_IPI'
       DisplayFormat = ',##0.00'
     end
-    object PedidoCompraTotal_ICMS: TCurrencyField
+    object PedidoCompraTotal_ICMS: TBCDField
       FieldName = 'Total_ICMS'
       DisplayFormat = ',##0.00'
     end
-    object PedidoCompraTotal_Geral: TCurrencyField
+    object PedidoCompraTotal_Geral: TBCDField
       FieldName = 'Total_Geral'
       DisplayFormat = ',##0.00'
     end
@@ -406,7 +406,7 @@ object dmComercial: TdmComercial
     object PedidoCompraItensData_Entrega: TDateTimeField
       FieldName = 'Data_Entrega'
     end
-    object PedidoCompraItensQuantidade: TFloatField
+    object PedidoCompraItensQuantidade: TBCDField
       FieldName = 'Quantidade'
       DisplayFormat = ',##0.000'
     end
@@ -415,19 +415,19 @@ object dmComercial: TdmComercial
       FixedChar = True
       Size = 3
     end
-    object PedidoCompraItensValor_Unitario: TCurrencyField
+    object PedidoCompraItensValor_Unitario: TBCDField
       FieldName = 'Valor_Unitario'
       DisplayFormat = ',##0.00'
     end
-    object PedidoCompraItensAliquota_IPI: TFloatField
+    object PedidoCompraItensAliquota_IPI: TBCDField
       FieldName = 'Aliquota_IPI'
       DisplayFormat = ',##0.00%'
     end
-    object PedidoCompraItensAliquota_ICMS: TFloatField
+    object PedidoCompraItensAliquota_ICMS: TBCDField
       FieldName = 'Aliquota_ICMS'
       DisplayFormat = ',##0.00%'
     end
-    object PedidoCompraItensValor_Total: TCurrencyField
+    object PedidoCompraItensValor_Total: TBCDField
       FieldKind = fkCalculated
       FieldName = 'Valor_Total'
       DisplayFormat = ',##0.00'
@@ -495,10 +495,10 @@ object dmComercial: TdmComercial
     object PedidoCompraParcelasData_Vencimento: TDateTimeField
       FieldName = 'Data_Vencimento'
     end
-    object PedidoCompraParcelasPercentual_Pgto: TFloatField
+    object PedidoCompraParcelasPercentual_Pgto: TBCDField
       FieldName = 'Percentual_Pgto'
     end
-    object PedidoCompraParcelasValor_Parcela: TCurrencyField
+    object PedidoCompraParcelasValor_Parcela: TBCDField
       FieldName = 'Valor_Parcela'
     end
   end

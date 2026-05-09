@@ -72,12 +72,12 @@ type
     dsEstados: TDataSource;
     ICMSNCM: TStringField;
     ICMSEstado: TStringField;
-    ICMSST: TFloatField;
-    ICMSMVA_Imp: TFloatField;
-    ICMSMVA_Nac: TFloatField;
-    ICMSReducao_BCICMSOp: TFloatField;
-    ICMSReducao_BCICMSOp2: TFloatField;
-    ICMSReducao_BCICMSST: TFloatField;
+    ICMSST: TBCDField;
+    ICMSMVA_Imp: TBCDField;
+    ICMSMVA_Nac: TBCDField;
+    ICMSReducao_BCICMSOp: TBCDField;
+    ICMSReducao_BCICMSOp2: TBCDField;
+    ICMSReducao_BCICMSST: TBCDField;
     tmp: TFDQuery;
     UniScrollBox1: TUniScrollBox;
     pPanel2: TUniPanel;

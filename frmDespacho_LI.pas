@@ -124,9 +124,9 @@ type
     cTotalEmb: TDBText;
     tTotais: TMSQuery;
     dstTotais: TDataSource;
-    tTotaisValor_TotalEmb: TFloatField;
-    tTotaisValor_TotalCond: TFloatField;
-    tTotaisPeso_Total: TFloatField;
+    tTotaisValor_TotalEmb: TBCDField;
+    tTotaisValor_TotalCond: TBCDField;
+    tTotaisPeso_Total: TBCDField;
     tTotaisQtde_Total: TIntegerField;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

@@ -69,8 +69,8 @@ type
     UniDBCheckBox6: TUniDBCheckBox;
     UniDBCheckBox7: TUniDBCheckBox;
     UniDBCheckBox8: TUniDBCheckBox;
-    RecuperarICMSAliquota_ICMS: TFloatField;
-    RecuperarICMSAliquota_Recuperar: TFloatField;
+    RecuperarICMSAliquota_ICMS: TBCDField;
+    RecuperarICMSAliquota_Recuperar: TBCDField;
     RecuperarICMSRegistro: TSmallintField;
     RecuperarICMSBeneficio: TSmallintField;
     RecuperarICMSBase_Calculo: TStringField;

@@ -23,16 +23,16 @@ type
     Pesquisa_LanConta_Credito: TStringField;
     Pesquisa_LanHistorico_Codigo: TSmallintField;
     Pesquisa_LanHistorico_Complemento: TMemoField;
-    Pesquisa_LanValor: TCurrencyField;
+    Pesquisa_LanValor: TBCDField;
     Pesquisa_LanCtaDebito: TStringField;
     Pesquisa_LanCtaCredito: TStringField;
     Pesquisa_LanHistorico_Descricao: TStringField;
     Pesquisa_LanHistCompl: TStringField;
     HistoricosMacro: TMemoField;
     PlanoContasDescricao: TStringField;
-    PlanoContasSaldo_Anterior: TCurrencyField;
-    PlanoContasDebito: TCurrencyField;
-    PlanoContasCredito: TCurrencyField;
+    PlanoContasSaldo_Anterior: TBCDField;
+    PlanoContasDebito: TBCDField;
+    PlanoContasCredito: TBCDField;
     PlanoContasSintetica: TBooleanField;
     PlanoContasNatureza: TStringField;
     PlanoContasLALUR: TBooleanField;
@@ -84,7 +84,7 @@ type
     LancamentosConta_Credito: TStringField;
     LancamentosHistorico_Codigo: TSmallintField;
     LancamentosHistorico_Complemento: TMemoField;
-    LancamentosValor: TCurrencyField;
+    LancamentosValor: TBCDField;
     LancamentosDocumento: TStringField;
     LancamentosRecriar: TBooleanField;
     LancamentosDescricao_Credito: TStringField;
@@ -131,7 +131,7 @@ type
     PlanoContasAnterior_Empresa: TStringField;
     PlanoContasAnterior_Conta: TStringField;
     PlanoContasAnterior_Descricao: TStringField;
-    PlanoContasAnterior_Saldo: TCurrencyField;
+    PlanoContasAnterior_Saldo: TBCDField;
     PlanoContasAnterior_IndSaldo: TStringField;
     PlanoContasAnterior_Situacao: TStringField;
     procedure LancamentosHistorico_ComplementoGetText(Sender: TField;var Text: String; DisplayText: Boolean);

@@ -155,12 +155,12 @@ type
     DIAcrescimosRegistro_DI: TIntegerField;
     DIAcrescimosDI: TStringField;
     DIAcrescimosCodigo: TSmallintField;
-    DIAcrescimosValor_ME: TCurrencyField;
+    DIAcrescimosValor_ME: TBCDField;
     DIAcrescimosMoeda: TIntegerField;
-    DIAcrescimosValor_Real: TCurrencyField;
+    DIAcrescimosValor_Real: TBCDField;
     TotalAcrMoeda: TIntegerField;
-    TotalAcrTotalME: TCurrencyField;
-    TotalAcrTotalReal: TFloatField;
+    TotalAcrTotalME: TBCDField;
+    TotalAcrTotalReal: TBCDField;
     DIAcrescimosDescricao: TStringField;
     TotalAcrDescricao: TStringField;
     UniDBEdit1: TUniDBEdit;

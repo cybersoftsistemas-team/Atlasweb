@@ -1337,32 +1337,32 @@ object fCadNCM: TfCadNCM
       FixedChar = True
       Size = 2
     end
-    object ICMSST: TFloatField
+    object ICMSST: TBCDField
       FieldName = 'ST'
       Origin = 'ST'
       DisplayFormat = ',##0.00'
     end
-    object ICMSMVA_Imp: TFloatField
+    object ICMSMVA_Imp: TBCDField
       FieldName = 'MVA_Imp'
       Origin = 'MVA_Imp'
       DisplayFormat = ',##0.00'
     end
-    object ICMSMVA_Nac: TFloatField
+    object ICMSMVA_Nac: TBCDField
       FieldName = 'MVA_Nac'
       Origin = 'MVA_Nac'
       DisplayFormat = ',##0.00'
     end
-    object ICMSReducao_BCICMSOp: TFloatField
+    object ICMSReducao_BCICMSOp: TBCDField
       FieldName = 'Reducao_BCICMSOp'
       Origin = 'Reducao_BCICMSOp'
       DisplayFormat = ',##0.00'
     end
-    object ICMSReducao_BCICMSOp2: TFloatField
+    object ICMSReducao_BCICMSOp2: TBCDField
       FieldName = 'Reducao_BCICMSOp2'
       Origin = 'Reducao_BCICMSOp2'
       DisplayFormat = ',##0.00'
     end
-    object ICMSReducao_BCICMSST: TFloatField
+    object ICMSReducao_BCICMSST: TBCDField
       FieldName = 'Reducao_BCICMSST'
       Origin = 'Reducao_BCICMSST'
       DisplayFormat = ',##0.00'

@@ -238,7 +238,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     Width = 1407
     Height = 765
     Hint = ''
-    ActivePage = aLista
+    ActivePage = UniTabSheet4
     Plain = True
     Align = alClient
     ClientEvents.UniEvents.Strings = (
@@ -3849,7 +3849,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       Origin = 'Empresa'
       Size = 14
     end
-    object OperacaoFiscalAliquota_ISS: TFloatField
+    object OperacaoFiscalAliquota_ISS: TBCDField
       FieldName = 'Aliquota_ISS'
       Origin = 'Aliquota_ISS'
     end

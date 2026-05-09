@@ -153,7 +153,7 @@ object fComexPO: TfComexPO
         ParentAlignmentControl = False
         object cPO: TUniDBEdit
           Left = 12
-          Top = 92
+          Top = 38
           Width = 350
           Height = 25
           Hint = ''
@@ -164,7 +164,7 @@ object fComexPO: TfComexPO
           ParentFont = False
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
-          TabOrder = 2
+          TabOrder = 1
           ClearButton = True
           FieldLabel = 'PO N'#186
           FieldLabelSeparator = ' '
@@ -172,7 +172,7 @@ object fComexPO: TfComexPO
         end
         object cProcesso: TUniDBEdit
           Left = 12
-          Top = 38
+          Top = 65
           Width = 350
           Height = 25
           Hint = ''
@@ -183,7 +183,7 @@ object fComexPO: TfComexPO
           ParentFont = False
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
-          TabOrder = 0
+          TabOrder = 2
           ClearButton = True
           FieldLabel = 'Processo'
           FieldLabelSeparator = ' '
@@ -202,7 +202,7 @@ object fComexPO: TfComexPO
           ParentFont = False
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
-          TabOrder = 8
+          TabOrder = 9
           ClearButton = True
           FieldLabel = 'Requisitante'
           FieldLabelSeparator = ' '
@@ -222,7 +222,7 @@ object fComexPO: TfComexPO
           ParentFont = False
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
-          TabOrder = 16
+          TabOrder = 17
           ClearButton = True
           FieldLabel = 'Observa'#231#227'o'
           FieldLabelSeparator = ' '
@@ -239,7 +239,7 @@ object fComexPO: TfComexPO
           DateTime = 46140.000000000000000000
           DateFormat = 'dd/MM/yyyy'
           TimeFormat = 'HH:mm:ss'
-          TabOrder = 3
+          TabOrder = 4
           ParentFont = False
           Font.Color = clBlack
           Font.Name = 'MS Sans Serif'
@@ -268,7 +268,7 @@ object fComexPO: TfComexPO
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           AnyMatch = True
-          TabOrder = 6
+          TabOrder = 7
           Color = clWindow
           FieldLabel = 'Exportador'
           FieldLabelSeparator = ' '
@@ -294,7 +294,7 @@ object fComexPO: TfComexPO
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           AnyMatch = True
-          TabOrder = 10
+          TabOrder = 11
           Color = clWindow
           FieldLabel = 'Condi'#231#227'o C'#226'mbial'
           FieldLabelSeparator = ' '
@@ -315,11 +315,10 @@ object fComexPO: TfComexPO
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           Sorted = True
-          TabOrder = 12
+          TabOrder = 13
           FieldLabel = 'Local de Embarque'
           FieldLabelSeparator = ' '
           ClearButton = True
-          ForceSelection = True
           IconItems = <>
         end
         object cLocalEnt: TUniDBComboBox
@@ -336,11 +335,10 @@ object fComexPO: TfComexPO
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           Sorted = True
-          TabOrder = 13
+          TabOrder = 14
           FieldLabel = 'Local de Entrega'
           FieldLabelSeparator = ' '
           ClearButton = True
-          ForceSelection = True
           IconItems = <>
         end
         object cMoeda: TUniDBLookupComboBox
@@ -362,7 +360,7 @@ object fComexPO: TfComexPO
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           AnyMatch = True
-          TabOrder = 14
+          TabOrder = 15
           Color = clWindow
           FieldLabel = 'Moeda'
           FieldLabelSeparator = ' '
@@ -388,7 +386,7 @@ object fComexPO: TfComexPO
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           AnyMatch = True
-          TabOrder = 7
+          TabOrder = 8
           Color = clWindow
           FieldLabel = 'Pa'#237's de Origem'
           FieldLabelSeparator = ' '
@@ -397,7 +395,7 @@ object fComexPO: TfComexPO
         end
         object cModalidade: TUniDBLookupComboBox
           Left = 12
-          Top = 65
+          Top = 92
           Width = 350
           Height = 25
           Hint = ''
@@ -414,7 +412,7 @@ object fComexPO: TfComexPO
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           AnyMatch = True
-          TabOrder = 1
+          TabOrder = 3
           Color = clWindow
           FieldLabel = 'Modalidade'
           FieldLabelSeparator = ' '
@@ -440,7 +438,7 @@ object fComexPO: TfComexPO
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           AnyMatch = True
-          TabOrder = 5
+          TabOrder = 6
           Color = clWindow
           FieldLabel = 'Cliente'
           FieldLabelSeparator = ' '
@@ -467,7 +465,7 @@ object fComexPO: TfComexPO
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           AnyMatch = True
-          TabOrder = 11
+          TabOrder = 12
           Color = clWindow
           FieldLabel = 'Via de Transporte'
           FieldLabelSeparator = ' '
@@ -493,7 +491,7 @@ object fComexPO: TfComexPO
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           AnyMatch = True
-          TabOrder = 9
+          TabOrder = 10
           Color = clWindow
           FieldLabel = 'Tipo Mercadoria'
           FieldLabelSeparator = ' '
@@ -512,7 +510,7 @@ object fComexPO: TfComexPO
           ParentFont = False
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
-          TabOrder = 15
+          TabOrder = 16
           TabStop = False
           Color = 16762566
           ReadOnly = True
@@ -538,7 +536,7 @@ object fComexPO: TfComexPO
           ParentFont = False
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
-          TabOrder = 18
+          TabOrder = 0
           Color = clWindow
           FieldLabel = 'Empresa'
           FieldLabelSeparator = ' '
@@ -563,7 +561,7 @@ object fComexPO: TfComexPO
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           AnyMatch = True
-          TabOrder = 4
+          TabOrder = 5
           Color = clWindow
           FieldLabel = 'INCOTERMS'
           FieldLabelSeparator = ' '
@@ -1127,7 +1125,7 @@ object fComexPO: TfComexPO
       OnClick = bSalvarClick
     end
     object bFechar: TUniSpeedButton
-      Left = 514
+      Left = 528
       Top = 0
       Width = 41
       Height = 35
@@ -1140,11 +1138,12 @@ object fComexPO: TfComexPO
       ImageIndex = 7
       TabOrder = 7
       OnClick = bFecharClick
+      ExplicitLeft = 514
     end
     object bImportar: TUniButton
       Left = 365
       Top = 0
-      Width = 90
+      Width = 97
       Height = 35
       Hint = ''
       Caption = 'Importar &Excel'
@@ -1153,9 +1152,9 @@ object fComexPO: TfComexPO
       OnClick = bImportarClick
     end
     object bImprimir: TUniButton
-      Left = 455
+      Left = 462
       Top = 0
-      Width = 59
+      Width = 66
       Height = 35
       Hint = ''
       Caption = 'Im&primir'
@@ -1553,7 +1552,7 @@ object fComexPO: TfComexPO
       Size = 500
       Lookup = True
     end
-    object POItensTotal: TCurrencyField
+    object POItensTotal: TBCDField
       FieldKind = fkCalculated
       FieldName = 'Total'
       DisplayFormat = ',##0.00'

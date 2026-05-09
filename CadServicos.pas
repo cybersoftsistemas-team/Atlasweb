@@ -59,12 +59,12 @@ type
     cCSTCOFINS_Saida: TUniDBLookupComboBox;
     CSTPIS: TFDQuery;
     dsCSTPIS: TDataSource;
-    ServicosAliquota_PIS: TFloatField;
-    ServicosAliquota_COFINS: TFloatField;
-    ServicosLimite_PIS: TCurrencyField;
-    ServicosLimite_COFINS: TCurrencyField;
-    ServicosLimite_IR: TCurrencyField;
-    ServicosLimite_INSS: TCurrencyField;
+    ServicosAliquota_PIS: TBCDField;
+    ServicosAliquota_COFINS: TBCDField;
+    ServicosLimite_PIS: TBCDField;
+    ServicosLimite_COFINS: TBCDField;
+    ServicosLimite_IR: TBCDField;
+    ServicosLimite_INSS: TBCDField;
     ServicosCodigo: TIntegerField;
     ServicosDesativado: TBooleanField;
     ServicosIndustria: TBooleanField;
@@ -79,7 +79,7 @@ type
     ServicosCOFINS_Recolher: TStringField;
     ServicosCSLL_Recuperar: TStringField;
     ServicosCSLL_Recolher: TStringField;
-    ServicosLimite_CSLL: TCurrencyField;
+    ServicosLimite_CSLL: TBCDField;
     ServicosIR_Recuperar: TStringField;
     ServicosIR_Recolher: TStringField;
     ServicosINSS_Recuperar: TStringField;

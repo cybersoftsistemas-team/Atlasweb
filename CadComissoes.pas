@@ -31,7 +31,7 @@ type
     dsComissoes: TDataSource;
     ComissoesCodigo: TSmallintField;
     ComissoesDescricao: TStringField;
-    ComissoesValor: TFloatField;
+    ComissoesValor: TBCDField;
     UniScrollBox1: TUniScrollBox;
     pFicha: TUniPanel;
     cValor: TUniDBEdit;

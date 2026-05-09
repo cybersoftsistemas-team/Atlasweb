@@ -358,7 +358,7 @@ object fCadCotacao: TfCadCotacao
       FieldName = 'Data'
       Origin = 'Data'
     end
-    object CotacaoValor: TFloatField
+    object CotacaoValor: TBCDField
       FieldName = 'Valor'
       Origin = 'Valor'
     end

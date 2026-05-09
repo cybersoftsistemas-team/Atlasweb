@@ -1,4 +1,4 @@
-Ôªøunit DespRegistroDUIMP;
+unit DespRegistroDUIMP;
 
 interface
 
@@ -155,12 +155,12 @@ type
     DUIMPAcrescimoRegistro_DI: TIntegerField;
     DUIMPAcrescimoDI: TStringField;
     DUIMPAcrescimoCodigo: TSmallintField;
-    DUIMPAcrescimoValor_ME: TCurrencyField;
+    DUIMPAcrescimoValor_ME: TBCDField;
     DUIMPAcrescimoMoeda: TIntegerField;
-    DUIMPAcrescimoValor_Real: TCurrencyField;
+    DUIMPAcrescimoValor_Real: TBCDField;
     TotalAcrMoeda: TIntegerField;
-    TotalAcrTotalME: TCurrencyField;
-    TotalAcrTotalReal: TFloatField;
+    TotalAcrTotalME: TBCDField;
+    TotalAcrTotalReal: TBCDField;
     DUIMPAcrescimoDescricao: TStringField;
     TotalAcrDescricao: TStringField;
     UniDBEdit1: TUniDBEdit;
@@ -224,7 +224,7 @@ begin
                //LigaBotoes(false);
                Append;
            except
-               MessageDlgN('Falha desconhecida, n√£o pode adicionar um novo registro!', mtError, []);
+               MessageDlgN('Falha desconhecida, n„o pode adicionar um novo registro!', mtError, []);
            end;
       end;
 end;
@@ -236,7 +236,7 @@ begin
                LigaBotoes(false);
                Append;
            except
-               MessageDlgN('Falha desconhecida, n√£o pode adicionar um novo registro!', mtError, []);
+               MessageDlgN('Falha desconhecida, n„o pode adicionar um novo registro!', mtError, []);
            end;
       end;
 end;
@@ -249,7 +249,7 @@ begin
                     begin
                           if ARes = mrYes then begin
                              Delete;
-                             Alerta.Text := 'Registro exclu√≠do do banco de dados!';
+                             Alerta.Text := 'Registro excluÌdo do banco de dados!';
                              Alerta.Execute;
                           end;
                     end);
@@ -264,17 +264,17 @@ begin
            end;
            
            // Verifica todos os campos obigatorios.
-           if ValidaCampo(cData,  DateTimeToUnix(cData.DateTime), 0, '<=', 'A "Data" deve ser informada!', 'Data inv√°lida') then Abort;
-           if ValidaCampo(cProcesso, cProcesso.text, '', '=', 'O "Processo" deve ser informado!', 'N√∫mero de processo inv√°lido') then Abort;
-           if ValidaCampo(clModalidade_Importacao, clModalidade_Importacao.Text, '', '=', 'A "Modalidade de Importa√ß√£o" deve ser informada!', 'Modalidade de Importa√ß√£o inv√°lida') then Abort;
-           if ValidaCampo(cTipo_Declaracao, cTipo_Declaracao.Text, '', '=', 'A "Tipo de Declara√ß√£o" deve ser informada!', 'Tipo de Declara√ß√£o inv√°lida') then Abort;
-           if ValidaCampo(cTipo_Importador, cTipo_Importador.Text, '', '=', 'O "Tipo de Importador" deve ser informado!', 'Tipo de Importador inv√°lido') then Abort;
-           if ValidaCampo(cURF_Despacho, cURF_Despacho.Text, '', '=', 'O "URF de Despacho" deve ser informada!', 'URF de Despacho inv√°lida') then Abort;
-           if ValidaCampo(cURF_Entrega, cURF_Entrega.Text, '', '=', 'O "URF de Entrega" deve ser informada!', 'URF de Entrega inv√°lida') then Abort;
-           if ValidaCampo(cPais_Procedencia, cPais_Procedencia.Text, '', '=', 'O "Pa√≠s de Proced√™ncia" deve ser informada!', 'Pa√≠s de Proced√™ncia inv√°lido') then Abort;
+           if ValidaCampo(cData,  DateTimeToUnix(cData.DateTime), 0, '<=', 'A "Data" deve ser informada!', 'Data inv·lida') then Abort;
+           if ValidaCampo(cProcesso, cProcesso.text, '', '=', 'O "Processo" deve ser informado!', 'N˙mero de processo inv·lido') then Abort;
+           if ValidaCampo(clModalidade_Importacao, clModalidade_Importacao.Text, '', '=', 'A "Modalidade de ImportaÁ„o" deve ser informada!', 'Modalidade de ImportaÁ„o inv·lida') then Abort;
+           if ValidaCampo(cTipo_Declaracao, cTipo_Declaracao.Text, '', '=', 'A "Tipo de DeclaraÁ„o" deve ser informada!', 'Tipo de DeclaraÁ„o inv·lida') then Abort;
+           if ValidaCampo(cTipo_Importador, cTipo_Importador.Text, '', '=', 'O "Tipo de Importador" deve ser informado!', 'Tipo de Importador inv·lido') then Abort;
+           if ValidaCampo(cURF_Despacho, cURF_Despacho.Text, '', '=', 'O "URF de Despacho" deve ser informada!', 'URF de Despacho inv·lida') then Abort;
+           if ValidaCampo(cURF_Entrega, cURF_Entrega.Text, '', '=', 'O "URF de Entrega" deve ser informada!', 'URF de Entrega inv·lida') then Abort;
+           if ValidaCampo(cPais_Procedencia, cPais_Procedencia.Text, '', '=', 'O "PaÌs de ProcedÍncia" deve ser informada!', 'PaÌs de ProcedÍncia inv·lido') then Abort;
            
            try
-               // Gera o registro em caso de inclus√£o.
+               // Gera o registro em caso de inclus„o.
                if State = dsInsert then begin
                   FieldByName('Registro').Value := GeraCodigo('DUIMP', 'Registro');
                   FieldByName('Empresa').Value  := uniMainModule.mEmpresaAtiva; 
@@ -286,7 +286,7 @@ begin
                PegaNavios;
                PegaAgente;
            except
-               MessageDlgN('Falha desconhecida, n√£o pode salvar o registro corrente!', mtError, []);
+               MessageDlgN('Falha desconhecida, n„o pode salvar o registro corrente!', mtError, []);
            end;
       end;
 end;
@@ -304,7 +304,7 @@ begin
                Alerta.Text := 'Registro salvo no banco de dados!';
                Alerta.Execute;
            except
-               Showmessage('Falha desconhecida, n√£o pode salvar o registro corrente!');
+               Showmessage('Falha desconhecida, n„o pode salvar o registro corrente!');
            end;
       end;
 end;
@@ -322,7 +322,7 @@ begin
          DUIMP.Edit;
 //         cRegistro.setfocus;
      except
-        MessageDlgN('Falha desconhecida, n√£o pode editar o registro corrente!', mtError, []);
+        MessageDlgN('Falha desconhecida, n„o pode editar o registro corrente!', mtError, []);
      end;
 end;
 
@@ -393,7 +393,7 @@ begin
            sql.add('order by Registro');
            open;
       end;
-      // Carregando os locais de embarque pr√©-existentes.
+      // Carregando os locais de embarque prÈ-existentes.
       with tTmp do begin
            sql.Clear;
            sql.Add('select distinct local_Embarque from Invoice where ltrim(rtrim(Local_Embarque)) <> '''' order by Local_Embarque');
@@ -514,7 +514,7 @@ begin
       PegaAgente;
 end;
 
-// Pega os acr√©scimos da DI.
+// Pega os acrÈscimos da DI.
 procedure TfDespRegistroDUIMP.PegaAcrescimos;
 begin
       {
@@ -546,7 +546,7 @@ begin
       end;
 end;
 
-// Carrega os nome de ve√≠culos pr√©-existentes.
+// Carrega os nome de veÌculos prÈ-existentes.
 procedure TfDespRegistroDUIMP.PegaNavios;
 begin
       with tTmp do begin
@@ -563,7 +563,7 @@ begin
       end;
 end;
 
-// Carrega os nome dos agente transportador pr√©-existentes.
+// Carrega os nome dos agente transportador prÈ-existentes.
 procedure TfDespRegistroDUIMP.PegaAgente;
 begin
      with tTmp do begin
@@ -737,7 +737,7 @@ begin
                    Item := Arr.Items[I] as TJSONObject;
                    Writeln('CE: ' + Item.GetValue<string>('ceMercante'));
                    Writeln('Tipo: ' + Item.GetValue<string>('tipo'));
-                   Writeln('Situa√ß√£o: ' + Item.GetValue<string>('situacao'));
+                   Writeln('SituaÁ„o: ' + Item.GetValue<string>('situacao'));
                    Writeln('----------------------');
                end;
            finally
@@ -773,7 +773,7 @@ var
   Body: AnsiString;
 begin
      Response := '';
-     // Sess√£o HTTP
+     // Sess„o HTTP
      hSession := WinHttpOpen('DelphiSiscomex',WINHTTP_ACCESS_TYPE_DEFAULT_PROXY,WINHTTP_NO_PROXY_NAME,WINHTTP_NO_PROXY_BYPASS,0);
      if hSession = nil then RaiseLastOSError;
      try
@@ -784,14 +784,14 @@ begin
        if hConnect = nil then RaiseLastOSError;
 
        try
-         // Criar requisi√ß√£o
+         // Criar requisiÁ„o
          hRequest := WinHttpOpenRequest(hConnect,'POST','/carga/consultar',nil,WINHTTP_NO_REFERER,WINHTTP_DEFAULT_ACCEPT_TYPES,WINHTTP_FLAG_SECURE);
          if hRequest = nil then RaiseLastOSError;
          
          try
-             // Importante: for√ßa uso do certificado do usu√°rio
+             // Importante: forÁa uso do certificado do usu·rio
              if not WinHttpSetOption(hRequest,WINHTTP_OPTION_CLIENT_CERT_CONTEXT,nil,0) then begin
-               // se falhar, geralmente o Windows escolhe autom√°tico
+               // se falhar, geralmente o Windows escolhe autom·tico
              end;
 
              // Headers
@@ -864,7 +864,7 @@ begin
      Client := THTTPClient.Create;
      uniMemo1.Lines.clear;
      try
-        // TLS 1.2 (obrigat√≥rio hoje) 
+        // TLS 1.2 (obrigatÛrio hoje) 
         Client.SecureProtocols := [THTTPSecureProtocol.TLS12];
 
         // Headers 
@@ -898,8 +898,8 @@ begin
   JSONValue := TJSONObject.ParseJSONValue(AJSON);
   try
     if Assigned(JSONValue) then
-      // O m√©todo Format gera o texto com indenta√ß√£o
-      Result := JSONValue.Format(2); // 2 espa√ßos de indenta√ß√£o
+      // O mÈtodo Format gera o texto com indentaÁ„o
+      Result := JSONValue.Format(2); // 2 espaÁos de indentaÁ„o
   finally
     JSONValue.Free;
   end;

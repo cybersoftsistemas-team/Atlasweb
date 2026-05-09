@@ -1968,7 +1968,7 @@ object fDespRegistroDI: TfDespRegistroDI
       FieldName = 'Codigo'
       Origin = 'Codigo'
     end
-    object DIAcrescimosValor_ME: TCurrencyField
+    object DIAcrescimosValor_ME: TBCDField
       FieldName = 'Valor_ME'
       Origin = 'Valor_ME'
       DisplayFormat = ',##0.00'
@@ -1977,7 +1977,7 @@ object fDespRegistroDI: TfDespRegistroDI
       FieldName = 'Moeda'
       Origin = 'Moeda'
     end
-    object DIAcrescimosValor_Real: TCurrencyField
+    object DIAcrescimosValor_Real: TBCDField
       FieldName = 'Valor_Real'
       Origin = 'Valor_Real'
       DisplayFormat = ',##0.00'
@@ -2026,13 +2026,13 @@ object fDespRegistroDI: TfDespRegistroDI
       FieldName = 'Moeda'
       Origin = 'Moeda'
     end
-    object TotalAcrTotalME: TCurrencyField
+    object TotalAcrTotalME: TBCDField
       FieldName = 'TotalME'
       Origin = 'TotalME'
       ReadOnly = True
       DisplayFormat = ',##0.00'
     end
-    object TotalAcrTotalReal: TFloatField
+    object TotalAcrTotalReal: TBCDField
       FieldName = 'TotalReal'
       Origin = 'TotalReal'
       ReadOnly = True

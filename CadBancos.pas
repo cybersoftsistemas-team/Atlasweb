@@ -71,7 +71,7 @@ type
     BancosDigito_cc: TStringField;
     BancosAgencia: TIntegerField;
     BancosDigito_Ag: TStringField;
-    BancosSaldo: TCurrencyField;
+    BancosSaldo: TBCDField;
     BancosNumero_Banco: TSmallintField;
     BancosCheque: TIntegerField;
     BancosCodigo_Destinatario: TIntegerField;

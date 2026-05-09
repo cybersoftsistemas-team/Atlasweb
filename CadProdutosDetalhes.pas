@@ -56,8 +56,8 @@ type
     ProdutosDetalheNota_Entrada: TIntegerField;
     ProdutosDetalheData_Entrada: TSQLTimeStampField;
     ProdutosDetalheItem: TSmallintField;
-    ProdutosDetalheQuantidade_Entrada: TFloatField;
-    ProdutosDetalheQuantidade_Saida: TFloatField;
+    ProdutosDetalheQuantidade_Entrada: TBCDField;
+    ProdutosDetalheQuantidade_Saida: TBCDField;
     ProdutosDetalheDetalhe_Descricao: TStringField;
     ProdutosDetalheProduto_Descricao: TStringField;
     procedure UniFrameCreate(Sender: TObject);

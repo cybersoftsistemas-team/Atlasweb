@@ -496,11 +496,11 @@ object fCadProdutosDetalhes: TfCadProdutosDetalhes
       FieldName = 'Item'
       Origin = 'Item'
     end
-    object ProdutosDetalheQuantidade_Entrada: TFloatField
+    object ProdutosDetalheQuantidade_Entrada: TBCDField
       FieldName = 'Quantidade_Entrada'
       Origin = 'Quantidade_Entrada'
     end
-    object ProdutosDetalheQuantidade_Saida: TFloatField
+    object ProdutosDetalheQuantidade_Saida: TBCDField
       FieldName = 'Quantidade_Saida'
       Origin = 'Quantidade_Saida'
     end

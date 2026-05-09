@@ -97,15 +97,15 @@ object dmContab: TdmContab
       Origin = 'PlanoContas.Descricao'
       Size = 50
     end
-    object PlanoContasSaldo_Anterior: TCurrencyField
+    object PlanoContasSaldo_Anterior: TBCDField
       FieldName = 'Saldo_Anterior'
       Origin = 'PlanoContas.Saldo_Anterior'
     end
-    object PlanoContasDebito: TCurrencyField
+    object PlanoContasDebito: TBCDField
       FieldName = 'Debito'
       Origin = 'PlanoContas.Debito'
     end
-    object PlanoContasCredito: TCurrencyField
+    object PlanoContasCredito: TBCDField
       FieldName = 'Credito'
       Origin = 'PlanoContas.Credito'
     end
@@ -223,7 +223,7 @@ object dmContab: TdmContab
       FieldName = 'Anterior_Descricao'
       Size = 60
     end
-    object PlanoContasAnterior_Saldo: TCurrencyField
+    object PlanoContasAnterior_Saldo: TBCDField
       FieldName = 'Anterior_Saldo'
       DisplayFormat = ',##0.00'
     end
@@ -374,7 +374,7 @@ object dmContab: TdmContab
       OnGetText = Pesquisa_LanHistorico_ComplementoGetText
       BlobType = ftMemo
     end
-    object Pesquisa_LanValor: TCurrencyField
+    object Pesquisa_LanValor: TBCDField
       FieldName = 'Valor'
       Origin = 'Lancamentos.Valor'
       DisplayFormat = '###,###,###,##0.00'
@@ -778,7 +778,7 @@ object dmContab: TdmContab
       FieldName = 'Historico_Complemento'
       BlobType = ftMemo
     end
-    object LancamentosValor: TCurrencyField
+    object LancamentosValor: TBCDField
       FieldName = 'Valor'
       DisplayFormat = ',##0.00'
     end

@@ -139,7 +139,8 @@ uses
  ,ConfigCampos
  ,Estoque_SaldoAbertura
  ,DUIMP
- ,ComexPO;(*uses p/gerador*)
+ ,ComexPO
+ ,ComexPOImportar;(*uses p/gerador*)
 
 function MainForm: TMainForm;
 begin
@@ -490,6 +491,7 @@ initialization
   RegisterClass(TfConfigCampos);
   RegisterClass(TfEstoque_SaldoAbertura);
   RegisterClass(TfComexPO);
+  RegisterClass(TfComexPOImportar);
   (*RegisterClass p/gerador*)
 
   

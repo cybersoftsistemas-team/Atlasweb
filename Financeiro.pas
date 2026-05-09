@@ -3,12 +3,12 @@ unit Financeiro;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, uniGUITypes, uniGUIAbstractClasses, uniGUIClasses, uniGUIFrame, UniPageControl, uniDBGrid, uniPanel,
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, uniGUITypes, uniGUIAbstractClasses, uniGUIClasses, uniGUIFrame, UniPageControl, uniDBGrid, uniPanel,
   uniDBLookUpComboBox, uniDBCheckBox, uniScrollBox, uniSpeedButton, uniDateTimePicker, uniDBDateTimePicker, uniBitBtn, uniDBNavigator, uniEdit, uniDBMemo, uniDBEdit,
   uniBasicGrid, uniGUIBaseClasses, FireDAC.Comp.Client, Funcoes, Data.DB, uniSweetAlert, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
-  FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Vcl.Menus, uniMainMenu, FireDAC.Comp.DataSet, uniRadioGroup, uniCheckBox,
-  uniComboBox, uniDBComboBox, uniLabel, uniGroupBox, uniTabControl, uniCalendarPanel, uniCalendar, uniDBRadioGroup, uniMemo, uniButton, uniSegmentedButton, uniStatusBar, uniSpinEdit,
-  System.DateUtils, MasKUtils, System.Actions, Vcl.ActnList, uniMultiItem, uniDBTreeGrid, uniWidgets, uniImageList, uniToolBar;
+  FireDAC.DatS, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, uniRadioGroup, uniCheckBox,
+  uniComboBox, uniDBComboBox, uniGroupBox, uniCalendarPanel, uniMemo, uniButton, uniSegmentedButton, uniSpinEdit,
+  System.DateUtils, System.Actions, uniMultiItem, FireDAC.Phys.Intf, FireDAC.DApt.Intf;
 
 type
   TfFinanceiro = class(TUniFrame)
@@ -21,9 +21,9 @@ type
     bCancelar: TUniSpeedButton;
     bFechar: TUniSpeedButton;
     Pasta: TUnipageControl;
+    dsBeneficiario: TDataSource;    
     UniTabSheet1: TUniTabSheet;
     Alerta: TUniSweetAlert;
-    dsBeneficiario: TDataSource;
     Beneficiario: TFDQuery;
     PagarReceber: TFDQuery;
     Baixas: TFDQuery;
@@ -78,11 +78,11 @@ type
     cAno: TUniSpinEdit;
     BaixasRegistro: TLargeintField;
     BaixasTipo: TStringField;
-    BaixasValor: TCurrencyField;
+    BaixasValor: TBCDField;
     BaixasBanco: TSmallintField;
-    BaixasValor_Multa: TCurrencyField;
-    BaixasValor_Juros: TCurrencyField;
-    BaixasValor_Desconto: TCurrencyField;
+    BaixasValor_Multa: TBCDField;
+    BaixasValor_Juros: TBCDField;
+    BaixasValor_Desconto: TBCDField;
     BaixasEmpresa: TStringField;
     BaixasBanco_Nome: TStringField;
     BaixasObservacao: TMemoField;
@@ -100,7 +100,7 @@ type
     BaixasCheque_Assinado: TStringField;
     BaixasCheque_Visado: TBooleanField;
     BaixasCheque_Cruzado: TBooleanField;
-    BaixasTaxa_FechamentoCambio: TFloatField;
+    BaixasTaxa_FechamentoCambio: TBCDField;
     BaixasTaxa_Data: TSQLTimeStampField;
     BaixasNumero_ContratoCambio: TStringField;
     BaixasOrigem_Multa: TStringField;
@@ -146,18 +146,18 @@ type
     ListaTipo: TStringField;
     ListaCentro_Custo: TStringField;
     ListaData_Vencimento: TDateField;
-    ListaValor_Documento: TCurrencyField;
-    ListaValor_Parcela: TCurrencyField;
+    ListaValor_Documento: TBCDField;
+    ListaValor_Parcela: TBCDField;
     ListaDocumento_Numero: TStringField;
     ListaProcesso: TStringField;
     ListaParcela: TStringField;
     ListaBaixa: TBooleanField;
     ListaBeneficiario: TStringField;
-    ListaValor_Juros: TCurrencyField;
-    ListaValor_Multa: TCurrencyField;
-    ListaValor_Desconto: TCurrencyField;
-    ListaValor_Total: TCurrencyField;
-    ListaValor_Operacao: TCurrencyField;
+    ListaValor_Juros: TBCDField;
+    ListaValor_Multa: TBCDField;
+    ListaValor_Desconto: TBCDField;
+    ListaValor_Total: TBCDField;
+    ListaValor_Operacao: TBCDField;
     BaixasCompensacao_Numero: TSmallintField;
     ListaNome: TStringField;
     ListaConta: TStringField;
@@ -166,16 +166,14 @@ type
     ListaAd: TFDQuery;
     dsListaAd: TDataSource;
     ListaAdTitulo: TLargeintField;
-    ListaAdValor_Total: TCurrencyField;
+    ListaAdValor_Total: TBCDField;
     ListaAdDocumento_Data: TDateField;
     ListaAdAdiantamento_Numero: TIntegerField;
     ListaAdBanco: TSmallintField;
     ListaAdTipo: TStringField;
-    ListaAdValor_Baixado: TCurrencyField;
     ListaAdBeneficiario: TStringField;
     Lancamentos: TFDQuery;
     cDocNumFiltro: TUniEdit;
-    ListaValor_Baixado: TCurrencyField;
     bBloquear: TUniButton;
     UniTabSheet6: TUniTabSheet;
     UniScrollBox2: TUniScrollBox;
@@ -201,7 +199,6 @@ type
     brTotais: TUniSegmentedButton;
     UniContainerPanel1: TUniContainerPanel;
     EmpresasFechamento_Financeiro: TDateField;
-    ListaValor_Baixas: TCurrencyField;
     ListaOrigem: TStringField;
     ListaVinculo: TIntegerField;
     UniTabSheet7: TUniTabSheet;
@@ -247,6 +244,9 @@ type
     cBanco: TUniDBLookupComboBox;
     UniDBLookupComboBox11: TUniDBLookupComboBox;
     cValor_Baixado: TUniFormattedNumberEdit;
+    ListaValor_Aberto: TFMTBCDField;
+    ListaValor_Baixas: TFMTBCDField;
+    ListaAdValor_Baixado: TFMTBCDField;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
@@ -396,8 +396,8 @@ begin
           Tag := 1;
           mTp := FieldByName('Tipo').asstring;
 
+          cBxValor_Doc.value      := 0;          
           // Somando todos os itens selecionados.
-          cBxValor_Doc.value      := 0;
           cBxValor_Parcela.value  := 0;
           cBxValor_Multa.value    := 0;
           cBxValor_Juros.value    := 0;

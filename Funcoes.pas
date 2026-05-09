@@ -5,7 +5,7 @@ interface
 uses
     SysUtils, Windows, FireDAC.Comp.Client, Dialogs, MaskUtils, System.Variants, DB, Forms, uniSpeedButton, uniPanel, UniPageControl, System.Classes, CalcExpress,
     uniGUIForm, uniGUIFrame, uniMemo, DBCommon, uniDBLookUpComboBox, uniDBComboBox, uniComboBox, uniDBDateTimePicker, uniDBEdit, uniEdit, uniGuiDialogs, TypInfo, 
-    uniSweetAlert, FireDAC.Stan.Param, uniMainMenu, uniDBNavigator, uniButton, uniScrollBox, System.RegularExpressions, System.Rtti, uniStringGrid, DateUtils;
+    uniSweetAlert, FireDAC.Stan.Param, uniMainMenu, uniDBNavigator, uniButton, uniScrollBox, System.RegularExpressions, System.Rtti, uniStringGrid, DateUtils, ComObj;
 
 
 // Funções de checagens.
@@ -14,6 +14,7 @@ function ChecaCPF(Num: String): Boolean;
 function CampoVazio(Campo:TObject; msg:string): boolean;
 function ValidaCampo(Campo:TObject; Valor1, Valor2:Variant; Condicao, msg, Titulo:string): boolean;
 function Aviso(Valor1, Valor2:Variant; Condicao, msg, Titulo:string): boolean;
+function ImportaEXCEL(xStringGrid: TuniStringGrid; xFileXLS: string; NomeAba: TuniPageControl; Aba, lIni, lFim:Integer; Titulo:Boolean): Boolean;
 
 // Funções de ordem gerais.
 procedure LimpaMemoria;
@@ -41,12 +42,13 @@ function QuebraString(BaseString, BreakString: string): TStringList;
 function ApenasNumeros(Const Texto:String):String;
 function ApenasLetras(Const Texto:String):String;
 function SinalSequencia(s: string): boolean;
+function RemoveCaracter(PesquisarPor, TrocarPor : String; Texto :String):String;
 function RemoveCaracterXML(Str:String): String;
 
 //Funções de Data.
 function NomeMes(Mes: Integer) :String;
 
-// Funções/ procedures de banco de dados.
+// Funções / procedures de banco de dados.
 procedure LogDados(Tabela: TDataSet; Descricao, Estado: String);
 procedure LogErros(Tabela, Descricao:String);
 function GeraCodigo(Tabela, Campo:string):integer;
@@ -3015,7 +3017,7 @@ var
   ,Mascara
   ,Forma: string;
    DigitosAno
-  ,Processo: integer;
+  ,Numero: integer;
    tEmpresa,
    tConfig: TFDQuery;
 begin
@@ -3028,11 +3030,11 @@ begin
           parambyname('pCliente').value := Cliente;
           open;
           if ProcPO = 'PR' then begin
-             Mascara  := iif(trim(fieldbyname('Mascara_Processo').asstring) <> '', fieldbyname('Mascara_Processo').asstring, fieldbyname('Mascara_Cliente').asstring);
-             Processo := fieldbyname('Processo').asinteger;
+             Mascara := iif(trim(fieldbyname('Mascara_Processo').asstring) <> '', fieldbyname('Mascara_Processo').asstring, fieldbyname('Mascara_Cliente').asstring);
+             Numero  := fieldbyname('Processo').asinteger+1;
           end else begin
              Mascara  := fieldbyname('Mascara_PO').asstring;
-             Processo := fieldbyname('PO').asinteger;
+             Numero := fieldbyname('PO').asinteger+1;
           end;
      end;
      tConfig            := TFDQuery.Create(nil);
@@ -3055,28 +3057,125 @@ begin
      // Mascara + Número.
      if (Forma = 'MN') or (Forma = '')  then begin
         if Trim(Mascara) <> '' then 
-           Result := Trim(Mascara) + ' ' + Format('%4.4d',[Processo])
+           Result := Trim(Mascara) + ' ' + Format('%4.4d',[Numero])
         else 
-           Result := Trim(Mascara) + ' ' + InttoStr(Processo);
+           Result := Trim(Mascara) + ' ' + InttoStr(Numero);
      end;
      // Mascara + Número + Ano.
      if Forma = 'MNA' then 
-        Result := Trim(Mascara) + ' ' + Format('%4.4d',[Processo]) + '/' + mAno;
+        Result := Trim(Mascara) + ' ' + Format('%4.4d',[Numero]) + '/' + mAno;
      // Mascara + Ano + Número.
      if Forma = 'MAN' then 
-        Result := Trim(Mascara) + ' ' + mAno + '/' + Format('%4.4d',[Processo]);
+        Result := Trim(Mascara) + ' ' + mAno + '/' + Format('%4.4d',[Numero]);
      // Número + Ano + Mascara.
      if Forma = 'NAM' then 
-        Result := Format('%4.4d',[Processo]) + '/' + mAno + ' ' + Trim(Mascara);
+        Result := Format('%4.4d',[Numero]) + '/' + mAno + ' ' + Trim(Mascara);
      // Ano + Número + Mascara.
      if Forma = 'ANM' then 
-        Result := mAno + '/' + Format('%4.4d',[Processo]) +  ' ' + Trim(Mascara);
+        Result := mAno + '/' + Format('%4.4d',[Numero]) +  ' ' + Trim(Mascara);
      // Mascara + Referencia do Navio + BL
      if Forma = 'MNB' then 
-        Result := concat(Mascara, inttostr(Processo), ' - BL', inttostr(yearof(Date)) );
+        Result := concat(Mascara, inttostr(Numero), ' - BL', inttostr(yearof(Date)) );
         
      Result := Trim(Result);
 end;
+
+// Substitui texto informado dentro de outro.
+function RemoveCaracter(PesquisarPor, TrocarPor : String; Texto :String):String;
+var
+   mPosicao     :Integer;
+   mTamanho     :Integer;
+   TempStr      :String;
+   TempOriginal :String;
+begin
+    mTamanho     := Length(PesquisarPor);
+    TempOriginal := Texto;
+    TempStr      := '';
+    Repeat
+          mPosicao := Pos(PesquisarPor, TempOriginal);
+          If (mPosicao <> 0) then begin
+             TempStr      := TempStr + Copy(TempOriginal, 1, mPosicao-1);
+             TempStr      := TempStr + TrocarPor;
+             TempOriginal := Copy( TempOriginal, mPosicao+mTamanho, Length(TempOriginal) );
+          End else begin
+             Tempstr := Tempstr + TempOriginal;
+          End;
+    Until (mPosicao = 0);
+
+    Result := Tempstr;
+end;
+
+function ImportaEXCEL(xStringGrid: TuniStringGrid; xFileXLS: string; NomeAba: TuniPageControl; Aba, lIni, lFim:Integer; Titulo:Boolean): Boolean;
+const
+    xlCellTypeLastCell = $0000000B;
+var
+    XLSAplicacao, AbaXLS: OLEVariant;
+    RangeMatrix: Variant;
+    mLinTot, mColTot, mColPL, mLinPL, mColGr, mLinGr: Integer;
+begin
+      Result := False;
+      // Cria Excel- OLE Object.
+      XLSAplicacao := CreateOleObject('Excel.Application');
+
+      try
+         // Esconde Excel.
+         XLSAplicacao.Visible := False;
+
+         // Abre o Workbook.
+         XLSAplicacao.Workbooks.Open(xFileXLS);
+
+         {Selecione aqui a aba que você deseja abrir primeiro - 1,2,3,4....}
+         XLSAplicacao.WorkSheets[Aba].Activate;
+
+         {Selecione aqui a aba que você deseja ativar - começando sempre no 1 (1,2,3,4) }
+         AbaXLS := XLSAplicacao.Workbooks[ExtractFileName(xFileXLS)].WorkSheets[Aba];
+         AbaXLS.Cells.SpecialCells(xlCellTypeLastCell, EmptyParam).Activate;
+
+         //NomeAba.Pages[Aba-1].Caption := XLSAplicacao.Sheets[Aba].name.
+
+         // Pegar o número da última linha.
+         mLinTot := XLSAplicacao.ActiveCell.Row+1;
+
+         // Pegar o número da última coluna.
+         mColTot := XLSAplicacao.ActiveCell.Column;
+
+         // Seta xStringGrid linha e coluna.
+         XStringGrid.RowCount := mLinTot;
+         XStringGrid.ColCount := mColTot;
+
+         // Associaca a variant WorkSheet com a variant do Delphi.
+         RangeMatrix := XLSAplicacao.Range['A1', XLSAplicacao.Cells.Item[mLinTot, mColTot]].Value;
+
+         // Cria o loop para listar os registros no TStringGrid.
+         if Titulo then
+            mLinGr := 1
+         else
+            mLinGr := 2;
+
+         mLinPL := lIni;
+         repeat
+              mColGr := 0;
+              for mColPL := 1 to mColTot do begin
+                  xStringGrid.Cells[mColGr, mLinGr] := RangeMatrix[mLinPL, mColPL];
+                  inc(mColGr);
+              end;
+              inc(mLinGr);
+              Inc(mLinPL);
+         until mLinPL > mLinTot;
+
+         RangeMatrix := Unassigned;
+      finally
+         // Fecha o Microsoft Excel.
+         if not VarIsEmpty(XLSAplicacao) then begin
+            XLSAplicacao.Quit;
+            XLSAplicacao := Unassigned;
+            AbaXLS       := Unassigned;
+            Result       := True;
+         end;
+      end;
+end;
+
+
 
 
 

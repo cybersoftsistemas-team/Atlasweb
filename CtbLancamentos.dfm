@@ -1471,17 +1471,17 @@ object fCtbLancamentos: TfCtbLancamentos
       FieldName = 'LanLote'
       ReadOnly = True
     end
-    object tTotalizaDebLote: TCurrencyField
+    object tTotalizaDebLote: TBCDField
       FieldName = 'DebLote'
       ReadOnly = True
       DisplayFormat = ',##0.00'
     end
-    object tTotalizaCredLote: TCurrencyField
+    object tTotalizaCredLote: TBCDField
       FieldName = 'CredLote'
       ReadOnly = True
       DisplayFormat = ',##0.00'
     end
-    object tTotalizaDifLote: TCurrencyField
+    object tTotalizaDifLote: TBCDField
       FieldName = 'DifLote'
       ReadOnly = True
       DisplayFormat = ',##0.00'
@@ -1494,17 +1494,17 @@ object fCtbLancamentos: TfCtbLancamentos
       FieldName = 'LanDia'
       ReadOnly = True
     end
-    object tTotalizaDebDia: TCurrencyField
+    object tTotalizaDebDia: TBCDField
       FieldName = 'DebDia'
       ReadOnly = True
       DisplayFormat = ',##0.00'
     end
-    object tTotalizaCredDia: TCurrencyField
+    object tTotalizaCredDia: TBCDField
       FieldName = 'CredDia'
       ReadOnly = True
       DisplayFormat = ',##0.00'
     end
-    object tTotalizaDifDia: TCurrencyField
+    object tTotalizaDifDia: TBCDField
       FieldName = 'DifDia'
       ReadOnly = True
       DisplayFormat = ',##0.00'
@@ -1517,17 +1517,17 @@ object fCtbLancamentos: TfCtbLancamentos
       FieldName = 'LanMes'
       ReadOnly = True
     end
-    object tTotalizaDebMes: TCurrencyField
+    object tTotalizaDebMes: TBCDField
       FieldName = 'DebMes'
       ReadOnly = True
       DisplayFormat = ',##0.00'
     end
-    object tTotalizaCredMes: TCurrencyField
+    object tTotalizaCredMes: TBCDField
       FieldName = 'CredMes'
       ReadOnly = True
       DisplayFormat = ',##0.00'
     end
-    object tTotalizaDifMes: TCurrencyField
+    object tTotalizaDifMes: TBCDField
       FieldName = 'DifMes'
       ReadOnly = True
       DisplayFormat = ',##0.00'
@@ -1540,17 +1540,17 @@ object fCtbLancamentos: TfCtbLancamentos
       FieldName = 'LanAno'
       ReadOnly = True
     end
-    object tTotalizaDebAno: TCurrencyField
+    object tTotalizaDebAno: TBCDField
       FieldName = 'DebAno'
       ReadOnly = True
       DisplayFormat = ',##0.00'
     end
-    object tTotalizaCredAno: TCurrencyField
+    object tTotalizaCredAno: TBCDField
       FieldName = 'CredAno'
       ReadOnly = True
       DisplayFormat = ',##0.00'
     end
-    object tTotalizaDifAno: TCurrencyField
+    object tTotalizaDifAno: TBCDField
       FieldName = 'DifAno'
       ReadOnly = True
       DisplayFormat = ',##0.00'

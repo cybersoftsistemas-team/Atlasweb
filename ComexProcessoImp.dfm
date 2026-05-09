@@ -3979,22 +3979,22 @@ object fComexProcessoImp: TfComexProcessoImp
       FieldName = 'Data_Desembaraco'
       Origin = 'Data_Desembaraco'
     end
-    object ProcessosImpValor_FOB: TCurrencyField
+    object ProcessosImpValor_FOB: TBCDField
       FieldName = 'Valor_FOB'
       Origin = 'Valor_FOB'
       DisplayFormat = ',##0.00'
     end
-    object ProcessosImpValor_Frete: TCurrencyField
+    object ProcessosImpValor_Frete: TBCDField
       FieldName = 'Valor_Frete'
       Origin = 'Valor_Frete'
       DisplayFormat = ',##0.00'
     end
-    object ProcessosImpValor_Seguro: TCurrencyField
+    object ProcessosImpValor_Seguro: TBCDField
       FieldName = 'Valor_Seguro'
       Origin = 'Valor_Seguro'
       DisplayFormat = ',##0.00'
     end
-    object ProcessosImpValor_II: TCurrencyField
+    object ProcessosImpValor_II: TBCDField
       FieldName = 'Valor_II'
       Origin = 'Valor_II'
       DisplayFormat = ',##0.00'
@@ -4003,11 +4003,11 @@ object fComexProcessoImp: TfComexProcessoImp
       FieldName = 'ICMS_DIferido'
       Origin = 'ICMS_DIferido'
     end
-    object ProcessosImpAliquota_ICMS: TFloatField
+    object ProcessosImpAliquota_ICMS: TBCDField
       FieldName = 'Aliquota_ICMS'
       Origin = 'Aliquota_ICMS'
     end
-    object ProcessosImpValor_ICMS: TCurrencyField
+    object ProcessosImpValor_ICMS: TBCDField
       FieldName = 'Valor_ICMS'
       Origin = 'Valor_ICMS'
       DisplayFormat = ',##0.00'
@@ -4018,11 +4018,11 @@ object fComexProcessoImp: TfComexProcessoImp
       FixedChar = True
       Size = 2
     end
-    object ProcessosImpQuantidade: TFloatField
+    object ProcessosImpQuantidade: TBCDField
       FieldName = 'Quantidade'
       Origin = 'Quantidade'
     end
-    object ProcessosImpVolumes: TFloatField
+    object ProcessosImpVolumes: TBCDField
       FieldName = 'Volumes'
       Origin = 'Volumes'
     end
@@ -4030,19 +4030,19 @@ object fComexProcessoImp: TfComexProcessoImp
       FieldName = 'Especie'
       Origin = 'Especie'
     end
-    object ProcessosImpQuantidade_Liberada: TFloatField
+    object ProcessosImpQuantidade_Liberada: TBCDField
       FieldName = 'Quantidade_Liberada'
       Origin = 'Quantidade_Liberada'
     end
-    object ProcessosImpQuantidade_Digitada: TFloatField
+    object ProcessosImpQuantidade_Digitada: TBCDField
       FieldName = 'Quantidade_Digitada'
       Origin = 'Quantidade_Digitada'
     end
-    object ProcessosImpPeso_Bruto: TFloatField
+    object ProcessosImpPeso_Bruto: TBCDField
       FieldName = 'Peso_Bruto'
       Origin = 'Peso_Bruto'
     end
-    object ProcessosImpPeso_Liquido: TFloatField
+    object ProcessosImpPeso_Liquido: TBCDField
       FieldName = 'Peso_Liquido'
       Origin = 'Peso_Liquido'
     end
@@ -4055,7 +4055,7 @@ object fComexProcessoImp: TfComexProcessoImp
       FieldName = 'Data_Fatura'
       Origin = 'Data_Fatura'
     end
-    object ProcessosImpValor_FOBME: TCurrencyField
+    object ProcessosImpValor_FOBME: TBCDField
       FieldName = 'Valor_FOBME'
       Origin = 'Valor_FOBME'
       DisplayFormat = ',##0.00'
@@ -4064,11 +4064,11 @@ object fComexProcessoImp: TfComexProcessoImp
       FieldName = 'Moeda_FOB'
       Origin = 'Moeda_FOB'
     end
-    object ProcessosImpTaxa_FOB: TFloatField
+    object ProcessosImpTaxa_FOB: TBCDField
       FieldName = 'Taxa_FOB'
       Origin = 'Taxa_FOB'
     end
-    object ProcessosImpValor_FreteME: TCurrencyField
+    object ProcessosImpValor_FreteME: TBCDField
       FieldName = 'Valor_FreteME'
       Origin = 'Valor_FreteME'
       DisplayFormat = ',##0.00'
@@ -4077,11 +4077,11 @@ object fComexProcessoImp: TfComexProcessoImp
       FieldName = 'Moeda_Frete'
       Origin = 'Moeda_Frete'
     end
-    object ProcessosImpTaxa_Frete: TFloatField
+    object ProcessosImpTaxa_Frete: TBCDField
       FieldName = 'Taxa_Frete'
       Origin = 'Taxa_Frete'
     end
-    object ProcessosImpValor_SeguroME: TCurrencyField
+    object ProcessosImpValor_SeguroME: TBCDField
       FieldName = 'Valor_SeguroME'
       Origin = 'Valor_SeguroME'
       DisplayFormat = ',##0.00'
@@ -4090,7 +4090,7 @@ object fComexProcessoImp: TfComexProcessoImp
       FieldName = 'Moeda_Seguro'
       Origin = 'Moeda_Seguro'
     end
-    object ProcessosImpTaxa_Seguro: TFloatField
+    object ProcessosImpTaxa_Seguro: TBCDField
       FieldName = 'Taxa_Seguro'
       Origin = 'Taxa_Seguro'
     end
@@ -4190,17 +4190,17 @@ object fComexProcessoImp: TfComexProcessoImp
       Origin = 'Canal_SISCOMEX'
       Size = 8
     end
-    object ProcessosImpValor_PIS: TCurrencyField
+    object ProcessosImpValor_PIS: TBCDField
       FieldName = 'Valor_PIS'
       Origin = 'Valor_PIS'
       DisplayFormat = ',##0.00'
     end
-    object ProcessosImpValor_COFINS: TCurrencyField
+    object ProcessosImpValor_COFINS: TBCDField
       FieldName = 'Valor_COFINS'
       Origin = 'Valor_COFINS'
       DisplayFormat = ',##0.00'
     end
-    object ProcessosImpValor_IPI: TCurrencyField
+    object ProcessosImpValor_IPI: TBCDField
       FieldName = 'Valor_IPI'
       Origin = 'Valor_IPI'
       DisplayFormat = ',##0.00'
@@ -4218,7 +4218,7 @@ object fComexProcessoImp: TfComexProcessoImp
       Origin = 'Documento_Carga'
       Size = 30
     end
-    object ProcessosImpValor_AdValorem: TCurrencyField
+    object ProcessosImpValor_AdValorem: TBCDField
       FieldName = 'Valor_AdValorem'
       Origin = 'Valor_AdValorem'
       DisplayFormat = ',##0.00'
@@ -4270,15 +4270,15 @@ object fComexProcessoImp: TfComexProcessoImp
       Origin = 'CNPJ_Importado'
       Size = 14
     end
-    object ProcessosImpMargem_Lucro: TFloatField
+    object ProcessosImpMargem_Lucro: TBCDField
       FieldName = 'Margem_Lucro'
       Origin = 'Margem_Lucro'
     end
-    object ProcessosImpDesconto_Operacional: TFloatField
+    object ProcessosImpDesconto_Operacional: TBCDField
       FieldName = 'Desconto_Operacional'
       Origin = 'Desconto_Operacional'
     end
-    object ProcessosImpDesconto_Adicional: TFloatField
+    object ProcessosImpDesconto_Adicional: TBCDField
       FieldName = 'Desconto_Adicional'
       Origin = 'Desconto_Adicional'
     end
@@ -4290,7 +4290,7 @@ object fComexProcessoImp: TfComexProcessoImp
       FieldName = 'Data_BL'
       Origin = 'Data_BL'
     end
-    object ProcessosImpValor_FaturaME: TCurrencyField
+    object ProcessosImpValor_FaturaME: TBCDField
       FieldName = 'Valor_FaturaME'
       Origin = 'Valor_FaturaME'
       DisplayFormat = ',##0.00'
@@ -4311,32 +4311,32 @@ object fComexProcessoImp: TfComexProcessoImp
       FieldName = 'Desativado'
       Origin = 'Desativado'
     end
-    object ProcessosImpValor_FatorFaturamento: TFloatField
+    object ProcessosImpValor_FatorFaturamento: TBCDField
       FieldName = 'Valor_FatorFaturamento'
       Origin = 'Valor_FatorFaturamento'
       DisplayFormat = ',##0.00'
     end
-    object ProcessosImpValor_FatorSISCOMEX: TFloatField
+    object ProcessosImpValor_FatorSISCOMEX: TBCDField
       FieldName = 'Valor_FatorSISCOMEX'
       Origin = 'Valor_FatorSISCOMEX'
       DisplayFormat = ',##0.00'
     end
-    object ProcessosImpValor_MargemLucro: TCurrencyField
+    object ProcessosImpValor_MargemLucro: TBCDField
       FieldName = 'Valor_MargemLucro'
       Origin = 'Valor_MargemLucro'
       DisplayFormat = ',##0.00'
     end
-    object ProcessosImpValor_DescontoAdicional: TCurrencyField
+    object ProcessosImpValor_DescontoAdicional: TBCDField
       FieldName = 'Valor_DescontoAdicional'
       Origin = 'Valor_DescontoAdicional'
       DisplayFormat = ',##0.00'
     end
-    object ProcessosImpValor_DescontoOperacional: TCurrencyField
+    object ProcessosImpValor_DescontoOperacional: TBCDField
       FieldName = 'Valor_DescontoOperacional'
       Origin = 'Valor_DescontoOperacional'
       DisplayFormat = ',##0.00'
     end
-    object ProcessosImpValor_Dumping: TCurrencyField
+    object ProcessosImpValor_Dumping: TBCDField
       FieldName = 'Valor_Dumping'
       Origin = 'Valor_Dumping'
       DisplayFormat = ',##0.00'
@@ -4350,11 +4350,11 @@ object fComexProcessoImp: TfComexProcessoImp
       Origin = 'Pais_Origem'
       Size = 4
     end
-    object ProcessosImpValor_TaxaSISCOMEX: TCurrencyField
+    object ProcessosImpValor_TaxaSISCOMEX: TBCDField
       FieldName = 'Valor_TaxaSISCOMEX'
       Origin = 'Valor_TaxaSISCOMEX'
     end
-    object ProcessosImpReducao_ICMS: TFloatField
+    object ProcessosImpReducao_ICMS: TBCDField
       FieldName = 'Reducao_ICMS'
       Origin = 'Reducao_ICMS'
     end
@@ -4363,12 +4363,12 @@ object fComexProcessoImp: TfComexProcessoImp
       Origin = 'Observacao'
       BlobType = ftMemo
     end
-    object ProcessosImpValor_FOBMEAdicoes: TCurrencyField
+    object ProcessosImpValor_FOBMEAdicoes: TBCDField
       FieldName = 'Valor_FOBMEAdicoes'
       Origin = 'Valor_FOBMEAdicoes'
       DisplayFormat = ',##0.00'
     end
-    object ProcessosImpValor_FOBAdicoes: TCurrencyField
+    object ProcessosImpValor_FOBAdicoes: TBCDField
       FieldName = 'Valor_FOBAdicoes'
       Origin = 'Valor_FOBAdicoes'
       DisplayFormat = ',##0.00'
@@ -4377,16 +4377,16 @@ object fComexProcessoImp: TfComexProcessoImp
       FieldName = 'DA'
       Origin = 'DA'
     end
-    object ProcessosImpReducao_BC: TFloatField
+    object ProcessosImpReducao_BC: TBCDField
       FieldName = 'Reducao_BC'
       Origin = 'Reducao_BC'
     end
-    object ProcessosImpValor_PIS2: TCurrencyField
+    object ProcessosImpValor_PIS2: TBCDField
       FieldName = 'Valor_PIS2'
       Origin = 'Valor_PIS2'
       DisplayFormat = ',##0.00'
     end
-    object ProcessosImpValor_COFINS2: TCurrencyField
+    object ProcessosImpValor_COFINS2: TBCDField
       FieldName = 'Valor_COFINS2'
       Origin = 'Valor_COFINS2'
       DisplayFormat = ',##0.00'
@@ -4421,35 +4421,35 @@ object fComexProcessoImp: TfComexProcessoImp
       FieldName = 'Banco'
       Origin = 'Banco'
     end
-    object ProcessosImpReducao_PIS: TFloatField
+    object ProcessosImpReducao_PIS: TBCDField
       FieldName = 'Reducao_PIS'
       Origin = 'Reducao_PIS'
     end
-    object ProcessosImpReducao_COFINS: TFloatField
+    object ProcessosImpReducao_COFINS: TBCDField
       FieldName = 'Reducao_COFINS'
       Origin = 'Reducao_COFINS'
     end
-    object ProcessosImpPIS_NFEntrada: TFloatField
+    object ProcessosImpPIS_NFEntrada: TBCDField
       FieldName = 'PIS_NFEntrada'
       Origin = 'PIS_NFEntrada'
     end
-    object ProcessosImpPIS_NFESaida: TFloatField
+    object ProcessosImpPIS_NFESaida: TBCDField
       FieldName = 'PIS_NFESaida'
       Origin = 'PIS_NFESaida'
     end
-    object ProcessosImpCOFINS_NFEntrada: TFloatField
+    object ProcessosImpCOFINS_NFEntrada: TBCDField
       FieldName = 'COFINS_NFEntrada'
       Origin = 'COFINS_NFEntrada'
     end
-    object ProcessosImpCOFINS_NFESaida: TFloatField
+    object ProcessosImpCOFINS_NFESaida: TBCDField
       FieldName = 'COFINS_NFESaida'
       Origin = 'COFINS_NFESaida'
     end
-    object ProcessosImpPIS_Majorada: TFloatField
+    object ProcessosImpPIS_Majorada: TBCDField
       FieldName = 'PIS_Majorada'
       Origin = 'PIS_Majorada'
     end
-    object ProcessosImpCOFINS_Majorada: TFloatField
+    object ProcessosImpCOFINS_Majorada: TBCDField
       FieldName = 'COFINS_Majorada'
       Origin = 'COFINS_Majorada'
     end
@@ -4478,7 +4478,7 @@ object fComexProcessoImp: TfComexProcessoImp
       FieldName = 'Data_PrevFrete'
       Origin = 'Data_PrevFrete'
     end
-    object ProcessosImpValor_FatorFrete: TCurrencyField
+    object ProcessosImpValor_FatorFrete: TBCDField
       FieldName = 'Valor_FatorFrete'
       Origin = 'Valor_FatorFrete'
       DisplayFormat = ',##0.00'
@@ -4487,17 +4487,17 @@ object fComexProcessoImp: TfComexProcessoImp
       FieldName = 'Previsao_FreteTransportador'
       Origin = 'Previsao_FreteTransportador'
     end
-    object ProcessosImpValor_FatorSISCOMEXReal: TCurrencyField
+    object ProcessosImpValor_FatorSISCOMEXReal: TBCDField
       FieldName = 'Valor_FatorSISCOMEXReal'
       Origin = 'Valor_FatorSISCOMEXReal'
       DisplayFormat = ',##0.00'
     end
-    object ProcessosImpValor_FatorFreteReal: TCurrencyField
+    object ProcessosImpValor_FatorFreteReal: TBCDField
       FieldName = 'Valor_FatorFreteReal'
       Origin = 'Valor_FatorFreteReal'
       DisplayFormat = ',##0.00'
     end
-    object ProcessosImpValor_FatorFaturamentoReal: TCurrencyField
+    object ProcessosImpValor_FatorFaturamentoReal: TBCDField
       FieldName = 'Valor_FatorFaturamentoReal'
       Origin = 'Valor_FatorFaturamentoReal'
       DisplayFormat = ',##0.00'
@@ -4506,12 +4506,12 @@ object fComexProcessoImp: TfComexProcessoImp
       FieldName = 'Data_PrevArmazem'
       Origin = 'Data_PrevArmazem'
     end
-    object ProcessosImpValor_FatorArmazem: TCurrencyField
+    object ProcessosImpValor_FatorArmazem: TBCDField
       FieldName = 'Valor_FatorArmazem'
       Origin = 'Valor_FatorArmazem'
       DisplayFormat = ',##0.00'
     end
-    object ProcessosImpValor_FatorArmazemReal: TCurrencyField
+    object ProcessosImpValor_FatorArmazemReal: TBCDField
       FieldName = 'Valor_FatorArmazemReal'
       Origin = 'Valor_FatorArmazemReal'
       DisplayFormat = ',##0.00'
@@ -4556,7 +4556,7 @@ object fComexProcessoImp: TfComexProcessoImp
       Origin = 'Consignatario_CNPJ'
       Size = 14
     end
-    object ProcessosImpValor_AFRMM: TCurrencyField
+    object ProcessosImpValor_AFRMM: TBCDField
       FieldName = 'Valor_AFRMM'
       Origin = 'Valor_AFRMM'
       DisplayFormat = ',##0.00'
@@ -4635,12 +4635,12 @@ object fComexProcessoImp: TfComexProcessoImp
       FieldName = 'Remover_FreteNacBC'
       Origin = 'Remover_FreteNacBC'
     end
-    object ProcessosImpValor_FreteNacionalME: TCurrencyField
+    object ProcessosImpValor_FreteNacionalME: TBCDField
       FieldName = 'Valor_FreteNacionalME'
       Origin = 'Valor_FreteNacionalME'
       DisplayFormat = ',##0.00'
     end
-    object ProcessosImpValor_FreteNacionalReal: TCurrencyField
+    object ProcessosImpValor_FreteNacionalReal: TBCDField
       FieldName = 'Valor_FreteNacionalReal'
       Origin = 'Valor_FreteNacionalReal'
       DisplayFormat = ',##0.00'
@@ -4649,7 +4649,7 @@ object fComexProcessoImp: TfComexProcessoImp
       FieldName = 'Recinto_Aduaneiro'
       Origin = 'Recinto_Aduaneiro'
     end
-    object ProcessosImpAd_Valorem: TCurrencyField
+    object ProcessosImpAd_Valorem: TBCDField
       FieldName = 'Ad_Valorem'
       Origin = 'Ad_Valorem'
     end
@@ -4657,12 +4657,12 @@ object fComexProcessoImp: TfComexProcessoImp
       FieldName = 'Armazem'
       Origin = 'Armazem'
     end
-    object ProcessosImpCIDE_ValorDevido: TCurrencyField
+    object ProcessosImpCIDE_ValorDevido: TBCDField
       FieldName = 'CIDE_ValorDevido'
       Origin = 'CIDE_ValorDevido'
       DisplayFormat = ',##0.00'
     end
-    object ProcessosImpCIDE_ValorRecolher: TCurrencyField
+    object ProcessosImpCIDE_ValorRecolher: TBCDField
       FieldName = 'CIDE_ValorRecolher'
       Origin = 'CIDE_ValorRecolher'
       DisplayFormat = ',##0.00'
@@ -4730,7 +4730,7 @@ object fComexProcessoImp: TfComexProcessoImp
       Origin = 'Transporte_Viagem'
       Size = 15
     end
-    object ProcessosImpTUP: TCurrencyField
+    object ProcessosImpTUP: TBCDField
       FieldName = 'TUP'
       Origin = 'TUP'
     end

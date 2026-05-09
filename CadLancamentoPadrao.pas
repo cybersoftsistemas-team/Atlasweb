@@ -70,7 +70,7 @@ type
     LancamentoPadraoClassificacao: TStringField;
     LancamentoPadraoCentro_Custo: TStringField;
     LancamentoPadraoDocumento: TStringField;
-    LancamentoPadraoValor: TCurrencyField;
+    LancamentoPadraoValor: TBCDField;
     LancamentoPadraoModalidade: TSmallintField;
     LancamentoPadraoVencimento: TSmallintField;
     LancamentoPadraoBanco: TSmallintField;

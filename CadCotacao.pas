@@ -25,7 +25,7 @@ type
     dsMoedas: TDataSource;
     CotacaoMoeda: TIntegerField;
     CotacaoData: TSQLTimeStampField;
-    CotacaoValor: TFloatField;
+    CotacaoValor: TBCDField;
     Alerta: TUniSweetAlert;
     pBarraPesq: TUniPanel;
     cPesquisa: TUniEdit;

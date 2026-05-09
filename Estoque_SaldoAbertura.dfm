@@ -574,21 +574,21 @@ object fEstoque_SaldoAbertura: TfEstoque_SaldoAbertura
       FieldName = 'Produto_Saida'
       Origin = 'Produto_Saida'
     end
-    object TransfQuantidade_Entrada: TFloatField
+    object TransfQuantidade_Entrada: TBCDField
       FieldName = 'Quantidade_Entrada'
       Origin = 'Quantidade_Entrada'
       DisplayFormat = ',##0.000'
       EditFormat = ',##0.000'
       currency = True
     end
-    object TransfQuantidade_Saida: TFloatField
+    object TransfQuantidade_Saida: TBCDField
       FieldName = 'Quantidade_Saida'
       Origin = 'Quantidade_Saida'
       DisplayFormat = ',##0.000'
       EditFormat = ',##0.000'
       currency = True
     end
-    object TransfValor_Unitario: TCurrencyField
+    object TransfValor_Unitario: TBCDField
       FieldName = 'Valor_Unitario'
       Origin = 'Valor_Unitario'
       DisplayFormat = ',##0.00'

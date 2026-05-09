@@ -447,7 +447,7 @@ object dmFiscal: TdmFiscal
       FieldName = 'FUNDAP'
       Origin = 'NotasFiscais.FUNDAP'
     end
-    object NotasLucro: TFloatField
+    object NotasLucro: TBCDField
       FieldName = 'Lucro'
       Origin = 'NotasFiscais.Lucro'
     end
@@ -489,7 +489,7 @@ object dmFiscal: TdmFiscal
       FieldName = 'Transportador_Codigo'
       Origin = 'NotasFiscais.Transportador_Codigo'
     end
-    object NotasVolume_Quantidade: TFloatField
+    object NotasVolume_Quantidade: TBCDField
       FieldName = 'Volume_Quantidade'
       Origin = 'NotasFiscais.Volume_Quantidade'
     end
@@ -505,119 +505,119 @@ object dmFiscal: TdmFiscal
       FieldName = 'Volume_Numero'
       Origin = 'NotasFiscais.Volume_Numero'
     end
-    object NotasVolume_PesoLiquido: TFloatField
+    object NotasVolume_PesoLiquido: TBCDField
       FieldName = 'Volume_PesoLiquido'
       Origin = 'NotasFiscais.Volume_PesoLiquido'
       DisplayFormat = '#,##0.###'
       EditFormat = '#,##0.###'
     end
-    object NotasVolume_PesoBruto: TFloatField
+    object NotasVolume_PesoBruto: TBCDField
       FieldName = 'Volume_PesoBruto'
       Origin = 'NotasFiscais.Volume_PesoBruto'
       DisplayFormat = '#,##0.###'
       EditFormat = '#,##0.###'
     end
-    object NotasValor_PIS: TCurrencyField
+    object NotasValor_PIS: TBCDField
       FieldName = 'Valor_PIS'
       Origin = 'NotasFiscais.Valor_PIS'
       DisplayFormat = '###,###,###,##0.00'
       EditFormat = '###,###,###,##0.00'
     end
-    object NotasValor_COFINS: TCurrencyField
+    object NotasValor_COFINS: TBCDField
       FieldName = 'Valor_COFINS'
       Origin = 'NotasFiscais.Valor_COFINS'
       DisplayFormat = '###,###,###,##0.00'
       EditFormat = '###,###,###,##0.00'
     end
-    object NotasAliquota_ICMSOper: TFloatField
+    object NotasAliquota_ICMSOper: TBCDField
       FieldName = 'Aliquota_ICMSOper'
       Origin = 'NotasFiscais.Aliquota_ICMSOper'
     end
-    object NotasBCICMS: TCurrencyField
+    object NotasBCICMS: TBCDField
       FieldName = 'BCICMS'
       Origin = 'NotasFiscais.BCICMS'
       DisplayFormat = '###,###,###,##0.00'
       EditFormat = '###,###,###,##0.00'
     end
-    object NotasValor_ICMS: TCurrencyField
+    object NotasValor_ICMS: TBCDField
       FieldName = 'Valor_ICMS'
       Origin = 'NotasFiscais.Valor_ICMS'
       DisplayFormat = '###,###,###,##0.00'
       EditFormat = '###,###,###,##0.00'
     end
-    object NotasAliquota_ICMSSub: TFloatField
+    object NotasAliquota_ICMSSub: TBCDField
       FieldName = 'Aliquota_ICMSSub'
       Origin = 'NotasFiscais.Aliquota_ICMSSub'
     end
-    object NotasBCICMS_Substitutivo: TCurrencyField
+    object NotasBCICMS_Substitutivo: TBCDField
       FieldName = 'BCICMS_Substitutivo'
       Origin = 'NotasFiscais.BCICMS_Substitutivo'
       DisplayFormat = '###,###,###,##0.00'
       EditFormat = '###,###,###,##0.00'
     end
-    object NotasValorICMS_Substitutivo: TCurrencyField
+    object NotasValorICMS_Substitutivo: TBCDField
       FieldName = 'ValorICMS_Substitutivo'
       Origin = 'NotasFiscais.ValorICMS_Substitutivo'
       DisplayFormat = '###,###,###,##0.00'
       EditFormat = '###,###,###,##0.00'
     end
-    object NotasValor_TotalProdutos: TCurrencyField
+    object NotasValor_TotalProdutos: TBCDField
       FieldName = 'Valor_TotalProdutos'
       Origin = 'NotasFiscais.Valor_TotalProdutos'
       DisplayFormat = '###,###,###,##0.00'
       EditFormat = '###,###,###,##0.00'
     end
-    object NotasTotal_Frete: TCurrencyField
+    object NotasTotal_Frete: TBCDField
       FieldName = 'Total_Frete'
       Origin = 'NotasFiscais.Total_Frete'
       DisplayFormat = '###,###,###,##0.00'
       EditFormat = '###,###,###,##0.00'
     end
-    object NotasValor_Seguro: TCurrencyField
+    object NotasValor_Seguro: TBCDField
       FieldName = 'Valor_Seguro'
       Origin = 'NotasFiscais.Valor_Seguro'
       DisplayFormat = '###,###,###,##0.00'
       EditFormat = '###,###,###,##0.00'
     end
-    object NotasValor_OutrasDespesas: TCurrencyField
+    object NotasValor_OutrasDespesas: TBCDField
       FieldName = 'Valor_OutrasDespesas'
       Origin = 'NotasFiscais.Valor_OutrasDespesas'
       DisplayFormat = '###,###,###,##0.00'
       EditFormat = '###,###,###,##0.00'
     end
-    object NotasBCIPI: TCurrencyField
+    object NotasBCIPI: TBCDField
       FieldName = 'BCIPI'
       Origin = 'NotasFiscais.BCIPI'
     end
-    object NotasValor_TotalIPI: TCurrencyField
+    object NotasValor_TotalIPI: TBCDField
       FieldName = 'Valor_TotalIPI'
       Origin = 'NotasFiscais.Valor_TotalIPI'
       DisplayFormat = '###,###,###,##0.00'
       EditFormat = '###,###,###,##0.00'
     end
-    object NotasValor_TotalNota: TCurrencyField
+    object NotasValor_TotalNota: TBCDField
       FieldName = 'Valor_TotalNota'
       Origin = 'NotasFiscais.Valor_TotalNota'
       DisplayFormat = '###,###,###,##0.00'
       EditFormat = '###,###,###,##0.00'
     end
-    object NotasRateio_Despesas: TFloatField
+    object NotasRateio_Despesas: TBCDField
       FieldName = 'Rateio_Despesas'
       Origin = 'NotasFiscais.Rateio_Despesas'
     end
-    object NotasValor_TotalMVA: TCurrencyField
+    object NotasValor_TotalMVA: TBCDField
       FieldName = 'Valor_TotalMVA'
       Origin = 'NotasFiscais.Valor_TotalMVA'
       DisplayFormat = '###,###,###,##0.00'
       EditFormat = '###,###,###,##0.00'
     end
-    object NotasValor_ICMSReducao: TCurrencyField
+    object NotasValor_ICMSReducao: TBCDField
       FieldName = 'Valor_ICMSReducao'
       Origin = 'NotasFiscais.Valor_ICMSReducao'
       DisplayFormat = '###,###,###,##0.00'
       EditFormat = '###,###,###,##0.00'
     end
-    object NotasDesconto_Percentual: TFloatField
+    object NotasDesconto_Percentual: TBCDField
       FieldName = 'Desconto_Percentual'
       Origin = 'NotasFiscais.Desconto_Percentual'
     end
@@ -626,7 +626,7 @@ object dmFiscal: TdmFiscal
       Origin = 'NotasFiscais.Desconto_Tipo'
       Size = 30
     end
-    object NotasTotal_Descontos: TCurrencyField
+    object NotasTotal_Descontos: TBCDField
       FieldName = 'Total_Descontos'
       Origin = 'NotasFiscais.Total_Descontos'
     end
@@ -718,11 +718,11 @@ object dmFiscal: TdmFiscal
       FieldName = 'Ajuste'
       Origin = 'NotasFiscais.Ajuste'
     end
-    object NotasValor_TotalII: TCurrencyField
+    object NotasValor_TotalII: TBCDField
       FieldName = 'Valor_TotalII'
       Origin = 'NotasFiscais.Valor_TotalII'
     end
-    object NotasNFe_Lote: TFloatField
+    object NotasNFe_Lote: TBCDField
       FieldName = 'NFe_Lote'
       Origin = 'NotasFiscais.NFe_Lote'
     end
@@ -802,27 +802,27 @@ object dmFiscal: TdmFiscal
       Origin = 'NotasFiscais.Transporte_NomeMotorista'
       Size = 40
     end
-    object NotasLucro_Valor: TCurrencyField
+    object NotasLucro_Valor: TBCDField
       FieldName = 'Lucro_Valor'
       Origin = 'NotasFiscais.Lucro_Valor'
     end
-    object NotasTaxa_Cambio: TFloatField
+    object NotasTaxa_Cambio: TBCDField
       FieldName = 'Taxa_Cambio'
       Origin = 'NotasFiscais.Taxa_Cambio'
     end
-    object NotasValor_IsentasICMS: TCurrencyField
+    object NotasValor_IsentasICMS: TBCDField
       FieldName = 'Valor_IsentasICMS'
       Origin = 'NotasFiscais.Valor_IsentasICMS'
     end
-    object NotasValor_OutrasICMS: TCurrencyField
+    object NotasValor_OutrasICMS: TBCDField
       FieldName = 'Valor_OutrasICMS'
       Origin = 'NotasFiscais.Valor_OutrasICMS'
     end
-    object NotasValor_IsentasIPI: TCurrencyField
+    object NotasValor_IsentasIPI: TBCDField
       FieldName = 'Valor_IsentasIPI'
       Origin = 'NotasFiscais.Valor_IsentasIPI'
     end
-    object NotasValor_OutrasIPI: TCurrencyField
+    object NotasValor_OutrasIPI: TBCDField
       FieldName = 'Valor_OutrasIPI'
       Origin = 'NotasFiscais.Valor_OutrasIPI'
     end
@@ -850,7 +850,7 @@ object dmFiscal: TdmFiscal
       FieldName = 'Representante'
       Origin = 'NotasFiscais.Representante'
     end
-    object NotasRepresentante_Comissao: TFloatField
+    object NotasRepresentante_Comissao: TBCDField
       FieldName = 'Representante_Comissao'
       Origin = 'NotasFiscais.Representante_Comissao'
     end
@@ -871,7 +871,7 @@ object dmFiscal: TdmFiscal
       FieldName = 'Calcula_Volumes'
       Origin = 'NotasFiscais.Calcula_Volumes'
     end
-    object NotasValor_BCMVA: TFloatField
+    object NotasValor_BCMVA: TBCDField
       FieldName = 'Valor_BCMVA'
       Origin = 'NotasFiscais.Valor_BCMVA'
     end
@@ -920,7 +920,7 @@ object dmFiscal: TdmFiscal
       Origin = 'NotasFiscais.Destinatario_IE'
       Size = 18
     end
-    object NotasDestinatario_Municipio: TFloatField
+    object NotasDestinatario_Municipio: TBCDField
       FieldName = 'Destinatario_Municipio'
       Origin = 'NotasFiscais.Destinatario_Municipio'
     end
@@ -932,7 +932,7 @@ object dmFiscal: TdmFiscal
       FieldName = 'Destinatario_Juridica'
       Origin = 'NotasFiscais.Destinatario_Juridica'
     end
-    object NotasValor_DUMPING: TCurrencyField
+    object NotasValor_DUMPING: TBCDField
       FieldName = 'Valor_DUMPING'
       Origin = 'NotasFiscais.Valor_DUMPING'
     end
@@ -954,23 +954,23 @@ object dmFiscal: TdmFiscal
       Origin = 'NotasFiscais.Destinatario_Pais'
       Size = 4
     end
-    object NotasBCICMS_Apuracao: TCurrencyField
+    object NotasBCICMS_Apuracao: TBCDField
       FieldName = 'BCICMS_Apuracao'
       Origin = 'NotasFiscais.BCICMS_Apuracao'
     end
-    object NotasValor_ICMSApuracao: TCurrencyField
+    object NotasValor_ICMSApuracao: TBCDField
       FieldName = 'Valor_ICMSApuracao'
       Origin = 'NotasFiscais.Valor_ICMSApuracao'
     end
-    object NotasMedia_BCR: TCurrencyField
+    object NotasMedia_BCR: TBCDField
       FieldName = 'Media_BCR'
       Origin = 'NotasFiscais.Media_BCR'
     end
-    object NotasValor_PIS2: TFloatField
+    object NotasValor_PIS2: TBCDField
       FieldName = 'Valor_PIS2'
       Origin = 'NotasFiscais.Valor_PIS2'
     end
-    object NotasValor_COFINS2: TFloatField
+    object NotasValor_COFINS2: TBCDField
       FieldName = 'Valor_COFINS2'
       Origin = 'NotasFiscais.Valor_COFINS2'
     end
@@ -978,7 +978,7 @@ object dmFiscal: TdmFiscal
       FieldName = 'Baixa_Estoque'
       Origin = 'NotasFiscais.Baixa_Estoque'
     end
-    object NotasValor_DespesasOutros: TCurrencyField
+    object NotasValor_DespesasOutros: TBCDField
       FieldName = 'Valor_DespesasOutros'
       Origin = 'NotasFiscais.Valor_DespesasOutros'
     end
@@ -991,35 +991,35 @@ object dmFiscal: TdmFiscal
       FieldName = 'ICMS_Destacar'
       Origin = 'NotasFiscais.ICMS_Destacar'
     end
-    object NotasValor_BCPIS: TCurrencyField
+    object NotasValor_BCPIS: TBCDField
       FieldName = 'Valor_BCPIS'
       Origin = 'NotasFiscais.Valor_BCPIS'
     end
-    object NotasTotal_Impostos: TCurrencyField
+    object NotasTotal_Impostos: TBCDField
       FieldName = 'Total_Impostos'
       Origin = 'NotasFiscais.Total_Impostos'
     end
-    object NotasAliquota_IRPJ: TFloatField
+    object NotasAliquota_IRPJ: TBCDField
       FieldName = 'Aliquota_IRPJ'
       Origin = 'NotasFiscais.Aliquota_IRPJ'
     end
-    object NotasValor_IRPJ: TCurrencyField
+    object NotasValor_IRPJ: TBCDField
       FieldName = 'Valor_IRPJ'
       Origin = 'NotasFiscais.Valor_IRPJ'
     end
-    object NotasAliquota_CSLL: TFloatField
+    object NotasAliquota_CSLL: TBCDField
       FieldName = 'Aliquota_CSLL'
       Origin = 'NotasFiscais.Aliquota_CSLL'
     end
-    object NotasValor_CSLL: TCurrencyField
+    object NotasValor_CSLL: TBCDField
       FieldName = 'Valor_CSLL'
       Origin = 'NotasFiscais.Valor_CSLL'
     end
-    object NotasComissao: TFloatField
+    object NotasComissao: TBCDField
       FieldName = 'Comissao'
       Origin = 'NotasFiscais.Comissao'
     end
-    object NotasComissao_Valor: TCurrencyField
+    object NotasComissao_Valor: TBCDField
       FieldName = 'Comissao_Valor'
       Origin = 'NotasFiscais.Comissao_Valor'
     end
@@ -1056,11 +1056,11 @@ object dmFiscal: TdmFiscal
       FieldName = 'Atendente'
       Origin = 'NotasFiscais.Atendente'
     end
-    object NotasAtendente_Comissao: TFloatField
+    object NotasAtendente_Comissao: TBCDField
       FieldName = 'Atendente_Comissao'
       Origin = 'NotasFiscais.Atendente_Comissao'
     end
-    object NotasValor_Inventario: TFloatField
+    object NotasValor_Inventario: TBCDField
       FieldName = 'Valor_Inventario'
       Origin = 'NotasFiscais.Valor_Inventario'
     end
@@ -1081,7 +1081,7 @@ object dmFiscal: TdmFiscal
       FieldName = 'NFE_Estorno'
       Origin = 'NotasFiscais.NFE_Estorno'
     end
-    object NotasRepresentante_ComissaoGer: TFloatField
+    object NotasRepresentante_ComissaoGer: TBCDField
       FieldName = 'Representante_ComissaoGer'
       Origin = 'NotasFiscais.Representante_ComissaoGer'
     end
@@ -1090,63 +1090,63 @@ object dmFiscal: TdmFiscal
       Origin = 'NotasFiscais.Vendedor'
       Size = 50
     end
-    object NotasFCP_ICMSDest: TCurrencyField
+    object NotasFCP_ICMSDest: TBCDField
       FieldName = 'FCP_ICMSDest'
       Origin = 'NotasFiscais.FCP_ICMSDest'
     end
-    object NotasValor_BCICMSDest: TCurrencyField
+    object NotasValor_BCICMSDest: TBCDField
       FieldName = 'Valor_BCICMSDest'
       Origin = 'NotasFiscais.Valor_BCICMSDest'
     end
-    object NotasValor_ICMSDest: TCurrencyField
+    object NotasValor_ICMSDest: TBCDField
       FieldName = 'Valor_ICMSDest'
       Origin = 'NotasFiscais.Valor_ICMSDest'
     end
-    object NotasDIFAL_Valor: TCurrencyField
+    object NotasDIFAL_Valor: TBCDField
       FieldName = 'DIFAL_Valor'
       Origin = 'NotasFiscais.DIFAL_Valor'
     end
-    object NotasDIFAL_ValorOrig: TCurrencyField
+    object NotasDIFAL_ValorOrig: TBCDField
       FieldName = 'DIFAL_ValorOrig'
       Origin = 'NotasFiscais.DIFAL_ValorOrig'
     end
-    object NotasDIFAL_ValorDest: TCurrencyField
+    object NotasDIFAL_ValorDest: TBCDField
       FieldName = 'DIFAL_ValorDest'
       Origin = 'NotasFiscais.DIFAL_ValorDest'
     end
-    object NotasFCP_ValorDest: TCurrencyField
+    object NotasFCP_ValorDest: TBCDField
       FieldName = 'FCP_ValorDest'
       Origin = 'NotasFiscais.FCP_ValorDest'
     end
-    object NotasFCP_ICMSORIG: TCurrencyField
+    object NotasFCP_ICMSORIG: TBCDField
       FieldName = 'FCP_ICMSORIG'
       Origin = 'NotasFiscais.FCP_ICMSORIG'
     end
-    object NotasDIFAL_AliqInterna: TFloatField
+    object NotasDIFAL_AliqInterna: TBCDField
       FieldName = 'DIFAL_AliqInterna'
       Origin = 'NotasFiscais.DIFAL_AliqInterna'
     end
-    object NotasValor_BCFCPST: TCurrencyField
+    object NotasValor_BCFCPST: TBCDField
       FieldName = 'Valor_BCFCPST'
       Origin = 'NotasFiscais.Valor_BCFCPST'
     end
-    object NotasAliquota_FCPST: TFloatField
+    object NotasAliquota_FCPST: TBCDField
       FieldName = 'Aliquota_FCPST'
       Origin = 'NotasFiscais.Aliquota_FCPST'
     end
-    object NotasValor_FCPST: TCurrencyField
+    object NotasValor_FCPST: TBCDField
       FieldName = 'Valor_FCPST'
       Origin = 'NotasFiscais.Valor_FCPST'
     end
-    object NotasValor_BCFCP: TCurrencyField
+    object NotasValor_BCFCP: TBCDField
       FieldName = 'Valor_BCFCP'
       Origin = 'NotasFiscais.Valor_BCFCP'
     end
-    object NotasAliquota_FCP: TFloatField
+    object NotasAliquota_FCP: TBCDField
       FieldName = 'Aliquota_FCP'
       Origin = 'NotasFiscais.Aliquota_FCP'
     end
-    object NotasValor_FCP: TCurrencyField
+    object NotasValor_FCP: TBCDField
       FieldName = 'Valor_FCP'
       Origin = 'NotasFiscais.Valor_FCP'
     end
@@ -1158,7 +1158,7 @@ object dmFiscal: TdmFiscal
       FieldName = 'Forma_Pagamento'
       Origin = 'NotasFiscais.Forma_Pagamento'
     end
-    object NotasValor_ICMSDesonerado: TCurrencyField
+    object NotasValor_ICMSDesonerado: TBCDField
       FieldName = 'Valor_ICMSDesonerado'
       Origin = 'NotasFiscais.Valor_ICMSDesonerado'
     end
@@ -1185,7 +1185,7 @@ object dmFiscal: TdmFiscal
       FixedChar = True
       Size = 1
     end
-    object NotasValor_CIF: TCurrencyField
+    object NotasValor_CIF: TBCDField
       FieldName = 'Valor_CIF'
       Origin = 'NotasFiscais.Valor_CIF'
     end
@@ -1198,7 +1198,7 @@ object dmFiscal: TdmFiscal
       FixedChar = True
       Size = 1
     end
-    object NotasValor_AFRMM: TCurrencyField
+    object NotasValor_AFRMM: TBCDField
       FieldName = 'Valor_AFRMM'
     end
     object NotasIndicador_Intermediario: TSmallintField
@@ -1217,22 +1217,22 @@ object dmFiscal: TdmFiscal
     object NotasCancelada_ForaPrazo: TBooleanField
       FieldName = 'Cancelada_ForaPrazo'
     end
-    object NotasValor_BCDIFAL: TCurrencyField
+    object NotasValor_BCDIFAL: TBCDField
       FieldName = 'Valor_BCDIFAL'
     end
-    object NotasValor_ICMSDif: TCurrencyField
+    object NotasValor_ICMSDif: TBCDField
       FieldName = 'Valor_ICMSDif'
     end
-    object NotasValor_ICMSMono: TCurrencyField
+    object NotasValor_ICMSMono: TBCDField
       FieldName = 'Valor_ICMSMono'
     end
-    object NotasValor_ICMSMonoRet: TCurrencyField
+    object NotasValor_ICMSMonoRet: TBCDField
       FieldName = 'Valor_ICMSMonoRet'
     end
-    object NotasValor_BCICMSMono: TCurrencyField
+    object NotasValor_BCICMSMono: TBCDField
       FieldName = 'Valor_BCICMSMono'
     end
-    object NotasValor_BCICMSMonoRet: TCurrencyField
+    object NotasValor_BCICMSMonoRet: TBCDField
       FieldName = 'Valor_BCICMSMonoRet'
     end
     object NotasTransporte_CPFMotorista: TStringField
@@ -1274,25 +1274,25 @@ object dmFiscal: TdmFiscal
       FieldName = 'Reboque_Placa'
       Size = 30
     end
-    object NotasReducao_ICMSOper: TFloatField
+    object NotasReducao_ICMSOper: TBCDField
       FieldName = 'Reducao_ICMSOper'
     end
-    object NotasValor_BCII: TCurrencyField
+    object NotasValor_BCII: TBCDField
       FieldName = 'Valor_BCII'
     end
     object NotasRemessa: TBooleanField
       FieldName = 'Remessa'
     end
-    object NotasValor_PISST: TCurrencyField
+    object NotasValor_PISST: TBCDField
       FieldName = 'Valor_PISST'
     end
-    object NotasValor_COFINSST: TCurrencyField
+    object NotasValor_COFINSST: TBCDField
       FieldName = 'Valor_COFINSST'
     end
-    object NotasValor_BCICMSPresumido: TCurrencyField
+    object NotasValor_BCICMSPresumido: TBCDField
       FieldName = 'Valor_BCICMSPresumido'
     end
-    object NotasValor_ICMSPresumido: TCurrencyField
+    object NotasValor_ICMSPresumido: TBCDField
       FieldName = 'Valor_ICMSPresumido'
     end
     object NotasCCe: TBooleanField
@@ -1306,7 +1306,7 @@ object dmFiscal: TdmFiscal
     object NotasIncentivo_Codigo: TIntegerField
       FieldName = 'Incentivo_Codigo'
     end
-    object NotasAliquota_ICMSPresumido: TFloatField
+    object NotasAliquota_ICMSPresumido: TBCDField
       FieldName = 'Aliquota_ICMSPresumido'
     end
   end
@@ -1590,33 +1590,33 @@ object dmFiscal: TdmFiscal
       FixedChar = True
       Size = 3
     end
-    object NotasItensQuantidade: TFloatField
+    object NotasItensQuantidade: TBCDField
       FieldName = 'Quantidade'
       Origin = 'NotasItens.Quantidade'
       DisplayFormat = '###,##0.000'
     end
-    object NotasItensValor_Unitario: TFloatField
+    object NotasItensValor_Unitario: TBCDField
       FieldName = 'Valor_Unitario'
       Origin = 'NotasItens.Valor_Unitario'
       DisplayFormat = '###,###,###,##0.0000'
       EditFormat = '###,###,###,##0.0000'
     end
-    object NotasItensValor_Total: TCurrencyField
+    object NotasItensValor_Total: TBCDField
       FieldName = 'Valor_Total'
       Origin = 'NotasItens.Valor_Total'
       DisplayFormat = ',##0.0000'
       EditFormat = ',##0.0000'
       currency = False
     end
-    object NotasItensAliquota_IPI: TFloatField
+    object NotasItensAliquota_IPI: TBCDField
       FieldName = 'Aliquota_IPI'
       Origin = 'NotasItens.Aliquota_IPI'
     end
-    object NotasItensValor_IPI: TCurrencyField
+    object NotasItensValor_IPI: TBCDField
       FieldName = 'Valor_IPI'
       Origin = 'NotasItens.Valor_IPI'
     end
-    object NotasItensTotal_IPI: TCurrencyField
+    object NotasItensTotal_IPI: TBCDField
       FieldName = 'Total_IPI'
       Origin = 'NotasItens.Total_IPI'
     end
@@ -1636,83 +1636,83 @@ object dmFiscal: TdmFiscal
       FieldName = 'Adicao'
       Origin = 'NotasItens.Adicao'
     end
-    object NotasItensAliquota_II: TFloatField
+    object NotasItensAliquota_II: TBCDField
       FieldName = 'Aliquota_II'
       Origin = 'NotasItens.Aliquota_II'
     end
-    object NotasItensValor_II: TCurrencyField
+    object NotasItensValor_II: TBCDField
       FieldName = 'Valor_II'
       Origin = 'NotasItens.Valor_II'
     end
-    object NotasItensValor_BCICMSOper: TCurrencyField
+    object NotasItensValor_BCICMSOper: TBCDField
       FieldName = 'Valor_BCICMSOper'
       Origin = 'NotasItens.Valor_BCICMSOper'
     end
-    object NotasItensAliquota_ICMSOper: TFloatField
+    object NotasItensAliquota_ICMSOper: TBCDField
       FieldName = 'Aliquota_ICMSOper'
       Origin = 'NotasItens.Aliquota_ICMSOper'
     end
-    object NotasItensValor_ICMSOper: TCurrencyField
+    object NotasItensValor_ICMSOper: TBCDField
       FieldName = 'Valor_ICMSOper'
       Origin = 'NotasItens.Valor_ICMSOper'
     end
-    object NotasItensValor_BCICMSSub: TCurrencyField
+    object NotasItensValor_BCICMSSub: TBCDField
       FieldName = 'Valor_BCICMSSub'
       Origin = 'NotasItens.Valor_BCICMSSub'
     end
-    object NotasItensAliquota_ICMSSub: TFloatField
+    object NotasItensAliquota_ICMSSub: TBCDField
       FieldName = 'Aliquota_ICMSSub'
       Origin = 'NotasItens.Aliquota_ICMSSub'
     end
-    object NotasItensValor_ICMSSub: TCurrencyField
+    object NotasItensValor_ICMSSub: TBCDField
       FieldName = 'Valor_ICMSSub'
       Origin = 'NotasItens.Valor_ICMSSub'
     end
-    object NotasItensAliquota_MVA: TFloatField
+    object NotasItensAliquota_MVA: TBCDField
       FieldName = 'Aliquota_MVA'
       Origin = 'NotasItens.Aliquota_MVA'
     end
-    object NotasItensValor_MVA: TCurrencyField
+    object NotasItensValor_MVA: TBCDField
       FieldName = 'Valor_MVA'
       Origin = 'NotasItens.Valor_MVA'
     end
-    object NotasItensAliquota_ICMSReducao: TFloatField
+    object NotasItensAliquota_ICMSReducao: TBCDField
       FieldName = 'Aliquota_ICMSReducao'
       Origin = 'NotasItens.Aliquota_ICMSReducao'
     end
-    object NotasItensValor_ICMSReducao: TCurrencyField
+    object NotasItensValor_ICMSReducao: TBCDField
       FieldName = 'Valor_ICMSReducao'
       Origin = 'NotasItens.Valor_ICMSReducao'
     end
-    object NotasItensValor_Seguro: TFloatField
+    object NotasItensValor_Seguro: TBCDField
       FieldName = 'Valor_Seguro'
       Origin = 'NotasItens.Valor_Seguro'
     end
-    object NotasItensValor_Frete: TFloatField
+    object NotasItensValor_Frete: TBCDField
       FieldName = 'Valor_Frete'
       Origin = 'NotasItens.Valor_Frete'
     end
-    object NotasItensValor_Despesa: TFloatField
+    object NotasItensValor_Despesa: TBCDField
       FieldName = 'Valor_Despesa'
       Origin = 'NotasItens.Valor_Despesa'
     end
-    object NotasItensValor_PIS: TFloatField
+    object NotasItensValor_PIS: TBCDField
       FieldName = 'Valor_PIS'
       Origin = 'NotasItens.Valor_PIS'
     end
-    object NotasItensValor_COFINS: TFloatField
+    object NotasItensValor_COFINS: TBCDField
       FieldName = 'Valor_COFINS'
       Origin = 'NotasItens.Valor_COFINS'
     end
-    object NotasItensPeso_Liquido: TFloatField
+    object NotasItensPeso_Liquido: TBCDField
       FieldName = 'Peso_Liquido'
       Origin = 'NotasItens.Peso_Liquido'
     end
-    object NotasItensPeso_Bruto: TFloatField
+    object NotasItensPeso_Bruto: TBCDField
       FieldName = 'Peso_Bruto'
       Origin = 'NotasItens.Peso_Bruto'
     end
-    object NotasItensDisponivel: TFloatField
+    object NotasItensDisponivel: TBCDField
       FieldName = 'Disponivel'
       Origin = 'NotasItens.Disponivel'
       DisplayFormat = '###,##0.000'
@@ -1763,7 +1763,7 @@ object dmFiscal: TdmFiscal
       FieldName = 'Modalidade_BCICMS'
       Origin = 'NotasItens.Modalidade_BCICMS'
     end
-    object NotasItensAliquota_COFINS: TFloatField
+    object NotasItensAliquota_COFINS: TBCDField
       FieldName = 'Aliquota_COFINS'
       Origin = 'NotasItens.Aliquota_COFINS'
     end
@@ -1771,7 +1771,7 @@ object dmFiscal: TdmFiscal
       FieldName = 'Modalidade_BCICMSST'
       Origin = 'NotasItens.Modalidade_BCICMSST'
     end
-    object NotasItensAliquota_PIS: TFloatField
+    object NotasItensAliquota_PIS: TBCDField
       FieldName = 'Aliquota_PIS'
       Origin = 'NotasItens.Aliquota_PIS'
     end
@@ -1794,35 +1794,35 @@ object dmFiscal: TdmFiscal
       FieldName = 'Codigo_Fabricante'
       Origin = 'NotasItens.Codigo_Fabricante'
     end
-    object NotasItensValor_IsentasICMS: TCurrencyField
+    object NotasItensValor_IsentasICMS: TBCDField
       FieldName = 'Valor_IsentasICMS'
       Origin = 'NotasItens.Valor_IsentasICMS'
     end
-    object NotasItensValor_OutrasICMS: TCurrencyField
+    object NotasItensValor_OutrasICMS: TBCDField
       FieldName = 'Valor_OutrasICMS'
       Origin = 'NotasItens.Valor_OutrasICMS'
     end
-    object NotasItensValor_IsentasIPI: TCurrencyField
+    object NotasItensValor_IsentasIPI: TBCDField
       FieldName = 'Valor_IsentasIPI'
       Origin = 'NotasItens.Valor_IsentasIPI'
     end
-    object NotasItensValor_OutrasIPI: TCurrencyField
+    object NotasItensValor_OutrasIPI: TBCDField
       FieldName = 'Valor_OutrasIPI'
       Origin = 'NotasItens.Valor_OutrasIPI'
     end
-    object NotasItensLucro: TFloatField
+    object NotasItensLucro: TBCDField
       FieldName = 'Lucro'
       Origin = 'NotasItens.Lucro'
     end
-    object NotasItensLucro_Valor: TCurrencyField
+    object NotasItensLucro_Valor: TBCDField
       FieldName = 'Lucro_Valor'
       Origin = 'NotasItens.Lucro_Valor'
     end
-    object NotasItensValor_BCIPI: TCurrencyField
+    object NotasItensValor_BCIPI: TBCDField
       FieldName = 'Valor_BCIPI'
       Origin = 'NotasItens.Valor_BCIPI'
     end
-    object NotasItensRateio_ICMSProcesso: TFloatField
+    object NotasItensRateio_ICMSProcesso: TBCDField
       FieldName = 'Rateio_ICMSProcesso'
       Origin = 'NotasItens.Rateio_ICMSProcesso'
     end
@@ -1834,11 +1834,11 @@ object dmFiscal: TdmFiscal
       FieldName = 'Sequencia'
       Origin = 'NotasItens.Sequencia'
     end
-    object NotasItensDesconto: TFloatField
+    object NotasItensDesconto: TBCDField
       FieldName = 'Desconto'
       Origin = 'NotasItens.Desconto'
     end
-    object NotasItensDesconto_Valor: TCurrencyField
+    object NotasItensDesconto_Valor: TBCDField
       FieldName = 'Desconto_Valor'
       Origin = 'NotasItens.Desconto_Valor'
     end
@@ -1846,23 +1846,23 @@ object dmFiscal: TdmFiscal
       FieldName = 'Apuracao_PISCOFINS'
       Origin = 'NotasItens.Apuracao_PISCOFINS'
     end
-    object NotasItensAliquota_PISRed: TFloatField
+    object NotasItensAliquota_PISRed: TBCDField
       FieldName = 'Aliquota_PISRed'
       Origin = 'NotasItens.Aliquota_PISRed'
     end
-    object NotasItensAliquota_COFINSRed: TFloatField
+    object NotasItensAliquota_COFINSRed: TBCDField
       FieldName = 'Aliquota_COFINSRed'
       Origin = 'NotasItens.Aliquota_COFINSRed'
     end
-    object NotasItensAliquota_ICMSIntegral: TFloatField
+    object NotasItensAliquota_ICMSIntegral: TBCDField
       FieldName = 'Aliquota_ICMSIntegral'
       Origin = 'NotasItens.Aliquota_ICMSIntegral'
     end
-    object NotasItensValor_BCMVA: TFloatField
+    object NotasItensValor_BCMVA: TBCDField
       FieldName = 'Valor_BCMVA'
       Origin = 'NotasItens.Valor_BCMVA'
     end
-    object NotasItensValor_Dumping: TCurrencyField
+    object NotasItensValor_Dumping: TBCDField
       FieldName = 'Valor_Dumping'
       Origin = 'NotasItens.Valor_Dumping'
     end
@@ -1870,23 +1870,23 @@ object dmFiscal: TdmFiscal
       FieldName = 'Finalidade_Mercadoria'
       Origin = 'NotasItens.Finalidade_Mercadoria'
     end
-    object NotasItensTotal_Item: TCurrencyField
+    object NotasItensTotal_Item: TBCDField
       FieldName = 'Total_Item'
       Origin = 'NotasItens.Total_Item'
     end
-    object NotasItensRateio_SISCOMEX: TFloatField
+    object NotasItensRateio_SISCOMEX: TBCDField
       FieldName = 'Rateio_SISCOMEX'
       Origin = 'NotasItens.Rateio_SISCOMEX'
     end
-    object NotasItensValor_BCICMSOperApuracao: TCurrencyField
+    object NotasItensValor_BCICMSOperApuracao: TBCDField
       FieldName = 'Valor_BCICMSOperApuracao'
       Origin = 'NotasItens.Valor_BCICMSOperApuracao'
     end
-    object NotasItensValor_ICMSOperApuracao: TCurrencyField
+    object NotasItensValor_ICMSOperApuracao: TBCDField
       FieldName = 'Valor_ICMSOperApuracao'
       Origin = 'NotasItens.Valor_ICMSOperApuracao'
     end
-    object NotasItensMedia_BCR: TCurrencyField
+    object NotasItensMedia_BCR: TBCDField
       FieldName = 'Media_BCR'
       Origin = 'NotasItens.Media_BCR'
     end
@@ -1894,7 +1894,7 @@ object dmFiscal: TdmFiscal
       FieldName = 'Registro_Adicao'
       Origin = 'NotasItens.Registro_Adicao'
     end
-    object NotasItensQuantidade_Original: TFloatField
+    object NotasItensQuantidade_Original: TBCDField
       FieldName = 'Quantidade_Original'
       Origin = 'NotasItens.Quantidade_Original'
       DisplayFormat = '###,##0.000'
@@ -1904,11 +1904,11 @@ object dmFiscal: TdmFiscal
       Origin = 'NotasItens.Unidade_Original'
       Size = 3
     end
-    object NotasItensValor_PIS2: TFloatField
+    object NotasItensValor_PIS2: TBCDField
       FieldName = 'Valor_PIS2'
       Origin = 'NotasItens.Valor_PIS2'
     end
-    object NotasItensValor_COFINS2: TFloatField
+    object NotasItensValor_COFINS2: TBCDField
       FieldName = 'Valor_COFINS2'
       Origin = 'NotasItens.Valor_COFINS2'
     end
@@ -1916,32 +1916,32 @@ object dmFiscal: TdmFiscal
       FieldName = 'Tipo_Nota'
       Origin = 'NotasItens.Tipo_Nota'
     end
-    object NotasItensValor_DespesasOutros: TFloatField
+    object NotasItensValor_DespesasOutros: TBCDField
       FieldName = 'Valor_DespesasOutros'
       Origin = 'NotasItens.Valor_DespesasOutros'
     end
-    object NotasItensValor_BCPIS: TCurrencyField
+    object NotasItensValor_BCPIS: TBCDField
       FieldName = 'Valor_BCPIS'
       Origin = 'NotasItens.Valor_BCPIS'
       DisplayFormat = ',##0.00'
     end
-    object NotasItensTotal_Impostos: TCurrencyField
+    object NotasItensTotal_Impostos: TBCDField
       FieldName = 'Total_Impostos'
       Origin = 'NotasItens.Total_Impostos'
     end
-    object NotasItensAliquota_IRPJ: TFloatField
+    object NotasItensAliquota_IRPJ: TBCDField
       FieldName = 'Aliquota_IRPJ'
       Origin = 'NotasItens.Aliquota_IRPJ'
     end
-    object NotasItensValor_IRPJ: TCurrencyField
+    object NotasItensValor_IRPJ: TBCDField
       FieldName = 'Valor_IRPJ'
       Origin = 'NotasItens.Valor_IRPJ'
     end
-    object NotasItensAliquota_CSLL: TFloatField
+    object NotasItensAliquota_CSLL: TBCDField
       FieldName = 'Aliquota_CSLL'
       Origin = 'NotasItens.Aliquota_CSLL'
     end
-    object NotasItensValor_CSLL: TCurrencyField
+    object NotasItensValor_CSLL: TBCDField
       FieldName = 'Valor_CSLL'
       Origin = 'NotasItens.Valor_CSLL'
     end
@@ -1949,11 +1949,11 @@ object dmFiscal: TdmFiscal
       FieldName = 'ICMSST_Anterior'
       Origin = 'NotasItens.ICMSST_Anterior'
     end
-    object NotasItensComissao: TFloatField
+    object NotasItensComissao: TBCDField
       FieldName = 'Comissao'
       Origin = 'NotasItens.Comissao'
     end
-    object NotasItensComissao_Valor: TCurrencyField
+    object NotasItensComissao_Valor: TBCDField
       FieldName = 'Comissao_Valor'
       Origin = 'NotasItens.Comissao_Valor'
     end
@@ -1961,11 +1961,11 @@ object dmFiscal: TdmFiscal
       FieldName = 'NFe_Denegada'
       Origin = 'NotasItens.NFe_Denegada'
     end
-    object NotasItensReducao_ICMSST: TFloatField
+    object NotasItensReducao_ICMSST: TBCDField
       FieldName = 'Reducao_ICMSST'
       Origin = 'NotasItens.Reducao_ICMSST'
     end
-    object NotasItensValor_Inventario: TFloatField
+    object NotasItensValor_Inventario: TBCDField
       FieldName = 'Valor_Inventario'
       Origin = 'NotasItens.Valor_Inventario'
       DisplayFormat = ',##0.00'
@@ -1996,51 +1996,51 @@ object dmFiscal: TdmFiscal
       Origin = 'NotasItens.CEST'
       Size = 7
     end
-    object NotasItensValor_BCICMSDest: TCurrencyField
+    object NotasItensValor_BCICMSDest: TBCDField
       FieldName = 'Valor_BCICMSDest'
       Origin = 'NotasItens.Valor_BCICMSDest'
     end
-    object NotasItensAliquota_ICMSDest: TFloatField
+    object NotasItensAliquota_ICMSDest: TBCDField
       FieldName = 'Aliquota_ICMSDest'
       Origin = 'NotasItens.Aliquota_ICMSDest'
     end
-    object NotasItensValor_ICMSDest: TCurrencyField
+    object NotasItensValor_ICMSDest: TBCDField
       FieldName = 'Valor_ICMSDest'
       Origin = 'NotasItens.Valor_ICMSDest'
     end
-    object NotasItensDIFAL_PercOrig: TFloatField
+    object NotasItensDIFAL_PercOrig: TBCDField
       FieldName = 'DIFAL_PercOrig'
       Origin = 'NotasItens.DIFAL_PercOrig'
     end
-    object NotasItensDIFAL_ValorOrig: TCurrencyField
+    object NotasItensDIFAL_ValorOrig: TBCDField
       FieldName = 'DIFAL_ValorOrig'
       Origin = 'NotasItens.DIFAL_ValorOrig'
     end
-    object NotasItensDIFAL_PercDest: TFloatField
+    object NotasItensDIFAL_PercDest: TBCDField
       FieldName = 'DIFAL_PercDest'
       Origin = 'NotasItens.DIFAL_PercDest'
     end
-    object NotasItensDIFAL_ValorDest: TCurrencyField
+    object NotasItensDIFAL_ValorDest: TBCDField
       FieldName = 'DIFAL_ValorDest'
       Origin = 'NotasItens.DIFAL_ValorDest'
     end
-    object NotasItensFCP_Aliquota: TFloatField
+    object NotasItensFCP_Aliquota: TBCDField
       FieldName = 'FCP_Aliquota'
       Origin = 'NotasItens.FCP_Aliquota'
     end
-    object NotasItensFCP_ValorDest: TCurrencyField
+    object NotasItensFCP_ValorDest: TBCDField
       FieldName = 'FCP_ValorDest'
       Origin = 'NotasItens.FCP_ValorDest'
     end
-    object NotasItensFCP_ICMSOrig: TFloatField
+    object NotasItensFCP_ICMSOrig: TBCDField
       FieldName = 'FCP_ICMSOrig'
       Origin = 'NotasItens.FCP_ICMSOrig'
     end
-    object NotasItensFCP_ICMSDest: TCurrencyField
+    object NotasItensFCP_ICMSDest: TBCDField
       FieldName = 'FCP_ICMSDest'
       Origin = 'NotasItens.FCP_ICMSDest'
     end
-    object NotasItensDIFAL_Valor: TCurrencyField
+    object NotasItensDIFAL_Valor: TBCDField
       FieldName = 'DIFAL_Valor'
       Origin = 'NotasItens.DIFAL_Valor'
     end
@@ -2049,23 +2049,23 @@ object dmFiscal: TdmFiscal
       Origin = 'NotasItens.Natureza_Codigo'
       Size = 4
     end
-    object NotasItensValor_BCFCPST: TCurrencyField
+    object NotasItensValor_BCFCPST: TBCDField
       FieldName = 'Valor_BCFCPST'
       Origin = 'NotasItens.Valor_BCFCPST'
     end
-    object NotasItensValor_FCPST: TCurrencyField
+    object NotasItensValor_FCPST: TBCDField
       FieldName = 'Valor_FCPST'
       Origin = 'NotasItens.Valor_FCPST'
     end
-    object NotasItensValor_BCFCP: TCurrencyField
+    object NotasItensValor_BCFCP: TBCDField
       FieldName = 'Valor_BCFCP'
       Origin = 'NotasItens.Valor_BCFCP'
     end
-    object NotasItensValor_FCP: TCurrencyField
+    object NotasItensValor_FCP: TBCDField
       FieldName = 'Valor_FCP'
       Origin = 'NotasItens.Valor_FCP'
     end
-    object NotasItensValor_ICMSDesonerado: TCurrencyField
+    object NotasItensValor_ICMSDesonerado: TBCDField
       FieldName = 'Valor_ICMSDesonerado'
       Origin = 'NotasItens.Valor_ICMSDesonerado'
     end
@@ -2078,77 +2078,77 @@ object dmFiscal: TdmFiscal
       FieldName = 'Ordem'
       Origin = 'NotasItens.Ordem'
     end
-    object NotasItensValor_ICMSSubAnt: TCurrencyField
+    object NotasItensValor_ICMSSubAnt: TBCDField
       FieldName = 'Valor_ICMSSubAnt'
       Origin = 'NotasItens.Valor_ICMSSubAnt'
       DisplayFormat = ',##0.0000'
     end
-    object NotasItensAliquota_ICMSSubAnt: TFloatField
+    object NotasItensAliquota_ICMSSubAnt: TBCDField
       FieldName = 'Aliquota_ICMSSubAnt'
       Origin = 'NotasItens.Aliquota_ICMSSubAnt'
       DisplayFormat = '##0.##'
     end
-    object NotasItensValor_ICMSAnt: TCurrencyField
+    object NotasItensValor_ICMSAnt: TBCDField
       FieldName = 'Valor_ICMSAnt'
       Origin = 'NotasItens.Valor_ICMSAnt'
       DisplayFormat = ',##0.0000'
     end
-    object NotasItensValor_CIF: TCurrencyField
+    object NotasItensValor_CIF: TBCDField
       FieldName = 'Valor_CIF'
       Origin = 'NotasItens.Valor_CIF'
     end
-    object NotasItensFator_Cambio: TFloatField
+    object NotasItensFator_Cambio: TBCDField
       FieldName = 'Fator_Cambio'
       Origin = 'NotasItens.Fator_Cambio'
     end
-    object NotasItensValor_Pauta: TCurrencyField
+    object NotasItensValor_Pauta: TBCDField
       FieldName = 'Valor_Pauta'
       Origin = 'NotasItens.Valor_Pauta'
     end
-    object NotasItensAliquota_ICMSEntrada: TFloatField
+    object NotasItensAliquota_ICMSEntrada: TBCDField
       FieldName = 'Aliquota_ICMSEntrada'
       Origin = 'NotasItens.Aliquota_ICMSEntrada'
     end
-    object NotasItensValor_BCII: TCurrencyField
+    object NotasItensValor_BCII: TBCDField
       FieldName = 'Valor_BCII'
     end
-    object NotasItensRateio_FreteTerrNac: TFloatField
+    object NotasItensRateio_FreteTerrNac: TBCDField
       FieldName = 'Rateio_FreteTerrNac'
     end
-    object NotasItensValor_AFRMM: TFloatField
+    object NotasItensValor_AFRMM: TBCDField
       FieldName = 'Valor_AFRMM'
     end
-    object NotasItensValor_BCDIFAL: TCurrencyField
+    object NotasItensValor_BCDIFAL: TBCDField
       FieldName = 'Valor_BCDIFAL'
     end
-    object NotasItensValor_ICMSDif: TCurrencyField
+    object NotasItensValor_ICMSDif: TBCDField
       FieldName = 'Valor_ICMSDif'
     end
-    object NotasItensAliquota_ICMSDif: TFloatField
+    object NotasItensAliquota_ICMSDif: TBCDField
       FieldName = 'Aliquota_ICMSDif'
     end
-    object NotasItensAliquota_ICMSReducao2: TFloatField
+    object NotasItensAliquota_ICMSReducao2: TBCDField
       FieldName = 'Aliquota_ICMSReducao2'
     end
-    object NotasItensPercentual_Beneficio: TFloatField
+    object NotasItensPercentual_Beneficio: TBCDField
       FieldName = 'Percentual_Beneficio'
     end
-    object NotasItensValor_ICMSMono: TCurrencyField
+    object NotasItensValor_ICMSMono: TBCDField
       FieldName = 'Valor_ICMSMono'
     end
-    object NotasItensValor_ICMSMonoRet: TCurrencyField
+    object NotasItensValor_ICMSMonoRet: TBCDField
       FieldName = 'Valor_ICMSMonoRet'
     end
-    object NotasItensPercentual_ICMSMono: TFloatField
+    object NotasItensPercentual_ICMSMono: TBCDField
       FieldName = 'Percentual_ICMSMono'
     end
-    object NotasItensPercentual_ICMSMonoRet: TFloatField
+    object NotasItensPercentual_ICMSMonoRet: TBCDField
       FieldName = 'Percentual_ICMSMonoRet'
     end
-    object NotasItensValor_BCICMSMono: TCurrencyField
+    object NotasItensValor_BCICMSMono: TBCDField
       FieldName = 'Valor_BCICMSMono'
     end
-    object NotasItensValor_BCICMSMonoRet: TCurrencyField
+    object NotasItensValor_BCICMSMonoRet: TBCDField
       FieldName = 'Valor_BCICMSMonoRet'
     end
     object NotasItensNavio: TIntegerField
@@ -2162,19 +2162,19 @@ object dmFiscal: TdmFiscal
       FieldName = 'Beneficio_Fiscal'
       Size = 8
     end
-    object NotasItensValor_PISST: TCurrencyField
+    object NotasItensValor_PISST: TBCDField
       FieldName = 'Valor_PISST'
     end
-    object NotasItensValor_COFINSST: TCurrencyField
+    object NotasItensValor_COFINSST: TBCDField
       FieldName = 'Valor_COFINSST'
     end
-    object NotasItensValor_BCICMSPresumido: TCurrencyField
+    object NotasItensValor_BCICMSPresumido: TBCDField
       FieldName = 'Valor_BCICMSPresumido'
     end
-    object NotasItensValor_ICMSPresumido: TCurrencyField
+    object NotasItensValor_ICMSPresumido: TBCDField
       FieldName = 'Valor_ICMSPresumido'
     end
-    object NotasItensAliquota_ICMSPresumido: TFloatField
+    object NotasItensAliquota_ICMSPresumido: TBCDField
       FieldName = 'Aliquota_ICMSPresumido'
     end
   end
@@ -2395,87 +2395,87 @@ object dmFiscal: TdmFiscal
       FixedChar = True
       Size = 3
     end
-    object NotasTerceirosItensQuantidade: TFloatField
+    object NotasTerceirosItensQuantidade: TBCDField
       FieldName = 'Quantidade'
       DisplayFormat = ',##0.000'
       EditFormat = '0.000'
     end
-    object NotasTerceirosItensDisponivel: TFloatField
+    object NotasTerceirosItensDisponivel: TBCDField
       FieldName = 'Disponivel'
       DisplayFormat = ',##0.000'
       EditFormat = '0.000'
     end
-    object NotasTerceirosItensValor_Unitario: TFloatField
+    object NotasTerceirosItensValor_Unitario: TBCDField
       FieldName = 'Valor_Unitario'
       DisplayFormat = ',##0.000000'
     end
-    object NotasTerceirosItensValor_Desconto: TCurrencyField
+    object NotasTerceirosItensValor_Desconto: TBCDField
       FieldName = 'Valor_Desconto'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosItensValor_Liquido: TCurrencyField
+    object NotasTerceirosItensValor_Liquido: TBCDField
       FieldName = 'Valor_Liquido'
       DisplayFormat = ',#00.0000'
     end
-    object NotasTerceirosItensAliquota_ICMSOper: TFloatField
+    object NotasTerceirosItensAliquota_ICMSOper: TBCDField
       FieldName = 'Aliquota_ICMSOper'
       DisplayFormat = '##0.00'
     end
-    object NotasTerceirosItensValor_BCICMSOper: TCurrencyField
+    object NotasTerceirosItensValor_BCICMSOper: TBCDField
       FieldName = 'Valor_BCICMSOper'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosItensValor_ICMSOper: TCurrencyField
+    object NotasTerceirosItensValor_ICMSOper: TBCDField
       FieldName = 'Valor_ICMSOper'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosItensValor_IsentasICMS: TCurrencyField
+    object NotasTerceirosItensValor_IsentasICMS: TBCDField
       FieldName = 'Valor_IsentasICMS'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosItensValor_OutrasICMS: TCurrencyField
+    object NotasTerceirosItensValor_OutrasICMS: TBCDField
       FieldName = 'Valor_OutrasICMS'
       DisplayFormat = ',##0.00'
     end
     object NotasTerceirosItensGera_Registro88: TBooleanField
       FieldName = 'Gera_Registro88'
     end
-    object NotasTerceirosItensAliquota_ICMSSub: TFloatField
+    object NotasTerceirosItensAliquota_ICMSSub: TBCDField
       FieldName = 'Aliquota_ICMSSub'
       DisplayFormat = '##0.00'
     end
-    object NotasTerceirosItensValor_BCICMSSub: TCurrencyField
+    object NotasTerceirosItensValor_BCICMSSub: TBCDField
       FieldName = 'Valor_BCICMSSub'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosItensValor_ICMSSub: TCurrencyField
+    object NotasTerceirosItensValor_ICMSSub: TBCDField
       FieldName = 'Valor_ICMSSub'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosItensAliquota_IPI: TFloatField
+    object NotasTerceirosItensAliquota_IPI: TBCDField
       FieldName = 'Aliquota_IPI'
       DisplayFormat = '##0.00'
     end
-    object NotasTerceirosItensValor_IPI: TCurrencyField
+    object NotasTerceirosItensValor_IPI: TBCDField
       FieldName = 'Valor_IPI'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosItensValor_BCIPI: TCurrencyField
+    object NotasTerceirosItensValor_BCIPI: TBCDField
       FieldName = 'Valor_BCIPI'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosItensValor_OutrasIPI: TCurrencyField
+    object NotasTerceirosItensValor_OutrasIPI: TBCDField
       FieldName = 'Valor_OutrasIPI'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosItensValor_IsentasIPI: TCurrencyField
+    object NotasTerceirosItensValor_IsentasIPI: TBCDField
       FieldName = 'Valor_IsentasIPI'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosItensPeso_Liquido: TFloatField
+    object NotasTerceirosItensPeso_Liquido: TBCDField
       FieldName = 'Peso_Liquido'
     end
-    object NotasTerceirosItensPeso_Bruto: TFloatField
+    object NotasTerceirosItensPeso_Bruto: TBCDField
       FieldName = 'Peso_Bruto'
     end
     object NotasTerceirosItensTipo: TStringField
@@ -2483,38 +2483,38 @@ object dmFiscal: TdmFiscal
       FixedChar = True
       Size = 3
     end
-    object NotasTerceirosItensAliquota_PIS: TFloatField
+    object NotasTerceirosItensAliquota_PIS: TBCDField
       FieldName = 'Aliquota_PIS'
       DisplayFormat = '##0.00'
     end
-    object NotasTerceirosItensValor_PIS: TCurrencyField
+    object NotasTerceirosItensValor_PIS: TBCDField
       FieldName = 'Valor_PIS'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosItensAliquota_COFINS: TFloatField
+    object NotasTerceirosItensAliquota_COFINS: TBCDField
       FieldName = 'Aliquota_COFINS'
       DisplayFormat = '##0.00'
     end
-    object NotasTerceirosItensValor_COFINS: TCurrencyField
+    object NotasTerceirosItensValor_COFINS: TBCDField
       FieldName = 'Valor_COFINS'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosItensConsumo_Energia: TCurrencyField
+    object NotasTerceirosItensConsumo_Energia: TBCDField
       FieldName = 'Consumo_Energia'
     end
-    object NotasTerceirosItensCIAP_BCICMS: TCurrencyField
+    object NotasTerceirosItensCIAP_BCICMS: TBCDField
       FieldName = 'CIAP_BCICMS'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosItensCIAP_AliquotaICMS: TFloatField
+    object NotasTerceirosItensCIAP_AliquotaICMS: TBCDField
       FieldName = 'CIAP_AliquotaICMS'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosItensCIAP_ValorICMS: TCurrencyField
+    object NotasTerceirosItensCIAP_ValorICMS: TBCDField
       FieldName = 'CIAP_ValorICMS'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosItensCIAP_Parcela: TCurrencyField
+    object NotasTerceirosItensCIAP_Parcela: TBCDField
       FieldName = 'CIAP_Parcela'
       DisplayFormat = ',##0.00'
     end
@@ -2570,50 +2570,50 @@ object dmFiscal: TdmFiscal
     object NotasTerceirosItensRegistro_Adicao: TIntegerField
       FieldName = 'Registro_Adicao'
     end
-    object NotasTerceirosItensValor_UnitarioOrig: TCurrencyField
+    object NotasTerceirosItensValor_UnitarioOrig: TBCDField
       FieldName = 'Valor_UnitarioOrig'
       DisplayFormat = ',##0.000000'
     end
-    object NotasTerceirosItensValor_LiquidoOrig: TCurrencyField
+    object NotasTerceirosItensValor_LiquidoOrig: TBCDField
       FieldName = 'Valor_LiquidoOrig'
       DisplayFormat = ',##0.000000'
     end
-    object NotasTerceirosItensAliquota_MVA: TFloatField
+    object NotasTerceirosItensAliquota_MVA: TBCDField
       FieldName = 'Aliquota_MVA'
       DisplayFormat = '##0.00'
     end
     object NotasTerceirosItensItem_Referencia: TSmallintField
       FieldName = 'Item_Referencia'
     end
-    object NotasTerceirosItensValor_ICMSOperOrig: TCurrencyField
+    object NotasTerceirosItensValor_ICMSOperOrig: TBCDField
       FieldName = 'Valor_ICMSOperOrig'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosItensValor_ICMSSubOrig: TCurrencyField
+    object NotasTerceirosItensValor_ICMSSubOrig: TBCDField
       FieldName = 'Valor_ICMSSubOrig'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosItensValor_PISOrig: TCurrencyField
+    object NotasTerceirosItensValor_PISOrig: TBCDField
       FieldName = 'Valor_PISOrig'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosItensValor_COFINSOrig: TCurrencyField
+    object NotasTerceirosItensValor_COFINSOrig: TBCDField
       FieldName = 'Valor_COFINSOrig'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosItensValor_IPIOrig: TCurrencyField
+    object NotasTerceirosItensValor_IPIOrig: TBCDField
       FieldName = 'Valor_IPIOrig'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosItensValor_Inventario: TCurrencyField
+    object NotasTerceirosItensValor_Inventario: TBCDField
       FieldName = 'Valor_Inventario'
       DisplayFormat = ',#00.000000'
     end
-    object NotasTerceirosItensValor_BCPIS: TCurrencyField
+    object NotasTerceirosItensValor_BCPIS: TBCDField
       FieldName = 'Valor_BCPIS'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosItensValor_BCCOFINS: TCurrencyField
+    object NotasTerceirosItensValor_BCCOFINS: TBCDField
       FieldName = 'Valor_BCCOFINS'
       DisplayFormat = ',##0.00'
     end
@@ -2621,42 +2621,42 @@ object dmFiscal: TdmFiscal
       FieldName = 'CEST'
       Size = 7
     end
-    object NotasTerceirosItensAliquota_PISOrig: TFloatField
+    object NotasTerceirosItensAliquota_PISOrig: TBCDField
       FieldName = 'Aliquota_PISOrig'
       DisplayFormat = '##0.00'
     end
-    object NotasTerceirosItensAliquota_COFINSOrig: TFloatField
+    object NotasTerceirosItensAliquota_COFINSOrig: TBCDField
       FieldName = 'Aliquota_COFINSOrig'
       DisplayFormat = '##0.00'
     end
     object NotasTerceirosItensMovimenta_EstoqueRep: TBooleanField
       FieldName = 'Movimenta_EstoqueRep'
     end
-    object NotasTerceirosItensValor_Frete: TCurrencyField
+    object NotasTerceirosItensValor_Frete: TBCDField
       FieldName = 'Valor_Frete'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosItensValor_BCICMSSubOrig: TCurrencyField
+    object NotasTerceirosItensValor_BCICMSSubOrig: TBCDField
       FieldName = 'Valor_BCICMSSubOrig'
       DisplayFormat = ',##0.00'
     end
     object NotasTerceirosItensTrava_ValorInv: TBooleanField
       FieldName = 'Trava_ValorInv'
     end
-    object NotasTerceirosItensValor_Despesa: TCurrencyField
+    object NotasTerceirosItensValor_Despesa: TBCDField
       FieldName = 'Valor_Despesa'
       DisplayFormat = ',##0.00'
     end
     object NotasTerceirosItensNavio: TIntegerField
       FieldName = 'Navio'
     end
-    object NotasTerceirosItensValor_IR: TCurrencyField
+    object NotasTerceirosItensValor_IR: TBCDField
       FieldName = 'Valor_IR'
     end
-    object NotasTerceirosItensValor_CSLL: TCurrencyField
+    object NotasTerceirosItensValor_CSLL: TBCDField
       FieldName = 'Valor_CSLL'
     end
-    object NotasTerceirosItensValor_INSS: TCurrencyField
+    object NotasTerceirosItensValor_INSS: TBCDField
       FieldName = 'Valor_INSS'
     end
   end
@@ -2805,12 +2805,12 @@ object dmFiscal: TdmFiscal
       FixedChar = True
       Size = 10
     end
-    object NotasServicoDesconto_Percentual: TFloatField
+    object NotasServicoDesconto_Percentual: TBCDField
       DisplayWidth = 15
       FieldName = 'Desconto_Percentual'
       Origin = 'NotasServico.Desconto_Percentual'
     end
-    object NotasServicoDesconto_Valor: TCurrencyField
+    object NotasServicoDesconto_Valor: TBCDField
       DisplayWidth = 11
       FieldName = 'Desconto_Valor'
       Origin = 'NotasServico.Desconto_Valor'
@@ -2848,21 +2848,21 @@ object dmFiscal: TdmFiscal
       Origin = 'NotasServico.Descricao_Servico'
       BlobType = ftMemo
     end
-    object NotasServicoValor_Servico: TCurrencyField
+    object NotasServicoValor_Servico: TBCDField
       DisplayWidth = 10
       FieldName = 'Valor_Servico'
       Origin = 'NotasServico.Valor_Servico'
       DisplayFormat = '###,###,###,##0.00'
       EditFormat = '###,###,###,##0.00'
     end
-    object NotasServicoValor_ISS: TCurrencyField
+    object NotasServicoValor_ISS: TBCDField
       DisplayWidth = 10
       FieldName = 'Valor_ISS'
       Origin = 'NotasServico.Valor_ISS'
       DisplayFormat = '###,###,###,##0.00'
       EditFormat = '###,###,###,##0.00'
     end
-    object NotasServicoTotal_Nota: TCurrencyField
+    object NotasServicoTotal_Nota: TBCDField
       DisplayWidth = 10
       FieldName = 'Total_Nota'
       Origin = 'NotasServico.Total_Nota'
@@ -2876,12 +2876,12 @@ object dmFiscal: TdmFiscal
       FixedChar = True
       Size = 10
     end
-    object NotasServicoAliquota_Adicional01: TFloatField
+    object NotasServicoAliquota_Adicional01: TBCDField
       DisplayWidth = 14
       FieldName = 'Aliquota_Adicional01'
       Origin = 'NotasServico.Aliquota_Adicional01'
     end
-    object NotasServicoValor_Adicional01: TCurrencyField
+    object NotasServicoValor_Adicional01: TBCDField
       DisplayWidth = 12
       FieldName = 'Valor_Adicional01'
       Origin = 'NotasServico.Valor_Adicional01'
@@ -2895,12 +2895,12 @@ object dmFiscal: TdmFiscal
       FixedChar = True
       Size = 10
     end
-    object NotasServicoAliquota_Adicional02: TFloatField
+    object NotasServicoAliquota_Adicional02: TBCDField
       DisplayWidth = 14
       FieldName = 'Aliquota_Adicional02'
       Origin = 'NotasServico.Aliquota_Adicional02'
     end
-    object NotasServicoValor_Adicional02: TCurrencyField
+    object NotasServicoValor_Adicional02: TBCDField
       DisplayWidth = 12
       FieldName = 'Valor_Adicional02'
       Origin = 'NotasServico.Valor_Adicional02'
@@ -2914,12 +2914,12 @@ object dmFiscal: TdmFiscal
       FixedChar = True
       Size = 10
     end
-    object NotasServicoAliquota_Adicional03: TFloatField
+    object NotasServicoAliquota_Adicional03: TBCDField
       DisplayWidth = 14
       FieldName = 'Aliquota_Adicional03'
       Origin = 'NotasServico.Aliquota_Adicional03'
     end
-    object NotasServicoValor_Adicional03: TCurrencyField
+    object NotasServicoValor_Adicional03: TBCDField
       DisplayWidth = 12
       FieldName = 'Valor_Adicional03'
       Origin = 'NotasServico.Valor_Adicional03'
@@ -2933,12 +2933,12 @@ object dmFiscal: TdmFiscal
       FixedChar = True
       Size = 10
     end
-    object NotasServicoAliquota_Adicional04: TFloatField
+    object NotasServicoAliquota_Adicional04: TBCDField
       DisplayWidth = 14
       FieldName = 'Aliquota_Adicional04'
       Origin = 'NotasServico.Aliquota_Adicional04'
     end
-    object NotasServicoValor_Adicional04: TCurrencyField
+    object NotasServicoValor_Adicional04: TBCDField
       DisplayWidth = 12
       FieldName = 'Valor_Adicional04'
       Origin = 'NotasServico.Valor_Adicional04'
@@ -2952,12 +2952,12 @@ object dmFiscal: TdmFiscal
       FixedChar = True
       Size = 10
     end
-    object NotasServicoAliquota_Adicional05: TFloatField
+    object NotasServicoAliquota_Adicional05: TBCDField
       DisplayWidth = 14
       FieldName = 'Aliquota_Adicional05'
       Origin = 'NotasServico.Aliquota_Adicional05'
     end
-    object NotasServicoValor_Adicional05: TCurrencyField
+    object NotasServicoValor_Adicional05: TBCDField
       DisplayWidth = 12
       FieldName = 'Valor_Adicional05'
       Origin = 'NotasServico.Valor_Adicional05'
@@ -2971,12 +2971,12 @@ object dmFiscal: TdmFiscal
       FixedChar = True
       Size = 10
     end
-    object NotasServicoAliquota_Adicional06: TFloatField
+    object NotasServicoAliquota_Adicional06: TBCDField
       DisplayWidth = 14
       FieldName = 'Aliquota_Adicional06'
       Origin = 'NotasServico.Aliquota_Adicional06'
     end
-    object NotasServicoValor_Adicional06: TCurrencyField
+    object NotasServicoValor_Adicional06: TBCDField
       DisplayWidth = 12
       FieldName = 'Valor_Adicional06'
       Origin = 'NotasServico.Valor_Adicional06'
@@ -2988,17 +2988,17 @@ object dmFiscal: TdmFiscal
       FieldName = 'Cancelada'
       Origin = 'NotasServico.Cancelada'
     end
-    object NotasServicoAliquota_PIS: TFloatField
+    object NotasServicoAliquota_PIS: TBCDField
       DisplayWidth = 10
       FieldName = 'Aliquota_PIS'
       Origin = 'NotasServico.Aliquota_PIS'
     end
-    object NotasServicoAliquota_COFINS: TFloatField
+    object NotasServicoAliquota_COFINS: TBCDField
       DisplayWidth = 12
       FieldName = 'Aliquota_COFINS'
       Origin = 'NotasServico.Aliquota_COFINS'
     end
-    object NotasServicoAliquota_ISS: TFloatField
+    object NotasServicoAliquota_ISS: TBCDField
       DisplayWidth = 10
       FieldName = 'Aliquota_ISS'
       Origin = 'NotasServico.Aliquota_ISS'
@@ -3030,12 +3030,12 @@ object dmFiscal: TdmFiscal
       FieldName = 'Referencia_Fiscal'
       Origin = 'NotasServico.Referencia_Fiscal'
     end
-    object NotasServicoTotal_Dedutiveis: TCurrencyField
+    object NotasServicoTotal_Dedutiveis: TBCDField
       DisplayWidth = 12
       FieldName = 'Total_Dedutiveis'
       Origin = 'NotasServico.Total_Dedutiveis'
     end
-    object NotasServicoTotal_Servicos: TCurrencyField
+    object NotasServicoTotal_Servicos: TBCDField
       DisplayWidth = 10
       FieldName = 'Total_Servicos'
       Origin = 'NotasServico.Total_Servicos'
@@ -3132,15 +3132,15 @@ object dmFiscal: TdmFiscal
       Origin = 'Inventario.Unidade'
       Size = 3
     end
-    object InventarioQuantidade: TFloatField
+    object InventarioQuantidade: TBCDField
       FieldName = 'Quantidade'
       Origin = 'Inventario.Quantidade'
     end
-    object InventarioValor_Unitario: TFloatField
+    object InventarioValor_Unitario: TBCDField
       FieldName = 'Valor_Unitario'
       Origin = 'Inventario.Valor_Unitario'
     end
-    object InventarioValor_Total: TCurrencyField
+    object InventarioValor_Total: TBCDField
       FieldName = 'Valor_Total'
       Origin = 'Inventario.Valor_Total'
     end
@@ -3178,7 +3178,7 @@ object dmFiscal: TdmFiscal
       Origin = 'Inventario.Estado'
       Size = 2
     end
-    object InventarioAliquota_IPI: TFloatField
+    object InventarioAliquota_IPI: TBCDField
       FieldName = 'Aliquota_IPI'
     end
   end
@@ -3317,7 +3317,7 @@ object dmFiscal: TdmFiscal
       FieldName = 'Nota_Data'
       Origin = 'ExtornoDebito.Nota_Data'
     end
-    object EstornoValor: TCurrencyField
+    object EstornoValor: TBCDField
       FieldName = 'Valor'
       Origin = 'ExtornoDebito.Valor'
       DisplayFormat = '###,###,##0.00'
@@ -3400,7 +3400,7 @@ object dmFiscal: TdmFiscal
       FieldName = 'Operacao'
       Origin = 'SaldoICMS.Operacao'
     end
-    object SaldoICMSSaldo: TCurrencyField
+    object SaldoICMSSaldo: TBCDField
       DisplayWidth = 17
       FieldName = 'Saldo'
       Origin = 'SaldoICMS.Saldo'
@@ -3481,7 +3481,7 @@ object dmFiscal: TdmFiscal
       Origin = 'SaldoIPI.Operacao'
       DisplayFormat = ',##0.00'
     end
-    object SaldoIPISaldo: TCurrencyField
+    object SaldoIPISaldo: TBCDField
       FieldName = 'Saldo'
       Origin = 'SaldoIPI.Saldo'
       DisplayFormat = ',##0.00'
@@ -3547,7 +3547,7 @@ object dmFiscal: TdmFiscal
     object OutrosValoresIPINota_Data: TDateTimeField
       FieldName = 'Nota_Data'
     end
-    object OutrosValoresIPIValor: TCurrencyField
+    object OutrosValoresIPIValor: TBCDField
       FieldName = 'Valor'
       DisplayFormat = '###,###,###,##0.00'
       EditFormat = '###,###,###,##0.00'
@@ -3668,11 +3668,11 @@ object dmFiscal: TdmFiscal
       FixedChar = True
       Size = 6
     end
-    object SaldoPISCOFINSSaldo_PIS: TCurrencyField
+    object SaldoPISCOFINSSaldo_PIS: TBCDField
       FieldName = 'Saldo_PIS'
       Origin = 'SaldoPISCOFINS.Saldo_PIS'
     end
-    object SaldoPISCOFINSSaldo_COFINS: TCurrencyField
+    object SaldoPISCOFINSSaldo_COFINS: TBCDField
       FieldName = 'Saldo_COFINS'
       Origin = 'SaldoPISCOFINS.Saldo_COFINS'
     end
@@ -3753,24 +3753,24 @@ object dmFiscal: TdmFiscal
       FieldName = 'Data_Vencimento'
       Origin = 'Duplicatas.Data_Vencimento'
     end
-    object DuplicatasValor: TCurrencyField
+    object DuplicatasValor: TBCDField
       FieldName = 'Valor'
       Origin = 'Duplicatas.Valor'
       DisplayFormat = '###,###,##0.00'
       EditFormat = '###,###,##0.00'
     end
-    object DuplicatasAliquota_Desconto: TFloatField
+    object DuplicatasAliquota_Desconto: TBCDField
       FieldName = 'Aliquota_Desconto'
       Origin = 'Duplicatas.Aliquota_Desconto'
       DisplayFormat = '##0.00'
     end
-    object DuplicatasDesconto: TCurrencyField
+    object DuplicatasDesconto: TBCDField
       FieldName = 'Desconto'
       Origin = 'Duplicatas.Desconto'
       DisplayFormat = '###,###,##0.00'
       EditFormat = '###,###,##0.00'
     end
-    object DuplicatasValor_Liquido: TCurrencyField
+    object DuplicatasValor_Liquido: TBCDField
       FieldName = 'Valor_Liquido'
       Origin = 'Duplicatas.Valor_Liquido'
       DisplayFormat = '###,###,##0.00'
@@ -4100,24 +4100,24 @@ object dmFiscal: TdmFiscal
       Origin = 'NCM.Produto'
       Size = 60
     end
-    object NCMPIS: TFloatField
+    object NCMPIS: TBCDField
       FieldName = 'PIS'
       Origin = 'NCM.PIS'
       DisplayFormat = '#0.00'
       EditFormat = '#0.00'
     end
-    object NCMCOFINS: TFloatField
+    object NCMCOFINS: TBCDField
       FieldName = 'COFINS'
       Origin = 'NCM.COFINS'
       DisplayFormat = '#0.00'
       EditFormat = '#0.00'
     end
-    object NCMII: TFloatField
+    object NCMII: TBCDField
       FieldName = 'II'
       Origin = 'NCM.II'
       DisplayFormat = '#0.00'
     end
-    object NCMIPI: TFloatField
+    object NCMIPI: TBCDField
       FieldName = 'IPI'
       Origin = 'NCM.IPI'
       DisplayFormat = '#0.00'
@@ -4126,292 +4126,292 @@ object dmFiscal: TdmFiscal
       FieldName = 'DNF'
       Origin = 'NCM.DNF'
     end
-    object NCMICMS_Operacional: TFloatField
+    object NCMICMS_Operacional: TBCDField
       FieldName = 'ICMS_Operacional'
       Origin = 'NCM.ICMS_Operacional'
       DisplayFormat = '#0.00'
     end
-    object NCMICMS_Reducao: TFloatField
+    object NCMICMS_Reducao: TBCDField
       FieldName = 'ICMS_Reducao'
       Origin = 'NCM.ICMS_Reducao'
       DisplayFormat = '#0.000000'
     end
-    object NCMAC_ICMS: TFloatField
+    object NCMAC_ICMS: TBCDField
       FieldName = 'AC_ICMS'
       Origin = 'NCM.AC_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMAL_ICMS: TFloatField
+    object NCMAL_ICMS: TBCDField
       FieldName = 'AL_ICMS'
       Origin = 'NCM.AL_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMAM_ICMS: TFloatField
+    object NCMAM_ICMS: TBCDField
       FieldName = 'AM_ICMS'
       Origin = 'NCM.AM_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMAP_ICMS: TFloatField
+    object NCMAP_ICMS: TBCDField
       FieldName = 'AP_ICMS'
       Origin = 'NCM.AP_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMBA_ICMS: TFloatField
+    object NCMBA_ICMS: TBCDField
       FieldName = 'BA_ICMS'
       Origin = 'NCM.BA_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMCE_ICMS: TFloatField
+    object NCMCE_ICMS: TBCDField
       FieldName = 'CE_ICMS'
       Origin = 'NCM.CE_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMDF_ICMS: TFloatField
+    object NCMDF_ICMS: TBCDField
       FieldName = 'DF_ICMS'
       Origin = 'NCM.DF_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMES_ICMS: TFloatField
+    object NCMES_ICMS: TBCDField
       FieldName = 'ES_ICMS'
       Origin = 'NCM.ES_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMGO_ICMS: TFloatField
+    object NCMGO_ICMS: TBCDField
       FieldName = 'GO_ICMS'
       Origin = 'NCM.GO_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMMA_ICMS: TFloatField
+    object NCMMA_ICMS: TBCDField
       FieldName = 'MA_ICMS'
       Origin = 'NCM.MA_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMMG_ICMS: TFloatField
+    object NCMMG_ICMS: TBCDField
       FieldName = 'MG_ICMS'
       Origin = 'NCM.MG_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMMS_ICMS: TFloatField
+    object NCMMS_ICMS: TBCDField
       FieldName = 'MS_ICMS'
       Origin = 'NCM.MS_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMMT_ICMS: TFloatField
+    object NCMMT_ICMS: TBCDField
       FieldName = 'MT_ICMS'
       Origin = 'NCM.MT_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMPA_ICMS: TFloatField
+    object NCMPA_ICMS: TBCDField
       FieldName = 'PA_ICMS'
       Origin = 'NCM.PA_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMPB_ICMS: TFloatField
+    object NCMPB_ICMS: TBCDField
       FieldName = 'PB_ICMS'
       Origin = 'NCM.PB_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMPE_ICMS: TFloatField
+    object NCMPE_ICMS: TBCDField
       FieldName = 'PE_ICMS'
       Origin = 'NCM.PE_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMPI_ICMS: TFloatField
+    object NCMPI_ICMS: TBCDField
       FieldName = 'PI_ICMS'
       Origin = 'NCM.PI_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMPR_ICMS: TFloatField
+    object NCMPR_ICMS: TBCDField
       FieldName = 'PR_ICMS'
       Origin = 'NCM.PR_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMRJ_ICMS: TFloatField
+    object NCMRJ_ICMS: TBCDField
       FieldName = 'RJ_ICMS'
       Origin = 'NCM.RJ_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMRN_ICMS: TFloatField
+    object NCMRN_ICMS: TBCDField
       FieldName = 'RN_ICMS'
       Origin = 'NCM.RN_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMRO_ICMS: TFloatField
+    object NCMRO_ICMS: TBCDField
       FieldName = 'RO_ICMS'
       Origin = 'NCM.RO_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMRR_ICMS: TFloatField
+    object NCMRR_ICMS: TBCDField
       FieldName = 'RR_ICMS'
       Origin = 'NCM.RR_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMRS_ICMS: TFloatField
+    object NCMRS_ICMS: TBCDField
       FieldName = 'RS_ICMS'
       Origin = 'NCM.RS_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMSC_ICMS: TFloatField
+    object NCMSC_ICMS: TBCDField
       FieldName = 'SC_ICMS'
       Origin = 'NCM.SC_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMSE_ICMS: TFloatField
+    object NCMSE_ICMS: TBCDField
       FieldName = 'SE_ICMS'
       Origin = 'NCM.SE_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMSP_ICMS: TFloatField
+    object NCMSP_ICMS: TBCDField
       FieldName = 'SP_ICMS'
       Origin = 'NCM.SP_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMTO_ICMS: TFloatField
+    object NCMTO_ICMS: TBCDField
       FieldName = 'TO_ICMS'
       Origin = 'NCM.TO_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMAC_MVA: TFloatField
+    object NCMAC_MVA: TBCDField
       FieldName = 'AC_MVA'
       Origin = 'NCM.AC_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMAL_MVA: TFloatField
+    object NCMAL_MVA: TBCDField
       FieldName = 'AL_MVA'
       Origin = 'NCM.AL_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMAM_MVA: TFloatField
+    object NCMAM_MVA: TBCDField
       FieldName = 'AM_MVA'
       Origin = 'NCM.AM_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMAP_MVA: TFloatField
+    object NCMAP_MVA: TBCDField
       FieldName = 'AP_MVA'
       Origin = 'NCM.AP_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMBA_MVA: TFloatField
+    object NCMBA_MVA: TBCDField
       FieldName = 'BA_MVA'
       Origin = 'NCM.BA_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMCE_MVA: TFloatField
+    object NCMCE_MVA: TBCDField
       FieldName = 'CE_MVA'
       Origin = 'NCM.CE_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMDF_MVA: TFloatField
+    object NCMDF_MVA: TBCDField
       FieldName = 'DF_MVA'
       Origin = 'NCM.DF_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMES_MVA: TFloatField
+    object NCMES_MVA: TBCDField
       FieldName = 'ES_MVA'
       Origin = 'NCM.ES_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMGO_MVA: TFloatField
+    object NCMGO_MVA: TBCDField
       FieldName = 'GO_MVA'
       Origin = 'NCM.GO_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMMA_MVA: TFloatField
+    object NCMMA_MVA: TBCDField
       FieldName = 'MA_MVA'
       Origin = 'NCM.MA_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMMG_MVA: TFloatField
+    object NCMMG_MVA: TBCDField
       FieldName = 'MG_MVA'
       Origin = 'NCM.MG_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMMS_MVA: TFloatField
+    object NCMMS_MVA: TBCDField
       FieldName = 'MS_MVA'
       Origin = 'NCM.MS_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMMT_MVA: TFloatField
+    object NCMMT_MVA: TBCDField
       FieldName = 'MT_MVA'
       Origin = 'NCM.MT_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMPA_MVA: TFloatField
+    object NCMPA_MVA: TBCDField
       FieldName = 'PA_MVA'
       Origin = 'NCM.PA_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMPB_MVA: TFloatField
+    object NCMPB_MVA: TBCDField
       FieldName = 'PB_MVA'
       Origin = 'NCM.PB_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMPE_MVA: TFloatField
+    object NCMPE_MVA: TBCDField
       FieldName = 'PE_MVA'
       Origin = 'NCM.PE_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMPI_MVA: TFloatField
+    object NCMPI_MVA: TBCDField
       FieldName = 'PI_MVA'
       Origin = 'NCM.PI_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMPR_MVA: TFloatField
+    object NCMPR_MVA: TBCDField
       FieldName = 'PR_MVA'
       Origin = 'NCM.PR_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMRJ_MVA: TFloatField
+    object NCMRJ_MVA: TBCDField
       FieldName = 'RJ_MVA'
       Origin = 'NCM.RJ_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMRN_MVA: TFloatField
+    object NCMRN_MVA: TBCDField
       FieldName = 'RN_MVA'
       Origin = 'NCM.RN_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMRO_MVA: TFloatField
+    object NCMRO_MVA: TBCDField
       FieldName = 'RO_MVA'
       Origin = 'NCM.RO_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMRR_MVA: TFloatField
+    object NCMRR_MVA: TBCDField
       FieldName = 'RR_MVA'
       Origin = 'NCM.RR_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMRS_MVA: TFloatField
+    object NCMRS_MVA: TBCDField
       FieldName = 'RS_MVA'
       Origin = 'NCM.RS_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMSC_MVA: TFloatField
+    object NCMSC_MVA: TBCDField
       FieldName = 'SC_MVA'
       Origin = 'NCM.SC_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMSP_MVA: TFloatField
+    object NCMSP_MVA: TBCDField
       FieldName = 'SP_MVA'
       Origin = 'NCM.SP_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMSE_MVA: TFloatField
+    object NCMSE_MVA: TBCDField
       FieldName = 'SE_MVA'
       Origin = 'NCM.SE_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMTO_MVA: TFloatField
+    object NCMTO_MVA: TBCDField
       FieldName = 'TO_MVA'
       Origin = 'NCM.TO_MVA'
       DisplayFormat = '#0.00'
     end
-    object NCMEX_ICMS: TFloatField
+    object NCMEX_ICMS: TBCDField
       FieldName = 'EX_ICMS'
       Origin = 'NCM.EX_ICMS'
       DisplayFormat = '#0.00'
     end
-    object NCMEX_MVA: TFloatField
+    object NCMEX_MVA: TBCDField
       FieldName = 'EX_MVA'
       Origin = 'NCM.EX_MVA'
       DisplayFormat = '#0.00'
@@ -4454,7 +4454,7 @@ object dmFiscal: TdmFiscal
       FieldName = 'Codigo_EXTIPI'
       Origin = 'NCM.Codigo_EXTIPI'
     end
-    object NCMIPI_Valor: TFloatField
+    object NCMIPI_Valor: TBCDField
       FieldName = 'IPI_Valor'
       Origin = 'NCM.IPI_Valor'
       DisplayFormat = ',##0.00'
@@ -4495,11 +4495,11 @@ object dmFiscal: TdmFiscal
       FieldName = 'Codigo_DNF'
       Origin = 'NCM.Codigo_DNF'
     end
-    object NCMFatorConv_DNF: TFloatField
+    object NCMFatorConv_DNF: TBCDField
       FieldName = 'FatorConv_DNF'
       Origin = 'NCM.FatorConv_DNF'
     end
-    object NCMCapacidadeVol_DNF: TFloatField
+    object NCMCapacidadeVol_DNF: TBCDField
       FieldName = 'CapacidadeVol_DNF'
       Origin = 'NCM.CapacidadeVol_DNF'
     end
@@ -4511,22 +4511,22 @@ object dmFiscal: TdmFiscal
       FieldName = 'IPI_TribAliquotaZero'
       Origin = 'NCM.IPI_TribAliquotaZero'
     end
-    object NCMReducao_IPI: TFloatField
+    object NCMReducao_IPI: TBCDField
       FieldName = 'Reducao_IPI'
       Origin = 'NCM.Reducao_IPI'
       DisplayFormat = '#0.00'
     end
-    object NCMReducao_II: TFloatField
+    object NCMReducao_II: TBCDField
       FieldName = 'Reducao_II'
       Origin = 'NCM.Reducao_II'
       DisplayFormat = '#0.00'
     end
-    object NCMAcordo_TarifarioII: TFloatField
+    object NCMAcordo_TarifarioII: TBCDField
       FieldName = 'Acordo_TarifarioII'
       Origin = 'NCM.Acordo_TarifarioII'
       DisplayFormat = '#0.00'
     end
-    object NCMAcordo_TarifarioIPI: TFloatField
+    object NCMAcordo_TarifarioIPI: TBCDField
       FieldName = 'Acordo_TarifarioIPI'
       Origin = 'NCM.Acordo_TarifarioIPI'
       DisplayFormat = '#0.00'
@@ -4535,312 +4535,312 @@ object dmFiscal: TdmFiscal
       FieldName = 'Custo_Seletivo'
       Origin = 'NCM.Custo_Seletivo'
     end
-    object NCMPIS_Nota: TFloatField
+    object NCMPIS_Nota: TBCDField
       FieldName = 'PIS_Nota'
       Origin = 'NCM.PIS_Nota'
       DisplayFormat = '##0.00'
     end
-    object NCMCOFINS_Nota: TFloatField
+    object NCMCOFINS_Nota: TBCDField
       FieldName = 'COFINS_Nota'
       Origin = 'NCM.COFINS_Nota'
       DisplayFormat = '##0.00'
     end
-    object NCMPIS_NotaSaida: TFloatField
+    object NCMPIS_NotaSaida: TBCDField
       FieldName = 'PIS_NotaSaida'
       Origin = 'NCM.PIS_NotaSaida'
       DisplayFormat = '##0.00'
     end
-    object NCMCOFINS_NotaSaida: TFloatField
+    object NCMCOFINS_NotaSaida: TBCDField
       FieldName = 'COFINS_NotaSaida'
       Origin = 'NCM.COFINS_NotaSaida'
       DisplayFormat = '##0.00'
     end
-    object NCMPIS_Reducao: TFloatField
+    object NCMPIS_Reducao: TBCDField
       FieldName = 'PIS_Reducao'
       Origin = 'NCM.PIS_Reducao'
       DisplayFormat = '##0.00'
     end
-    object NCMCOFINS_Reducao: TFloatField
+    object NCMCOFINS_Reducao: TBCDField
       FieldName = 'COFINS_Reducao'
       Origin = 'NCM.COFINS_Reducao'
       DisplayFormat = '##0.00'
     end
-    object NCMAC_Reducao: TFloatField
+    object NCMAC_Reducao: TBCDField
       FieldName = 'AC_Reducao'
       Origin = 'NCM.AC_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMAL_Reducao: TFloatField
+    object NCMAL_Reducao: TBCDField
       FieldName = 'AL_Reducao'
       Origin = 'NCM.AL_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMAM_Reducao: TFloatField
+    object NCMAM_Reducao: TBCDField
       FieldName = 'AM_Reducao'
       Origin = 'NCM.AM_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMAP_Reducao: TFloatField
+    object NCMAP_Reducao: TBCDField
       FieldName = 'AP_Reducao'
       Origin = 'NCM.AP_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMBA_Reducao: TFloatField
+    object NCMBA_Reducao: TBCDField
       FieldName = 'BA_Reducao'
       Origin = 'NCM.BA_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMCE_Reducao: TFloatField
+    object NCMCE_Reducao: TBCDField
       FieldName = 'CE_Reducao'
       Origin = 'NCM.CE_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMDF_Reducao: TFloatField
+    object NCMDF_Reducao: TBCDField
       FieldName = 'DF_Reducao'
       Origin = 'NCM.DF_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMES_Reducao: TFloatField
+    object NCMES_Reducao: TBCDField
       FieldName = 'ES_Reducao'
       Origin = 'NCM.ES_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMGO_Reducao: TFloatField
+    object NCMGO_Reducao: TBCDField
       FieldName = 'GO_Reducao'
       Origin = 'NCM.GO_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMMA_Reducao: TFloatField
+    object NCMMA_Reducao: TBCDField
       FieldName = 'MA_Reducao'
       Origin = 'NCM.MA_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMMG_Reducao: TFloatField
+    object NCMMG_Reducao: TBCDField
       FieldName = 'MG_Reducao'
       Origin = 'NCM.MG_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMMS_Reducao: TFloatField
+    object NCMMS_Reducao: TBCDField
       FieldName = 'MS_Reducao'
       Origin = 'NCM.MS_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMMT_Reducao: TFloatField
+    object NCMMT_Reducao: TBCDField
       FieldName = 'MT_Reducao'
       Origin = 'NCM.MT_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMPA_Reducao: TFloatField
+    object NCMPA_Reducao: TBCDField
       FieldName = 'PA_Reducao'
       Origin = 'NCM.PA_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMPB_Reducao: TFloatField
+    object NCMPB_Reducao: TBCDField
       FieldName = 'PB_Reducao'
       Origin = 'NCM.PB_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMPE_Reducao: TFloatField
+    object NCMPE_Reducao: TBCDField
       FieldName = 'PE_Reducao'
       Origin = 'NCM.PE_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMPI_Reducao: TFloatField
+    object NCMPI_Reducao: TBCDField
       FieldName = 'PI_Reducao'
       Origin = 'NCM.PI_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMPR_Reducao: TFloatField
+    object NCMPR_Reducao: TBCDField
       FieldName = 'PR_Reducao'
       Origin = 'NCM.PR_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMRJ_Reducao: TFloatField
+    object NCMRJ_Reducao: TBCDField
       FieldName = 'RJ_Reducao'
       Origin = 'NCM.RJ_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMRN_Reducao: TFloatField
+    object NCMRN_Reducao: TBCDField
       FieldName = 'RN_Reducao'
       Origin = 'NCM.RN_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMRO_Reducao: TFloatField
+    object NCMRO_Reducao: TBCDField
       FieldName = 'RO_Reducao'
       Origin = 'NCM.RO_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMRR_Reducao: TFloatField
+    object NCMRR_Reducao: TBCDField
       FieldName = 'RR_Reducao'
       Origin = 'NCM.RR_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMRS_Reducao: TFloatField
+    object NCMRS_Reducao: TBCDField
       FieldName = 'RS_Reducao'
       Origin = 'NCM.RS_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMSC_Reducao: TFloatField
+    object NCMSC_Reducao: TBCDField
       FieldName = 'SC_Reducao'
       Origin = 'NCM.SC_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMSE_Reducao: TFloatField
+    object NCMSE_Reducao: TBCDField
       FieldName = 'SE_Reducao'
       Origin = 'NCM.SE_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMSP_Reducao: TFloatField
+    object NCMSP_Reducao: TBCDField
       FieldName = 'SP_Reducao'
       Origin = 'NCM.SP_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMTO_Reducao: TFloatField
+    object NCMTO_Reducao: TBCDField
       FieldName = 'TO_Reducao'
       Origin = 'NCM.TO_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMEX_Reducao: TFloatField
+    object NCMEX_Reducao: TBCDField
       FieldName = 'EX_Reducao'
       Origin = 'NCM.EX_Reducao'
       DisplayFormat = '##0.00000'
     end
-    object NCMAC_ReducaoST: TFloatField
+    object NCMAC_ReducaoST: TBCDField
       FieldName = 'AC_ReducaoST'
       Origin = 'NCM.AC_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMAL_ReducaoST: TFloatField
+    object NCMAL_ReducaoST: TBCDField
       FieldName = 'AL_ReducaoST'
       Origin = 'NCM.AL_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMAM_ReducaoST: TFloatField
+    object NCMAM_ReducaoST: TBCDField
       FieldName = 'AM_ReducaoST'
       Origin = 'NCM.AM_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMAP_ReducaoST: TFloatField
+    object NCMAP_ReducaoST: TBCDField
       FieldName = 'AP_ReducaoST'
       Origin = 'NCM.AP_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMBA_ReducaoST: TFloatField
+    object NCMBA_ReducaoST: TBCDField
       FieldName = 'BA_ReducaoST'
       Origin = 'NCM.BA_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMCE_ReducaoST: TFloatField
+    object NCMCE_ReducaoST: TBCDField
       FieldName = 'CE_ReducaoST'
       Origin = 'NCM.CE_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMDF_ReducaoST: TFloatField
+    object NCMDF_ReducaoST: TBCDField
       FieldName = 'DF_ReducaoST'
       Origin = 'NCM.DF_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMES_ReducaoST: TFloatField
+    object NCMES_ReducaoST: TBCDField
       FieldName = 'ES_ReducaoST'
       Origin = 'NCM.ES_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMGO_ReducaoST: TFloatField
+    object NCMGO_ReducaoST: TBCDField
       FieldName = 'GO_ReducaoST'
       Origin = 'NCM.GO_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMMA_ReducaoST: TFloatField
+    object NCMMA_ReducaoST: TBCDField
       FieldName = 'MA_ReducaoST'
       Origin = 'NCM.MA_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMMG_ReducaoST: TFloatField
+    object NCMMG_ReducaoST: TBCDField
       FieldName = 'MG_ReducaoST'
       Origin = 'NCM.MG_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMMS_ReducaoST: TFloatField
+    object NCMMS_ReducaoST: TBCDField
       FieldName = 'MS_ReducaoST'
       Origin = 'NCM.MS_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMMT_ReducaoST: TFloatField
+    object NCMMT_ReducaoST: TBCDField
       FieldName = 'MT_ReducaoST'
       Origin = 'NCM.MT_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMPA_ReducaoST: TFloatField
+    object NCMPA_ReducaoST: TBCDField
       FieldName = 'PA_ReducaoST'
       Origin = 'NCM.PA_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMPB_ReducaoST: TFloatField
+    object NCMPB_ReducaoST: TBCDField
       FieldName = 'PB_ReducaoST'
       Origin = 'NCM.PB_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMPE_ReducaoST: TFloatField
+    object NCMPE_ReducaoST: TBCDField
       FieldName = 'PE_ReducaoST'
       Origin = 'NCM.PE_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMPI_ReducaoST: TFloatField
+    object NCMPI_ReducaoST: TBCDField
       FieldName = 'PI_ReducaoST'
       Origin = 'NCM.PI_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMPR_ReducaoST: TFloatField
+    object NCMPR_ReducaoST: TBCDField
       FieldName = 'PR_ReducaoST'
       Origin = 'NCM.PR_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMRJ_ReducaoST: TFloatField
+    object NCMRJ_ReducaoST: TBCDField
       FieldName = 'RJ_ReducaoST'
       Origin = 'NCM.RJ_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMRN_ReducaoST: TFloatField
+    object NCMRN_ReducaoST: TBCDField
       FieldName = 'RN_ReducaoST'
       Origin = 'NCM.RN_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMRO_ReducaoST: TFloatField
+    object NCMRO_ReducaoST: TBCDField
       FieldName = 'RO_ReducaoST'
       Origin = 'NCM.RO_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMRR_ReducaoST: TFloatField
+    object NCMRR_ReducaoST: TBCDField
       FieldName = 'RR_ReducaoST'
       Origin = 'NCM.RR_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMRS_ReducaoST: TFloatField
+    object NCMRS_ReducaoST: TBCDField
       FieldName = 'RS_ReducaoST'
       Origin = 'NCM.RS_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMSC_ReducaoST: TFloatField
+    object NCMSC_ReducaoST: TBCDField
       FieldName = 'SC_ReducaoST'
       Origin = 'NCM.SC_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMSE_ReducaoST: TFloatField
+    object NCMSE_ReducaoST: TBCDField
       FieldName = 'SE_ReducaoST'
       Origin = 'NCM.SE_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMSP_ReducaoST: TFloatField
+    object NCMSP_ReducaoST: TBCDField
       FieldName = 'SP_ReducaoST'
       Origin = 'NCM.SP_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMTO_ReducaoST: TFloatField
+    object NCMTO_ReducaoST: TBCDField
       FieldName = 'TO_ReducaoST'
       Origin = 'NCM.TO_ReducaoST'
       DisplayFormat = '##0.00000'
     end
-    object NCMEX_ReducaoST: TFloatField
+    object NCMEX_ReducaoST: TBCDField
       FieldName = 'EX_ReducaoST'
       Origin = 'NCM.EX_ReducaoST'
       DisplayFormat = '##0.00000'
@@ -4863,142 +4863,142 @@ object dmFiscal: TdmFiscal
       FieldName = 'MVA_NaoReducao'
       Origin = 'NCM.MVA_NaoReducao'
     end
-    object NCMAC_MVANac: TFloatField
+    object NCMAC_MVANac: TBCDField
       FieldName = 'AC_MVANac'
       Origin = 'NCM.AC_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMAL_MVANac: TFloatField
+    object NCMAL_MVANac: TBCDField
       FieldName = 'AL_MVANac'
       Origin = 'NCM.AL_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMAM_MVANac: TFloatField
+    object NCMAM_MVANac: TBCDField
       FieldName = 'AM_MVANac'
       Origin = 'NCM.AM_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMAP_MVANac: TFloatField
+    object NCMAP_MVANac: TBCDField
       FieldName = 'AP_MVANac'
       Origin = 'NCM.AP_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMBA_MVANac: TFloatField
+    object NCMBA_MVANac: TBCDField
       FieldName = 'BA_MVANac'
       Origin = 'NCM.BA_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMCE_MVANac: TFloatField
+    object NCMCE_MVANac: TBCDField
       FieldName = 'CE_MVANac'
       Origin = 'NCM.CE_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMDF_MVANac: TFloatField
+    object NCMDF_MVANac: TBCDField
       FieldName = 'DF_MVANac'
       Origin = 'NCM.DF_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMES_MVANac: TFloatField
+    object NCMES_MVANac: TBCDField
       FieldName = 'ES_MVANac'
       Origin = 'NCM.ES_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMGO_MVANac: TFloatField
+    object NCMGO_MVANac: TBCDField
       FieldName = 'GO_MVANac'
       Origin = 'NCM.GO_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMMA_MVANac: TFloatField
+    object NCMMA_MVANac: TBCDField
       FieldName = 'MA_MVANac'
       Origin = 'NCM.MA_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMMG_MVANac: TFloatField
+    object NCMMG_MVANac: TBCDField
       FieldName = 'MG_MVANac'
       Origin = 'NCM.MG_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMMS_MVANac: TFloatField
+    object NCMMS_MVANac: TBCDField
       FieldName = 'MS_MVANac'
       Origin = 'NCM.MS_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMMT_MVANac: TFloatField
+    object NCMMT_MVANac: TBCDField
       FieldName = 'MT_MVANac'
       Origin = 'NCM.MT_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMPA_MVANac: TFloatField
+    object NCMPA_MVANac: TBCDField
       FieldName = 'PA_MVANac'
       Origin = 'NCM.PA_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMPB_MVANac: TFloatField
+    object NCMPB_MVANac: TBCDField
       FieldName = 'PB_MVANac'
       Origin = 'NCM.PB_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMPE_MVANac: TFloatField
+    object NCMPE_MVANac: TBCDField
       FieldName = 'PE_MVANac'
       Origin = 'NCM.PE_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMPI_MVANac: TFloatField
+    object NCMPI_MVANac: TBCDField
       FieldName = 'PI_MVANac'
       Origin = 'NCM.PI_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMPR_MVANac: TFloatField
+    object NCMPR_MVANac: TBCDField
       FieldName = 'PR_MVANac'
       Origin = 'NCM.PR_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMRJ_MVANac: TFloatField
+    object NCMRJ_MVANac: TBCDField
       FieldName = 'RJ_MVANac'
       Origin = 'NCM.RJ_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMRN_MVANac: TFloatField
+    object NCMRN_MVANac: TBCDField
       FieldName = 'RN_MVANac'
       Origin = 'NCM.RN_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMRO_MVANac: TFloatField
+    object NCMRO_MVANac: TBCDField
       FieldName = 'RO_MVANac'
       Origin = 'NCM.RO_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMRR_MVANac: TFloatField
+    object NCMRR_MVANac: TBCDField
       FieldName = 'RR_MVANac'
       Origin = 'NCM.RR_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMRS_MVANac: TFloatField
+    object NCMRS_MVANac: TBCDField
       FieldName = 'RS_MVANac'
       Origin = 'NCM.RS_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMSC_MVANac: TFloatField
+    object NCMSC_MVANac: TBCDField
       FieldName = 'SC_MVANac'
       Origin = 'NCM.SC_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMSE_MVANac: TFloatField
+    object NCMSE_MVANac: TBCDField
       FieldName = 'SE_MVANac'
       Origin = 'NCM.SE_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMSP_MVANac: TFloatField
+    object NCMSP_MVANac: TBCDField
       FieldName = 'SP_MVANac'
       Origin = 'NCM.SP_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMTO_MVANac: TFloatField
+    object NCMTO_MVANac: TBCDField
       FieldName = 'TO_MVANac'
       Origin = 'NCM.TO_MVANac'
       DisplayFormat = '#0.00'
     end
-    object NCMEX_MVANac: TFloatField
+    object NCMEX_MVANac: TBCDField
       FieldName = 'EX_MVANac'
       Origin = 'NCM.EX_MVANac'
       DisplayFormat = '#0.00'
@@ -5023,16 +5023,16 @@ object dmFiscal: TdmFiscal
     object NCMAcordo_TarifarioIICod: TSmallintField
       FieldName = 'Acordo_TarifarioIICod'
     end
-    object NCMII_Reduzida: TFloatField
+    object NCMII_Reduzida: TBCDField
       FieldName = 'II_Reduzida'
     end
-    object NCMIPI_AliqEspRecip: TFloatField
+    object NCMIPI_AliqEspRecip: TBCDField
       FieldName = 'IPI_AliqEspRecip'
     end
-    object NCMIPI_AliqEspUnid: TFloatField
+    object NCMIPI_AliqEspUnid: TBCDField
       FieldName = 'IPI_AliqEspUnid'
     end
-    object NCMICMS_Importacao: TFloatField
+    object NCMICMS_Importacao: TBCDField
       FieldName = 'ICMS_Importacao'
       DisplayFormat = '##0.00'
     end
@@ -5045,118 +5045,118 @@ object dmFiscal: TdmFiscal
     object NCMRegime_TribII: TSmallintField
       FieldName = 'Regime_TribII'
     end
-    object NCMAliquota_RedIPI: TFloatField
+    object NCMAliquota_RedIPI: TBCDField
       FieldName = 'Aliquota_RedIPI'
     end
-    object NCMAC_Reducao2: TFloatField
+    object NCMAC_Reducao2: TBCDField
       FieldName = 'AC_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMAL_Reducao2: TFloatField
+    object NCMAL_Reducao2: TBCDField
       FieldName = 'AL_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMAM_Reducao2: TFloatField
+    object NCMAM_Reducao2: TBCDField
       FieldName = 'AM_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMAP_Reducao2: TFloatField
+    object NCMAP_Reducao2: TBCDField
       FieldName = 'AP_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMBA_Reducao2: TFloatField
+    object NCMBA_Reducao2: TBCDField
       FieldName = 'BA_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMCE_Reducao2: TFloatField
+    object NCMCE_Reducao2: TBCDField
       FieldName = 'CE_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMDF_Reducao2: TFloatField
+    object NCMDF_Reducao2: TBCDField
       FieldName = 'DF_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMES_Reducao2: TFloatField
+    object NCMES_Reducao2: TBCDField
       FieldName = 'ES_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMGO_Reducao2: TFloatField
+    object NCMGO_Reducao2: TBCDField
       FieldName = 'GO_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMMA_Reducao2: TFloatField
+    object NCMMA_Reducao2: TBCDField
       FieldName = 'MA_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMMG_Reducao2: TFloatField
+    object NCMMG_Reducao2: TBCDField
       FieldName = 'MG_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMMS_Reducao2: TFloatField
+    object NCMMS_Reducao2: TBCDField
       FieldName = 'MS_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMMT_Reducao2: TFloatField
+    object NCMMT_Reducao2: TBCDField
       FieldName = 'MT_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMPA_Reducao2: TFloatField
+    object NCMPA_Reducao2: TBCDField
       FieldName = 'PA_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMPB_Reducao2: TFloatField
+    object NCMPB_Reducao2: TBCDField
       FieldName = 'PB_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMPE_Reducao2: TFloatField
+    object NCMPE_Reducao2: TBCDField
       FieldName = 'PE_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMPI_Reducao2: TFloatField
+    object NCMPI_Reducao2: TBCDField
       FieldName = 'PI_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMPR_Reducao2: TFloatField
+    object NCMPR_Reducao2: TBCDField
       FieldName = 'PR_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMRJ_Reducao2: TFloatField
+    object NCMRJ_Reducao2: TBCDField
       FieldName = 'RJ_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMRN_Reducao2: TFloatField
+    object NCMRN_Reducao2: TBCDField
       FieldName = 'RN_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMRO_Reducao2: TFloatField
+    object NCMRO_Reducao2: TBCDField
       FieldName = 'RO_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMRR_Reducao2: TFloatField
+    object NCMRR_Reducao2: TBCDField
       FieldName = 'RR_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMRS_Reducao2: TFloatField
+    object NCMRS_Reducao2: TBCDField
       FieldName = 'RS_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMSC_Reducao2: TFloatField
+    object NCMSC_Reducao2: TBCDField
       FieldName = 'SC_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMSE_Reducao2: TFloatField
+    object NCMSE_Reducao2: TBCDField
       FieldName = 'SE_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMSP_Reducao2: TFloatField
+    object NCMSP_Reducao2: TBCDField
       FieldName = 'SP_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMTO_Reducao2: TFloatField
+    object NCMTO_Reducao2: TBCDField
       FieldName = 'TO_Reducao2'
       DisplayFormat = '#0.0000'
     end
-    object NCMEX_Reducao2: TFloatField
+    object NCMEX_Reducao2: TBCDField
       FieldName = 'EX_Reducao2'
       DisplayFormat = '#0.0000'
     end
@@ -5284,7 +5284,7 @@ object dmFiscal: TdmFiscal
       FieldName = 'Forma_Pgto'
       Origin = 'Fatura.Forma_Pgto'
     end
-    object FaturaValor_Total: TCurrencyField
+    object FaturaValor_Total: TBCDField
       FieldName = 'Valor_Total'
       Origin = 'Fatura.Valor_Total'
       DisplayFormat = '###,###,##0.00'
@@ -5393,7 +5393,7 @@ object dmFiscal: TdmFiscal
     object PedidosFaturaForma_Pgto: TSmallintField
       FieldName = 'Forma_Pgto'
     end
-    object PedidosFaturaValor_Total: TCurrencyField
+    object PedidosFaturaValor_Total: TBCDField
       FieldName = 'Valor_Total'
     end
     object PedidosFaturaOrigem_Pedido: TBooleanField
@@ -5489,16 +5489,16 @@ object dmFiscal: TdmFiscal
     object PedidosDuplicataData_Vencimento: TDateTimeField
       FieldName = 'Data_Vencimento'
     end
-    object PedidosDuplicataValor: TCurrencyField
+    object PedidosDuplicataValor: TBCDField
       FieldName = 'Valor'
     end
-    object PedidosDuplicataAliquota_Desconto: TFloatField
+    object PedidosDuplicataAliquota_Desconto: TBCDField
       FieldName = 'Aliquota_Desconto'
     end
-    object PedidosDuplicataDesconto: TCurrencyField
+    object PedidosDuplicataDesconto: TBCDField
       FieldName = 'Desconto'
     end
-    object PedidosDuplicataValor_Liquido: TCurrencyField
+    object PedidosDuplicataValor_Liquido: TBCDField
       FieldName = 'Valor_Liquido'
     end
     object PedidosDuplicataPedido: TIntegerField
@@ -5507,13 +5507,13 @@ object dmFiscal: TdmFiscal
     object PedidosDuplicataOrdem: TSmallintField
       FieldName = 'Ordem'
     end
-    object PedidosDuplicataValor_Produto: TCurrencyField
+    object PedidosDuplicataValor_Produto: TBCDField
       FieldName = 'Valor_Produto'
     end
     object PedidosDuplicataData_Emissao: TDateTimeField
       FieldName = 'Data_Emissao'
     end
-    object PedidosDuplicataValor_IPI: TCurrencyField
+    object PedidosDuplicataValor_IPI: TBCDField
       FieldName = 'Valor_IPI'
     end
     object PedidosDuplicataNumero: TStringField
@@ -5606,7 +5606,7 @@ object dmFiscal: TdmFiscal
       FixedChar = True
       Size = 1
     end
-    object ClasseIPIValor_IPI: TFloatField
+    object ClasseIPIValor_IPI: TBCDField
       FieldName = 'Valor_IPI'
       DisplayFormat = ',##0.00'
     end
@@ -5799,27 +5799,27 @@ object dmFiscal: TdmFiscal
       FieldName = 'Modelo'
       Size = 3
     end
-    object ImobilizadoICMS_Proprio: TCurrencyField
+    object ImobilizadoICMS_Proprio: TBCDField
       FieldName = 'ICMS_Proprio'
       DisplayFormat = ',##0.00'
       EditFormat = ',##0.00'
     end
-    object ImobilizadoICMS_ST: TCurrencyField
+    object ImobilizadoICMS_ST: TBCDField
       FieldName = 'ICMS_ST'
       DisplayFormat = ',##0.00'
       EditFormat = ',##0.00'
     end
-    object ImobilizadoICMS_Frete: TCurrencyField
+    object ImobilizadoICMS_Frete: TBCDField
       FieldName = 'ICMS_Frete'
       DisplayFormat = ',##0.00'
       EditFormat = ',##0.00'
     end
-    object ImobilizadoICMS_Dif_Aliquota: TFloatField
+    object ImobilizadoICMS_Dif_Aliquota: TBCDField
       FieldName = 'ICMS_Dif_Aliquota'
       DisplayFormat = ',##0.00'
       EditFormat = ',##0.00'
     end
-    object ImobilizadoValor_Credito: TCurrencyField
+    object ImobilizadoValor_Credito: TBCDField
       FieldName = 'Valor_Credito'
       DisplayFormat = ',##0.00'
       EditFormat = ',##0.00'
@@ -5847,7 +5847,7 @@ object dmFiscal: TdmFiscal
     object ImobilizadoSaida_Meses: TSmallintField
       FieldName = 'Saida_Meses'
     end
-    object ImobilizadoSaida_AliquotaICMS: TFloatField
+    object ImobilizadoSaida_AliquotaICMS: TBCDField
       FieldName = 'Saida_AliquotaICMS'
       DisplayFormat = ',##0.00'
       EditFormat = ',##0.00'
@@ -5859,12 +5859,12 @@ object dmFiscal: TdmFiscal
     object ImobilizadoTipo_CalculoCredito: TSmallintField
       FieldName = 'Tipo_CalculoCredito'
     end
-    object ImobilizadoValor_Aquisicao: TCurrencyField
+    object ImobilizadoValor_Aquisicao: TBCDField
       FieldName = 'Valor_Aquisicao'
       DisplayFormat = ',##0.00'
       EditFormat = ',##0.00'
     end
-    object ImobilizadoValor_Depreciacao: TCurrencyField
+    object ImobilizadoValor_Depreciacao: TBCDField
       FieldName = 'Valor_Depreciacao'
       DisplayFormat = ',##0.00'
       EditFormat = ',##0.00'
@@ -6003,7 +6003,7 @@ object dmFiscal: TdmFiscal
       FieldName = 'Produto_Entrada'
       Origin = 'ProdutosTransferencia.Produto_Entrada'
     end
-    object ProdutosTransferenciaQuantidade: TFloatField
+    object ProdutosTransferenciaQuantidade: TBCDField
       FieldName = 'Quantidade'
       Origin = 'ProdutosTransferencia.Quantidade'
       DisplayFormat = ',##0.0000'
@@ -6048,7 +6048,7 @@ object dmFiscal: TdmFiscal
       FixedChar = True
       Size = 1
     end
-    object ProdutosTransferenciaValor_Unitario: TCurrencyField
+    object ProdutosTransferenciaValor_Unitario: TBCDField
       FieldName = 'Valor_Unitario'
       Origin = 'ProdutosTransferencia.Valor_Unitario'
       DisplayFormat = ',##0.00'
@@ -6062,7 +6062,7 @@ object dmFiscal: TdmFiscal
       Origin = 'ProdutosTransferencia.CFOP'
       Size = 4
     end
-    object ProdutosTransferenciaQuantidade_Entrada: TFloatField
+    object ProdutosTransferenciaQuantidade_Entrada: TBCDField
       FieldName = 'Quantidade_Entrada'
       Origin = 'ProdutosTransferencia.Quantidade_Entrada'
       DisplayFormat = ',##0.0000'
@@ -6139,11 +6139,11 @@ object dmFiscal: TdmFiscal
       Origin = 'NotasDespesas.Descricao'
       Size = 60
     end
-    object NotasDespesasValor_Total: TCurrencyField
+    object NotasDespesasValor_Total: TBCDField
       FieldName = 'Valor_Total'
       Origin = 'NotasDespesas.Valor_Total'
     end
-    object NotasDespesasValor_Nota: TCurrencyField
+    object NotasDespesasValor_Nota: TBCDField
       FieldName = 'Valor_Nota'
       Origin = 'NotasDespesas.Valor_Nota'
     end
@@ -6307,7 +6307,7 @@ object dmFiscal: TdmFiscal
       FieldName = 'Produto_Codigo'
       Origin = 'NotasItensDetalhe.Produto_Codigo'
     end
-    object NotasItensDetalheQuantidade: TFloatField
+    object NotasItensDetalheQuantidade: TBCDField
       FieldName = 'Quantidade'
       Origin = 'NotasItensDetalhe.Quantidade'
       DisplayFormat = ',##0.000'
@@ -6391,28 +6391,28 @@ object dmFiscal: TdmFiscal
     object NotasRateioData: TDateTimeField
       FieldName = 'Data'
     end
-    object NotasRateioFOB_ME: TCurrencyField
+    object NotasRateioFOB_ME: TBCDField
       FieldName = 'FOB_ME'
     end
-    object NotasRateioFOB_Real: TCurrencyField
+    object NotasRateioFOB_Real: TBCDField
       FieldName = 'FOB_Real'
     end
-    object NotasRateioII: TCurrencyField
+    object NotasRateioII: TBCDField
       FieldName = 'II'
     end
-    object NotasRateioSeguro_ME: TCurrencyField
+    object NotasRateioSeguro_ME: TBCDField
       FieldName = 'Seguro_ME'
     end
-    object NotasRateioSeguro_Real: TCurrencyField
+    object NotasRateioSeguro_Real: TBCDField
       FieldName = 'Seguro_Real'
     end
-    object NotasRateioFrete_ME: TCurrencyField
+    object NotasRateioFrete_ME: TBCDField
       FieldName = 'Frete_ME'
     end
-    object NotasRateioFrete_Real: TCurrencyField
+    object NotasRateioFrete_Real: TBCDField
       FieldName = 'Frete_Real'
     end
-    object NotasRateioDumping: TCurrencyField
+    object NotasRateioDumping: TBCDField
       FieldName = 'Dumping'
     end
   end
@@ -6647,7 +6647,7 @@ object dmFiscal: TdmFiscal
       Origin = 'GNRE.Codigo_Receita'
       Size = 6
     end
-    object GNREValor: TCurrencyField
+    object GNREValor: TBCDField
       FieldName = 'Valor'
       Origin = 'GNRE.Valor'
       DisplayFormat = ',##0.00'
@@ -6975,96 +6975,96 @@ object dmFiscal: TdmFiscal
       FixedChar = True
       Size = 5
     end
-    object NotasTerceirosQuantidade: TFloatField
+    object NotasTerceirosQuantidade: TBCDField
       FieldName = 'Quantidade'
       Origin = 'NotasTerceiros.Quantidade'
     end
-    object NotasTerceirosValor_BCICMSOper: TCurrencyField
+    object NotasTerceirosValor_BCICMSOper: TBCDField
       FieldName = 'Valor_BCICMSOper'
       Origin = 'NotasTerceiros.Valor_BCICMSOper'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosAliquota_ICMSOper: TFloatField
+    object NotasTerceirosAliquota_ICMSOper: TBCDField
       FieldName = 'Aliquota_ICMSOper'
       Origin = 'NotasTerceiros.Aliquota_ICMSOper'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_ICMSOper: TCurrencyField
+    object NotasTerceirosValor_ICMSOper: TBCDField
       FieldName = 'Valor_ICMSOper'
       Origin = 'NotasTerceiros.Valor_ICMSOper'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_IsentasICMS: TCurrencyField
+    object NotasTerceirosValor_IsentasICMS: TBCDField
       FieldName = 'Valor_IsentasICMS'
       Origin = 'NotasTerceiros.Valor_IsentasICMS'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_OutrasICMS: TCurrencyField
+    object NotasTerceirosValor_OutrasICMS: TBCDField
       FieldName = 'Valor_OutrasICMS'
       Origin = 'NotasTerceiros.Valor_OutrasICMS'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_TotalProdutos: TCurrencyField
+    object NotasTerceirosValor_TotalProdutos: TBCDField
       FieldName = 'Valor_TotalProdutos'
       Origin = 'NotasTerceiros.Valor_TotalProdutos'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_TotalDescontos: TCurrencyField
+    object NotasTerceirosValor_TotalDescontos: TBCDField
       FieldName = 'Valor_TotalDescontos'
       Origin = 'NotasTerceiros.Valor_TotalDescontos'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_TotalNota: TCurrencyField
+    object NotasTerceirosValor_TotalNota: TBCDField
       FieldName = 'Valor_TotalNota'
       Origin = 'NotasTerceiros.Valor_TotalNota'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_TotalLiquido: TCurrencyField
+    object NotasTerceirosValor_TotalLiquido: TBCDField
       FieldName = 'Valor_TotalLiquido'
       Origin = 'NotasTerceiros.Valor_TotalLiquido'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_BCICMSSub: TCurrencyField
+    object NotasTerceirosValor_BCICMSSub: TBCDField
       FieldName = 'Valor_BCICMSSub'
       Origin = 'NotasTerceiros.Valor_BCICMSSub'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_ICMSSub: TCurrencyField
+    object NotasTerceirosValor_ICMSSub: TBCDField
       FieldName = 'Valor_ICMSSub'
       Origin = 'NotasTerceiros.Valor_ICMSSub'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosAliquota_ICMSSub: TFloatField
+    object NotasTerceirosAliquota_ICMSSub: TBCDField
       FieldName = 'Aliquota_ICMSSub'
       Origin = 'NotasTerceiros.Aliquota_ICMSSub'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_IsentasICMSSub: TCurrencyField
+    object NotasTerceirosValor_IsentasICMSSub: TBCDField
       FieldName = 'Valor_IsentasICMSSub'
       Origin = 'NotasTerceiros.Valor_IsentasICMSSub'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_OutrasICMSSub: TCurrencyField
+    object NotasTerceirosValor_OutrasICMSSub: TBCDField
       FieldName = 'Valor_OutrasICMSSub'
       Origin = 'NotasTerceiros.Valor_OutrasICMSSub'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_TotalBCIPI: TCurrencyField
+    object NotasTerceirosValor_TotalBCIPI: TBCDField
       FieldName = 'Valor_TotalBCIPI'
       Origin = 'NotasTerceiros.Valor_TotalBCIPI'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_TotalIPI: TCurrencyField
+    object NotasTerceirosValor_TotalIPI: TBCDField
       FieldName = 'Valor_TotalIPI'
       Origin = 'NotasTerceiros.Valor_TotalIPI'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_IsentasIPI: TCurrencyField
+    object NotasTerceirosValor_IsentasIPI: TBCDField
       FieldName = 'Valor_IsentasIPI'
       Origin = 'NotasTerceiros.Valor_IsentasIPI'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_OutrasIPI: TCurrencyField
+    object NotasTerceirosValor_OutrasIPI: TBCDField
       FieldName = 'Valor_OutrasIPI'
       Origin = 'NotasTerceiros.Valor_OutrasIPI'
       DisplayFormat = ',##0.00'
@@ -7074,32 +7074,32 @@ object dmFiscal: TdmFiscal
       Origin = 'NotasTerceiros.Observacoes'
       BlobType = ftMemo
     end
-    object NotasTerceirosVolume_PesoLiquido: TFloatField
+    object NotasTerceirosVolume_PesoLiquido: TBCDField
       FieldName = 'Volume_PesoLiquido'
       Origin = 'NotasTerceiros.Volume_PesoLiquido'
       DisplayFormat = ',##0.000'
     end
-    object NotasTerceirosVolume_PesoBruto: TFloatField
+    object NotasTerceirosVolume_PesoBruto: TBCDField
       FieldName = 'Volume_PesoBruto'
       Origin = 'NotasTerceiros.Volume_PesoBruto'
       DisplayFormat = ',##0.000'
     end
-    object NotasTerceirosAliquota_PIS: TFloatField
+    object NotasTerceirosAliquota_PIS: TBCDField
       FieldName = 'Aliquota_PIS'
       Origin = 'NotasTerceiros.Aliquota_PIS'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_PIS: TCurrencyField
+    object NotasTerceirosValor_PIS: TBCDField
       FieldName = 'Valor_PIS'
       Origin = 'NotasTerceiros.Valor_PIS'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosAliquota_COFINS: TFloatField
+    object NotasTerceirosAliquota_COFINS: TBCDField
       FieldName = 'Aliquota_COFINS'
       Origin = 'NotasTerceiros.Aliquota_COFINS'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_COFINS: TCurrencyField
+    object NotasTerceirosValor_COFINS: TBCDField
       FieldName = 'Valor_COFINS'
       Origin = 'NotasTerceiros.Valor_COFINS'
       DisplayFormat = ',##0.00'
@@ -7115,12 +7115,12 @@ object dmFiscal: TdmFiscal
       FixedChar = True
       Size = 10
     end
-    object NotasTerceirosAliquota_Adicional01: TFloatField
+    object NotasTerceirosAliquota_Adicional01: TBCDField
       FieldName = 'Aliquota_Adicional01'
       Origin = 'NotasTerceiros.Aliquota_Adicional01'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_Adicional01: TCurrencyField
+    object NotasTerceirosValor_Adicional01: TBCDField
       FieldName = 'Valor_Adicional01'
       Origin = 'NotasTerceiros.Valor_Adicional01'
       DisplayFormat = ',##0.00'
@@ -7131,12 +7131,12 @@ object dmFiscal: TdmFiscal
       FixedChar = True
       Size = 10
     end
-    object NotasTerceirosAliquota_Adicional02: TFloatField
+    object NotasTerceirosAliquota_Adicional02: TBCDField
       FieldName = 'Aliquota_Adicional02'
       Origin = 'NotasTerceiros.Aliquota_Adicional02'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_Adicional02: TCurrencyField
+    object NotasTerceirosValor_Adicional02: TBCDField
       FieldName = 'Valor_Adicional02'
       Origin = 'NotasTerceiros.Valor_Adicional02'
       DisplayFormat = ',##0.00'
@@ -7147,12 +7147,12 @@ object dmFiscal: TdmFiscal
       FixedChar = True
       Size = 10
     end
-    object NotasTerceirosAliquota_Adicional03: TFloatField
+    object NotasTerceirosAliquota_Adicional03: TBCDField
       FieldName = 'Aliquota_Adicional03'
       Origin = 'NotasTerceiros.Aliquota_Adicional03'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_Adicional03: TCurrencyField
+    object NotasTerceirosValor_Adicional03: TBCDField
       FieldName = 'Valor_Adicional03'
       Origin = 'NotasTerceiros.Valor_Adicional03'
       DisplayFormat = ',##0.00'
@@ -7163,12 +7163,12 @@ object dmFiscal: TdmFiscal
       FixedChar = True
       Size = 10
     end
-    object NotasTerceirosAliquota_Adicional04: TFloatField
+    object NotasTerceirosAliquota_Adicional04: TBCDField
       FieldName = 'Aliquota_Adicional04'
       Origin = 'NotasTerceiros.Aliquota_Adicional04'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_Adicional04: TCurrencyField
+    object NotasTerceirosValor_Adicional04: TBCDField
       FieldName = 'Valor_Adicional04'
       Origin = 'NotasTerceiros.Valor_Adicional04'
       DisplayFormat = ',##0.00'
@@ -7179,12 +7179,12 @@ object dmFiscal: TdmFiscal
       FixedChar = True
       Size = 10
     end
-    object NotasTerceirosAliquota_Adicional05: TFloatField
+    object NotasTerceirosAliquota_Adicional05: TBCDField
       FieldName = 'Aliquota_Adicional05'
       Origin = 'NotasTerceiros.Aliquota_Adicional05'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_Adicional05: TCurrencyField
+    object NotasTerceirosValor_Adicional05: TBCDField
       FieldName = 'Valor_Adicional05'
       Origin = 'NotasTerceiros.Valor_Adicional05'
       DisplayFormat = ',##0.00'
@@ -7195,12 +7195,12 @@ object dmFiscal: TdmFiscal
       FixedChar = True
       Size = 10
     end
-    object NotasTerceirosAliquota_Adicional06: TFloatField
+    object NotasTerceirosAliquota_Adicional06: TBCDField
       FieldName = 'Aliquota_Adicional06'
       Origin = 'NotasTerceiros.Aliquota_Adicional06'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_Adicional06: TCurrencyField
+    object NotasTerceirosValor_Adicional06: TBCDField
       FieldName = 'Valor_Adicional06'
       Origin = 'NotasTerceiros.Valor_Adicional06'
       DisplayFormat = ',##0.00'
@@ -7237,12 +7237,12 @@ object dmFiscal: TdmFiscal
       FieldName = 'Modalidade_Pgto'
       Origin = 'NotasTerceiros.Modalidade_Pgto'
     end
-    object NotasTerceirosAliquota_ISS: TFloatField
+    object NotasTerceirosAliquota_ISS: TBCDField
       FieldName = 'Aliquota_ISS'
       Origin = 'NotasTerceiros.Aliquota_ISS'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_ISS: TCurrencyField
+    object NotasTerceirosValor_ISS: TBCDField
       FieldName = 'Valor_ISS'
       Origin = 'NotasTerceiros.Valor_ISS'
       DisplayFormat = ',##0.00'
@@ -7272,12 +7272,12 @@ object dmFiscal: TdmFiscal
       FieldName = 'Origem_Mercadoria'
       Origin = 'NotasTerceiros.Origem_Mercadoria'
     end
-    object NotasTerceirosValor_TotalProdutosOrig: TCurrencyField
+    object NotasTerceirosValor_TotalProdutosOrig: TBCDField
       FieldName = 'Valor_TotalProdutosOrig'
       Origin = 'NotasTerceiros.Valor_TotalProdutosOrig'
       DisplayFormat = ',##0.00'
     end
-    object NotasTerceirosValor_TotalLiquidoOrig: TCurrencyField
+    object NotasTerceirosValor_TotalLiquidoOrig: TBCDField
       FieldName = 'Valor_TotalLiquidoOrig'
       Origin = 'NotasTerceiros.Valor_TotalLiquidoOrig'
       DisplayFormat = ',##0.00'
@@ -7317,7 +7317,7 @@ object dmFiscal: TdmFiscal
       FieldName = 'Transportador_Codigo'
       Origin = 'NotasTerceiros.Transportador_Codigo'
     end
-    object NotasTerceirosValor_TotalFrete: TCurrencyField
+    object NotasTerceirosValor_TotalFrete: TBCDField
       FieldName = 'Valor_TotalFrete'
       Origin = 'NotasTerceiros.Valor_TotalFrete'
       DisplayFormat = ',##0.00'
@@ -7337,7 +7337,7 @@ object dmFiscal: TdmFiscal
     object NotasTerceirosClassificacao_Servico: TIntegerField
       FieldName = 'Classificacao_Servico'
     end
-    object NotasTerceirosTotal_Despesas: TCurrencyField
+    object NotasTerceirosTotal_Despesas: TBCDField
       FieldName = 'Total_Despesas'
       DisplayFormat = ',##0.00'
     end
@@ -7347,13 +7347,13 @@ object dmFiscal: TdmFiscal
     object NotasTerceirosComplementar: TBooleanField
       FieldName = 'Complementar'
     end
-    object NotasTerceirosValor_IR: TCurrencyField
+    object NotasTerceirosValor_IR: TBCDField
       FieldName = 'Valor_IR'
     end
-    object NotasTerceirosValor_CSLL: TCurrencyField
+    object NotasTerceirosValor_CSLL: TBCDField
       FieldName = 'Valor_CSLL'
     end
-    object NotasTerceirosValor_INSS: TCurrencyField
+    object NotasTerceirosValor_INSS: TBCDField
       FieldName = 'Valor_INSS'
     end
     object NotasTerceirosArmazem: TSmallintField
@@ -7529,13 +7529,13 @@ object dmFiscal: TdmFiscal
       FieldName = 'Unidade'
       Size = 3
     end
-    object EstoqueQuantidade: TFloatField
+    object EstoqueQuantidade: TBCDField
       FieldName = 'Quantidade'
     end
-    object EstoqueValor_Unitario: TFloatField
+    object EstoqueValor_Unitario: TBCDField
       FieldName = 'Valor_Unitario'
     end
-    object EstoqueValor_Total: TCurrencyField
+    object EstoqueValor_Total: TBCDField
       FieldName = 'Valor_Total'
     end
     object EstoqueTipo_Item: TIntegerField
@@ -7705,31 +7705,31 @@ object dmFiscal: TdmFiscal
     object TempFichaInvTipo_Processo: TSmallintField
       FieldName = 'Tipo_Processo'
     end
-    object TempFichaInvQtde_Entrada: TFloatField
+    object TempFichaInvQtde_Entrada: TBCDField
       FieldName = 'Qtde_Entrada'
     end
-    object TempFichaInvUnitario_Entrada: TFloatField
+    object TempFichaInvUnitario_Entrada: TBCDField
       FieldName = 'Unitario_Entrada'
     end
-    object TempFichaInvTotal_Entrada: TCurrencyField
+    object TempFichaInvTotal_Entrada: TBCDField
       FieldName = 'Total_Entrada'
     end
-    object TempFichaInvQtde_Saida: TFloatField
+    object TempFichaInvQtde_Saida: TBCDField
       FieldName = 'Qtde_Saida'
     end
-    object TempFichaInvUnitario_Saida: TFloatField
+    object TempFichaInvUnitario_Saida: TBCDField
       FieldName = 'Unitario_Saida'
     end
-    object TempFichaInvTotal_Saida: TCurrencyField
+    object TempFichaInvTotal_Saida: TBCDField
       FieldName = 'Total_Saida'
     end
-    object TempFichaInvQtde_Saldo: TFloatField
+    object TempFichaInvQtde_Saldo: TBCDField
       FieldName = 'Qtde_Saldo'
     end
-    object TempFichaInvUnitario_Saldo: TFloatField
+    object TempFichaInvUnitario_Saldo: TBCDField
       FieldName = 'Unitario_Saldo'
     end
-    object TempFichaInvTotal_Saldo: TCurrencyField
+    object TempFichaInvTotal_Saldo: TBCDField
       FieldName = 'Total_Saldo'
     end
   end
@@ -7867,31 +7867,31 @@ object dmFiscal: TdmFiscal
     object TempFichaEstTipo_Processo: TSmallintField
       FieldName = 'Tipo_Processo'
     end
-    object TempFichaEstQtde_Entrada: TFloatField
+    object TempFichaEstQtde_Entrada: TBCDField
       FieldName = 'Qtde_Entrada'
     end
-    object TempFichaEstUnitario_Entrada: TFloatField
+    object TempFichaEstUnitario_Entrada: TBCDField
       FieldName = 'Unitario_Entrada'
     end
-    object TempFichaEstTotal_Entrada: TCurrencyField
+    object TempFichaEstTotal_Entrada: TBCDField
       FieldName = 'Total_Entrada'
     end
-    object TempFichaEstQtde_Saida: TFloatField
+    object TempFichaEstQtde_Saida: TBCDField
       FieldName = 'Qtde_Saida'
     end
-    object TempFichaEstUnitario_Saida: TFloatField
+    object TempFichaEstUnitario_Saida: TBCDField
       FieldName = 'Unitario_Saida'
     end
-    object TempFichaEstTotal_Saida: TCurrencyField
+    object TempFichaEstTotal_Saida: TBCDField
       FieldName = 'Total_Saida'
     end
-    object TempFichaEstQtde_Saldo: TFloatField
+    object TempFichaEstQtde_Saldo: TBCDField
       FieldName = 'Qtde_Saldo'
     end
-    object TempFichaEstUnitario_Saldo: TFloatField
+    object TempFichaEstUnitario_Saldo: TBCDField
       FieldName = 'Unitario_Saldo'
     end
-    object TempFichaEstTotal_Saldo: TCurrencyField
+    object TempFichaEstTotal_Saldo: TBCDField
       FieldName = 'Total_Saldo'
     end
   end
@@ -8147,7 +8147,7 @@ object dmFiscal: TdmFiscal
     object NotasItensNaviosNavio: TSmallintField
       FieldName = 'Navio'
     end
-    object NotasItensNaviosQuantidade: TFloatField
+    object NotasItensNaviosQuantidade: TBCDField
       FieldName = 'Quantidade'
       DisplayFormat = '#,##0.000'
     end
@@ -8164,7 +8164,7 @@ object dmFiscal: TdmFiscal
       EditMask = '##/#######-#;0'
       Size = 10
     end
-    object NotasItensNaviosQuantidade_Devol: TFloatField
+    object NotasItensNaviosQuantidade_Devol: TBCDField
       FieldName = 'Quantidade_Devol'
       DisplayFormat = '#,##0.000'
     end
@@ -8276,7 +8276,7 @@ object dmFiscal: TdmFiscal
       FieldName = 'IE'
       Size = 15
     end
-    object DARFDUAValor: TCurrencyField
+    object DARFDUAValor: TBCDField
       FieldName = 'Valor'
       DisplayFormat = ',##0.00'
     end
@@ -8543,15 +8543,15 @@ object dmFiscal: TdmFiscal
       FieldName = 'Descricao'
       Size = 120
     end
-    object CreditoPresumidoICMS: TFloatField
+    object CreditoPresumidoICMS: TBCDField
       FieldName = 'ICMS'
       DisplayFormat = ',#0.00%'
     end
-    object CreditoPresumidoCarga_Efetiva: TFloatField
+    object CreditoPresumidoCarga_Efetiva: TBCDField
       FieldName = 'Carga_Efetiva'
       DisplayFormat = ',#0.00%'
     end
-    object CreditoPresumidoCredito_Presumido: TFloatField
+    object CreditoPresumidoCredito_Presumido: TBCDField
       FieldName = 'Credito_Presumido'
       DisplayFormat = ',#0.00%'
     end
