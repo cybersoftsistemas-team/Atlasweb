@@ -126,7 +126,7 @@ object fConfigSis: TfConfigSis
     Width = 1516
     Height = 1465
     Hint = ''
-    ActivePage = TabSheet11
+    ActivePage = TabSheet13
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -4125,7 +4125,7 @@ object fConfigSis: TfConfigSis
           Width = 776
           Height = 812
           Hint = ''
-          ActivePage = TabSheet17
+          ActivePage = TabSheet19
           Plain = True
           Anchors = [akTop]
           TabOrder = 0

@@ -3,11 +3,11 @@ unit ComexProcessoImp;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, uniGUITypes, uniGUIAbstractClasses, uniGUIClasses, 
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, uniGUITypes, uniGUIAbstractClasses, uniGUIClasses, uniDBComboBox, uniMultiItem,
   uniGUIFrame, UniPageControl, uniDBGrid, uniPanel, uniDBLookUpComboBox, uniDBCheckBox, uniScrollBox, uniSpeedButton, uniDateTimePicker, 
   uniDBDateTimePicker, uniButton, uniBitBtn, uniDBNavigator, uniEdit, uniDBEdit, uniDBMemo, uniBasicGrid, uniGUIBaseClasses, uniComboBox, UniGroupBox, uniSpinEdit, unimToggle,
-  FireDAC.Comp.Client, Funcoes, Data.DB, uniSweetAlert, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Vcl.Menus, uniMainMenu, FireDAC.Comp.DataSet, uniRadioGroup, uniCheckBox,
-  uniListBox, uniMemo, uniLabel, uniDBRadioGroup, uniDBComboBox, uniMultiItem;
+  FireDAC.Comp.Client, Funcoes, Data.DB, uniSweetAlert, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, 
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Vcl.Menus, uniMainMenu, FireDAC.Comp.DataSet, uniRadioGroup, uniCheckBox, uniListBox, uniMemo, uniLabel, uniDBRadioGroup;
 
 type
   TfComexProcessoImp = class(TUniFrame)
@@ -494,7 +494,6 @@ type
 //    procedure DBGrid1DblClick(Sender: TObject);
     procedure cListaDOCDblClick(Sender: TObject);
     procedure ProcessosImpAfterScroll(DataSet: TDataSet);
-
   private
     { Private declarations }
   public
@@ -516,7 +515,7 @@ begin
                     FieldByName('Empresa').Value := UniMainModule.mEmpresaAtiva;
                Texto.Append;
            except
-               MessageDlgN('Falha desconhecida, não pode adicionar um novo registro!', mtError, []);
+               MessageDlg('Falha desconhecida, não pode adicionar um novo registro!', mtError, []);
            end;
       end;
 end;
@@ -565,7 +564,7 @@ begin
                Alerta.Text := 'Registro salvo no banco de dados!'; 
                Alerta.Execute;
            except
-               MessageDlgN('Falha desconhecida, não pode salvar o registro corrente!', mtError, []);
+               MessageDlg('Falha desconhecida, não pode salvar o registro corrente!', mtError, []);
            end;
       end;
 end;
@@ -585,7 +584,7 @@ begin
          Texto.Edit;
          cProcesso.setfocus;
      except
-        MessageDlgN('Falha desconhecida, não pode editar o registro corrente!', mtError, []);
+        MessageDlg('Falha desconhecida, não pode editar o registro corrente!', mtError, []);
      end;
 end;
 
@@ -795,21 +794,22 @@ end;
 
 procedure TfComexProcessoImp.cPesquisaKeyDown(Sender: TObject; var Key: Word;Shift: TShiftState);
 begin
-      if Key = VK_RETURN then begin
-         bPesquisa.Click;
-      end;
+     if Key = VK_RETURN then begin
+        bPesquisa.Click;
+     end;
 end;
 
 procedure TfComexProcessoImp.bPesquisaClick(Sender: TObject);
 begin
      ProcessosImp.Cancel;
      LigaBotoes(true);
-     Pesquisa(ProcessosImp, 'Processo', 'Processo',cPesquisa.text)
+     //Pesquisa(ProcessosImp, 'Processo', 'Processo', cPesquisa.text)
+     Filtra(ProcessosImp, 'Processo', cPesquisa.text)
 end;
 
 procedure TfComexProcessoImp.ProcessosImpBeforePost(DataSet: TDataSet);
 begin
-      LogDados(DataSet, DataSet.FieldByName('Processo').AsString, EstadoTabela(DataSet));
+     LogDados(DataSet, DataSet.FieldByName('Processo').AsString, EstadoTabela(DataSet));
 end;
 
 procedure TfComexProcessoImp.ProcessosImpAfterScroll(DataSet: TDataSet);

@@ -21,11 +21,16 @@ video {
 
 /* TRANSPARENCIA DA TELA QUANDO DESABILITADA.*/
 /*
+.x-item-disabled {
+   opacity: 1 !important;
+}
+
 .x-item-disabled .x-form-item-label, .x-item-disabled, .x-form-trigger, .x-panel, .x-item-disabled .x-form-item-label-text {
    filter: alpha(opacity=100);
    opacity: 1;
    color: #000;
 }
+
 */
 .x-item-disabled .x-mask {
    background: none;
@@ -482,7 +487,7 @@ video {
    border-radius: 0px;
 }
 
-/*--------------------------------------------------------[ CAMPOS DESATIVADO ]------------------------------------------------------*/
+/*-------------------------------------------------------[ CAMPOS DESATIVADO ]-------------------------------------------------------*/
 .CampoDesativado {
    padding: 0;
    background: #D8BFD8;
@@ -501,7 +506,7 @@ video {
    font: 10px helvetica !important;
 }
 
-/*--------------------------------------------------------[ CHECK BOX/RADIO GROUPS ]-------------------------------------------------------*/
+/*------------------------------------------------------[ CHECK BOX/RADIO GROUPS ]-----------------------------------------------------*/
 .x-form-cb-label {
    font: bold 10px helvetica !important;
    color: #000;
@@ -547,7 +552,7 @@ video {
    color: #000;
 }
 
-/*--------------------------------------------------------[ COMBOS ]---------------------------------------------------------------*/
+/*----------------------------------------------------------[ COMBOS ]------------------------------------------------------------------*/
 .x-form-trigger-default {
    background: linear-gradient(#ADD8E6, #4682B4) url(/files/images/form/trigger.png) no-repeat;
    color: #000;
@@ -559,7 +564,7 @@ video {
    cursor: pointer;
 }
 
-/*--------------------------------------------------------[ IMAGES BOTÕES ]---------------------------------------------------------------*/
+/*--------------------------------------------------------[ IMAGES BOTÕES ]-------------------------------------------------------------*/
 .imgBotao {
     border: 1px;
     border-style: solid;
@@ -567,7 +572,7 @@ video {
     border-radius: 10%;
 }
 
-/*--------------------------------------------------------[ LABELS ]---------------------------------------------------------------*/
+/*------------------------------------------------------------[ LABELS ]----------------------------------------------------------------*/
 .LabelDestaque {
     border-radius: 0px;
     padding-block: 4px;
@@ -592,7 +597,7 @@ video {
     */     
 }
 
-/*---------------------------------------[ Classe dos botoões ]-----------------------------------------------------*/
+/*---------------------------------------------------------[ Classe dos botoões ]------------------------------------------------------*/
 /*
 .x-btn-default-small {
     -webkit-border-radius: 3px;
@@ -738,4 +743,38 @@ element.style {
 .x-form-trigger:hover {
     background-color: #e6e6e6 !important;
     border-radius: 4px;
+}
+
+/*-------------------| REMOVE ESCURECIMENTO DOS COMPONENTES DESABILITADOS |------------------------*/
+/* TRANSPARENCIA DA TELA QUANDO DESABILITADA.*/
+/*
+.x-item-disabled .x-form-item-label, .x-item-disabled, .x-form-trigger, .x-panel, .x-item-disabled .x-form-item-label-text {
+   filter: alpha(opacity=100);
+   opacity: 1;
+   color: #000;
+}
+*/
+.x-item-disabled .x-mask {
+   background: none;
+   opacity: 100%;
+}
+/* TOGGLE DESABILITADO */
+
+.x-item-disabled .x-form-checkbox {
+    background-color: #cbd5e1 !important;
+    opacity: 1 !important;
+    filter: none !important;
+    cursor: not-allowed;
+}
+
+/* bolinha */
+.x-item-disabled .x-form-checkbox::after {
+    background-color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+/* quando marcado e desabilitado */
+.x-item-disabled.x-form-cb-checked .x-form-checkbox,
+.x-form-cb-checked.x-item-disabled .x-form-checkbox {
+    background-color: #7fb3d5 !important;
 }

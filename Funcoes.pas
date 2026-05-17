@@ -3,9 +3,9 @@ unit Funcoes;
 interface
 
 uses
-    SysUtils, Windows, FireDAC.Comp.Client, Dialogs, MaskUtils, System.Variants, DB, Forms, uniSpeedButton, uniPanel, UniPageControl, System.Classes, CalcExpress,
+    SysUtils, Windows, FireDAC.Comp.Client, Dialogs, MaskUtils, System.Variants, DB, Forms, uniSpeedButton, uniPanel, UniPageControl, System.Classes, CalcExpress, UniGUIClasses,
     uniGUIForm, uniGUIFrame, uniMemo, DBCommon, uniDBLookUpComboBox, uniDBComboBox, uniComboBox, uniDBDateTimePicker, uniDBEdit, uniEdit, uniGuiDialogs, TypInfo, 
-    uniSweetAlert, FireDAC.Stan.Param, uniMainMenu, uniDBNavigator, uniButton, uniScrollBox, System.RegularExpressions, System.Rtti, uniStringGrid, DateUtils, ComObj;
+    uniSweetAlert, FireDAC.Stan.Param, uniMainMenu, uniDBNavigator, uniButton, uniScrollBox, System.RegularExpressions, System.Rtti, uniStringGrid, DateUtils, ComObj, uniDBMemo;
 
 
 // Funções de checagens.
@@ -20,6 +20,7 @@ function ImportaEXCEL(xStringGrid: TuniStringGrid; xFileXLS: string; NomeAba: Tu
 procedure LimpaMemoria;
 procedure AtivaEdicao(Nav, bAdi, bEdi, bExc, bGra, bCan: TObject; aPageControl: TuniPageControl);
 procedure AtivaBotoes(Nav, bAdi, bEdi, bExc, bGra, bCan: TObject);
+procedure AtivaPanel(aParent: TuniControl; aValue: Boolean);
 function NomeComputador:string;
 function RemoveAcentos(Str:String): String;
 function IIf(Expressao: Variant; ParteTRUE, ParteFALSE: Variant): Variant;
@@ -199,7 +200,7 @@ begin
      end;
 end;
 
-function GeraCodigo(Tabela,Campo:string):integer;
+function GeraCodigo(Tabela, Campo:string):integer;
 var
    Tab:TFDQuery;
 begin
@@ -671,7 +672,7 @@ begin
 
      if vazio then begin
         Alerta := TuniSweetAlert.create(nil);
-        Alerta.AlertType := atInfo;
+        Alerta.AlertType := atError;
         Alerta.Title     := 'ERRO';
         Alerta.TitleText := 'Campo obrigatório!';
         if msg <> '' then begin
@@ -1483,9 +1484,6 @@ end;
 
 procedure AtivaBotoes(Nav, bAdi, bEdi, bExc, bGra, bCan: TObject);
 var
-  //j, s: integer;
-//  Scroll: TuniScrollBox;
-//  Component: TComponent;
   Estado: boolean;
 begin
      Estado := TuniDBNavigator(Nav).DataSource.State in[dsEdit, dsInsert];
@@ -3175,7 +3173,20 @@ begin
       end;
 end;
 
-
+// Coloca todos os componentes do FORM informado para read only;
+procedure AtivaPanel(aParent: TUniControl; aValue: Boolean);
+var
+  i: Integer;
+  c: TComponent;
+begin
+     for i := 0 to Pred(aParent.ControlCount) do begin
+         c := aParent.Controls[i];
+         // Altera apenas o ReadOnly
+         if IsPublishedProp(c, 'ReadOnly') then SetOrdProp(c, 'ReadOnly', Ord(aValue));
+         // Percorre containers filhos
+         if c is TUniControl then AtivaPanel(TUniControl(c), aValue);
+     end;
+end;
 
 
 

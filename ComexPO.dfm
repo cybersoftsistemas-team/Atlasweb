@@ -1138,7 +1138,6 @@ object fComexPO: TfComexPO
       ImageIndex = 7
       TabOrder = 7
       OnClick = bFecharClick
-      ExplicitLeft = 514
     end
     object bImportar: TUniButton
       Left = 365

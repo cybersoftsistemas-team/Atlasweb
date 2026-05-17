@@ -6,9 +6,8 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, uniGUITypes, uniGUIAbstractClasses, uniGUIClasses, uniGUIFrame, UniPageControl, uniDBGrid, uniPanel,
   uniDBLookUpComboBox, uniDBCheckBox, uniScrollBox, uniSpeedButton, uniDateTimePicker, uniDBDateTimePicker, uniBitBtn, uniDBNavigator, uniEdit, uniDBMemo, uniDBEdit,
   uniBasicGrid, uniGUIBaseClasses, FireDAC.Comp.Client, Funcoes, Data.DB, uniSweetAlert, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
-  FireDAC.DatS, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, uniRadioGroup, uniCheckBox,
-  uniComboBox, uniDBComboBox, uniGroupBox, uniCalendarPanel, uniMemo, uniButton, uniSegmentedButton, uniSpinEdit,
-  System.DateUtils, System.Actions, uniMultiItem, FireDAC.Phys.Intf, FireDAC.DApt.Intf;
+  FireDAC.DatS, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, uniRadioGroup, uniCheckBox, uniComboBox, uniDBComboBox, uniGroupBox, uniCalendarPanel, uniMemo, 
+  uniButton, uniSegmentedButton, uniSpinEdit, System.DateUtils, System.Actions, uniMultiItem, FireDAC.Phys.Intf, FireDAC.DApt.Intf;
 
 type
   TfFinanceiro = class(TUniFrame)
@@ -94,17 +93,11 @@ type
     bSalvarBaixa: TUniButton;
     bCancelarBaixa: TUniSpeedButton;
     cBxClassificacao: TUniDBEdit;
-    BaixasForma_Pgto: TStringField;
     BaixasForma_PgtoDoc: TStringField;
-    BaixasCheque_Nominal: TStringField;
-    BaixasCheque_Assinado: TStringField;
-    BaixasCheque_Visado: TBooleanField;
-    BaixasCheque_Cruzado: TBooleanField;
     BaixasTaxa_FechamentoCambio: TBCDField;
     BaixasTaxa_Data: TSQLTimeStampField;
     BaixasNumero_ContratoCambio: TStringField;
     BaixasOrigem_Multa: TStringField;
-    BaixasOrigem_Juros: TStringField;
     BaixasOrigem_Desconto: TStringField;
     BaixasBanco_Conta: TStringField;
     BaixasConciliado: TBooleanField;
@@ -134,11 +127,6 @@ type
     cBxValor_Multa: TUniFormattedNumberEdit;
     cBXValor_Desconto: TUniFormattedNumberEdit;
     cBxValor: TUniFormattedNumberEdit;
-    gCheque: TUniGroupBox;
-    cBxChequeNominal: TUniEdit;
-    cBxChequeAssinado: TUniEdit;
-    cBxChequeCruzado: TUniCheckBox;
-    cBxChequeVizado: TUniCheckBox;
     BaixasData: TDateField;
     BaixasCompensacao: TBooleanField;
     Lista: TFDQuery;
@@ -160,7 +148,6 @@ type
     ListaValor_Operacao: TBCDField;
     BaixasCompensacao_Numero: TSmallintField;
     ListaNome: TStringField;
-    ListaConta: TStringField;
     ListaTitulo: TLargeintField;
     BaixasTitulo: TLargeintField;
     ListaAd: TFDQuery;
@@ -205,7 +192,7 @@ type
     UniDBGrid3: TUniDBGrid;
     PagarReceberDocs: TFDQuery;
     dsPagarReceberDocs: TDataSource;
-    cConta: TUniDBLookupComboBox;
+    cClassificacao: TUniDBLookupComboBox;
     cData_Previsao: TUniDBDateTimePicker;
     cDocumento_Data: TUniDBDateTimePicker;
     cData_Vencimento: TUniDBDateTimePicker;
@@ -247,6 +234,8 @@ type
     ListaValor_Aberto: TFMTBCDField;
     ListaValor_Baixas: TFMTBCDField;
     ListaAdValor_Baixado: TFMTBCDField;
+    ListaClassificacao: TStringField;
+    BaixasForma_Pgto: TSmallintField;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
@@ -284,7 +273,6 @@ type
     procedure cBxValor_JurosChange(Sender: TObject);
     procedure cBxDataExit(Sender: TObject);
     procedure cTaxa_FechamentoCambioChange(Sender: TObject);
-    procedure cBxForma_PgtoChange(Sender: TObject);
     procedure ListaAfterScroll(DataSet: TDataSet);
     procedure PagarReceberBeforeDelete(DataSet: TDataSet);
     procedure bEstornarClick(Sender: TObject);
@@ -545,7 +533,7 @@ begin
           try
              LigaBotoes(false);
              Edit;
-             cConta.setfocus;
+             cClassificacao.setfocus;
           except
              MessageDlgN('Falha desconhecida, não pode editar o registro corrente!', mtError, []);
           end;
@@ -787,7 +775,7 @@ begin
            sql.add('      ,Adiantamento_Numero = isnull(Beneficiario, 0)');
            sql.add('      ,Nome = (select Nome from Destinatarios fr where fr.Codigo = pr.Beneficiario)');
            sql.add('from PagarReceber pr');
-           sql.add('where (select isnull(Adiantamento, 0) from PlanoContas pc where pc.Codigo = pr.Conta) = 1');
+           sql.add('where (select isnull(Adiantamento, 0) from PlanoContas pc where pc.Codigo = pr.Classificacao) = 1');
            sql.add('and (select CNPJ from Destinatarios fr where fr.Codigo = pr.Beneficiario) <> '''' ');
            sql.Add('order by Nome, CNPJ');
            Open;
@@ -827,7 +815,7 @@ begin
            open;
       end;
       with Embarques do begin
-           sql.add('select Registro');
+           sql.add('select Codigo');
            sql.add('      ,Navio');
            sql.add('      ,Referencia');
            sql.add('      ,Processo');
@@ -849,7 +837,6 @@ begin
            sql.Clear;
            sql.Add('select cc.Numero');
            sql.Add('      ,cc.Data');
-           sql.Add('      ,cc.DUIMP');
            sql.Add('      ,bc.Nome as Banco_Nome');
            sql.add('      ,dst.Nome as Exportador');
            sql.add('      ,cdc.Descricao as Condicao_Cambial');
@@ -1032,11 +1019,6 @@ begin
      end;
 end;
 
-procedure TfFinanceiro.cBxForma_PgtoChange(Sender: TObject);
-begin
-     gCheque.Enabled := uppercase(cBxForma_Pgto.Text) = 'CHEQUE';
-end;
-
 procedure TfFinanceiro.cBxValor_DescontosChange(Sender: TObject);
 begin
      TotalizaBaixa;
@@ -1179,7 +1161,7 @@ begin
       with Lista do begin
            sql.clear;
            sql.Add('select Titulo');
-           sql.Add('      ,Conta');
+           sql.Add('      ,Classificacao');
            sql.Add('      ,Tipo');
            sql.Add('      ,Centro_Custo');
            sql.Add('      ,Data_Vencimento');
@@ -1196,7 +1178,7 @@ begin
            sql.Add('      ,Valor_Aberto = pr.Valor_Parcela - isnull((select isnull(sum(Valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo), 0)');
            sql.Add('      ,Valor_Baixas = (select isnull(sum(Valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo)');
            sql.Add('      ,Baixa = cast(case when (select isnull(sum(Valor), 0) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo) = 0 then 0 else 1 end as bit)');
-           sql.Add('      ,Nome = (select Nome_Financeiro from PlanoContas pc where pc.Conta = pr.Conta)');
+           sql.Add('      ,Nome = (select Nome_Financeiro from PlanoContas pc where pc.Conta = pr.Classificacao)');
            sql.Add('      ,Beneficiario = case when isnull(Transferencia, 0) = 0 then');
            sql.Add('                           (select Nome from Destinatarios dst where dst.Codigo = pr.Beneficiario)');
            sql.Add('                      else');
@@ -1231,7 +1213,7 @@ begin
               sql.Add('and pr.Beneficiario = '+inttostr(cBenefFiltro.KeyValue));
            end;
            if trim(cContaFiltro.Text) <> '' then begin
-              sql.Add('and pr.Conta = '+quotedstr(Plano.fieldbyname('Conta').AsString));
+              sql.Add('and pr.Classificacao = '+quotedstr(Plano.fieldbyname('Conta').AsString));
            end;
            if trim(cBancoFiltro.Text) <> '' then begin
               sql.Add('and Banco = '+inttostr(cBanco.KeyValue));
@@ -1249,6 +1231,7 @@ begin
               sql.Add('and pr.Documento_Numero like '+ quotedstr('%'+cDocNumFiltro.text+'%'));
            end;
            sql.Add('order by Data_Vencimento desc');
+           //sql.savetofile('c:\temp\Atlas_PagarReceber.sql');
            open;
 
            bEditar.Enabled  := RecordCount > 0;
@@ -1292,7 +1275,7 @@ begin
           if ValidaCampo(cValor_Parcela  , cValor_Parcela.Value     , 0, '<=', 'O "Valor da Parcela" não pode ser igual a zero !', 'Valor inválido') then Abort;
           if (Plano.FieldByName('Processo_Obrigatorio').AsBoolean) and (CampoVazio(cProcesso, 'Esta Classificação Financeira obriga informar o número do "Processo".')) then abort;
           if CampoVazio(cData_Vencimento , 'É necessário informar a "Data de Vencimento" do título.') then Abort;
-          if CampoVazio(cConta           , 'É necessário informar a "Classificação Financeira".')     then Abort;
+          if CampoVazio(cClassificacao   , 'É necessário informar a "Classificação Financeira".')     then Abort;
           if CampoVazio(cDocumento       , 'É necessário informar o "Tipo do Documento".')            then Abort;
           if CampoVazio(cDocumento_Data  , 'É necessário informar a "Data do Documento".')            then Abort;
           if CampoVazio(cNumero_Documento, 'É necessário informar o "Número do Documento".')          then Abort;

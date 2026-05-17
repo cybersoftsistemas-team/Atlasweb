@@ -14,7 +14,7 @@ object fCadBancos: TfCadBancos
     Height = 966
     Hint = ''
     BodyRTL = False
-    ActivePage = aLista
+    ActivePage = UniTabSheet2
     Plain = True
     Align = alClient
     ClientEvents.UniEvents.Strings = (
@@ -125,9 +125,6 @@ object fCadBancos: TfCadBancos
         BorderStyle = ubsInset
         Caption = ''
         Color = clNone
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 1052
         object cPesquisa: TUniEdit
           Left = 1
           Top = 1
@@ -140,9 +137,6 @@ object fCadBancos: TfCadBancos
           TabOrder = 1
           EmptyText = 'Pesquisar'
           OnKeyDown = cPesquisaKeyDown
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitHeight = 27
         end
         object bPesquisa: TUniSpeedButton
           Left = 521
@@ -158,9 +152,6 @@ object fCadBancos: TfCadBancos
           ImageIndex = 10
           TabOrder = 2
           OnClick = bPesquisaClick
-          ExplicitLeft = 520
-          ExplicitTop = 0
-          ExplicitHeight = 27
         end
       end
     end

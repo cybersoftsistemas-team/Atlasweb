@@ -9,7 +9,7 @@ uses
   uniEdit, uniDBEdit, uniDBMemo, uniBasicGrid, uniGUIBaseClasses, uniComboBox, UniGroupBox, uniSpinEdit, unimToggle, FireDAC.Comp.Client, Funcoes, Data.DB, uniSweetAlert, 
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, 
   Data.Bind.Components, Data.Bind.ObjectScope, Vcl.Menus, uniMainMenu, FireDAC.Comp.DataSet, Datasnap.DBClient, uniMemo, uniStringGrid, uniCheckBox, uniProgressBar, 
-  uniFileUpload, MemDS, DBAccess, MSAccess, uniScreenMask, uniMultiItem, uniDBComboBox;
+  uniFileUpload, MemDS, DBAccess, MSAccess, uniScreenMask, uniMultiItem, uniDBComboBox, uniListBox;
 
 type
   THackControl = class(TUniControl);
@@ -37,10 +37,7 @@ type
     cLinhaIniPO: TuniSpinEdit;
     cLinhaFimPO: TuniSpinEdit;
     GradePO: TUniDBGrid;
-    cLinhaIniCli: TuniSpinEdit;
-    cLinhaFimCli: TuniSpinEdit;
     cArquivoPO: TUniFileUploadButton;
-    bArqProd: TUniFileUploadButton;
     bImportarPO: TUniButton;
     tPlanCliCodigo: TIntegerField;
     tPlanCliCodigo_Fabricante: TStringField;
@@ -147,20 +144,15 @@ type
     tPlanCliOrgao_AnuenteImp: TSmallintField;
     tPlanCliOrgao_AnuenteExp: TSmallintField;
     tPlanCliFornecedor_Nome: TStringField;
-    cApagarCli: TUniCheckBox;
     cApagarPO: TUniCheckBox;
     tProd: TFDQuery;
     tReg: TFDQuery;
     tCampos: TFDQuery;
     bImportarCli: TUniButton;
-    Grade: TUniStringGrid;
-    MenuCampos: TUniPopupMenu;
     blayout: TUniButton;
     LayImp: TFDQuery;
     dsLayInp: TDataSource;
-    cCodigo: TUniCheckBox;
     tCodigo: TFDQuery;
-    cMsg: TUniMemo;
     dstNCM: TDataSource;
     vConv: TRESTResponseDataSetAdapter;
     tNCM: TFDMemTable;
@@ -177,7 +169,6 @@ type
     tNCMTexto: TStringField;
     tNCMIPI: TFloatField;
     tNCMICMS: TStringField;
-    DBGrid1: TUniDBGrid;
     RClient: TRESTClient;
     RRequest: TRESTRequest;
     RResponse: TRESTResponse;
@@ -204,22 +195,31 @@ type
     ECommconsumer_Secret: TStringField;
     ECommToken: TMemoField;
     dsEComm: TDataSource;
-    cArqProd: TUniEdit;
     bSair: TUniSpeedButton;
     cArqPO: TUniEdit;
     UniScreenMask1: TUniScreenMask;
     UniFileUpload1: TUniFileUpload;
-    btnImportar: TUniButton;
-    cCampos: TUniComboBox;
-    procedure UniFrameCreate(Sender: TObject);
+    UniPanel1: TUniPanel;
+    cArqProd: TUniEdit;
+    bArqProd: TUniFileUploadButton;
+    cLinhaIniCli: TUniSpinEdit;
+    cApagarCli: TUniCheckBox;
+    cCodigo: TUniCheckBox;
+    cLinhaFimCli: TUniSpinEdit;
+    UniPanel2: TUniPanel;
+    Grade: TUniStringGrid;
+    UniPanel3: TUniPanel;
+    cCampos: TUniListBox;
+    UniPanel4: TUniPanel;
+    bAdicionar: TUniSpeedButton;
+    bExcluir: TUniSpeedButton;
+    DBGrid1: TUniDBGrid;
+    cLog: TUniMemo;
     procedure cArquivoPOChange(Sender: TObject);
-    procedure cArquivoPOButtonClick(Sender: TObject);
-    procedure bImportarPOClick(Sender: TObject);
     procedure cApagarPOClick(Sender: TObject);
-    procedure cArquivoCliButtonClick(Sender: TObject);
     procedure bImportarCliClick(Sender: TObject);
     procedure cApagarCliClick(Sender: TObject);
-//    procedure GradeDrawCell(Sender: TObject; ACol, ARow: Integer; Rect: TRect; State: TGridDrawState);
+
     procedure blayoutClick(Sender: TObject);
     procedure cLinhaIniPOChange(Sender: TObject);
 //    procedure bCancelarClick(Sender: TObject);
@@ -238,9 +238,7 @@ type
     procedure cArquivoPOCompleted(Sender: TObject; AStream: TFileStream);
     procedure bArqProdCompleted(Sender: TObject; AStream: TFileStream);
     procedure cArqProdChangeValue(Sender: TObject);
-    procedure btnImportarClick(Sender: TObject);
     procedure UniFileUpload1Completed(Sender: TObject; AStream: TFileStream);
-    procedure GradeMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
     procedure AbrePlanilhaProd;
     procedure ImportarPO;
     procedure AbrePlan;
@@ -251,6 +249,8 @@ type
     function BuscaJson(NCM: string): boolean;
     procedure AbrirPlanilha(AStream: TStream);
     procedure LerExcelParaGrid(const Arquivo: string; Grid: TuniStringGrid);
+    procedure UniFormActivate(Sender: TObject);
+    procedure cCamposDblClick(Sender: TObject);
   private
     { Private declarations }
 //    procedure AbrePlanilhaPO;
@@ -288,6 +288,43 @@ begin
 
 end;
 
+procedure TfComexPOImportar.UniFormActivate(Sender: TObject);
+var
+  i:integer;
+begin
+      Pasta.ActivePageIndex := 0;
+      clog.Clear;
+      cCampos.text := '';
+      with POItens do begin
+           open;
+           for i := 0 to pred(FieldCount) do begin
+               cCampos.Items.Add(fields[i].FieldName);
+           end;
+      end;
+      // Purchase order.
+      with tPlanPO do begin
+           close;
+           CreateDataSet;
+           Open;
+      end;
+      // Produtos do Clientes.
+      cLinhaIniCli.value := 3;
+      cLinhaFimCli.value := 5;
+      with tPlanCli do begin
+           close;
+           CreateDataSet;
+           Open;
+      end;
+      with LayImp do begin
+           sql.Clear;
+           sql.Add('select * from LayoutImportacao');
+           sql.Add('where  Tabela = ''POItens'' ');
+           sql.Add('order  BY Coluna');
+           //sql.SaveToFile('c:\temp\Importa_Excel.sql');
+           Open;
+      end;
+end;
+
 procedure TfComexPOImportar.LerExcelParaGrid(const Arquivo: string; Grid: TuniStringGrid);
 var
    Excel 
@@ -322,87 +359,6 @@ begin
      end;
 end;
 
-procedure TfComexPOImportar.UniFrameCreate(Sender: TObject);
-var
-  i:integer;
-begin
-      with POItens do begin
-           open;
-           for i := 0 to pred(FieldCount) do begin
-               cCampos.Items.Add(fields[i].FieldName);
-           end;
-      end;
-
-      Pasta.ActivePageIndex := 0;
-
-(*
-      cmsg.Clear;
-   begin
-           // Purchase order.
-           cLinhaFimPO.value  := cLinhaIniPO.value;
-           ifRecordCount > 0 then cLinhaFimPO.value := (cLinhaIniPO.value+POItens.RecordCount) - 1;
-           tPlanPO.CreateDataSet;
-           tPlanPO.Open;
-
-           // Produtos do Clientes.
-           cLinhaIniCli.value := 3;
-           cLinhaFimCli.value := 5;
-           tPlanCli.CreateDataSet;
-           tPlanCli.Open;
-
-           with LayImp do begin
-                sql.Clear;
-                sql.Add('select * from LayoutImportacao');
-                sql.Add('where  Tabela = ''POItens'' ');
-                sql.Add('order  BY Coluna');
-                //sql.SaveToFile('c:\temp\Importa_Excel.sql');
-                Open;
-           end;
-
-      end;
-*)
-end;
-
-{
-procedure TfComexPOImportar.GradeDrawCell(Sender: TObject; ACol, ARow: Integer; Rect: TRect; State: TGridDrawState);
-var
-    Texto : string;
-    Largurat : integer;
-    Largurac : integer;
-begin
-(*
-      with (Sender as TStringGrid).Canvas do begin
-           Texto    := Grade.Cells[ACol, ARow];
-           Largurat := Canvas.TextWidth(texto) div 2;
-           Largurac := Grade.ColWidths[ACol] div 2;
-
-           if ARow = 0 then begin
-              Brush.Color := $003E3E3E;
-              Font.Color  := clYellow;
-              Font.Size   := 8;
-              Font.Style  := [fsBold];
-           end;
-           if ARow = 1 then begin
-              Brush.Color := clActiveCaption;
-              Font.Color  := clBlack;
-              Font.Size   := 8;
-              Font.Style  := [fsBold];
-           end;
-           if gdFocused in State then begin
-              Brush.Color := clnavy;
-              mColuna     := ACol;
-              Font.Color  := clWhite;
-           end;
-           FillRect(Rect);
-
-           if ARow <= 1 then begin
-              TextOut(Rect.Left+1+largurac-largurat,Rect.Top+2, Texto);
-           end else
-              TextOut(Rect.Left+1, Rect.Top+2, Grade.Cells[aCol,aRow]);
-      end;
-*)
-end;
-}
 procedure TfComexPOImportar.cArquivoPOChange(Sender: TObject);
 begin
 (*
@@ -420,6 +376,12 @@ begin
      cArqPO.Text := cArquivoPO.FileName;
 end;
 
+procedure TfComexPOImportar.cCamposDblClick(Sender: TObject);
+begin
+     Grade.Cells[Grade.Col, 0] := cCampos.Items[cCampos.ItemIndex];
+     cCampos.Items.Delete(cCampos.ItemIndex);
+end;
+
 procedure TfComexPOImportar.cLinhaIniPOChange(Sender: TObject);
 begin
      if cLinhaFimPO.Value < cLinhaIniPO.value then begin
@@ -427,15 +389,11 @@ begin
      end;
 end;
 
-procedure TfComexPOImportar.GradeMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
-begin
-    if Button = mbRight then FMenuCampos.Popup(X, Y);
-end;
-
 procedure TfComexPOImportar.bArqProdCompleted(Sender: TObject; AStream: TFileStream);
 begin
       cArqProd.text := UniServerModule.FilesFolderPath + bArqProd.FileName;
       LerExcelParaGrid(cArqProd.text, Grade);
+      cCampos.Enabled := true;
 end;
 
 procedure TfComexPOImportar.AbrirPlanilha(AStream: TStream);
@@ -624,42 +582,25 @@ begin
       Excel.Quit;
 end;
 
-procedure TfComexPOImportar.cArquivoPOButtonClick(Sender: TObject);
-begin
-(*
-     cArquivoPO.FileName := '';
-*)
-end;
-
 procedure TfComexPOImportar.cArqProdChangeValue(Sender: TObject);
 var
-   i, mMn:integer;
+   i: integer;
 begin
-{
-      Abreplan;
       // Carrega o layout salvo.
       with LayImp do begin
-           First;
+           first;
            if RecordCount > 0 then begin
               while not Eof do begin
                     Grade.Cells[fieldbyname('Coluna').asinteger, 0] := fieldbyname('Campo').AsString;
+clog.lines.add(fieldbyname('Campo').AsString);
                     next;
               end;
            end;
-           cLinhaIniCli.Value := FieldByName('LinhaIni').AsInteger;
-           cLinhaFimCli.Value := FieldByName('LinhaFim').AsInteger;
-           cApagarCli.Checked := FieldByName('Apagar').AsBoolean;
-
+           cLinhaIniCli.Value   := FieldByName('LinhaIni').AsInteger;
+           cLinhaFimCli.Value   := FieldByName('LinhaFim').AsInteger;
+           cApagarCli.Checked   := FieldByName('Apagar').AsBoolean;
            bImportarCli.Enabled := Grade.RowCount > 2;
       end;
-}      
-end;
-
-procedure TfComexPOImportar.cArquivoCliButtonClick(Sender: TObject);
-begin
-(*
-     cArquivoCli.FileName := '';
-*)
 end;
 
 procedure TfComexPOImportar.bImportarCliClick(Sender: TObject);
@@ -668,13 +609,6 @@ begin
       if MessageDlg('Deseja realmente importar estes itens para o PO?', mtConfirmation, [mbYes, mbNo], 0) = mryes then begin
          ImportarCli;
       end;
-*)
-end;
-
-procedure TfComexPOImportar.bImportarPOClick(Sender: TObject);
-begin
-(*
-      ImportarPO;
 *)
 end;
 
@@ -984,11 +918,9 @@ end;
 
 procedure TfComexPOImportar.cApagarCliClick(Sender: TObject);
 begin
-(*
      if cApagarcLI.Checked then begin
-        MessageDlg('Atenção!'+#13+'Essta opção apaga todos os itens existente desse "PO".', mtWarning, [mbOK], 0);
+        MessageDlg('Atenção!'+#13+'Essta opção apaga todos os itens existente desse "PO".', mtWarning, [mbOK]);
      end;
-*)
 end;
 
 procedure TfComexPOImportar.cApagarPOClick(Sender: TObject);
@@ -1107,7 +1039,6 @@ var
    mCol
   ,mMn: Integer;
 begin
-(*
       Grade.Cells[mColuna, 0] := ' ';
       if (RemoveCaracter('&', '', TMenuItem(Sender).Caption) <> 'Limpar') then begin
          // Limpa o campo de outra célula se já utilizado.
@@ -1119,7 +1050,6 @@ begin
          Grade.Cells[mColuna, 0]   := RemoveCaracter('&', '', TMenuItem(Sender).Caption);
          TMenuItem(Sender).Checked := true;
       end;
-*)
 end;
 
 procedure TfComexPOImportar.SalvaLayout;
@@ -1285,34 +1215,14 @@ end;
 
 procedure TfComexPOImportar.bAdicionarClick(Sender: TObject);
 begin
-{
-      with PO do begin
-           try
-               LigaBotoes(false);
-               Append;
-                    FieldByName('Empresa').Value := UniMainModule.mEmpresaAtiva;
-           except on E: Exception do
-               MessageDlgN('Falha desconhecida, não pode adicionar um novo registro!'+#13+E.Message, mtError, [mbOK]);
-           end;
-      end;
-}      
+     Grade.Cells[Grade.Col, 0] := cCampos.Items[cCampos.ItemIndex];
+     cCampos.Items.Delete(cCampos.ItemIndex);
 end;
 
 procedure TfComexPOImportar.bExcluirClick(Sender: TObject);
 begin
-{
-     with PO do begin
-          MessageDlg('Deseja realmente excluir estes dados?'+#13+#13+FieldByName('Processo').AsString, mtConfirmation,mbYesNo,
-                    procedure(Comp:TComponent; ARes: Integer)
-                    begin
-                          if ARes = mrYes then begin
-                             Delete;
-                             Alerta.Text := 'Registro excluído do banco de dados!';
-                             Alerta.Execute;
-                          end;
-                    end);
-     end;
-}     
+     cCampos.Items.add(Grade.Cells[Grade.Col, 0]);
+     Grade.Cells[Grade.Col, 0] := '';
 end;
 
 (*
@@ -1397,11 +1307,6 @@ end;
 procedure TfComexPOImportar.bSairClick(Sender: TObject);
 begin
      close;
-end;
-
-procedure TfComexPOImportar.btnImportarClick(Sender: TObject);
-begin
-     LerExcelParaGrid('C:\Temp\Produtos.xlsx', Grade);
 end;
 
 procedure TfComexPOImportar.POAfterPost(DataSet: TDataSet);

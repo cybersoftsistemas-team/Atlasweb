@@ -354,8 +354,8 @@ object fFatPedidoNF: TfFatPedidoNF
         ScrollHeight = 901
         ScrollWidth = 627
         object UniPanel1: TUniPanel
-          Left = 67
-          Top = 3
+          Left = 79
+          Top = 16
           Width = 818
           Height = 801
           Hint = ''
@@ -1001,7 +1001,7 @@ object fFatPedidoNF: TfFatPedidoNF
               Height = 25
               Hint = ''
               ShowHint = True
-              DataField = 'Valor_Desconto'
+              DataField = 'Valor_Descontos'
               DataSource = dsPedidosNF
               TabOrder = 28
               SelectOnFocus = True
@@ -1736,7 +1736,7 @@ object fFatPedidoNF: TfFatPedidoNF
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
-      DataField = 'Valor_Despesa'
+      DataField = 'Valor_Despesas'
       DataSource = dsPedidosNF
       Align = alTop
       Alignment = taRightJustify
@@ -1918,7 +1918,7 @@ object fFatPedidoNF: TfFatPedidoNF
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
-      DataField = 'Valor_ICMSOp'
+      DataField = 'Valor_ICMS'
       DataSource = dsPedidosNF
       Align = alTop
       Alignment = taRightJustify
@@ -1970,7 +1970,7 @@ object fFatPedidoNF: TfFatPedidoNF
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
-      DataField = 'Valor_Desconto'
+      DataField = 'Valor_Descontos'
       DataSource = dsPedidosNF
       Align = alTop
       Alignment = taRightJustify
@@ -2126,7 +2126,7 @@ object fFatPedidoNF: TfFatPedidoNF
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
-      DataField = 'Valor_BCICMSOp'
+      DataField = 'Valor_BCICMS'
       DataSource = dsPedidosNF
       Align = alTop
       Alignment = taRightJustify
@@ -2957,11 +2957,6 @@ object fFatPedidoNF: TfFatPedidoNF
     object PedidosNFItensValor_Unitario: TBCDField
       FieldName = 'Valor_Unitario'
       Origin = 'Valor_Unitario'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_Produtos: TBCDField
-      FieldName = 'Valor_Produtos'
-      Origin = 'Valor_Produtos'
       DisplayFormat = ',##0.00'
     end
   end

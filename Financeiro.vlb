@@ -22,14 +22,8 @@ Coordinates=711,243,111,36
 [cValor_Multa]
 Coordinates=2219,878,90,36
 
-[gCheque]
-Coordinates=2143,878,66,36
-
 [cMes]
 Coordinates=2088,878,45,36
-
-[cBxChequeNominal]
-Coordinates=1950,878,128,36
 
 [bBaixar]
 Coordinates=1882,878,58,36
@@ -63,9 +57,6 @@ Coordinates=1702,878,55,36
 
 [Embarques]
 Coordinates=904,10,80,58
-
-[cBxChequeCruzado]
-Coordinates=1563,878,129,36
 
 [BaixasTaxa_FechamentoCambio]
 Coordinates=711,958,204,36
@@ -136,17 +127,11 @@ Coordinates=2317,832,105,36
 [bExcluir]
 Coordinates=2246,832,61,36
 
-[BaixasForma_Pgto]
-Coordinates=960,166,124,36
-
 [ListaValor_Total]
 Coordinates=960,221,108,36
 
 [Adiantamentos]
 Coordinates=596,10,134,124
-
-[cBxChequeAssinado]
-Coordinates=2102,832,134,36
 
 [UniDBGrid2]
 Coordinates=2009,832,83,36
@@ -156,9 +141,6 @@ Coordinates=1915,832,84,36
 
 [pFiltro]
 Coordinates=1854,832,51,36
-
-[cConta]
-Coordinates=1789,832,55,36
 
 [cAno]
 Coordinates=1735,832,44,36
@@ -244,9 +226,6 @@ Coordinates=2238,786,78,36
 
 [cCodigoBarras]
 Coordinates=2128,786,100,36
-
-[BaixasOrigem_Juros]
-Coordinates=69,1649,134,36
 
 [ListaValor_Juros]
 Coordinates=1197,1,111,36
@@ -518,9 +497,6 @@ Coordinates=1856,694,89,36
 [ListaProcesso]
 Coordinates=1395,1431,95,36
 
-[ListaConta]
-Coordinates=1395,1486,76,36
-
 [BaixasConciliado]
 Coordinates=1395,1541,114,36
 
@@ -656,9 +632,6 @@ Coordinates=2209,10,97,36
 [ListaData_Vencimento]
 Coordinates=1622,991,144,36
 
-[cBxChequeVizado]
-Coordinates=2079,10,120,36
-
 [tDias]
 Coordinates=994,10,44,58
 
@@ -681,5 +654,8 @@ Coordinates=165,924,46,36
 Coordinates=92,924,63,36
 
 []
-Coordinates=960,111,141,36
+Coordinates=69,1649,134,36
+
+[cClassificacao]
+Coordinates=1789,832,55,36
 

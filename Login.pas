@@ -92,8 +92,9 @@ begin
                        sql.add('      ,Matricula = (select Matricula from Usuarios where Email = :pEmail)');
                        parambyname('pEmail').Value := Clientes.FieldByName('Email').asstring;
                        parambyname('pCNPJ').Value  := Clientes.FieldByName('Empresa_CNPJ').asstring;
+                       //sql.savetofile('c:\temp\Usuarios_temp.sql');
                        open;
-                       mUsuarioMatricula := fieldbyname('Matricula').value;
+                       mUsuarioMatricula := fieldbyname('Matricula').asstring;
                   end;
              end;
 
@@ -147,7 +148,7 @@ begin
      //-----------------------------[ REMOVER APÓS TESTES ]--------------------------------\\
      cLogUser.text  := '';
      cLogSenha.Text := '';
-     if (NomeComputador = 'PROGRAMACAO') or (NomeComputador = 'NOTE-DED') or (NomeComputador = 'OMINIHOST') then begin
+     if (NomeComputador = 'PROGRAMACAO1') or (NomeComputador = 'NOTE-DED') or (NomeComputador = 'OMINIHOST') then begin
         cLogUser.text  := 'eder@cybersoftsistemas.com.br';
         cLogSenha.Text := 'Cybersoft@123';
      end;

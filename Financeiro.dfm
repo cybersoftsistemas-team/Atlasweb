@@ -219,7 +219,7 @@ object fFinanceiro: TfFinanceiro
     Height = 795
     Hint = ''
     BodyRTL = False
-    ActivePage = UniTabSheet1
+    ActivePage = UniTabSheet2
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -230,10 +230,6 @@ object fFinanceiro: TfFinanceiro
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Movimento'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object pFiltro: TUniPanel
         Left = 0
         Top = 0
@@ -362,7 +358,7 @@ object fFinanceiro: TfFinanceiro
           BorderStyle = ubsInset
           ClearButton = True
           AnyMatch = True
-          EmptyText = 'Conta'
+          EmptyText = 'Classifica'#231#227'o'
           TabOrder = 6
           Color = clWindow
           MatchFieldWidth = False
@@ -800,7 +796,7 @@ object fFinanceiro: TfFinanceiro
                 ReadOnly = True
               end
               item
-                FieldName = 'Conta'
+                FieldName = 'Classificacao'
                 Title.Alignment = taCenter
                 Title.Caption = 'Conta'
                 Title.Font.Style = [fsBold]
@@ -1110,7 +1106,7 @@ object fFinanceiro: TfFinanceiro
           Title = 'DADOS GERAIS'
           Caption = ''
           Color = clTeal
-          object cConta: TUniDBLookupComboBox
+          object cClassificacao: TUniDBLookupComboBox
             Left = 13
             Top = 95
             Width = 694
@@ -1123,7 +1119,7 @@ object fFinanceiro: TfFinanceiro
             ListFieldIndex = 1
             BorderStyle = ubsInset
             ClearButton = True
-            DataField = 'Conta'
+            DataField = 'Classificacao'
             DataSource = dsPagarReceber
             AnyMatch = True
             TabOrder = 1
@@ -1401,7 +1397,7 @@ object fFinanceiro: TfFinanceiro
             ShowHint = True
             ListField = 'Referencia;Navio;Processo'
             ListSource = dsEmbarques
-            KeyField = 'Registro'
+            KeyField = 'Codigo'
             ListFieldIndex = 0
             BorderStyle = ubsInset
             ClearButton = True
@@ -1923,10 +1919,6 @@ object fFinanceiro: TfFinanceiro
     object UniTabSheet4: TUniTabSheet
       Hint = ''
       Caption = 'Adiantamentos'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object cGrade: TUniDBGrid
         Left = 0
         Top = 0
@@ -2005,10 +1997,6 @@ object fFinanceiro: TfFinanceiro
     object UniTabSheet5: TUniTabSheet
       Hint = ''
       Caption = 'Contratos de C'#226'mbio'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniDBGrid2: TUniDBGrid
         Left = 0
         Top = 0
@@ -2373,7 +2361,7 @@ object fFinanceiro: TfFinanceiro
           end
           object gCambio: TUniGroupBox
             Left = 16
-            Top = 380
+            Top = 300
             Width = 612
             Height = 73
             Hint = ''
@@ -2514,7 +2502,6 @@ object fFinanceiro: TfFinanceiro
             SelectOnFocus = True
             IconItems = <>
             ReadOnlyMode = urmNotEditable
-            OnChange = cBxForma_PgtoChange
           end
           object cBxObs: TUniMemo
             Left = 15
@@ -2528,80 +2515,12 @@ object fFinanceiro: TfFinanceiro
             FieldLabel = 'Observa'#231#227'o'
             FieldLabelAlign = laTop
           end
-          object gCheque: TUniGroupBox
-            Left = 16
-            Top = 297
-            Width = 612
-            Height = 73
-            Hint = ''
-            Enabled = False
-            ShowHint = True
-            ParentShowHint = False
-            Caption = 'DADOS DO CHEQUE'
-            TabOrder = 10
-            ParentFont = False
-            Font.Style = [fsBold]
-            ClientEvents.UniEvents.Strings = (
-              
-                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-                '= '#39'Grupo'#39';'#13#10'}')
-            object cBxChequeNominal: TUniEdit
-              Left = 9
-              Top = 15
-              Width = 250
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              BorderStyle = ubsSolid
-              Text = ''
-              TabOrder = 1
-              FieldLabel = 'Nominal '#225
-              FieldLabelAlign = laTop
-            end
-            object cBxChequeAssinado: TUniEdit
-              Left = 263
-              Top = 15
-              Width = 250
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              BorderStyle = ubsSolid
-              Text = ''
-              TabOrder = 2
-              FieldLabel = 'Assinado Por'
-              FieldLabelAlign = laTop
-            end
-            object cBxChequeCruzado: TUniCheckBox
-              Left = 532
-              Top = 22
-              Width = 70
-              Height = 17
-              Hint = ''
-              ShowHint = True
-              Caption = 'Cruzado'
-              TabOrder = 3
-            end
-            object cBxChequeVizado: TUniCheckBox
-              Left = 532
-              Top = 41
-              Width = 70
-              Height = 17
-              Hint = ''
-              ShowHint = True
-              Caption = 'Visado'
-              TabOrder = 4
-            end
-          end
         end
       end
     end
     object UniTabSheet7: TUniTabSheet
       Hint = ''
       Caption = 'Documentos Anexados'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniDBGrid3: TUniDBGrid
         Left = 0
         Top = 0
@@ -2757,7 +2676,7 @@ object fFinanceiro: TfFinanceiro
       '      ,Baixa = Cast(0 as bit)'
       
         '      ,Nome = (select Nome_Financeiro from PlanoContas where Cod' +
-        'igo = PR.Conta)'
+        'igo = PR.Classificacao)'
       
         '      ,Beneficiario_Nome = (select Nome from Destinatarios where' +
         ' Codigo = pr.Beneficiario)'
@@ -2797,20 +2716,10 @@ object fFinanceiro: TfFinanceiro
         '      ,Banco_Nome = (select Nome from Bancos where codigo = Banc' +
         'o)'
       'from PagarReceberBaixas'
-      'where Empresa = :Empresa'
-      'and Titulo = :Titulo')
+      '--where Empresa = :Empresa'
+      '--and Titulo = :Titulo')
     Left = 122
     Top = 74
-    ParamData = <
-      item
-        Name = 'EMPRESA'
-        ParamType = ptInput
-        Value = Null
-      end
-      item
-        Name = 'TITULO'
-        ParamType = ptInput
-      end>
     object BaixasRegistro: TLargeintField
       FieldName = 'Registro'
       Origin = 'Registro'
@@ -2871,10 +2780,6 @@ object fFinanceiro: TfFinanceiro
       Origin = 'Observacao'
       BlobType = ftMemo
     end
-    object BaixasForma_Pgto: TStringField
-      FieldName = 'Forma_Pgto'
-      Origin = 'Forma_Pgto'
-    end
     object BaixasForma_PgtoDoc: TStringField
       FieldName = 'Forma_PgtoDoc'
       Origin = 'Forma_PgtoDoc'
@@ -2917,12 +2822,6 @@ object fFinanceiro: TfFinanceiro
       FixedChar = True
       Size = 1
     end
-    object BaixasOrigem_Juros: TStringField
-      FieldName = 'Origem_Juros'
-      Origin = 'Origem_Juros'
-      FixedChar = True
-      Size = 1
-    end
     object BaixasOrigem_Desconto: TStringField
       FieldName = 'Origem_Desconto'
       Origin = 'Origem_Desconto'
@@ -2945,6 +2844,10 @@ object fFinanceiro: TfFinanceiro
     object BaixasCompensacao_Numero: TSmallintField
       FieldName = 'Compensacao_Numero'
       Origin = 'Compensacao_Numero'
+    end
+    object BaixasForma_Pgto: TSmallintField
+      FieldName = 'Forma_Pgto'
+      Origin = 'Forma_Pgto'
     end
   end
   object dsBaixas: TDataSource
@@ -3200,7 +3103,6 @@ object fFinanceiro: TfFinanceiro
       'update ContratoCambio set Condicao_Cambio = 3'
       'select cc.Numero'
       '      ,cc.Data'
-      '      ,cc.DUIMP'
       '      ,bc.Nome as Banco_Nome'
       '      ,dst.Nome as Exportador'
       '      ,cdc.Descricao as Condicao_Cambial'
@@ -3256,7 +3158,7 @@ object fFinanceiro: TfFinanceiro
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select Titulo'
-      '      ,Conta '
+      '      ,Classificacao'
       '      ,Tipo'
       '      ,Centro_Custo'
       '      ,Data_Vencimento'
@@ -3267,7 +3169,7 @@ object fFinanceiro: TfFinanceiro
       '      ,Baixa = Cast(0 as bit)'
       
         '      ,Nome = (select Nome_Financeiro from PlanoContas where Con' +
-        'ta = pr.Conta)'
+        'ta = pr.Classificacao)'
       
         '      ,Beneficiario = (select Nome from Destinatarios dst where ' +
         'dst.Codigo = pr.Beneficiario)'
@@ -3292,11 +3194,6 @@ object fFinanceiro: TfFinanceiro
       FieldName = 'Titulo'
       Origin = 'Titulo'
       Required = True
-    end
-    object ListaConta: TStringField
-      FieldName = 'Conta'
-      Origin = 'Conta'
-      Size = 15
     end
     object ListaTipo: TStringField
       FieldName = 'Tipo'
@@ -3405,6 +3302,11 @@ object fFinanceiro: TfFinanceiro
       Precision = 38
       Size = 4
     end
+    object ListaClassificacao: TStringField
+      FieldName = 'Classificacao'
+      Origin = 'Classificacao'
+      Size = 15
+    end
   end
   object dsLista: TDataSource
     DataSet = Lista
@@ -3512,7 +3414,7 @@ object fFinanceiro: TfFinanceiro
   object Embarques: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
-      'select Registro'
+      'select Codigo'
       '      ,Navio'
       '      ,Referencia'
       '      ,Processo'

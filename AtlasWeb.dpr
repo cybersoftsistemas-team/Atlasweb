@@ -88,7 +88,11 @@ uses
   FatPedidoNFLote in 'FatPedidoNFLote.pas' {fFatPedidoNFLote: TUniForm},
   DUIMP in 'DUIMP.pas' {fDUIMP: TUniForm},
   FatPedidoItensDUIMPItem in 'FatPedidoItensDUIMPItem.pas' {fFatPedidoItensDUIMPItem: TUniForm},
-  ComexPO in 'ComexPO.pas' {fComex: TUniForm};
+  ComexPO in 'ComexPO.pas' {fComex: TUniForm},
+  ComexContratoCambio in 'ComexContratoCambio.pas' {fComexContratoCambio: TUniFrame},
+  PagarReceber.Dados in 'PagarReceber.Dados.pas',
+  PagarReceber.Repository in 'PagarReceber.Repository.pas',
+  PagarReceber.Service in 'PagarReceber.Service.pas';
 
 (*uses p/gerador*)
 

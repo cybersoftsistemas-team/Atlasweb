@@ -193,7 +193,6 @@ type
     PedidosNFItensUM: TStringField;
     PedidosNFItensQuantidade: TBCDField;
     PedidosNFItensValor_Unitario: TBCDField;
-    PedidosNFItensValor_Produtos: TBCDField;
     cEmpresa: TUniDBLookupComboBox;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
@@ -263,7 +262,7 @@ begin
       with PedidosNF do begin
            try
                LigaBotoes(false);
-               PanelDados1.Enabled := true;
+               //PanelDados1.Enabled := true;
                Append;
                     FieldByName('Empresa').Value := UniMainModule.mEmpresaAtiva;
                cOperacao.SetFocus;
@@ -434,7 +433,7 @@ begin
               LigaBotoes(true);
               Alerta.Text := 'Registro salvo no banco de dados!';
               Alerta.Execute;
-              PanelDados1.Enabled := false;
+              //PanelDados1.Enabled := false;
           except on E: Exception do
               MessageDlgN('Falha desconhecida, não pode salvar o registro corrente!'+#13+E.Message, mtError, []);
           end;
@@ -506,7 +505,7 @@ begin
                    LigaBotoes(true);
                    Alerta.Text := 'Registro salvo no banco de dados!';
                    Alerta.Execute;
-                   PanelDados1.Enabled := false;
+                   //PanelDados1.Enabled := false;
               end;
           except on E: Exception do
               MessageDlgN('Falha desconhecida, não pode salvar o registro corrente!'+#13+E.Message, mtError, []);
@@ -532,7 +531,7 @@ procedure TfFatPedidoNF.bCancelarClick(Sender: TObject);
 begin
       PedidosNF.Cancel;
       LigaBotoes(true);
-      PanelDados1.Enabled := false;
+      //PanelDados1.Enabled := false;
 end;
 
 procedure TfFatPedidoNF.bCancItensClick(Sender: TObject);
@@ -556,7 +555,7 @@ begin
      try
          LigaBotoes(false);
          PedidosNF.Edit;
-         PanelDados1.Enabled := true;
+         //PanelDados1.Enabled := true;
          cOperacao.setfocus;
      except
         MessageDlgN('Falha desconhecida, não pode editar o "Pedido" !', mtError, []);
@@ -618,6 +617,8 @@ begin
      bGravar.Enabled     := not Estado;
      BarraItens.Enabled  := Barraitens.Visible;
      if not Estado then Pasta.ActivePageIndex := 1;
+     //ContainerReadOnly(PanelDados1, Estado);
+     AtivaPanel(PanelDados1, Estado);
 end;
 
 procedure TfFatPedidoNF.LigaBotoesItens(Estado:boolean);

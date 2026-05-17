@@ -1,11 +1,12 @@
 object fComexPOImportar: TfComexPOImportar
   Left = 0
   Top = 0
-  ClientHeight = 688
+  ClientHeight = 685
   ClientWidth = 1116
   Caption = ''
   BorderStyle = bsDialog
   OldCreateOrder = False
+  OnActivate = UniFormActivate
   MonitoredKeys.Keys = <>
   Font.Name = 'MS Sans Serif'
   OnDestroy = uniFrameDestroy
@@ -14,7 +15,7 @@ object fComexPOImportar: TfComexPOImportar
   object Panel1: TUniPanel
     AlignWithMargins = True
     Left = 3
-    Top = 650
+    Top = 647
     Width = 1110
     Height = 35
     Hint = ''
@@ -26,7 +27,6 @@ object fComexPOImportar: TfComexPOImportar
         '= '#39'Pasta'#39';'#13#10'}')
     BorderStyle = ubsInset
     Caption = ''
-    ExplicitTop = 596
     object Progresso: TUniProgressBar
       Left = 8
       Top = 6
@@ -82,381 +82,462 @@ object fComexPOImportar: TfComexPOImportar
     Left = 3
     Top = 3
     Width = 1110
-    Height = 641
+    Height = 638
     Hint = ''
     ActivePage = TabSheet2
     Align = alClient
-    ClientEvents.UniEvents.Strings = (
-      
-        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-        '= '#39'Ficha'#39';'#13#10'}')
     TabOrder = 1
-    ExplicitHeight = 587
     object TabSheet2: TUniTabSheet
       Hint = ''
       ImageIndex = 1
       Caption = 'Produtos'
-      ExplicitHeight = 559
-      object cLinhaIniCli: TUniSpinEdit
-        Left = 14
-        Top = 40
-        Width = 140
-        Height = 25
+      ClientEvents.UniEvents.Strings = (
+        
+          'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+          's = '#39'FichaSSombra'#39';'#13#10'}')
+      object UniPanel1: TUniPanel
+        AlignWithMargins = True
+        Left = 3
+        Top = 3
+        Width = 1096
+        Height = 93
         Hint = ''
-        Value = 2
-        MaxValue = 10000
-        MinValue = 1
+        Align = alTop
         TabOrder = 0
-        Alignment = taRightJustify
-        ParentFont = False
-        Font.Style = [fsBold]
-        FieldLabel = 'Linha Inicial'
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
+        BorderStyle = ubsInset
+        ShowCaption = False
+        Caption = 'UniPanel1'
+        object cArqProd: TUniEdit
+          Left = 5
+          Top = 6
+          Width = 809
+          Height = 25
+          Hint = ''
+          BorderStyle = ubsInset
+          Text = ''
+          TabOrder = 1
+          FieldLabel = 'Arquivo'
+          FieldLabelWidth = 70
+          FieldLabelSeparator = ' '
+          OnChangeValue = cArqProdChangeValue
+        end
+        object bArqProd: TUniFileUploadButton
+          Left = 816
+          Top = 6
+          Width = 25
+          Height = 25
+          Hint = ''
+          Caption = ''
+          Filter = 
+            'Planilha do Microsoft Excel (xlsx)|*.xlsx|Planilha do Microsoft ' +
+            'Excel (xls)|*.xls'
+          Images = UniMainModule.imgBotoes
+          ImageIndex = 9
+          Messages.Uploading = 'Fazendo upload...'
+          Messages.PleaseWait = 'Por favor, aguarde'
+          Messages.UploadError = 'Erro ao carregar'
+          Messages.UploadTimeout = 'Tempo limite...'
+          Messages.MaxSizeError = 'O arquivo '#233' maior que o tamanho m'#225'ximo permitido.'
+          Messages.MaxFilesError = 'Voc'#234' pode enviar no m'#225'ximo %d arquivos.'
+          ShowUploadingMsg = False
+          OnCompleted = bArqProdCompleted
+        end
+        object cLinhaIniCli: TUniSpinEdit
+          Left = 5
+          Top = 33
+          Width = 140
+          Height = 25
+          Hint = ''
+          Value = 2
+          MaxValue = 10000
+          MinValue = 1
+          TabOrder = 3
+          Alignment = taRightJustify
+          ParentFont = False
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          FieldLabel = 'Linha Inicial'
+          FieldLabelWidth = 70
+          FieldLabelSeparator = ' '
+        end
+        object cApagarCli: TUniCheckBox
+          Left = 188
+          Top = 39
+          Width = 147
+          Height = 17
+          Hint = ''
+          Caption = 'Apagar os itens existentes.'
+          TabOrder = 4
+          OnClick = cApagarCliClick
+        end
+        object cCodigo: TUniCheckBox
+          Left = 188
+          Top = 62
+          Width = 213
+          Height = 17
+          Hint = ''
+          Visible = False
+          Checked = True
+          Caption = 'Utilizar c'#243'digo dos cadastros da planilha.'
+          TabOrder = 5
+        end
+        object cLinhaFimCli: TUniSpinEdit
+          Left = 5
+          Top = 60
+          Width = 140
+          Height = 25
+          Hint = ''
+          Value = 2
+          MaxValue = 10000
+          MinValue = 1
+          TabOrder = 6
+          Alignment = taRightJustify
+          ParentFont = False
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          FieldLabel = 'Linha Final'
+          FieldLabelWidth = 70
+          FieldLabelSeparator = ' '
+        end
       end
-      object cLinhaFimCli: TUniSpinEdit
-        Left = 14
-        Top = 67
-        Width = 140
-        Height = 25
-        Hint = ''
-        Value = 2
-        MaxValue = 10000
-        MinValue = 1
-        TabOrder = 2
-        Alignment = taRightJustify
-        ParentFont = False
-        Font.Style = [fsBold]
-        FieldLabel = 'Linha Final'
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-      end
-      object bArqProd: TUniFileUploadButton
-        Left = 820
-        Top = 13
-        Width = 25
-        Height = 25
-        Hint = ''
-        Caption = ''
-        Filter = 
-          'Planilha do Microsoft Excel (xlsx)|*.xlsx|Planilha do Microsoft ' +
-          'Excel (xls)|*.xls'
-        Images = UniMainModule.imgBotoes
-        ImageIndex = 9
-        Messages.Uploading = 'Fazendo upload...'
-        Messages.PleaseWait = 'Por favor, aguarde'
-        Messages.UploadError = 'Erro ao carregar'
-        Messages.UploadTimeout = 'Tempo limite...'
-        Messages.MaxSizeError = 'O arquivo '#233' maior que o tamanho m'#225'ximo permitido.'
-        Messages.MaxFilesError = 'Voc'#234' pode enviar no m'#225'ximo %d arquivos.'
-        ShowUploadingMsg = False
-        OnCompleted = bArqProdCompleted
-      end
-      object cApagarCli: TUniCheckBox
-        Left = 205
-        Top = 47
-        Width = 147
-        Height = 17
-        Hint = ''
-        Caption = 'Apagar os itens existentes.'
-        TabOrder = 4
-        OnClick = cApagarCliClick
-      end
-      object Grade: TUniStringGrid
+      object UniPanel2: TUniPanel
         AlignWithMargins = True
         Left = 3
-        Top = 164
+        Top = 102
         Width = 1096
-        Height = 162
+        Height = 505
         Hint = ''
-        ClientEvents.ExtEvents.Strings = (
-          
-            'cellcontextmenu=function cellcontextmenu(sender, td, cellIndex, ' +
-            'record, tr, rowIndex, e, eOpts)'#13#10'{'#13#10'  e.preventDefault();'#13#10'}')
-        FixedCols = 0
-        FixedRows = 2
-        RowCount = 3
-        ColCount = 2
-        DefaultColWidth = 120
-        DefaultRowHeight = 18
-        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSizing, goColSizing, goAlwaysShowEditor, goThumbTracking]
-        Columns = <>
-        OnMouseDown = GradeMouseDown
+        Align = alClient
+        TabOrder = 1
         BorderStyle = ubsInset
-        Align = alBottom
-        TabOrder = 7
-        ParentFont = False
-        Font.Height = -12
-        Font.Name = 'Calibri'
-        ExplicitTop = 173
-      end
-      object cCodigo: TUniCheckBox
-        Left = 205
-        Top = 70
-        Width = 213
-        Height = 17
-        Hint = ''
-        Visible = False
-        Checked = True
-        Caption = 'Utilizar c'#243'digo dos cadastros da planilha.'
-        TabOrder = 3
-      end
-      object cMsg: TUniMemo
-        AlignWithMargins = True
-        Left = 3
-        Top = 458
-        Width = 1096
-        Height = 155
-        Hint = ''
-        Margins.Bottom = 0
-        BorderStyle = ubsInset
-        Lines.Strings = (
-          'cMsg')
-        ParentFont = False
-        Font.Name = 'Courier New'
-        Align = alBottom
-        TabOrder = 5
-        ExplicitTop = 404
-      end
-      object DBGrid1: TUniDBGrid
-        AlignWithMargins = True
-        Left = 3
-        Top = 332
-        Width = 1096
-        Height = 120
-        Hint = ''
-        TitleFont.Name = 'MS Sans Serif'
-        DataSource = dstNCM
-        Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
-        ReadOnly = True
-        WebOptions.Paged = False
-        LoadMask.Message = 'Loading data...'
-        BorderStyle = ubsInset
-        Align = alBottom
-        TabOrder = 6
-        Columns = <
-          item
-            FieldName = 'NCM'
-            Title.Alignment = taCenter
-            Title.Caption = 'NCM'
-            Title.Font.Height = -13
-            Title.Font.Name = 'Calibri'
-            Title.Font.Style = [fsBold]
-            Width = 70
-            Font.Height = -13
+        Caption = 'UniPanel2'
+        object Grade: TUniStringGrid
+          AlignWithMargins = True
+          Left = 4
+          Top = 4
+          Width = 859
+          Height = 264
+          Hint = ''
+          ClientEvents.ExtEvents.Strings = (
+            
+              'cellcontextmenu=function cellcontextmenu(sender, td, cellIndex, ' +
+              'record, tr, rowIndex, e, eOpts)'#13#10'{'#13#10'  e.preventDefault();'#13#10'}')
+          FixedCols = 0
+          FixedRows = 2
+          RowCount = 3
+          ColCount = 2
+          DefaultColWidth = 120
+          DefaultRowHeight = 18
+          Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSizing, goColSizing, goAlwaysShowEditor, goThumbTracking]
+          Columns = <>
+          BorderStyle = ubsFrameRaised
+          Align = alClient
+          TabOrder = 1
+          ParentFont = False
+          Font.Height = -13
+          Font.Name = 'Calibri'
+          Font.Style = [fsBold]
+        end
+        object UniPanel3: TUniPanel
+          AlignWithMargins = True
+          Left = 869
+          Top = 4
+          Width = 223
+          Height = 264
+          Hint = ''
+          Align = alRight
+          TabOrder = 2
+          BorderStyle = ubsInset
+          ShowCaption = False
+          Caption = 'UniPanel3'
+          object cCampos: TUniListBox
+            AlignWithMargins = True
+            Left = 4
+            Top = 4
+            Width = 215
+            Height = 218
+            Hint = ''
+            Align = alClient
+            TabOrder = 1
+            ParentFont = False
+            Font.Height = -12
             Font.Name = 'Calibri'
-            ReadOnly = True
+            Sorted = True
+            MultiSelect = True
+            BorderStyle = ubsFrameRaised
+            FieldLabel = 'Campos da tabela'
+            FieldLabelAlign = laTop
+            OnDblClick = cCamposDblClick
           end
-          item
-            FieldName = 'Texto'
-            Title.Alignment = taCenter
-            Title.Caption = 'Texto'
-            Title.Font.Height = -13
-            Title.Font.Name = 'Calibri'
-            Title.Font.Style = [fsBold]
-            Width = 476
-            Font.Height = -13
-            Font.Name = 'Calibri'
-            ReadOnly = True
+          object UniPanel4: TUniPanel
+            AlignWithMargins = True
+            Left = 4
+            Top = 228
+            Width = 215
+            Height = 32
+            Hint = ''
+            Align = alBottom
+            TabOrder = 2
+            BorderStyle = ubsInset
+            ShowCaption = False
+            Caption = 'UniPanel4'
+            object bAdicionar: TUniSpeedButton
+              Left = 154
+              Top = 1
+              Width = 30
+              Height = 30
+              Hint = 'Adicionar novo registro.'
+              Caption = ''
+              Align = alRight
+              ParentColor = False
+              IconAlign = iaCenter
+              Images = UniMainModule.imgBotoes
+              ImageIndex = 0
+              TabOrder = 1
+              OnClick = bAdicionarClick
+            end
+            object bExcluir: TUniSpeedButton
+              Left = 184
+              Top = 1
+              Width = 30
+              Height = 30
+              Hint = 'Excluir reegistro corrente.'
+              Caption = ''
+              Align = alRight
+              ParentColor = False
+              IconAlign = iaCenter
+              Images = UniMainModule.imgBotoes
+              ImageIndex = 2
+              TabOrder = 2
+              OnClick = bExcluirClick
+            end
           end
-          item
-            FieldName = 'UM'
-            Title.Alignment = taCenter
-            Title.Caption = 'UM'
-            Title.Font.Height = -13
-            Title.Font.Name = 'Calibri'
-            Title.Font.Style = [fsBold]
-            Width = 40
-            Font.Height = -13
-            Font.Name = 'Calibri'
-            Alignment = taCenter
-            ReadOnly = True
-          end
-          item
-            FieldName = 'ICMS'
-            Title.Alignment = taCenter
-            Title.Caption = 'ICMS'
-            Title.Font.Height = -13
-            Title.Font.Name = 'Calibri'
-            Title.Font.Style = [fsBold]
-            Width = 100
-            Font.Height = -13
-            Font.Name = 'Calibri'
-            ReadOnly = True
-          end
-          item
-            FieldName = 'IPI'
-            Title.Alignment = taCenter
-            Title.Caption = 'IPI'
-            Title.Font.Height = -13
-            Title.Font.Name = 'Calibri'
-            Title.Font.Style = [fsBold]
-            Width = 45
-            Font.Height = -13
-            Font.Name = 'Calibri'
-            ReadOnly = True
-          end
-          item
-            FieldName = 'II'
-            Title.Alignment = taCenter
-            Title.Caption = 'II'
-            Title.Font.Height = -13
-            Title.Font.Name = 'Calibri'
-            Title.Font.Style = [fsBold]
-            Width = 45
-            Font.Height = -13
-            Font.Name = 'Calibri'
-            ReadOnly = True
-          end
-          item
-            FieldName = 'PIS'
-            Title.Alignment = taCenter
-            Title.Caption = 'PIS'
-            Title.Font.Height = -13
-            Title.Font.Name = 'Calibri'
-            Title.Font.Style = [fsBold]
-            Width = 45
-            Font.Height = -13
-            Font.Name = 'Calibri'
-            ReadOnly = True
-          end
-          item
-            FieldName = 'COFINS'
-            Title.Alignment = taCenter
-            Title.Caption = 'COFINS'
-            Title.Font.Height = -13
-            Title.Font.Name = 'Calibri'
-            Title.Font.Style = [fsBold]
-            Width = 45
-            Font.Height = -13
-            Font.Name = 'Calibri'
-            ReadOnly = True
-          end
-          item
-            FieldName = 'CEST'
-            Title.Alignment = taCenter
-            Title.Caption = 'CEST'
-            Title.Font.Height = -13
-            Title.Font.Name = 'Calibri'
-            Title.Font.Style = [fsBold]
-            Width = 28
-            Font.Height = -13
-            Font.Name = 'Webdings'
-            Font.Style = [fsBold]
-            Alignment = taCenter
-            ReadOnly = True
-          end
-          item
-            FieldName = 'EX'
-            Title.Alignment = taCenter
-            Title.Caption = 'EX'
-            Title.Font.Height = -13
-            Title.Font.Name = 'Calibri'
-            Title.Font.Style = [fsBold]
-            Width = 28
-            Font.Height = -13
-            Font.Name = 'Webdings'
-            Font.Style = [fsBold]
-            Alignment = taCenter
-            ReadOnly = True
-          end
-          item
-            FieldName = 'AntD'
-            Title.Alignment = taCenter
-            Title.Caption = 'Dmp'
-            Title.Font.Height = -13
-            Title.Font.Name = 'Calibri'
-            Title.Font.Style = [fsBold]
-            Width = 28
-            Font.Height = -13
-            Font.Name = 'Webdings'
-            Font.Style = [fsBold]
-            Alignment = taCenter
-            ReadOnly = True
-          end
-          item
-            FieldName = 'NVE'
-            Title.Alignment = taCenter
-            Title.Caption = 'NVE'
-            Title.Font.Height = -13
-            Title.Font.Name = 'Calibri'
-            Title.Font.Style = [fsBold]
-            Width = 28
-            Font.Height = -13
-            Font.Name = 'Webdings'
-            Font.Style = [fsBold]
-            Alignment = taCenter
-            ReadOnly = True
-          end
-          item
-            FieldName = 'CIDE'
-            Title.Alignment = taCenter
-            Title.Caption = 'CIDE'
-            Title.Font.Height = -13
-            Title.Font.Name = 'Calibri'
-            Title.Font.Style = [fsBold]
-            Width = 28
-            Font.Height = -13
-            Font.Name = 'Webdings'
-            Font.Style = [fsBold]
-            Alignment = taCenter
-            ReadOnly = True
-          end
-          item
-            FieldName = 'LI'
-            Title.Alignment = taCenter
-            Title.Caption = 'LI'
-            Title.Font.Name = 'MS Sans Serif'
-            Title.Font.Style = [fsBold]
-            Width = 28
-            Font.Height = -13
-            Font.Name = 'Webdings'
-            Font.Style = [fsBold]
-            Alignment = taCenter
-            ReadOnly = True
-          end>
-      end
-      object cArqProd: TUniEdit
-        Left = 14
-        Top = 13
-        Width = 805
-        Height = 25
-        Hint = ''
-        BorderStyle = ubsInset
-        Text = ''
-        TabOrder = 8
-        FieldLabel = 'Arquivo'
-        FieldLabelWidth = 70
-        FieldLabelSeparator = ' '
-        OnChangeValue = cArqProdChangeValue
-      end
-      object btnImportar: TUniButton
-        Left = 883
-        Top = 62
-        Width = 80
-        Height = 30
-        Hint = ''
-        Caption = 'btnImportar'
-        TabOrder = 9
-        OnClick = btnImportarClick
-      end
-      object cCampos: TUniComboBox
-        Left = 3
-        Top = 120
-        Width = 289
-        Hint = ''
-        Text = 'cCampos'
-        TabOrder = 10
-        IconItems = <>
+        end
+        object DBGrid1: TUniDBGrid
+          AlignWithMargins = True
+          Left = 4
+          Top = 274
+          Width = 1088
+          Height = 133
+          Hint = ''
+          TitleFont.Name = 'MS Sans Serif'
+          DataSource = dstNCM
+          Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
+          ReadOnly = True
+          WebOptions.Paged = False
+          LoadMask.Message = 'Loading data...'
+          BorderStyle = ubsFrameRaised
+          Align = alBottom
+          TabOrder = 3
+          Columns = <
+            item
+              FieldName = 'NCM'
+              Title.Alignment = taCenter
+              Title.Caption = 'NCM'
+              Title.Font.Height = -13
+              Title.Font.Name = 'Calibri'
+              Title.Font.Style = [fsBold]
+              Width = 70
+              Font.Height = -13
+              Font.Name = 'Calibri'
+              ReadOnly = True
+            end
+            item
+              FieldName = 'Texto'
+              Title.Alignment = taCenter
+              Title.Caption = 'Texto'
+              Title.Font.Height = -13
+              Title.Font.Name = 'Calibri'
+              Title.Font.Style = [fsBold]
+              Width = 476
+              Font.Height = -13
+              Font.Name = 'Calibri'
+              ReadOnly = True
+            end
+            item
+              FieldName = 'UM'
+              Title.Alignment = taCenter
+              Title.Caption = 'UM'
+              Title.Font.Height = -13
+              Title.Font.Name = 'Calibri'
+              Title.Font.Style = [fsBold]
+              Width = 40
+              Font.Height = -13
+              Font.Name = 'Calibri'
+              Alignment = taCenter
+              ReadOnly = True
+            end
+            item
+              FieldName = 'ICMS'
+              Title.Alignment = taCenter
+              Title.Caption = 'ICMS'
+              Title.Font.Height = -13
+              Title.Font.Name = 'Calibri'
+              Title.Font.Style = [fsBold]
+              Width = 100
+              Font.Height = -13
+              Font.Name = 'Calibri'
+              ReadOnly = True
+            end
+            item
+              FieldName = 'IPI'
+              Title.Alignment = taCenter
+              Title.Caption = 'IPI'
+              Title.Font.Height = -13
+              Title.Font.Name = 'Calibri'
+              Title.Font.Style = [fsBold]
+              Width = 45
+              Font.Height = -13
+              Font.Name = 'Calibri'
+              ReadOnly = True
+            end
+            item
+              FieldName = 'II'
+              Title.Alignment = taCenter
+              Title.Caption = 'II'
+              Title.Font.Height = -13
+              Title.Font.Name = 'Calibri'
+              Title.Font.Style = [fsBold]
+              Width = 45
+              Font.Height = -13
+              Font.Name = 'Calibri'
+              ReadOnly = True
+            end
+            item
+              FieldName = 'PIS'
+              Title.Alignment = taCenter
+              Title.Caption = 'PIS'
+              Title.Font.Height = -13
+              Title.Font.Name = 'Calibri'
+              Title.Font.Style = [fsBold]
+              Width = 45
+              Font.Height = -13
+              Font.Name = 'Calibri'
+              ReadOnly = True
+            end
+            item
+              FieldName = 'COFINS'
+              Title.Alignment = taCenter
+              Title.Caption = 'COFINS'
+              Title.Font.Height = -13
+              Title.Font.Name = 'Calibri'
+              Title.Font.Style = [fsBold]
+              Width = 45
+              Font.Height = -13
+              Font.Name = 'Calibri'
+              ReadOnly = True
+            end
+            item
+              FieldName = 'CEST'
+              Title.Alignment = taCenter
+              Title.Caption = 'CEST'
+              Title.Font.Height = -13
+              Title.Font.Name = 'Calibri'
+              Title.Font.Style = [fsBold]
+              Width = 28
+              Font.Height = -13
+              Font.Name = 'Webdings'
+              Font.Style = [fsBold]
+              Alignment = taCenter
+              ReadOnly = True
+            end
+            item
+              FieldName = 'EX'
+              Title.Alignment = taCenter
+              Title.Caption = 'EX'
+              Title.Font.Height = -13
+              Title.Font.Name = 'Calibri'
+              Title.Font.Style = [fsBold]
+              Width = 28
+              Font.Height = -13
+              Font.Name = 'Webdings'
+              Font.Style = [fsBold]
+              Alignment = taCenter
+              ReadOnly = True
+            end
+            item
+              FieldName = 'AntD'
+              Title.Alignment = taCenter
+              Title.Caption = 'Dmp'
+              Title.Font.Height = -13
+              Title.Font.Name = 'Calibri'
+              Title.Font.Style = [fsBold]
+              Width = 28
+              Font.Height = -13
+              Font.Name = 'Webdings'
+              Font.Style = [fsBold]
+              Alignment = taCenter
+              ReadOnly = True
+            end
+            item
+              FieldName = 'NVE'
+              Title.Alignment = taCenter
+              Title.Caption = 'NVE'
+              Title.Font.Height = -13
+              Title.Font.Name = 'Calibri'
+              Title.Font.Style = [fsBold]
+              Width = 28
+              Font.Height = -13
+              Font.Name = 'Webdings'
+              Font.Style = [fsBold]
+              Alignment = taCenter
+              ReadOnly = True
+            end
+            item
+              FieldName = 'CIDE'
+              Title.Alignment = taCenter
+              Title.Caption = 'CIDE'
+              Title.Font.Height = -13
+              Title.Font.Name = 'Calibri'
+              Title.Font.Style = [fsBold]
+              Width = 28
+              Font.Height = -13
+              Font.Name = 'Webdings'
+              Font.Style = [fsBold]
+              Alignment = taCenter
+              ReadOnly = True
+            end
+            item
+              FieldName = 'LI'
+              Title.Alignment = taCenter
+              Title.Caption = 'LI'
+              Title.Font.Name = 'MS Sans Serif'
+              Title.Font.Style = [fsBold]
+              Width = 28
+              Font.Height = -13
+              Font.Name = 'Webdings'
+              Font.Style = [fsBold]
+              Alignment = taCenter
+              ReadOnly = True
+            end>
+        end
+        object cLog: TUniMemo
+          AlignWithMargins = True
+          Left = 4
+          Top = 413
+          Width = 1088
+          Height = 88
+          Hint = ''
+          BorderStyle = ubsInset
+          Lines.Strings = (
+            'cLog')
+          ParentFont = False
+          Font.Name = 'Courier New'
+          Align = alBottom
+          TabOrder = 4
+        end
       end
     end
     object TabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Purchase Order (PO)'
-      ExplicitHeight = 559
+      ClientEvents.UniEvents.Strings = (
+        
+          'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
+          ' '#39'FichaSSombra'#39';'#13#10'}')
       DesignSize = (
         1102
-        613)
+        610)
       object cLinhaIniPO: TUniSpinEdit
         Left = 14
         Top = 40
@@ -493,7 +574,7 @@ object fComexPOImportar: TfComexPOImportar
       object GradePO: TUniDBGrid
         AlignWithMargins = True
         Left = 3
-        Top = 164
+        Top = 161
         Width = 1096
         Height = 449
         Hint = ''
@@ -629,7 +710,6 @@ object fComexPOImportar: TfComexPOImportar
         Caption = '&Importar'
         Anchors = [akTop, akRight]
         TabOrder = 2
-        OnClick = bImportarPOClick
       end
       object cApagarPO: TUniCheckBox
         Left = 212
@@ -658,13 +738,16 @@ object fComexPOImportar: TfComexPOImportar
       Hint = ''
       ImageIndex = 2
       Caption = 'LOG'
-      ExplicitHeight = 559
+      ClientEvents.UniEvents.Strings = (
+        
+          'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
+          ' '#39'FichaSSombra'#39';'#13#10'}')
       object Memo1: TUniMemo
         AlignWithMargins = True
         Left = 3
         Top = 3
         Width = 1096
-        Height = 610
+        Height = 607
         Hint = ''
         Margins.Bottom = 0
         BorderStyle = ubsInset
@@ -673,7 +756,6 @@ object fComexPOImportar: TfComexPOImportar
         Font.Name = 'Courier New'
         Align = alClient
         TabOrder = 0
-        ExplicitHeight = 556
       end
     end
   end
@@ -1211,14 +1293,8 @@ object fComexPOImportar: TfComexPOImportar
     Left = 523
     Top = 214
   end
-  object MenuCampos: TUniPopupMenu
-    Alignment = paCenter
-    AutoPopup = False
-    OwnerDraw = True
-    Left = 780
-    Top = 77
-  end
   object LayImp: TFDQuery
+    Connection = UniMainModule.Conecta
     SQL.Strings = (
       'SELECT *'
       'FROM   LayoutImportacao')
@@ -1604,8 +1680,8 @@ object fComexPOImportar: TfComexPOImportar
     Enabled = True
     DisplayMessage = 'Abrindo planilha...Aguarde'
     TargetControl = Pasta
-    Left = 674
-    Top = 151
+    Left = 699
+    Top = 66
   end
   object UniFileUpload1: TUniFileUpload
     Title = 'Upload'
@@ -1621,7 +1697,7 @@ object fComexPOImportar: TfComexPOImportar
     Messages.MaxSizeError = 'File is bigger than maximum allowed size'
     Messages.MaxFilesError = 'You can upload maximum %d files.'
     OnCompleted = UniFileUpload1Completed
-    Left = 912
-    Top = 42
+    Left = 887
+    Top = 81
   end
 end
