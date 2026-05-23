@@ -47,10 +47,6 @@ object MainForm: TMainForm
         ScreenMask.Message = 'A G U A R D E . . .'
         ScreenMask.Target = pInicio
         ScreenMask.Color = clRed
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 256
-        ExplicitHeight = 128
         object ScrollPrincipal: TUniScrollBox
           Left = 0
           Top = 0
@@ -65,6 +61,7 @@ object MainForm: TMainForm
               '= '#39'PastaInterna'#39';'#13#10'}')
           TabOrder = 0
           ScrollDirection = sdVertical
+          ScrollHeight = 50
           object pAtalhos: TUniContainerPanel
             Left = 0
             Top = 0

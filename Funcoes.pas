@@ -4,7 +4,7 @@ interface
 
 uses
     SysUtils, Windows, FireDAC.Comp.Client, Dialogs, MaskUtils, System.Variants, DB, Forms, uniSpeedButton, uniPanel, UniPageControl, System.Classes, CalcExpress, UniGUIClasses,
-    uniGUIForm, uniGUIFrame, uniMemo, DBCommon, uniDBLookUpComboBox, uniDBComboBox, uniComboBox, uniDBDateTimePicker, uniDBEdit, uniEdit, uniGuiDialogs, TypInfo, 
+    uniGUIForm, uniGUIFrame, uniMemo, DBCommon, uniDBLookUpComboBox, uniDBComboBox, uniComboBox, uniDBDateTimePicker, uniDBEdit, uniEdit, uniGuiDialogs, TypInfo, Data.SqlTimSt,
     uniSweetAlert, FireDAC.Stan.Param, uniMainMenu, uniDBNavigator, uniButton, uniScrollBox, System.RegularExpressions, System.Rtti, uniStringGrid, DateUtils, ComObj, uniDBMemo;
 
 
@@ -48,6 +48,7 @@ function RemoveCaracterXML(Str:String): String;
 
 //Funções de Data.
 function NomeMes(Mes: Integer) :String;
+function SomaData(Data: TSQLTimeStamp; Dias: Integer): TSQLTimeStamp;
 
 // Funções / procedures de banco de dados.
 procedure LogDados(Tabela: TDataSet; Descricao, Estado: String);
@@ -3188,6 +3189,10 @@ begin
      end;
 end;
 
+function SomaData(Data: TSQLTimeStamp; Dias: Integer): TSQLTimeStamp;
+begin
+     Result := DateTimeToSQLTimeStamp(IncDay(SQLTimeStampToDateTime(Data), Dias));
+end;
 
 
 end.

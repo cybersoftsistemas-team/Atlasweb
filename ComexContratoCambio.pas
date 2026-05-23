@@ -7,9 +7,7 @@ uses
   uniDBCheckBox, uniSpeedButton, uniDBDateTimePicker, uniButton, uniBitBtn, uniDBNavigator, uniDBEdit, uniBasicGrid, uniGUIBaseClasses, uniMultiItem, 
   uniComboBox, UniGroupBox, FireDAC.Comp.Client, Funcoes, Data.DB, uniSweetAlert, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
   FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, uniCheckBox, uniGUIClasses, uniDateTimePicker,
-  uniDBComboBox, uniEdit,
-  PagarReceber.Dados, PagarReceber.Repository, PagarReceber.Service;
-  
+  uniDBComboBox, uniEdit, PagarReceber.Dados, PagarReceber.Repository, PagarReceber.Service,  Data.SqlTimSt;
 
 type
   TfComexContratoCambio = class(TuniFrame)
@@ -140,7 +138,6 @@ type
     PagarReceberBaixasForma_PgtoDoc: TStringField;
     PagarReceberBaixasObservacao: TMemoField;
     PagarReceberBaixasBanco_Conta: TStringField;
-    UniButton1: TUniButton;
     PagarReceberRegistro: TLargeintField;
     PagarReceberEmpresa: TStringField;
     PagarReceberAdiantamento: TBooleanField;
@@ -236,7 +233,6 @@ type
     PagarReceberValor_Pedido: TBCDField;
     cValor_ME: TUniDBFormattedNumberEdit;
     procedure UniFrameCreate(Sender: TObject);
-    procedure cDataExit(Sender: TObject);
     procedure cExportadorExit(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
@@ -250,12 +246,8 @@ type
     procedure cPesquisaKeyDown(Sender: TObject; var Key: Word;Shift: TShiftState);
     procedure ContratoCambioAfterPost(DataSet: TDataSet);
     procedure ContratoCambioBeforeDelete(DataSet: TDataSet);
-    procedure cPesquisarChange(Sender: TObject);
-    procedure cFiltroClick(Sender: TObject);
     procedure cPrevisaoClick(Sender: TObject);
     procedure BaixarPrevisao;
-    procedure ContratosAfterScroll(DataSet: TDataSet);
-    procedure UniButton1Click(Sender: TObject);
     procedure bAddItemClick(Sender: TObject);
     procedure bCancItemClick(Sender: TObject);
     procedure bAltItemClick(Sender: TObject);
@@ -263,6 +255,9 @@ type
     procedure bSalItemClick(Sender: TObject);
     procedure cValor_MEChangeValue(Sender: TObject);
     procedure cValor_MEChange(Sender: TObject);
+    procedure cDataChange(Sender: TObject);
+    procedure cDataChangeValue(Sender: TObject);
+    procedure ContratosAfterScroll(DataSet: TDataSet);
   private
     procedure SalvaFinanceiro(Tabela: TDataSet);
     procedure LigaBotoesItens(Estado: boolean);
@@ -279,20 +274,6 @@ implementation
 uses MainModule, Main;
 
 {$R *.dfm}
-
-procedure TfComexContratoCambio.UniButton1Click(Sender: TObject);
-var
-  Dados: TPagarReceberDados;
-begin
-     Dados := TPagarReceberService.GerarCambio(Contratos
-                                              ,PlanoContas
-                                              ,cValorFatReal.value
-                                              ,ContratosTotal_ME.value
-                                              ,ContratosTaxa_Cambial.value
-                                              ,UniMainModule.mEmpresaAtiva
-                                              ,Empresas.FieldByName('Numero_Filial').AsInteger);
-     TPagarReceberRepository.Inserir(PagarReceber, Dados);
-end;
 
 procedure TfComexContratoCambio.UniFrameCreate(Sender: TObject);
 var
@@ -329,7 +310,7 @@ begin
      end;
      with Bancos do begin
           sql.Clear;
-          sql.Add('select Codigo, Nome, Conta from Bancos WHERE(Desativado <> 1) order by Nome');
+          sql.Add('select Codigo, Nome, Conta from Bancos where Desativado <> 1 order by Nome');
           Open;
      end;
      with Recursos do begin
@@ -385,6 +366,7 @@ begin
           sql.clear;
           sql.add('select Processo');
           sql.add('      ,DUIMP');
+          sql.add('      ,Vencimento_Cambio');
           sql.add('from ProcessosImp');
           sql.add('where Desativado <> 1');
           sql.add('and Processo not in(select distinct Processo from ProcessosFechamento where Fechamento_Provisorio <> 1)');
@@ -410,189 +392,27 @@ begin
      LigaBotoesItens(true);
 end;
 
-{
-procedure TfComexContratoCambio.NavegaBeforeAction(Sender: TObject;Button: TNavigateBtn);
+procedure TfComexContratoCambio.cDataChange(Sender: TObject);
 begin
-
-      If (Button = nbPost) then begin
-              // Altera o numero do contrato no financeiro caso se alterado o número.
-              //If (ContratoCambio.State = dsEdit) and (ContratoCambioNumero.AsString <> mContrato) then begin
-                Close;
-                with ContratoCambioItens do begin
-                     sql.Clear;
-                     sql.Add('UPDATE ContratoCambioItens SET Contrato = :pContratoNovo where Contrato = :pContratoAntes');
-                     ParamByName('pContratoNovo').AsString  := ContratoCambioNumero.AsString;
-                     ParamByName('pContratoAntes').AsString := mContrato;
-                     Execute;
-                     sql.Clear;
-                     sql.Add('select * from ContratoCambioItens where Contrato = :pContrato');
-                     ParamByName('pContrato').AsString  := ContratoCambioNumero.AsString;
-                     Open;
-                end;
-                 
-                sql.Clear;
-                sql.Add('UPDATE PagarReceber SET Numero_Documento = :pContrato,');
-                sql.Add('                        Fiscal           = :pContrato,');
-                sql.Add('                        Data_Documento   = :pData,');
-                sql.Add('                        Data_Vencimento  = :pVencimento,');
-                sql.Add('                        Classificacao    = :pClassificacao,');
-                sql.Add('                        Centro_Custo     = :pCentro');
-                sql.Add('where Numero IN(select Financeiro_Lancamento from ContratoCambioItens where Contrato = :pContrato)');
-                ParamByName('pContrato').AsString      := ContratoCambioNumero.AsString;
-                ParamByName('pData').AsDate            := ContratoCambioData.AsDateTime;
-                ParamByName('pVencimento').AsDate      := ContratoCambioData_Vencimento.AsDateTime;
-                ParamByName('pClassificacao').AsString := ContratoCambioClassificacao.AsString;
-                ParamByName('pCentro').AsString        := ContratoCambioCentro_Custo.AsString;
-                Execute;
-                 
-                sql.Clear;
-                sql.Add('select * from PagarReceber WHERE(Data_Vencimento = :pData)');
-                ParamByName('pData').AsDate := Date;
-                Open;
-              //End;
-
-              // Altera a taxa cambial dos itens.
-             Close;
-             sql.Clear;
-             sql.Add('UPDATE ContratoCambioItens SET Taxa_Cambial = :pTaxa where Contrato = :pContrato');
-             ParamByName('pContrato').AsString := ContratoCambioNumero.AsString;
-             ParamByName('pTaxa').AsFloat      := ContratoCambioTaxa_Cambial.AsFloat;
-             Execute;
-              
-             sql.Clear;
-             sql.Add('select * from ContratoCambioItens where Contrato = :pContrato');
-             ParamByName('pContrato').AsString  := ContratoCambioNumero.AsString;
-             Open;
-
-              // Baixa os lançamentos financeiros de contratos de previsão.
-              If (mPrevisao = true) and (ContratoCambioPrevisao.AsBoolean = false) then begin
-                 BaixarPrevisao;
-              End;
-         End;
-      End;
-
-      // Deleta o lançamento do financeira caso exista.
-      If Button = nbDelete then begin
-         If MessageDlg('Isso irá apagar o contrato e o lançamento do financeira caso exista!'+#13+#13+'Deseja realmente excluir este "Contrato de Câmbio"', mtConfirmation, [mbYes, mbNo], 0) = mrYes then begin
-   begin
-                 // Verifica se o contrato e referente a empréstimo FINIMP e não deixa deletar.
-     with tFINIMP do begin
-                sql.Clear;
-     with //tFINIMP do begin
-                sql.Add('select COUNT(*) as Emprestimos from Emprestimos where Numero_Documento = :pNumero and Liquidado = 1');
-                sql.Add('select COUNT(*) as Emprestimos from Emprestimos where Numero_Documento = :pNumero');
-                ParamByName('pNumero').AsString := ContratoCambioNumero.AsString;
-                Open;
-     end;
-                 
-                 IfFieldByName('Emprestimos').AsInteger > 0 then begin
-                    MessageDlg('Erro !'+#13+#13+'Este contrato não pode ser excluído pois teve origem em "Empréstimo FINIMP" já liquídado.', mtError, [mbOK], 0);
-                    Abort; 
-                 End;
-
-                sql.Clear;
-                sql.Add('DELETE from PagarReceberBaixas where Numero IN(select Financeiro_Lancamento from ContratoCambioItens WHERE(Contrato = :pContrato))');
-                ParamByName('pContrato').AsString := ContratoCambioNumero.AsString;
-                Execute;
-                sql.Clear;
-                sql.Add('select * from PagarReceberBaixas WHERE(Data = :pData)');
-                ParamByName('pData').AsDate := Date;
-                Open;
-
-                sql.Clear;
-                sql.Add('DELETE from PagarReceber where Numero IN(select Financeiro_Lancamento from ContratoCambioItens WHERE(Contrato = :pContrato))');
-                ParamByName('pContrato').AsString := ContratoCambioNumero.AsString;
-                Execute;
-                sql.Clear;
-                sql.Add('select * from PagarReceber WHERE(Data_Vencimento = :pData)');
-                ParamByName('pData').AsDate := Date;
-                Open;
-
-                Close;
-                sql.Clear;
-                sql.Add('DELETE from ContratoCambioItens where Contrato = :pContrato');
-                ParamByName('pContrato').AsString := ContratoCambioNumero.AsString;
-                Execute;
-                sql.Clear;
-                sql.Add('select * from ContratoCambioItens where Contrato = :pContrato');
-                ParamByName('pContrato').AsString  := ContratoCambioNumero.AsString;
-                Open;
-            End;
-         end else begin
-            Abort;
-         End;
-      End;
+     if Contratos.State in[dsInsert, dsEdit] then 
+        ContratosData_Vencimento.Value := SomaData(ContratosData.Value, Processos.FieldByName('Vencimento_Cambio').AsInteger);
 end;
-}
 
-procedure TfComexContratoCambio.cDataExit(Sender: TObject);
+procedure TfComexContratoCambio.cDataChangeValue(Sender: TObject);
 begin
-(*
-     Dados.ContratoCambioData_Vencimento.Value := Dados.ContratoCambioData.AsDateTime + Dados.ProcessosDOCVencimento_Cambio.AsInteger;
-*)
+     if Contratos.State in[dsInsert, dsEdit] then 
+        ContratosData_Vencimento.Value := SomaData(ContratosData.Value, Processos.FieldByName('Vencimento_Cambio').AsInteger);
 end;
 
 procedure TfComexContratoCambio.cExportadorExit(Sender: TObject);
 begin
-(*
-     If Dados.ContratoCambio.State = dsInsert then
-        Dados.ContratoCambioBeneficiario.Value := Dados.ContratoCambioExportador.AsInteger
-     else
-        If Dados.ContratoCambioBeneficiario.AsInteger = 0 then
-           Dados.ContratoCambioBeneficiario.Value := Dados.ContratoCambioExportador.AsInteger;
-*)
-end;
-
-procedure TfComexContratoCambio.cPesquisarChange(Sender: TObject);
-begin
-(*
-   begin
-         sql.Clear;
-         sql.Add('select Numero from ContratoCambio where Numero LIKE '+QuotedStr('%'+cPesquisar.Text+'%'));
-         Open;
-
-          IfRecordCount > 0 then begin
-            Locate('Numero',FieldByName('Numero').AsString, [loCaseInsensitive]);
-          end else begin
-            sql.Clear;
-            sql.Add('select Contrato from ContratoCambioItens where Processo LIKE '+QuotedStr('%'+cPesquisar.Text+'%'));
-            Open;
-             
-             IfRecordCount > 0 then begin
-               Locate('Numero',FieldByName('Contrato').AsString, [loCaseInsensitive]);
-             End;
-          End;
-     End;
-*)
-end;
-
-procedure TfComexContratoCambio.cFiltroClick(Sender: TObject);
-//var
-//   mProc: string;
-begin
-(*
-   begin
-           mProc :=FieldByName('Processo').AsString;
-           with ContratoCambio do begin 
-                sql.Clear;
-                sql.add('select *');
-                sql.add('from ContratoCambio');
-                if trim(cPesquisar.Text) <> '' then begin
-                   if cFiltro.Checked = true then begin
-                      sql.Add('where Numero in(select Contrato from ContratoCambioItens where Processo = :pProcesso)');
-                      ParamByName('pProcesso').AsString := mProc;
-                   end;
-                end;
-                sql.add('order by Numero');
-                open;
-           end;
-      end;
-*)
-end;
-
-procedure TfComexContratoCambio.ContratosAfterScroll(DataSet: TDataSet);
-begin
-    mContrato := ContratosNumero.value;
+     if Contratos.State in[dsInsert, dsEdit] then begin
+        if Contratos.State = dsInsert then
+           ContratosBeneficiario.Value := ContratosExportador.AsInteger
+        else
+           if ContratosBeneficiario.AsInteger = 0 then
+              ContratosBeneficiario.Value := ContratosExportador.AsInteger;
+     end;
 end;
 
 procedure TfComexContratoCambio.cPrevisaoClick(Sender: TObject);
@@ -620,50 +440,49 @@ end;
 // Rotina de baixa de lançamentos financeiros de contratos de câmbio provisionados.
 procedure TfComexContratoCambio.BaixarPrevisao;
 begin
-{
-     with tTemp do begin
-          sql.clear;
-          sql.add('delete from PagarReceberBaixas where Numero in(select Financeiro_Lancamento from ContratoCambioItens where Contrato = :pContrato)');
-          parambyname('pContrato').value := mContrato;
-          execute;
-          sql.clear;
-     end;
-}     
-     with ContratosItens do begin
-          first;
-          tTemp.sql.clear;          
-          while not eof do begin
-                with PagarReceber do begin 
-                     sql.clear;
-                     sql.add('select Titulo, Data_Vencimento, Tipo, Valor_Total, Banco, Forma_Pgto, Forma_PgtoDoc from PagarReceber where Titulo = :pTitulo');
-                     parambyname('pTitulo').asinteger := ContratosItensFinanceiro_Lancamento.asinteger;
-                     open;
-                     if recordcount > 0 then begin
-                        tTemp.sql.add('insert into PagarReceberBaixas (Titulo, Data, Tipo, Valor, Banco, Forma_Pgto, Forma_PgtoDoc, Observacao, Banco_Conta) values');
-                        tTemp.sql.add('('+ PagarReceberTitulo.asstring+', '+
-                                        quotedstr(PagarReceberData_Vencimento.asstring)+', '+
-                                        quotedstr(PagarReceberTipo.AsString)+', '+
-                                        PagarReceberValor_Total.asstring +', '+
-                                        PagarReceberBanco.asstring +', '+
-                                        PagarReceberForma_Pgto.asstring +', '+
-                                        quotedstr(PagarReceberForma_PgtoDoc.asstring) +', '+
-                                        quotedstr('Baixa referente a Contrato de Câmbio nº '+ ContratosNumero.AsString)+', '+
-                                        Bancos.fieldbyname('Conta').asstring+')'
-                                      );
-                     end;
-                end;
-                // Grava o numero da baixa no titulo.
-                {
-                PagarReceber.Edit;
-                             PagarReceberBaixa_Numero.Value  := PagarReceberBaixasRegistro.Value;
-                             PagarReceberValor_Baixado.Value := PagarReceberBaixasValor.Value;
-                             PagarReceberBanco.Value         := PagarReceberBaixasBanco.Value;
-                PagarReceber.Post;
-                }
-                next;
-          end;
-//          tTemp.sql.text := copy(tTemp.sql.Text, 1, length(tTemp.sql.text)-1);
-          ttemp.sql.SaveToFile('c:\temp\insert_PagarReceberBaixas.sql');
+     ContratosItens.first;
+     while not ContratosItens.eof do begin
+           with tTemp do begin
+                sql.clear;
+                sql.add('delete from PagarReceberBaixas where Titulo = :pTitulo');
+                paramByName('pTitulo').asinteger := ContratosItensFinanceiro_Lancamento.asinteger;
+                execute;
+                
+                sql.Clear;
+                sql.Add('select Data_Vencimento');
+                sql.add('      ,Tipo');
+                sql.add('      ,Valor_Total');
+                sql.add('      ,Forma_Pgto');
+                sql.add('      ,Forma_PgtoDoc');
+                sql.add('from PagarReceber');
+                sql.add('where Titulo = :pTitulo');
+                parambyname('pTitulo').value := ContratosItensFinanceiro_Lancamento.AsInteger;
+                open;
+           end;
+           with PagarReceberBaixas do begin
+                Append;
+                     PagarReceberBaixasTitulo.Value        := ContratosItensFinanceiro_Lancamento.asinteger;
+                     PagarReceberBaixasBanco.Value         := ContratosBanco.Value;
+                     PagarReceberBaixasBanco_Conta.Value   := Bancos.fieldbyname('Conta').AsString;
+                     PagarReceberBaixasData.Value          := tTemp.fieldbyname('Data_Vencimento').Value;
+                     PagarReceberBaixasTipo.Value          := tTemp.fieldbyname('Tipo').AsString;
+                     PagarReceberBaixasValor.Value         := tTemp.fieldbyname('Valor_Total').AsCurrency;
+                     PagarReceberBaixasForma_Pgto.Value    := tTemp.fieldbyname('Forma_Pgto').Value;
+                     PagarReceberBaixasForma_PgtoDoc.Value := tTemp.fieldbyname('Forma_PgtoDoc').AsString;
+                     PagarReceberBaixasObservacao.Value    := 'Baixa referente a Contrato de Câmbio nº '+ ContratosNumero.AsString;
+                post;
+           end;
+           // Grava o numero da baixa no titulo.
+           with tTemp do begin
+                sql.clear;
+                sql.add('update PagarReceber set Baixa_Numero  = :pReg');
+                sql.add('                       ,Valor_Baixado = :pValor');
+                sql.add('                       ,Banco         = :pBanco');
+                parambyname('pReg').value   := PagarReceberBaixasRegistro.asinteger;
+                parambyname('pValor').value := PagarReceberBaixasValor.Value;
+                parambyname('pBanco').value := Bancos.fieldbyname('Conta').AsString;
+           end;
+           ContratosItens.Next;
      end;
 end;
 
@@ -755,11 +574,29 @@ procedure TfComexContratoCambio.bExcluirClick(Sender: TObject);
 begin
      with Contratos do begin
           if Contratos.recordcount > 0 then begin
-             MessageDlg('Deseja realmente excluir o contrato "'+ContratosNumero.asstring+'"'+#13+#13+FieldByName('Processo').AsString, mtConfirmation,mbYesNo,
+             MessageDlg('Isso irá apagar o contrato e o lançamento do financeira caso exista!'+#13+#13+'Deseja realmente excluir este "Contrato de Câmbio"', mtConfirmation, mbYesNo,
                        procedure(Comp:TComponent; ARes: Integer)
                        begin
-                             if ARes = mrYes then begin
-                                Delete;
+                             if aRes = mrYes then begin
+                                // Verifica se o contrato e referente a empréstimo FINIMP e não deixa deletar.
+                                with tTemp do begin
+                                     sql.clear;
+                                     sql.Add('select isnull(count(*), 0) as Qtde from Emprestimos where Numero_Documento = :pNumero');
+                                     ParamByName('pNumero').AsString := ContratosNumero.AsString;
+                                     Open;
+                                     if fieldbyname('Qtde').asinteger > 0 then begin
+                                        MessageDlg('Atenção!'+#13+#13+'Este contrato não pode ser excluído pois teve origem em "Empréstimo FINIMP".', mtInformation, [mbOK]);
+                                        Abort; 
+                                     end;
+
+                                     sql.clear;
+                                     sql.Add('delete from PagarReceberBaixas where Numero in(select Financeiro_Lancamento from ContratoCambioItens where Contrato = :pContrato)');
+                                     sql.Add('delete from PagarReceber       where Numero in(select Financeiro_Lancamento from ContratoCambioItens where Contrato = :pContrato)');
+                                     parambyname('pContrato').AsString := ContratosNumero.AsString;
+                                     execute;
+                                end;
+                             
+                                delete;
                                 Alerta.Text := 'Registro excluído do banco de dados!';
                                 Alerta.Execute;
                              end;
@@ -778,8 +615,8 @@ begin
         ContratosItens.post;
         Titulo := TPagarReceberService.GerarCambio(Contratos
                                                   ,PlanoContas
-                                                  ,cValorReal.value
-                                                  ,ContratosTotal_ME.value
+                                                  ,cValorFatReal.value
+                                                  ,cValor_ME.value
                                                   ,ContratosTaxa_Cambial.value
                                                   ,UniMainModule.mEmpresaAtiva
                                                   ,Empresas.FieldByName('Numero_Filial').AsInteger
@@ -993,6 +830,11 @@ begin
      LogDados(DataSet, DataSet.FieldByName('Numero').AsString, 'Delete');
 end;
 
+procedure TfComexContratoCambio.ContratosAfterScroll(DataSet: TDataSet);
+begin
+    mContrato := ContratosNumero.value;
+end;
+
 // Salva novo registro na tabela do financeiro.
 procedure TfComexContratoCambio.SalvaFinanceiro(Tabela: TDataSet);
 begin
@@ -1031,131 +873,8 @@ begin
                 Tabela.fieldbyname('Filial').Value           := Empresas.FieldByName('Numero_Filial').asinteger;
           post;
           close;
-{
-      CREATE TABLE [dbo].[PagarReceber](
-      [Registro] [bigint] IDENTITY(1,1) NOT NULL,
-      [Titulo] [bigint] NULL,
-      [Empresa] [varchar](14) NULL,
-      [Conta] [varchar](15) NULL,
-      [Tipo] [char](1) NULL,
-      [Adiantamento] [bit] NULL,
-      [Devolucao] [bit] NULL,
-      [Tributo] [bit] NULL,
-      [Centro_Custo] [varchar](10) NULL,
-      [Data_Previsao] [date] NULL,
-      [Data_Vencimento] [date] NULL,
-      [Valor_Documento] [decimal](18, 4) NULL,
-      [Valor_Parcela] [decimal](18, 4) NULL,
-      [Valor_Multa] [decimal](18, 4) NULL,
-      [Valor_Juros] [decimal](18, 4) NULL,
-      [Valor_Desconto] [decimal](18, 4) NULL,
-      [Valor_Total] [decimal](18, 4) NULL,
-      [Valor_Operacao] [decimal](18, 4) NULL,
-      [Codigo_Antigo] [varchar](15) NULL,
-      [Beneficiario] [smallint] NULL,
-      [Beneficiario_Banco] [varchar](30) NULL,
-      [Beneficiario_Agencia] [char](10) NULL,
-      [Beneficiario_Conta] [char](10) NULL,
-      [Banco] [smallint] NULL,
-      [Documento_Data] [date] NULL,
-      [Documento_Tipo] [varchar](10) NULL,
-      [Documento_Numero] [varchar](15) NULL,
-      [Forma_Pgto] [smallint] NULL,
-      [Forma_PgtoDoc] [varchar](15) NULL,
-      [Observacao] [text] NULL,
-      [Processo] [varchar](15) NULL,
-      [Processo_Tipo] [char](1) NULL,
-      [Origem] [char](2) NULL,
-      [Origem_Numero] [varchar](15) NULL,
-      [Modalidade_Pgto] [smallint] NULL,
-      [Solicitacao_Pgto] [int] NULL,
-      [Solicitacao_Numerario] [int] NULL,
-      [Parcela] [char](20) NULL,
-      [Transferencia] [bit] NULL,
-      [Valor_Baixado] [decimal](18, 4) NULL,
-      [Adiantamento_Numero] [int] NULL,
-      [Transferencia_Numero] [int] NULL,
-      [Transferencia_Banco] [smallint] NULL,
-      [Numero_Importado] [int] NULL,
-      [Nivel] [smallint] NULL,
-      [Desdobramento] [smallint] NULL,
-      [Provisorio] [bit] NULL,
-      [Boleto_Numero] [int] NULL,
-      [Desconto_Liquidacao] [decimal](18, 4) NULL,
-      [Emprestimo] [bit] NULL,
-      [Recuperavel] [bit] NULL,
-      [Vinculo] [int] NULL,
-      [Pago_Cliente] [bit] NULL,
-      [Custo_Entrada] [bit] NULL,
-      [Custo_Saida] [bit] NULL,
-      [Custo_Seletivo] [bit] NULL,
-      [Custo_Outros] [bit] NULL,
-      [Provisao_ContaD] [varchar](6) NULL,
-      [Provisao_ContaC] [varchar](6) NULL,
-      [Provisao_Historico] [smallint] NULL,
-      [Liquidacao_ContaD] [varchar](6) NULL,
-      [Liquidacao_ContaC] [varchar](6) NULL,
-      [Liquidacao_Historico] [smallint] NULL,
-      [Embarque] [int] NULL,
-      [Codigo_Barras] [varchar](50) NULL,
-      [Chave_PIX] [varchar](60) NULL,
-      [Lote] [int] NULL,
-      [Numero_Documento] [varchar](15) NULL,
-      [Permuta_Recebimento] [bit] NULL,
-      [Valor_ME] [decimal](18, 4) NULL,
-      [Filial] [smallint] NULL,
-      [Numero_FormaTipo] [varchar](15) NULL,
-      [Taxa_ME] [decimal](18, 4) NULL,
-      [Forma_Tipo] [varchar](25) NULL,
-      [Navio] [int] NULL
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-
-
-
-}
-
-          
-{          
-[PagarReceberBaixas](
-[Registro] [bigint] IDENTITY(1,1) NOT NULL,
-[Empresa] [varchar](14) NULL,
-[Titulo] [bigint] NULL,
-[Data] [date] NULL,
-[Tipo] [char](1) NULL,
-[Banco] [smallint] NULL,
-[Valor] [decimal](18, 4) NULL,
-[Valor_Multa] [decimal](18, 4) NULL,
-[Valor_Juros] [decimal](18, 4) NULL,
-[Valor_Desconto] [decimal](18, 4) NULL,
-[Forma_Pgto] [smallint] NULL,
-[Forma_PgtoDoc] [varchar](15) NULL,
-[Taxa_FechamentoCambio] [decimal](18, 4) NULL,
-[Taxa_Data] [datetime] NULL,
-[Numero_ContratoCambio] [varchar](15) NULL,
-[Origem_Multa] [char](1) NULL,
-[Origem_Juros] [char](1) NULL,
-[Origem_Desconto] [char](1) NULL,
-[Banco_Conta] [varchar](15) NULL,
-[Conciliado] [bit] NULL,
-[Observacao] [text] NULL,
-[Compensacao] [bit] NULL,
-[Compensacao_Numero] [smallint] NULL,
-[Lote] [int] NULL,
-[Bordero] [int] NULL,
-[Bordero_Data] [date] NULL
-}          
      end;
 end;
-
-
-
-
-
-
-
-
-
 
 
 

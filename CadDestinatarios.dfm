@@ -133,7 +133,7 @@ object fCadDestinatarios: TfCadDestinatarios
     Height = 966
     Hint = ''
     BodyRTL = False
-    ActivePage = UniTabSheet1
+    ActivePage = aLista
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       

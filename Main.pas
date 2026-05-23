@@ -52,8 +52,6 @@ type
     procedure UniFormBeforeShow(Sender: TObject);
     procedure UniFormCreate(Sender: TObject);
     procedure UniButton1Click(Sender: TObject);
-    procedure mnComexOrdemCompraClick(Sender: TObject);
-    procedure mnComexContratoCambioClick(Sender: TObject);
   private
     { Private declarations }
     procedure CriaAba(nFrame: TuniFrame; dFrame: string; Fechar: Boolean);
@@ -142,7 +140,8 @@ uses
  ,DUIMP
  ,ComexPO
  ,ComexPOImportar
- ,ComexContratoCambio;(*uses p/gerador*)
+ ,ComexContratoCambio
+ ,ComexInvoice;(*uses p/gerador*)
 
 function MainForm: TMainForm;
 begin
@@ -421,16 +420,6 @@ begin
      end;
 end;
                                                               
-procedure TMainForm.mnComexOrdemCompraClick(Sender: TObject);
-begin
-//     CriaAba(TFrame(TfComexPO),'Purchase Order (PO)', true);
-end;
-
-procedure TMainForm.mnComexContratoCambioClick(Sender: TObject);
-begin
-//     CriaAba(TFrame(TfComexContratoCambio),'Contratos de Câmbio', true);
-end;
-
 initialization
   RegisterAppFormClass(TMainForm);
 
@@ -500,10 +489,13 @@ initialization
   RegisterClass(TfComexPO);
   RegisterClass(TfComexPOImportar);
   RegisterClass(TfComexContratoCambio);
+  RegisterClass(TfComexInvoice);
   (*RegisterClass p/gerador*)
 
   
 end.
+
+
 
 
 

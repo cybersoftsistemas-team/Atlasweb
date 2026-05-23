@@ -126,16 +126,6 @@ object fComexContratoCambio: TfComexContratoCambio
       TabOrder = 7
       OnClick = bFecharClick
     end
-    object UniButton1: TUniButton
-      Left = 593
-      Top = 4
-      Width = 75
-      Height = 25
-      Hint = ''
-      Caption = 'UniButton1'
-      TabOrder = 8
-      OnClick = UniButton1Click
-    end
   end
   object Pasta: TUniPageControl
     Left = 0
@@ -143,14 +133,12 @@ object fComexContratoCambio: TfComexContratoCambio
     Width = 1206
     Height = 670
     Hint = ''
-    ActivePage = pDados
+    ActivePage = pLista
     Align = alClient
     TabOrder = 1
-    ExplicitHeight = 663
     object pLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitHeight = 635
       object Lista: TUniDBGrid
         Left = 0
         Top = 27
@@ -287,7 +275,6 @@ object fComexContratoCambio: TfComexContratoCambio
           Caption = ''
           Align = alLeft
           ParentColor = False
-          Color = clWindow
           IconAlign = iaCenter
           Images = UniMainModule.imgBotoes
           ImageIndex = 10
@@ -299,7 +286,6 @@ object fComexContratoCambio: TfComexContratoCambio
     object pDados: TUniTabSheet
       Hint = ''
       Caption = 'Contrato de C'#226'mbio'
-      ExplicitHeight = 635
       DesignSize = (
         1198
         642)
@@ -360,7 +346,6 @@ object fComexContratoCambio: TfComexContratoCambio
             BorderStyle = ubsInset
             ShowCaption = False
             Caption = 'UniPanel1'
-            ExplicitTop = 242
             object bExcItem: TUniSpeedButton
               Left = 239
               Top = 1
@@ -875,7 +860,8 @@ object fComexContratoCambio: TfComexContratoCambio
             FieldLabel = 'Data Contrato'
             FieldLabelWidth = 90
             FieldLabelSeparator = ' '
-            OnExit = cDataExit
+            OnChange = cDataChange
+            OnChangeValue = cDataChangeValue
           end
           object cBanco: TUniDBLookupComboBox
             Left = 8
@@ -1804,7 +1790,7 @@ object fComexContratoCambio: TfComexContratoCambio
       'from ContratoCambioItens'
       'where Empresa = :Empresa '
       'and Contrato = :Numero')
-    Left = 845
+    Left = 844
     Top = 97
     ParamData = <
       item
@@ -1944,7 +1930,7 @@ object fComexContratoCambio: TfComexContratoCambio
     SQL.Strings = (
       'select * from ContratoCambio')
     Left = 758
-    Top = 97
+    Top = 96
     object ContratosRegistro: TIntegerField
       FieldName = 'Registro'
       Origin = 'Registro'

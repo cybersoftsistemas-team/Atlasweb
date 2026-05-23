@@ -264,7 +264,6 @@ type
     UniDBCheckBox6: TUniDBCheckBox;
     UniDBCheckBox7: TUniDBCheckBox;
     UniDBCheckBox8: TUniDBCheckBox;
-    ProcessosImpRegistro: TFDAutoIncField;
     ProcessosImpEmpresa: TStringField;
     ProcessosImpProcesso: TStringField;
     ProcessosImpIncoterms: TStringField;
@@ -450,6 +449,9 @@ type
     EmpresasFechamento_Financeiro: TDateField;
     EmpresasEstado: TStringField;
     dsEmpresas: TDataSource;
+    ProcessosImpRegistro: TLargeintField;
+    ProcessosImpOrigem: TStringField;
+    ProcessosImpPais: TStringField;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);

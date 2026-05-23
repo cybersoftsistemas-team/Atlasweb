@@ -92,8 +92,8 @@ uses
   ComexContratoCambio in 'ComexContratoCambio.pas' {fComexContratoCambio: TUniFrame},
   PagarReceber.Dados in 'PagarReceber.Dados.pas',
   PagarReceber.Repository in 'PagarReceber.Repository.pas',
-  PagarReceber.Service in 'PagarReceber.Service.pas';
-
+  PagarReceber.Service in 'PagarReceber.Service.pas',
+  ComexInvoice in 'ComexInvoice.pas' {fComexInvoice: TUniFrame};
 (*uses p/gerador*)
 
 {$R *.res}
