@@ -29,7 +29,7 @@ implementation
 {$R *.dfm}
 
 uses
-  MainModule, uniGUIApplication;
+  MainModule, uniGUIApplication, Funcoes;
 
 function fDUIMP: TfDUIMP;
 begin

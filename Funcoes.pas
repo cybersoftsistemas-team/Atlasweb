@@ -52,7 +52,7 @@ function SomaData(Data: TSQLTimeStamp; Dias: Integer): TSQLTimeStamp;
 
 // Funções / procedures de banco de dados.
 procedure LogDados(Tabela: TDataSet; Descricao, Estado: String);
-procedure LogErros(Tabela, Descricao:String);
+procedure LogErros(Tabela, Operacao, Descricao:String);
 function GeraCodigo(Tabela, Campo:string):integer;
 function Existe(Tabela:TFDQuery;Campo,Codigo:string):boolean;
 function ExisteData(Tabela:TFDQuery;Campo:String; pData:TDate):boolean;
@@ -514,26 +514,24 @@ begin
 end;
 
 // Função para a geração do log de erros do sistema.
-procedure LogErros(Tabela, Descricao:String);
+procedure LogErros(Tabela, Operacao, Descricao:String);
 begin
       with uniMainModule, log do begin
            sql.Clear;
            sql.Add('select top 1 * from Log order by Data desc');
            open;
-           Append;
+           append;
                 FieldByName('Data').Value          := now;
-                FieldByName('Empresa').asString    := mEmpresaAtiva;
-                FieldByName('Funcao').Value        := 'INCLUSÃO';
-                FieldByName('Operacao').Value      := Descricao;
-                FieldByName('Funcao').Value        := 'OUTROS';
-                FieldByName('Operacao').Value      := Descricao;
                 FieldByName('Usuario').AsString    := Trim(Main.MainForm.lUser.Text);
                 FieldByName('Tabela').AsString     := Tabela;
-                FieldByName('IP_Cliente').Value    := Main.MainForm.UniApplication.RemoteAddress;
-                FieldByName('Modulo').Value        := Main.MainForm.PagePrincipal.ActivePage.Caption;
-                FieldByName('Sessao').Value        := Main.MainForm.UniSession.NewId.ToString;
+                FieldByName('Operacao').Value      := Operacao;
+                FieldByName('Descricao').Value     := Descricao;
                 FieldByName('Computador').AsString := NomeComputador;
-           Post;
+                FieldByName('Modulo').Value        := Main.MainForm.PagePrincipal.ActivePage.Caption;
+                FieldByName('IP_Cliente').Value    := Main.MainForm.UniApplication.RemoteAddress;
+                FieldByName('Sessao').Value        := Main.MainForm.UniSession.NewId.ToString;
+                FieldByName('Empresa').asString    := mEmpresaAtiva;
+           post;
            close;
       end;
 end;
@@ -922,7 +920,7 @@ begin
              end;
           except
              on E:Exception do begin
-                LogErros('PagarReceberBaixas', 'Falha desconhecida, não pode criar o lançamento contabil de '+pTipo+' !'+#13+E.Message);
+                LogErros('PagarReceberBaixas', 'INCLUSÃO', 'Falha desconhecida, não pode criar o lançamento contabil de '+pTipo+' !'+#13+E.Message);
              End;
           end;
      end;
@@ -3182,9 +3180,11 @@ var
 begin
      for i := 0 to Pred(aParent.ControlCount) do begin
          c := aParent.Controls[i];
-         // Altera apenas o ReadOnly
          if IsPublishedProp(c, 'ReadOnly') then SetOrdProp(c, 'ReadOnly', Ord(aValue));
-         // Percorre containers filhos
+         // Corrige o LookupCombo ao voltar edição
+         if (c is TUniDBLookupComboBox) and (not aValue) then begin
+            TUniDBLookupComboBox(c).JSInterface.JSCall('setEditable',[True]);
+         end;
          if c is TUniControl then AtivaPanel(TUniControl(c), aValue);
      end;
 end;

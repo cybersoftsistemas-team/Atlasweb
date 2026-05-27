@@ -61,7 +61,8 @@ object MainForm: TMainForm
               '= '#39'PastaInterna'#39';'#13#10'}')
           TabOrder = 0
           ScrollDirection = sdVertical
-          ScrollHeight = 50
+          ScrollHeight = 140
+          ScrollWidth = 135
           object pAtalhos: TUniContainerPanel
             Left = 0
             Top = 0
@@ -79,7 +80,6 @@ object MainForm: TMainForm
             Width = 115
             Height = 66
             Hint = ''
-            Visible = False
             Caption = 'Buscar DUIMP'
             TabOrder = 1
             OnClick = UniButton1Click

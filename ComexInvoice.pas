@@ -80,14 +80,14 @@ type
     cPaisOrigem: TUniDBLookupComboBox;
     cNumero: TUniDBEdit;
     cExportador: TUniDBLookupComboBox;
-    DBEdit1: TUniDBEdit;
-    DBMemo1: TUniDBMemo;
-    DBMemo2: TUniDBMemo;
-    DBEdit2: TUniDBEdit;
-    DBEdit4: TUniDBEdit;
-    DBEdit5: TUniDBEdit;
+    cLocal_Embarque: TUniDBEdit;
+    cDados_Bancarios: TUniDBMemo;
+    cNotificar: TUniDBMemo;
+    cLocal_Chegada: TUniDBEdit;
+    cTotalPeso_Liquido: TUniDBEdit;
+    cTotalPeso_Bruto: TUniDBEdit;
     cVolumes: TUniDBEdit;
-    DBEdit7: TUniDBEdit;
+    cMetro_Cubico: TUniDBEdit;
     DBEdit3: TUniDBEdit;
     DBEdit6: TUniDBEdit;
     cCondicaoCambio: TUniDBLookupComboBox;
@@ -103,15 +103,15 @@ type
     cCoberturaCambial: TUniDBComboBox;
     RxDBLookupCombo3: TUniDBLookupComboBox;
     cMotivoCambial: TUniDBLookupComboBox;
-    DBLookupComboBox1: TUniDBLookupComboBox;
+    cMoeda_Frete: TUniDBLookupComboBox;
     DBEdit11: TUniDBEdit;
-    DBLookupComboBox2: TUniDBLookupComboBox;
+    cMoeda_Seguro: TUniDBLookupComboBox;
     DBEdit12: TUniDBEdit;
     DBLookupComboBox3: TUniDBLookupComboBox;
     DBLookupComboBox4: TUniDBLookupComboBox;
-    DBComboBox2: TUniDBComboBox;
+    cCondicao_Mercadoria: TUniDBComboBox;
     DBEdit13: TUniDBEdit;
-    DBEdit9: TUniDBEdit;
+    cDestino: TUniDBEdit;
     cAplicacao: TUniDBComboBox;
     DBEdit8: TUniDBEdit;
     DBEdit14: TUniDBEdit;
@@ -205,7 +205,6 @@ type
     InvoiceCondicao_Mercadoria: TStringField;
     InvoiceSeguro: TFloatField;
     InvoiceMoeda_Seguro: TSmallintField;
-    InvoicePais_Aquisicao: TSmallintField;
     InvoiceTransportador: TSmallintField;
     InvoiceFrete_Collect: TCurrencyField;
     InvoiceCondicao_Frete: TStringField;
@@ -235,7 +234,7 @@ type
     InvoiceItensCertificado_MercoSulNumero: TStringField;
     InvoiceItensCertificado_MercoSulQtde: TFloatField;
     Fichaitens: TUniPanel;
-    UniContainerPanel2: TUniContainerPanel;
+    pFichaItem: TUniContainerPanel;
     cQtde: TUniDBEdit;
     cValor_UnitarioME: TUniDBEdit;
     cProduto: TUniDBLookupComboBox;
@@ -246,7 +245,7 @@ type
     cCertTipo: TUniDBComboBox;
     cCertQtde: TUniDBEdit;
     UniPanel2: TUniPanel;
-    UniDBNavigator1: TUniDBNavigator;
+    NavegaItens: TUniDBNavigator;
     bAddItem: TUniSpeedButton;
     bAltItem: TUniSpeedButton;
     bExcItem: TUniSpeedButton;
@@ -258,12 +257,11 @@ type
     cInvoice: TUniDBEdit;
     cEmpresa: TUniDBLookupComboBox;
     InvoiceModalidade: TSmallintField;
-    UniDBLookupComboBox1: TUniDBLookupComboBox;
+    cModalidade: TUniDBLookupComboBox;
+    InvoicePais_Aquisicao: TStringField;
     procedure UniFrameCreate(Sender: TObject);
-    procedure NavegaClick(Sender: TObject; Button: TNavigateBtn);
     procedure NavegaBeforeAction(Sender: TObject; Button: TNavigateBtn);
     procedure cExportadorExit(Sender: TObject);
-    procedure cMoedaClick(Sender: TObject);
     procedure lExportadorClick(Sender: TObject);
     procedure lMoedaClick(Sender: TObject);
     procedure lCondicaoVendaClick(Sender: TObject);
@@ -287,14 +285,18 @@ type
     procedure cCoberturaCambialChange(Sender: TObject);
     procedure cData_BLChange(Sender: TObject);
     procedure cCodigoExit(Sender: TObject);
-//    procedure GradeTitleClick(Column: TColumn);
     procedure cCodigoChange(Sender: TObject);
     procedure bLPCOClick(Sender: TObject);
     procedure cCertNumExit(Sender: TObject);
     procedure bPesquisaClick(Sender: TObject);
+    procedure bAddItemClick(Sender: TObject);
+    procedure bSalvaItemClick(Sender: TObject);
+    procedure bCancItemClick(Sender: TObject);
+    procedure bExcItemClick(Sender: TObject);
   private
     procedure PegaItens;
     procedure Totaliza;
+    procedure LigaBotoesItens(Estado: boolean);
     { Private declarations }
   public
     { Public declarations }
@@ -337,6 +339,7 @@ begin
      end;
 
      AtivaPanel(pFicha, false);
+     AtivaPanel(pFichaItem, false);
      LigaBotoes(true);
      Pasta.ActivePageIndex := 0;
 
@@ -365,7 +368,7 @@ begin
      end;
      with INCOTERMS do begin
           sql.Clear;
-          sql.Add('select * from INCOTERMS order by Codigo');
+          sql.Add('select Codigo, Descricao from INCOTERMS order by Codigo');
           Open;
      end;
      with Moedas do begin
@@ -379,15 +382,8 @@ begin
           ParamByName('pImpExp').value := 'I';
           Open;
      end;
-     (*
-     with InvoiceItens do begin
-          sql.Clear;
-          sql.Add('select * from InvoiceItens where Empresa = :Empresa and Invoice = :Invoice order by Empresa, Invoice, Codigo_Mercadoria');
-          //ParamByName('Empresa').AsString := UniMainModule.mEmpresaAtiva;
-          //ParamByName('Invoice').AsString := InvoiceNumero.AsString;
-          Open;
-     end;
-     *)
+
+     // Abro assim porque se colocar o scrip aqui não filtra os itens.
      InvoiceItens.open;
      
      with Produtos do begin
@@ -445,88 +441,12 @@ begin
      end;
 end;
 
-//procedure TfComexInvoice.GradeTitleClick(Column: TColumn);
-//begin
-(*
-   begin
-          sql.clear;
-          sql.add('select * from Invoice where Imp_Exp = :pImpExp');
-          if column.FieldName <> 'Exportador_Nome' then begin
-             sql.add('order by '+column.FieldName+' '+mordem);
-          end else begin
-             sql.add('order by Exportador '+mordem);
-          end;
-          ParamByName('pImpExp').AsString := 'I';
-          Open;
-          mOrdem := iif(mOrdem = 'asc', 'desc', 'asc');
-     end;
-*)
-//end;
-
-procedure TfComexInvoice.NavegaClick(Sender: TObject;Button: TNavigateBtn);
-var
-    i: Integer;
-begin
-(*
-      Screen.Cursor := crSQLWait;
-   begin
-           If (Button = nbEdit) or (Button = nbInsert) then begin
-              For i := 0 to 6 do begin
-                  Navega.Controls[i].Enabled := False;
-              End;
-              AbaInvoice.Enabled      := true;
-              Abaitens.Enabled        := false;
-              AbaLista.Enabled        := false;
-              Paginas.ActivePageIndex := 1;
-              Panel3.Enabled          := false;
-              cNumero.SetFocus
-           End;
-           If Button = nbInsert then begin
-              InvoicePais_Destino.Value := '1058';
-              InvoiceImp_Exp.Value      := 'I';
-              cProcesso.SetFocus;
-           End;
-           If (Button = nbPost) or (Button = nbCancel) then Begin
-             Refresh;
-              AbaInvoice.Enabled := false;
-              Abaitens.Enabled   := true;
-              AbaLista.Enabled   := true;
-              Panel3.Enabled     := true;
-           End;
-           If (Button = nbFirst) or (Button = nbPrior) or (Button = nbNext) or (Button = nbLast) then begin
-             sql.Clear;
-             sql.Add('select * from Cotacao WHERE(Moeda = :pMoeda) and (Data = :pData)');
-             ParamByName('pMoeda').AsInteger := InvoiceMoeda.AsInteger;
-             ParamByName('pData').AsDate     := InvoiceData.AsDateTime;
-             Open;
-           End;
-           If Button = nbDelete then begin
-             Refresh;
-           End;
-      End;
-      Screen.Cursor := crDefault;
-*)
-end;
-
 procedure TfComexInvoice.NavegaItensBeforeAction(Sender: TObject; Button: TNavigateBtn);
 begin
 (*
      ActiveControl := nil;
    begin
            if Button = nbPost then begin
-              ifState = dsInsert then begin
-                 with ttmp do begin
-                      sql.Clear;
-                      sql.Add('select isnull(max(Registro), 0)+1 as Reg from InvoiceItens');
-                      open;
-                     FieldByName('Registro').Value := FieldByName('Reg').AsInteger;
-                      sql.Clear;
-                      sql.Add('select isnull(max(Item), 0)+1 as Item from InvoiceItens where Invoice = :pInv');
-                      paramByName('pInv').asstring := InvoiceNumero.AsString;
-                      open;
-                     FieldByName('Item').Value := FieldByName('Item').AsInteger;
-                 end;
-              end;
               with ttmp do begin
                    sql.Clear;
                    sql.Add('select Exige_LPCO from NCM where NCM = '+quotedstr(Produtos.FieldByName('NCM').AsString));
@@ -639,16 +559,16 @@ begin
                  cTaxaCambio.SetFocus;
                  Abort;
               end;
-              ifState = dsInsert then begin
-     with tNumero do begin
-                sql.Clear;
-                sql.Add('select isnull(max(Registro), 0)+1 as Registro from Invoice');
-                open;
-     end;
+              if State = dsInsert then begin
+                 with tNumero do begin
+                      sql.Clear;
+                      sql.Add('select isnull(max(Registro), 0)+1 as Registro from Invoice');
+                      open;
+                 end;
                  InvoiceRegistro.Value :=FieldByName('Registro').AsInteger;
               end;
               // Modifica os dados do processo.
-              ifLocate('Processo', InvoiceProcesso.AsString, [loCaseInsensitive]) = true then begin
+              if Locate('Processo', InvoiceProcesso.AsString, [loCaseInsensitive]) = true then begin
                 Edit;
                               ProcessosDOCNumero_Fatura.Value   := InvoiceNumero.AsString;
                               ProcessosDOCData_Fatura.Value     := InvoiceData.Value;
@@ -659,7 +579,7 @@ begin
                               ProcessosDOCDocumento_Carga.Value := InvoiceBL.Value;
                 Post;
               end;
-              ifState = dsInsert then begin
+              if State = dsInsert then begin
                  // Importando os itens da PO para a
                  InvoiceImp_Exp.Value := 'I';
                  PegaItens;
@@ -845,28 +765,6 @@ begin
 *)
 end;
 
-procedure TfComexInvoice.cMoedaClick(Sender: TObject);
-begin
-(*
-   begin
-           if InvoiceTaxa_Cambio.Value = 0 then begin
-              if (Invoice.State = dsInsert) or (Invoice.State = dsEdit) then begin
-                sql.Clear;
-                sql.Add('select * from Cotacao where Moeda = :pMoeda and Data = :pData');
-                ParamByName('pMoeda').AsInteger := InvoiceMoeda.AsInteger;
-                ParamByName('pData').AsDate     := InvoiceData.AsDateTime;
-                Open;
-                 InvoiceTaxa_Cambio.Value := CotacaoValor.AsFloat;
-                 InvoiceData_Vencimento.Clear;
-                 if Trim(RemoveCaracter('/', '', cData_BL.Text)) <> '' then begin
-                    InvoiceData_Vencimento.Value := InvoiceData_BL.Value + (CondicaoCambialVencimento1.AsInteger+CondicaoCambialVencimento2.AsInteger+CondicaoCambialVencimento3.AsInteger);
-                 end;
-              end;
-           end;
-      end;
-*)
-end;
-
 procedure TfComexInvoice.lExportadorClick(Sender: TObject);
 begin
 (*
@@ -1043,6 +941,23 @@ begin
 }
 end;
 
+procedure TfComexInvoice.bAddItemClick(Sender: TObject);
+begin
+      with InvoiceItens do begin
+           try
+               LigaBotoesItens(false);
+               Append;
+                    InvoiceItensInvoice.Value          := InvoiceNumero.value;
+                    InvoiceItensEmpresa.Value          := InvoiceEmpresa.value;
+                    InvoiceItensVinculo_CompVend.value := 'NAO_HA_VINCULACAO';
+                    
+               cProduto.SetFocus;
+           except on E: Exception do
+               MessageDlgN('Falha desconhecida, não pode adicionar um novo registro!'+#13+E.Message, mtError, [mbOK]);
+           end;
+      end;
+end;
+
 procedure TfComexInvoice.bAdicionarClick(Sender: TObject);
 begin
       with Invoice do begin
@@ -1050,46 +965,144 @@ begin
                Pasta.ActivePageIndex := 1;
                LigaBotoes(false);
                Append;
-                    FieldByName('Empresa').Value := UniMainModule.mEmpresaAtiva;
+                    InvoicePais_Destino.Value := '1058';
+                    InvoiceImp_Exp.Value      := 'I';
+                    InvoiceEmpresa.Value      := UniMainModule.mEmpresaAtiva;
+                    
+               cProcesso.SetFocus;
            except on E: Exception do
                MessageDlgN('Falha desconhecida, não pode adicionar um novo registro!'+#13+E.Message, mtError, [mbOK]);
            end;
       end;
 end;
 
-procedure TfComexInvoice.bExcluirClick(Sender: TObject);
+procedure TfComexInvoice.bExcItemClick(Sender: TObject);
 begin
-     with Invoice do begin
-          MessageDlg('Deseja realmente excluir estes dados?'+#13+#13+FieldByName('Processo').AsString, mtConfirmation,mbYesNo,
+     with InvoiceItens do begin
+          MessageDlg('Deseja realmente excluir este item?'+#13+#13+'Item: '+InvoiceItensItem.asstring, mtConfirmation,mbYesNo,
                     procedure(Comp:TComponent; ARes: Integer)
                     begin
                           if ARes = mrYes then begin
-                             Delete;
-                             Alerta.Text := 'Registro excluído do banco de dados!';
-                             Alerta.Execute;
+                             try
+                                Delete;
+                                Alerta.Text := 'Registro excluído do banco de dados!';
+                                Alerta.Execute;
+                             except on E: Exception do
+                                MessageDlgN('Falha desconhecida, não pode excluir o invoice!'+#13+E.Message, mtError, [mbOK]);
+                             end;
                           end;
                     end);
      end;
 end;
 
-procedure TfComexInvoice.bSalvarClick(Sender: TObject);
+procedure TfComexInvoice.bExcluirClick(Sender: TObject);
 begin
-      with Invoice do begin
-           {
-           if (State = dsInsert) and (Existe(ProcessosImp, 'Processo', FieldByName('Processo').AsString)) then begin
-              MessageDlg('Já existe um "Processo" cadastrado com esse codigo!'+#13+#13, mtError, [mbOK]);
-              cProcesso.SetFocus;
-              Abort;
-           end;
-           };
+     with Invoice do begin
+          MessageDlg('Deseja realmente excluir estes dados?'+#13+#13+'Invoice: '+InvoiceNumero.asstring+#13+'  Processo: '+InvoiceProcesso.AsString, mtConfirmation,mbYesNo,
+                    procedure(Comp:TComponent; ARes: Integer)
+                    begin
+                          if ARes = mrYes then begin
+                             try
+                                with ttmp do begin 
+                                     sql.clear;
+                                     sql.add('delete from InvoiceItens where Empresa = :Empresa and Invoice = :Invoice');
+                                     parambyname('Empresa').value := InvoiceEmpresa.value;
+                                     parambyname('Invoice').value := InvoiceNumero.value;
+                                     execute;
+                                end;
+                                Delete;
+                                Alerta.Text := 'Registro excluído do banco de dados!';
+                                Alerta.Execute;
+                             except on E: Exception do
+                                MessageDlgN('Falha desconhecida, não pode excluir o invoice!'+#13+E.Message, mtError, [mbOK]);
+                             end;
+                          end;
+                    end);
+     end;
+end;
+
+procedure TfComexInvoice.bSalvaItemClick(Sender: TObject);
+begin
+      with InvoiceItens do begin              
+           if CampoVazio(cProduto         , 'Produto')             then Abort;
+           if CampoVazio(cQtde            , 'Quantidade')          then Abort;
+           if CampoVazio(cValor_UnitarioME, 'Valor Unitario (ME)') then Abort;
+           if CampoVazio(cPeso_Liquido    , 'Peso Líquido')        then Abort;
+
            try
                // Gera o registro em caso de inclusão.
-               {
                if State = dsInsert then begin
-                  FieldByName('Registro').Value := GeraCodigo('ProcessosImp', 'Registro');
+                  InvoiceItensRegistro.value := GeraCodigo('InvoiceItens', 'Registro');
                end;
-               }
+               with ttmp do begin 
+                    sql.clear;
+                    sql.add('select isnull(max(Item), 0)+1 as Item from InvoiceItens where Empresa = :Empresa and Invoice = :Invoice');
+                    parambyname('Empresa').value := InvoiceEmpresa.value;
+                    parambyname('Invoice').value := InvoiceNumero.value;
+                    open;
+               end;
+               InvoiceItensItem.value := ttmp.fieldbyname('Item').value;
                Post;
+               
+               LigaBotoesItens(true);
+               Alerta.Text := 'Registro salvo no banco de dados!'; 
+               Alerta.Execute;
+           except on E: Exception do
+               MessageDlgN('Falha desconhecida, não pode salvar o registro corrente!'+#13+E.Message, mtError, [mbOK]);
+           end;
+      end;
+end;
+
+procedure TfComexInvoice.bSalvarClick(Sender: TObject);
+begin
+      with Invoice do begin              
+           if CampoVazio(cProcesso      , 'Processo')           then Abort;
+           if CampoVazio(cNumero        , 'Numero do Invoice')  then Abort;
+           if CampoVazio(cData          , 'Data do Invoice')    then Abort;
+           if CampoVazio(cMoeda         , 'Moeda')              then Abort;
+           if CampoVazio(cExportador    , 'Exportador')         then Abort;
+           if CampoVazio(cCondicaoCambio, 'Condição de Venda')  then Abort;
+           if CampoVazio(cBL            , 'Número do BL')       then Abort;
+           if CampoVazio(cData_Bl       , 'Data do BL')         then Abort;
+           if CampoVazio(cTaxaCambio    , 'Taxa do Câmbio')     then Abort;
+           
+           try
+               // Gera o registro em caso de inclusão.
+               if State = dsInsert then begin
+                  InvoiceRegistro.value := GeraCodigo('Invoice', 'Registro');
+               end;
+               Post;
+
+               // Modifica os dados do processo.
+               with ttmp do begin
+                    try
+                       sql.clear;
+                       sql.add('update ProcessosImp set Numero_Fatura   = :Invoice');
+                       sql.add('                       ,Data_Fatura     = :Data');
+                       sql.add('                       ,Fornecedor      = :Forn');
+                       sql.add('                       ,Condicao_Cambio = :Cond');
+                       sql.add('                       ,Valor_FaturaME  = :Total');
+                       sql.add('                       ,Data_BL         = :DataBL');
+                       sql.add('                       ,Documento_Carga = :DocCarga');
+                       sql.add('where Processo = :Processo');
+                       Parambyname('Invoice').value  := InvoiceNumero.asstring;
+                       Parambyname('Data').value     := InvoiceData.value;
+                       Parambyname('Forn').value     := InvoiceExportador.Value;
+                       Parambyname('Cond').value     := InvoiceCondicao_Cambio.value;
+                       Parambyname('Total').value    := InvoiceTotal_FaturaME.value;
+                       Parambyname('DataBL').value   := InvoiceData_BL.value;
+                       Parambyname('DocCarga').value := InvoiceBL.value;
+                       execute;
+                    except on E: Exception do
+                       MessageDlgN('Falha desconhecida, não pode salvar os dados no processo!'+#13+E.Message, mtError, [mbOK]);
+                    end;
+               end;
+               if State = dsInsert then begin
+                  // Importando os itens da PO para a
+                  InvoiceImp_Exp.Value := 'I';
+                  PegaItens;
+               end;
+               
                LigaBotoes(true);
                Alerta.Text := 'Registro salvo no banco de dados!'; 
                Alerta.Execute;
@@ -1103,6 +1116,12 @@ procedure TfComexInvoice.bCancelarClick(Sender: TObject);
 begin
       Invoice.Cancel;
       LigaBotoes(true);
+end;
+
+procedure TfComexInvoice.bCancItemClick(Sender: TObject);
+begin
+     InvoiceItens.Cancel;
+     LigaBotoesitens(true);
 end;
 
 procedure TfComexInvoice.bEditarClick(Sender: TObject);
@@ -1138,6 +1157,17 @@ begin
      bCancelar.Enabled  := not Estado;
      bSalvar.Enabled    := not Estado;
      AtivaPanel(pFicha, Estado);
+end;
+
+procedure TfComexInvoice.LigaBotoesItens(Estado:boolean);
+begin
+     NavegaItens.Enabled := Estado;
+     bAltItem.Enabled    := Estado;
+     bExcItem.Enabled    := Estado;
+     bAddItem.Enabled    := Estado;
+     bCancItem.Enabled   := not Estado;
+     bSalvaItem.Enabled  := not Estado;
+     AtivaPanel(pFichaItem, Estado);
 end;
 
 procedure TfComexInvoice.bFechar_Click(Sender: TObject);

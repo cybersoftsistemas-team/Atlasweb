@@ -20,7 +20,6 @@ object fDUIMP: TfDUIMP
     BorderStyle = ubsInset
     ShowCaption = False
     Caption = 'UniPanel1'
-    ExplicitLeft = 2
     object cToken: TUniEdit
       Left = 42
       Top = 144

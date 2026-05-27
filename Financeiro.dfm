@@ -230,6 +230,10 @@ object fFinanceiro: TfFinanceiro
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Movimento'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object pFiltro: TUniPanel
         Left = 0
         Top = 0
@@ -1919,6 +1923,10 @@ object fFinanceiro: TfFinanceiro
     object UniTabSheet4: TUniTabSheet
       Hint = ''
       Caption = 'Adiantamentos'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object cGrade: TUniDBGrid
         Left = 0
         Top = 0
@@ -1997,6 +2005,10 @@ object fFinanceiro: TfFinanceiro
     object UniTabSheet5: TUniTabSheet
       Hint = ''
       Caption = 'Contratos de C'#226'mbio'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniDBGrid2: TUniDBGrid
         Left = 0
         Top = 0
@@ -2521,6 +2533,10 @@ object fFinanceiro: TfFinanceiro
     object UniTabSheet7: TUniTabSheet
       Hint = ''
       Caption = 'Documentos Anexados'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniDBGrid3: TUniDBGrid
         Left = 0
         Top = 0

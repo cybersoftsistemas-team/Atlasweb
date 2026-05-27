@@ -15,7 +15,7 @@ object fComexInvoice: TfComexInvoice
     Height = 979
     Hint = ''
     Margins.Bottom = 15
-    ActivePage = AbaInvoice
+    ActivePage = Abaitens
     Align = alClient
     TabOrder = 0
     object AbaLista: TUniTabSheet
@@ -176,12 +176,12 @@ object fComexInvoice: TfComexInvoice
         DesignSize = (
           1233
           949)
-        ScrollHeight = 920
-        ScrollWidth = 616
+        ScrollHeight = 934
+        ScrollWidth = 632
         object pFicha: TUniPanel
           Left = 109
           Top = 18
-          Width = 785
+          Width = 838
           Height = 847
           Hint = ''
           ShowHint = True
@@ -200,9 +200,9 @@ object fComexInvoice: TfComexInvoice
           Caption = ''
           ParentAlignmentControl = False
           object cData: TUniDBDateTimePicker
-            Left = 419
+            Left = 421
             Top = 98
-            Width = 350
+            Width = 400
             Height = 25
             Hint = ''
             ShowHint = True
@@ -219,12 +219,11 @@ object fComexInvoice: TfComexInvoice
             FieldLabel = 'Data'
             FieldLabelWidth = 120
             FieldLabelSeparator = ' '
-            OnExit = cMoedaClick
           end
           object cMoeda: TUniDBLookupComboBox
             Left = 15
             Top = 179
-            Width = 754
+            Width = 536
             Height = 25
             Hint = ''
             ShowHint = True
@@ -235,16 +234,13 @@ object fComexInvoice: TfComexInvoice
             BorderStyle = ubsInset
             DataField = 'Moeda'
             DataSource = dsInvoice
-            ParentFont = False
-            Font.Name = 'MS Sans Serif'
-            Font.Pitch = fpFixed
-            Font.Style = [fsBold]
+            AnyMatch = True
             TabOrder = 10
             Color = clWindow
             FieldLabel = 'Moeda'
             FieldLabelWidth = 120
             FieldLabelSeparator = ' '
-            OnExit = cMoedaClick
+            Style = csDropDown
           end
           object cPaisOrigem: TUniDBLookupComboBox
             Left = 15
@@ -290,7 +286,7 @@ object fComexInvoice: TfComexInvoice
           object cExportador: TUniDBLookupComboBox
             Left = 15
             Top = 206
-            Width = 754
+            Width = 806
             Height = 25
             Hint = ''
             ShowHint = True
@@ -312,7 +308,7 @@ object fComexInvoice: TfComexInvoice
             FieldLabelSeparator = ' '
             OnExit = cExportadorExit
           end
-          object DBEdit1: TUniDBEdit
+          object cLocal_Embarque: TUniDBEdit
             Left = 15
             Top = 341
             Width = 400
@@ -330,11 +326,11 @@ object fComexInvoice: TfComexInvoice
             FieldLabelSeparator = ' '
             BorderStyle = ubsInset
           end
-          object DBMemo1: TUniDBMemo
+          object cDados_Bancarios: TUniDBMemo
             Left = 15
             Top = 368
-            Width = 754
-            Height = 25
+            Width = 806
+            Height = 41
             Hint = ''
             ShowHint = True
             DataField = 'Dados_Bancarios'
@@ -348,10 +344,10 @@ object fComexInvoice: TfComexInvoice
             FieldLabelWidth = 120
             FieldLabelSeparator = ' '
           end
-          object DBMemo2: TUniDBMemo
+          object cNotificar: TUniDBMemo
             Left = 15
-            Top = 395
-            Width = 754
+            Top = 411
+            Width = 806
             Height = 55
             Hint = ''
             ShowHint = True
@@ -366,10 +362,10 @@ object fComexInvoice: TfComexInvoice
             FieldLabelWidth = 120
             FieldLabelSeparator = ' '
           end
-          object DBEdit2: TUniDBEdit
-            Left = 419
+          object cLocal_Chegada: TUniDBEdit
+            Left = 421
             Top = 341
-            Width = 350
+            Width = 400
             Height = 25
             Hint = ''
             ShowHint = True
@@ -384,9 +380,9 @@ object fComexInvoice: TfComexInvoice
             FieldLabelSeparator = ' '
             BorderStyle = ubsInset
           end
-          object DBEdit4: TUniDBEdit
+          object cTotalPeso_Liquido: TUniDBEdit
             Left = 15
-            Top = 479
+            Top = 495
             Width = 400
             Height = 25
             Hint = ''
@@ -402,10 +398,10 @@ object fComexInvoice: TfComexInvoice
             FieldLabelSeparator = ' '
             BorderStyle = ubsInset
           end
-          object DBEdit5: TUniDBEdit
-            Left = 419
-            Top = 479
-            Width = 350
+          object cTotalPeso_Bruto: TUniDBEdit
+            Left = 421
+            Top = 495
+            Width = 400
             Height = 25
             Hint = ''
             ShowHint = True
@@ -422,7 +418,7 @@ object fComexInvoice: TfComexInvoice
           end
           object cVolumes: TUniDBEdit
             Left = 15
-            Top = 452
+            Top = 468
             Width = 400
             Height = 25
             Hint = ''
@@ -437,10 +433,10 @@ object fComexInvoice: TfComexInvoice
             FieldLabelWidth = 120
             BorderStyle = ubsInset
           end
-          object DBEdit7: TUniDBEdit
-            Left = 419
-            Top = 452
-            Width = 350
+          object cMetro_Cubico: TUniDBEdit
+            Left = 421
+            Top = 468
+            Width = 400
             Height = 25
             Hint = ''
             ShowHint = True
@@ -455,9 +451,9 @@ object fComexInvoice: TfComexInvoice
             BorderStyle = ubsInset
           end
           object DBEdit3: TUniDBEdit
-            Left = 419
-            Top = 506
-            Width = 350
+            Left = 421
+            Top = 522
+            Width = 400
             Height = 25
             Hint = ''
             ShowHint = True
@@ -474,7 +470,7 @@ object fComexInvoice: TfComexInvoice
           end
           object DBEdit6: TUniDBEdit
             Left = 15
-            Top = 506
+            Top = 522
             Width = 400
             Height = 25
             Hint = ''
@@ -496,6 +492,9 @@ object fComexInvoice: TfComexInvoice
             Height = 25
             Hint = ''
             ShowHint = True
+            ListField = 'Descricao'
+            ListSource = dsCondicaoCambial
+            KeyField = 'Codigo'
             ListFieldIndex = 0
             BorderStyle = ubsInset
             DataField = 'Condicao_Cambio'
@@ -511,9 +510,9 @@ object fComexInvoice: TfComexInvoice
             OnChange = cCondicaoCambioChange
           end
           object cData_BL: TUniDBDateTimePicker
-            Left = 419
+            Left = 421
             Top = 152
-            Width = 350
+            Width = 400
             Height = 25
             Hint = ''
             ShowHint = True
@@ -527,16 +526,15 @@ object fComexInvoice: TfComexInvoice
             Font.Name = 'MS Sans Serif'
             Font.Style = [fsBold]
             BorderStyle = ubsInset
-            FieldLabel = 'BL N'#186
+            FieldLabel = 'Data BL'
             FieldLabelWidth = 120
             FieldLabelSeparator = ' '
-            OnExit = cMoedaClick
             OnChange = cData_BLChange
           end
           object DBDateEdit2: TUniDBDateTimePicker
-            Left = 419
+            Left = 421
             Top = 287
-            Width = 350
+            Width = 400
             Height = 25
             Hint = ''
             ShowHint = True
@@ -553,7 +551,6 @@ object fComexInvoice: TfComexInvoice
             FieldLabel = 'Vencimento'
             FieldLabelWidth = 120
             FieldLabelSeparator = ' '
-            OnExit = cMoedaClick
           end
           object cProcesso: TUniDBLookupComboBox
             Left = 15
@@ -582,7 +579,7 @@ object fComexInvoice: TfComexInvoice
           object cTaxaCambio: TUniDBEdit
             Left = 15
             Top = 287
-            Width = 400
+            Width = 270
             Height = 25
             Hint = ''
             ShowHint = True
@@ -592,7 +589,7 @@ object fComexInvoice: TfComexInvoice
             Font.Name = 'MS Sans Serif'
             Font.Style = [fsBold]
             TabOrder = 15
-            FieldLabel = 'Tqaxa C'#226'mbio'
+            FieldLabel = 'Taxa C'#226'mbio'
             FieldLabelWidth = 120
             BorderStyle = ubsInset
           end
@@ -615,9 +612,9 @@ object fComexInvoice: TfComexInvoice
             BorderStyle = ubsInset
           end
           object cPO: TUniDBLookupComboBox
-            Left = 419
+            Left = 421
             Top = 44
-            Width = 350
+            Width = 400
             Height = 25
             Hint = ''
             ShowHint = True
@@ -640,11 +637,14 @@ object fComexInvoice: TfComexInvoice
           end
           object RxDBLookupCombo1: TUniDBLookupComboBox
             Left = 15
-            Top = 614
+            Top = 630
             Width = 400
             Height = 25
             Hint = ''
             ShowHint = True
+            ListField = 'Codigo;Descricao'
+            ListSource = dsIncoterms
+            KeyField = 'Codigo'
             ListFieldIndex = 0
             BorderStyle = ubsInset
             DataField = 'INCOTERMS'
@@ -652,16 +652,18 @@ object fComexInvoice: TfComexInvoice
             ParentFont = False
             Font.Name = 'MS Sans Serif'
             Font.Style = [fsBold]
+            AnyMatch = True
             TabOrder = 34
             Color = clWindow
             FieldLabel = 'INCOTERM'
             FieldLabelWidth = 120
             FieldLabelSeparator = ' '
+            Style = csDropDown
           end
           object DBEdit10: TUniDBEdit
-            Left = 419
-            Top = 614
-            Width = 350
+            Left = 421
+            Top = 630
+            Width = 400
             Height = 25
             Hint = ''
             ShowHint = True
@@ -678,7 +680,7 @@ object fComexInvoice: TfComexInvoice
           end
           object RxDBLookupCombo2: TUniDBLookupComboBox
             Left = 15
-            Top = 641
+            Top = 657
             Width = 400
             Height = 25
             Hint = ''
@@ -690,19 +692,22 @@ object fComexInvoice: TfComexInvoice
             ParentFont = False
             Font.Name = 'MS Sans Serif'
             Font.Style = [fsBold]
+            AnyMatch = True
             TabOrder = 36
             Color = clWindow
             FieldLabel = 'Metodo Valora'#231#227'o'
             FieldLabelWidth = 120
             FieldLabelSeparator = ' '
+            Style = csDropDown
           end
           object cCoberturaCambial: TUniDBComboBox
-            Left = 419
-            Top = 641
-            Width = 350
-            Height = 25
+            Left = 421
+            Top = 657
+            Width = 400
+            Height = 24
             Hint = ''
             ShowHint = True
+            AnyMatch = True
             DataField = 'Cobertura_Cambial'
             DataSource = dsInvoice
             Items.Strings = (
@@ -722,8 +727,8 @@ object fComexInvoice: TfComexInvoice
           end
           object RxDBLookupCombo3: TUniDBLookupComboBox
             Left = 15
-            Top = 695
-            Width = 754
+            Top = 711
+            Width = 806
             Height = 25
             Hint = ''
             ShowHint = True
@@ -744,11 +749,12 @@ object fComexInvoice: TfComexInvoice
             FieldLabel = 'Financiadora'
             FieldLabelWidth = 120
             FieldLabelSeparator = ' '
+            Style = csDropDown
           end
           object cMotivoCambial: TUniDBLookupComboBox
             Left = 15
-            Top = 668
-            Width = 754
+            Top = 684
+            Width = 806
             Height = 25
             Hint = ''
             Enabled = False
@@ -760,16 +766,18 @@ object fComexInvoice: TfComexInvoice
             ParentFont = False
             Font.Name = 'MS Sans Serif'
             Font.Style = [fsBold]
+            AnyMatch = True
             TabOrder = 38
             Color = clWindow
             FieldLabel = 'Motivo sem Cobertura'
             FieldLabelWidth = 120
             FieldLabelSeparator = ' '
+            Style = csDropDown
           end
-          object DBLookupComboBox1: TUniDBLookupComboBox
+          object cMoeda_Frete: TUniDBLookupComboBox
             Left = 15
-            Top = 533
-            Width = 400
+            Top = 549
+            Width = 536
             Height = 25
             Hint = ''
             ShowHint = True
@@ -780,22 +788,19 @@ object fComexInvoice: TfComexInvoice
             BorderStyle = ubsInset
             DataField = 'Moeda_Frete'
             DataSource = dsInvoice
-            ParentFont = False
-            Font.Name = 'MS Sans Serif'
-            Font.Pitch = fpFixed
-            Font.Style = [fsBold]
+            AnyMatch = True
             TabOrder = 29
             Color = clWindow
             MatchFieldWidth = False
             FieldLabel = 'Moeda Frete'
             FieldLabelWidth = 120
             FieldLabelSeparator = ' '
-            OnExit = cMoedaClick
+            Style = csDropDown
           end
           object DBEdit11: TUniDBEdit
-            Left = 419
-            Top = 533
-            Width = 350
+            Left = 15
+            Top = 576
+            Width = 400
             Height = 25
             Hint = ''
             ShowHint = True
@@ -810,9 +815,9 @@ object fComexInvoice: TfComexInvoice
             FieldLabelSeparator = ' '
             BorderStyle = ubsInset
           end
-          object DBLookupComboBox2: TUniDBLookupComboBox
+          object cMoeda_Seguro: TUniDBLookupComboBox
             Left = 15
-            Top = 587
+            Top = 603
             Width = 400
             Height = 25
             Hint = ''
@@ -828,17 +833,18 @@ object fComexInvoice: TfComexInvoice
             Font.Name = 'MS Sans Serif'
             Font.Pitch = fpFixed
             Font.Style = [fsBold]
+            AnyMatch = True
             TabOrder = 32
             Color = clWindow
             FieldLabel = 'Moeda Seguro'
             FieldLabelWidth = 120
             FieldLabelSeparator = ' '
-            OnExit = cMoedaClick
+            Style = csDropDown
           end
           object DBEdit12: TUniDBEdit
-            Left = 419
-            Top = 587
-            Width = 350
+            Left = 421
+            Top = 603
+            Width = 400
             Height = 25
             Hint = ''
             ShowHint = True
@@ -854,9 +860,9 @@ object fComexInvoice: TfComexInvoice
             BorderStyle = ubsInset
           end
           object DBLookupComboBox3: TUniDBLookupComboBox
-            Left = 419
+            Left = 421
             Top = 233
-            Width = 350
+            Width = 400
             Height = 25
             Hint = ''
             ShowHint = True
@@ -865,6 +871,7 @@ object fComexInvoice: TfComexInvoice
             KeyField = 'Codigo'
             ListFieldIndex = 1
             BorderStyle = ubsInset
+            DataField = 'Pais_Aquisicao'
             DataSource = dsInvoice
             ParentFont = False
             Font.Name = 'MS Sans Serif'
@@ -898,23 +905,21 @@ object fComexInvoice: TfComexInvoice
             FieldLabel = 'Via Transporte'
             FieldLabelWidth = 120
             FieldLabelSeparator = ' '
-            OnExit = cMoedaClick
           end
-          object DBComboBox2: TUniDBComboBox
-            Left = 419
+          object cCondicao_Mercadoria: TUniDBComboBox
+            Left = 421
             Top = 125
-            Width = 350
-            Height = 25
+            Width = 400
+            Height = 24
             Hint = ''
             ShowHint = True
+            DataField = 'Condicao_Mercadoria'
             DataSource = dsInvoice
+            Style = csDropDownList
             Items.Strings = (
               'NOVA'
               'USADA')
             ParentFont = False
-            Font.Color = clNone
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
             TabOrder = 7
             FieldLabel = 'Condi'#231#227'o Mercadoria'
             FieldLabelWidth = 120
@@ -922,12 +927,13 @@ object fComexInvoice: TfComexInvoice
             IconItems = <>
           end
           object DBEdit13: TUniDBEdit
-            Left = 15
-            Top = 560
+            Left = 421
+            Top = 576
             Width = 400
             Height = 25
             Hint = ''
             ShowHint = True
+            DataField = 'Frete_Collect'
             DataSource = dsInvoice
             ParentFont = False
             Font.Name = 'MS Sans Serif'
@@ -938,10 +944,10 @@ object fComexInvoice: TfComexInvoice
             FieldLabelSeparator = ' '
             BorderStyle = ubsInset
           end
-          object DBEdit9: TUniDBEdit
-            Left = 419
+          object cDestino: TUniDBEdit
+            Left = 421
             Top = 314
-            Width = 350
+            Width = 400
             Height = 25
             Hint = ''
             ShowHint = True
@@ -960,7 +966,7 @@ object fComexInvoice: TfComexInvoice
             Left = 15
             Top = 125
             Width = 400
-            Height = 25
+            Height = 24
             Hint = ''
             ShowHint = True
             DataField = 'Aplicacao'
@@ -982,7 +988,7 @@ object fComexInvoice: TfComexInvoice
           end
           object DBEdit8: TUniDBEdit
             Left = 15
-            Top = 722
+            Top = 738
             Width = 400
             Height = 25
             Hint = ''
@@ -999,9 +1005,9 @@ object fComexInvoice: TfComexInvoice
             BorderStyle = ubsInset
           end
           object DBEdit14: TUniDBEdit
-            Left = 420
-            Top = 722
-            Width = 350
+            Left = 422
+            Top = 738
+            Width = 399
             Height = 25
             Hint = ''
             ShowHint = True
@@ -1019,18 +1025,18 @@ object fComexInvoice: TfComexInvoice
           object GroupBox1: TUniGroupBox
             AlignWithMargins = True
             Left = 11
-            Top = 768
-            Width = 755
+            Top = 775
+            Width = 810
             Height = 60
             Hint = ''
             Enabled = False
             ShowHint = True
-            Caption = 'Totais do Processo'
+            Caption = 'TOTAIS DO PROCESSO'
             TabOrder = 42
             object cTotalFaturaME: TUniFormattedNumberEdit
-              Left = 380
+              Left = 407
               Top = 21
-              Width = 180
+              Width = 195
               Height = 25
               Hint = ''
               ShowHint = True
@@ -1041,14 +1047,14 @@ object fComexInvoice: TfComexInvoice
               TabOrder = 2
               Color = 16762566
               FieldLabel = 'Valor (ME)'
-              FieldLabelWidth = 80
+              FieldLabelWidth = 70
               DecimalSeparator = ','
               ThousandSeparator = '.'
             end
             object cTotalPesoLiquido: TUniFormattedNumberEdit
-              Left = 9
+              Left = 7
               Top = 21
-              Width = 180
+              Width = 195
               Height = 25
               Hint = ''
               ShowHint = True
@@ -1059,15 +1065,15 @@ object fComexInvoice: TfComexInvoice
               TabOrder = 4
               Color = 16762566
               FieldLabel = 'Peso L'#237'quido'
-              FieldLabelWidth = 80
+              FieldLabelWidth = 70
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
               ThousandSeparator = '.'
             end
             object cTotalPesoBruto: TUniFormattedNumberEdit
-              Left = 195
+              Left = 207
               Top = 21
-              Width = 180
+              Width = 195
               Height = 25
               Hint = ''
               ShowHint = True
@@ -1078,14 +1084,14 @@ object fComexInvoice: TfComexInvoice
               TabOrder = 1
               Color = 16762566
               FieldLabel = 'Peso Bruto'
-              FieldLabelWidth = 80
+              FieldLabelWidth = 70
               DecimalSeparator = ','
               ThousandSeparator = '.'
             end
             object cTotalFaturaReal: TUniFormattedNumberEdit
-              Left = 566
+              Left = 607
               Top = 21
-              Width = 180
+              Width = 195
               Height = 25
               Hint = ''
               ShowHint = True
@@ -1096,7 +1102,7 @@ object fComexInvoice: TfComexInvoice
               TabOrder = 3
               Color = 16762566
               FieldLabel = 'Valor (R$)'
-              FieldLabelWidth = 80
+              FieldLabelWidth = 70
               DecimalSeparator = ','
               ThousandSeparator = '.'
             end
@@ -1104,7 +1110,7 @@ object fComexInvoice: TfComexInvoice
           object cEmpresa: TUniDBLookupComboBox
             Left = 15
             Top = 17
-            Width = 754
+            Width = 806
             Height = 25
             Hint = ''
             ShowHint = True
@@ -1125,7 +1131,7 @@ object fComexInvoice: TfComexInvoice
             FieldLabelWidth = 120
             FieldLabelSeparator = ' '
           end
-          object UniDBLookupComboBox1: TUniDBLookupComboBox
+          object cModalidade: TUniDBLookupComboBox
             Left = 15
             Top = 71
             Width = 400
@@ -1144,11 +1150,12 @@ object fComexInvoice: TfComexInvoice
             FieldLabel = 'Modalidade'
             FieldLabelWidth = 120
             FieldLabelSeparator = ' '
+            Style = csDropDown
           end
         end
         object UniContainerPanel1: TUniContainerPanel
-          Left = 360
-          Top = 901
+          Left = 376
+          Top = 915
           Width = 256
           Height = 19
           Hint = ''
@@ -1185,7 +1192,7 @@ object fComexInvoice: TfComexInvoice
         Title = 'DADOS GERAIS'
         Caption = ''
         ParentAlignmentControl = False
-        object UniContainerPanel2: TUniContainerPanel
+        object pFichaItem: TUniContainerPanel
           Left = 0
           Top = 0
           Width = 912
@@ -1203,6 +1210,7 @@ object fComexInvoice: TfComexInvoice
             Hint = ''
             ShowHint = True
             DataField = 'Quantidade'
+            DataSource = dsInvoiceItens
             ParentFont = False
             Font.Color = clBlack
             Font.Name = 'MS Sans Serif'
@@ -1220,6 +1228,7 @@ object fComexInvoice: TfComexInvoice
             Hint = ''
             ShowHint = True
             DataField = 'Valor_UnitarioME'
+            DataSource = dsInvoiceItens
             ParentFont = False
             Font.Color = clBlack
             Font.Name = 'MS Sans Serif'
@@ -1243,6 +1252,7 @@ object fComexInvoice: TfComexInvoice
             BorderStyle = ubsInset
             ClearButton = True
             DataField = 'Codigo_Mercadoria'
+            DataSource = dsInvoiceItens
             ParentFont = False
             Font.Name = 'MS Sans Serif'
             Font.Style = [fsBold]
@@ -1261,6 +1271,7 @@ object fComexInvoice: TfComexInvoice
             Hint = ''
             ShowHint = True
             DataField = 'Peso_Liquido'
+            DataSource = dsInvoiceItens
             ParentFont = False
             Font.Color = clBlack
             Font.Name = 'MS Sans Serif'
@@ -1278,6 +1289,7 @@ object fComexInvoice: TfComexInvoice
             Hint = ''
             ShowHint = True
             DataField = 'Peso_Bruto'
+            DataSource = dsInvoiceItens
             ParentFont = False
             Font.Color = clBlack
             Font.Name = 'MS Sans Serif'
@@ -1288,13 +1300,14 @@ object fComexInvoice: TfComexInvoice
             BorderStyle = ubsInset
           end
           object cIndicador: TUniDBRadioGroup
-            Left = 642
+            Left = 643
             Top = 76
             Width = 248
             Height = 102
             Hint = ''
             ShowHint = True
             DataField = 'Vinculo_CompVend'
+            DataSource = dsInvoiceItens
             Caption = 'Indicador Comprador/Vendedor - Vincul'#231#227'o'
             TabOrder = 9
             Items.Strings = (
@@ -1314,6 +1327,7 @@ object fComexInvoice: TfComexInvoice
             Hint = ''
             ShowHint = True
             DataField = 'Certificado_MercosulNumero'
+            DataSource = dsInvoiceItens
             ParentFont = False
             Font.Name = 'MS Sans Serif'
             Font.Style = [fsBold]
@@ -1331,6 +1345,7 @@ object fComexInvoice: TfComexInvoice
             Hint = ''
             ShowHint = True
             DataField = 'Certificado_MercosulTipo'
+            DataSource = dsInvoiceItens
             Items.Strings = (
               'CCPTC'
               'CCROM')
@@ -1350,6 +1365,7 @@ object fComexInvoice: TfComexInvoice
             Hint = ''
             ShowHint = True
             DataField = 'Certificado_MercosulQtde'
+            DataSource = dsInvoiceItens
             ParentFont = False
             Font.Color = clBlack
             Font.Name = 'MS Sans Serif'
@@ -1401,7 +1417,7 @@ object fComexInvoice: TfComexInvoice
           BorderStyle = ubsInset
           Caption = ''
           Color = 7500402
-          object UniDBNavigator1: TUniDBNavigator
+          object NavegaItens: TUniDBNavigator
             Left = 1
             Top = 1
             Width = 165
@@ -1435,6 +1451,7 @@ object fComexInvoice: TfComexInvoice
             Images = UniMainModule.imgBotoes
             ImageIndex = 0
             TabOrder = 2
+            OnClick = bAddItemClick
           end
           object bAltItem: TUniSpeedButton
             Left = 207
@@ -1465,6 +1482,7 @@ object fComexInvoice: TfComexInvoice
             Images = UniMainModule.imgBotoes
             ImageIndex = 2
             TabOrder = 4
+            OnClick = bExcItemClick
           end
           object bCancItem: TUniSpeedButton
             Left = 330
@@ -1480,6 +1498,7 @@ object fComexInvoice: TfComexInvoice
             Images = UniMainModule.imgBotoes
             ImageIndex = 3
             TabOrder = 5
+            OnClick = bCancItemClick
           end
           object bSalvaItem: TUniSpeedButton
             Left = 289
@@ -1495,6 +1514,7 @@ object fComexInvoice: TfComexInvoice
             Images = UniMainModule.imgBotoes
             ImageIndex = 4
             TabOrder = 6
+            OnClick = bSalvaItemClick
           end
         end
         object GradeItens: TUniDBGrid
@@ -1664,6 +1684,7 @@ object fComexInvoice: TfComexInvoice
       ImageIndex = 0
       TabOrder = 2
       OnClick = bAdicionarClick
+      ExplicitLeft = 171
     end
     object bEditar: TUniSpeedButton
       Left = 206
@@ -1724,6 +1745,8 @@ object fComexInvoice: TfComexInvoice
       ImageIndex = 4
       TabOrder = 5
       OnClick = bSalvarClick
+      ExplicitLeft = 294
+      ExplicitTop = -6
     end
     object bFechar_: TUniSpeedButton
       Left = 570
@@ -1775,6 +1798,7 @@ object fComexInvoice: TfComexInvoice
     end
   end
   object ttmp: TFDQuery
+    Connection = UniMainModule.Conecta
     SQL.Strings = (
       'select isnull(sum(Total_Fatura), 0)   as Total_Real,'
       '       isnull(sum(Total_FaturaME), 0) as Total_ME,'
@@ -1916,7 +1940,6 @@ object fComexInvoice: TfComexInvoice
     Top = 479
   end
   object Invoice: TFDQuery
-    CachedUpdates = True
     Connection = UniMainModule.Conecta
     FormatOptions.AssignedValues = [fvDataSnapCompatibility, fvFmtDisplayNumeric, fvFmtEditNumeric, fvCheckPrecision]
     FormatOptions.FmtDisplayNumeric = ',##0.00'
@@ -1925,8 +1948,8 @@ object fComexInvoice: TfComexInvoice
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from Invoice')
-    Left = 57
-    Top = 149
+    Left = 56
+    Top = 148
     object InvoiceRegistro: TIntegerField
       FieldName = 'Registro'
       Origin = 'Registro'
@@ -2012,8 +2035,8 @@ object fComexInvoice: TfComexInvoice
     object InvoiceTaxa_Cambio: TFloatField
       FieldName = 'Taxa_Cambio'
       Origin = 'Taxa_Cambio'
-      DisplayFormat = ',##0.00'
-      EditFormat = ',##0.00'
+      DisplayFormat = ',##0.0000'
+      EditFormat = ',##0.0000'
     end
     object InvoiceLocal_Embarque: TStringField
       FieldName = 'Local_Embarque'
@@ -2052,20 +2075,20 @@ object fComexInvoice: TfComexInvoice
     object InvoicePeso_Liquido: TFloatField
       FieldName = 'Peso_Liquido'
       Origin = 'Peso_Liquido'
-      DisplayFormat = ',##0.00'
-      EditFormat = ',##0.00'
+      DisplayFormat = ',##0.000'
+      EditFormat = ',##0.000'
     end
     object InvoicePeso_Bruto: TFloatField
       FieldName = 'Peso_Bruto'
       Origin = 'Peso_Bruto'
-      DisplayFormat = ',##0.00'
-      EditFormat = ',##0.00'
+      DisplayFormat = ',##0.000'
+      EditFormat = ',##0.000'
     end
     object InvoiceVolumes_Quantidade: TFloatField
       FieldName = 'Volumes_Quantidade'
       Origin = 'Volumes_Quantidade'
-      DisplayFormat = ',##0.00'
-      EditFormat = ',##0.00'
+      DisplayFormat = ',##0.000'
+      EditFormat = ',##0.000'
     end
     object InvoiceVolumes_Numero: TStringField
       FieldName = 'Volumes_Numero'
@@ -2075,8 +2098,8 @@ object fComexInvoice: TfComexInvoice
     object InvoiceMetro_Cubico: TFloatField
       FieldName = 'Metro_Cubico'
       Origin = 'Metro_Cubico'
-      DisplayFormat = ',##0.00'
-      EditFormat = ',##0.00'
+      DisplayFormat = ',##0.000'
+      EditFormat = ',##0.000'
     end
     object InvoiceTotal_Fatura: TCurrencyField
       FieldName = 'Total_Fatura'
@@ -2093,8 +2116,8 @@ object fComexInvoice: TfComexInvoice
     object InvoiceQuantidade_Total: TFloatField
       FieldName = 'Quantidade_Total'
       Origin = 'Quantidade_Total'
-      DisplayFormat = ',##0.00'
-      EditFormat = ',##0.00'
+      DisplayFormat = ',##0.000'
+      EditFormat = ',##0.000'
     end
     object InvoiceObservacoes: TMemoField
       FieldName = 'Observacoes'
@@ -2353,12 +2376,6 @@ object fComexInvoice: TfComexInvoice
       DisplayFormat = ',##0.00'
       EditFormat = ',##0.00'
     end
-    object InvoicePais_Aquisicao: TSmallintField
-      FieldName = 'Pais_Aquisicao'
-      Origin = 'Pais_Aquisicao'
-      DisplayFormat = ',##0.00'
-      EditFormat = ',##0.00'
-    end
     object InvoiceTransportador: TSmallintField
       FieldName = 'Transportador'
       Origin = 'Transportador'
@@ -2392,6 +2409,11 @@ object fComexInvoice: TfComexInvoice
       Origin = 'Modalidade'
       DisplayFormat = ',##0.00'
       EditFormat = ',##0.00'
+    end
+    object InvoicePais_Aquisicao: TStringField
+      FieldName = 'Pais_Aquisicao'
+      Origin = 'Pais_Aquisicao'
+      Size = 4
     end
   end
   object dsInvoice: TDataSource

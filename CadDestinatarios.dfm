@@ -133,7 +133,7 @@ object fCadDestinatarios: TfCadDestinatarios
     Height = 966
     Hint = ''
     BodyRTL = False
-    ActivePage = aLista
+    ActivePage = UniTabSheet1
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -1312,8 +1312,6 @@ object fCadDestinatarios: TfCadDestinatarios
             BorderStyle = ubsInset
             DataField = 'Pais'
             DataSource = dsDestinatarios
-            ParentFont = False
-            Font.Style = [fsBold]
             TabOrder = 18
             Color = clWindow
             FieldLabel = 'Pa'#237's'

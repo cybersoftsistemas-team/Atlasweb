@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, uniGUITypes, uniGUIAbstractClasses, uniGUIClasses, uniGUIRegClasses, uniGUIForm, uniGUIBaseClasses, uniPanel, uniPageControl,
   uniGUIFrame, Vcl.Imaging.pngimage, uniImage, Vcl.Imaging.jpeg, uniImageList, uniTreeView, uniTreeMenu, uniMainMenu, Vcl.Menus, uniLabel, uniScrollBox, uniEdit, Funcoes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, uniScreenMask, 
-  System.Generics.Collections, uniSweetAlert, uniButton, uniBitBtn, uniSpeedButton;
+  System.Generics.Collections, uniSweetAlert, uniButton, uniBitBtn, uniSpeedButton, Vcl.AppEvnts;
 
 type
   TMainForm = class(TUniForm)

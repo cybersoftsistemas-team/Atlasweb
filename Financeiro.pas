@@ -319,7 +319,7 @@ begin
                     FieldByName('Empresa').Value := UniMainModule.mEmpresaAtiva;
            except
               on E:Exception do begin
-                 LogErros('PagarReceber', 'Falha desconhecida, não pode adicionar um novo registro!'+#13+E.Message);
+                 LogErros('PagarReceber', 'INCLUSÃO', 'Falha desconhecida, não pode adicionar um novo registro!'+#13+E.Message);
                  MessageDlgN('Falha desconhecida, não pode adicionar um novo registro!'+#13+E.Message, mtError, []);
               end;
            end;
@@ -950,7 +950,7 @@ begin
                end;
            except
                on E:Exception do begin
-                  LogErros('PagarReceberBaixas', 'Falha desconhecida, não pode efetuar a baixa do título!'+FieldByName('Titulo').asstring+'***'+#13+E.Message+')');
+                  LogErros('PagarReceberBaixas', 'BAIXA', 'Falha desconhecida, não pode efetuar a baixa do título!'+FieldByName('Titulo').asstring+'***'+#13+E.Message+')');
                   ShowmessageN('Falha desconhecida, não pode baixa o título!');
                   LigaBotoesBx(true);
                   Abort;
@@ -1328,7 +1328,7 @@ begin
               Post;
           except
               on E:Exception do begin
-                 LogErros('PagarReceber', 'Falha desconhecida, não pode salvar o título no financeiro! ['+FieldByName('Titulo').asstring+'] '+#13+E.Message);
+                 LogErros('PagarReceber', EstadoTabela(PagarReceber), 'Falha desconhecida, não pode salvar o título no financeiro! ['+FieldByName('Titulo').asstring+'] '+#13+E.Message);
                  ShowmessageN('Falha desconhecida, não pode salvar o título no financeiro!');
                  Screen.Cursor := crDefault;
                  Abort;
@@ -1363,7 +1363,7 @@ begin
                  Baixas.Post;
              except
                  on E:Exception do begin
-                    LogErros('Baixas', 'Falha desconhecida, não pode efetuar a baixa de compensação do título!'+FieldByName('Titulo').asstring+#13+E.Message+')');
+                    LogErros('Baixas', EstadoTabela(PagarReceber), 'Falha desconhecida, não pode efetuar a baixa de compensação do título!'+FieldByName('Titulo').asstring+#13+E.Message+')');
                  end;
              end;
              // Compensação de adiantamento á fornecedor.
