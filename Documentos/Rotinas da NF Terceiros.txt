@@ -1,0 +1,59 @@
+               +--> POR PRODUTO    (CODIGO DO PRODUTO)
+               |
+ESTOQUE MINIMO +--> POR NOTA       (NUMERO DA NOTA)
+               | 
+               +--> TODOS PRODUTOS (GERAL)
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+ALTERAÇÃO DA NF TERCEIRO
+=========================
+[ok] Verificar se periodo fiscal esta bloqueado                      --> (se estiver bloquera os itens).
+[ok] Verificar se houve baixas de lançamentos originados na NF       --> (se houver bloquear os itens).
+[ok] Verificar o último período contabil encerrado                   --> (se estiver bloqueado bloquear os itens).
+[ok] Verificar se houve movimentação emm data superior entrada da NF --> (Se houve bloquear os itens).
+
+
+SALVAR NF TERCEIROS
+=========================
+. Verificar campos obrigatórios.
+. Verifica se já existe nota com o mesmo Número, Data e fornecedor no cadastro.
+. Atualiza os itens da nota fiscal com os dados da capa.
+
+
+EXCLUSÃO DA NF TERCEIROS
+========================
+[ok] Verificar se periodo fiscal esta bloqueado.
+[ok] Verificar se houve baixas de lançamentos originados na NF.
+[ok] Verificar o último período contabil encerrado.
+[ok] Verificar se houve movimentação dos produtos com data superior a data de entrada da nota fiscal.
+[ok] Reprocessar o percentual do estoque minímo.
+[ok] Deixar Seriais/Chassis indisponiveis para faturamento pois a nf de entrada foi excluída.
+[ok] Excluir as notas da tabela de notas dos Seriais/Chassis.
+[ok] Excluir as entradas de Lotes feitos pela NF.
+[ok] Excluir os itens cadastrados no CIAP pela entrada da NF.
+[ok] Excluir Lançamentos financeiros originados da NF que não estiverem baixados.
+[  ] Ajustar as quantidade do estoque do embarque.
+[ok] Excluir as notas da tabela de notas dos Embarques.
+[ok] Excluir lançamentos contabeis originados da NF.
+[  ] Excluir Itens da NF da ficha de Estoque/Inventario e reprocessar os itens de ambos.
+[ok] Excluir Itens da NF.
+
+
+SALVAR ITENS
+============
+[  ] Verificar campos obrigatórios.
+[  ] Calcular valor do inventario ou pegar da ficha de estoque.
+[  ] Criar parcelas no imobilizado em casa de (Compra para ativo imobilizado).
+[  ] Atualizar valores do cadastro do produtos Custo Médio/ Valor Entrada/ Estoque minímo Perc/ Minímo.
+[  ] Ajuste de lotes/Detalhes.
+[  ] Adicionar itens a tabela de embarques.
+
+
+EXCLUIR ITENS
+=============
+[  ] Ajustar movimentação de chassi/Serial.
+[  ] Reprocessar o valor do estoque minímo percentual.
+[  ] Excluir do imobilizado caso não tenha sido utilizado nenhuma parcela.
+[  ] Excluir controle de lotes.
+[  ] Excluir tabela de itens dos embarques.

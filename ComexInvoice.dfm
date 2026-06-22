@@ -11,12 +11,16 @@ object fComexInvoice: TfComexInvoice
   object Pasta: TUniPageControl
     Left = 0
     Top = 35
-    Width = 1243
+    Width = 1017
     Height = 979
     Hint = ''
     Margins.Bottom = 15
     ActivePage = Abaitens
     Align = alClient
+    ClientEvents.UniEvents.Strings = (
+      
+        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+        '= '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 0
     object AbaLista: TUniTabSheet
       Hint = ''
@@ -26,7 +30,7 @@ object fComexInvoice: TfComexInvoice
         AlignWithMargins = True
         Left = 3
         Top = 30
-        Width = 1229
+        Width = 1003
         Height = 920
         Hint = ''
         Margins.Bottom = 1
@@ -115,7 +119,7 @@ object fComexInvoice: TfComexInvoice
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
-        Width = 1235
+        Width = 1009
         Height = 27
         Hint = ''
         Align = alTop
@@ -168,21 +172,21 @@ object fComexInvoice: TfComexInvoice
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1235
+        Width = 1009
         Height = 951
         Hint = ''
         Align = alClient
         TabOrder = 0
         DesignSize = (
-          1233
+          1007
           949)
         ScrollHeight = 934
         ScrollWidth = 632
         object pFicha: TUniPanel
-          Left = 109
+          Left = 12
           Top = 18
           Width = 838
-          Height = 847
+          Height = 780
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -223,7 +227,7 @@ object fComexInvoice: TfComexInvoice
           object cMoeda: TUniDBLookupComboBox
             Left = 15
             Top = 179
-            Width = 536
+            Width = 530
             Height = 25
             Hint = ''
             ShowHint = True
@@ -777,7 +781,7 @@ object fComexInvoice: TfComexInvoice
           object cMoeda_Frete: TUniDBLookupComboBox
             Left = 15
             Top = 549
-            Width = 536
+            Width = 530
             Height = 25
             Hint = ''
             ShowHint = True
@@ -1022,91 +1026,6 @@ object fComexInvoice: TfComexInvoice
             FieldLabelSeparator = ' '
             BorderStyle = ubsInset
           end
-          object GroupBox1: TUniGroupBox
-            AlignWithMargins = True
-            Left = 11
-            Top = 775
-            Width = 810
-            Height = 60
-            Hint = ''
-            Enabled = False
-            ShowHint = True
-            Caption = 'TOTAIS DO PROCESSO'
-            TabOrder = 42
-            object cTotalFaturaME: TUniFormattedNumberEdit
-              Left = 407
-              Top = 21
-              Width = 195
-              Height = 25
-              Hint = ''
-              ShowHint = True
-              BorderStyle = ubsInset
-              Alignment = taRightJustify
-              ParentFont = False
-              Font.Style = [fsBold]
-              TabOrder = 2
-              Color = 16762566
-              FieldLabel = 'Valor (ME)'
-              FieldLabelWidth = 70
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-            end
-            object cTotalPesoLiquido: TUniFormattedNumberEdit
-              Left = 7
-              Top = 21
-              Width = 195
-              Height = 25
-              Hint = ''
-              ShowHint = True
-              BorderStyle = ubsInset
-              Alignment = taRightJustify
-              ParentFont = False
-              Font.Style = [fsBold]
-              TabOrder = 4
-              Color = 16762566
-              FieldLabel = 'Peso L'#237'quido'
-              FieldLabelWidth = 70
-              FieldLabelSeparator = ' '
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-            end
-            object cTotalPesoBruto: TUniFormattedNumberEdit
-              Left = 207
-              Top = 21
-              Width = 195
-              Height = 25
-              Hint = ''
-              ShowHint = True
-              BorderStyle = ubsInset
-              Alignment = taRightJustify
-              ParentFont = False
-              Font.Style = [fsBold]
-              TabOrder = 1
-              Color = 16762566
-              FieldLabel = 'Peso Bruto'
-              FieldLabelWidth = 70
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-            end
-            object cTotalFaturaReal: TUniFormattedNumberEdit
-              Left = 607
-              Top = 21
-              Width = 195
-              Height = 25
-              Hint = ''
-              ShowHint = True
-              BorderStyle = ubsInset
-              Alignment = taRightJustify
-              ParentFont = False
-              Font.Style = [fsBold]
-              TabOrder = 3
-              Color = 16762566
-              FieldLabel = 'Valor (R$)'
-              FieldLabelWidth = 70
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-            end
-          end
           object cEmpresa: TUniDBLookupComboBox
             Left = 15
             Top = 17
@@ -1145,7 +1064,7 @@ object fComexInvoice: TfComexInvoice
             BorderStyle = ubsInset
             DataField = 'Modalidade'
             DataSource = dsInvoice
-            TabOrder = 43
+            TabOrder = 42
             Color = clWindow
             FieldLabel = 'Modalidade'
             FieldLabelWidth = 120
@@ -1169,13 +1088,13 @@ object fComexInvoice: TfComexInvoice
       ImageIndex = 2
       Caption = 'Itens da Invoice'
       DesignSize = (
-        1235
+        1009
         951)
       object Fichaitens: TUniPanel
-        Left = 44
+        Left = 49
         Top = 18
         Width = 912
-        Height = 594
+        Height = 625
         Hint = ''
         ShowHint = True
         ParentShowHint = False
@@ -1381,6 +1300,7 @@ object fComexInvoice: TfComexInvoice
             Width = 300
             Height = 25
             Hint = ''
+            Enabled = False
             ShowHint = True
             DataField = 'Invoice'
             DataSource = dsInvoiceItens
@@ -1395,7 +1315,7 @@ object fComexInvoice: TfComexInvoice
               
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
                 '= '#39'CampoDestaque'#39';'#13#10'}')
-            FieldLabel = 'Quantidade'
+            FieldLabel = 'Invoice N'#186
             FieldLabelSeparator = ' '
             BorderStyle = ubsInset
           end
@@ -1403,7 +1323,7 @@ object fComexInvoice: TfComexInvoice
         object UniPanel2: TUniPanel
           AlignWithMargins = True
           Left = 3
-          Top = 213
+          Top = 469
           Width = 906
           Height = 35
           Hint = ''
@@ -1435,7 +1355,6 @@ object fComexInvoice: TfComexInvoice
             IconSet = icsFontAwesome
             Align = alLeft
             TabOrder = 0
-            BeforeAction = NavegaItensBeforeAction
           end
           object bAddItem: TUniSpeedButton
             Left = 166
@@ -1467,6 +1386,7 @@ object fComexInvoice: TfComexInvoice
             Images = UniMainModule.imgBotoes
             ImageIndex = 1
             TabOrder = 3
+            OnClick = bAltItemClick
           end
           object bExcItem: TUniSpeedButton
             Left = 248
@@ -1516,13 +1436,46 @@ object fComexInvoice: TfComexInvoice
             TabOrder = 6
             OnClick = bSalvaItemClick
           end
+          object bItens: TUniButton
+            Left = 371
+            Top = 1
+            Width = 130
+            Height = 33
+            Hint = 'Adicionar itens a invoice'
+            Margins.Left = 1
+            Margins.Top = 1
+            Margins.Right = 1
+            Margins.Bottom = 1
+            ShowHint = True
+            ParentShowHint = False
+            Caption = 'Importar Itens do PO'
+            Align = alLeft
+            TabOrder = 7
+          end
+          object bLPCO: TUniButton
+            Left = 501
+            Top = 1
+            Width = 70
+            Height = 33
+            Hint = 'Adicionar itens a invoice'
+            Margins.Left = 1
+            Margins.Top = 1
+            Margins.Right = 1
+            Margins.Bottom = 1
+            ShowHint = True
+            ParentShowHint = False
+            Caption = 'LPCO'
+            Align = alLeft
+            TabOrder = 8
+            OnClick = bLPCOClick
+          end
         end
         object GradeItens: TUniDBGrid
           AlignWithMargins = True
           Left = 3
-          Top = 254
+          Top = 213
           Width = 906
-          Height = 220
+          Height = 250
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -1589,15 +1542,15 @@ object fComexInvoice: TfComexInvoice
         object Grade3: TUniDBGrid
           AlignWithMargins = True
           Left = 3
-          Top = 480
+          Top = 510
           Width = 906
-          Height = 111
+          Height = 112
           Hint = ''
           ShowHint = True
           ParentShowHint = False
           TitleFont.Name = 'MS Sans Serif'
           TitleFont.Style = [fsBold]
-          DataSource = dstLPCO
+          DataSource = dsItensLPCO
           Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
           ReadOnly = True
           WebOptions.Paged = False
@@ -1612,29 +1565,20 @@ object fComexInvoice: TfComexInvoice
           Color = clBtnFace
           Columns = <
             item
-              FieldName = 'Orgao_Anuente'
+              FieldName = 'Orgao_Nome'
               Title.Alignment = taCenter
               Title.Caption = 'Org'#227'o Anuente'
               Title.Font.Style = [fsBold]
-              Width = 417
+              Width = 364
               Font.Name = 'Calibri'
               ReadOnly = True
             end
             item
-              FieldName = 'Documento'
+              FieldName = 'LPCO_Numero'
               Title.Alignment = taCenter
-              Title.Caption = 'Tipo Documento'
+              Title.Caption = 'N'#186' LPCO'
               Title.Font.Style = [fsBold]
-              Width = 165
-              Font.Name = 'Calibri'
-              ReadOnly = True
-            end
-            item
-              FieldName = 'Numero'
-              Title.Alignment = taCenter
-              Title.Caption = 'N'#250'mero'
-              Title.Font.Style = [fsBold]
-              Width = 216
+              Width = 224
               Font.Name = 'Calibri'
               ReadOnly = True
             end>
@@ -1684,7 +1628,6 @@ object fComexInvoice: TfComexInvoice
       ImageIndex = 0
       TabOrder = 2
       OnClick = bAdicionarClick
-      ExplicitLeft = 171
     end
     object bEditar: TUniSpeedButton
       Left = 206
@@ -1745,11 +1688,9 @@ object fComexInvoice: TfComexInvoice
       ImageIndex = 4
       TabOrder = 5
       OnClick = bSalvarClick
-      ExplicitLeft = 294
-      ExplicitTop = -6
     end
     object bFechar_: TUniSpeedButton
-      Left = 570
+      Left = 370
       Top = 0
       Width = 41
       Height = 35
@@ -1763,38 +1704,125 @@ object fComexInvoice: TfComexInvoice
       TabOrder = 7
       OnClick = bFechar_Click
     end
-    object bItens: TUniButton
-      Left = 370
-      Top = 0
-      Width = 130
-      Height = 35
-      Hint = 'Adicionar itens a invoice'
-      Margins.Left = 1
-      Margins.Top = 1
-      Margins.Right = 1
-      Margins.Bottom = 1
+  end
+  object UniPanel3: TUniPanel
+    AlignWithMargins = True
+    Left = 1020
+    Top = 38
+    Width = 220
+    Height = 973
+    Hint = ''
+    Align = alRight
+    ParentFont = False
+    Font.Name = 'MS Sans Serif'
+    TabOrder = 2
+    ClientEvents.UniEvents.Strings = (
+      
+        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'   config.cls' +
+        ' = '#39'Painel'#39';'#13#10'}')
+    BorderStyle = ubsInset
+    ShowCaption = False
+    TitleVisible = True
+    TitleAlign = taCenter
+    Title = 'TOTAIS DO PROCESSO'
+    Caption = 'UniPanel3'
+    ScrollDirection = sdNone
+    object cTotalPesoLiquido: TUniFormattedNumberEdit
+      AlignWithMargins = True
+      Left = 4
+      Top = 6
+      Width = 212
+      Height = 25
+      Hint = ''
+      Margins.Top = 5
+      Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
-      Caption = 'Importar Itens do PO'
-      Align = alLeft
-      TabOrder = 8
+      BorderStyle = ubsInset
+      Alignment = taRightJustify
+      ParentFont = False
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      Align = alTop
+      TabOrder = 1
+      Color = 16762566
+      FieldLabel = 'Peso L'#237'quido'
+      FieldLabelWidth = 70
+      FieldLabelSeparator = ' '
+      DecimalSeparator = ','
+      ThousandSeparator = '.'
     end
-    object bLPCO: TUniButton
-      Left = 500
-      Top = 0
-      Width = 70
-      Height = 35
-      Hint = 'Adicionar itens a invoice'
-      Margins.Left = 1
-      Margins.Top = 1
-      Margins.Right = 1
-      Margins.Bottom = 1
+    object cTotalPesoBruto: TUniFormattedNumberEdit
+      AlignWithMargins = True
+      Left = 4
+      Top = 33
+      Width = 212
+      Height = 25
+      Hint = ''
+      Margins.Top = 2
+      Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
-      Caption = 'LPCO'
-      Align = alLeft
-      TabOrder = 9
-      OnClick = bLPCOClick
+      BorderStyle = ubsInset
+      Alignment = taRightJustify
+      ParentFont = False
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      Align = alTop
+      TabOrder = 2
+      Color = 16762566
+      FieldLabel = 'Peso Bruto'
+      FieldLabelWidth = 70
+      DecimalSeparator = ','
+      ThousandSeparator = '.'
+    end
+    object cTotalFaturaME: TUniFormattedNumberEdit
+      AlignWithMargins = True
+      Left = 4
+      Top = 60
+      Width = 212
+      Height = 25
+      Hint = ''
+      Margins.Top = 2
+      Margins.Bottom = 0
+      ShowHint = True
+      ParentShowHint = False
+      BorderStyle = ubsInset
+      Alignment = taRightJustify
+      ParentFont = False
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      Align = alTop
+      TabOrder = 3
+      Color = 16762566
+      FieldLabel = 'Valor (ME)'
+      FieldLabelWidth = 70
+      DecimalSeparator = ','
+      ThousandSeparator = '.'
+    end
+    object cTotalFaturaReal: TUniFormattedNumberEdit
+      AlignWithMargins = True
+      Left = 4
+      Top = 87
+      Width = 212
+      Height = 25
+      Hint = ''
+      Margins.Top = 2
+      Margins.Bottom = 0
+      ShowHint = True
+      ParentShowHint = False
+      BorderStyle = ubsInset
+      Alignment = taRightJustify
+      ParentFont = False
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      Align = alTop
+      TabOrder = 4
+      Color = 16762566
+      FieldLabel = 'Valor (R$)'
+      FieldLabelWidth = 70
+      DecimalSeparator = ','
+      ThousandSeparator = '.'
     end
   end
   object ttmp: TFDQuery
@@ -1806,32 +1834,8 @@ object fComexInvoice: TfComexInvoice
       '       isnull(sum(Peso_Bruto), 0)     as Total_PesoBruto'
       'from Invoice'
       '')
-    Left = 573
-    Top = 214
-  end
-  object tLPCO: TFDQuery
-    SQL.Strings = (
-      'select Invoice'
-      
-        '      ,Orgao_Anuente = (select Nome from Cybersoft_Cadastros.dbo' +
-        '.OrgaosAnuentes where Codigo = LPCO.Orgao_Anuente)'
-      
-        #9'  ,Documento = (select Documento from LPCO where LPCO.Registro ' +
-        '= iil.LPCO)'
-      
-        #9'  ,Numero = (select NUmero from LPCO where LPCO.Registro = iil.' +
-        'LPCO)'
-      'from InvoiceItensLPCO iil, LPCO'
-      'where iil.Invoice = '#39'HFT230928'#39
-      'and Codigo_Mercadoria = 2'
-      'and LPCO.Registro = iil.LPCO')
-    Left = 462
-    Top = 340
-  end
-  object dstLPCO: TDataSource
-    DataSet = tLPCO
-    Left = 462
-    Top = 387
+    Left = 568
+    Top = 198
   end
   object Transportador: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1853,7 +1857,7 @@ object fComexInvoice: TfComexInvoice
     Width = 400
     Padding = 20
     Left = 568
-    Top = 155
+    Top = 148
   end
   object Empresas: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1923,7 +1927,7 @@ object fComexInvoice: TfComexInvoice
   object dsIncoterms: TDataSource
     DataSet = Incoterms
     Left = 57
-    Top = 579
+    Top = 585
   end
   object Moedas: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1947,7 +1951,7 @@ object fComexInvoice: TfComexInvoice
     UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
-      'select * from Invoice')
+      'select * from Invoice where numero = '#39'#0000000001'#39)
     Left = 56
     Top = 148
     object InvoiceRegistro: TIntegerField
@@ -2419,16 +2423,19 @@ object fComexInvoice: TfComexInvoice
   object dsInvoice: TDataSource
     DataSet = Invoice
     Left = 57
-    Top = 199
+    Top = 198
   end
   object Produtos: TFDQuery
+    Active = True
     Connection = UniMainModule.Conecta
     UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
-      'select Codigo, Descricao_Reduzida, Descricao'
-      'from'
-      'Produtos')
+      'select Codigo'
+      '      ,Descricao_Reduzida'
+      '      ,Descricao'
+      '      ,NCM'
+      'from Produtos')
     Left = 157
     Top = 340
   end
@@ -2449,7 +2456,7 @@ object fComexInvoice: TfComexInvoice
   object dsCotacao: TDataSource
     DataSet = Cotacao
     Left = 157
-    Top = 579
+    Top = 585
   end
   object CondicaoCambial: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2458,12 +2465,12 @@ object fComexInvoice: TfComexInvoice
     SQL.Strings = (
       'SELECT * FROM CondicaoCambial')
     Left = 253
-    Top = 150
+    Top = 148
   end
   object dsCondicaoCambial: TDataSource
     DataSet = CondicaoCambial
     Left = 253
-    Top = 200
+    Top = 198
   end
   object MetodoValoracao: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2472,12 +2479,12 @@ object fComexInvoice: TfComexInvoice
     SQL.Strings = (
       'SELECT * FROM MetodoValoracao')
     Left = 253
-    Top = 249
+    Top = 248
   end
   object dsMetodoValoracao: TDataSource
     DataSet = MetodoValoracao
     Left = 253
-    Top = 293
+    Top = 292
   end
   object Processos: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2486,12 +2493,12 @@ object fComexInvoice: TfComexInvoice
     SQL.Strings = (
       'SELECT * FROM ProcessosImp')
     Left = 253
-    Top = 341
+    Top = 340
   end
   object dsProcessos: TDataSource
     DataSet = Processos
     Left = 253
-    Top = 388
+    Top = 387
   end
   object PO: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2500,12 +2507,12 @@ object fComexInvoice: TfComexInvoice
     SQL.Strings = (
       'SELECT * FROM PO')
     Left = 253
-    Top = 438
+    Top = 437
   end
   object dsPO: TDataSource
     DataSet = PO
     Left = 253
-    Top = 480
+    Top = 479
   end
   object genciaFinanciadora: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2514,12 +2521,12 @@ object fComexInvoice: TfComexInvoice
     SQL.Strings = (
       'SELECT * FROM genciaFinanciadora')
     Left = 253
-    Top = 530
+    Top = 529
   end
   object dsgenciaFinanciadora: TDataSource
     DataSet = genciaFinanciadora
     Left = 253
-    Top = 580
+    Top = 585
   end
   object MotivoCambial: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2528,12 +2535,12 @@ object fComexInvoice: TfComexInvoice
     SQL.Strings = (
       'SELECT * FROM MotivoCambial')
     Left = 357
-    Top = 149
+    Top = 148
   end
   object dsMotivoCambial: TDataSource
     DataSet = MotivoCambial
     Left = 357
-    Top = 199
+    Top = 198
   end
   object Modalidades: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2577,57 +2584,29 @@ object fComexInvoice: TfComexInvoice
     Left = 357
     Top = 479
   end
-  object Orgaosnuentes: TFDQuery
-    Connection = UniMainModule.Conecta
-    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
-    UpdateOptions.AutoCommitUpdates = True
-    SQL.Strings = (
-      'SELECT * FROM Cybersoft_CadastrosdboOrgaosnuentes')
-    Left = 357
-    Top = 527
-  end
-  object dsOrgaosnuentes: TDataSource
-    DataSet = Orgaosnuentes
-    Left = 357
-    Top = 579
-  end
-  object LPCO: TFDQuery
-    Connection = UniMainModule.Conecta
-    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
-    UpdateOptions.AutoCommitUpdates = True
-    SQL.Strings = (
-      'SELECT * FROM LPCO')
-    Left = 462
-    Top = 149
-  end
-  object dsLPCO: TDataSource
-    DataSet = LPCO
-    Left = 462
-    Top = 199
-  end
   object AgFinanc: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'select * from AgenciaFinanciadora ')
     Left = 462
-    Top = 439
+    Top = 340
   end
   object dsAgFinanc: TDataSource
     DataSet = AgFinanc
     Left = 462
-    Top = 486
+    Top = 387
   end
   object MetodoVal: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'select * from MetodoValoracao')
     Left = 465
-    Top = 527
+    Top = 437
   end
   object dsMetodoVal: TDataSource
     DataSet = MetodoVal
     Left = 465
-    Top = 579
+    Top = 479
   end
   object InvoiceItens: TFDQuery
     IndexFieldNames = 'Empresa;Invoice'
@@ -2638,11 +2617,9 @@ object fComexInvoice: TfComexInvoice
     SQL.Strings = (
       'select *'
       'from InvoiceItens'
-      '--where Empresa = :Empresa'
-      '--and Invoice = :Numero'
-      '--where Invoice = '#39'003/23'#39)
+      'where Invoice = '#39'#0000000001'#39)
     Left = 156
-    Top = 154
+    Top = 148
     object InvoiceItensRegistro: TLargeintField
       FieldName = 'Registro'
       Origin = 'Registro'
@@ -2763,6 +2740,63 @@ object fComexInvoice: TfComexInvoice
   object dsInvoiceItens: TDataSource
     DataSet = InvoiceItens
     Left = 154
-    Top = 202
+    Top = 198
+  end
+  object ItensLPCO: TFDQuery
+    IndexFieldNames = 'Invoice;Codigo_Mercadoria'
+    MasterSource = dsInvoiceItens
+    MasterFields = 'Invoice;Codigo_Mercadoria'
+    DetailFields = 'Invoice;Codigo_Mercadoria'
+    Connection = UniMainModule.Conecta
+    SQL.Strings = (
+      'select *'
+      
+        '      ,Orgao_Nome = (select Nome from OrgaosAnuentes where Codig' +
+        'o = Orgao_Anuente) '
+      
+        '      ,LPCO_Numero = (select Numero from LPCO lp where lp.LPCO =' +
+        ' iil.LPCO)'
+      'from InvoiceItensLPCO iil')
+    Left = 461
+    Top = 149
+    object ItensLPCORegistro: TFDAutoIncField
+      FieldName = 'Registro'
+      Origin = 'Registro'
+      ReadOnly = True
+    end
+    object ItensLPCOInvoice: TStringField
+      FieldName = 'Invoice'
+      Origin = 'Invoice'
+      Size = 30
+    end
+    object ItensLPCOCodigo_Mercadoria: TSmallintField
+      FieldName = 'Codigo_Mercadoria'
+      Origin = 'Codigo_Mercadoria'
+    end
+    object ItensLPCOOrgao_Anuente: TSmallintField
+      FieldName = 'Orgao_Anuente'
+      Origin = 'Orgao_Anuente'
+    end
+    object ItensLPCOLPCO: TIntegerField
+      FieldName = 'LPCO'
+      Origin = 'LPCO'
+    end
+    object ItensLPCOOrgao_Nome: TStringField
+      FieldName = 'Orgao_Nome'
+      Origin = 'Orgao_Nome'
+      ReadOnly = True
+      Size = 80
+    end
+    object ItensLPCOLPCO_Numero: TStringField
+      FieldName = 'LPCO_Numero'
+      Origin = 'LPCO_Numero'
+      ReadOnly = True
+      Size = 30
+    end
+  end
+  object dsItensLPCO: TDataSource
+    DataSet = ItensLPCO
+    Left = 462
+    Top = 198
   end
 end

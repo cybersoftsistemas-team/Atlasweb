@@ -1,0 +1,86 @@
+NOTASFISCAIS --> NOTASTERCEIROS
+===============================================================
+Data_Entrada	      datetime NULL  -----> Data_EntradaSaida
+Referencia_Fiscal     smallint NULL  -----> Tipo_Nota
+Centro_Custo	      char     10    -----> Criar
+Fornecedor            smallint NULL  -----> Destinatario
+Tipo                  char     3     -----> Excluir pois ficarão separados CTE de NFE não havendo necessidade. (Tipo = 'CTE', 'NF' etc...)
+SubSerie	      cha      2     -----> Criar
+Natureza_Codigo	      varchar  4     -----> CFOP 
+Servico	              char     5     -----> Excluir pois ficarão separados NFS de NFE não havendo necessidade. (Serviço = '5655', código do serviço)
+Quantidade	      decimal  NULL  -----> Excluir (desnecessario)
+Valor_BCICMSOper      decimal  NULL  -----> Valor_BCICMS
+Valor_ICMSOper	      decimal  NULL  -----> Valor_ICMS
+Valor_TotalProdutos   decimal  NULL  -----> Valor_Produtos
+Valor_TotalDescontos  decimal  NULL  -----> Valor_Descontos
+Valor_TotalLiquido    decimal  NULL  -----> Excluir
+Valor_BCICMSSub	      decimal  NULL  -----> Valor_BCICMSST
+Valor_ICMSSub         decimal  NULL  -----> Valor_ICMSST
+Valor_IsentasICMSSub  decimal  NULL  -----> Criar - Valor_IsentasICMSST
+Valor_OutrasICMSSub   decimal  NULL  -----> Criar - Valor_OutrasICMSST
+Valor_TotalBCIPI      decimal  NULL  -----> Valor_BCIPI
+Valor_TotalIPI	      decimal  NULL  -----> Valor_IPI
+Aliquota_PIS          decimal  NULL  -----> Excluir
+Aliquota_COFINS	      decimal  NULL  -----> Excluir
+Classificacao	      varchar  15    -----> Excluir
+Lancamento_Nota       smallint NULL  -----> Excluir
+Aliquota_ISS          decimal  NULL  -----> Excluir
+Valor_ISS             decimal  NULL  -----> Excluir
+Provisoria            bit      NULL  -----> Criar
+Origem_Mercadoria     smallint NULL  -----> Criar
+Valor_ProdutosOrig    decimal  NULL  -----> Criar
+Valor_LiquidoOrig     decimal  NULL  -----> Excluir
+Desdobramento         bit      NULL  -----> Criar
+Natureza_Frete        smallint NULL  -----> Criar
+Valor_TotalFrete      decimal  NULL  -----> Valor_Frete
+Municipio_Origem      int      NULL  -----> Excluir (CTR)
+Municipio_Destino     int      NULL  -----> Excluir (CTR)
+Manifestada           bit      NULL  -----> Criar
+Classificacao_Servico int      NULL  -----> Excluir
+Total_Despesas	      decimal  NULL  -----> Valor_Despesas
+Observacoes           text           -----> Inf_Complementares
+
+
+NOTASITENS --> NOTASTERCEIROSITENS
+===============================================================
+Data_Emissao         date     NULL -----> Data
+Data_Entrada         date     NULL -----> Data_EntradaSaida (Criar)
+Fornecedor           smallint NULL -----> Excluir
+Valor_Desconto       decimal  NULL -----> Desconto_Valor
+Valor_Liquido	     decimal  NULL -----> Excluir
+Aliquota_ICMSOper    decimal  NULL -----> Aliquota_ICMSOp
+Valor_BCICMSOper     decimal  NULL -----> Valor_BCICMSOp
+Valor_ICMSOper       decimal  NULL -----> Valor_ICMSOp
+Gera_Registro88      bit      NULL -----> Excluir
+Aliquota_ICMSSub     decimal  NULL -----> Aliquota_ICMSST
+Valor_BCICMSSub      decimal  NULL -----> Valor_BCICMSST
+Valor_ICMSSub        decimal  NULL -----> Valor_ICMSST
+Tipo                 char     3    -----> Excluir
+Consumo_Energia      decimal  NULL -----> Criar
+CIAP_BCICMS          decimal  NULL -----> Criar
+CIAP_AliquotaICMS    decimal  NULL -----> Criar
+CIAP_ValorICMS       decimal  NULL -----> Criar
+CIAP_Parcela         decimal  NULL -----> Criar
+CIAP_TipoItem	     smallint NULL -----> Criar
+CST_IPI              char     2    -----> CSTIPI
+CST_PIS              char     2    -----> CSTPIS
+CST_COFINS           char     2    -----> CSTCOFINS
+DI                   varchar  15   -----> DUIMP
+Inventario_Terceiros bit      NULL -----> Criar
+Referencia_Fiscal    smallint NULL -----> Tipo_Nota
+Valor_UnitarioOrig   decimal  NULL -----> Criar
+Valor_LiquidoOrig    decimal  NULL -----> Excluir
+Item_Referencia      smallint NULL -----> Criar
+Valor_ICMSOperOrig   decimal  NULL -----> Valor_ICMSOpOrig (Criar)
+Valor_ICMSSubOrig    decimal  NULL -----> Valor_ICMSSTOrig (Criar)
+Valor_PISOrig        decimal  NULL -----> Valor_PISOrig (Criar)
+Valor_COFINSOrig     decimal  NULL -----> Valor_COFINSOrig (Criar)
+Valor_IPIOrig        decimal  NULL -----> Valor_IPIOrig (Criar)
+Valor_BCCOFINS       decimal  NULL -----> Valor_BCCOFINS (Criar)
+Aliquota_PISOrig     decimal  NULL -----> Aliquota_PISOrig (Criar)
+Aliquota_COFINSOrig  decimal  NULL -----> Aliquota_COFINSOrig (Criar)
+Valor_BCICMSSubOrig  decimal  NULL -----> Valor_BCICMSSTOrig (Criar)
+Trava_ValorInv       bit      NULL -----> Trava_ValorInv (Criar)
+Valor_INSS           decimal  NULL -----> Excluir
+Valor_IR             decimal  NULL -----> Excluir
+*/

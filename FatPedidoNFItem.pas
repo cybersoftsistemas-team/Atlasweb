@@ -284,9 +284,6 @@ type
     dstFormulasTotais: TDataSource;
     tFormulasTotais: TFDQuery;
     PedidosNFItensValor_ICMSOp: TBCDField;
-    PedidosNFItensValor_Produtos: TBCDField;
-    PedidosNFItensValor_FCPICMSOrig: TBCDField;
-    PedidosNFItensValor_TotalImpostos: TBCDField;
     UniContainerPanel1: TUniContainerPanel;
     UniPanel3: TUniPanel;
     UniPanel11: TUniPanel;
@@ -418,8 +415,10 @@ type
     UniDBFormattedNumberEdit9: TUniDBFormattedNumberEdit;
     cTotalCOFINSST: TUniFormattedNumberEdit;
     UniContainerPanel2: TUniContainerPanel;
-    PedidosNFItensFinalidade_Mercadoria: TStringField;
-    PedidosNFItensItem_DUIMP: TIntegerField;
+    PedidosNFItensSequencia: TIntegerField;
+    PedidosNFItensValor_Impostos: TBCDField;
+    PedidosNFItensFinalidade_Mercadoria: TSmallintField;
+    PedidosNFItensItem_Declaracao: TSmallintField;
     procedure UniSpeedButton1Click(Sender: TObject);
     procedure UniFrameCreate(Sender: TObject);
     procedure cProdutoExit(Sender: TObject);

@@ -656,20 +656,11 @@ begin
      with Notas do begin
           sql.clear;
           sql.add('select distinct');
-          sql.add('       Data_Entrada');
+          sql.add('       Data_Entrada = Data_EntradaSaida');
           sql.add('      ,Nota');
-          sql.add('      ,Valor_Inventario = ROUND(Valor_Inventario, 4)');
-          sql.add('      ,Valor_Entrada    = ROUND(Valor_UnitarioOrig, 4)');
-          sql.add('      ,Emissao = ''TERCEIROS'' ');
-          sql.add('from NotasTerceirosItens');
-          sql.add('where Codigo_Mercadoria = :pCodigo');
-          sql.add('union all');
-          sql.add('select distinct');
-          sql.add('       Data');
-          sql.add('      ,Nota');
-          sql.add('      ,Valor_Inventario = ROUND(Valor_Inventario, 4)');
-          sql.add('      ,Valor_Entrada    = ROUND(Valor_Unitario, 4)');
-          sql.add('      ,Emissao = ''PROPRIA'' ');
+          sql.add('      ,Valor_Inventario = round(Valor_Inventario, 4)');
+          sql.add('      ,Valor_Entrada    = round(Valor_Unitario, 4)');
+          sql.add('      ,Emissao = iif(Emissao = ''P'', ''PRÓPRIA'', ''TERCEIROS'')');
           sql.add('from NotasItens');
           sql.add('where Codigo_Mercadoria = :pCodigo');
           sql.add('and ES = 0');
@@ -717,18 +708,20 @@ end;
 
 procedure TfCadProdutos.SeriaisAfterScroll(DataSet: TDataSet);
 begin
-      SeriaisNotas.SQL.Clear;
-      SeriaisNotas.SQL.Add('select Nota');
-      SeriaisNotas.SQL.Add('      ,Data');
-      SeriaisNotas.SQL.Add('      ,Tipo         = case when Saida_Entrada = 0     then ''ENTRADA''   else ''SAÍDA''   end');
-      SeriaisNotas.SQL.Add('      ,Emissor_Nome = case when Emissor       = ''T'' then ''TERCEIROS'' else ''PRÓPRIO'' end');
-      SeriaisNotas.SQL.Add('from  ProdutosSeriaisNotas');
-      SeriaisNotas.SQL.add('where Produto = :pCodigo');
-      SeriaisNotas.SQL.add('and   Numero  = :pNumero');
-      SeriaisNotas.SQL.Add('order BY Data desc, Nota Desc');
-      SeriaisNotas.ParamByName('pCodigo').AsInteger := Seriais.FieldByName('Produto').AsInteger;
-      SeriaisNotas.ParamByName('pNumero').AsString  := Seriais.FieldByName('Numero').AsString;
-      SeriaisNotas.Open;
+      with SeriaisNotas do begin
+           sql.clear;
+           sql.add('select Nota');
+           sql.add('      ,Data');
+           sql.add('      ,Tipo = case when Saida_Entrada = 0 then ''ENTRADA'' else ''SAÍDA'' end');
+           sql.add('      ,Emissor_Nome = iif(Emissao = ''T'', ''TERCEIROS'', ''PRÓPRIO'')');
+           sql.add('from ProdutosSeriaisNotas');
+           sql.add('where Produto = :pCodigo');
+           sql.add('and Numero = :pNumero');
+           sql.add('order BY Data desc, Nota Desc');
+           parambyName('pCodigo').AsInteger := Seriais.FieldByName('Produto').AsInteger;
+           parambyName('pNumero').AsString  := Seriais.FieldByName('Numero').AsString;
+           open;
+      end;
 end;
 
 

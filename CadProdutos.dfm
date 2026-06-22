@@ -125,7 +125,7 @@ object fCadProdutos: TfCadProdutos
     Width = 1284
     Height = 865
     Hint = ''
-    ActivePage = TabParam
+    ActivePage = TabValores
     Align = alClient
     TabOrder = 0
     object aLista: TUniTabSheet
@@ -214,6 +214,7 @@ object fCadProdutos: TfCadProdutos
             Title.Font.Style = [fsBold]
             Width = 86
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'Descricao_Reduzida'
@@ -222,6 +223,7 @@ object fCadProdutos: TfCadProdutos
             Title.Font.Style = [fsBold]
             Width = 504
             Font.Name = 'Calibri'
+            ReadOnly = True
           end
           item
             FieldName = 'NCM'
@@ -231,6 +233,7 @@ object fCadProdutos: TfCadProdutos
             Width = 120
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'UM'
@@ -240,6 +243,7 @@ object fCadProdutos: TfCadProdutos
             Width = 54
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end
           item
             FieldName = 'Desativado'
@@ -249,6 +253,7 @@ object fCadProdutos: TfCadProdutos
             Width = 80
             Font.Name = 'Calibri'
             Alignment = taCenter
+            ReadOnly = True
           end>
       end
     end
@@ -2067,6 +2072,7 @@ object fCadProdutos: TfCadProdutos
                 Title.Caption = 'Nota'
                 Title.Font.Style = [fsBold]
                 Width = 119
+                ReadOnly = True
               end
               item
                 FieldName = 'Data_Entrada'
@@ -2075,6 +2081,7 @@ object fCadProdutos: TfCadProdutos
                 Title.Font.Style = [fsBold]
                 Width = 91
                 Alignment = taCenter
+                ReadOnly = True
               end
               item
                 FieldName = 'Valor_Entrada'
@@ -2082,6 +2089,7 @@ object fCadProdutos: TfCadProdutos
                 Title.Caption = 'Valor Entrada'
                 Title.Font.Style = [fsBold]
                 Width = 120
+                ReadOnly = True
               end
               item
                 FieldName = 'Valor_Inventario'
@@ -2089,6 +2097,7 @@ object fCadProdutos: TfCadProdutos
                 Title.Caption = 'Valor Inventario'
                 Title.Font.Style = [fsBold]
                 Width = 120
+                ReadOnly = True
               end
               item
                 FieldName = 'Emissao'
@@ -2097,6 +2106,7 @@ object fCadProdutos: TfCadProdutos
                 Title.Font.Style = [fsBold]
                 Width = 121
                 Alignment = taCenter
+                ReadOnly = True
               end>
           end
         end
@@ -2687,6 +2697,7 @@ object fCadProdutos: TfCadProdutos
                 Title.Caption = 'Tributo'
                 Title.Font.Style = [fsBold]
                 Width = 375
+                ReadOnly = True
               end
               item
                 FieldName = 'UF'
@@ -2695,6 +2706,7 @@ object fCadProdutos: TfCadProdutos
                 Title.Font.Style = [fsBold]
                 Width = 36
                 Alignment = taCenter
+                ReadOnly = True
               end
               item
                 FieldName = 'Aliquota'
@@ -2703,6 +2715,7 @@ object fCadProdutos: TfCadProdutos
                 Title.Color = clNone
                 Title.Font.Style = [fsBold]
                 Width = 70
+                ReadOnly = True
               end
               item
                 FieldName = 'Valor'
@@ -2710,6 +2723,7 @@ object fCadProdutos: TfCadProdutos
                 Title.Caption = 'Valor'
                 Title.Font.Style = [fsBold]
                 Width = 70
+                ReadOnly = True
               end>
           end
           object pTributo: TUniContainerPanel

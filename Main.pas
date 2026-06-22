@@ -52,6 +52,7 @@ type
     procedure UniFormBeforeShow(Sender: TObject);
     procedure UniFormCreate(Sender: TObject);
     procedure UniButton1Click(Sender: TObject);
+//    procedure mnFiscalNFTerceirosClick(Sender: TObject);
   private
     { Private declarations }
     procedure CriaAba(nFrame: TuniFrame; dFrame: string; Fechar: Boolean);
@@ -141,7 +142,9 @@ uses
  ,ComexPO
  ,ComexPOImportar
  ,ComexContratoCambio
- ,ComexInvoice;(*uses p/gerador*)
+ ,ComexInvoice
+ ,CadLPCO
+ ,FiscalNFTerceiros;(*uses p/gerador*)
 
 function MainForm: TMainForm;
 begin
@@ -490,10 +493,14 @@ initialization
   RegisterClass(TfComexPOImportar);
   RegisterClass(TfComexContratoCambio);
   RegisterClass(TfComexInvoice);
+  RegisterClass(TfCadLPCO);
+  RegisterClass(TfFiscalNFTerceiros);
   (*RegisterClass p/gerador*)
 
   
 end.
+
+
 
 
 

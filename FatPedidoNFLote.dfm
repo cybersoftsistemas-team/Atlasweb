@@ -26,7 +26,6 @@ object fFatPedidoNFLote: TfFatPedidoNFLote
     BorderStyle = ubsNone
     Caption = ''
     Color = 5526569
-    ExplicitWidth = 708
     object bFechar: TUniSpeedButton
       AlignWithMargins = True
       Left = 846
@@ -46,7 +45,6 @@ object fFatPedidoNFLote: TfFatPedidoNFLote
       ImageIndex = 7
       TabOrder = 1
       OnClick = bFecharClick
-      ExplicitLeft = 667
     end
     object bAddItens: TUniSpeedButton
       AlignWithMargins = True
@@ -153,14 +151,6 @@ object fFatPedidoNFLote: TfFatPedidoNFLote
       ImageIndex = 4
       TabOrder = 6
     end
-    object UniEdit1: TUniEdit
-      Left = 305
-      Top = 11
-      Width = 121
-      Hint = ''
-      Text = 'UniEdit1'
-      TabOrder = 7
-    end
   end
   object uniPanel1: TUniPanel
     AlignWithMargins = True
@@ -179,7 +169,6 @@ object fFatPedidoNFLote: TfFatPedidoNFLote
     TitleVisible = True
     Title = 'Seriais Dispon'#237'veis'
     Caption = ''
-    ExplicitWidth = 702
     object gItens: TUniDBGrid
       AlignWithMargins = True
       Left = 4
@@ -208,7 +197,7 @@ object fFatPedidoNFLote: TfFatPedidoNFLote
           Title.Alignment = taCenter
           Title.Caption = 'Tipo'
           Title.Font.Style = [fsBold]
-          Width = 64
+          Width = 94
         end
         item
           FieldName = 'Numero'
@@ -267,7 +256,6 @@ object fFatPedidoNFLote: TfFatPedidoNFLote
     TitleVisible = True
     Title = 'Seriais Adicionados ao Pedido'
     Caption = ''
-    ExplicitWidth = 702
     object UniDBGrid4: TUniDBGrid
       AlignWithMargins = True
       Left = 4

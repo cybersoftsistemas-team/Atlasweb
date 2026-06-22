@@ -25,7 +25,6 @@ type
     gItens: TUniDBGrid;
     UniPanel2: TUniPanel;
     UniDBGrid4: TUniDBGrid;
-    UniEdit1: TUniEdit;
     procedure bFecharClick(Sender: TObject);
     procedure UniFormCreate(Sender: TObject);
   private
@@ -55,7 +54,7 @@ end;
 
 function fFatPedidoNFLote: TfFatPedidoNFLote;
 begin
-  Result := TfFatPedidoNFLote(UniMainModule.GetFormInstance(TfFatPedidoNFLote));
+     Result := TfFatPedidoNFLote(UniMainModule.GetFormInstance(TfFatPedidoNFLote));
 end;
 
 procedure TfFatPedidoNFLote.bFecharClick(Sender: TObject);
@@ -87,7 +86,8 @@ begin
           open;
           uniPanel2.Title := 'Seriais adicionado ao pedido ['+FormatFloat('0000000', RecordCount)+']'; 
      end;
-uniedit1.Text := inttostr(mProduto);     
 end;
+
+
 
 end.

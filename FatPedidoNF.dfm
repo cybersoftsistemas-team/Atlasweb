@@ -167,7 +167,7 @@ object fFatPedidoNF: TfFatPedidoNF
     Width = 1272
     Height = 965
     Hint = ''
-    ActivePage = TabSheet1
+    ActivePage = UniTabSheet1
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -293,7 +293,7 @@ object fFatPedidoNF: TfFatPedidoNF
         ClientEvents.UniEvents.Strings = (
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-            ' '#39'Pasta'#39';'#13#10'}')
+            ' '#39'BarraPesquisa'#39';'#13#10'}')
         BorderStyle = ubsNone
         Caption = ''
         Color = clNone
@@ -303,7 +303,7 @@ object fFatPedidoNF: TfFatPedidoNF
           Width = 520
           Height = 27
           Hint = ''
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           Text = ''
           Align = alLeft
           TabOrder = 1

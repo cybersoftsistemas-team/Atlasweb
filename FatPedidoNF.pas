@@ -242,7 +242,6 @@ procedure TfFatPedidoNF.bAddItensClick(Sender: TObject);
 begin
      try
          LigaBotoesItens(false);
-         GradeItens.hide;
          pBarraNav.Enabled := false;
          mNomeAba          := 'ITEM DO PEDIDO: '+FormatFloat('0000', PedidosNF.fieldbyname('Pedido').asinteger)+' ('+Destinatarios.fieldbyname('Nome').asstring+')';
          FrameItem         := TfFatPedidoNFItem.Create(uniTabSheet1, PedidosNF.FieldByName('Pedido').asinteger, 0, 'Adicionar');
@@ -566,7 +565,6 @@ procedure TfFatPedidoNF.bEditItensClick(Sender: TObject);
 begin
      try
          LigaBotoesItens(false);
-         GradeItens.hide;
          pBarraNav.Enabled := false;
          mNomeAba          := 'ITEM DO PEDIDO: '+FormatFloat('0000', PedidosNF.fieldbyname('Pedido').asinteger)+' ('+Destinatarios.fieldbyname('Nome').asstring+')';
          FrameItem         := TfFatPedidoNFItem.Create(uniTabSheet1, PedidosNF.FieldByName('Pedido').asinteger, PedidosNFItens.FieldByName('Item').AsInteger, 'Editar');
@@ -617,7 +615,6 @@ begin
      bGravar.Enabled     := not Estado;
      BarraItens.Enabled  := Barraitens.Visible;
      if not Estado then Pasta.ActivePageIndex := 1;
-     //ContainerReadOnly(PanelDados1, Estado);
      AtivaPanel(PanelDados1, Estado);
 end;
 
@@ -661,7 +658,7 @@ begin
            sql.Clear;
            sql.Add('select CNPJ');
            sql.Add('      ,Estado');
-           sql.add('      ,Unidade = case when isnull(Numero_Filial, 0) = 0 then ''MATRIZ'' else ''FILIAL ''+cast(numero_Filial as char(3)) end');
+           sql.add('      ,Unidade = case when isnull(Filial, 0) = 0 then ''MATRIZ'' else ''FILIAL ''+cast(Filial as char(3)) end');
            sql.Add('      ,Razao_Social');
            sql.Add('      ,Regime_Tributario');
            sql.Add('from Empresas');

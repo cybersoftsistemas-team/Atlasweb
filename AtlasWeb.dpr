@@ -93,7 +93,14 @@ uses
   PagarReceber.Dados in 'PagarReceber.Dados.pas',
   PagarReceber.Repository in 'PagarReceber.Repository.pas',
   PagarReceber.Service in 'PagarReceber.Service.pas',
-  ComexInvoice in 'ComexInvoice.pas' {fComexInvoice: TUniFrame};
+  ComexInvoice in 'ComexInvoice.pas' {fComexInvoice: TUniFrame},
+  CadLPCO in 'CadLPCO.pas' {fCadLPCO: TUniFrame},
+  ComexInvoiceLPCO in 'ComexInvoiceLPCO.pas' {fComexInvoiceLPCO: TUniForm},
+  FiscalNFTerceiros in 'FiscalNFTerceiros.pas' {fFiscalNFTerceiros: TUniFrame},
+  ValidaCRUD in 'ValidaCRUD.pas',
+  Dialogo in 'Dialogo.pas' {fDialogo: TUniForm},
+  FiscalNFTerceirosItens in 'FiscalNFTerceirosItens.pas' {fFiscalNFTerceirosItens: TUniFrame};
+
 (*uses p/gerador*)
 
 {$R *.res}

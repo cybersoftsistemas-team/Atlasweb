@@ -5,13 +5,15 @@ interface
 uses
     SysUtils, Windows, FireDAC.Comp.Client, Dialogs, MaskUtils, System.Variants, DB, Forms, uniSpeedButton, uniPanel, UniPageControl, System.Classes, CalcExpress, UniGUIClasses,
     uniGUIForm, uniGUIFrame, uniMemo, DBCommon, uniDBLookUpComboBox, uniDBComboBox, uniComboBox, uniDBDateTimePicker, uniDBEdit, uniEdit, uniGuiDialogs, TypInfo, Data.SqlTimSt,
-    uniSweetAlert, FireDAC.Stan.Param, uniMainMenu, uniDBNavigator, uniButton, uniScrollBox, System.RegularExpressions, System.Rtti, uniStringGrid, DateUtils, ComObj, uniDBMemo;
+    uniSweetAlert, FireDAC.Stan.Param, uniMainMenu, uniDBNavigator, uniButton, uniScrollBox, System.RegularExpressions, System.Rtti, uniStringGrid, DateUtils, ComObj, uniDBMemo,
+    uniDBRadioGroup;
 
 
 // Funções de checagens.
 function ChecaCNPJ(Num: string): boolean;
 function ChecaCPF(Num: String): Boolean;
-function CampoVazio(Campo:TObject; msg:string): boolean;
+//function CampoVazio(Campo:TObject; msg:string): boolean;
+function CampoVazio(Campo:TComponent; msg:string): boolean;
 function ValidaCampo(Campo:TObject; Valor1, Valor2:Variant; Condicao, msg, Titulo:string): boolean;
 function Aviso(Valor1, Valor2:Variant; Condicao, msg, Titulo:string): boolean;
 function ImportaEXCEL(xStringGrid: TuniStringGrid; xFileXLS: string; NomeAba: TuniPageControl; Aba, lIni, lFim:Integer; Titulo:Boolean): Boolean;
@@ -26,7 +28,7 @@ function RemoveAcentos(Str:String): String;
 function IIf(Expressao: Variant; ParteTRUE, ParteFALSE: Variant): Variant;
 function PastaDLL: string;
 function Calculo(Formula: widestring): string;
-function Percentual(Valor:real;Percent:Real):Real;
+function Percentual(Valor, Percent: Real): Real;
 function CalculaMacro(pForm: TComponent; pFormula: String): Real;
 function SubstituirCampos(pForm: TComponent; pCampo: string): string;
 function SubstituirCondicao(Campo: string): string;
@@ -468,16 +470,15 @@ begin
                      Append;
                           FieldByName('Data').Value          := now;
                           FieldByName('Empresa').asString    := mEmpresaAtiva;
-                          FieldByName('Funcao').Value        := 'ALTERAÇÃO';
+                          FieldByName('Operacao').Value      := Estado.toupper;
+                          FieldByName('Descricao').AsString  := Descricao;
                           FieldByName('Usuario').AsString    := Trim(Main.MainForm.lUser.Text);
                           FieldByName('Tabela').AsString     := Tabela.Name;
                           FieldByName('Campo').asString      := Tabela.Fields[i].FieldName;
-                          FieldByName('Operacao').AsString   := 'Alterado Registro ['+Tabela.Fields[0].FieldName+': '+Tabela.Fields[0].AsString+']';
                           FieldByName('IP_Cliente').Value    := Main.MainForm.UniApplication.RemoteAddress;
                           FieldByName('Modulo').Value        := Main.MainForm.PagePrincipal.ActivePage.Caption;
                           FieldByName('Sessao').Value        := Main.MainForm.UniSession.NewId.ToString;
                           FieldByName('Computador').AsString := NomeComputador;
-                          if Descricao <> '' then FieldByName('Operacao').AsString;
                           if Tabela.Fields[i].OldValue <> null then FieldByName('Conteudo_Antes').AsString  := Tabela.Fields[i].OldValue;
                           if Tabela.Fields[i].NewValue <> null then FieldByName('Conteudo_Depois').AsString := Tabela.Fields[i].NewValue;
                      Post;
@@ -486,20 +487,10 @@ begin
            end;
            if (Estado = 'Insert') or (Estado = 'Delete') or (Estado = 'Outros') then begin
               Append;
-                   FieldByName('Data').Value       := now;
-                   FieldByName('Empresa').asString := mEmpresaAtiva;
-                   if Estado = 'Insert' then begin
-                      FieldByName('Funcao').Value   := 'INCLUSÃO';
-                      FieldByName('Operacao').Value := 'Incluído novo registro ['+Tabela.Fields[0].AsString+']';
-                   end;
-                   if Estado = 'Delete' then begin
-                      FieldByName('Funcao').Value   := 'EXCLUSÃO';
-                      FieldByName('Operacao').Value := 'Excluído Registro ['+Tabela.Fields[0].AsString+']';
-                   end;
-                   if Estado = 'Outros' then begin
-                      FieldByName('Funcao').Value   := 'OUTROS';
-                      FieldByName('Operacao').Value := Descricao +'['+Tabela.Fields[0].AsString+']';
-                   end;
+                   FieldByName('Data').Value          := now;
+                   FieldByName('Empresa').asString    := mEmpresaAtiva;
+                   FieldByName('Operacao').Value      := Estado.toupper;
+                   FieldByName('Descricao').Value     := Descricao;
                    FieldByName('Usuario').AsString    := Trim(Main.MainForm.lUser.Text);
                    FieldByName('Tabela').AsString     := Tabela.Name;
                    FieldByName('IP_Cliente').Value    := Main.MainForm.UniApplication.RemoteAddress;
@@ -656,6 +647,7 @@ Begin
 end;
 
 // Verifica se campo esta vazio.
+(*
 function CampoVazio(Campo:TObject; msg:string): boolean;
 var
    Vazio:boolean;
@@ -668,6 +660,7 @@ begin
      if Campo is TuniDBComboBox            then Vazio := TuniDBComboBox(Campo).Text = '';
      if Campo is TuniComboBox              then Vazio := TuniComboBox(Campo).Text = '';
      if Campo is TuniDBDateTimePicker      then Vazio := TuniDBDateTimePicker(Campo).DateTime = 0;
+     if Campo is TuniDBRadioGroup          then Vazio := TuniDBRadioGroup(Campo).ItemIndex = -1;
 
      if vazio then begin
         Alerta := TuniSweetAlert.create(nil);
@@ -682,10 +675,46 @@ begin
         MessageBeep(MB_ICONERROR);
         Alerta.Execute;
         Alerta.Free;
-        if Campo is TuniDBLookUpComboBox      then TuniDBLookUpComboBox(Campo).setfocus;
-        if Campo is TuniDBEdit                then TuniDBEdit(Campo).setfocus;
-        if Campo is TuniDBDateTimePicker      then TuniDBDateTimePicker(Campo).setfocus;
-        if Campo is TUniDBFormattedNumberEdit then TUniDBFormattedNumberEdit(Campo).SetFocus;
+//        if Campo is TuniDBLookUpComboBox      then TuniDBLookUpComboBox(Campo).setfocus;
+//        if Campo is TuniDBEdit                then TuniDBEdit(Campo).setfocus;
+//        if Campo is TuniDBDateTimePicker      then TuniDBDateTimePicker(Campo).setfocus;
+//        if Campo is TUniDBFormattedNumberEdit then TUniDBFormattedNumberEdit(Campo).SetFocus;
+     end;
+     
+     CampoVazio := Vazio;
+end;
+*)
+function CampoVazio(Campo:TComponent; msg:string): boolean;
+var
+   Vazio:boolean;
+   Alerta: TUniSweetAlert;
+begin
+     Vazio := false;
+     if Campo is TuniDBLookUpComboBox      then Vazio := TuniDBLookUpComboBox(Campo).Text = '';
+     if Campo is TuniDBEdit                then Vazio := TuniDBEdit(Campo).Text = '';
+     if Campo is TUniDBFormattedNumberEdit then Vazio := (TUniDBFormattedNumberEdit(Campo).Text = '') or (TUniDBFormattedNumberEdit(Campo).text = '0');
+     if Campo is TuniDBComboBox            then Vazio := TuniDBComboBox(Campo).Text = '';
+     if Campo is TuniComboBox              then Vazio := TuniComboBox(Campo).Text = '';
+     if Campo is TuniDBDateTimePicker      then Vazio := TuniDBDateTimePicker(Campo).DateTime = 0;
+     if Campo is TuniDBRadioGroup          then Vazio := TuniDBRadioGroup(Campo).ItemIndex = -1;
+
+     if vazio then begin
+        Alerta := TuniSweetAlert.create(nil);
+        Alerta.AlertType := atError;
+        Alerta.Title     := 'ERRO';
+        Alerta.TitleText := 'Campo obrigatório!';
+        if msg <> '' then begin
+           Alerta.Text := msg;
+        end else begin
+           Alerta.Text := 'O campo "'+TuniDBLookUpComboBox(Campo).FieldLabel+'" deve ser informado!';
+        end;
+        MessageBeep(MB_ICONERROR);
+        Alerta.Execute;
+        Alerta.Free;
+//        if Campo is TuniDBLookUpComboBox      then TuniDBLookUpComboBox(Campo).setfocus;
+//        if Campo is TuniDBEdit                then TuniDBEdit(Campo).setfocus;
+//        if Campo is TuniDBDateTimePicker      then TuniDBDateTimePicker(Campo).setfocus;
+//        if Campo is TUniDBFormattedNumberEdit then TUniDBFormattedNumberEdit(Campo).SetFocus;
      end;
      
      CampoVazio := Vazio;
@@ -1533,13 +1562,8 @@ end;
 // Executa o calculo com base na formula informada.
 function Calculo(Formula: widestring): string;
 Var
-    i
-   ,mPos:Integer;
-    mTem: boolean;
-    mCalculo
-   ,mValTeste
-   ,mCampos
-   ,mFuncao: String;
+   i:Integer;
+   mCampos: String;
    mQuebra: Tstringlist;
    tCampos: TFDQuery;
 begin
@@ -1644,11 +1668,9 @@ End;
 
 Function ListaCampos(pFormula: string; pCampo:Integer): WideString;
 var
-    mCampo,
     Lista,
     mParte: String;
     mCalculo: widestring;
-    i: Integer;
     Fim: Byte;
 begin
      Lista := '';
@@ -1716,7 +1738,7 @@ begin
 end;
 
 // Retorna a porcentagem de um valor
-function Percentual(Valor:real;Percent:Real):Real;
+function Percentual(Valor, Percent: Real): Real;
 begin
       Percent := Percent / 100;
       Try
@@ -1742,10 +1764,12 @@ begin
           sql.Add('                                  and isnull(Movimenta_Estoque, 0) = 1');
           sql.Add('                                  and isnull(Cancelada, 0) = 0');
           sql.Add('                                  and isnull(Denegada, 0) = 0), 0) +');
-          sql.Add('                                  isnull((select sum(Quantidade) from NotasTerceirosItens where Codigo_Mercadoria = :pCodigo and Movimenta_Estoque = 1), 0) +');
           sql.Add('                          isnull((select sum(Quantidade_Entrada)');
-          sql.Add('                                  from ProdutosTransferencia');
-          sql.Add('                                  where Produto_Entrada = :pCodigo), 0) -');
+          sql.Add('                                  from EstoqueTransferencia');
+          sql.Add('                                  where Produto_Entrada = :pCodigo), 0) +');
+          sql.Add('                          isnull((select sum(Quantidade)');
+          sql.Add('                                  from EstoqueAbertura');
+          sql.Add('                                  where Produto = :pCodigo), 0) -');
           sql.Add('                          isnull((select sum(Quantidade)');
           sql.Add('                                  from NotasItens');
           sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
@@ -1759,7 +1783,7 @@ begin
           sql.Add('                                  and isnull(ES, 0) = 1');
           sql.Add('                                  and isnull(Movimenta_Estoque, 0) = 1), 0)) -');
           sql.Add('                          isnull((select sum(Quantidade_Entrada)');
-          sql.Add('                                  from ProdutosTransferencia');
+          sql.Add('                                  from EstoqueTransferencia');
           sql.Add('                                  where Produto_Saida = :pCodigo), 0) as decimal(14,3)) -');
           sql.Add('                          isnull((select sum(Quantidade)');
           sql.Add('                                  from PedidosRepresentantesItens pri');
@@ -1793,10 +1817,12 @@ begin
           sql.Add('                                  and isnull(Cancelada, 0) = 0');
           sql.Add('                                  and isnull(Denegada, 0) = 0');
           sql.add('                                  and Embarque = :pEmbarque), 0) +');
-          sql.Add('                                  isnull((select sum(Quantidade) from NotasTerceirosItens where Codigo_Mercadoria = :pCodigo and Movimenta_Estoque = 1), 0) +');
           sql.Add('                          isnull((select sum(Quantidade_Entrada)');
-          sql.Add('                                  from ProdutosTransferencia');
-          sql.Add('                                  where Produto_Entrada = :pCodigo), 0) -');
+          sql.Add('                                  from EstoqueTransferencia');
+          sql.Add('                                  where Produto_Entrada = :pCodigo), 0) +');
+          sql.Add('                          isnull((select sum(Quantidade)');
+          sql.Add('                                  from EstoqueAbertura');
+          sql.Add('                                  where Produto = :pCodigo), 0) -');
           sql.Add('                          isnull((select sum(Quantidade)');
           sql.Add('                                  from NotasItens');
           sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
@@ -1811,8 +1837,8 @@ begin
           sql.Add('                                  and isnull(ES, 0) = 1');
           sql.Add('                                  and isnull(Movimenta_Estoque, 0) = 1');
           sql.add('                                  and Embarque = :pEmbarque), 0)) -');
-          sql.Add('                          isnull((select sum(Quantidade_Entrada)');
-          sql.Add('                                  from ProdutosTransferencia');
+          sql.Add('                          isnull((select sum(Quantidade_Saida)');
+          sql.Add('                                  from EstoqueTransferencia');
           sql.Add('                                  where Produto_Saida = :pCodigo), 0) as decimal(14,3)) -');
           sql.Add('                          isnull((select sum(Quantidade)');
           sql.Add('                                  from PedidosRepresentantesItens pri');
@@ -1846,10 +1872,14 @@ begin
           sql.Add('                                  and isnull(Movimenta_Inventario, 0) = 1');
           sql.Add('                                  and isnull(Cancelada, 0) = 0');
           sql.Add('                                  and isnull(Denegada, 0) = 0), 0) +');
-          sql.Add('                                  isnull((select sum(Quantidade) from NotasTerceirosItens where Codigo_Mercadoria = :pCodigo and Movimenta_Inventario = 1), 0) +');
           sql.Add('                          isnull((select sum(Quantidade_Entrada)');
-          sql.Add('                                  from ProdutosTransferencia');
-          sql.Add('                                  where Produto_Entrada = :pCodigo), 0) -');
+          sql.Add('                                  from EstoqueTransferencia');
+          sql.Add('                                  where Produto_Entrada = :pCodigo');
+          sql.add('                                  and Inventario = 1), 0) +');
+          sql.Add('                          isnull((select sum(Quantidade)');
+          sql.Add('                                  from EstoqueAbertura');
+          sql.Add('                                  where Produto = :pCodigo');
+          sql.add('                                  and Inventario = 1), 0) -');
           sql.Add('                          isnull((select sum(Quantidade)');
           sql.Add('                                  from NotasItens');
           sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
@@ -1863,7 +1893,7 @@ begin
           sql.Add('                                  and isnull(ES, 0) = 1');
           sql.Add('                                  and isnull(Movimenta_Inventario, 0) = 1), 0)) -');
           sql.Add('                          isnull((select sum(Quantidade_Entrada)');
-          sql.Add('                                  from ProdutosTransferencia');
+          sql.Add('                                  from EstoqueTransferencia');
           sql.Add('                                  where Produto_Saida = :pCodigo), 0) as decimal(14,3)) -');
           sql.Add('                          isnull((select sum(Quantidade)');
           sql.Add('                                  from PedidosRepresentantesItens pri');
@@ -1897,10 +1927,14 @@ begin
           sql.Add('                                  and isnull(Cancelada, 0) = 0');
           sql.Add('                                  and isnull(Denegada, 0) = 0');
           sql.add('                                  and Embarque = :pEmbarque), 0) +');
-          sql.Add('                                  isnull((select sum(Quantidade) from NotasTerceirosItens where Codigo_Mercadoria = :pCodigo and Movimenta_Inventario = 1), 0) +');
           sql.Add('                          isnull((select sum(Quantidade_Entrada)');
-          sql.Add('                                  from ProdutosTransferencia');
-          sql.Add('                                  where Produto_Entrada = :pCodigo), 0) -');
+          sql.Add('                                  from EstoqueTransferencia');
+          sql.Add('                                  where Produto_Entrada = :pCodigo');
+          sql.add('                                  and Inventario = 1), 0) -');
+          sql.Add('                          isnull((select sum(Quantidade)');
+          sql.Add('                                  from EstoqueAbertura');
+          sql.Add('                                  where Produto_Entrada = :pCodigo');
+          sql.add('                                  and Inventario = 1), 0) -');
           sql.Add('                          isnull((select sum(Quantidade)');
           sql.Add('                                  from NotasItens');
           sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
@@ -1915,7 +1949,7 @@ begin
           sql.Add('                                  and isnull(ES, 0) = 1');
           sql.Add('                                  and isnull(Movimenta_Inventario, 0) = 1');
           sql.add('                                  and Embarque = :pEmbarque), 0)) -');
-          sql.Add('                          isnull((select sum(Quantidade_Entrada)');
+          sql.Add('                          isnull((select sum(Quantidade_Saida)');
           sql.Add('                                  from ProdutosTransferencia');
           sql.Add('                                  where Produto_Saida = :pCodigo), 0) as decimal(14,3)) -');
           sql.Add('                          isnull((select sum(Quantidade)');
@@ -2023,7 +2057,6 @@ var
   CampoNome
  ,NomeDataSet: string;
   DataSet: TDataSet;
-  mValor: real;
 begin
      Result      := '';
      NomeDataSet := copy(pCampo, 1, pos('_', pCampo)-1);
@@ -2128,9 +2161,8 @@ Executa os calculos dos itens da nota fiscao.
 function CalculaTudo(pOper: integer; pTipo: string; gFormula: TuniStringGrid; cLog: tuniMemo; pTabDestino: TFDQuery; pFrame: TuniFrame; pForm: TuniForm): boolean;
 var
    mValor: real;
-   mCp: TComponent;
+//   mCp: TComponent;
    mAliqImp
-  ,mBenef 
   ,mCSTImp: string;
    tFormulasItens
   ,Campos: TFDQuery;
@@ -2140,6 +2172,7 @@ begin
      try 
         Campos            := TFDQuery.Create(nil);
         Campos.Connection := uniMainModule.Conecta;
+        mValor            := 0;
 
         tImpostos := TFDMemTable.Create(nil);
         with tImpostos do begin
@@ -2205,11 +2238,11 @@ begin
                          end;
                       end;
                       pTabDestino.fieldbyname(fieldbyname('Campo').AsString).value := mValor;
-                      if pFrame <> nil then begin
-                         mCp := pFrame.FindComponent('c'+trim(fieldbyname('Campo').asstring));
-                      end else begin
-                         mCp := pForm.FindComponent('c'+trim(fieldbyname('Campo').asstring));
-                      end;
+//                      if pFrame <> nil then begin
+//                         mCp := pFrame.FindComponent('c'+trim(fieldbyname('Campo').asstring));
+//                      end else begin
+//                         mCp := pForm.FindComponent('c'+trim(fieldbyname('Campo').asstring));
+//                      end;
                       with tImpostos do begin
                            mAliqImp := trim(tFormulasItens.fieldbyname('Campo_Aliquota').asstring);
                            mCSTImp  := trim(tFormulasItens.fieldbyname('Campo_CST').asstring);
@@ -2240,17 +2273,16 @@ end;
 function PegaCSTIPI(pOper, pProd: Integer): string;
 var
    mCST: string;
-   mBC, mTotal: real;
    tOpFiscal
   ,tProdutos
   ,tNCM
   ,tCST: TFDQuery;
 begin
+     tCST            := TFDQuery.create(nil);
+     tCST.Connection := uniMainModule.Conecta;
+     tOpFiscal       := TFDQuery.create(nil);
+     tProdutos       := TFDQuery.create(nil);
      try 
-        tCST            := TFDQuery.create(nil);
-        tCST.Connection := uniMainModule.Conecta;
-     
-        tOpFiscal := TFDQuery.create(nil);
         with tOpFiscal do begin
              Connection := uniMainModule.Conecta;
              sql.clear;
@@ -2264,7 +2296,6 @@ begin
              parambyname('pCodigo').asinteger := pOper;
              open;
         end;
-        tProdutos := TFDQuery.create(nil);
         with tProdutos do begin
              Connection := uniMainModule.Conecta;
              sql.clear;
@@ -2311,15 +2342,11 @@ begin
      end;
      tOpFiscal.Free;
      tProdutos.Free;
-     tNCM.Free;
-     tCST.Free;
-     
 end;
 
 function PegaCSTPIS(pOper, pProd, pDest: Integer): string;
 var
    mCST: string;
-   mBC, mTotal: real;
    tOpFiscal
   ,tProdutos
   ,tNCM
@@ -2464,7 +2491,6 @@ end;
 function PegaCSTCOFINS(pOper, pProd, pDest: Integer): string;
 var
    mCST: string;
-   mBC, mTotal: real;
    tOpFiscal
   ,tProdutos
   ,tNCM
@@ -2610,11 +2636,9 @@ end;
 function PegaCSTICMS(TabItens: TFDQuery; pOper, pProd, pRegTrib, pDest: Integer): string;
 var
    mCST: string;
-   mBC, mTotal: real;
    tOpFiscal
   ,tProdutos
   ,tNCM
-  ,tNCMICMS
   ,tCST
   ,tDestinatario
   ,tProcesso
@@ -2830,7 +2854,6 @@ begin
      tOpFiscal.free;
      tProdutos.free;
      tNCM.free;
-     tNCMICMS.free;
      tCST.free;
      tDestinatario.free;
      tProcesso.free;
