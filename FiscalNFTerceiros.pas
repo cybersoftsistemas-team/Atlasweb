@@ -2034,33 +2034,16 @@ begin
                                        ParamByName('pData').AsDate := NotasData_ES.AsDateTime;
                                        ParamByName('pDest').value  := NotasDestinatario.value;
                                        execute;
- 
-                                        // Reprocessa os saldos da ficha de estoque.
-                                        AtualizaEst(mItens);
-                                     // Ficha de inventario.
-                                     If ReferenciasFiscaisMovimenta_Inventario.AsBoolean then begin
-                                       sql.Clear;
-                                       sql.Add('DELETE from FichaInventario where Nota = :pNota and Data = :pData and Destinatario_Codigo = :pDest');
-                                       ParamByName('pNota').AsInteger   := NotasTerceirosNota.AsInteger;
-                                       ParamByName('pData').AsDate      := NotasTerceirosData_Entrada.AsDateTime;
-                                       ParamByName('pDest').AsInteger   := NotasTerceirosFornecedor.AsInteger;
-                                       Execute;
-                                       sql.Clear;
-                                       sql.Add('select * from FichaInventario where Nota = :pNota and Data = :pData and Destinatario_Codigo = :pDest');
-                                       ParamByName('pNota').AsInteger   := NotasTerceirosNota.AsInteger;
-                                       ParamByName('pData').AsDate      := NotasTerceirosData_Entrada.AsDateTime;
-                                       ParamByName('pDest').AsInteger   := NotasTerceirosFornecedor.AsInteger;
-                                       Open;
- 
-                                        // Reprocessa os saldos da ficha de inventario.
-                                        AtualizaInv(mItens);
-
-
-
+                                       //AtualizaEst(mItens);
                                        
-
-
-
+                                       // Ficha de inventario.
+                                       sql.Clear;
+                                       sql.Add('delete from FichaInventario where Nota = :pNota and Data = :pData and Destinatario_Codigo = :pDest');
+                                       ParamByName('pNota').value  := NotasNota.value;
+                                       ParamByName('pData').AsDate := NotasData_ES.AsDateTime;
+                                       ParamByName('pDest').value  := NotasDestinatario.value;
+                                       execute;
+                                       //AtualizaInv(mItens);
                                        
 
                                        // Apaga os lançamentos da contabilidade.
