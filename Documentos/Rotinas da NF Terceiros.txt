@@ -16,9 +16,10 @@ ALTERAÇÃO DA NF TERCEIRO
 
 SALVAR NF TERCEIROS
 =========================
-. Verificar campos obrigatórios.
-. Verifica se já existe nota com o mesmo Número, Data e fornecedor no cadastro.
-. Atualiza os itens da nota fiscal com os dados da capa.
+[ok] Verificar campos obrigatórios.
+[  ] Verifica se já existe nota com o mesmo Número, Data e fornecedor no cadastro.
+[ok] Verifica se as datas estão dentro de período fechado.
+[  ] Atualiza os itens da nota fiscal com os dados da capa.
 
 
 EXCLUSÃO DA NF TERCEIROS
@@ -36,13 +37,12 @@ EXCLUSÃO DA NF TERCEIROS
 [  ] Ajustar as quantidade do estoque do embarque.
 [ok] Excluir as notas da tabela de notas dos Embarques.
 [ok] Excluir lançamentos contabeis originados da NF.
-[  ] Excluir Itens da NF da ficha de Estoque/Inventario e reprocessar os itens de ambos.
+[--] Excluir Itens da NF da ficha de Estoque/Inventario e reprocessar os itens de ambos.
 [ok] Excluir Itens da NF.
-
 
 SALVAR ITENS
 ============
-[  ] Verificar campos obrigatórios.
+[ok] Verificar campos obrigatórios.
 [  ] Calcular valor do inventario ou pegar da ficha de estoque.
 [  ] Criar parcelas no imobilizado em casa de (Compra para ativo imobilizado).
 [  ] Atualizar valores do cadastro do produtos Custo Médio/ Valor Entrada/ Estoque minímo Perc/ Minímo.

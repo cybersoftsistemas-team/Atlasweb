@@ -3218,4 +3218,1134 @@ begin
 end;
 
 
+//===================================================================================================================================================================================================
+{
+procedure AtualizaInv(pCodigos:string);
+Var
+   mSalAnt,
+   mTotAnt: Real;
+   mItem,
+   mCod:integer;
+   tAltera,
+   tRegistro,
+   tSaldo:TMSQuery;
+begin
+      Screen.Cursor := crSQLWait;
+
+      with Dados, dmFiscal do begin
+           tAltera              := TMSQuery.Create(nil);
+           tSaldo               := TMSQuery.Create(nil);
+           tRegistro            := TMSQuery.Create(nil);
+           tAltera.Connection   := Banco_Empresas;
+           tSaldo.Connection    := Banco_Empresas;
+           tRegistro.Connection := Banco_Empresas;
+
+           //----------------------------------------------------------[ MONTAGEM DA FICHA DE INVENTARIO ]-------------------------------------------------------
+           TempFichaInv.SQL.Clear;
+           TempFichaInv.SQL.Add('-- NOTAS DE ENTRADA PROPRIA -- ');
+           TempFichaInv.SQL.Add('If (SELECT COUNT(*) FROM SYSOBJECTS WHERE XTYPE = ''U'' and NAME  = ''TempFichaInv'') > 0');
+           TempFichaInv.SQL.Add('   TRUNCATE TABLE TempFichaInv');
+           TempFichaInv.SQL.Add('ELSE ');
+           TempFichaInv.SQL.Add('   SELECT * INTO TempFichaInv FROM FichaInventario WHERE Registro > (SELECT MAX(Registro) FROM FichaInventario)');
+           TempFichaInv.SQL.Add('SELECT MIN(Data_Emissao) AS Data');
+           TempFichaInv.SQL.Add('INTO #TEMPDT');
+           TempFichaInv.SQL.Add('FROM NotasFiscais WHERE isnull(Cancelada, 0) = 0 and isnull(Nfe_Denegada, 0) = 0');
+           TempFichaInv.SQL.Add('UNION ALL');
+           TempFichaInv.SQL.Add('SELECT MIN(Data_Entrada) AS Data');
+           TempFichaInv.SQL.Add('FROM NotasTerceiros');
+           TempFichaInv.SQL.Add('WHERE isnull(Provisoria, 0) <> 1');
+           TempFichaInv.SQL.Add('UNION ALL');
+           TempFichaInv.SQL.Add('SELECT MIN(Data_Transferencia) AS Data');
+           TempFichaInv.SQL.Add('FROM ProdutosTransferencia');
+           TempFichaInv.SQL.Add('DELETE FROM #TEMPDT WHERE Data IS NULL');
+           TempFichaInv.SQL.Add('DECLARE  @Menor_Data datetime');
+           TempFichaInv.SQL.Add('        ,@Maior_Data datetime');
+           TempFichaInv.SQL.Add('SET @Menor_Data = (SELECT MIN(Data) FROM #TEMPDT)');
+           TempFichaInv.SQL.Add('SET @Maior_Data = GETDATE()');
+           TempFichaInv.SQL.Add('SELECT  Codigo              = Codigo_Mercadoria ');
+           TempFichaInv.SQL.Add('       ,Descricao           = (SELECT SUBSTRING(Descricao, 1, 250) FROM Produtos WHERE Produtos.Codigo = Codigo_Mercadoria)');
+           TempFichaInv.SQL.Add('       ,UM                  = Unidade_Medida ');
+           TempFichaInv.SQL.Add('       ,NCM                 = NCM');
+           TempFichaInv.SQL.Add('       ,CFOP                = (SELECT DISTINCT Natureza_Codigo FROM NotasFiscais NF WHERE Numero = Nota and Data_Emissao = Data and NF.Saida_Entrada = NI.Saida_Entrada) ');
+           TempFichaInv.SQL.Add('       ,Historico           = CASE Finalidade_Mercadoria');
+           TempFichaInv.SQL.Add('                                   WHEN 0 THEN ''REVENDA'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 1 THEN ''CONSUMO'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 2 THEN ''DEVOLUÇÃO'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 3 THEN ''EXPORTAÇÃO'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 4 THEN ''PRÓPRIAS EM PODER DE TERCEIROS'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 5 THEN ''TERCEIROS EM PODER DA EMPRESA'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 6 THEN ''IMOBILIZADO'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 9 THEN ''OUTRAS'' ');
+           TempFichaInv.SQL.Add('                              END');
+           TempFichaInv.SQL.Add('       ,Estoque             = CASE isnull(Finalidade_Mercadoria, 0)');
+           TempFichaInv.SQL.Add('                                   WHEN 0 THEN ''0-EMPRESA'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 1 THEN ''0-EMPRESA'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 2 THEN ''0-EMPRESA'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 3 THEN ''0-EMPRESA'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 4 THEN ''1-ARMAZEM'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 5 THEN ''2-TERCEIROS'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 6 THEN ''0-EMPRESA'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 9 THEN ''0-EMPRESA'' ');
+           TempFichaInv.SQL.Add('                              END');
+           TempFichaInv.SQL.Add('       ,Nota ');
+           TempFichaInv.SQL.Add('       ,Data');
+           TempFichaInv.SQL.Add('       ,Destinatario_Codigo = (SELECT DISTINCT Fornecedor_Codigo FROM NotasFiscais NF WHERE Numero = Nota and Data_Emissao = Data and NF.Saida_Entrada = NI.Saida_Entrada) ');
+           TempFichaInv.SQL.Add('       ,Destinatario_Nome   = (SELECT DISTINCT Destinatario_Nome FROM NotasFiscais NF WHERE Numero = Nota and Data_Emissao = Data and NF.Saida_Entrada = NI.Saida_Entrada) ');
+           TempFichaInv.SQL.Add('       ,Destinatario_CNPJ   = (SELECT DISTINCT Destinatario_CNPJ_CPF FROM NotasFiscais NF WHERE Numero = Nota and Data_Emissao = Data and NF.Saida_Entrada = NI.Saida_Entrada) ');
+           TempFichaInv.SQL.Add('       ,Finalidade          = Finalidade_Mercadoria');
+           TempFichaInv.SQL.Add('       ,ES                  = ''E'' ');
+           TempFichaInv.SQL.Add('       ,Processo');
+           TempFichaInv.SQL.Add('       ,Tipo_Processo       = (SELECT Modalidade_Importacao FROM ProcessosDocumentos PD WHERE PD.Processo =  NI.Processo)');
+           TempFichaInv.SQL.Add('       ,Qtde_Entrada        = CASE WHEN isnull((SELECT Complementar FROM NotasFiscais WHERE Numero = Nota and Data_Emissao = Data), 0) = 0 THEN');
+           TempFichaInv.SQL.Add('                                   Quantidade');
+           TempFichaInv.SQL.Add('                              ELSE');
+           TempFichaInv.SQL.Add('                                   0');
+           TempFichaInv.SQL.Add('                              END');
+           TempFichaInv.SQL.Add('       ,Unitario_Entrada    = ROUND(Valor_Inventario, 4) ');
+           TempFichaInv.SQL.Add('       ,Total_Entrada       = ROUND(Valor_Inventario, 2) * Quantidade ');
+           TempFichaInv.SQL.Add('       ,Qtde_Saida          = CAST(0 AS float) ');
+           TempFichaInv.SQL.Add('       ,Unitario_Saida      = CAST(0 AS money) ');
+           TempFichaInv.SQL.Add('       ,Total_Saida         = CAST(0 AS money) ');
+           TempFichaInv.SQL.Add('       ,Qtde_Saldo          = CAST(0 AS float) ');
+           TempFichaInv.SQL.Add('       ,Unitario_Saldo      = CAST(0 AS money) ');
+           TempFichaInv.SQL.Add('       ,Total_Saldo         = CAST(0 AS money) ');
+           TempFichaInv.SQL.Add('       ,Emissor             = ''P'' ');
+           TempFichaInv.SQL.Add('       ,Origem              = ''NFP'' ');
+           TempFichaInv.SQL.Add('INTO   #TEMP ');
+           TempFichaInv.SQL.Add('FROM   NotasItens NI ');
+           TempFichaInv.SQL.Add('WHERE Codigo_Mercadoria IN('+pCodigos+')');
+           TempFichaInv.SQL.Add('  and Saida_Entrada = 0');
+           TempFichaInv.SQL.Add('  and Valor_Unitario > 0');
+           TempFichaInv.SQL.Add('  and isnull(NI.Cancelada, 0)     <> 1 ');
+           TempFichaInv.SQL.Add('  and isnull(NI.Nfe_Denegada, 0)  <> 1 ');
+           TempFichaInv.SQL.Add('  and (isnull(Movimenta_Inventario, 0) = 1 OR isnull((SELECT DISTINCT Complementar FROM NotasFiscais NF WHERE NF.Numero = Nota and NF.Data_Emissao = Data and NF.Saida_Entrada = Saida_Entrada and Valor_Unitario > 0), 0) = 1)');
+           TempFichaInv.SQL.Add('-- NOTAS DE SAÍDA -- ');
+           TempFichaInv.SQL.Add('UNION ALL ');
+           TempFichaInv.SQL.Add('SELECT  Codigo              = Codigo_Mercadoria ');
+           TempFichaInv.SQL.Add('       ,Descricao           = (SELECT SUBSTRING(Descricao, 1, 250) FROM Produtos WHERE Produtos.Codigo = Codigo_Mercadoria)');
+           TempFichaInv.SQL.Add('       ,UM                  = Unidade_Medida ');
+           TempFichaInv.SQL.Add('       ,NCM                 = NCM');
+           TempFichaInv.SQL.Add('       ,CFOP                = (SELECT DISTINCT Natureza_Codigo FROM NotasFiscais NF WHERE Numero = Nota and Data_Emissao = Data and NF.Saida_Entrada = NI.Saida_Entrada) ');
+           TempFichaInv.SQL.Add('       ,Historico           = CASE Finalidade_Mercadoria');
+           TempFichaInv.SQL.Add('                                   WHEN 0 THEN ''REVENDA'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 1 THEN ''CONSUMO'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 2 THEN ''DEVOLUÇÃO'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 3 THEN ''EXPORTAÇÃO'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 4 THEN ''PRÓPRIAS EM PODER DE TERCEIROS'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 5 THEN ''TERCEIROS EM PODER DA EMPRESA'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 6 THEN ''IMOBILIZADO'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 9 THEN ''OUTRAS'' ');
+           TempFichaInv.SQL.Add('                              END');
+           TempFichaInv.SQL.Add('       ,Estoque             = CASE isnull(Finalidade_Mercadoria, 0)');
+           TempFichaInv.SQL.Add('                                   WHEN 0 THEN ''0-EMPRESA'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 1 THEN ''0-EMPRESA'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 2 THEN ''0-EMPRESA'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 3 THEN ''0-EMPRESA'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 4 THEN ''1-ARMAZEM'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 5 THEN ''2-TERCEIROS'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 6 THEN ''0-EMPRESA'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 9 THEN ''0-EMPRESA'' ');
+           TempFichaInv.SQL.Add('                              END');
+           TempFichaInv.SQL.Add('       ,Nota');
+           TempFichaInv.SQL.Add('       ,Data');
+           TempFichaInv.SQL.Add('       ,Destinatario_Codigo = (SELECT DISTINCT Cliente_Codigo    FROM NotasFiscais NF WHERE Numero = Nota and Data_Emissao = Data and NF.Saida_Entrada = NI.Saida_Entrada) ');
+           TempFichaInv.SQL.Add('       ,Destinatario_Nome   = (SELECT DISTINCT Destinatario_Nome FROM NotasFiscais NF WHERE Numero = Nota and Data_Emissao = Data and NF.Saida_Entrada = NI.Saida_Entrada) ');
+           TempFichaInv.SQL.Add('       ,Destinatario_CNPJ   = (SELECT DISTINCT Destinatario_CNPJ_CPF FROM NotasFiscais NF WHERE Numero = Nota and Data_Emissao = Data and NF.Saida_Entrada = NI.Saida_Entrada) ');
+           TempFichaInv.SQL.Add('       ,Finalidade          = Finalidade_Mercadoria');
+           TempFichaInv.SQL.Add('       ,ES                  = ''S'' ');
+           TempFichaInv.SQL.Add('       ,Processo');
+           TempFichaInv.SQL.Add('       ,Tipo_Processo       = (SELECT Modalidade_Importacao FROM ProcessosDocumentos PD WHERE PD.Processo =  NI.Processo)');
+           TempFichaInv.SQL.Add('       ,Qtde_Entrada        = CAST(0 AS float)');
+           TempFichaInv.SQL.Add('       ,Unitario_Entrada    = CAST(0 AS money)');
+           TempFichaInv.SQL.Add('       ,Total_Entrada       = CAST(0 AS money)');
+           TempFichaInv.SQL.Add('       ,Qtde_Saida          = CASE WHEN isnull((SELECT Complementar FROM NotasFiscais WHERE Numero = Nota and Data_Emissao = Data), 0) = 0 THEN');
+           TempFichaInv.SQL.Add('                                   Quantidade');
+           TempFichaInv.SQL.Add('                              ELSE');
+           TempFichaInv.SQL.Add('                                   0');
+           TempFichaInv.SQL.Add('                              END');
+           TempFichaInv.SQL.Add('       ,Unitario_Saida      = CAST(0 AS money) ');
+           TempFichaInv.SQL.Add('       ,Total_Saida         = CAST(0 AS money) ');
+           TempFichaInv.SQL.Add('       ,Qtde_Saldo          = CAST(0 AS float) ');
+           TempFichaInv.SQL.Add('       ,Unitario_Saldo      = CAST(0 AS money) ');
+           TempFichaInv.SQL.Add('       ,Total_Saldo         = CAST(0 AS money) ');
+           TempFichaInv.SQL.Add('       ,Emissor             = ''P'' ');
+           TempFichaInv.SQL.Add('       ,Origem              = ''NFP'' ');
+           TempFichaInv.SQL.Add('FROM   NotasItens NI ');
+           TempFichaInv.SQL.Add('WHERE Codigo_Mercadoria IN('+pCodigos+')');
+           TempFichaInv.SQL.Add('  and Saida_Entrada = 1 ');
+           TempFichaInv.SQL.Add('  and isnull(NI.Cancelada, 0)     <> 1 ');
+           TempFichaInv.SQL.Add('  and isnull(NI.Nfe_Denegada, 0)  <> 1 ');
+           TempFichaInv.SQL.Add('  and isnull(Movimenta_Inventario, 0) = 1 ');
+           TempFichaInv.SQL.Add('  and Valor_Unitario > 0');
+           TempFichaInv.SQL.Add('  and (SELECT DISTINCT Complementar FROM NotasFiscais NF WHERE NF.Numero = Nota and NF.Data_Emissao = Data and NF.Saida_Entrada = Saida_Entrada) <> 1');
+           TempFichaInv.SQL.Add('-- SALDO DE ABERTURA DE ESTOQUE / TRANSFERÊNCIAS (ENTRADAS) -- ');
+           TempFichaInv.SQL.Add('UNION ALL ');
+           TempFichaInv.SQL.Add('SELECT  Codigo              = Produto_Entrada ');
+           TempFichaInv.SQL.Add('       ,Descricao           = CAST((SELECT SUBSTRING(Descricao, 1, 250) FROM Produtos WHERE Codigo = Produto_Entrada) AS VARCHAR(250))');
+           TempFichaInv.SQL.Add('       ,UM                  = (SELECT Unidade FROM Produtos WHERE Codigo = Produto_Entrada) ');
+           TempFichaInv.SQL.Add('       ,NCM                 = (SELECT NCM     FROM Produtos WHERE Codigo = Produto_Entrada) ');
+           TempFichaInv.SQL.Add('       ,CFOP                = null ');
+           TempFichaInv.SQL.Add('       ,Historico           = CASE WHEN Motivo = ''A'' THEN');
+           TempFichaInv.SQL.Add('                                   ''* SALDO DE ABERTURA DE ESTOQUE *''');
+           TempFichaInv.SQL.Add('                              ELSE');
+           TempFichaInv.SQL.Add('                                   ''* TRANSFERÊNCIA DE SALDO DE ESTOQUE *''');
+           TempFichaInv.SQL.Add('                              END');
+           TempFichaInv.SQL.Add('       ,Estoque             = ''0-EMPRESA'' ');
+           TempFichaInv.SQL.Add('       ,Nota                = Registro');
+           TempFichaInv.SQL.Add('       ,Data                = Data_Transferencia');
+           TempFichaInv.SQL.Add('       ,Destinatario_Codigo = :pCodEmpresa');
+           TempFichaInv.SQL.Add('       ,Destinatario_Nome   = :pNomeEmpresa');
+           TempFichaInv.SQL.Add('       ,Destinatario_CNPJ   = :pCNPJEmpresa');
+           TempFichaInv.SQL.Add('       ,Finalidade          = 0 ');
+           TempFichaInv.SQL.Add('       ,ES                  = ''E'' ');
+           TempFichaInv.SQL.Add('       ,Processo_Entrada');
+           TempFichaInv.SQL.Add('       ,Tipo_Processo       = (SELECT Modalidade_Importacao FROM ProcessosDocumentos PD WHERE PD.Processo =  PT.Processo_Entrada)');
+           TempFichaInv.SQL.Add('       ,Qtde_Entrada        = Quantidade_Entrada ');
+           TempFichaInv.SQL.Add('       ,Unitario_Entrada    = ROUND(Valor_Unitario, 2) ');
+           TempFichaInv.SQL.Add('       ,Total_Entrada       = ROUND(Valor_Unitario, 2) * Quantidade_Entrada ');
+           TempFichaInv.SQL.Add('       ,Qtde_Saida          = CAST(0 AS float)');
+           TempFichaInv.SQL.Add('       ,Unitario_Saida      = CAST(0 AS money) ');
+           TempFichaInv.SQL.Add('       ,Total_Saida         = CAST(0 AS money) ');
+           TempFichaInv.SQL.Add('       ,Qtde_Saldo          = CAST(0 AS float) ');
+           TempFichaInv.SQL.Add('       ,Unitario_Saldo      = CAST(0 AS money) ');
+           TempFichaInv.SQL.Add('       ,Total_Saldo         = CAST(0 AS money) ');
+           TempFichaInv.SQL.Add('       ,Emissor             = ''P'' ');
+           TempFichaInv.SQL.Add('       ,Origem              = ''TRF'' ');
+           TempFichaInv.SQL.Add('FROM   ProdutosTransferencia PT');
+           TempFichaInv.SQL.Add('WHERE Produto_Entrada IN('+pCodigos+')');
+           TempFichaInv.SQL.Add('  and Inventario = 1 ');
+           TempFichaInv.SQL.Add('-- TRANSFERÊNCIAS DE SALDO DE ESTOQUE (SAÍDAS) --');
+           TempFichaInv.SQL.Add('UNION ALL ');
+           TempFichaInv.SQL.Add('SELECT  Codigo              = Produto_Saida');
+           TempFichaInv.SQL.Add('       ,Descricao           = CAST((SELECT SUBSTRING(Descricao, 1, 250) FROM Produtos WHERE Codigo = Produto_Saida) AS VARCHAR(250))');
+           TempFichaInv.SQL.Add('       ,UM                  = (SELECT Unidade FROM Produtos WHERE Codigo = Produto_Saida)');
+           TempFichaInv.SQL.Add('       ,NCM                 = (SELECT NCM     FROM Produtos WHERE Codigo = Produto_Saida) ');
+           TempFichaInv.SQL.Add('       ,CFOP                = null');
+           TempFichaInv.SQL.Add('       ,Historico           = ''* TRANSFERÊNCIA DE SALDO DE ESTOQUE *'' ');
+           TempFichaInv.SQL.Add('       ,Estoque             = ''0-EMPRESA'' ');
+           TempFichaInv.SQL.Add('       ,Nota                = Registro');
+           TempFichaInv.SQL.Add('       ,Data                = Data_Transferencia');
+           TempFichaInv.SQL.Add('       ,Destinatario_Codigo = :pCodEmpresa');
+           TempFichaInv.SQL.Add('       ,Destinatario_Nome   = :pNomeEmpresa');
+           TempFichaInv.SQL.Add('       ,Destinatario_CNPJ   = :pCNPJEmpresa');
+           TempFichaInv.SQL.Add('       ,Finalidade          = 0');
+           TempFichaInv.SQL.Add('       ,ES                  = ''S'' ');
+           TempFichaInv.SQL.Add('       ,Processo_Saida');
+           TempFichaInv.SQL.Add('       ,Tipo_Processo       = (SELECT Modalidade_Importacao FROM ProcessosDocumentos PD WHERE PD.Processo =  PT.Processo_Saida)');
+           TempFichaInv.SQL.Add('       ,Qtde_Entrada        = CAST(0 AS float)');
+           TempFichaInv.SQL.Add('       ,Unitario_Entrada    = CAST(0 AS money)');
+           TempFichaInv.SQL.Add('       ,Total_Entrada       = CAST(0 AS money)');
+           TempFichaInv.SQL.Add('       ,Qtde_Saida          = Quantidade');
+           TempFichaInv.SQL.Add('       ,Unitario_Saida      = CAST(0 AS money)');
+           TempFichaInv.SQL.Add('       ,Total_Saida         = CAST(0 AS money)');
+           TempFichaInv.SQL.Add('       ,Qtde_Saldo          = CAST(0 AS float)');
+           TempFichaInv.SQL.Add('       ,Unitario_Saldo      = CAST(0 AS money)');
+           TempFichaInv.SQL.Add('       ,Total_Saldo         = CAST(0 AS money)');
+           TempFichaInv.SQL.Add('       ,Emissor             = ''P'' ');
+           TempFichaInv.SQL.Add('       ,Origem              = ''TRF'' ');
+           TempFichaInv.SQL.Add('FROM   ProdutosTransferencia PT');
+           TempFichaInv.SQL.Add('WHERE Produto_Saida IN('+pCodigos+')');
+           TempFichaInv.SQL.Add('  and Inventario = 1');
+           TempFichaInv.SQL.Add('  and Motivo  = ''TRF'' ');
+           TempFichaInv.SQL.Add('-- NOTA DE ENTRADA DE TERCEIROS ');
+           TempFichaInv.SQL.Add('UNION ALL ');
+           TempFichaInv.SQL.Add('SELECT  Codigo              = Codigo_Mercadoria ');
+           TempFichaInv.SQL.Add('       ,Descricao           = (SELECT SUBSTRING(Descricao, 1, 250) FROM Produtos WHERE Produtos.Codigo = Codigo_Mercadoria)');
+           TempFichaInv.SQL.Add('       ,UM                  = Unidade_Medida');
+           TempFichaInv.SQL.Add('       ,NCM                 = NCM');
+           TempFichaInv.SQL.Add('       ,CFOP                = Natureza_Codigo ');
+           TempFichaInv.SQL.Add('       ,Historico           = CASE (SELECT Finalidade_Mercadoria FROM ReferenciasFiscais WHERE Codigo = Referencia_Fiscal)');
+           TempFichaInv.SQL.Add('                                   WHEN 0 THEN ''COMPRA - REVENDA'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 1 THEN ''COMPRA - CONSUMO'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 2 THEN ''DEVOLUÇÃO'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 3 THEN ''EXPORTAÇÃO'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 4 THEN ''PRÓPRIAS EM PODER DE TERCEIROS'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 5 THEN ''TERCEIROS EM PODER DA EMPRESA'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 6 THEN ''COMPRA - IMOBILIZADO'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 9 THEN ''OUTRAS'' ');
+           TempFichaInv.SQL.Add('                              END');
+           TempFichaInv.SQL.Add('       ,Estoque             = CASE isnull((SELECT Finalidade_Mercadoria FROM ReferenciasFiscais WHERE Codigo = Referencia_Fiscal), 0)');
+           TempFichaInv.SQL.Add('                                   WHEN 0 THEN ''0-EMPRESA'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 1 THEN ''0-EMPRESA'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 2 THEN ''0-EMPRESA'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 3 THEN ''0-EMPRESA'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 4 THEN ''1-ARMAZEM'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 5 THEN ''2-TERCEIROS'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 6 THEN ''0-EMPRESA'' ');
+           TempFichaInv.SQL.Add('                                   WHEN 9 THEN ''0-EMPRESA'' ');
+           TempFichaInv.SQL.Add('                              END');
+           TempFichaInv.SQL.Add('       ,Nota ');
+           TempFichaInv.SQL.Add('       ,Data                = Data_Entrada');
+           TempFichaInv.SQL.Add('       ,Destinatario_Codigo = Fornecedor ');
+           TempFichaInv.SQL.Add('       ,Destinatario_Nome   = (SELECT Nome FROM Fornecedores WHERE Codigo = Fornecedor) ');
+           TempFichaInv.SQL.Add('       ,Destinatario_CNPJ   = (SELECT CNPJ FROM Fornecedores WHERE Codigo = Fornecedor) ');
+           TempFichaInv.SQL.Add('       ,Finalidade          = (SELECT Finalidade_Mercadoria FROM ReferenciasFiscais WHERE Codigo = Referencia_Fiscal) ');
+           TempFichaInv.SQL.Add('       ,ES                  = ''E'' ');
+           TempFichaInv.SQL.Add('       ,Processo');
+           TempFichaInv.SQL.Add('       ,Tipo_Processos      = (SELECT Modalidade_Importacao FROM ProcessosDocumentos PD WHERE PD.Processo =  NTI.Processo)');
+           TempFichaInv.SQL.Add('       ,Qtde_Entrada        = Quantidade ');
+           TempFichaInv.SQL.Add('       ,Unitario_Entrada    = ROUND(Valor_Inventario, 2) ');
+           TempFichaInv.SQL.Add('       ,Total_Entrada       = ROUND(Valor_Inventario, 2) * Quantidade ');
+           TempFichaInv.SQL.Add('       ,Qtde_Saida          = CAST(0 AS float) ');
+           TempFichaInv.SQL.Add('       ,Unitario_Saida      = CAST(0 AS money) ');
+           TempFichaInv.SQL.Add('       ,Total_Saida         = CAST(0 AS money) ');
+           TempFichaInv.SQL.Add('       ,Qtde_Saldo          = CAST(0 AS float) ');
+           TempFichaInv.SQL.Add('       ,Unitario_Saldo      = CAST(0 AS money) ');
+           TempFichaInv.SQL.Add('       ,Total_Saldo         = CAST(0 AS money) ');
+           TempFichaInv.SQL.Add('       ,Emissor             = ''T'' ');
+           TempFichaInv.SQL.Add('       ,Origem              = ''NFT'' ');
+           TempFichaInv.SQL.Add('FROM   NotasTerceirosItens NTI');
+           TempFichaInv.SQL.Add('WHERE  Codigo_Mercadoria IN('+pCodigos+')');
+           TempFichaInv.SQL.Add('  and  Nota IS NOT NULL');
+           TempFichaInv.SQL.Add('  and  NTI.Movimenta_Inventario = 1 ');
+           TempFichaInv.SQL.Add('  and  (SELECT DISTINCT(Provisoria) FROM NotasTerceiros NT WHERE NT.Nota = NTI.Nota and NT.Data_Emissao = NTI.Data_Emissao and NT.Fornecedor = NTI.Fornecedor) <> 1');
+           TempFichaInv.SQL.Add('SELECT  Linha = ROW_NUMBER() OVER (ORDER BY Codigo, Data, ES, Nota)');
+           TempFichaInv.SQL.Add('       ,Item  = ROW_NUMBER() OVER (PARTITION BY Codigo ORDER BY Data, ES, Nota)');
+           TempFichaInv.SQL.Add('       ,*');
+           TempFichaInv.SQL.Add('INTO #TEMP2');
+           TempFichaInv.SQL.Add('FROM #TEMP');
+           TempFichaInv.SQL.Add('ORDER BY Codigo, Data , ES');
+           TempFichaInv.SQL.Add('-- ATUALIZANDO AS QUANTIDADE DOS SALDOS.');
+           TempFichaInv.SQL.Add('UPDATE #TEMP2 SET Qtde_Saldo = CAST(');
+           TempFichaInv.SQL.Add('                               isnull((SELECT SUM(Qtde_Entrada) FROM #TEMP2 T2 WHERE T2.Codigo = #TEMP2.Codigo and T2.Linha < #TEMP2.Linha and ES = ''E''), 0)');
+           TempFichaInv.SQL.Add('                               - isnull((SELECT SUM(Qtde_Saida) FROM #TEMP2 T2 WHERE T2.Codigo = #TEMP2.Codigo and T2.Linha < #TEMP2.Linha and ES = ''S''), 0)');
+           TempFichaInv.SQL.Add('                               + Qtde_Entrada');
+           TempFichaInv.SQL.Add('                               - Qtde_Saida');
+           TempFichaInv.SQL.Add('                               AS DECIMAL(14,3))');
+           TempFichaInv.SQL.Add('-- ATUALIZANDO OS SALDOS DOS PRIMEIROS ITENS DE TODOS OS PRODUTOS.');
+           TempFichaInv.SQL.Add('UPDATE #TEMP2 SET Total_Saldo    = Total_Entrada - Total_Saida');
+           TempFichaInv.SQL.Add('                 ,Unitario_Saldo = CASE WHEN Qtde_Saldo > 0 THEN (Total_Entrada - Total_Saida) / Qtde_Saldo ELSE 0 END');
+           TempFichaInv.SQL.Add('WHERE Item = 1');
+           TempFichaInv.SQL.Add('INSERT INTO TempFichaInv');
+           TempFichaInv.SQL.Add('            SELECT Registro = ROW_NUMBER() OVER (ORDER BY Codigo, Data, ES, Nota) ');
+           TempFichaInv.SQL.Add('                  ,Item');
+           TempFichaInv.SQL.Add('                  ,Codigo ');
+           TempFichaInv.SQL.Add('                  ,NCM');
+           TempFichaInv.SQL.Add('                  ,Descricao ');
+           TempFichaInv.SQL.Add('                  ,UM ');
+           TempFichaInv.SQL.Add('                  ,CFOP ');
+           TempFichaInv.SQL.Add('                  ,Historico ');
+           TempFichaInv.SQL.Add('                  ,Estoque ');
+           TempFichaInv.SQL.Add('                  ,Emissor');
+           TempFichaInv.SQL.Add('                  ,Origem');
+           TempFichaInv.SQL.Add('                  ,Nota ');
+           TempFichaInv.SQL.Add('                  ,Data ');
+           TempFichaInv.SQL.Add('                  ,ES ');
+           TempFichaInv.SQL.Add('                  ,Destinatario_Codigo ');
+           TempFichaInv.SQL.Add('                  ,LTRIM(RTRIM(Destinatario_Nome))');
+           TempFichaInv.SQL.Add('                  ,Destinatario_CNPJ ');
+           TempFichaInv.SQL.Add('                  ,Finalidade ');
+           TempFichaInv.SQL.Add('                  ,Processo ');
+           TempFichaInv.SQL.Add('                  ,Tipo_Processo');
+           TempFichaInv.SQL.Add('                  ,Qtde_Entrada ');
+           TempFichaInv.SQL.Add('                  ,Unitario_Entrada ');
+           TempFichaInv.SQL.Add('                  ,Total_Entrada ');
+           TempFichaInv.SQL.Add('                  ,Qtde_Saida ');
+           TempFichaInv.SQL.Add('                  ,Unitario_Saida ');
+           TempFichaInv.SQL.Add('                  ,Total_Saida ');
+           TempFichaInv.SQL.Add('                  ,Qtde_Saldo ');
+           TempFichaInv.SQL.Add('                  ,Unitario_Saldo ');
+           TempFichaInv.SQL.Add('                  ,Total_Saldo ');
+           TempFichaInv.SQL.Add('            FROM  #TEMP2 ');
+           TempFichaInv.SQL.Add('            ORDER BY Codigo, Data, ES, Nota ');
+           TempFichaInv.SQL.Add('SELECT * FROM TempFichaInv ORDER BY Codigo, Item');
+           TempFichaInv.SQL.Add('DROP TABLE #TEMP, #TEMP2, #TEMPDT');
+           TempFichaInv.ParamByName('pCodEmpresa').AsInteger := Menu_Principal.mEmpresa;
+           TempFichaInv.ParamByName('pNomeEmpresa').AsString := EmpresasRazao_Social.AsString;
+           TempFichaInv.ParamByName('pCNPJEmpresa').AsString := EmpresasCNPJ.AsString;
+           //TempFichaInv.SQL.SaveToFile('c:\temp\Funcoes_Ficha_Inventario.sql');
+           TempFichaInv.Open;
+           TempFichaInv.First;
+           
+           TempFichaInv.DisableControls;
+           tAltera.DisableControls;
+
+           tSaldo.SQL.Clear;
+           tSaldo.SQL.Add('SELECT Unitario_Saldo = isnull(Unitario_Saldo, 0)');
+           tSaldo.SQL.Add('      ,Total_Saldo    = isnull(Total_Saldo, 0)');
+           tSaldo.SQL.Add('FROM  FichaInventario WHERE Codigo = :pCodigo and Item = :pItem');
+           tSaldo.ParamByName('pCodigo').AsInteger := TempFichaInv.FieldByName('Codigo').AsInteger;
+           tSaldo.ParamByName('pItem').AsInteger   := TempFichaInv.FieldByName('Item').AsInteger-1;
+           tSaldo.Open;
+
+           mSalAnt := tSaldo.FieldByName('Unitario_Saldo').AsFloat;
+           mTotAnt := tSaldo.FieldByName('Total_Saldo').AsFloat;
+
+           tAltera.SQL.Clear;
+           tAltera.SQL.Add('UPDATE TempFichaInv SET Total_Saldo    = :pTotalSaldo');
+           tAltera.SQL.Add('                       ,Unitario_Saida = :pUniSaida');
+           tAltera.SQL.Add('                       ,Total_Saida    = :pTotSaida');
+           tAltera.SQL.Add('                       ,Unitario_Saldo = :pUniSaldo');
+           tAltera.SQL.Add('WHERE Registro = :pRegistro and Item > 1');
+           
+           Janela_Processamento.Progresso.Max      := TempFichaInv.RecordCount;
+           Janela_Processamento.Progresso.Position := 0;
+           Janela_Processamento.lProcesso.Caption  := 'Processando a ficha de inventario...';
+
+           While not TempFichaInv.Eof do begin
+                 tAltera.ParamByName('pUniSaida').AsFloat   := mSalAnt;
+                 tAltera.ParamByName('pTotSaida').AsFloat   := mSalAnt * TempFichaInv.FieldByName('Qtde_Saida').AsFloat;
+                 tAltera.ParamByName('pTotalSaldo').AsFloat := mTotAnt + TempFichaInv.FieldByName('Total_Entrada').AsFloat - (mSalAnt * TempFichaInv.FieldByName('Qtde_Saida').AsFloat);
+                 If TempFichaInv.FieldByName('Qtde_Saldo').AsFloat > 0 then
+                    tAltera.ParamByName('pUniSaldo').AsFloat := (mTotAnt + TempFichaInv.FieldByName('Total_Entrada').AsFloat - (mSalAnt * TempFichaInv.FieldByName('Qtde_Saida').AsFloat)) / TempFichaInv.FieldByName('Qtde_Saldo').AsFloat
+                 else
+                    tAltera.ParamByName('pUniSaldo').AsFloat := 0;
+                 tAltera.ParamByName('pRegistro').AsInteger  := TempFichaInv.FieldByName('Registro').AsInteger;
+                 tAltera.Execute;
+
+                 TempFichaInv.RefreshRecord;
+
+                 mSalAnt := TempFichaInv.FieldByName('Unitario_Saldo').AsFloat;
+                 mTotAnt := TempFichaInv.FieldByName('Total_Saldo').AsFloat;
+
+                 TempFichaInv.Next;
+                 Janela_Processamento.Progresso.Position := Janela_Processamento.Progresso.Position +1;
+                 Application.ProcessMessages;
+           End;
+           TempFichaInv.EnableControls;
+
+           tAltera.SQL.Clear;
+           tAltera.SQL.Add('DELETE FROM FichaInventario');
+           tAltera.SQL.Add('WHERE  Codigo IN('+pCodigos+')');
+           tAltera.Execute;
+           
+           tRegistro.SQL.Clear;
+           tRegistro.SQL.Add('SELECT isnull(MAX(Registro), 0)+1 AS Registro FROM FichaInventario');
+           tRegistro.Open;
+
+           FichaInventario.Open;
+           Janela_Processamento.Progresso.Position := 0;
+           //Janela_Processamento.lProcesso.Caption  := 'Processando a ficha de inventario...';
+
+           TempFichaInv.First;
+           mItem := 1;
+           mCod  := TempFichaInv.FieldByName('Codigo').AsInteger;
+           while not TempFichaInv.Eof do begin
+                 tRegistro.Open;
+                 FichaInventario.Append;
+                                 FichaInventarioRegistro.Value            := tRegistro.FieldByName('Registro').AsInteger;
+                                 FichaInventarioItem.Value                := mItem;
+                                 FichaInventarioCodigo.Value              := TempFichaInv.FieldByName('Codigo').AsInteger;
+                                 FichaInventarioNCM.Value                 := TempFichaInvNCM.Value;
+                                 FichaInventarioCFOP.Value                := TempFichaInvCFOP.Value;
+                                 FichaInventarioDescricao.Value           := TempFichaInvDescricao.Value;
+                                 FichaInventarioUM.Value                  := TempFichaInvUM.Value;
+                                 FichaInventarioHistorico.Value           := TempFichaInvHistorico.Value;
+                                 FichaInventarioEstoque.Value             := TempFichaInvEstoque.Value;
+                                 FichaInventarioEmissor.Value             := TempFichaInvEmissor.value;
+                                 FichaInventarioNota.Value                := TempFichaInvNota.Value;
+                                 FichaInventarioData.Value                := TempFichaInvData.Value;
+                                 FichaInventarioES.Value                  := TempFichaInvES.Value;
+                                 FichaInventarioDestinatario_Codigo.Value := TempFichaInvDestinatario_Codigo.Value;
+                                 FichaInventarioDestinatario_Nome.Value   := TempFichaInvDestinatario_Nome.Value;
+                                 FichaInventarioDestinatario_CNPJ.Value   := TempFichaInvDestinatario_CNPJ.Value;
+                                 FichaInventarioFinalidade.Value          := TempFichaInvFinalidade.Value;
+                                 FichaInventarioQtde_Entrada.Value        := TempFichaInvQtde_Entrada.Value;
+                                 FichaInventarioUnitario_Entrada.Value    := TempFichaInvUnitario_Entrada.Value;
+                                 FichaInventarioTotal_Entrada.Value       := TempFichaInvTotal_Entrada.Value;
+                                 FichaInventarioQtde_Saida.Value          := TempFichaInvQtde_Saida.Value;
+                                 FichaInventarioUnitario_Saida.Value      := TempFichaInvUnitario_Saida.Value;
+                                 FichaInventarioTotal_Saida.Value         := TempFichaInvTotal_Saida.Value;
+                                 FichaInventarioQtde_Saldo.Value          := TempFichaInvQtde_Saldo.Value;
+                                 FichaInventarioTotal_Saldo.Value         := TempFichaInvTotal_Saldo.Value;
+                                 FichaInventarioUnitario_Saldo.Value      := TempFichaInvUnitario_Saldo.Value;
+                                 FichaInventarioOrigem.Value              := TempFichaInvOrigem.Value;
+                                 FichaInventarioProcesso.Value            := TempFichaInvProcesso.Value;
+                                 FichaInventarioTipo_Processo.Value       := TempFichaInvTipo_Processo.Value;
+                 FichaInventario.Post;
+                 tRegistro.Close;
+                 TempFichaInv.Next;
+                 inc(mItem);
+                 if mCod <> TempFichaInv.FieldByName('Codigo').AsInteger then begin
+                    mItem := 1;
+                    mCod  := TempFichaInv.FieldByName('Codigo').AsInteger;
+                 end;   
+
+                 Janela_Processamento.Progresso.Position := Janela_Processamento.Progresso.Position +1;
+                 Application.ProcessMessages;
+           end;
+           FichaInventario.close;
+           
+           tAltera.SQL.Clear;
+           tAltera.SQL.Add('UPDATE FichaInventario SET Unitario_Saida = 0');
+           tAltera.SQL.Add('                          ,Total_Saida    = 0');
+           tAltera.SQL.Add('                          ,Qtde_Saida     = 0');
+           tAltera.SQL.Add('WHERE ES = ''E'' ');
+           tAltera.Execute;
+      end;
+      Screen.Cursor := crDefault;
+end;
+
+procedure AtualizaEst(pCodigos:string);
+Var
+   mSalAnt,
+   mTotAnt:Real;
+   mItem,
+   mCod:integer;
+   tAltera,
+   tRegistro,
+   tSaldo:TMSQuery;
+begin
+      Screen.Cursor := crSQLWait;
+      with Dados, dmFiscal do begin
+           tAltera   := TMSQuery.Create(nil);
+           tSaldo    := TMSQuery.Create(nil);
+           tRegistro := TMSQuery.Create(nil);
+           tAltera.Connection   := Banco_Empresas;
+           tSaldo.Connection    := Banco_Empresas;
+           tRegistro.Connection := Banco_Empresas;
+
+           //----------------------------------------------------------( MONTAGEM DA FICHA DE ESTOQUE )-------------------------------------------------------\\
+           TempFichaEst.SQL.Clear;
+           TempFichaEst.SQL.Add('-- NOTAS DE ENTRADA PROPRIA -- ');
+           TempFichaEst.SQL.Add('If (SELECT COUNT(*) FROM SYSOBJECTS WHERE XTYPE = ''U'' and NAME  = ''TempFichaEst'') > 0');
+           TempFichaEst.SQL.Add('   BEGIN');
+           TempFichaEst.SQL.Add('         DROP TABLE TempFichaEst');
+           TempFichaEst.SQL.Add('         SELECT TOP 1 * INTO TempFichaEst FROM FichaEstoque WHERE Registro > (SELECT MAX(Registro) FROM FichaInventario)');
+           TempFichaEst.SQL.Add('         TRUNCATE TABLE TempFichaEst');
+           TempFichaEst.SQL.Add('   END');
+           TempFichaEst.SQL.Add('ELSE ');
+           TempFichaEst.SQL.Add('   SELECT * INTO TempFichaEst FROM FichaEstoque WHERE Registro > (SELECT MAX(Registro) FROM FichaInventario)');
+           TempFichaEst.SQL.Add('SELECT MIN(Data_Emissao) AS Data');
+           TempFichaEst.SQL.Add('INTO #TEMPDT');
+           TempFichaEst.SQL.Add('FROM NotasFiscais WHERE isnull(Cancelada, 0) = 0 and isnull(Nfe_Denegada, 0) = 0');
+           TempFichaEst.SQL.Add('UNION ALL');
+           TempFichaEst.SQL.Add('SELECT MIN(Data_Entrada) AS Data');
+           TempFichaEst.SQL.Add('FROM NotasTerceiros');
+           TempFichaEst.SQL.Add('WHERE isnull(Provisoria, 0) <> 1');
+           TempFichaEst.SQL.Add('UNION ALL');
+           TempFichaEst.SQL.Add('SELECT MIN(Data_Transferencia) AS Data');
+           TempFichaEst.SQL.Add('FROM ProdutosTransferencia');
+           TempFichaEst.SQL.Add('DELETE FROM #TEMPDT WHERE Data IS NULL');
+           TempFichaEst.SQL.Add('DECLARE @Menor_Data datetime');
+           TempFichaEst.SQL.Add('       ,@Maior_Data datetime');
+           TempFichaEst.SQL.Add('SET @Menor_Data = (SELECT MIN(Data) FROM #TEMPDT)');
+           TempFichaEst.SQL.Add('SET @Maior_Data = GETDATE()');
+           TempFichaEst.SQL.Add('SELECT  Codigo              = Codigo_Mercadoria ');
+           TempFichaEst.SQL.Add('       ,Descricao           = (SELECT SUBSTRING(Descricao, 1, 250) FROM Produtos WHERE Produtos.Codigo = Codigo_Mercadoria)');
+           TempFichaEst.SQL.Add('       ,UM                  = Unidade_Medida ');
+           TempFichaEst.SQL.Add('       ,NCM                 = NCM');
+           TempFichaEst.SQL.Add('       ,CFOP                = (SELECT DISTINCT Natureza_Codigo FROM NotasFiscais NF WHERE Numero = Nota and Data_Emissao = Data and NF.Saida_Entrada = NI.Saida_Entrada) ');
+           TempFichaEst.SQL.Add('       ,Historico           = CASE Finalidade_Mercadoria');
+           TempFichaEst.SQL.Add('                                   WHEN 0 THEN ''REVENDA'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 1 THEN ''CONSUMO'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 2 THEN ''DEVOLUÇÃO'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 3 THEN ''EXPORTAÇÃO'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 4 THEN ''PRÓPRIAS EM PODER DE TERCEIROS'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 5 THEN ''TERCEIROS EM PODER DA EMPRESA'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 6 THEN ''IMOBILIZADO'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 9 THEN ''OUTRAS'' ');
+           TempFichaEst.SQL.Add('                              END');
+           TempFichaEst.SQL.Add('       ,Estoque             = CASE Finalidade_Mercadoria');
+           TempFichaEst.SQL.Add('                                   WHEN 0 THEN ''0-EMPRESA'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 1 THEN ''0-EMPRESA'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 2 THEN ''0-EMPRESA'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 3 THEN ''0-EMPRESA'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 4 THEN ''1-ARMAZEM'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 5 THEN ''2-TERCEIROS'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 6 THEN ''0-EMPRESA'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 9 THEN ''0-EMPRESA'' ');
+           TempFichaEst.SQL.Add('                              END');
+           TempFichaEst.SQL.Add('       ,Nota ');
+           TempFichaEst.SQL.Add('       ,Data');
+           TempFichaEst.SQL.Add('       ,Destinatario_Codigo = (SELECT DISTINCT Fornecedor_Codigo FROM NotasFiscais NF WHERE Numero = Nota and Data_Emissao = Data and NF.Saida_Entrada = NI.Saida_Entrada) ');
+           TempFichaEst.SQL.Add('       ,Destinatario_Nome   = (SELECT DISTINCT Destinatario_Nome FROM NotasFiscais NF WHERE Numero = Nota and Data_Emissao = Data and NF.Saida_Entrada = NI.Saida_Entrada) ');
+           TempFichaEst.SQL.Add('       ,Destinatario_CNPJ   = (SELECT DISTINCT Destinatario_CNPJ_CPF FROM NotasFiscais NF WHERE Numero = Nota and Data_Emissao = Data and NF.Saida_Entrada = NI.Saida_Entrada) ');
+           TempFichaEst.SQL.Add('       ,Finalidade          = Finalidade_Mercadoria');
+           TempFichaEst.SQL.Add('       ,ES                  = ''E'' ');
+           TempFichaEst.SQL.Add('       ,Processo');
+           TempFichaEst.SQL.Add('       ,Tipo_Processo       = (SELECT Modalidade_Importacao FROM ProcessosDocumentos PD WHERE PD.Processo =  NI.Processo)');
+           TempFichaEst.SQL.Add('       ,Qtde_Entrada        = CASE WHEN isnull((SELECT Complementar FROM NotasFiscais WHERE Numero = Nota and Data_Emissao = Data), 0) = 0 THEN');
+           TempFichaEst.SQL.Add('                                   Quantidade');
+           TempFichaEst.SQL.Add('                              ELSE');
+           TempFichaEst.SQL.Add('                                   0');
+           TempFichaEst.SQL.Add('                              END');
+           TempFichaEst.SQL.Add('       ,Unitario_Entrada    = ROUND(Valor_Inventario, 4) ');
+           TempFichaEst.SQL.Add('       ,Total_Entrada       = ROUND(Valor_Inventario, 2) * Quantidade ');
+           TempFichaEst.SQL.Add('       ,Qtde_Saida          = CAST(0 AS float) ');
+           TempFichaEst.SQL.Add('       ,Unitario_Saida      = CAST(0 AS money) ');
+           TempFichaEst.SQL.Add('       ,Total_Saida         = CAST(0 AS money) ');
+           TempFichaEst.SQL.Add('       ,Qtde_Saldo          = CAST(0 AS float) ');
+           TempFichaEst.SQL.Add('       ,Unitario_Saldo      = CAST(0 AS money) ');
+           TempFichaEst.SQL.Add('       ,Total_Saldo         = CAST(0 AS money) ');
+           TempFichaEst.SQL.Add('       ,Emissor             = ''P'' ');
+           TempFichaEst.SQL.Add('       ,Origem              = ''NFP'' ');
+           TempFichaEst.SQL.Add('INTO   #TEMP ');
+           TempFichaEst.SQL.Add('FROM   NotasItens NI ');
+           TempFichaEst.SQL.Add('WHERE Codigo_Mercadoria IN('+pCodigos+')');
+           TempFichaEst.SQL.Add('  and Saida_Entrada = 0');
+           TempFichaEst.SQL.Add('  and Valor_Unitario > 0');
+           TempFichaEst.SQL.Add('  and isnull(NI.Cancelada, 0)     <> 1 ');
+           TempFichaEst.SQL.Add('  and isnull(NI.Nfe_Denegada, 0)  <> 1 ');
+           TempFichaEst.SQL.Add('  and (isnull(Movimenta_Estoque, 0) = 1 OR (SELECT DISTINCT Complementar FROM NotasFiscais NF WHERE NF.Numero = Nota and NF.Data_Emissao = Data and NF.Saida_Entrada = Saida_Entrada and Valor_Unitario > 0) = 1)');
+           TempFichaEst.SQL.Add('-- NOTAS DE SAÍDA -- ');
+           TempFichaEst.SQL.Add('UNION ALL ');
+           TempFichaEst.SQL.Add('SELECT  Codigo              = Codigo_Mercadoria ');
+           TempFichaEst.SQL.Add('       ,Descricao           = (SELECT SUBSTRING(Descricao, 1, 250) FROM Produtos WHERE Produtos.Codigo = Codigo_Mercadoria)');
+           TempFichaEst.SQL.Add('       ,UM                  = Unidade_Medida ');
+           TempFichaEst.SQL.Add('       ,NCM                 = NCM');
+           TempFichaEst.SQL.Add('       ,CFOP                = (SELECT DISTINCT Natureza_Codigo FROM NotasFiscais NF WHERE Numero = Nota and Data_Emissao = Data and NF.Saida_Entrada = NI.Saida_Entrada) ');
+           TempFichaEst.SQL.Add('       ,Historico           = CASE Finalidade_Mercadoria');
+           TempFichaEst.SQL.Add('                                   WHEN 0 THEN ''REVENDA'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 1 THEN ''CONSUMO'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 2 THEN ''DEVOLUÇÃO'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 3 THEN ''EXPORTAÇÃO'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 4 THEN ''PRÓPRIAS EM PODER DE TERCEIROS'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 5 THEN ''TERCEIROS EM PODER DA EMPRESA'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 6 THEN ''IMOBILIZADO'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 9 THEN ''OUTRAS'' ');
+           TempFichaEst.SQL.Add('                              END');
+           TempFichaEst.SQL.Add('       ,Estoque             = CASE Finalidade_Mercadoria');
+           TempFichaEst.SQL.Add('                                   WHEN 0 THEN ''0-EMPRESA'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 1 THEN ''0-EMPRESA'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 2 THEN ''0-EMPRESA'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 3 THEN ''0-EMPRESA'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 4 THEN ''1-ARMAZEM'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 5 THEN ''2-TERCEIROS'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 6 THEN ''0-EMPRESA'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 9 THEN ''0-EMPRESA'' ');
+           TempFichaEst.SQL.Add('                              END');
+           TempFichaEst.SQL.Add('       ,Nota');
+           TempFichaEst.SQL.Add('       ,Data');
+           TempFichaEst.SQL.Add('       ,Destinatario_Codigo = (SELECT DISTINCT Cliente_Codigo    FROM NotasFiscais NF WHERE Numero = Nota and Data_Emissao = Data and NF.Saida_Entrada = NI.Saida_Entrada) ');
+           TempFichaEst.SQL.Add('       ,Destinatario_Nome   = (SELECT DISTINCT Destinatario_Nome FROM NotasFiscais NF WHERE Numero = Nota and Data_Emissao = Data and NF.Saida_Entrada = NI.Saida_Entrada) ');
+           TempFichaEst.SQL.Add('       ,Destinatario_CNPJ   = (SELECT DISTINCT Destinatario_CNPJ_CPF FROM NotasFiscais NF WHERE Numero = Nota and Data_Emissao = Data and NF.Saida_Entrada = NI.Saida_Entrada) ');
+           TempFichaEst.SQL.Add('       ,Finalidade          = Finalidade_Mercadoria');
+           TempFichaEst.SQL.Add('       ,ES                  = ''S'' ');
+           TempFichaEst.SQL.Add('       ,Processo');
+           TempFichaEst.SQL.Add('       ,Tipo_Processo       = (SELECT Modalidade_Importacao FROM ProcessosDocumentos PD WHERE PD.Processo =  NI.Processo)');
+           TempFichaEst.SQL.Add('       ,Qtde_Entrada        = CAST(0 AS float)');
+           TempFichaEst.SQL.Add('       ,Unitario_Entrada    = CAST(0 AS money)');
+           TempFichaEst.SQL.Add('       ,Total_Entrada       = CAST(0 AS money)');
+           TempFichaEst.SQL.Add('       ,Qtde_Saida          = CASE WHEN isnull((SELECT Complementar FROM NotasFiscais WHERE Numero = Nota and Data_Emissao = Data), 0) = 0 THEN');
+           TempFichaEst.SQL.Add('                                   Quantidade');
+           TempFichaEst.SQL.Add('                              ELSE');
+           TempFichaEst.SQL.Add('                                   0');
+           TempFichaEst.SQL.Add('                              END');
+           TempFichaEst.SQL.Add('       ,Unitario_Saida      = CAST(0 AS money) ');
+           TempFichaEst.SQL.Add('       ,Total_Saida         = CAST(0 AS money) ');
+           TempFichaEst.SQL.Add('       ,Qtde_Saldo          = CAST(0 AS float) ');
+           TempFichaEst.SQL.Add('       ,Unitario_Saldo      = CAST(0 AS money) ');
+           TempFichaEst.SQL.Add('       ,Total_Saldo         = CAST(0 AS money) ');
+           TempFichaEst.SQL.Add('       ,Emissor             = ''P'' ');
+           TempFichaEst.SQL.Add('       ,Origem              = ''NFP'' ');
+           TempFichaEst.SQL.Add('FROM   NotasItens NI ');
+           TempFichaEst.SQL.Add('WHERE Codigo_Mercadoria IN('+pCodigos+')');
+           TempFichaEst.SQL.Add('  and Saida_Entrada = 1');
+           TempFichaEst.SQL.Add('  and isnull(NI.Cancelada, 0)     <> 1 ');
+           TempFichaEst.SQL.Add('  and isnull(NI.Nfe_Denegada, 0)  <> 1 ');
+           TempFichaEst.SQL.Add('  and isnull(Movimenta_Estoque, 0) = 1 ');
+           TempFichaEst.SQL.Add('  and Valor_Unitario > 0');
+           TempFichaEst.SQL.Add('  and (SELECT DISTINCT Complementar FROM NotasFiscais NF WHERE NF.Numero = Nota and NF.Data_Emissao = Data and NF.Saida_Entrada = Saida_Entrada) <> 1');
+           TempFichaEst.SQL.Add('-- SALDO DE ABERTURA DE ESTOQUE / TRANSFERÊNCIAS (ENTRADAS) -- ');
+           TempFichaEst.SQL.Add('UNION ALL ');
+           TempFichaEst.SQL.Add('SELECT  Codigo              = Produto_Entrada ');
+           TempFichaEst.SQL.Add('       ,Descricao           = CAST((SELECT SUBSTRING(Descricao, 1, 250) FROM Produtos WHERE Codigo = Produto_Entrada) AS VARCHAR(250))');
+           TempFichaEst.SQL.Add('       ,UM                  = (SELECT Unidade FROM Produtos WHERE Codigo = Produto_Entrada) ');
+           TempFichaEst.SQL.Add('       ,NCM                 = (SELECT NCM     FROM Produtos WHERE Codigo = Produto_Entrada) ');
+           TempFichaEst.SQL.Add('       ,CFOP                = null ');
+           TempFichaEst.SQL.Add('       ,Historico           = CASE WHEN Motivo = ''A'' THEN');
+           TempFichaEst.SQL.Add('                                   ''* SALDO DE ABERTURA DE ESTOQUE *''');
+           TempFichaEst.SQL.Add('                              ELSE');
+           TempFichaEst.SQL.Add('                                   ''* TRANSFERÊNCIA DE SALDO DE ESTOQUE *''');
+           TempFichaEst.SQL.Add('                              END');
+           TempFichaEst.SQL.Add('       ,Estoque             = ''0-EMPRESA'' ');
+           TempFichaEst.SQL.Add('       ,Nota                = Registro');
+           TempFichaEst.SQL.Add('       ,Data                = Data_Transferencia');
+           TempFichaEst.SQL.Add('       ,Destinatario_Codigo = :pCodEmpresa');
+           TempFichaEst.SQL.Add('       ,Destinatario_Nome   = :pNomeEmpresa');
+           TempFichaEst.SQL.Add('       ,Destinatario_CNPJ   = :pCNPJEmpresa');
+           TempFichaEst.SQL.Add('       ,Finalidade          = 0 ');
+           TempFichaEst.SQL.Add('       ,ES                  = ''E'' ');
+           TempFichaEst.SQL.Add('       ,Processo_Entrada');
+           TempFichaEst.SQL.Add('       ,Tipo_Processo       = (SELECT Modalidade_Importacao FROM ProcessosDocumentos PD WHERE PD.Processo =  PT.Processo_Entrada)');
+           TempFichaEst.SQL.Add('       ,Qtde_Entrada        = Quantidade_Entrada');
+           TempFichaEst.SQL.Add('       ,Unitario_Entrada    = ROUND(Valor_Unitario, 2) ');
+           TempFichaEst.SQL.Add('       ,Total_Entrada       = ROUND(Valor_Unitario, 2) * Quantidade_Entrada');
+           TempFichaEst.SQL.Add('       ,Qtde_Saida          = CAST(0 AS float)');
+           TempFichaEst.SQL.Add('       ,Unitario_Saida      = CAST(0 AS money) ');
+           TempFichaEst.SQL.Add('       ,Total_Saida         = CAST(0 AS money) ');
+           TempFichaEst.SQL.Add('       ,Qtde_Saldo          = CAST(0 AS float) ');
+           TempFichaEst.SQL.Add('       ,Unitario_Saldo      = CAST(0 AS money) ');
+           TempFichaEst.SQL.Add('       ,Total_Saldo         = CAST(0 AS money) ');
+           TempFichaEst.SQL.Add('       ,Emissor             = ''P'' ');
+           TempFichaEst.SQL.Add('       ,Origem              = ''TRF'' ');
+           TempFichaEst.SQL.Add('FROM   ProdutosTransferencia PT');
+           TempFichaEst.SQL.Add('WHERE Produto_Entrada IN('+pCodigos+')');
+           TempFichaEst.SQL.Add('  and Estoque = 1 ');
+           TempFichaEst.SQL.Add('-- TRANSFERÊNCIAS DE SALDO DE ESTOQUE (SAÍDAS) --');
+           TempFichaEst.SQL.Add('UNION ALL ');
+           TempFichaEst.SQL.Add('SELECT  Codigo              = Produto_Saida');
+           TempFichaEst.SQL.Add('       ,Descricao           = CAST((SELECT SUBSTRING(Descricao, 1, 250) FROM Produtos WHERE Codigo = Produto_Saida) AS VARCHAR(250))');
+           TempFichaEst.SQL.Add('       ,UM                  = (SELECT Unidade FROM Produtos WHERE Codigo = Produto_Saida)');
+           TempFichaEst.SQL.Add('       ,NCM                 = (SELECT NCM     FROM Produtos WHERE Codigo = Produto_Saida) ');
+           TempFichaEst.SQL.Add('       ,CFOP                = null');
+           TempFichaEst.SQL.Add('       ,Historico           = ''* TRANSFERÊNCIA DE SALDO DE ESTOQUE *'' ');
+           TempFichaEst.SQL.Add('       ,Estoque             = ''0-EMPRESA'' ');
+           TempFichaEst.SQL.Add('       ,Nota                = Registro');
+           TempFichaEst.SQL.Add('       ,Data                = Data_Transferencia');
+           TempFichaEst.SQL.Add('       ,Destinatario_Codigo = :pCodEmpresa');
+           TempFichaEst.SQL.Add('       ,Destinatario_Nome   = :pNomeEmpresa');
+           TempFichaEst.SQL.Add('       ,Destinatario_CNPJ   = :pCNPJEmpresa');
+           TempFichaEst.SQL.Add('       ,Finalidade          = 0');
+           TempFichaEst.SQL.Add('       ,ES                  = ''S'' ');
+           TempFichaEst.SQL.Add('       ,Processo_Saida');
+           TempFichaEst.SQL.Add('       ,Tipo_Processo       = (SELECT Modalidade_Importacao FROM ProcessosDocumentos PD WHERE PD.Processo =  PT.Processo_Saida)');
+           TempFichaEst.SQL.Add('       ,Qtde_Entrada        = CAST(0 AS float)');
+           TempFichaEst.SQL.Add('       ,Unitario_Entrada    = CAST(0 AS money)');
+           TempFichaEst.SQL.Add('       ,Total_Entrada       = CAST(0 AS money)');
+           TempFichaEst.SQL.Add('       ,Qtde_Saida          = Quantidade');
+           TempFichaEst.SQL.Add('       ,Unitario_Saida      = CAST(0 AS money)');
+           TempFichaEst.SQL.Add('       ,Total_Saida         = CAST(0 AS money)');
+           TempFichaEst.SQL.Add('       ,Qtde_Saldo          = CAST(0 AS float)');
+           TempFichaEst.SQL.Add('       ,Unitario_Saldo      = CAST(0 AS money)');
+           TempFichaEst.SQL.Add('       ,Total_Saldo         = CAST(0 AS money)');
+           TempFichaEst.SQL.Add('       ,Emissor             = ''P'' ');
+           TempFichaEst.SQL.Add('       ,Origem              = ''TRF'' ');
+           TempFichaEst.SQL.Add('FROM   ProdutosTransferencia PT');
+           TempFichaEst.SQL.Add('WHERE Produto_Saida IN('+pCodigos+')');
+           TempFichaEst.SQL.Add('  and Motivo  = ''TRF'' ');
+           TempFichaEst.SQL.Add('  and Estoque = 1');
+           TempFichaEst.SQL.Add('-- NOTA DE ENTRADA DE TERCEIROS ');
+           TempFichaEst.SQL.Add('UNION ALL ');
+           TempFichaEst.SQL.Add('SELECT  Codigo              = Codigo_Mercadoria ');
+           TempFichaEst.SQL.Add('       ,Descricao           = (SELECT SUBSTRING(Descricao, 1, 250) FROM Produtos WHERE Produtos.Codigo = Codigo_Mercadoria)');
+           TempFichaEst.SQL.Add('       ,UM                  = Unidade_Medida');
+           TempFichaEst.SQL.Add('       ,NCM                 = NCM ');
+           TempFichaEst.SQL.Add('       ,CFOP                = Natureza_Codigo ');
+           TempFichaEst.SQL.Add('       ,Historico           = CASE (SELECT Finalidade_Mercadoria FROM ReferenciasFiscais WHERE Codigo = Referencia_Fiscal)');
+           TempFichaEst.SQL.Add('                                   WHEN 0 THEN ''COMPRA - REVENDA'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 1 THEN ''COMPRA - CONSUMO'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 2 THEN ''DEVOLUÇÃO'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 3 THEN ''EXPORTAÇÃO'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 4 THEN ''PRÓPRIAS EM PODER DE TERCEIROS'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 5 THEN ''TERCEIROS EM PODER DA EMPRESA'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 6 THEN ''COMPRA - IMOBILIZADO'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 9 THEN ''OUTRAS'' ');
+           TempFichaEst.SQL.Add('                              END');
+           TempFichaEst.SQL.Add('       ,Estoque             = CASE (SELECT Finalidade_Mercadoria FROM ReferenciasFiscais WHERE Codigo = Referencia_Fiscal)');
+           TempFichaEst.SQL.Add('                                   WHEN 0 THEN ''0-EMPRESA'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 1 THEN ''0-EMPRESA'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 2 THEN ''0-EMPRESA'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 3 THEN ''0-EMPRESA'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 4 THEN ''1-ARMAZEM'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 5 THEN ''2-TERCEIROS'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 6 THEN ''0-EMPRESA'' ');
+           TempFichaEst.SQL.Add('                                   WHEN 9 THEN ''0-EMPRESA'' ');
+           TempFichaEst.SQL.Add('                              END');
+           TempFichaEst.SQL.Add('       ,Nota ');
+           TempFichaEst.SQL.Add('       ,Data                = Data_Entrada');
+           TempFichaEst.SQL.Add('       ,Destinatario_Codigo = Fornecedor ');
+           TempFichaEst.SQL.Add('       ,Destinatario_Nome   = (SELECT Nome FROM Fornecedores WHERE Codigo = Fornecedor) ');
+           TempFichaEst.SQL.Add('       ,Destinatario_CNPJ   = (SELECT CNPJ FROM Fornecedores WHERE Codigo = Fornecedor) ');
+           TempFichaEst.SQL.Add('       ,Finalidade          = (SELECT Finalidade_Mercadoria FROM ReferenciasFiscais WHERE Codigo = Referencia_Fiscal) ');
+           TempFichaEst.SQL.Add('       ,ES                  = ''E'' ');
+           TempFichaEst.SQL.Add('       ,Processo');
+           TempFichaEst.SQL.Add('       ,Tipo_Processo       = (SELECT Modalidade_Importacao FROM ProcessosDocumentos PD WHERE PD.Processo =  NTI.Processo)');
+           TempFichaEst.SQL.Add('       ,Qtde_Entrada        = Quantidade ');
+           TempFichaEst.SQL.Add('       ,Unitario_Entrada    = ROUND(Valor_Inventario, 2) ');
+           TempFichaEst.SQL.Add('       ,Total_Entrada       = ROUND(Valor_Inventario, 2) * Quantidade ');
+           TempFichaEst.SQL.Add('       ,Qtde_Saida          = CAST(0 AS float) ');
+           TempFichaEst.SQL.Add('       ,Unitario_Saida      = CAST(0 AS money) ');
+           TempFichaEst.SQL.Add('       ,Total_Saida         = CAST(0 AS money) ');
+           TempFichaEst.SQL.Add('       ,Qtde_Saldo          = CAST(0 AS float) ');
+           TempFichaEst.SQL.Add('       ,Unitario_Saldo      = CAST(0 AS money) ');
+           TempFichaEst.SQL.Add('       ,Total_Saldo         = CAST(0 AS money) ');
+           TempFichaEst.SQL.Add('       ,Emissor             = ''T'' ');
+           TempFichaEst.SQL.Add('       ,Origem              = ''NFT'' ');
+           TempFichaEst.SQL.Add('FROM   NotasTerceirosItens NTI');
+           TempFichaEst.SQL.Add('WHERE Codigo_Mercadoria IN('+pCodigos+')');
+           TempFichaEst.SQL.Add('  and NTI.Movimenta_Estoque = 1 ');
+           TempFichaEst.SQL.Add('  and  (SELECT DISTINCT(Provisoria) FROM NotasTerceiros NT WHERE NT.Nota = NTI.Nota and NT.Data_Emissao = NTI.Data_Emissao and NT.Fornecedor = NTI.Fornecedor) <> 1');
+           TempFichaEst.SQL.Add('SELECT  Linha = ROW_NUMBER() OVER (ORDER BY Codigo, Data, ES, Nota)');
+           TempFichaEst.SQL.Add('       ,Item  = ROW_NUMBER() OVER (PARTITION BY Codigo ORDER BY Data, ES, Nota)');
+           TempFichaEst.SQL.Add('       ,*');
+           TempFichaEst.SQL.Add('INTO #TEMP2');
+           TempFichaEst.SQL.Add('FROM #TEMP');
+           TempFichaEst.SQL.Add('ORDER BY Codigo, Data , ES');
+           TempFichaEst.SQL.Add('-- ATUALIZANDO AS QUANTIDADE DOS SALDOS.');
+           TempFichaEst.SQL.Add('UPDATE #TEMP2 SET Qtde_Saldo = CAST(');
+           TempFichaEst.SQL.Add('                               isnull((SELECT SUM(Qtde_Entrada) FROM #TEMP2 T2 WHERE T2.Codigo = #TEMP2.Codigo and T2.Linha < #TEMP2.Linha and ES = ''E''), 0)');
+           TempFichaEst.SQL.Add('                               - isnull((SELECT SUM(Qtde_Saida) FROM #TEMP2 T2 WHERE T2.Codigo = #TEMP2.Codigo and T2.Linha < #TEMP2.Linha and ES = ''S''), 0)');
+           TempFichaEst.SQL.Add('                               + Qtde_Entrada');
+           TempFichaEst.SQL.Add('                               - Qtde_Saida');
+           TempFichaEst.SQL.Add('                               AS DECIMAL(14,3))');
+           TempFichaEst.SQL.Add('-- ATUALIZANDO OS SALDOS DOS PRIMEIROS ITENS DE TODOS OS PRODUTOS.');
+           TempFichaEst.SQL.Add('UPDATE #TEMP2 SET Total_Saldo    = Total_Entrada - Total_Saida');
+           TempFichaEst.SQL.Add('                 ,Unitario_Saldo = CASE WHEN Qtde_Saldo > 0 THEN (Total_Entrada - Total_Saida) / Qtde_Saldo ELSE 0 END');
+           TempFichaEst.SQL.Add('WHERE Item = 1');
+           TempFichaEst.SQL.Add('INSERT INTO TempFichaEst');
+           TempFichaEst.SQL.Add('            SELECT Registro = ROW_NUMBER() OVER (ORDER BY Codigo, Data, ES, Nota) ');
+           TempFichaEst.SQL.Add('                  ,Item');
+           TempFichaEst.SQL.Add('                  ,Codigo ');
+           TempFichaEst.SQL.Add('                  ,NCM');
+           TempFichaEst.SQL.Add('                  ,Descricao ');
+           TempFichaEst.SQL.Add('                  ,UM ');
+           TempFichaEst.SQL.Add('                  ,CFOP ');
+           TempFichaEst.SQL.Add('                  ,Historico ');
+           TempFichaEst.SQL.Add('                  ,Estoque ');
+           TempFichaEst.SQL.Add('                  ,Emissor');
+           TempFichaEst.SQL.Add('                  ,Origem');
+           TempFichaEst.SQL.Add('                  ,Nota ');
+           TempFichaEst.SQL.Add('                  ,Data ');
+           TempFichaEst.SQL.Add('                  ,ES ');
+           TempFichaEst.SQL.Add('                  ,Destinatario_Codigo ');
+           TempFichaEst.SQL.Add('                  ,LTRIM(RTRIM(Destinatario_Nome))');
+           TempFichaEst.SQL.Add('                  ,Destinatario_CNPJ ');
+           TempFichaEst.SQL.Add('                  ,Finalidade ');
+           TempFichaEst.SQL.Add('                  ,Processo ');
+           TempFichaEst.SQL.Add('                  ,Tipo_Processo');
+           TempFichaEst.SQL.Add('                  ,Qtde_Entrada ');
+           TempFichaEst.SQL.Add('                  ,Unitario_Entrada ');
+           TempFichaEst.SQL.Add('                  ,Total_Entrada ');
+           TempFichaEst.SQL.Add('                  ,Qtde_Saida ');
+           TempFichaEst.SQL.Add('                  ,Unitario_Saida ');
+           TempFichaEst.SQL.Add('                  ,Total_Saida ');
+           TempFichaEst.SQL.Add('                  ,Qtde_Saldo ');
+           TempFichaEst.SQL.Add('                  ,Unitario_Saldo ');
+           TempFichaEst.SQL.Add('                  ,Total_Saldo ');
+           TempFichaEst.SQL.Add('            FROM  #TEMP2 ');
+           TempFichaEst.SQL.Add('            ORDER BY Codigo, Data, ES, Nota ');
+           TempFichaEst.SQL.Add('SELECT * FROM TempFichaEst ORDER BY Codigo, Item');
+           TempFichaEst.SQL.Add('DROP TABLE #TEMP, #TEMP2, #TEMPDT ');
+           TempFichaEst.ParamByName('pCodEmpresa').AsInteger := Menu_Principal.mEmpresa;
+           TempFichaEst.ParamByName('pNomeEmpresa').AsString := EmpresasRazao_Social.AsString;
+           TempFichaEst.ParamByName('pCNPJEmpresa').AsString := EmpresasCNPJ.AsString;
+           //TempFichaEst.SQL.SaveToFile('c:\temp\Funcoes_Ficha_Estoque.sql');
+           TempFichaEst.Open;
+           TempFichaEst.First;
+
+           TempFichaEst.DisableControls;
+
+           tSaldo.SQL.Clear;
+           tSaldo.SQL.Add('SELECT Unitario_Saldo = isnull(Unitario_Saldo, 0)');
+           tSaldo.SQL.Add('      ,Total_Saldo    = isnull(Total_Saldo, 0)');
+           tSaldo.SQL.Add('FROM  FichaEstoque WHERE Codigo = :pCodigo and Item = :pItem');
+           tSaldo.ParamByName('pCodigo').AsInteger := TempFichaEst.FieldByName('Codigo').AsInteger;
+           tSaldo.ParamByName('pItem').AsInteger   := TempFichaEst.FieldByName('Item').AsInteger-1;
+           tSaldo.Open;
+
+           mSalAnt := tSaldo.FieldByName('Unitario_Saldo').AsFloat;
+           mTotAnt := tSaldo.FieldByName('Total_Saldo').AsFloat;
+
+           tAltera.SQL.Clear;
+           tAltera.SQL.Add('UPDATE TempFichaEst SET Total_Saldo    = :pTotalSaldo');
+           tAltera.SQL.Add('                       ,Unitario_Saida = :pUniSaida');
+           tAltera.SQL.Add('                       ,Total_Saida    = :pTotSaida');
+           tAltera.SQL.Add('                       ,Unitario_Saldo = :pUniSaldo');
+           tAltera.SQL.Add('WHERE Registro = :pRegistro and Item > 1');
+
+           Janela_Processamento.Progresso.Max      := TempFichaInv.RecordCount;
+           Janela_Processamento.Progresso.Position := 0;
+           Janela_Processamento.lProcesso.Caption  := 'Processando a ficha de estoque...';
+
+           While not TempFichaEst.Eof do begin
+                 tAltera.ParamByName('pUniSaida').AsFloat   := mSalAnt;
+                 tAltera.ParamByName('pTotSaida').AsFloat   := mSalAnt * TempFichaEst.FieldByName('Qtde_Saida').AsFloat;
+                 tAltera.ParamByName('pTotalSaldo').AsFloat := mTotAnt + TempFichaEst.FieldByName('Total_Entrada').AsFloat - (mSalAnt * TempFichaEst.FieldByName('Qtde_Saida').AsFloat);
+                 If TempFichaEst.FieldByName('Qtde_Saldo').AsFloat > 0 then
+                    tAltera.ParamByName('pUniSaldo').AsFloat := (mTotAnt + TempFichaEst.FieldByName('Total_Entrada').AsFloat - (mSalAnt * TempFichaEst.FieldByName('Qtde_Saida').AsFloat)) / TempFichaEst.FieldByName('Qtde_Saldo').AsFloat
+                 else
+                    tAltera.ParamByName('pUniSaldo').AsFloat := 0;
+                 tAltera.ParamByName('pRegistro').AsInteger  := TempFichaEst.FieldByName('Registro').AsInteger;
+                 tAltera.Execute;
+
+                 TempFichaEst.RefreshRecord;
+
+                 mSalAnt := TempFichaEst.FieldByName('Unitario_Saldo').AsFloat;
+                 mTotAnt := TempFichaEst.FieldByName('Total_Saldo').AsFloat;
+
+                 TempFichaEst.Next;
+
+                 Janela_Processamento.Progresso.Position := Janela_Processamento.Progresso.Position +1;
+                 Application.ProcessMessages;
+           End;
+           TempFichaEst.EnableControls;
+
+           tAltera.SQL.Clear;
+           tAltera.SQL.Add('DELETE FROM FichaEstoque');
+           tAltera.SQL.Add('WHERE  Codigo IN('+pCodigos+')');
+           tAltera.Execute;
+
+           tRegistro.SQL.Clear;
+           tRegistro.SQL.Add('SELECT isnull(MAX(Registro), 0)+1 AS Registro FROM FichaEstoque');
+           tRegistro.Open;
+
+           FichaEstoque.Open;
+           TempFichaEst.First;
+           Janela_Processamento.Progresso.Position := 0;
+           //Janela_Processamento.lProcesso.Caption  := 'Processando a ficha de estoque...';
+           
+           mItem := 1;
+           mCod  := TempFichaEst.FieldByName('Codigo').AsInteger;
+
+           while not TempFichaEst.Eof do begin
+                 tRegistro.Open;
+                 FichaEstoque.Append;
+                              FichaEstoqueRegistro.Value            := tRegistro.FieldByName('Registro').AsInteger;
+                              FichaEstoqueItem.Value                := mItem;
+                              FichaEstoqueCodigo.Value              := TempFichaEst.FieldByName('Codigo').AsInteger;
+                              FichaEstoqueDescricao.Value           := TempFichaEstDescricao.Value;
+                              FichaEstoqueUM.Value                  := TempFichaEstUM.Value;
+                              FichaEstoqueCFOP.Value                := TempFichaEstCFOP.Value;
+                              FichaEstoqueHistorico.Value           := TempFichaEstHistorico.Value;
+                              FichaEstoqueEstoque.Value             := TempFichaEstEstoque.Value;
+                              FichaEstoqueEmissor.Value             := TempFichaEstEmissor.value;
+                              FichaEstoqueNota.Value                := TempFichaEstNota.Value;
+                              FichaEstoqueData.Value                := TempFichaEstData.Value;
+                              FichaEstoqueES.Value                  := TempFichaEstES.Value;
+                              FichaEstoqueDestinatario_Codigo.Value := TempFichaEstDestinatario_Codigo.Value;
+                              FichaEstoqueDestinatario_Nome.Value   := TempFichaEstDestinatario_Nome.Value;
+                              FichaEstoqueDestinatario_CNPJ.Value   := TempFichaEstDestinatario_CNPJ.Value;
+                              FichaEstoqueFinalidade.Value          := TempFichaEstFinalidade.Value;
+                              FichaEstoqueQtde_Entrada.Value        := TempFichaEstQtde_Entrada.Value;
+                              FichaEstoqueUnitario_Entrada.Value    := TempFichaEstUnitario_Entrada.Value;
+                              FichaEstoqueTotal_Entrada.Value       := TempFichaEstTotal_Entrada.Value;
+                              FichaEstoqueQtde_Saida.Value          := TempFichaEstQtde_Saida.Value;
+                              FichaEstoqueUnitario_Saida.Value      := TempFichaEstUnitario_Saida.Value;
+                              FichaEstoqueTotal_Saida.Value         := TempFichaEstTotal_Saida.Value;
+                              FichaEstoqueQtde_Saldo.Value          := TempFichaEstQtde_Saldo.Value;
+                              FichaEstoqueTotal_Saldo.Value         := TempFichaEstTotal_Saldo.Value;
+                              FichaEstoqueUnitario_Saldo.Value      := TempFichaEstUnitario_Saldo.Value;
+                              FichaEstoqueOrigem.Value              := TempFichaEstOrigem.Value;
+                              FichaEstoqueProcesso.Value            := TempFichaEstProcesso.Value;
+                              FichaEstoqueTipo_Processo.Value       := TempFichaEstTipo_Processo.Value;
+                 FichaEstoque.Post;
+                 tRegistro.Close;
+                 TempFichaEst.Next;
+                 inc(mItem);
+                 if mCod <> TempFichaEst.FieldByName('Codigo').AsInteger then begin
+                    mItem := 1;
+                    mCod  := TempFichaEst.FieldByName('Codigo').AsInteger;
+                 end;   
+                 Janela_Processamento.Progresso.Position := Janela_Processamento.Progresso.Position +1;
+                 Application.ProcessMessages;
+           end;
+           FichaEstoque.close;
+
+           tAltera.SQL.Clear;
+           tAltera.SQL.Add('UPDATE FichaEstoque SET Unitario_Saida = 0');
+           tAltera.SQL.Add('                       ,Total_Saida    = 0');
+           tAltera.SQL.Add('                       ,Qtde_Saida     = 0');
+           tAltera.SQL.Add('WHERE ES = ''E'' ');
+           tAltera.Execute;
+      end;
+      Screen.Cursor := crDefault;
+end;
+}
+
+
+
+
+
+
+{
+-- NOTAS DE ENTRADA PROPRIA -- 
+if (select count(*) from sysobjects where xtype = 'U' and name  = 'tempfichainv') > 0
+   truncate table tempfichaest;
+else 
+   select * into tempfichaest from fichainventario where registro > (select max(registro) from fichainventario);
+
+declare  @Menor_Data date
+        ,@Maior_Data date
+
+set @Maior_Data = getdate();
+set @Menor_Data = (
+    select min(Data)
+    from (select min(data_emissao) as data from notasfiscais
+          union all
+          select min(data_transferencia) from estoquetransferencia
+          union all
+          select min(data_entrada) from estoqueabertura) as Data
+);
+-- NOTAS FISCAIS.
+select Codigo = Codigo_Mercadoria 
+      ,Descricao = (select substring(Descricao, 1, 250) from Produtos where Produtos.Codigo = Codigo_Mercadoria)
+      ,UM = Unidade_Medida 
+      ,NCM
+      ,CFOP
+      ,Historico = case isnull(Finalidade_Mercadoria, 0)
+                        when 0 then 'REVENDA' 
+                        when 1 then 'CONSUMO' 
+                        when 2 then 'DEVOLUÇÃO' 
+                        when 3 then 'EXPORTAÇÃO' 
+                        when 4 then 'PRÓPRIAS EM PODER DE TERCEIROS' 
+                        when 5 then 'TERCEIROS EM PODER DA EMPRESA' 
+                        when 6 then 'IMOBILIZADO' 
+                        when 9 then 'OUTRAS' 
+                   end
+      ,Estoque = case isnull(Finalidade_Mercadoria, 0)
+                      when 0 then '0-EMPRESA' 
+                      when 1 then '0-EMPRESA' 
+                      when 2 then '0-EMPRESA' 
+                      when 3 then '0-EMPRESA' 
+                      when 4 then '1-ARMAZEM' 
+                      when 5 then '2-TERCEIROS' 
+                      when 6 then '0-EMPRESA' 
+                      when 9 then '0-EMPRESA' 
+                 end
+      ,Nota 
+      ,Data = Data_Emissao
+      ,Destinatario_Codigo =  Destinatario
+      ,Destinatario_Nome = (select distinct Destinatario_Nome from NotasFiscais nf where nf.Nota = ni.Nota and nf.Data_Emissao = ni.Data_Emissao and nf.ES = ni.ES) 
+      ,Destinatario_CNPJ = (select distinct Destinatario_CNPJ_CPF FROM NotasFiscais nf where nf.Nota = ni.Nota and nf.Data_Emissao = ni.Data_Emissao and nF.ES = ni.ES) 
+      ,Finalidade = Finalidade_Mercadoria
+      ,ES = iif(ES = 0, 'E', 'S')
+      ,Processo
+      ,Tipo_Processo = (select Modalidade from ProcessosImp pro where pro.Processo =  ni.Processo)
+      ,Qtde_Entrada = case when isnull((select Complementar from NotasFiscais nf where nf.Nota = ni.Nota and nf.Data_Emissao = ni.Data_Emissao), 0) = 0 then quantidade else 0 end
+      ,Unitario_Entrada = round(Valor_Inventario, 4) 
+      ,Total_Entrada = round(Valor_Inventario, 2) * Quantidade 
+      ,Qtde_Saida = cast(0 as float) 
+      ,Unitario_Saida = cast(0 as money) 
+      ,Total_Saida = cast(0 as money) 
+      ,Qtde_Saldo = cast(0 as float) 
+      ,Unitario_Saldo = cast(0 as money) 
+      ,Total_Saldo = cast(0 as money) 
+      ,Emissao
+      ,Origem = iif(Emissao = 'P', 'NFP', 'NFT')
+into #temp 
+from NotasItens ni 
+where Codigo_Mercadoria in(1, 2, 3)
+and ES = 0
+and Valor_Unitario > 0
+and isnull(ni.Cancelada, 0) <> 1 
+and isnull(ni.Denegada, 0) <> 1 
+and (isnull(Movimenta_Estoque, 0) = 1 or isnull(Complementar, 0) = 1)
+
+-- TRANSFERÊNCIAS (ENTRADAS) -- 
+union all 
+select Codigo = Produto_Entrada 
+      ,Descricao = cast((select substring(Descricao, 1, 250) from Produtos where Codigo = Produto_Entrada) as varchar(250))
+      ,UM = (select UM from Produtos where Codigo = Produto_Entrada) 
+      ,NCM = (select NCM from Produtos where Codigo = Produto_Entrada) 
+      ,CFOP = null 
+      ,Historico = '* TRANSFERÊNCIA DE SALDO DE ESTOQUE *'
+      ,Estoque = '0-EMPRESA' 
+      ,Nota = Registro
+      ,Data = Data_Transferencia
+      ,Destinatario_Codigo = 0
+      ,Destinatario_Nome = 'XGMA'
+      ,Destinatario_CNPJ = '07922103000158'
+      ,Finalidade = 0 
+      ,ES = iif(Produto_Entrada <> 0, 'E', 'S')
+      ,Processo = iif(Produto_Entrada <> 0, Processo_Entrada, Processo_Saida)
+      ,Tipo_Processo = (select Modalidade from ProcessosImp pi where pi.Processo = et.Processo_Entrada)
+      ,Qtde_Entrada = iif(Produto_Entrada <> 0, Quantidade_Entrada, 0)
+      ,Unitario_Entrada = round(iif(Produto_Entrada <> 0, Valor_Unitario, 0), 2) 
+      ,Total_Entrada = iif(Produto_Entrada <> 0, round(Valor_Unitario, 2) * Quantidade_Entrada, 0)
+      ,Qtde_Saida = iif(Produto_Entrada <> 0, 0, round(Valor_Unitario, 2) * Quantidade_Saida)
+      ,Unitario_Saida = iif(Produto_Entrada <> 0, 0, round(Valor_Unitario, 2))
+      ,Total_Saida = iif(Produto_Entrada <> 0, 0, round(Valor_Unitario, 2) * Quantidade_Saida)
+      ,Qtde_Saldo = cast(0 as float) 
+      ,Unitario_Saldo = cast(0 as money) 
+      ,Total_Saldo = cast(0 as money) 
+      ,Emissao = 'P' 
+      ,Origem = 'TRF' 
+from EstoqueTransferencia et
+where Produto_Entrada in(1, 2, 3)
+
+-- ABERTURA DE ESTOQUE 
+union all 
+select Codigo = Produto
+      ,Descricao = cast((select substring(Descricao, 1, 250) from Produtos where Codigo = Produto) as varchar(250))
+      ,UM = (select UM from Produtos where Codigo = Produto) 
+      ,NCM = (select NCM from Produtos where Codigo = Produto) 
+      ,CFOP = null 
+      ,Historico = '* SALDO DE ABERTURA DE ESTOQUE *'
+      ,Estoque = '0-EMPRESA' 
+      ,Nota = Registro
+      ,Data = Data_Entrada
+      ,Destinatario_Codigo = 0
+      ,Destinatario_Nome = 'XGMA'
+      ,Destinatario_CNPJ = '07922103000158'
+      ,Finalidade = 0 
+      ,ES = iif(Produto <> 0, 'E', 'S')
+      ,Processo
+      ,Tipo_Processo = (select Modalidade from ProcessosImp pi where pi.Processo = ea.Processo)
+      ,Qtde_Entrada = Quantidade
+      ,Unitario_Entrada = Valor_Unitario
+      ,Total_Entrada = round(Valor_Unitario, 2) * Quantidade
+      ,Qtde_Saida = 0
+      ,Unitario_Saida = 0
+      ,Total_Saida = 0
+      ,Qtde_Saldo = cast(0 as float) 
+      ,Unitario_Saldo = cast(0 as money) 
+      ,Total_Saldo = cast(0 as money) 
+      ,Emissao = 'P' 
+      ,Origem = 'ABE' 
+from EstoqueAbertura ea
+where Produto in(1, 2, 3)
+
+select  Linha = row_number() over (order by Codigo, Data, ES, Nota)
+       ,Item  = row_number() over (partition by Codigo order by Data, ES, Nota)
+       ,*
+into #temp2
+from #temp
+order by Codigo, Data , ES
+
+-- ATUALIZANDO as QUANTIDADE DOS SALDOS.
+update #TEMP2 set Qtde_Saldo = cast(isnull((select sum(Qtde_Entrada) from #temp2 t2 where t2.Codigo = #temp2.Codigo and T2.Linha < #temp2.Linha and ES = 'E'), 0) -
+                                    isnull((select sum(Qtde_Saida) from #temp2 t2 where t2.Codigo = #temp2.codigo and t2.Linha < #temp2.Linha and ES = 'S'), 0) +
+                                    Qtde_Entrada -
+                                    Qtde_Saida
+                                    as decimal(14,3))
+
+-- ATUALIZANDO OS SALDOS DOS PRIMEIROS ITENS DE TODOS OS PRODUTOS.
+update #TEMP2 set Total_Saldo    = Total_Entrada - Total_Saida
+                 ,Unitario_Saldo = case when Qtde_Saldo > 0 then (Total_Entrada - Total_Saida) / Qtde_Saldo 
+  else 
+     0 
+  end
+where Item = 1
+
+insert into TempFichaEst
+            select Registro = row_number() over (order by Codigo, Data, ES, Nota) 
+                  ,Item
+                  ,Codigo 
+                  ,NCM
+                  ,Descricao 
+                  ,UM 
+                  ,CFOP 
+                  ,Historico 
+                  ,Estoque 
+                  ,Emissao
+                  ,Origem
+                  ,Nota 
+                  ,Data 
+                  ,ES 
+                  ,Destinatario_Codigo 
+                  ,ltrim(rtrim(Destinatario_Nome))
+                  ,Destinatario_CNPJ 
+                  ,Finalidade 
+                  ,Processo 
+                  ,Tipo_Processo
+                  ,Qtde_Entrada 
+                  ,Unitario_Entrada 
+                  ,Total_Entrada 
+                  ,Qtde_Saida 
+                  ,Unitario_Saida 
+                  ,Total_Saida 
+                  ,Qtde_Saldo 
+                  ,Unitario_Saldo 
+                  ,Total_Saldo 
+            from  #temp2 
+            order by Codigo, Data, ES, Nota 
+go
+drop table #temp, #temp2
+go
+
+select * from TempFichaEst
+
+
+}
+
+//===================================================================================================================================================================================================
+
+
+
+
+
+
+
 end.

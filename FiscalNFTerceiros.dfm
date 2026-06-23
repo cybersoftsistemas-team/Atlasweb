@@ -14,12 +14,16 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     Width = 919
     Height = 707
     Hint = ''
-    ActivePage = UniTabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
     object UniTabSheet2: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -199,6 +203,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Capa da Nota Fiscal'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object Panel2: TUniPanel
         Left = 0
         Top = 0
@@ -678,6 +686,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Itens'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object GradeItens: TUniDBGrid
         Left = 65
         Top = 0
@@ -984,6 +996,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabSheet3: TUniTabSheet
       Hint = ''
       Caption = 'Seriais/Chassis'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object GradeSerial: TUniDBGrid
         Left = 0
         Top = 0
@@ -1051,6 +1067,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabSheet4: TUniTabSheet
       Hint = ''
       Caption = 'Lotes'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object GradeLote: TUniDBGrid
         AlignWithMargins = True
         Left = 3
@@ -1118,6 +1138,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabSheet5: TUniTabSheet
       Hint = ''
       Caption = 'Manifesta'#231#227'o do Destinat'#225'rio'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object GradeManif: TUniDBGrid
         AlignWithMargins = True
         Left = 3
@@ -3395,7 +3419,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     Top = 370
   end
   object Operacao: TFDQuery
-    Active = True
     Connection = UniMainModule.Conecta
     UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True

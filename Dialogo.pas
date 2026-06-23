@@ -31,14 +31,14 @@ end;
 class procedure TfDialogo.Execute(AOwner: TComponent;const ATipo,AMensagem: string;ACallback: TDialogResultProc);
 var
   Frm: TfDialogo;
-  LArquivo: string;
+  lArquivo: string;
 begin
      Frm               := TfDialogo.Create(AOwner);
      Frm.lTipo.Caption := ATipo + '!';
      Frm.lmsg.Caption  := AMensagem;
-     LArquivo          := UniServerModule.FilesFolder +'images\icones\' +ATipo +'.png';
+     lArquivo          := UniServerModule.FilesFolder +'images\icones\' +aTipo +'.png';
 
-     if FileExists(LArquivo) then Frm.Icone.Picture.LoadFromFile(LArquivo);
+     if FileExists(lArquivo) then Frm.Icone.Picture.LoadFromFile(LArquivo);
      
      Frm.ShowModal(procedure(Sender: TComponent; AResult: Integer)
                    begin

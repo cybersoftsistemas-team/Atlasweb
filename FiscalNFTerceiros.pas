@@ -678,6 +678,7 @@ begin
            sql.Clear;
            sql.Add('select Codigo');
            sql.add('      ,CNPJ');
+           sql.add('      ,CPF');
            sql.add('      ,Nome');
            sql.add('      ,Estado');
            sql.add('from Destinatarios');
@@ -1929,6 +1930,7 @@ procedure TfFiscalNFTerceiros.bExcluirClick(Sender: TObject);
 var
   mEstMin: real;
 begin
+     // Se estiver bloqueada não deixa exluir. 
      if VerBloqueios then Abort;
      
      with Notas do begin
@@ -2078,14 +2080,28 @@ end;
 
 procedure TfFiscalNFTerceiros.bSalvarClick(Sender: TObject);
 begin
-     if PeriodoBloqueado then begin
-        TfDialogo.Execute(UniApplication, 'Aviso', 'Data inválida, Esta dentro de um período fechado');
-        Abort;
-     end;
+     if VerBloqueios then abort;
 
      cChave.tag := 0;
      if Modelos.fieldbyname('Eletronico').asboolean then cChave.Tag := 1;
      if not TValidaCRUD.ValidarFormulario(Ficha) then abort;
+
+     // Verificando se nota ja foi cadastrada
+     if Notas.State = dsInsert then begin
+        with ttmp do begin
+             sql.clear;
+             sql.add('select count(*) as Qtde from NotasFiscais where Empresa = :pEmp and Nota = :pNota and Data_Emissao = :pData and Destinatario = :pDest and Emissao = ''T'' ');
+             parambyname('pEmp').value  := UniMainModule.mEmpresaAtiva;
+             ParamByName('pNota').value := NotasNota.value;
+             ParamByName('pData').value := NotasData_Emissao.value;
+             ParamByName('pDest').value := NotasDestinatario.value;
+             open;   
+             if fieldbyname('Qtde').asinteger > 0 then begin             
+                TfDialogo.Execute(UniApplication, 'Existe', 'Não pode salvar, nota fiscal ja cadastrada.');
+                abort;
+             end;
+        end;
+     end;
      
      try
         // Ajusta os itens da nota fiscal.
@@ -2109,6 +2125,8 @@ begin
              //sql.SaveToFile('c:\temp\NotasTerceiros_Ateração.sql');
              execute;
         end;
+        
+        NotasDestinatario_CNPJ_CPF.value := trim(Fornecedores.fieldbyname('CNPJ').asstring)+trim(Fornecedores.fieldbyname('CPF').asstring);
 
         Notas.Post;
         LigaBotoes(true);
@@ -2135,26 +2153,28 @@ end;
 
 procedure TfFiscalNFTerceiros.bEditarClick(Sender: TObject);
 begin
-     if VerBloqueios then Abort;
-     try
-         Pasta.ActivePageIndex := 1; 
-         LigaBotoes(false);
-         cNota.Enabled        := false;
-         cChave.Enabled       := false;
-         cDataEmissao.Enabled := false;
-         cDataEntrada.Enabled := false;
+     // Se estiver bloqueado não deixa alterar.
+     if not VerBloqueios then begin 
+        try
+            Pasta.ActivePageIndex := 1; 
+            LigaBotoes(false);
+            cNota.Enabled        := false;
+            cChave.Enabled       := false;
+            cDataEmissao.Enabled := false;
+            cDataEntrada.Enabled := false;
          
-         // Guardando as informações em caso de alteração para ajustar os itens.
-         mDataEmi_Antes  := NotasData_Emissao.value;
-         mDataEnt_Antes  := NotasData_ES.value;
-         mProcesso_Antes := NotasProcesso.AsString;
-         mDest_Antes     := NotasDestinatario.AsInteger;
-         mOper_Antes     := NotasOperacao.AsInteger;
+            // Guardando as informações em caso de alteração para ajustar os itens.
+            mDataEmi_Antes  := NotasData_Emissao.value;
+            mDataEnt_Antes  := NotasData_ES.value;
+            mProcesso_Antes := NotasProcesso.AsString;
+            mDest_Antes     := NotasDestinatario.AsInteger;
+            mOper_Antes     := NotasOperacao.AsInteger;
 
-         Notas.Edit;
-         cBeneficio.setfocus;
-     except on E: Exception do
-         MessageDlgN('Falha desconhecida, não pode editar o registro corrente!'+#13+E.Message, mtError, [mbOK]);
+            Notas.Edit;
+            cBeneficio.setfocus;
+        except on E: Exception do
+            MessageDlgN('Falha desconhecida, não pode editar o registro corrente!'+#13+E.Message, mtError, [mbOK]);
+        end;
      end;
 end;
 
@@ -2273,7 +2293,11 @@ begin
           open;
           if fieldbyname('Qtde').asinteger > 0 then begin
              result := true;   
-             TfDialogo.Execute(UniApplication, 'Bloqueado', 'Esta nota fiscal não pode ser alterada, Esta dentro de um período fiscal fechado');
+             if Notas.State in[dsEdit, dsInsert] then begin
+                TfDialogo.Execute(UniApplication, 'Bloqueado', 'Não pode salvar, data da nota fiscal esta dentro de um período fiscal fechado.');
+             end else begin
+                TfDialogo.Execute(UniApplication, 'Bloqueado', 'Não pode alterar, data da nota fiscal esta dentro de um período fiscal fechado.');
+             end;
           end;
           
           // Fechamento Contabil.
@@ -2284,7 +2308,11 @@ begin
           open;
           if fieldbyname('Qtde').asinteger > 0 then begin
              result := true;   
-             TfDialogo.Execute(UniApplication, 'Bloqueado', 'Esta nota fiscal não pode ser alterada, Esta dentro de um período contabil fechado');
+             if Notas.State in[dsEdit, dsInsert] then begin
+                TfDialogo.Execute(UniApplication, 'Bloqueado', 'Não pode salvar, data da nota fiscal, Esta dentro de um período contabil fechado');
+             end else begin
+                TfDialogo.Execute(UniApplication, 'Bloqueado', 'Esta nota fiscal não pode ser alterada, Esta dentro de um período contabil fechado');
+             end;
           end;
           
           // Lançamento financeiro bachado.
