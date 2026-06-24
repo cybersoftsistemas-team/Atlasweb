@@ -14,16 +14,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     Width = 919
     Height = 707
     Hint = ''
-    ActivePage = TabSheet1
+    ActivePage = UniTabSheet1
     Align = alClient
     TabOrder = 0
     object UniTabSheet2: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -203,10 +199,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Capa da Nota Fiscal'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object Panel2: TUniPanel
         Left = 0
         Top = 0
@@ -686,10 +678,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Itens'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object GradeItens: TUniDBGrid
         Left = 65
         Top = 0
@@ -804,7 +792,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Font.Name = 'Calibri'
             Font.Style = [fsBold]
             ReadOnly = True
-            DisplayFormat = ',##0.000'
           end
           item
             FieldName = 'Valor_Unitario'
@@ -816,7 +803,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Font.Name = 'Calibri'
             Font.Style = [fsBold]
             ReadOnly = True
-            DisplayFormat = ',##0.0000'
           end
           item
             FieldName = 'Valor_Total'
@@ -826,7 +812,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Width = 129
             Font.Name = 'Calibri'
             ReadOnly = True
-            DisplayFormat = ',##0.00'
           end
           item
             FieldName = 'Estoque_Minimo'
@@ -836,7 +821,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Width = 80
             Font.Name = 'Calibri'
             ReadOnly = True
-            DisplayFormat = '#0.00%'
           end>
       end
       object BarraItens: TUniPanel
@@ -996,10 +980,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabSheet3: TUniTabSheet
       Hint = ''
       Caption = 'Seriais/Chassis'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object GradeSerial: TUniDBGrid
         Left = 0
         Top = 0
@@ -1067,10 +1047,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabSheet4: TUniTabSheet
       Hint = ''
       Caption = 'Lotes'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object GradeLote: TUniDBGrid
         AlignWithMargins = True
         Left = 3
@@ -1138,10 +1114,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabSheet5: TUniTabSheet
       Hint = ''
       Caption = 'Manifesta'#231#227'o do Destinat'#225'rio'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object GradeManif: TUniDBGrid
         AlignWithMargins = True
         Left = 3
@@ -3463,6 +3435,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     Top = 373
   end
   object Itens: TFDQuery
+    Active = True
     IndexFieldNames = 'Empresa;Chave'
     MasterSource = dsNotas
     MasterFields = 'Empresa;Chave'
@@ -3471,51 +3444,34 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
-      'select * '
+      'select Item'
+      '      ,Codigo_Mercadoria'
+      '      ,Descricao_Mercadoria'
+      '      ,NCM'
+      '      ,Unidade_Medida'
+      '      ,Quantidade'
+      '      ,Valor_Unitario'
+      '      ,Empresa'
+      '      ,Chave'
+      '      ,CFOP'
       
-        '      ,Estoque_Minimo = isnull((select Estoque_Minimo from Produ' +
-        'tos where Codigo = NotasItens.Codigo_Mercadoria), 0)'
+        '      ,Estoque_Minimo = isnull((select Estoque_MinimoPerc from P' +
+        'rodutos where Codigo = Codigo_Mercadoria), 0)'
       'from NotasItens'
-      '')
-    Left = 182
-    Top = 122
-    object ItensEmpresa: TStringField
-      FieldName = 'Empresa'
-      Origin = 'Empresa'
-      Required = True
-      Size = 14
-    end
-    object ItensNota: TIntegerField
-      FieldName = 'Nota'
-      Origin = 'Nota'
-    end
-    object ItensData_Emissao: TDateField
-      FieldName = 'Data_Emissao'
-    end
-    object ItensDestinatario: TSmallintField
-      FieldName = 'Destinatario'
-    end
-    object ItensES: TSmallintField
-      FieldName = 'ES'
-      Origin = 'ES'
-    end
-    object ItensEmissao: TStringField
-      FieldName = 'Emissao'
-      Origin = 'Emissao'
-      FixedChar = True
-      Size = 1
-    end
+      'where emissao = '#39'T'#39
+      'order by Empresa, Chave')
+    Left = 183
+    Top = 121
     object ItensItem: TSmallintField
+      DisplayWidth = 4
       FieldName = 'Item'
       Origin = 'Item'
+      DisplayFormat = '0000'
+      EditFormat = '0000'
     end
     object ItensCodigo_Mercadoria: TIntegerField
       FieldName = 'Codigo_Mercadoria'
       Origin = 'Codigo_Mercadoria'
-    end
-    object ItensCodigo_Fabricante: TStringField
-      FieldName = 'Codigo_Fabricante'
-      Origin = 'Codigo_Fabricante'
     end
     object ItensDescricao_Mercadoria: TMemoField
       FieldName = 'Descricao_Mercadoria'
@@ -3525,13 +3481,9 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object ItensNCM: TStringField
       FieldName = 'NCM'
       Origin = 'NCM'
-      EditMask = '####.##.##;0'
+      EditMask = '##.##.####;0'
       FixedChar = True
       Size = 8
-    end
-    object ItensEXTIPI: TSmallintField
-      FieldName = 'EXTIPI'
-      Origin = 'EXTIPI'
     end
     object ItensUnidade_Medida: TStringField
       FieldName = 'Unidade_Medida'
@@ -3542,821 +3494,25 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object ItensQuantidade: TBCDField
       FieldName = 'Quantidade'
       Origin = 'Quantidade'
-      Precision = 18
-    end
-    object ItensCSTICMS_TabA: TStringField
-      FieldName = 'CSTICMS_TabA'
-      Origin = 'CSTICMS_TabA'
-      FixedChar = True
-      Size = 2
-    end
-    object ItensCSTICMS_TabB: TStringField
-      FieldName = 'CSTICMS_TabB'
-      Origin = 'CSTICMS_TabB'
-      FixedChar = True
-      Size = 3
-    end
-    object ItensCSTIPI: TStringField
-      FieldName = 'CSTIPI'
-      Origin = 'CSTIPI'
-      FixedChar = True
-      Size = 2
-    end
-    object ItensCSTPIS: TStringField
-      FieldName = 'CSTPIS'
-      Origin = 'CSTPIS'
-      FixedChar = True
-      Size = 2
-    end
-    object ItensCSTCOFINS: TStringField
-      FieldName = 'CSTCOFINS'
-      Origin = 'CSTCOFINS'
-      FixedChar = True
-      Size = 2
-    end
-    object ItensAdicao: TSmallintField
-      FieldName = 'Adicao'
-      Origin = 'Adicao'
-    end
-    object ItensPeso_Liquido: TBCDField
-      FieldName = 'Peso_Liquido'
-      Origin = 'Peso_Liquido'
-      Precision = 18
-    end
-    object ItensPeso_Bruto: TBCDField
-      FieldName = 'Peso_Bruto'
-      Origin = 'Peso_Bruto'
-      Precision = 18
-    end
-    object ItensVeiculo: TBooleanField
-      FieldName = 'Veiculo'
-      Origin = 'Veiculo'
-    end
-    object ItensMovimenta_Inventario: TBooleanField
-      FieldName = 'Movimenta_Inventario'
-      Origin = 'Movimenta_Inventario'
-    end
-    object ItensMovimenta_Estoque: TBooleanField
-      FieldName = 'Movimenta_Estoque'
-      Origin = 'Movimenta_Estoque'
-    end
-    object ItensDevolucao: TBooleanField
-      FieldName = 'Devolucao'
-      Origin = 'Devolucao'
-    end
-    object ItensICMSST_Anterior: TBooleanField
-      FieldName = 'ICMSST_Anterior'
-      Origin = 'ICMSST_Anterior'
-    end
-    object ItensApuracao_PISCOFINS: TBooleanField
-      FieldName = 'Apuracao_PISCOFINS'
-      Origin = 'Apuracao_PISCOFINS'
-    end
-    object ItensMovimenta_EstoqueRep: TBooleanField
-      FieldName = 'Movimenta_EstoqueRep'
-      Origin = 'Movimenta_EstoqueRep'
-    end
-    object ItensCancelada: TBooleanField
-      FieldName = 'Cancelada'
-      Origin = 'Cancelada'
-    end
-    object ItensDenegada: TBooleanField
-      FieldName = 'Denegada'
-      Origin = 'Denegada'
-    end
-    object ItensModalidade_BCICMS: TSmallintField
-      FieldName = 'Modalidade_BCICMS'
-      Origin = 'Modalidade_BCICMS'
-    end
-    object ItensModalidade_BCICMSST: TSmallintField
-      FieldName = 'Modalidade_BCICMSST'
-      Origin = 'Modalidade_BCICMSST'
-    end
-    object ItensProcesso: TStringField
-      FieldName = 'Processo'
-      Origin = 'Processo'
-      Size = 15
-    end
-    object ItensFinalidade_Mercadoria: TSmallintField
-      FieldName = 'Finalidade_Mercadoria'
-      Origin = 'Finalidade_Mercadoria'
-    end
-    object ItensQuantidade_Original: TBCDField
-      FieldName = 'Quantidade_Original'
-      Origin = 'Quantidade_Original'
-      Precision = 18
-    end
-    object ItensUnidade_Original: TStringField
-      FieldName = 'Unidade_Original'
-      Origin = 'Unidade_Original'
-      Size = 3
-    end
-    object ItensReducao_ICMSST: TBCDField
-      FieldName = 'Reducao_ICMSST'
-      Origin = 'Reducao_ICMSST'
-      Precision = 18
-    end
-    object ItensNota_Referencia: TStringField
-      FieldName = 'Nota_Referencia'
-      Origin = 'Nota_Referencia'
-      Size = 44
-    end
-    object ItensData_Referencia: TSQLTimeStampField
-      FieldName = 'Data_Referencia'
-      Origin = 'Data_Referencia'
-    end
-    object ItensNumero_Referencia: TIntegerField
-      FieldName = 'Numero_Referencia'
-      Origin = 'Numero_Referencia'
-    end
-    object ItensCEST: TStringField
-      FieldName = 'CEST'
-      Origin = 'CEST'
-      Size = 7
-    end
-    object ItensPO: TStringField
-      FieldName = 'PO'
-      Origin = 'PO'
-      Size = 15
-    end
-    object ItensOrdem: TIntegerField
-      FieldName = 'Ordem'
-      Origin = 'Ordem'
-    end
-    object ItensChave: TStringField
-      FieldName = 'Chave'
-      Origin = 'Chave'
-      Size = 44
-    end
-    object ItensBeneficio_Fiscal: TStringField
-      FieldName = 'Beneficio_Fiscal'
-      Origin = 'Beneficio_Fiscal'
-      Size = 10
-    end
-    object ItensBL: TStringField
-      FieldName = 'BL'
-      Origin = 'BL'
-      Size = 15
-    end
-    object ItensEmbarque: TIntegerField
-      FieldName = 'Embarque'
-      Origin = 'Embarque'
-    end
-    object ItensPercentual_Beneficio: TBCDField
-      FieldName = 'Percentual_Beneficio'
-      Origin = 'Percentual_Beneficio'
-      Precision = 18
-    end
-    object ItensPercentual_ICMSMono: TBCDField
-      FieldName = 'Percentual_ICMSMono'
-      Origin = 'Percentual_ICMSMono'
-      Precision = 18
-    end
-    object ItensPercentual_ICMSMonoRet: TBCDField
-      FieldName = 'Percentual_ICMSMonoRet'
-      Origin = 'Percentual_ICMSMonoRet'
-      Precision = 18
-    end
-    object ItensFator_Produto: TBCDField
-      FieldName = 'Fator_Produto'
-      Origin = 'Fator_Produto'
+      DisplayFormat = ',##0.000'
       Precision = 18
     end
     object ItensValor_Unitario: TBCDField
       FieldName = 'Valor_Unitario'
       Origin = 'Valor_Unitario'
-      Precision = 18
-    end
-    object ItensValor_Total: TBCDField
-      FieldName = 'Valor_Total'
-      Origin = 'Valor_Total'
-      Precision = 18
-    end
-    object ItensAliquota_IPI: TBCDField
-      FieldName = 'Aliquota_IPI'
-      Origin = 'Aliquota_IPI'
-      Precision = 18
-    end
-    object ItensValor_IPI: TBCDField
-      FieldName = 'Valor_IPI'
-      Origin = 'Valor_IPI'
-      Precision = 18
-    end
-    object ItensTotal_IPI: TBCDField
-      FieldName = 'Total_IPI'
-      Origin = 'Total_IPI'
-      Precision = 18
-    end
-    object ItensAliquota_II: TBCDField
-      FieldName = 'Aliquota_II'
-      Origin = 'Aliquota_II'
-      Precision = 18
-    end
-    object ItensValor_II: TBCDField
-      FieldName = 'Valor_II'
-      Origin = 'Valor_II'
-      Precision = 18
-    end
-    object ItensValor_BCICMSOp: TBCDField
-      FieldName = 'Valor_BCICMSOp'
-      Origin = 'Valor_BCICMSOp'
-      Precision = 18
-    end
-    object ItensAliquota_ICMSOp: TBCDField
-      FieldName = 'Aliquota_ICMSOp'
-      Origin = 'Aliquota_ICMSOp'
-      Precision = 18
-    end
-    object ItensValor_ICMSOp: TBCDField
-      FieldName = 'Valor_ICMSOp'
-      Origin = 'Valor_ICMSOp'
-      Precision = 18
-    end
-    object ItensValor_BCICMSST: TBCDField
-      FieldName = 'Valor_BCICMSST'
-      Origin = 'Valor_BCICMSST'
-      Precision = 18
-    end
-    object ItensAliquota_ICMSST: TBCDField
-      FieldName = 'Aliquota_ICMSST'
-      Origin = 'Aliquota_ICMSST'
-      Precision = 18
-    end
-    object ItensValor_ICMSST: TBCDField
-      FieldName = 'Valor_ICMSST'
-      Origin = 'Valor_ICMSST'
-      Precision = 18
-    end
-    object ItensAliquota_MVA: TBCDField
-      FieldName = 'Aliquota_MVA'
-      Origin = 'Aliquota_MVA'
-      Precision = 18
-    end
-    object ItensValor_MVA: TBCDField
-      FieldName = 'Valor_MVA'
-      Origin = 'Valor_MVA'
-      Precision = 18
-    end
-    object ItensAliquota_ICMSReducao: TBCDField
-      FieldName = 'Aliquota_ICMSReducao'
-      Origin = 'Aliquota_ICMSReducao'
-      Precision = 18
-    end
-    object ItensValor_ICMSReducao: TBCDField
-      FieldName = 'Valor_ICMSReducao'
-      Origin = 'Valor_ICMSReducao'
-      Precision = 18
-    end
-    object ItensValor_Seguro: TBCDField
-      FieldName = 'Valor_Seguro'
-      Origin = 'Valor_Seguro'
-      Precision = 18
-    end
-    object ItensValor_Frete: TBCDField
-      FieldName = 'Valor_Frete'
-      Origin = 'Valor_Frete'
-      Precision = 18
-    end
-    object ItensValor_Despesa: TBCDField
-      FieldName = 'Valor_Despesa'
-      Origin = 'Valor_Despesa'
-      Precision = 18
-    end
-    object ItensAliquota_PIS: TBCDField
-      FieldName = 'Aliquota_PIS'
-      Origin = 'Aliquota_PIS'
-      Precision = 18
-    end
-    object ItensValor_PIS: TBCDField
-      FieldName = 'Valor_PIS'
-      Origin = 'Valor_PIS'
-      Precision = 18
-    end
-    object ItensAliquota_COFINS: TBCDField
-      FieldName = 'Aliquota_COFINS'
-      Origin = 'Aliquota_COFINS'
-      Precision = 18
-    end
-    object ItensValor_COFINS: TBCDField
-      FieldName = 'Valor_COFINS'
-      Origin = 'Valor_COFINS'
-      Precision = 18
-    end
-    object ItensValor_IsentasICMS: TBCDField
-      FieldName = 'Valor_IsentasICMS'
-      Origin = 'Valor_IsentasICMS'
-      Precision = 18
-    end
-    object ItensValor_OutrasICMS: TBCDField
-      FieldName = 'Valor_OutrasICMS'
-      Origin = 'Valor_OutrasICMS'
-      Precision = 18
-    end
-    object ItensValor_IsentasIPI: TBCDField
-      FieldName = 'Valor_IsentasIPI'
-      Origin = 'Valor_IsentasIPI'
-      Precision = 18
-    end
-    object ItensValor_OutrasIPI: TBCDField
-      FieldName = 'Valor_OutrasIPI'
-      Origin = 'Valor_OutrasIPI'
-      Precision = 18
-    end
-    object ItensLucro: TBCDField
-      FieldName = 'Lucro'
-      Origin = 'Lucro'
-      Precision = 18
-    end
-    object ItensLucro_Valor: TBCDField
-      FieldName = 'Lucro_Valor'
-      Origin = 'Lucro_Valor'
-      Precision = 18
-    end
-    object ItensValor_BCIPI: TBCDField
-      FieldName = 'Valor_BCIPI'
-      Origin = 'Valor_BCIPI'
-      Precision = 18
-    end
-    object ItensRateio_ICMSProcesso: TBCDField
-      FieldName = 'Rateio_ICMSProcesso'
-      Origin = 'Rateio_ICMSProcesso'
-      Precision = 18
-    end
-    object ItensDesconto: TBCDField
-      FieldName = 'Desconto'
-      Origin = 'Desconto'
-      Precision = 18
-    end
-    object ItensDesconto_Valor: TBCDField
-      FieldName = 'Desconto_Valor'
-      Origin = 'Desconto_Valor'
-      Precision = 18
-    end
-    object ItensAliquota_PISRed: TBCDField
-      FieldName = 'Aliquota_PISRed'
-      Origin = 'Aliquota_PISRed'
-      Precision = 18
-    end
-    object ItensAliquota_COFINSRed: TBCDField
-      FieldName = 'Aliquota_COFINSRed'
-      Origin = 'Aliquota_COFINSRed'
-      Precision = 18
-    end
-    object ItensAliquota_ICMSIntegral: TBCDField
-      FieldName = 'Aliquota_ICMSIntegral'
-      Origin = 'Aliquota_ICMSIntegral'
-      Precision = 18
-    end
-    object ItensValor_BCMVA: TBCDField
-      FieldName = 'Valor_BCMVA'
-      Origin = 'Valor_BCMVA'
-      Precision = 18
-    end
-    object ItensValor_Dumping: TBCDField
-      FieldName = 'Valor_Dumping'
-      Origin = 'Valor_Dumping'
-      Precision = 18
-    end
-    object ItensTotal_Item: TBCDField
-      FieldName = 'Total_Item'
-      Origin = 'Total_Item'
-      Precision = 18
-    end
-    object ItensRateio_SISCOMEX: TBCDField
-      FieldName = 'Rateio_SISCOMEX'
-      Origin = 'Rateio_SISCOMEX'
-      Precision = 18
-    end
-    object ItensValor_BCICMSOperApuracao: TBCDField
-      FieldName = 'Valor_BCICMSOperApuracao'
-      Origin = 'Valor_BCICMSOperApuracao'
-      Precision = 18
-    end
-    object ItensValor_ICMSOperApuracao: TBCDField
-      FieldName = 'Valor_ICMSOperApuracao'
-      Origin = 'Valor_ICMSOperApuracao'
-      Precision = 18
-    end
-    object ItensMedia_BCR: TBCDField
-      FieldName = 'Media_BCR'
-      Origin = 'Media_BCR'
-      Precision = 18
-    end
-    object ItensValor_PIS2: TBCDField
-      FieldName = 'Valor_PIS2'
-      Origin = 'Valor_PIS2'
-      Precision = 18
-    end
-    object ItensValor_COFINS2: TBCDField
-      FieldName = 'Valor_COFINS2'
-      Origin = 'Valor_COFINS2'
-      Precision = 18
-    end
-    object ItensValor_DespesasOutros: TBCDField
-      FieldName = 'Valor_DespesasOutros'
-      Origin = 'Valor_DespesasOutros'
-      Precision = 18
-    end
-    object ItensValor_BCPIS: TBCDField
-      FieldName = 'Valor_BCPIS'
-      Origin = 'Valor_BCPIS'
-      Precision = 18
-    end
-    object ItensTotal_Impostos: TBCDField
-      FieldName = 'Total_Impostos'
-      Origin = 'Total_Impostos'
-      Precision = 18
-    end
-    object ItensAliquota_IRPJ: TBCDField
-      FieldName = 'Aliquota_IRPJ'
-      Origin = 'Aliquota_IRPJ'
-      Precision = 18
-    end
-    object ItensValor_IRPJ: TBCDField
-      FieldName = 'Valor_IRPJ'
-      Origin = 'Valor_IRPJ'
-      Precision = 18
-    end
-    object ItensAliquota_CSLL: TBCDField
-      FieldName = 'Aliquota_CSLL'
-      Origin = 'Aliquota_CSLL'
-      Precision = 18
-    end
-    object ItensValor_CSLL: TBCDField
-      FieldName = 'Valor_CSLL'
-      Origin = 'Valor_CSLL'
-      Precision = 18
-    end
-    object ItensComissao: TBCDField
-      FieldName = 'Comissao'
-      Origin = 'Comissao'
-      Precision = 18
-    end
-    object ItensComissao_Valor: TBCDField
-      FieldName = 'Comissao_Valor'
-      Origin = 'Comissao_Valor'
-      Precision = 18
-    end
-    object ItensValor_Inventario: TBCDField
-      FieldName = 'Valor_Inventario'
-      Origin = 'Valor_Inventario'
-      Precision = 18
-    end
-    object ItensValor_BCICMSDest: TBCDField
-      FieldName = 'Valor_BCICMSDest'
-      Origin = 'Valor_BCICMSDest'
-      Precision = 18
-    end
-    object ItensAliquota_ICMSDest: TBCDField
-      FieldName = 'Aliquota_ICMSDest'
-      Origin = 'Aliquota_ICMSDest'
-      Precision = 18
-    end
-    object ItensValor_ICMSDest: TBCDField
-      FieldName = 'Valor_ICMSDest'
-      Origin = 'Valor_ICMSDest'
-      Precision = 18
-    end
-    object ItensDIFAL_Valor: TBCDField
-      FieldName = 'DIFAL_Valor'
-      Origin = 'DIFAL_Valor'
-      Precision = 18
-    end
-    object ItensDIFAL_PercOrig: TBCDField
-      FieldName = 'DIFAL_PercOrig'
-      Origin = 'DIFAL_PercOrig'
-      Precision = 18
-    end
-    object ItensDIFAL_ValorOrig: TBCDField
-      FieldName = 'DIFAL_ValorOrig'
-      Origin = 'DIFAL_ValorOrig'
-      Precision = 18
-    end
-    object ItensDIFAL_PercDest: TBCDField
-      FieldName = 'DIFAL_PercDest'
-      Origin = 'DIFAL_PercDest'
-      Precision = 18
-    end
-    object ItensDIFAL_ValorDest: TBCDField
-      FieldName = 'DIFAL_ValorDest'
-      Origin = 'DIFAL_ValorDest'
-      Precision = 18
-    end
-    object ItensFCP_Aliquota: TBCDField
-      FieldName = 'FCP_Aliquota'
-      Origin = 'FCP_Aliquota'
-      Precision = 18
-    end
-    object ItensFCP_ValorDest: TBCDField
-      FieldName = 'FCP_ValorDest'
-      Origin = 'FCP_ValorDest'
-      Precision = 18
-    end
-    object ItensFCP_ICMSOrig: TBCDField
-      FieldName = 'FCP_ICMSOrig'
-      Origin = 'FCP_ICMSOrig'
-      Precision = 18
-    end
-    object ItensFCP_ICMSDest: TBCDField
-      FieldName = 'FCP_ICMSDest'
-      Origin = 'FCP_ICMSDest'
-      Precision = 18
-    end
-    object ItensValor_BCFCPST: TBCDField
-      FieldName = 'Valor_BCFCPST'
-      Origin = 'Valor_BCFCPST'
-      Precision = 18
-    end
-    object ItensValor_FCPST: TBCDField
-      FieldName = 'Valor_FCPST'
-      Origin = 'Valor_FCPST'
-      Precision = 18
-    end
-    object ItensValor_BCFCP: TBCDField
-      FieldName = 'Valor_BCFCP'
-      Origin = 'Valor_BCFCP'
-      Precision = 18
-    end
-    object ItensValor_FCP: TBCDField
-      FieldName = 'Valor_FCP'
-      Origin = 'Valor_FCP'
-      Precision = 18
-    end
-    object ItensValor_ICMSDesonerado: TBCDField
-      FieldName = 'Valor_ICMSDesonerado'
-      Origin = 'Valor_ICMSDesonerado'
-      Precision = 18
-    end
-    object ItensValor_ICMSSubAnt: TBCDField
-      FieldName = 'Valor_ICMSSubAnt'
-      Origin = 'Valor_ICMSSubAnt'
-      Precision = 18
-    end
-    object ItensAliquota_ICMSSubAnt: TBCDField
-      FieldName = 'Aliquota_ICMSSubAnt'
-      Origin = 'Aliquota_ICMSSubAnt'
-      Precision = 18
-    end
-    object ItensValor_ICMSAnt: TBCDField
-      FieldName = 'Valor_ICMSAnt'
-      Origin = 'Valor_ICMSAnt'
-      Precision = 18
-    end
-    object ItensValor_CIF: TBCDField
-      FieldName = 'Valor_CIF'
-      Origin = 'Valor_CIF'
-      Precision = 18
-    end
-    object ItensFator_Cambio: TBCDField
-      FieldName = 'Fator_Cambio'
-      Origin = 'Fator_Cambio'
-      Precision = 18
-    end
-    object ItensAliquota_ICMSEntrada: TBCDField
-      FieldName = 'Aliquota_ICMSEntrada'
-      Origin = 'Aliquota_ICMSEntrada'
-      Precision = 18
-    end
-    object ItensValor_Pauta: TBCDField
-      FieldName = 'Valor_Pauta'
-      Origin = 'Valor_Pauta'
-      Precision = 18
-    end
-    object ItensValor_AFRMM: TBCDField
-      FieldName = 'Valor_AFRMM'
-      Origin = 'Valor_AFRMM'
-      Precision = 18
-    end
-    object ItensRateio_FreteTerrNac: TBCDField
-      FieldName = 'Rateio_FreteTerrNac'
-      Origin = 'Rateio_FreteTerrNac'
-      Precision = 18
-    end
-    object ItensValor_BCII: TBCDField
-      FieldName = 'Valor_BCII'
-      Origin = 'Valor_BCII'
-      Precision = 18
-    end
-    object ItensAliquota_ICMSDif: TBCDField
-      FieldName = 'Aliquota_ICMSDif'
-      Origin = 'Aliquota_ICMSDif'
-      Precision = 18
-    end
-    object ItensAliquota_ICMSPresumido: TBCDField
-      FieldName = 'Aliquota_ICMSPresumido'
-      Origin = 'Aliquota_ICMSPresumido'
-      Precision = 18
-    end
-    object ItensAliquota_ICMSReducao2: TBCDField
-      FieldName = 'Aliquota_ICMSReducao2'
-      Origin = 'Aliquota_ICMSReducao2'
-      Precision = 18
-    end
-    object ItensCodigo_CredPres: TStringField
-      FieldName = 'Codigo_CredPres'
-      Origin = 'Codigo_CredPres'
-      Size = 8
-    end
-    object ItensDIFAL_ValorST: TBCDField
-      FieldName = 'DIFAL_ValorST'
-      Origin = 'DIFAL_ValorST'
-      Precision = 18
-    end
-    object ItensValor_BCDIFAL: TBCDField
-      FieldName = 'Valor_BCDIFAL'
-      Origin = 'Valor_BCDIFAL'
-      Precision = 18
-    end
-    object ItensValor_BCDIFALST: TBCDField
-      FieldName = 'Valor_BCDIFALST'
-      Origin = 'Valor_BCDIFALST'
-      Precision = 18
-    end
-    object ItensValor_BCICMSMono: TBCDField
-      FieldName = 'Valor_BCICMSMono'
-      Origin = 'Valor_BCICMSMono'
-      Precision = 18
-    end
-    object ItensValor_BCICMSMonoRet: TBCDField
-      FieldName = 'Valor_BCICMSMonoRet'
-      Origin = 'Valor_BCICMSMonoRet'
-      Precision = 18
-    end
-    object ItensValor_BCICMSPresumido: TBCDField
-      FieldName = 'Valor_BCICMSPresumido'
-      Origin = 'Valor_BCICMSPresumido'
-      Precision = 18
-    end
-    object ItensValor_COFINSST: TBCDField
-      FieldName = 'Valor_COFINSST'
-      Origin = 'Valor_COFINSST'
-      Precision = 18
-    end
-    object ItensValor_ICMSDif: TBCDField
-      FieldName = 'Valor_ICMSDif'
-      Origin = 'Valor_ICMSDif'
-      Precision = 18
-    end
-    object ItensValor_ICMSMono: TBCDField
-      FieldName = 'Valor_ICMSMono'
-      Origin = 'Valor_ICMSMono'
-      Precision = 18
-    end
-    object ItensValor_ICMSMonoRet: TBCDField
-      FieldName = 'Valor_ICMSMonoRet'
-      Origin = 'Valor_ICMSMonoRet'
-      Precision = 18
-    end
-    object ItensValor_ICMSPresumido: TBCDField
-      FieldName = 'Valor_ICMSPresumido'
-      Origin = 'Valor_ICMSPresumido'
-      Precision = 18
-    end
-    object ItensValor_PISST: TBCDField
-      FieldName = 'Valor_PISST'
-      Origin = 'Valor_PISST'
-      Precision = 18
-    end
-    object ItensValor_BCIBS: TBCDField
-      FieldName = 'Valor_BCIBS'
-      Origin = 'Valor_BCIBS'
-      Precision = 18
-    end
-    object ItensAliquota_IBS: TBCDField
-      FieldName = 'Aliquota_IBS'
-      Origin = 'Aliquota_IBS'
-      Precision = 18
-    end
-    object ItensValor_IBS: TBCDField
-      FieldName = 'Valor_IBS'
-      Origin = 'Valor_IBS'
-      Precision = 18
-    end
-    object ItensValor_BCCBS: TBCDField
-      FieldName = 'Valor_BCCBS'
-      Origin = 'Valor_BCCBS'
-      Precision = 18
-    end
-    object ItensAliquota_CBS: TBCDField
-      FieldName = 'Aliquota_CBS'
-      Origin = 'Aliquota_CBS'
-      Precision = 18
-    end
-    object ItensValor_CBS: TBCDField
-      FieldName = 'Valor_CBS'
-      Origin = 'Valor_CBS'
-      Precision = 18
-    end
-    object ItensValor_BCIS: TBCDField
-      FieldName = 'Valor_BCIS'
-      Origin = 'Valor_BCIS'
-      Precision = 18
-    end
-    object ItensAliquota_IS: TBCDField
-      FieldName = 'Aliquota_IS'
-      Origin = 'Aliquota_IS'
-      Precision = 18
-    end
-    object ItensValor_IS: TBCDField
-      FieldName = 'Valor_IS'
-      Origin = 'Valor_IS'
-      Precision = 18
-    end
-    object ItensConsumo_Energia: TBCDField
-      FieldName = 'Consumo_Energia'
-      Origin = 'Consumo_Energia'
-      Precision = 18
-    end
-    object ItensCIAP_BCICMS: TBCDField
-      FieldName = 'CIAP_BCICMS'
-      Origin = 'CIAP_BCICMS'
-      Precision = 18
-    end
-    object ItensCIAP_AliquotaICMS: TBCDField
-      FieldName = 'CIAP_AliquotaICMS'
-      Origin = 'CIAP_AliquotaICMS'
-      Precision = 18
-    end
-    object ItensCIAP_ValorICMS: TBCDField
-      FieldName = 'CIAP_ValorICMS'
-      Origin = 'CIAP_ValorICMS'
-      Precision = 18
-    end
-    object ItensCIAP_Parcela: TBCDField
-      FieldName = 'CIAP_Parcela'
-      Origin = 'CIAP_Parcela'
-      Precision = 18
-    end
-    object ItensValor_ICMSOpOrig: TBCDField
-      FieldName = 'Valor_ICMSOpOrig'
-      Origin = 'Valor_ICMSOpOrig'
-      Precision = 18
-    end
-    object ItensValor_ICMSSTOrig: TBCDField
-      FieldName = 'Valor_ICMSSTOrig'
-      Origin = 'Valor_ICMSSTOrig'
-      Precision = 18
-    end
-    object ItensValor_PISOrig: TBCDField
-      FieldName = 'Valor_PISOrig'
-      Origin = 'Valor_PISOrig'
-      Precision = 18
-    end
-    object ItensValor_COFINSOrig: TBCDField
-      FieldName = 'Valor_COFINSOrig'
-      Origin = 'Valor_COFINSOrig'
-      Precision = 18
-    end
-    object ItensValor_IPIOrig: TBCDField
-      FieldName = 'Valor_IPIOrig'
-      Origin = 'Valor_IPIOrig'
-      Precision = 18
-    end
-    object ItensValor_BCCOFINS: TBCDField
-      FieldName = 'Valor_BCCOFINS'
-      Origin = 'Valor_BCCOFINS'
-      Precision = 18
-    end
-    object ItensAliquota_PISOrig: TBCDField
-      FieldName = 'Aliquota_PISOrig'
-      Origin = 'Aliquota_PISOrig'
-      Precision = 18
-    end
-    object ItensAliquota_COFINSOrig: TBCDField
-      FieldName = 'Aliquota_COFINSOrig'
-      Origin = 'Aliquota_COFINSOrig'
-      Precision = 18
-    end
-    object ItensValor_BCICMSSTOrig: TBCDField
-      FieldName = 'Valor_BCICMSSTOrig'
-      Origin = 'Valor_BCICMSSTOrig'
-      Precision = 18
-    end
-    object ItensTrava_ValorInv: TBCDField
-      FieldName = 'Trava_ValorInv'
-      Origin = 'Trava_ValorInv'
-      Precision = 18
-    end
-    object ItensValor_UnitarioOrig: TBCDField
-      FieldName = 'Valor_UnitarioOrig'
-      Origin = 'Valor_UnitarioOrig'
-      Precision = 18
-    end
-    object ItensCIAP_TipoItem: TSmallintField
-      FieldName = 'CIAP_TipoItem'
-      Origin = 'CIAP_TipoItem'
-    end
-    object ItensInventario_Terceiros: TBooleanField
-      FieldName = 'Inventario_Terceiros'
-      Origin = 'Inventario_Terceiros'
-    end
-    object ItensItem_Referencia: TSmallintField
-      FieldName = 'Item_Referencia'
-      Origin = 'Item_Referencia'
-    end
-    object ItensOperacao: TSmallintField
-      FieldName = 'Operacao'
-      Origin = 'Operacao'
+      DisplayFormat = ',##0.0000'
+      Precision = 18
+    end
+    object ItensEmpresa: TStringField
+      FieldName = 'Empresa'
+      Origin = 'Empresa'
+      Required = True
+      Size = 14
+    end
+    object ItensChave: TStringField
+      FieldName = 'Chave'
+      Origin = 'Chave'
+      Size = 44
     end
     object ItensCFOP: TStringField
       FieldName = 'CFOP'
@@ -4369,20 +3525,8 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       Origin = 'Estoque_Minimo'
       ReadOnly = True
       Required = True
+      DisplayFormat = '#0.00%'
       Precision = 18
-    end
-    object ItensData_ES: TDateField
-      FieldName = 'Data_ES'
-      Origin = 'Data_ES'
-    end
-    object ItensDeclaracao: TStringField
-      FieldName = 'Declaracao'
-      Origin = 'Declaracao'
-      Size = 15
-    end
-    object ItensItem_Declaracao: TSmallintField
-      FieldName = 'Item_Declaracao'
-      Origin = 'Item_Declaracao'
     end
   end
   object dsItens: TDataSource
