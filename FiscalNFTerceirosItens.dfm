@@ -22,13 +22,13 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
     DesignSize = (
       980
       777)
-    ScrollHeight = 1440
+    ScrollHeight = 1616
     ScrollWidth = 997
     object UniPanel3: TUniPanel
       Left = 54
       Top = 15
       Width = 784
-      Height = 1284
+      Height = 1410
       Hint = ''
       Anchors = [akTop]
       TabOrder = 1
@@ -42,12 +42,12 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       Color = clNone
       DesignSize = (
         784
-        1284)
+        1410)
       object UniPanel11: TUniPanel
         Left = 12
-        Top = 1147
+        Top = 1171
         Width = 761
-        Height = 121
+        Height = 143
         Hint = ''
         TabOrder = 7
         ClientEvents.UniEvents.Strings = (
@@ -57,9 +57,9 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
         BorderStyle = ubsInset
         ShowCaption = False
         TitleVisible = True
-        Title = 'Outros Valores / Rateios'
+        Title = 'Ativo Imobilizado - CIAP'
         Caption = ''
-        object UniDBFormattedNumberEdit40: TUniDBFormattedNumberEdit
+        object cCIAP_AliquotaICMS: TUniDBFormattedNumberEdit
           Left = 8
           Top = 35
           Width = 260
@@ -67,18 +67,18 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           Hint = ''
           ShowHint = True
           ParentShowHint = False
-          DataField = 'Valor_Seguro'
+          DataField = 'CIAP_AliquotaICMS'
           DataSource = dsItens
           Alignment = taRightJustify
-          TabOrder = 3
+          TabOrder = 2
           SelectOnFocus = True
-          FieldLabel = 'Seguro'
+          FieldLabel = 'Percentual'
           FieldLabelSeparator = ' '
           DecimalSeparator = ','
           ThousandSeparator = '.'
           BorderStyle = ubsInset
         end
-        object UniDBFormattedNumberEdit38: TUniDBFormattedNumberEdit
+        object cCIAP_BCICMS: TUniDBFormattedNumberEdit
           Left = 8
           Top = 8
           Width = 260
@@ -86,18 +86,18 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           Hint = ''
           ShowHint = True
           ParentShowHint = False
-          DataField = 'Valor_Frete'
+          DataField = 'CIAP_BCICMS'
           DataSource = dsItens
           Alignment = taRightJustify
           TabOrder = 1
           SelectOnFocus = True
-          FieldLabel = 'Frete'
+          FieldLabel = 'Base de C'#225'lculo'
           FieldLabelSeparator = ' '
           DecimalSeparator = ','
           ThousandSeparator = '.'
           BorderStyle = ubsInset
         end
-        object UniDBFormattedNumberEdit39: TUniDBFormattedNumberEdit
+        object cCIAP_ValorICMS: TUniDBFormattedNumberEdit
           Left = 8
           Top = 62
           Width = 260
@@ -105,93 +105,40 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           Hint = ''
           ShowHint = True
           ParentShowHint = False
-          DataField = 'Valor_Despesa'
+          DataField = 'CIAP_ValorICMS'
           DataSource = dsItens
           Alignment = taRightJustify
-          TabOrder = 5
+          TabOrder = 3
           SelectOnFocus = True
-          FieldLabel = 'Despesas'
+          FieldLabel = 'Valor'
           FieldLabelSeparator = ' '
           DecimalSeparator = ','
           ThousandSeparator = '.'
           BorderStyle = ubsInset
         end
-        object cTotalFrete: TUniFormattedNumberEdit
-          Left = 575
-          Top = 8
-          Width = 175
+        object cCIAP_TipoItem: TUniDBFormattedNumberEdit
+          Left = 8
+          Top = 90
+          Width = 260
           Height = 25
           Hint = ''
           ShowHint = True
           ParentShowHint = False
-          BorderStyle = ubsInset
-          Alignment = taRightJustify
-          TabOrder = 2
-          TabStop = False
-          Color = 15720158
-          ReadOnly = True
-          ClientEvents.UniEvents.Strings = (
-            
-              'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-              's = '#39'CampoDesativado'#39';'#13#10'}')
-          FieldLabel = 'Total'
-          FieldLabelWidth = 40
-          FieldLabelSeparator = ' '
-          DecimalSeparator = ','
-          ThousandSeparator = '.'
-        end
-        object cTotalSeguro: TUniFormattedNumberEdit
-          Left = 575
-          Top = 35
-          Width = 175
-          Height = 25
-          Hint = ''
-          ShowHint = True
-          ParentShowHint = False
-          BorderStyle = ubsInset
+          DataField = 'CIAP_TipoItem'
+          DataSource = dsItens
           Alignment = taRightJustify
           TabOrder = 4
-          TabStop = False
-          Color = 15720158
-          ReadOnly = True
-          ClientEvents.UniEvents.Strings = (
-            
-              'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-              's = '#39'CampoDesativado'#39';'#13#10'}')
-          FieldLabel = 'Total'
-          FieldLabelWidth = 40
+          SelectOnFocus = True
+          FieldLabel = 'Tipo de Mercadoria'
           FieldLabelSeparator = ' '
           DecimalSeparator = ','
           ThousandSeparator = '.'
-        end
-        object cTotalDespesa: TUniFormattedNumberEdit
-          Left = 575
-          Top = 62
-          Width = 175
-          Height = 25
-          Hint = ''
-          ShowHint = True
-          ParentShowHint = False
           BorderStyle = ubsInset
-          Alignment = taRightJustify
-          TabOrder = 6
-          TabStop = False
-          Color = 15720158
-          ReadOnly = True
-          ClientEvents.UniEvents.Strings = (
-            
-              'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-              's = '#39'CampoDesativado'#39';'#13#10'}')
-          FieldLabel = 'Total'
-          FieldLabelWidth = 40
-          FieldLabelSeparator = ' '
-          DecimalSeparator = ','
-          ThousandSeparator = '.'
         end
       end
       object UniPanel12: TUniPanel
         Left = 12
-        Top = 986
+        Top = 1010
         Width = 761
         Height = 145
         Hint = ''
@@ -422,7 +369,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
         Left = 12
         Top = 11
         Width = 761
-        Height = 342
+        Height = 382
         Hint = ''
         Anchors = [akTop]
         TabOrder = 1
@@ -456,7 +403,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
         end
         object cValor_Desconto: TUniDBFormattedNumberEdit
           Left = 8
-          Top = 278
+          Top = 305
           Width = 240
           Height = 25
           Hint = ''
@@ -568,7 +515,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
         end
         object cNCM: TUniDBEdit
           Left = 8
-          Top = 305
+          Top = 332
           Width = 240
           Height = 25
           Hint = ''
@@ -644,7 +591,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
         end
         object cValor_UnitarioOrig: TUniDBFormattedNumberEdit
           Left = 8
-          Top = 197
+          Top = 224
           Width = 240
           Height = 25
           Hint = ''
@@ -665,9 +612,9 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           ThousandSeparator = '.'
           BorderStyle = ubsInset
         end
-        object UniDBFormattedNumberEdit1: TUniDBFormattedNumberEdit
+        object cValor_Total: TUniDBFormattedNumberEdit
           Left = 8
-          Top = 224
+          Top = 251
           Width = 240
           Height = 25
           Hint = ''
@@ -710,9 +657,9 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           ScaleButton = False
           IconAlign = iaCenter
         end
-        object UniDBFormattedNumberEdit2: TUniDBFormattedNumberEdit
+        object cValor_Inventario: TUniDBFormattedNumberEdit
           Left = 8
-          Top = 251
+          Top = 278
           Width = 240
           Height = 25
           Hint = ''
@@ -729,12 +676,32 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           ThousandSeparator = '.'
           BorderStyle = ubsInset
         end
+        object cConsumo_Energia: TUniDBFormattedNumberEdit
+          Left = 8
+          Top = 197
+          Width = 240
+          Height = 25
+          Hint = ''
+          ShowHint = True
+          ParentShowHint = False
+          DataField = 'Consumo_Energia'
+          DataSource = dsItens
+          Alignment = taRightJustify
+          TabOrder = 16
+          SelectOnFocus = True
+          FieldLabel = 'Consumo Energia'
+          FieldLabelSeparator = ' '
+          DecimalPrecision = 4
+          DecimalSeparator = ','
+          ThousandSeparator = '.'
+          BorderStyle = ubsInset
+        end
       end
       object UniPanel5: TUniPanel
         Left = 12
-        Top = 363
+        Top = 401
         Width = 761
-        Height = 236
+        Height = 227
         Hint = ''
         TabOrder = 2
         ClientEvents.UniEvents.Strings = (
@@ -1130,7 +1097,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       end
       object UniPanel6: TUniPanel
         Left = 12
-        Top = 771
+        Top = 795
         Width = 761
         Height = 93
         Hint = ''
@@ -1253,7 +1220,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       end
       object UniPanel7: TUniPanel
         Left = 12
-        Top = 612
+        Top = 636
         Width = 761
         Height = 145
         Hint = ''
@@ -1462,7 +1429,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       end
       object UniPanel9: TUniPanel
         Left = 12
-        Top = 878
+        Top = 902
         Width = 761
         Height = 93
         Hint = ''
@@ -1585,8 +1552,8 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       end
     end
     object UniContainerPanel2: TUniContainerPanel
-      Left = 316
-      Top = 1422
+      Left = 336
+      Top = 1599
       Width = 256
       Height = 17
       Hint = ''

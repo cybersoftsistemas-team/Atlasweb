@@ -12,12 +12,9 @@ type
     UniContainerPanel1: TUniContainerPanel;
     UniPanel3: TUniPanel;
     UniPanel11: TUniPanel;
-    UniDBFormattedNumberEdit40: TUniDBFormattedNumberEdit;
-    UniDBFormattedNumberEdit38: TUniDBFormattedNumberEdit;
-    UniDBFormattedNumberEdit39: TUniDBFormattedNumberEdit;
-    cTotalFrete: TUniFormattedNumberEdit;
-    cTotalSeguro: TUniFormattedNumberEdit;
-    cTotalDespesa: TUniFormattedNumberEdit;
+    cCIAP_AliquotaICMS: TUniDBFormattedNumberEdit;
+    cCIAP_BCICMS: TUniDBFormattedNumberEdit;
+    cCIAP_ValorICMS: TUniDBFormattedNumberEdit;
     UniPanel12: TUniPanel;
     cCSTCBS: TUniDBLookupComboBox;
     cTotalCBS: TUniFormattedNumberEdit;
@@ -274,10 +271,12 @@ type
     ItensValor_Desconto: TBCDField;
     ItensValor_TotalNota: TFMTBCDField;
     cValor_UnitarioOrig: TUniDBFormattedNumberEdit;
-    UniDBFormattedNumberEdit1: TUniDBFormattedNumberEdit;
+    cValor_Total: TUniDBFormattedNumberEdit;
     bDetalhe: TUniBitBtn;
     bSerial: TUniBitBtn;
-    UniDBFormattedNumberEdit2: TUniDBFormattedNumberEdit;
+    cValor_Inventario: TUniDBFormattedNumberEdit;
+    cCIAP_TipoItem: TUniDBFormattedNumberEdit;
+    cConsumo_Energia: TUniDBFormattedNumberEdit;
     procedure UniFrameCreate(Sender: TObject);
   private
     { Private declarations }
