@@ -9,8 +9,8 @@ uses
 
 type
   TfFiscalNFTerceirosItens = class(TUniFrame)
-    UniContainerPanel1: TUniContainerPanel;
-    UniPanel3: TUniPanel;
+    Painel: TUniContainerPanel;
+    Ficha: TUniPanel;
     UniPanel11: TUniPanel;
     cCIAP_AliquotaICMS: TUniDBFormattedNumberEdit;
     cCIAP_BCICMS: TUniDBFormattedNumberEdit;
@@ -31,7 +31,7 @@ type
     cValor_Desconto: TUniDBFormattedNumberEdit;
     cProduto: TUniDBLookupComboBox;
     cCFOP: TUniDBLookupComboBox;
-    cProcesso: TUniDBLookupComboBox;
+    cProcesso_Imp: TUniDBLookupComboBox;
     cValor_Unitario: TUniDBFormattedNumberEdit;
     cNCM: TUniDBEdit;
     cPeso_Liquido: TUniDBFormattedNumberEdit;
@@ -80,25 +80,46 @@ type
     UniContainerPanel2: TUniContainerPanel;
     cEmbarque: TUniDBLookupComboBox;
     Itens: TFDQuery;
+    dsItens: TDataSource;
+    cValor_UnitarioOrig: TUniDBFormattedNumberEdit;
+    cValor_Total: TUniDBFormattedNumberEdit;
+    bDetalhe: TUniBitBtn;
+    bSerial: TUniBitBtn;
+    cValor_Inventario: TUniDBFormattedNumberEdit;
+    cCIAP_TipoItem: TUniDBFormattedNumberEdit;
+    cConsumo_Energia: TUniDBFormattedNumberEdit;
+    Produtos: TFDQuery;
+    dsProdutos: TDataSource;
+    CFOP: TFDQuery;
+    dsCFOP: TDataSource;
+    ProcessoImp: TFDQuery;
+    dsProcessoImp: TDataSource;
+    ProcessoExp: TFDQuery;
+    dsProcessoExp: TDataSource;
+    cProcesso_Exp: TUniDBLookupComboBox;
     ItensEmpresa: TStringField;
     ItensNota: TIntegerField;
+    ItensChave: TStringField;
     ItensData_Emissao: TDateField;
-    ItensDestinatario: TSmallintField;
+    ItensData_ES: TDateField;
     ItensES: TSmallintField;
     ItensEmissao: TStringField;
+    ItensDestinatario: TSmallintField;
+    ItensOperacao: TSmallintField;
     ItensItem: TSmallintField;
     ItensCodigo_Mercadoria: TIntegerField;
     ItensCodigo_Fabricante: TStringField;
     ItensDescricao_Mercadoria: TMemoField;
     ItensNCM: TStringField;
     ItensEXTIPI: TSmallintField;
-    ItensUnidade_Medida: TStringField;
     ItensQuantidade: TBCDField;
     ItensCSTICMS_TabA: TStringField;
     ItensCSTICMS_TabB: TStringField;
     ItensCSTIPI: TStringField;
     ItensCSTPIS: TStringField;
     ItensCSTCOFINS: TStringField;
+    ItensCSTCBS: TStringField;
+    ItensCSTIBS: TStringField;
     ItensAdicao: TSmallintField;
     ItensPeso_Liquido: TBCDField;
     ItensPeso_Bruto: TBCDField;
@@ -113,7 +134,10 @@ type
     ItensDenegada: TBooleanField;
     ItensModalidade_BCICMS: TSmallintField;
     ItensModalidade_BCICMSST: TSmallintField;
-    ItensProcesso: TStringField;
+    ItensDeclaracao: TStringField;
+    ItensItem_Declaracao: TSmallintField;
+    ItensProcesso_Imp: TStringField;
+    ItensProcesso_Exp: TStringField;
     ItensFinalidade_Mercadoria: TSmallintField;
     ItensQuantidade_Original: TBCDField;
     ItensUnidade_Original: TStringField;
@@ -122,9 +146,9 @@ type
     ItensData_Referencia: TSQLTimeStampField;
     ItensNumero_Referencia: TIntegerField;
     ItensCEST: TStringField;
+    ItensCFOP: TStringField;
     ItensPO: TStringField;
     ItensOrdem: TIntegerField;
-    ItensChave: TStringField;
     ItensBeneficio_Fiscal: TStringField;
     ItensBL: TStringField;
     ItensEmbarque: TIntegerField;
@@ -133,6 +157,7 @@ type
     ItensPercentual_ICMSMonoRet: TBCDField;
     ItensFator_Produto: TBCDField;
     ItensValor_Unitario: TBCDField;
+    ItensValor_UnitarioOrig: TBCDField;
     ItensValor_Total: TBCDField;
     ItensAliquota_IPI: TBCDField;
     ItensValor_IPI: TBCDField;
@@ -165,6 +190,7 @@ type
     ItensValor_BCIPI: TBCDField;
     ItensRateio_ICMSProcesso: TBCDField;
     ItensDesconto: TBCDField;
+    ItensValor_Desconto: TBCDField;
     ItensAliquota_PISRed: TBCDField;
     ItensAliquota_COFINSRed: TBCDField;
     ItensAliquota_ICMSIntegral: TBCDField;
@@ -250,41 +276,29 @@ type
     ItensValor_COFINSOrig: TBCDField;
     ItensValor_IPIOrig: TBCDField;
     ItensValor_BCCOFINS: TBCDField;
+    ItensValor_TotalNota: TFMTBCDField;
     ItensAliquota_PISOrig: TBCDField;
     ItensAliquota_COFINSOrig: TBCDField;
     ItensValor_BCICMSSTOrig: TBCDField;
     ItensTrava_ValorInv: TBCDField;
-    ItensValor_UnitarioOrig: TBCDField;
     ItensCIAP_TipoItem: TSmallintField;
     ItensInventario_Terceiros: TBooleanField;
     ItensItem_Referencia: TSmallintField;
-    ItensOperacao: TSmallintField;
-    ItensCFOP: TStringField;
-    ItensEstoque_Minimo: TBCDField;
-    ItensData_ES: TDateField;
-    ItensDeclaracao: TStringField;
-    ItensItem_Declaracao: TSmallintField;
-    dsItens: TDataSource;
     ItensComplementar: TBooleanField;
-    ItensCSTCBS: TStringField;
-    ItensCSTIBS: TStringField;
-    ItensValor_Desconto: TBCDField;
-    ItensValor_TotalNota: TFMTBCDField;
-    cValor_UnitarioOrig: TUniDBFormattedNumberEdit;
-    cValor_Total: TUniDBFormattedNumberEdit;
-    bDetalhe: TUniBitBtn;
-    bSerial: TUniBitBtn;
-    cValor_Inventario: TUniDBFormattedNumberEdit;
-    cCIAP_TipoItem: TUniDBFormattedNumberEdit;
-    cConsumo_Energia: TUniDBFormattedNumberEdit;
+    ItensEstoque_Minimo: TBCDField;
+    ItensUM: TStringField;
+    NCM: TFDQuery;
+    dsNCM: TDataSource;
     procedure UniFrameCreate(Sender: TObject);
+    procedure cProcesso_ImpExit(Sender: TObject);
+    procedure cProcesso_ExpExit(Sender: TObject);
   private
     { Private declarations }
     mOper: string;
     mNota
    ,mForn
    ,mItem: integer;
-   mData: TDate;
+    mData: TDate;
   public
     { Public declarations }
     constructor Create(AOwner: TComponent; pNota, pforn, pItem: integer; pData: TDate; pOper: string); reintroduce;
@@ -295,6 +309,16 @@ implementation
 {$R *.dfm}
 
 uses ServerModule;
+
+procedure TfFiscalNFTerceirosItens.cProcesso_ExpExit(Sender: TObject);
+begin
+     cProcesso_Imp.Enabled := cProcesso_Exp.Text = '';
+end;
+
+procedure TfFiscalNFTerceirosItens.cProcesso_ImpExit(Sender: TObject);
+begin
+     cProcesso_Exp.Enabled := cProcesso_Imp.Text = '';
+end;
 
 constructor TfFiscalNFTerceirosItens.Create(aOwner: TComponent; pNota, pForn, pItem: integer; pData: TDate; pOper: string);
 begin
@@ -310,6 +334,11 @@ procedure TfFiscalNFTerceirosItens.UniFrameCreate(Sender: TObject);
 var
    lArq: string;
 begin
+     // Alinhando todas as ficha de dados ao centro do form.
+     Ficha.Top   := 30;
+     Ficha.Left  := (Painel.width - Ficha.width) div 2;
+     Ficha.Color := clNone;
+
      lArq := UniServerModule.FilesFolder +'images\icones\DetalheProduto.bmp';
      if FileExists(lArq) then bDetalhe.Glyph.LoadFromFile(lArq);
      lArq := UniServerModule.FilesFolder +'images\icones\SerialProduto.bmp';
@@ -323,6 +352,52 @@ begin
           sql.add('order by Empresa, Chave');
           open;
      end;
+     with Produtos do begin
+          sql.Clear;
+          sql.Add('select Codigo');
+          sql.add('      ,Codigo_Fabricante');
+          sql.add('      ,NCM');
+          sql.add('      ,Descricao_Reduzida');
+          sql.add('      ,Descricao');
+          sql.add('      ,UM');
+          sql.add('from Produtos');
+          sql.add('where Desativado <> 1');
+          sql.add('order by Descricao');
+          open;
+     end;
+     with CFOP do begin
+          sql.Clear;
+          sql.Add('select Codigo');
+          sql.add('      ,Descricao');
+          sql.add('from CFOP');
+          sql.add('where Desativada <> 1');
+          sql.add('and ES = 0');
+          sql.add('and Servico <> 1');
+          sql.add('order by Descricao');
+          open;
+     end;
+     with ProcessoImp do begin
+          sql.Clear;
+          sql.Add('select Processo');
+          sql.add('      ,DUIMP');
+          sql.add('from ProcessosImp');
+          sql.add('where Desativado <> 1');
+          sql.add('order by Processo');
+          open;
+     end;
+     with ProcessoExp do begin
+          sql.Clear;
+          sql.Add('select Processo');
+          sql.add('      ,DUE');
+          sql.add('from ProcessosExp');
+          sql.add('where Desativado <> 1');
+          sql.add('order by Processo');
+          open;
+     end;
+
+     cProcesso_Imp.Enabled := cProcesso_Exp.Text = '';
+     cProcesso_Exp.Enabled := cProcesso_Imp.Text = '';
+     
      if mOper = 'Adicionar' then begin
         Itens.append; 
      end else begin

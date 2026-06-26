@@ -14,7 +14,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     Width = 919
     Height = 707
     Hint = ''
-    ActivePage = UniTabSheet1
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
     object UniTabSheet2: TUniTabSheet
@@ -215,7 +215,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           Left = 22
           Top = 13
           Width = 821
-          Height = 563
+          Height = 536
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -346,7 +346,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           end
           object cObservacao: TUniDBMemo
             Left = 10
-            Top = 415
+            Top = 388
             Width = 800
             Height = 136
             Hint = ''
@@ -357,7 +357,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             ParentFont = False
             Font.Name = 'MS Sans Serif'
             Font.Style = [fsBold]
-            TabOrder = 17
+            TabOrder = 16
             FieldLabel = 'Observa'#231#245'es'
             FieldLabelWidth = 125
             FieldLabelSeparator = ' '
@@ -576,36 +576,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             FieldLabelSeparator = ' '
             Style = csDropDown
           end
-          object cProcesso: TUniDBLookupComboBox
-            Left = 10
-            Top = 334
-            Width = 800
-            Height = 25
-            Hint = ''
-            ShowHint = True
-            ListField = 'Processo'
-            ListSource = dsProcessos
-            KeyField = 'Processo'
-            ListFieldIndex = 0
-            BorderStyle = ubsInset
-            DataField = 'Processo'
-            DataSource = dsNotas
-            ParentFont = False
-            Font.Name = 'MS Sans Serif'
-            Font.Pitch = fpFixed
-            Font.Style = [fsBold]
-            AnyMatch = True
-            TabOrder = 14
-            Color = clWindow
-            FieldLabel = 'Processo'
-            FieldLabelWidth = 125
-            FieldLabelSeparator = ' '
-            Style = csDropDown
-          end
           object cModalFrete: TUniDBLookupComboBox
             Tag = 1
             Left = 10
-            Top = 361
+            Top = 334
             Width = 800
             Height = 25
             Hint = 'Informe a "Modalidade de Frete"'
@@ -621,16 +595,16 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Font.Name = 'MS Sans Serif'
             Font.Pitch = fpFixed
             Font.Style = [fsBold]
-            TabOrder = 15
+            TabOrder = 14
             Color = clWindow
-            FieldLabel = 'Processo'
+            FieldLabel = 'Modalidade do Frete'
             FieldLabelWidth = 125
             FieldLabelSeparator = ' '
           end
           object cNaturezaFrete: TUniDBLookupComboBox
             Tag = 1
             Left = 10
-            Top = 388
+            Top = 361
             Width = 800
             Height = 25
             Hint = 'Informe a "Natureza do Frete"'
@@ -646,7 +620,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Font.Name = 'MS Sans Serif'
             Font.Pitch = fpFixed
             Font.Style = [fsBold]
-            TabOrder = 16
+            TabOrder = 15
             Color = clWindow
             FieldLabel = 'Natureza do Frete'
             FieldLabelWidth = 125
@@ -662,7 +636,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             DataField = 'Tipo_Pagamento'
             DataSource = dsNotas
             Caption = 'Tipo de Pagamento'
-            TabOrder = 19
+            TabOrder = 18
             Items.Strings = (
               'A Vista'
               'A Prazo'
@@ -693,7 +667,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
         ParentShowHint = False
         HeaderTitleAlign = taCenter
         TitleFont.Style = [fsBold]
-        DataSource = dsItens
+        DataSource = dsItensNF
         Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgTitleClick, dgFilterClearButton, dgAutoRefreshRow]
         ReadOnly = True
         WebOptions.Paged = False
@@ -773,7 +747,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             ReadOnly = True
           end
           item
-            FieldName = 'Unidade_Medida'
+            FieldName = 'UM'
             Title.Alignment = taCenter
             Title.Caption = 'UM'
             Title.Font.Style = [fsBold]
@@ -937,6 +911,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           Images = UniMainModule.imgBotoes
           ImageIndex = 4
           TabOrder = 5
+          OnClick = bGravItensClick
         end
         object bExcTodosItens: TUniSpeedButton
           AlignWithMargins = True
@@ -2218,8 +2193,8 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
   end
   object tTmp: TFDQuery
     Connection = UniMainModule.Conecta
-    Left = 353
-    Top = 424
+    Left = 530
+    Top = 398
   end
   object Armazem: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2301,11 +2276,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       Origin = 'Modelo'
       FixedChar = True
       Size = 2
-    end
-    object NotasProcesso: TStringField
-      FieldName = 'Processo'
-      Origin = 'Processo'
-      Size = 15
     end
     object NotasFUNDAP: TBooleanField
       FieldName = 'FUNDAP'
@@ -3434,8 +3404,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     Left = 261
     Top = 373
   end
-  object Itens: TFDQuery
-    Active = True
+  object ItensNF: TFDQuery
     IndexFieldNames = 'Empresa;Chave'
     MasterSource = dsNotas
     MasterFields = 'Empresa;Chave'
@@ -3448,7 +3417,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       '      ,Codigo_Mercadoria'
       '      ,Descricao_Mercadoria'
       '      ,NCM'
-      '      ,Unidade_Medida'
+      '      ,UM'
       '      ,Quantidade'
       '      ,Valor_Unitario'
       '      ,Empresa'
@@ -3462,65 +3431,59 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       'order by Empresa, Chave')
     Left = 183
     Top = 121
-    object ItensItem: TSmallintField
+    object ItensNFItem: TSmallintField
       DisplayWidth = 4
       FieldName = 'Item'
       Origin = 'Item'
       DisplayFormat = '0000'
       EditFormat = '0000'
     end
-    object ItensCodigo_Mercadoria: TIntegerField
+    object ItensNFCodigo_Mercadoria: TIntegerField
       FieldName = 'Codigo_Mercadoria'
       Origin = 'Codigo_Mercadoria'
     end
-    object ItensDescricao_Mercadoria: TMemoField
+    object ItensNFDescricao_Mercadoria: TMemoField
       FieldName = 'Descricao_Mercadoria'
       Origin = 'Descricao_Mercadoria'
       BlobType = ftMemo
     end
-    object ItensNCM: TStringField
+    object ItensNFNCM: TStringField
       FieldName = 'NCM'
       Origin = 'NCM'
       EditMask = '##.##.####;0'
       FixedChar = True
       Size = 8
     end
-    object ItensUnidade_Medida: TStringField
-      FieldName = 'Unidade_Medida'
-      Origin = 'Unidade_Medida'
-      FixedChar = True
-      Size = 3
-    end
-    object ItensQuantidade: TBCDField
+    object ItensNFQuantidade: TBCDField
       FieldName = 'Quantidade'
       Origin = 'Quantidade'
       DisplayFormat = ',##0.000'
       Precision = 18
     end
-    object ItensValor_Unitario: TBCDField
+    object ItensNFValor_Unitario: TBCDField
       FieldName = 'Valor_Unitario'
       Origin = 'Valor_Unitario'
       DisplayFormat = ',##0.0000'
       Precision = 18
     end
-    object ItensEmpresa: TStringField
+    object ItensNFEmpresa: TStringField
       FieldName = 'Empresa'
       Origin = 'Empresa'
       Required = True
       Size = 14
     end
-    object ItensChave: TStringField
+    object ItensNFChave: TStringField
       FieldName = 'Chave'
       Origin = 'Chave'
       Size = 44
     end
-    object ItensCFOP: TStringField
+    object ItensNFCFOP: TStringField
       FieldName = 'CFOP'
       Origin = 'CFOP'
       EditMask = '#.###;0'
       Size = 4
     end
-    object ItensEstoque_Minimo: TBCDField
+    object ItensNFEstoque_Minimo: TBCDField
       FieldName = 'Estoque_Minimo'
       Origin = 'Estoque_Minimo'
       ReadOnly = True
@@ -3528,9 +3491,15 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       DisplayFormat = '#0.00%'
       Precision = 18
     end
+    object ItensNFUM: TStringField
+      FieldName = 'UM'
+      Origin = 'UM'
+      FixedChar = True
+      Size = 3
+    end
   end
-  object dsItens: TDataSource
-    DataSet = Itens
+  object dsItensNF: TDataSource
+    DataSet = ItensNF
     Left = 182
     Top = 173
   end

@@ -1,14 +1,14 @@
 object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
   Left = 0
   Top = 0
-  Width = 997
+  Width = 1037
   Height = 794
   OnCreate = UniFrameCreate
   TabOrder = 0
-  object UniContainerPanel1: TUniContainerPanel
+  object Painel: TUniContainerPanel
     Left = 0
     Top = 0
-    Width = 997
+    Width = 1037
     Height = 794
     Hint = ''
     ParentColor = False
@@ -20,15 +20,16 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
         '= '#39'Pasta'#39';'#13#10'}')
     TabOrder = 0
     DesignSize = (
-      980
+      1020
       777)
     ScrollHeight = 1616
-    ScrollWidth = 997
-    object UniPanel3: TUniPanel
-      Left = 54
-      Top = 15
+    ScrollWidth = 1046
+    ScrollX = 9
+    object Ficha: TUniPanel
+      Left = 25
+      Top = 16
       Width = 784
-      Height = 1410
+      Height = 1313
       Hint = ''
       Anchors = [akTop]
       TabOrder = 1
@@ -38,16 +39,16 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           '= '#39'Ficha'#39';'#13#10'}')
       BorderStyle = ubsNone
       ShowCaption = False
-      Caption = 'UniPanel3'
+      Caption = 'Ficha'
       Color = clNone
       DesignSize = (
         784
-        1410)
+        1313)
       object UniPanel11: TUniPanel
         Left = 12
-        Top = 1171
+        Top = 1151
         Width = 761
-        Height = 143
+        Height = 148
         Hint = ''
         TabOrder = 7
         ClientEvents.UniEvents.Strings = (
@@ -138,9 +139,9 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       end
       object UniPanel12: TUniPanel
         Left = 12
-        Top = 1010
+        Top = 992
         Width = 761
-        Height = 145
+        Height = 148
         Hint = ''
         TabOrder = 6
         ClientEvents.UniEvents.Strings = (
@@ -153,8 +154,8 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
         Title = 'Reforma Tribut'#225'ria - IS / CBS / IBS'
         Caption = ''
         object cCSTCBS: TUniDBLookupComboBox
-          Left = 8
-          Top = 35
+          Left = 64
+          Top = -60
           Width = 742
           Height = 25
           Hint = ''
@@ -164,6 +165,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           KeyField = 'Codigo'
           ListFieldIndex = 1
           BorderStyle = ubsInset
+          ClearButton = True
           DataField = 'CSTCBS'
           DataSource = dsItens
           AnyMatch = True
@@ -270,6 +272,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           KeyField = 'Codigo'
           ListFieldIndex = 1
           BorderStyle = ubsInset
+          ClearButton = True
           DataField = 'CSTIBS'
           DataSource = dsItens
           AnyMatch = True
@@ -369,7 +372,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
         Left = 12
         Top = 11
         Width = 761
-        Height = 382
+        Height = 366
         Hint = ''
         Anchors = [akTop]
         TabOrder = 1
@@ -428,7 +431,8 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           Hint = ''
           ShowHint = True
           ParentShowHint = False
-          ListField = 'Codigo;NCM;Descricao'
+          ListField = 'Codigo;NCM;Descricao_Reduzida'
+          ListSource = dsProdutos
           KeyField = 'Codigo'
           ListFieldIndex = 2
           BorderStyle = ubsInset
@@ -438,7 +442,6 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           AnyMatch = True
           TabOrder = 1
           Color = clWindow
-          MatchFieldWidth = False
           FieldLabel = 'Produto'
           FieldLabelSeparator = ' '
           ForceSelection = True
@@ -455,6 +458,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           ShowHint = True
           ParentShowHint = False
           ListField = 'Codigo;Descricao'
+          ListSource = dsCFOP
           KeyField = 'Codigo'
           ListFieldIndex = 1
           BorderStyle = ubsInset
@@ -470,28 +474,31 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           NormalizeString = True
           Style = csDropDown
         end
-        object cProcesso: TUniDBLookupComboBox
+        object cProcesso_Imp: TUniDBLookupComboBox
           Left = 8
           Top = 62
-          Width = 502
+          Width = 368
           Height = 25
           Hint = ''
           ShowHint = True
           ParentShowHint = False
-          ListField = 'Tipo;Declaracao;Processo'
+          ListField = 'Processo;DUIMP'
+          ListSource = dsProcessoImp
           KeyField = 'Processo'
           ListFieldIndex = 1
           BorderStyle = ubsInset
-          DataField = 'Processo'
+          ClearButton = True
+          DataField = 'Processo_Imp'
           DataSource = dsItens
           AnyMatch = True
           TabOrder = 3
           Color = clWindow
-          FieldLabel = 'Processo'
+          FieldLabel = 'Processo (Imp)'
           FieldLabelSeparator = ' '
           ForceSelection = True
           NormalizeString = True
           Style = csDropDown
+          OnExit = cProcesso_ImpExit
         end
         object cValor_Unitario: TUniDBFormattedNumberEdit
           Left = 8
@@ -550,9 +557,9 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           BorderStyle = ubsInset
         end
         object cPeso_Bruto: TUniDBFormattedNumberEdit
-          Left = 250
+          Left = 252
           Top = 116
-          Width = 260
+          Width = 258
           Height = 25
           Hint = ''
           ShowHint = True
@@ -578,6 +585,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           ParentShowHint = False
           ListFieldIndex = 1
           BorderStyle = ubsInset
+          ClearButton = True
           DataField = 'Embarque'
           DataSource = dsItens
           AnyMatch = True
@@ -696,10 +704,36 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           ThousandSeparator = '.'
           BorderStyle = ubsInset
         end
+        object cProcesso_Exp: TUniDBLookupComboBox
+          Left = 382
+          Top = 62
+          Width = 368
+          Height = 25
+          Hint = ''
+          ShowHint = True
+          ParentShowHint = False
+          ListField = 'Processo;DUE'
+          ListSource = dsProcessoExp
+          KeyField = 'Processo'
+          ListFieldIndex = 1
+          BorderStyle = ubsInset
+          ClearButton = True
+          DataField = 'Processo_Exp'
+          DataSource = dsItens
+          AnyMatch = True
+          TabOrder = 17
+          Color = clWindow
+          FieldLabel = 'Processo (Exp)'
+          FieldLabelSeparator = ' '
+          ForceSelection = True
+          NormalizeString = True
+          Style = csDropDown
+          OnExit = cProcesso_ExpExit
+        end
       end
       object UniPanel5: TUniPanel
         Left = 12
-        Top = 401
+        Top = 388
         Width = 761
         Height = 227
         Hint = ''
@@ -788,6 +822,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           KeyField = 'Codigo'
           ListFieldIndex = 1
           BorderStyle = ubsInset
+          ClearButton = True
           DataField = 'CSTICMS_TabA'
           DataSource = dsItens
           AnyMatch = True
@@ -811,6 +846,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           KeyField = 'Codigo'
           ListFieldIndex = 1
           BorderStyle = ubsInset
+          ClearButton = True
           DataField = 'CSTICMS_TabB'
           DataSource = dsItens
           AnyMatch = True
@@ -1097,7 +1133,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       end
       object UniPanel6: TUniPanel
         Left = 12
-        Top = 795
+        Top = 783
         Width = 761
         Height = 93
         Hint = ''
@@ -1206,6 +1242,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           KeyField = 'Codigo'
           ListFieldIndex = 1
           BorderStyle = ubsInset
+          ClearButton = True
           DataField = 'CSTPIS'
           DataSource = dsItens
           AnyMatch = True
@@ -1220,7 +1257,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       end
       object UniPanel7: TUniPanel
         Left = 12
-        Top = 636
+        Top = 626
         Width = 761
         Height = 145
         Hint = ''
@@ -1246,6 +1283,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           KeyField = 'Codigo'
           ListFieldIndex = 1
           BorderStyle = ubsInset
+          ClearButton = True
           DataField = 'CSTIPI'
           DataSource = dsItens
           AnyMatch = True
@@ -1429,9 +1467,9 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       end
       object UniPanel9: TUniPanel
         Left = 12
-        Top = 902
+        Top = 887
         Width = 761
-        Height = 93
+        Height = 94
         Hint = ''
         TabOrder = 5
         ClientEvents.UniEvents.Strings = (
@@ -1487,8 +1525,8 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           ThousandSeparator = '.'
         end
         object cValor_COFINS: TUniDBFormattedNumberEdit
-          Left = 397
-          Top = 8
+          Left = 408
+          Top = -155
           Width = 175
           Height = 25
           Hint = ''
@@ -1538,6 +1576,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           KeyField = 'Codigo'
           ListFieldIndex = 1
           BorderStyle = ubsInset
+          ClearButton = True
           DataField = 'CSTCOFINS'
           DataSource = dsItens
           AnyMatch = True
@@ -1552,7 +1591,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       end
     end
     object UniContainerPanel2: TUniContainerPanel
-      Left = 336
+      Left = 327
       Top = 1599
       Width = 256
       Height = 17
@@ -1562,22 +1601,18 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
     end
   end
   object Itens: TFDQuery
-    CachedUpdates = True
-    IndexFieldNames = 'Empresa;Chave'
-    MasterFields = 'Empresa;Chave'
-    DetailFields = 'Empresa;Chave'
     Connection = UniMainModule.Conecta
     UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * '
       
-        '      ,Estoque_Minimo = isnull((select Estoque_Minimo from Produ' +
-        'tos where Codigo = NotasItens.Codigo_Mercadoria), 0)'
+        ',Estoque_Minimo = isnull((select Estoque_MinimoPerc from Produto' +
+        's where Codigo = Codigo_Mercadoria), 0)'
       'from NotasItens'
       '')
-    Left = 863
-    Top = 38
+    Left = 840
+    Top = 22
     object ItensEmpresa: TStringField
       FieldName = 'Empresa'
       Origin = 'Empresa'
@@ -1588,11 +1623,18 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       FieldName = 'Nota'
       Origin = 'Nota'
     end
+    object ItensChave: TStringField
+      FieldName = 'Chave'
+      Origin = 'Chave'
+      Size = 44
+    end
     object ItensData_Emissao: TDateField
       FieldName = 'Data_Emissao'
+      Origin = 'Data_Emissao'
     end
-    object ItensDestinatario: TSmallintField
-      FieldName = 'Destinatario'
+    object ItensData_ES: TDateField
+      FieldName = 'Data_ES'
+      Origin = 'Data_ES'
     end
     object ItensES: TSmallintField
       FieldName = 'ES'
@@ -1603,6 +1645,14 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       Origin = 'Emissao'
       FixedChar = True
       Size = 1
+    end
+    object ItensDestinatario: TSmallintField
+      FieldName = 'Destinatario'
+      Origin = 'Destinatario'
+    end
+    object ItensOperacao: TSmallintField
+      FieldName = 'Operacao'
+      Origin = 'Operacao'
     end
     object ItensItem: TSmallintField
       FieldName = 'Item'
@@ -1624,19 +1674,12 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
     object ItensNCM: TStringField
       FieldName = 'NCM'
       Origin = 'NCM'
-      EditMask = '####.##.##;0'
       FixedChar = True
       Size = 8
     end
     object ItensEXTIPI: TSmallintField
       FieldName = 'EXTIPI'
       Origin = 'EXTIPI'
-    end
-    object ItensUnidade_Medida: TStringField
-      FieldName = 'Unidade_Medida'
-      Origin = 'Unidade_Medida'
-      FixedChar = True
-      Size = 3
     end
     object ItensQuantidade: TBCDField
       FieldName = 'Quantidade'
@@ -1672,6 +1715,18 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       Origin = 'CSTCOFINS'
       FixedChar = True
       Size = 2
+    end
+    object ItensCSTCBS: TStringField
+      FieldName = 'CSTCBS'
+      Origin = 'CSTCBS'
+      FixedChar = True
+      Size = 3
+    end
+    object ItensCSTIBS: TStringField
+      FieldName = 'CSTIBS'
+      Origin = 'CSTIBS'
+      FixedChar = True
+      Size = 3
     end
     object ItensAdicao: TSmallintField
       FieldName = 'Adicao'
@@ -1731,9 +1786,23 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       FieldName = 'Modalidade_BCICMSST'
       Origin = 'Modalidade_BCICMSST'
     end
-    object ItensProcesso: TStringField
-      FieldName = 'Processo'
-      Origin = 'Processo'
+    object ItensDeclaracao: TStringField
+      FieldName = 'Declaracao'
+      Origin = 'Declaracao'
+      Size = 15
+    end
+    object ItensItem_Declaracao: TSmallintField
+      FieldName = 'Item_Declaracao'
+      Origin = 'Item_Declaracao'
+    end
+    object ItensProcesso_Imp: TStringField
+      FieldName = 'Processo_Imp'
+      Origin = 'Processo_Imp'
+      Size = 15
+    end
+    object ItensProcesso_Exp: TStringField
+      FieldName = 'Processo_Exp'
+      Origin = 'Processo_Exp'
       Size = 15
     end
     object ItensFinalidade_Mercadoria: TSmallintField
@@ -1773,6 +1842,11 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       Origin = 'CEST'
       Size = 7
     end
+    object ItensCFOP: TStringField
+      FieldName = 'CFOP'
+      Origin = 'CFOP'
+      Size = 4
+    end
     object ItensPO: TStringField
       FieldName = 'PO'
       Origin = 'PO'
@@ -1781,11 +1855,6 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
     object ItensOrdem: TIntegerField
       FieldName = 'Ordem'
       Origin = 'Ordem'
-    end
-    object ItensChave: TStringField
-      FieldName = 'Chave'
-      Origin = 'Chave'
-      Size = 44
     end
     object ItensBeneficio_Fiscal: TStringField
       FieldName = 'Beneficio_Fiscal'
@@ -1824,6 +1893,11 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
     object ItensValor_Unitario: TBCDField
       FieldName = 'Valor_Unitario'
       Origin = 'Valor_Unitario'
+      Precision = 18
+    end
+    object ItensValor_UnitarioOrig: TBCDField
+      FieldName = 'Valor_UnitarioOrig'
+      Origin = 'Valor_UnitarioOrig'
       Precision = 18
     end
     object ItensValor_Total: TBCDField
@@ -1984,6 +2058,11 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
     object ItensDesconto: TBCDField
       FieldName = 'Desconto'
       Origin = 'Desconto'
+      Precision = 18
+    end
+    object ItensValor_Desconto: TBCDField
+      FieldName = 'Valor_Desconto'
+      Origin = 'Valor_Desconto'
       Precision = 18
     end
     object ItensAliquota_PISRed: TBCDField
@@ -2411,6 +2490,12 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       Origin = 'Valor_BCCOFINS'
       Precision = 18
     end
+    object ItensValor_TotalNota: TFMTBCDField
+      FieldName = 'Valor_TotalNota'
+      Origin = 'Valor_TotalNota'
+      Precision = 18
+      Size = 2
+    end
     object ItensAliquota_PISOrig: TBCDField
       FieldName = 'Aliquota_PISOrig'
       Origin = 'Aliquota_PISOrig'
@@ -2431,11 +2516,6 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       Origin = 'Trava_ValorInv'
       Precision = 18
     end
-    object ItensValor_UnitarioOrig: TBCDField
-      FieldName = 'Valor_UnitarioOrig'
-      Origin = 'Valor_UnitarioOrig'
-      Precision = 18
-    end
     object ItensCIAP_TipoItem: TSmallintField
       FieldName = 'CIAP_TipoItem'
       Origin = 'CIAP_TipoItem'
@@ -2448,15 +2528,9 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       FieldName = 'Item_Referencia'
       Origin = 'Item_Referencia'
     end
-    object ItensOperacao: TSmallintField
-      FieldName = 'Operacao'
-      Origin = 'Operacao'
-    end
-    object ItensCFOP: TStringField
-      FieldName = 'CFOP'
-      Origin = 'CFOP'
-      EditMask = '#.###;0'
-      Size = 4
+    object ItensComplementar: TBooleanField
+      FieldName = 'Complementar'
+      Origin = 'Complementar'
     end
     object ItensEstoque_Minimo: TBCDField
       FieldName = 'Estoque_Minimo'
@@ -2465,49 +2539,96 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       Required = True
       Precision = 18
     end
-    object ItensData_ES: TDateField
-      FieldName = 'Data_ES'
-      Origin = 'Data_ES'
-    end
-    object ItensDeclaracao: TStringField
-      FieldName = 'Declaracao'
-      Origin = 'Declaracao'
-      Size = 15
-    end
-    object ItensItem_Declaracao: TSmallintField
-      FieldName = 'Item_Declaracao'
-      Origin = 'Item_Declaracao'
-    end
-    object ItensComplementar: TBooleanField
-      FieldName = 'Complementar'
-    end
-    object ItensCSTCBS: TStringField
-      FieldName = 'CSTCBS'
-      Origin = 'CSTCBS'
+    object ItensUM: TStringField
+      FieldName = 'UM'
+      Origin = 'UM'
       FixedChar = True
       Size = 3
-    end
-    object ItensCSTIBS: TStringField
-      FieldName = 'CSTIBS'
-      Origin = 'CSTIBS'
-      FixedChar = True
-      Size = 3
-    end
-    object ItensValor_Desconto: TBCDField
-      FieldName = 'Valor_Desconto'
-      Origin = 'Valor_Desconto'
-      Precision = 18
-    end
-    object ItensValor_TotalNota: TFMTBCDField
-      FieldName = 'Valor_TotalNota'
-      Origin = 'Valor_TotalNota'
-      Precision = 18
-      Size = 2
     end
   end
   object dsItens: TDataSource
     DataSet = Itens
-    Left = 863
-    Top = 87
+    Left = 840
+    Top = 71
+  end
+  object Produtos: TFDQuery
+    CachedUpdates = True
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select * from Produtos'
+      '')
+    Left = 840
+    Top = 121
+  end
+  object dsProdutos: TDataSource
+    DataSet = Produtos
+    Left = 840
+    Top = 170
+  end
+  object CFOP: TFDQuery
+    CachedUpdates = True
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select * from CFOP'
+      '')
+    Left = 840
+    Top = 219
+  end
+  object dsCFOP: TDataSource
+    DataSet = CFOP
+    Left = 840
+    Top = 268
+  end
+  object ProcessoImp: TFDQuery
+    CachedUpdates = True
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select * from ProcessosImp'
+      '')
+    Left = 840
+    Top = 325
+  end
+  object dsProcessoImp: TDataSource
+    DataSet = ProcessoImp
+    Left = 840
+    Top = 374
+  end
+  object ProcessoExp: TFDQuery
+    CachedUpdates = True
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select * from ProcessosExp'
+      '')
+    Left = 840
+    Top = 427
+  end
+  object dsProcessoExp: TDataSource
+    DataSet = ProcessoExp
+    Left = 840
+    Top = 476
+  end
+  object NCM: TFDQuery
+    CachedUpdates = True
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select * from NCM'
+      '')
+    Left = 841
+    Top = 522
+  end
+  object dsNCM: TDataSource
+    DataSet = NCM
+    Left = 841
+    Top = 571
   end
 end
