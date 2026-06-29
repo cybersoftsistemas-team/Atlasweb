@@ -323,8 +323,6 @@ type
     UniDBEdit5: TUniDBEdit;
     UniDBFormattedNumberEdit20: TUniDBFormattedNumberEdit;
     UniDBFormattedNumberEdit21: TUniDBFormattedNumberEdit;
-    bLoteDet: TUniButton;
-    bSerCha: TUniButton;
     UniDBEdit6: TUniDBEdit;
     UniDBDateTimePicker1: TUniDBDateTimePicker;
     UniDBFormattedNumberEdit5: TUniDBFormattedNumberEdit;
@@ -419,14 +417,15 @@ type
     PedidosNFItensValor_Impostos: TBCDField;
     PedidosNFItensFinalidade_Mercadoria: TSmallintField;
     PedidosNFItensItem_Declaracao: TSmallintField;
-    procedure UniSpeedButton1Click(Sender: TObject);
+    bDetalhe: TUniBitBtn;
+    bSerial: TUniBitBtn;
     procedure UniFrameCreate(Sender: TObject);
     procedure cProdutoExit(Sender: TObject);
     procedure cQtdeExit(Sender: TObject);
     procedure cValor_UnitarioExit(Sender: TObject);
     procedure cProcessoExit(Sender: TObject);
-    procedure bLoteDetClick(Sender: TObject);
-    procedure bSerChaClick(Sender: TObject);
+    procedure bDetalheClick(Sender: TObject);
+    procedure bSerialClick(Sender: TObject);
   private
     { Private declarations }
     mOper: string;
@@ -442,7 +441,7 @@ type
   
 implementation
 
-uses Funcoes, MainModule, FatPedidoNFDetalhe, FatPedidoNFLote;
+uses Funcoes, MainModule, FatPedidoNFDetalhe, FatPedidoNFLote, ServerModule;
 
 constructor TfFatPedidoNFItem.Create(AOwner: TComponent; pPed, pItem: integer; pOper: string);
 begin
@@ -716,6 +715,8 @@ begin
 end;
 
 procedure TfFatPedidoNFItem.UniFrameCreate(Sender: TObject);
+var
+  larq: string;
 begin
      UniPageControl1.ActivePageIndex := 0;
      cLog.Clear;
@@ -725,6 +726,11 @@ begin
      uniPanel3.Top   := 30;
      uniPanel3.Left  := (uniPanel3.Parent.Width - uniPanel3.Width) div 2;
      uniPanel3.Color := clNone;
+
+     lArq := UniServerModule.FilesFolder +'images\icones\DetalheProduto.bmp';
+     if FileExists(lArq) then bDetalhe.Glyph.LoadFromFile(lArq);
+     lArq := UniServerModule.FilesFolder +'images\icones\SerialProduto.bmp';
+     if FileExists(lArq) then bSerial.Glyph.LoadFromFile(lArq);
      
      with Empresas do begin
           sql.Clear;
@@ -1009,12 +1015,7 @@ begin
      cProduto.setfocus;
 end;
 
-procedure TfFatPedidoNFItem.UniSpeedButton1Click(Sender: TObject);
-begin
-     free;
-end;
-
-procedure TfFatPedidoNFItem.bLoteDetClick(Sender: TObject);
+procedure TfFatPedidoNFItem.bDetalheClick(Sender: TObject);
 var
   Frm: TfFatPedidoNFDetalhe;
 begin
@@ -1022,7 +1023,7 @@ begin
      Frm.ShowModal;
 end;
 
-procedure TfFatPedidoNFItem.bSerChaClick(Sender: TObject);
+procedure TfFatPedidoNFItem.bSerialClick(Sender: TObject);
 var
   Frm: TfFatPedidoNFLote;
 begin

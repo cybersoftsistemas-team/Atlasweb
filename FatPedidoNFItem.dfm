@@ -810,26 +810,6 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
               ThousandSeparator = '.'
               BorderStyle = ubsInset
             end
-            object bLoteDet: TUniButton
-              Left = 250
-              Top = 170
-              Width = 87
-              Height = 26
-              Hint = ''
-              Caption = 'Lote / Detalhe'
-              TabOrder = 19
-              OnClick = bLoteDetClick
-            end
-            object bSerCha: TUniButton
-              Left = 340
-              Top = 170
-              Width = 89
-              Height = 26
-              Hint = ''
-              Caption = 'Serial / Chassi'
-              TabOrder = 20
-              OnClick = bSerChaClick
-            end
             object UniDBEdit6: TUniDBEdit
               Left = 8
               Top = 305
@@ -912,7 +892,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
               Width = 220
               Height = 142
               Hint = ''
-              TabOrder = 21
+              TabOrder = 19
               ClientEvents.UniEvents.Strings = (
                 
                   'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
@@ -1082,6 +1062,30 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
                 DecimalSeparator = ','
                 ThousandSeparator = '.'
               end
+            end
+            object bDetalhe: TUniBitBtn
+              Left = 253
+              Top = 174
+              Width = 88
+              Height = 44
+              Hint = ''
+              Caption = 'Detalhe'
+              TabOrder = 20
+              ScaleButton = False
+              IconAlign = iaCenter
+              OnClick = bDetalheClick
+            end
+            object bSerial: TUniBitBtn
+              Left = 343
+              Top = 174
+              Width = 115
+              Height = 44
+              Hint = ''
+              Caption = 'Serial/Chassi'
+              TabOrder = 21
+              ScaleButton = False
+              IconAlign = iaCenter
+              OnClick = bSerialClick
             end
           end
           object UniPanel5: TUniPanel

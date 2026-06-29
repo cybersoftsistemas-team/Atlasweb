@@ -14,7 +14,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     Width = 919
     Height = 707
     Hint = ''
-    ActivePage = TabSheet1
+    ActivePage = UniTabSheet1
     Align = alClient
     TabOrder = 0
     object UniTabSheet2: TUniTabSheet
@@ -196,7 +196,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
         end
       end
     end
-    object TabSheet1: TUniTabSheet
+    object uniTabSheet6: TUniTabSheet
       Hint = ''
       Caption = 'Capa da Nota Fiscal'
       object Panel2: TUniPanel
@@ -667,7 +667,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
         ParentShowHint = False
         HeaderTitleAlign = taCenter
         TitleFont.Style = [fsBold]
-        DataSource = dsItensNF
+        DataSource = dsItens
         Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgTitleClick, dgFilterClearButton, dgAutoRefreshRow]
         ReadOnly = True
         WebOptions.Paged = False
@@ -952,7 +952,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
         end
       end
     end
-    object TabSheet3: TUniTabSheet
+    object uniTabSheet3: TUniTabSheet
       Hint = ''
       Caption = 'Seriais/Chassis'
       object GradeSerial: TUniDBGrid
@@ -1019,7 +1019,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           end>
       end
     end
-    object TabSheet4: TUniTabSheet
+    object uniTabSheet4: TUniTabSheet
       Hint = ''
       Caption = 'Lotes'
       object GradeLote: TUniDBGrid
@@ -1086,7 +1086,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           end>
       end
     end
-    object TabSheet5: TUniTabSheet
+    object uniTabSheet5: TUniTabSheet
       Hint = ''
       Caption = 'Manifesta'#231#227'o do Destinat'#225'rio'
       object GradeManif: TUniDBGrid
@@ -2193,8 +2193,8 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
   end
   object tTmp: TFDQuery
     Connection = UniMainModule.Conecta
-    Left = 530
-    Top = 398
+    Left = 346
+    Top = 226
   end
   object Armazem: TFDQuery
     Connection = UniMainModule.Conecta
@@ -3284,6 +3284,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       FieldName = 'Data_Emissao'
       Origin = 'Data_Emissao'
     end
+    object NotasNota_id: TIntegerField
+      FieldName = 'Nota_id'
+      Origin = 'Nota_id'
+    end
   end
   object dsNotas: TDataSource
     DataSet = Notas
@@ -3361,6 +3365,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     Top = 370
   end
   object Operacao: TFDQuery
+    Active = True
     Connection = UniMainModule.Conecta
     UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
@@ -3404,16 +3409,17 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     Left = 261
     Top = 373
   end
-  object ItensNF: TFDQuery
-    IndexFieldNames = 'Empresa;Chave'
+  object Itens: TFDQuery
+    IndexFieldNames = 'Nota_id'
     MasterSource = dsNotas
-    MasterFields = 'Empresa;Chave'
+    MasterFields = 'Nota_id'
     DetailFields = 'Empresa;Chave'
     Connection = UniMainModule.Conecta
     UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
-      'select Item'
+      'select Nota_id'
+      '      ,Item'
       '      ,Codigo_Mercadoria'
       '      ,Descricao_Mercadoria'
       '      ,NCM'
@@ -3431,59 +3437,63 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       'order by Empresa, Chave')
     Left = 183
     Top = 121
-    object ItensNFItem: TSmallintField
+    object ItensNota_id: TIntegerField
+      FieldName = 'Nota_id'
+      Origin = 'Nota_id'
+    end
+    object ItensItem: TSmallintField
       DisplayWidth = 4
       FieldName = 'Item'
       Origin = 'Item'
       DisplayFormat = '0000'
       EditFormat = '0000'
     end
-    object ItensNFCodigo_Mercadoria: TIntegerField
+    object ItensCodigo_Mercadoria: TIntegerField
       FieldName = 'Codigo_Mercadoria'
       Origin = 'Codigo_Mercadoria'
     end
-    object ItensNFDescricao_Mercadoria: TMemoField
+    object ItensDescricao_Mercadoria: TMemoField
       FieldName = 'Descricao_Mercadoria'
       Origin = 'Descricao_Mercadoria'
       BlobType = ftMemo
     end
-    object ItensNFNCM: TStringField
+    object ItensNCM: TStringField
       FieldName = 'NCM'
       Origin = 'NCM'
       EditMask = '##.##.####;0'
       FixedChar = True
       Size = 8
     end
-    object ItensNFQuantidade: TBCDField
+    object ItensQuantidade: TBCDField
       FieldName = 'Quantidade'
       Origin = 'Quantidade'
       DisplayFormat = ',##0.000'
       Precision = 18
     end
-    object ItensNFValor_Unitario: TBCDField
+    object ItensValor_Unitario: TBCDField
       FieldName = 'Valor_Unitario'
       Origin = 'Valor_Unitario'
       DisplayFormat = ',##0.0000'
       Precision = 18
     end
-    object ItensNFEmpresa: TStringField
+    object ItensEmpresa: TStringField
       FieldName = 'Empresa'
       Origin = 'Empresa'
       Required = True
       Size = 14
     end
-    object ItensNFChave: TStringField
+    object ItensChave: TStringField
       FieldName = 'Chave'
       Origin = 'Chave'
       Size = 44
     end
-    object ItensNFCFOP: TStringField
+    object ItensCFOP: TStringField
       FieldName = 'CFOP'
       Origin = 'CFOP'
       EditMask = '#.###;0'
       Size = 4
     end
-    object ItensNFEstoque_Minimo: TBCDField
+    object ItensEstoque_Minimo: TBCDField
       FieldName = 'Estoque_Minimo'
       Origin = 'Estoque_Minimo'
       ReadOnly = True
@@ -3491,30 +3501,16 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       DisplayFormat = '#0.00%'
       Precision = 18
     end
-    object ItensNFUM: TStringField
+    object ItensUM: TStringField
       FieldName = 'UM'
       Origin = 'UM'
       FixedChar = True
       Size = 3
     end
   end
-  object dsItensNF: TDataSource
-    DataSet = ItensNF
+  object dsItens: TDataSource
+    DataSet = Itens
     Left = 182
-    Top = 173
-  end
-  object Produtos: TFDQuery
-    Connection = UniMainModule.Conecta
-    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
-    UpdateOptions.AutoCommitUpdates = True
-    SQL.Strings = (
-      'SELECT * FROM Produtos')
-    Left = 353
-    Top = 123
-  end
-  object dsProdutos: TDataSource
-    DataSet = Produtos
-    Left = 353
     Top = 173
   end
   object ItensNavios: TFDQuery
@@ -3537,13 +3533,13 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'SELECT * FROM ModalidadesFrete')
-    Left = 353
-    Top = 223
+    Left = 261
+    Top = 520
   end
   object dsModalFrete: TDataSource
     DataSet = ModalFrete
-    Left = 353
-    Top = 272
+    Left = 261
+    Top = 569
   end
   object NaturezaFrete: TFDQuery
     Connection = UniMainModule.Conecta
@@ -3551,12 +3547,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'SELECT * FROM NaturezaFrete')
-    Left = 353
-    Top = 319
+    Left = 346
+    Top = 123
   end
   object dsNaturezaFrete: TDataSource
     DataSet = NaturezaFrete
-    Left = 353
-    Top = 368
+    Left = 346
+    Top = 172
   end
 end
