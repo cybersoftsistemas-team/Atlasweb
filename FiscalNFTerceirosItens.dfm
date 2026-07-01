@@ -19,17 +19,19 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
         'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
         '= '#39'Pasta'#39';'#13#10'}')
     TabOrder = 0
-    ExplicitWidth = 1037
+    ExplicitLeft = -26
+    ExplicitTop = -38
     DesignSize = (
       1102
       777)
     ScrollHeight = 1616
     ScrollWidth = 1119
+    ScrollY = 777
     object Ficha: TUniPanel
       Left = 29
-      Top = 15
+      Top = -762
       Width = 784
-      Height = 1344
+      Height = 1351
       Hint = ''
       Anchors = [akTop]
       TabOrder = 1
@@ -43,10 +45,10 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       Color = clTeal
       DesignSize = (
         784
-        1344)
+        1351)
       object UniPanel11: TUniPanel
         Left = 12
-        Top = 1179
+        Top = 1181
         Width = 761
         Height = 148
         Hint = ''
@@ -141,7 +143,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
         Left = 12
         Top = 1020
         Width = 761
-        Height = 148
+        Height = 150
         Hint = ''
         TabOrder = 6
         ClientEvents.UniEvents.Strings = (
@@ -269,6 +271,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           ShowHint = True
           ParentShowHint = False
           ListField = 'Codigo;Descricao'
+          ListSource = dsCSTCBS
           KeyField = 'Codigo'
           ListFieldIndex = 1
           BorderStyle = ubsInset
@@ -366,6 +369,31 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           DecimalSeparator = ','
           ThousandSeparator = '.'
           BorderStyle = ubsInset
+        end
+        object UniDBLookupComboBox1: TUniDBLookupComboBox
+          Left = 8
+          Top = 35
+          Width = 742
+          Height = 25
+          Hint = ''
+          ShowHint = True
+          ParentShowHint = False
+          ListField = 'Codigo;Descricao'
+          ListSource = dsCSTCBS
+          KeyField = 'Codigo'
+          ListFieldIndex = 1
+          BorderStyle = ubsInset
+          ClearButton = True
+          DataField = 'CSTCBS'
+          DataSource = dsItensNF
+          AnyMatch = True
+          TabOrder = 11
+          Color = clWindow
+          FieldLabel = 'CST IBS'
+          FieldLabelSeparator = ' '
+          ForceSelection = True
+          NormalizeString = True
+          Style = csDropDown
         end
       end
       object UniPanel13: TUniPanel
@@ -558,6 +586,9 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           Hint = ''
           ShowHint = True
           ParentShowHint = False
+          ListField = 'Navio_Nome; Processo'
+          ListSource = dsEmbarques
+          KeyField = 'Codigo'
           ListFieldIndex = 1
           BorderStyle = ubsInset
           ClearButton = True
@@ -816,6 +847,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           ShowHint = True
           ParentShowHint = False
           ListField = 'Codigo;Descricao'
+          ListSource = dsCSTICMSTabA
           KeyField = 'Codigo'
           ListFieldIndex = 1
           BorderStyle = ubsInset
@@ -840,6 +872,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           ShowHint = True
           ParentShowHint = False
           ListField = 'Codigo;Descricao'
+          ListSource = dsCSTICMSTabB
           KeyField = 'Codigo'
           ListFieldIndex = 1
           BorderStyle = ubsInset
@@ -960,7 +993,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
         end
         object cAliquota_MVA: TUniDBFormattedNumberEdit
           Left = 270
-          Top = 171
+          Top = 170
           Width = 125
           Height = 25
           Hint = ''
@@ -980,7 +1013,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
         end
         object cValor_BCMVA: TUniDBFormattedNumberEdit
           Left = 8
-          Top = 171
+          Top = 170
           Width = 260
           Height = 25
           Hint = ''
@@ -999,7 +1032,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
         end
         object cValor_MVA: TUniDBFormattedNumberEdit
           Left = 397
-          Top = 171
+          Top = 170
           Width = 175
           Height = 25
           Hint = ''
@@ -1019,7 +1052,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
         end
         object cTotalMVA: TUniFormattedNumberEdit
           Left = 575
-          Top = 171
+          Top = 170
           Width = 175
           Height = 25
           Hint = ''
@@ -1236,6 +1269,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           ShowHint = True
           ParentShowHint = False
           ListField = 'Codigo;Descricao'
+          ListSource = dsCSTPIS
           KeyField = 'Codigo'
           ListFieldIndex = 1
           BorderStyle = ubsInset
@@ -1277,6 +1311,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           ShowHint = True
           ParentShowHint = False
           ListField = 'Codigo;Descricao'
+          ListSource = dsCSTIPI
           KeyField = 'Codigo'
           ListFieldIndex = 1
           BorderStyle = ubsInset
@@ -1570,6 +1605,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           ShowHint = True
           ParentShowHint = False
           ListField = 'Codigo;Descricao'
+          ListSource = dsCSTCOFINS
           KeyField = 'Codigo'
           ListFieldIndex = 1
           BorderStyle = ubsInset
@@ -1589,7 +1625,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
     end
     object UniContainerPanel2: TUniContainerPanel
       Left = 336
-      Top = 1599
+      Top = 822
       Width = 256
       Height = 17
       Hint = ''
@@ -1599,7 +1635,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
   end
   object dsItensNF: TDataSource
     DataSet = ItensNF
-    Left = 840
+    Left = 848
     Top = 71
   end
   object Produtos: TFDQuery
@@ -1616,12 +1652,12 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       'from Produtos'
       'where Desativado <> 1'
       'order by Descricao_Reduzida')
-    Left = 840
+    Left = 848
     Top = 121
   end
   object dsProdutos: TDataSource
     DataSet = Produtos
-    Left = 840
+    Left = 848
     Top = 170
   end
   object CFOP: TFDQuery
@@ -1632,13 +1668,13 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
     SQL.Strings = (
       'select * from CFOP'
       '')
-    Left = 840
+    Left = 848
     Top = 219
   end
   object dsCFOP: TDataSource
     DataSet = CFOP
-    Left = 840
-    Top = 268
+    Left = 848
+    Top = 263
   end
   object ProcessoImp: TFDQuery
     CachedUpdates = True
@@ -1648,13 +1684,13 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
     SQL.Strings = (
       'select * from ProcessosImp'
       '')
-    Left = 840
-    Top = 325
+    Left = 848
+    Top = 312
   end
   object dsProcessoImp: TDataSource
     DataSet = ProcessoImp
-    Left = 840
-    Top = 374
+    Left = 848
+    Top = 359
   end
   object ProcessoExp: TFDQuery
     CachedUpdates = True
@@ -1664,13 +1700,13 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
     SQL.Strings = (
       'select * from ProcessosExp'
       '')
-    Left = 840
-    Top = 427
+    Left = 848
+    Top = 406
   end
   object dsProcessoExp: TDataSource
     DataSet = ProcessoExp
-    Left = 840
-    Top = 476
+    Left = 848
+    Top = 455
   end
   object NCM: TFDQuery
     CachedUpdates = True
@@ -1680,13 +1716,13 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
     SQL.Strings = (
       'select * from NCM'
       '')
-    Left = 841
-    Top = 522
+    Left = 848
+    Top = 501
   end
   object dsNCM: TDataSource
     DataSet = NCM
-    Left = 841
-    Top = 571
+    Left = 848
+    Top = 550
   end
   object ItensNF: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1694,7 +1730,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from NotasItens where Emissao = '#39'T'#39)
-    Left = 839
+    Left = 848
     Top = 25
     object ItensNFEmpresa: TStringField
       FieldName = 'Empresa'
@@ -2625,5 +2661,197 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       FieldName = 'Nota_id'
       Origin = 'Nota_id'
     end
+  end
+  object Embarques: TFDQuery
+    CachedUpdates = True
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select Codigo'
+      '      ,Navio'
+      
+        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
+        'o)'
+      '      ,Processo'
+      #9'  --,Empresa'
+      'from Embarques'
+      'where Empresa = '#39'07922103000158'#39
+      'order by Processo')
+    Left = 931
+    Top = 25
+  end
+  object dsEmbarques: TDataSource
+    DataSet = Embarques
+    Left = 931
+    Top = 71
+  end
+  object CSTICMSTabA: TFDQuery
+    CachedUpdates = True
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select Codigo'
+      '      ,Navio'
+      
+        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
+        'o)'
+      '      ,Processo'
+      #9'  --,Empresa'
+      'from Embarques'
+      'where Empresa = '#39'07922103000158'#39
+      'order by Processo')
+    Left = 931
+    Top = 121
+  end
+  object dsCSTICMSTabA: TDataSource
+    DataSet = CSTICMSTabA
+    Left = 931
+    Top = 170
+  end
+  object dsCSTICMSTabB: TDataSource
+    DataSet = CSTICMSTabB
+    Left = 931
+    Top = 263
+  end
+  object CSTICMSTabB: TFDQuery
+    CachedUpdates = True
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select Codigo'
+      '      ,Navio'
+      
+        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
+        'o)'
+      '      ,Processo'
+      #9'  --,Empresa'
+      'from Embarques'
+      'where Empresa = '#39'07922103000158'#39
+      'order by Processo')
+    Left = 931
+    Top = 217
+  end
+  object CSTIPI: TFDQuery
+    CachedUpdates = True
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select Codigo'
+      '      ,Navio'
+      
+        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
+        'o)'
+      '      ,Processo'
+      #9'  --,Empresa'
+      'from Embarques'
+      'where Empresa = '#39'07922103000158'#39
+      'order by Processo')
+    Left = 931
+    Top = 313
+  end
+  object dsCSTIPI: TDataSource
+    DataSet = CSTIPI
+    Left = 931
+    Top = 359
+  end
+  object CSTCBS: TFDQuery
+    CachedUpdates = True
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select Codigo'
+      '      ,Navio'
+      
+        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
+        'o)'
+      '      ,Processo'
+      #9'  --,Empresa'
+      'from Embarques'
+      'where Empresa = '#39'07922103000158'#39
+      'order by Processo')
+    Left = 931
+    Top = 406
+  end
+  object dsCSTCBS: TDataSource
+    DataSet = CSTCBS
+    Left = 931
+    Top = 455
+  end
+  object CSTIBS: TFDQuery
+    CachedUpdates = True
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select Codigo'
+      '      ,Navio'
+      
+        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
+        'o)'
+      '      ,Processo'
+      #9'  --,Empresa'
+      'from Embarques'
+      'where Empresa = '#39'07922103000158'#39
+      'order by Processo')
+    Left = 931
+    Top = 501
+  end
+  object dsCSTIBS: TDataSource
+    DataSet = CSTIBS
+    Left = 931
+    Top = 550
+  end
+  object CSTPIS: TFDQuery
+    CachedUpdates = True
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select Codigo'
+      '      ,Navio'
+      
+        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
+        'o)'
+      '      ,Processo'
+      #9'  --,Empresa'
+      'from Embarques'
+      'where Empresa = '#39'07922103000158'#39
+      'order by Processo')
+    Left = 1014
+    Top = 26
+  end
+  object dsCSTPIS: TDataSource
+    DataSet = CSTPIS
+    Left = 1014
+    Top = 75
+  end
+  object CSTCOFINS: TFDQuery
+    CachedUpdates = True
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select Codigo'
+      '      ,Navio'
+      
+        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
+        'o)'
+      '      ,Processo'
+      #9'  --,Empresa'
+      'from Embarques'
+      'where Empresa = '#39'07922103000158'#39
+      'order by Processo')
+    Left = 1014
+    Top = 121
+  end
+  object dsCSTCOFINS: TDataSource
+    DataSet = CSTCOFINS
+    Left = 1014
+    Top = 170
   end
 end

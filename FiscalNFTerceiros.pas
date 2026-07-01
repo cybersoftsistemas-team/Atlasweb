@@ -7,7 +7,7 @@ uses
   uniGUIFrame, UniPageControl, uniDBGrid, uniPanel, uniDBLookUpComboBox, uniDBCheckBox, uniScrollBox, uniSpeedButton, uniDateTimePicker,
   uniDBDateTimePicker, uniButton, uniBitBtn, uniDBNavigator, uniEdit, uniDBEdit, uniDBMemo, uniBasicGrid, uniGUIBaseClasses, uniComboBox, UniGroupBox, uniSpinEdit, unimToggle,
   FireDAC.Comp.Client, Funcoes, Data.DB, uniSweetAlert, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, uniMemo, uniRadioGroup, uniCheckBox, uniMultiItem,
-  uniDBComboBox, uniLabel, uniImage, uniDBRadioGroup, Dialogo, Dateutils;
+  uniDBComboBox, uniLabel, uniImage, uniDBRadioGroup, Dialogo, Dateutils, uniFileUpload;
 
 type
   TfFiscalNFTerceiros = class(TuniFrame)
@@ -129,15 +129,11 @@ type
     NotasPedido: TIntegerField;
     NotasSerie: TStringField;
     NotasModelo: TStringField;
-    NotasFUNDAP: TBooleanField;
     NotasLucro: TBCDField;
     NotasLucro_Valor: TBCDField;
     NotasDeclaracao_Numero: TStringField;
     NotasDeclaracao_Data: TDateField;
     NotasInscricao_Substituto: TStringField;
-    NotasInf_Complementares: TMemoField;
-    NotasInf_Complementares2: TMemoField;
-    NotasEstado: TStringField;
     NotasTransportador_Codigo: TIntegerField;
     NotasModalidade_Frete: TSmallintField;
     NotasVolume_Quantidade: TBCDField;
@@ -155,9 +151,6 @@ type
     NotasDevolucao: TBooleanField;
     NotasAjuste: TBooleanField;
     NotasMotivo_Cancelamento: TStringField;
-    NotasNota_Referencia: TSmallintField;
-    NotasData_Referencia: TSQLTimeStampField;
-    NotasChave_Referencoa: TStringField;
     NotasNFe_Lote: TFMTBCDField;
     NotasNFe_Recibo: TStringField;
     NotasNfe_DataRecibo: TSQLTimeStampField;
@@ -350,11 +343,8 @@ type
     GradeItens: TUniDBGrid;
     NotasChave: TStringField;
     NotasES: TSmallintField;
-    NotasCFOP: TStringField;
     NotasLancamento_Financeiro: TIntegerField;
-    bXML: TUniSpeedButton;
     NotasData_ES: TDateField;
-    NotasHora_ES: TStringField;
     NotasData_Emissao: TDateField;
     ItensItem: TSmallintField;
     ItensCodigo_Mercadoria: TIntegerField;
@@ -369,6 +359,15 @@ type
     ItensUM: TStringField;
     NotasNota_id: TIntegerField;
     ItensNota_id: TIntegerField;
+    NotasHora_Emissao: TTimeField;
+    NotasHora_ES: TTimeField;
+    NotasInf_Compl: TMemoField;
+    NotasInf_Compl2: TMemoField;
+    UniDBMemo1: TUniDBMemo;
+    NotasNota_Ref: TSmallintField;
+    NotasData_Ref: TSQLTimeStampField;
+    NotasChave_Ref: TStringField;
+    UniButton1: TUniButton;
     procedure bSairClick(Sender: TObject);
     procedure UniFrameCreate(Sender: TObject);
     procedure bItensClick(Sender: TObject);
@@ -406,6 +405,7 @@ type
     procedure bEditItensClick(Sender: TObject);
     procedure bExcItensClick(Sender: TObject);
     procedure bGravItensClick(Sender: TObject);
+    procedure UniButton1Click(Sender: TObject);
   private
     function PeriodoBloqueado: boolean;
     function Movimentado: boolean;
@@ -425,7 +425,7 @@ type
 
 implementation
 
-uses MainModule, Main, ValidaCRUD, FiscalNFTerceirosItens;
+uses MainModule, Main, ValidaCRUD, FiscalNFTerceirosItens, FiscalNFTerceirosXML;
 
 var
   FrameItem: TfFiscalNFTerceirosItens;
@@ -435,6 +435,11 @@ var
 procedure TfFiscalNFTerceiros.bSairClick(Sender: TObject);
 begin
      MainForm.PagePrincipal.Pages[MainForm.PagePrincipal.ActivePageIndex].free;
+end;
+
+procedure TfFiscalNFTerceiros.UniButton1Click(Sender: TObject);
+begin
+     fFiscalNFTerceirosXML.showModaL;
 end;
 
 procedure TfFiscalNFTerceiros.UniFrameCreate(Sender: TObject);
@@ -1692,7 +1697,7 @@ begin
         try
             LigaBotoesItens(false);
             mNomeAba  := 'ITEMS DA NOTA FISCAL: '+FormatFloat('0000', Notas.fieldbyname('Nota').asinteger)+' ('+NotasDestinatario_Nome.asstring+')';
-            FrameItem := TfFiscalNFTerceirosItens.create(uniTabSheet1);
+            FrameItem := TfFiscalNFTerceirosItens.create(uniTabSheet1, UniMainModule.mEmpresaAtiva);
             with FrameItem do begin
                  Parent := uniTabSheet1;
                  Align  := alClient;
@@ -1985,8 +1990,7 @@ procedure TfFiscalNFTerceiros.bCancelarClick(Sender: TObject);
 begin
      Notas.Cancel;
      LigaBotoes(true);
-//estoqueProdutoEmb(3, 3);     
-end;
+end;     
 
 procedure TfFiscalNFTerceiros.bCancItensClick(Sender: TObject);
 begin
@@ -2029,7 +2033,7 @@ begin
         try
             LigaBotoesItens(false);
             mNomeAba          := 'ITEMS DA NOTA FISCAL: '+FormatFloat('0000', Notas.fieldbyname('Nota').asinteger)+' ('+NotasDestinatario_Nome.asstring+')';
-            FrameItem         := TfFiscalNFTerceirosItens.create(uniTabSheet1);
+            FrameItem         := TfFiscalNFTerceirosItens.create(uniTabSheet1, UniMainModule.mEmpresaAtiva);
             FrameItem.Parent  := uniTabSheet1;
             FrameItem.Align   := alClient;
             FrameItem.ItensNF.edit;

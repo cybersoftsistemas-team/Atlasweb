@@ -14,7 +14,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     Width = 919
     Height = 707
     Hint = ''
-    ActivePage = UniTabSheet1
+    ActivePage = uniTabSheet6
     Align = alClient
     TabOrder = 0
     object UniTabSheet2: TUniTabSheet
@@ -215,7 +215,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           Left = 22
           Top = 13
           Width = 821
-          Height = 536
+          Height = 641
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -348,17 +348,17 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Left = 10
             Top = 388
             Width = 800
-            Height = 136
+            Height = 119
             Hint = ''
             ShowHint = True
-            DataField = 'Inf_Complementares'
+            DataField = 'Inf_Compl'
             DataSource = dsNotas
             BorderStyle = ubsInset
             ParentFont = False
             Font.Name = 'MS Sans Serif'
             Font.Style = [fsBold]
             TabOrder = 16
-            FieldLabel = 'Observa'#231#245'es'
+            FieldLabel = 'Informa'#231#245'es adicionais (Fisco)'
             FieldLabelWidth = 125
             FieldLabelSeparator = ' '
           end
@@ -645,6 +645,24 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
               '0'
               '1'
               '2')
+          end
+          object UniDBMemo1: TUniDBMemo
+            Left = 10
+            Top = 510
+            Width = 800
+            Height = 119
+            Hint = ''
+            ShowHint = True
+            DataField = 'Inf_Compl2'
+            DataSource = dsNotas
+            BorderStyle = ubsInset
+            ParentFont = False
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            TabOrder = 19
+            FieldLabel = 'Informa'#231#245'es complementares'
+            FieldLabelWidth = 125
+            FieldLabelSeparator = ' '
           end
         end
       end
@@ -1374,7 +1392,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       OnClick = bSalvarClick
     end
     object bFechar: TUniSpeedButton
-      Left = 468
+      Left = 472
       Top = 0
       Width = 41
       Height = 35
@@ -1387,21 +1405,20 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       ImageIndex = 7
       TabOrder = 7
       OnClick = bFecharClick
+      ExplicitLeft = 468
     end
-    object bXML: TUniSpeedButton
+    object UniButton1: TUniButton
       Left = 362
       Top = 0
-      Width = 106
+      Width = 110
       Height = 35
-      Hint = 'Cancelar modifica'#231#245'es feitas no registro corrente.'
-      Caption = 'Importa NF-e'
+      Hint = ''
+      Caption = 'Importar NF-e'
       Align = alLeft
-      ParentColor = False
-      IconAlign = iaCenter
+      TabOrder = 8
       Images = UniMainModule.imgBotoes
       ImageIndex = 9
-      TabOrder = 8
-      OnClick = bCancelarClick
+      OnClick = UniButton1Click
     end
   end
   object UniPanel3: TUniPanel
@@ -2242,8 +2259,8 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from NotasFiscais where Emissao = '#39'T'#39)
-    Left = 101
-    Top = 122
+    Left = 102
+    Top = 121
     object NotasEmpresa: TStringField
       FieldName = 'Empresa'
       Origin = 'Empresa'
@@ -2277,10 +2294,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       FixedChar = True
       Size = 2
     end
-    object NotasFUNDAP: TBooleanField
-      FieldName = 'FUNDAP'
-      Origin = 'FUNDAP'
-    end
     object NotasLucro: TBCDField
       FieldName = 'Lucro'
       Origin = 'Lucro'
@@ -2304,22 +2317,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       FieldName = 'Inscricao_Substituto'
       Origin = 'Inscricao_Substituto'
       Size = 15
-    end
-    object NotasInf_Complementares: TMemoField
-      FieldName = 'Inf_Complementares'
-      Origin = 'Inf_Complementares'
-      BlobType = ftMemo
-    end
-    object NotasInf_Complementares2: TMemoField
-      FieldName = 'Inf_Complementares2'
-      Origin = 'Inf_Complementares2'
-      BlobType = ftMemo
-    end
-    object NotasEstado: TStringField
-      FieldName = 'Estado'
-      Origin = 'Estado'
-      FixedChar = True
-      Size = 2
     end
     object NotasTransportador_Codigo: TIntegerField
       FieldName = 'Transportador_Codigo'
@@ -2394,19 +2391,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       FieldName = 'Motivo_Cancelamento'
       Origin = 'Motivo_Cancelamento'
       Size = 60
-    end
-    object NotasNota_Referencia: TSmallintField
-      FieldName = 'Nota_Referencia'
-      Origin = 'Nota_Referencia'
-    end
-    object NotasData_Referencia: TSQLTimeStampField
-      FieldName = 'Data_Referencia'
-      Origin = 'Data_Referencia'
-    end
-    object NotasChave_Referencoa: TStringField
-      FieldName = 'Chave_Referencoa'
-      Origin = 'Chave_Referencoa'
-      Size = 44
     end
     object NotasNFe_Lote: TFMTBCDField
       FieldName = 'NFe_Lote'
@@ -3261,24 +3245,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       FieldName = 'ES'
       Origin = 'ES'
     end
-    object NotasCFOP: TStringField
-      FieldName = 'CFOP'
-      Origin = 'CFOP'
-      FixedChar = True
-      Size = 4
-    end
     object NotasLancamento_Financeiro: TIntegerField
       FieldName = 'Lancamento_Financeiro'
     end
     object NotasData_ES: TDateField
       FieldName = 'Data_ES'
       Origin = 'Data_ES'
-    end
-    object NotasHora_ES: TStringField
-      FieldName = 'Hora_ES'
-      Origin = 'Hora_ES'
-      FixedChar = True
-      Size = 5
     end
     object NotasData_Emissao: TDateField
       FieldName = 'Data_Emissao'
@@ -3287,6 +3259,38 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object NotasNota_id: TIntegerField
       FieldName = 'Nota_id'
       Origin = 'Nota_id'
+    end
+    object NotasHora_Emissao: TTimeField
+      FieldName = 'Hora_Emissao'
+      Origin = 'Hora_Emissao'
+    end
+    object NotasHora_ES: TTimeField
+      FieldName = 'Hora_ES'
+      Origin = 'Hora_ES'
+    end
+    object NotasInf_Compl: TMemoField
+      FieldName = 'Inf_Compl'
+      Origin = 'Inf_Compl'
+      BlobType = ftMemo
+    end
+    object NotasInf_Compl2: TMemoField
+      FieldName = 'Inf_Compl2'
+      Origin = 'Inf_Compl2'
+      BlobType = ftMemo
+    end
+    object NotasNota_Ref: TSmallintField
+      FieldName = 'Nota_Ref'
+      Origin = 'Nota_Ref'
+    end
+    object NotasData_Ref: TSQLTimeStampField
+      FieldName = 'Data_Ref'
+      Origin = 'Data_Ref'
+      Required = True
+    end
+    object NotasChave_Ref: TStringField
+      FieldName = 'Chave_Ref'
+      Origin = 'Chave_Ref'
+      Size = 44
     end
   end
   object dsNotas: TDataSource
@@ -3365,7 +3369,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     Top = 370
   end
   object Operacao: TFDQuery
-    Active = True
     Connection = UniMainModule.Conecta
     UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True

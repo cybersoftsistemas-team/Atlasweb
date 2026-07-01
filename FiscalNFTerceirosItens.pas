@@ -289,14 +289,32 @@ type
     ItensNFComplementar: TBooleanField;
     cProduto: TUniDBLookupComboBox;
     ItensNFNota_id: TIntegerField;
+    Embarques: TFDQuery;
+    dsEmbarques: TDataSource;
+    CSTICMSTabA: TFDQuery;
+    dsCSTICMSTabA: TDataSource;
+    dsCSTICMSTabB: TDataSource;
+    CSTICMSTabB: TFDQuery;
+    CSTIPI: TFDQuery;
+    dsCSTIPI: TDataSource;
+    UniDBLookupComboBox1: TUniDBLookupComboBox;
+    CSTCBS: TFDQuery;
+    dsCSTCBS: TDataSource;
+    CSTIBS: TFDQuery;
+    dsCSTIBS: TDataSource;
+    CSTPIS: TFDQuery;
+    dsCSTPIS: TDataSource;
+    CSTCOFINS: TFDQuery;
+    dsCSTCOFINS: TDataSource;
     procedure UniFrameCreate(Sender: TObject);
     procedure cProcesso_ImpExit(Sender: TObject);
     procedure cProcesso_ExpExit(Sender: TObject);
   private
     { Private declarations }
+    mEmpresa: string;
   public
     { Public declarations }
-    constructor Create(aOwner: TComponent); reintroduce;
+    constructor Create(aOwner: TComponent; pEmpresa: string); reintroduce;
   end;
 
 implementation
@@ -315,9 +333,10 @@ begin
      cProcesso_Exp.Enabled := cProcesso_Imp.Text = '';
 end;
 
-constructor TfFiscalNFTerceirosItens.Create(aOwner: TComponent);
+constructor TfFiscalNFTerceirosItens.Create(aOwner: TComponent; pEmpresa: string);
 begin
     inherited Create(aOwner);
+    mEmpresa := pEmpresa;
 end;
 
 procedure TfFiscalNFTerceirosItens.UniFrameCreate(Sender: TObject);
@@ -348,8 +367,8 @@ begin
           open;
      end;
      with CFOP do begin
-          sql.Clear;
-          sql.Add('select Codigo');
+          sql.clear;
+          sql.add('select Codigo');
           sql.add('      ,Descricao');
           sql.add('from CFOP');
           sql.add('where Desativada <> 1');
@@ -359,21 +378,94 @@ begin
           open;
      end;
      with ProcessoImp do begin
-          sql.Clear;
-          sql.Add('select Processo');
+          sql.clear;
+          sql.add('select Processo');
           sql.add('      ,DUIMP');
           sql.add('from ProcessosImp');
-          sql.add('where Desativado <> 1');
+          sql.add('where Empresa = :pEmp');
+          sql.add('and Desativado <> 1');
           sql.add('order by Processo');
+          parambyname('pEmp').value := mEmpresa;
           open;
      end;
      with ProcessoExp do begin
-          sql.Clear;
-          sql.Add('select Processo');
+          sql.clear;
+          sql.add('select Processo');
           sql.add('      ,DUE');
           sql.add('from ProcessosExp');
-          sql.add('where Desativado <> 1');
+          sql.add('where Empresa = :pEmp');
+          sql.add('and Desativado <> 1');
           sql.add('order by Processo');
+          parambyname('pEmp').value := mEmpresa;
+          open;
+     end;
+     with Embarques do begin
+          sql.clear;
+          sql.add('select Codigo');
+          sql.add('      ,Navio');
+          sql.add('      ,Navio_Nome = (select Nome from Navios where Codigo = Navio)');
+          sql.add('      ,Processo');
+          sql.add('from Embarques');                                                            
+          sql.add('where Empresa = :pEmp');
+          sql.add('order by Processo, Navio');
+          parambyname('pEmp').value := mEmpresa;
+          open;
+     end;
+     with CSTICMSTabA do begin
+          sql.clear;
+          sql.add('select Codigo');
+          sql.add('      ,Descricao');
+          sql.add('from CSTICMSTabA');                                                            
+          sql.add('order by Codigo');
+          open;
+     end;
+     with CSTICMSTabB do begin
+          sql.clear;
+          sql.add('select Codigo');
+          sql.add('      ,Descricao');
+          sql.add('from CSTICMSTabA');                                                            
+          sql.add('order by Codigo');
+          open;
+     end;
+     with CSTIPI do begin
+          sql.clear;
+          sql.add('select Codigo');
+          sql.add('      ,Descricao');
+          sql.add('from CSTIPI');                                                            
+          sql.add('where ES in(0, 2)');
+          sql.add('order by Codigo');
+          open;
+     end;
+     with CSTCBS do begin
+          sql.clear;
+          sql.add('select Codigo');
+          sql.add('      ,Descricao');
+          sql.add('from CSTCBS');                                                            
+          sql.add('order by Codigo');
+          open;
+     end;
+     with CSTIBS do begin
+          sql.clear;
+          sql.add('select Codigo');
+          sql.add('      ,Descricao');
+          sql.add('from CSTIBS');                                                            
+          sql.add('order by Codigo');
+          open;
+     end;
+     with CSTPIS do begin
+          sql.clear;
+          sql.add('select Codigo');
+          sql.add('      ,Descricao');
+          sql.add('from CSTPIS');                                                            
+          sql.add('order by Codigo');
+          open;
+     end;
+     with CSTCOFINS do begin
+          sql.clear;
+          sql.add('select Codigo');
+          sql.add('      ,Descricao');
+          sql.add('from CSTCOFINS');                                                            
+          sql.add('order by Codigo');
           open;
      end;
 

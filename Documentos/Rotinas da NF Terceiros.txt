@@ -68,9 +68,30 @@ SALVAR ITENS
 =============================================================================================================================
 IMPORTAR XML 
 =============================================================================================================================
-[ ] Importar xml de nota fiscal de terceiros.
-[ ] Importar xml de CTR.
-[ ] 
+[  ] Importar xml de nota fiscal de terceiros.
+[  ] Importar xml de CTR.
+
+CAMPOS QUE PRECISAM VERIFICAR
+-----------------------------
+[  ] Declaracao_Numero
+[  ] Declaracao_Data
+[  ] Inscricao_Substituto
+[  ] Modalidade_Pgto
+[  ] Complementar
+[  ] Devolucao
+[  ] Ajuste
+
+
+
+
+[  ] Verificar Transportador quando houve se esta cadastrado, não estando cadastro novo.
+
+
+
+
+
+
+
 
 =============================================================================================================================
 MANIFESTAR NOTA FISCAL DE TERCEIROS
