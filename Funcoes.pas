@@ -458,6 +458,7 @@ end;
 procedure LogDados(Tabela: TDataSet; Descricao, Estado:String);
 var
   i:Integer;
+  NomeTab: string;
 begin
       with uniMainModule, log do begin
            sql.Clear;
@@ -499,7 +500,6 @@ begin
                    FieldByName('Computador').AsString := NomeComputador;
               Post;
            end;
-
            close;
       end;
 end;
@@ -508,62 +508,29 @@ end;
 procedure LogErros(Tabela, Operacao, Descricao:String);
 begin
       with uniMainModule, log do begin
-           sql.Clear;
-           sql.Add('select top 1 * from Log order by Data desc');
-           open;
-           append;
-                FieldByName('Data').Value          := now;
-                FieldByName('Usuario').AsString    := Trim(Main.MainForm.lUser.Text);
-                FieldByName('Tabela').AsString     := Tabela;
-                FieldByName('Operacao').Value      := Operacao;
-                FieldByName('Descricao').Value     := Descricao;
-                FieldByName('Computador').AsString := NomeComputador;
-                FieldByName('Modulo').Value        := Main.MainForm.PagePrincipal.ActivePage.Caption;
-                FieldByName('IP_Cliente').Value    := Main.MainForm.UniApplication.RemoteAddress;
-                FieldByName('Sessao').Value        := Main.MainForm.UniSession.NewId.ToString;
-                FieldByName('Empresa').asString    := mEmpresaAtiva;
-           post;
-           close;
+           try
+              sql.Clear;
+              sql.Add('select top 1 * from Log order by Data desc');
+              open;
+              append;
+                   FieldByName('Data').Value          := now;
+                   FieldByName('Usuario').AsString    := Trim(Main.MainForm.lUser.Text);
+                   FieldByName('Tabela').AsString     := Tabela;
+                   FieldByName('Operacao').Value      := Operacao;
+                   FieldByName('Descricao').Value     := Descricao;
+                   FieldByName('Computador').AsString := NomeComputador;
+                   FieldByName('Modulo').Value        := Main.MainForm.PagePrincipal.ActivePage.Caption;
+                   FieldByName('IP_Cliente').Value    := Main.MainForm.UniApplication.RemoteAddress;
+                   FieldByName('Sessao').Value        := Main.MainForm.UniSession.NewId.ToString;
+                   FieldByName('Empresa').asString    := mEmpresaAtiva;
+              post;
+              close;
+           except
+              //
+           end;
       end;
 end;
 
-// Função Pesquisa genérica do sistema.
-{
-function Pesquisa(tQuery:TFDQuery; Tabela, CampoChave, CampoPesq, Busca:string):string;
-var
-  tTemp: TFDQuery;
-begin
-//SHOWMESSAGEn(tQuery.Table.Name);
-     Pesquisa := '';
-     tTemp    := TFDQuery.Create(nil);
-
-     if trim(CampoChave) = '' then CampoChave := CampoPesq;
-     
-     with tTemp do begin
-          Connection := uniMainModule.Conecta;
-          sql.Clear;
-          sql.add('select '+CampoChave);
-          sql.add('from '+Tabela);
-          sql.add('where '+CampoPesq+' like '+quotedstr('%'+Busca+'%'));
-          Open;
-          if recordcount > 0 then begin
-             tQuery.Locate(CampoChave, FieldByName(CampoChave).asstring, [loCaseInsensitive]);
-             Pesquisa := tQuery.FieldByName(CampoChave).AsString;
-          end else begin
-             sql.Clear;
-             sql.add('select '+CampoChave+' from '+Tabela+' where '+CampoPesq+' like '+quotedstr('%'+Busca+'%'));
-             Open;
-             if recordcount > 0 then begin
-                tQuery.Locate(CampoChave, FieldByName(CampoChave).asstring, [loCaseInsensitive]);
-                Pesquisa := tQuery.FieldByName(CampoChave).AsString;
-             end else begin
-                MessageDlg('Nenhum registro encontrado!', mtError, [mbOK]);
-             end;
-          end;
-     end;
-     tTemp.Free;
-end;
-}
 function Pesquisa(Tabela:TFDQuery; CampoChave, CampoPesq, Busca:string):string;
 var
   tTemp: TFDQuery;

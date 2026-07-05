@@ -261,7 +261,7 @@ begin
       with PedidosNF do begin
            try
                LigaBotoes(false);
-               //PanelDados1.Enabled := true;
+               PanelDados1.Enabled := true;
                Append;
                     FieldByName('Empresa').Value := UniMainModule.mEmpresaAtiva;
                cOperacao.SetFocus;
@@ -554,7 +554,7 @@ begin
      try
          LigaBotoes(false);
          PedidosNF.Edit;
-         //PanelDados1.Enabled := true;
+         PanelDados1.Enabled := true;
          cOperacao.setfocus;
      except
         MessageDlgN('Falha desconhecida, não pode editar o "Pedido" !', mtError, []);
@@ -850,7 +850,7 @@ var
   FVeiculo: TfFatPedidoVeiculo;
 begin
      FVeiculo := TfFatPedidoVeiculo.Create(UniApplication);
-     FVeiculo.FramePedido := Self;   // <-- AQUI PASSA A REFERÊNCIA
+     FVeiculo.Pedido_id := PedidosNF.FieldByName('Pedido').asinteger;
      FVeiculo.ShowModal;
 end;
 

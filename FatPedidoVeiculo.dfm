@@ -5,6 +5,7 @@ object fFatPedidoVeiculo: TfFatPedidoVeiculo
   ClientWidth = 558
   Caption = 'DADOS DO TRANSPORTE'
   Color = clWindow
+  OnShow = UniFormShow
   BorderStyle = bsNone
   OldCreateOrder = False
   MonitoredKeys.Keys = <>
@@ -84,7 +85,7 @@ object fFatPedidoVeiculo: TfFatPedidoVeiculo
     Caption = ''
     object UniPanel3: TUniPanel
       Left = 16
-      Top = 359
+      Top = 360
       Width = 524
       Height = 222
       Hint = ''
@@ -110,6 +111,7 @@ object fFatPedidoVeiculo: TfFatPedidoVeiculo
         Hint = ''
         Margins.Bottom = 1
         CharCase = ecUpperCase
+        MaxLength = 7
         BorderStyle = ubsInset
         Text = ''
         TabOrder = 1
@@ -144,6 +146,7 @@ object fFatPedidoVeiculo: TfFatPedidoVeiculo
         Margins.Top = 1
         Margins.Bottom = 1
         CharCase = ecUpperCase
+        MaxLength = 15
         BorderStyle = ubsInset
         Text = ''
         TabOrder = 3
@@ -168,7 +171,7 @@ object fFatPedidoVeiculo: TfFatPedidoVeiculo
     end
     object UniPanel2: TUniPanel
       Left = 16
-      Top = 132
+      Top = 133
       Width = 524
       Height = 222
       Hint = ''
@@ -193,12 +196,16 @@ object fFatPedidoVeiculo: TfFatPedidoVeiculo
         Hint = ''
         Margins.Bottom = 1
         CharCase = ecUpperCase
+        MaxLength = 7
         BorderStyle = ubsInset
         Text = ''
         TabOrder = 1
         ClearButton = True
+        InputMask.MaskChar = ' '
+        InputMask.UnmaskText = True
         FieldLabel = 'Placa'
         FieldLabelWidth = 80
+        InputType = 'text'
       end
       object cVeiEstado: TUniEdit
         Left = 4
@@ -225,6 +232,7 @@ object fFatPedidoVeiculo: TfFatPedidoVeiculo
         Margins.Top = 1
         Margins.Bottom = 1
         CharCase = ecUpperCase
+        MaxLength = 15
         BorderStyle = ubsInset
         Text = ''
         TabOrder = 3
@@ -250,7 +258,7 @@ object fFatPedidoVeiculo: TfFatPedidoVeiculo
       Left = 16
       Top = 18
       Width = 524
-      Height = 109
+      Height = 110
       Hint = ''
       Margins.Left = 10
       Margins.Top = 10
@@ -275,12 +283,17 @@ object fFatPedidoVeiculo: TfFatPedidoVeiculo
         Margins.Top = 1
         Margins.Bottom = 1
         CharCase = ecUpperCase
+        MaxLength = 14
         BorderStyle = ubsInset
         Text = ''
         TabOrder = 2
         ClearButton = True
+        InputMask.Mask = '999.999.999-99'
+        InputMask.MaskChar = ' '
+        InputMask.UnmaskText = True
         FieldLabel = 'CPF'
         FieldLabelWidth = 80
+        InputType = 'text'
       end
       object cRG: TUniEdit
         Left = 4
@@ -291,6 +304,7 @@ object fFatPedidoVeiculo: TfFatPedidoVeiculo
         Margins.Top = 1
         Margins.Bottom = 1
         CharCase = ecUpperCase
+        MaxLength = 15
         BorderStyle = ubsInset
         Text = ''
         TabOrder = 3
@@ -313,7 +327,7 @@ object fFatPedidoVeiculo: TfFatPedidoVeiculo
         FieldLabel = 'Motorista'
         FieldLabelWidth = 80
         IconItems = <>
-        OnExit = cMotoristaExit
+        OnChange = cMotoristaChange
       end
     end
   end

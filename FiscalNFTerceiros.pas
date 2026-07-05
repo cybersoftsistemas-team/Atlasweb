@@ -7,23 +7,23 @@ uses
   uniGUIFrame, UniPageControl, uniDBGrid, uniPanel, uniDBLookUpComboBox, uniDBCheckBox, uniScrollBox, uniSpeedButton, uniDateTimePicker,
   uniDBDateTimePicker, uniButton, uniBitBtn, uniDBNavigator, uniEdit, uniDBEdit, uniDBMemo, uniBasicGrid, uniGUIBaseClasses, uniComboBox, UniGroupBox, uniSpinEdit, unimToggle,
   FireDAC.Comp.Client, Funcoes, Data.DB, uniSweetAlert, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, uniMemo, uniRadioGroup, uniCheckBox, uniMultiItem,
-  uniDBComboBox, uniLabel, uniImage, uniDBRadioGroup, Dialogo, Dateutils, uniFileUpload;
+  uniDBComboBox, uniLabel, uniImage, uniDBRadioGroup, Dialogo, Dateutils, uniFileUpload, uniStringGrid;
 
 type
   TfFiscalNFTerceiros = class(TuniFrame)
     Pasta: TUniPageControl;
-    uniTabSheet6: TUniTabSheet;
+    TabCapa: TUniTabSheet;
     Panel2: TUniPanel;
     Transportador: TFDQuery;
     TransportadorCodigo: TIntegerField;
     TransportadorNome: TStringField;
     TransportadorCNPJ: TStringField;
     dsTransportador: TDataSource;
-    uniTabSheet3: TUniTabSheet;
-    uniTabSheet4: TUniTabSheet;
+    TabSerial: TUniTabSheet;
+    TabLote: TUniTabSheet;
     GradeSerial: TUniDBGrid;
     GradeLote: TUniDBGrid;
-    uniTabSheet5: TUniTabSheet;
+    TabManif: TUniTabSheet;
     GradeManif: TUniDBGrid;
     bSelTodos: TUniButton;
     bSelNehum: TUniButton;
@@ -117,13 +117,12 @@ type
     cValorIBS: TUniDBFormattedNumberEdit;
     ValorBCCBS: TUniDBFormattedNumberEdit;
     cValorCBS: TUniDBFormattedNumberEdit;
-    UniTabSheet1: TUniTabSheet;
+    TabItem: TUniTabSheet;
     UniTabSheet2: TUniTabSheet;
     Grade: TUniDBGrid;
     pBarraPesq: TUniPanel;
     cPesquisa: TUniEdit;
     bPesquisa: TUniSpeedButton;
-    NotasEmpresa: TStringField;
     NotasNota: TIntegerField;
     NotasEmissao: TStringField;
     NotasPedido: TIntegerField;
@@ -158,13 +157,6 @@ type
     NotasNFe_DataProtocolo: TSQLTimeStampField;
     NotasDPEC: TBooleanField;
     NotasOperacao_Veiculo: TStringField;
-    NotasTransporte_Placa: TStringField;
-    NotasTransporte_PlacaUF: TStringField;
-    NotasTransporte_NomeMotorista: TStringField;
-    NotasTransporte_RGMotorista: TStringField;
-    NotasTransporte_CPFMotorista: TStringField;
-    NotasTransporte_Lacre: TMemoField;
-    NotasTransporte_CodigoANTT: TStringField;
     NotasTaxa_Cambio: TBCDField;
     NotasBeneficio_Fiscal: TSmallintField;
     NotasDPEC_Protocolo: TStringField;
@@ -214,11 +206,6 @@ type
     NotasTipo_Pagamento: TSmallintField;
     NotasForma_Pagamento: TSmallintField;
     NotasLote: TStringField;
-    NotasReboque_Placa: TStringField;
-    NotasReboque_UF: TStringField;
-    NotasReboque_ANTT: TStringField;
-    NotasReboque_Lacre: TMemoField;
-    NotasEntrega_Retirada: TStringField;
     NotasCTE: TBooleanField;
     NotasTipo_Processo: TStringField;
     NotasIndicador_Intermediario: TSmallintField;
@@ -352,8 +339,6 @@ type
     ItensNCM: TStringField;
     ItensQuantidade: TBCDField;
     ItensValor_Unitario: TBCDField;
-    ItensEmpresa: TStringField;
-    ItensChave: TStringField;
     ItensCFOP: TStringField;
     ItensEstoque_Minimo: TBCDField;
     ItensUM: TStringField;
@@ -367,7 +352,51 @@ type
     NotasNota_Ref: TSmallintField;
     NotasData_Ref: TSQLTimeStampField;
     NotasChave_Ref: TStringField;
-    UniButton1: TUniButton;
+    bXML: TUniButton;
+    TabXML: TUniTabSheet;
+    UniPanel1: TUniPanel;
+    UniPanel2: TUniPanel;
+    bArquivos: TUniFileUploadButton;
+    bXMLSair: TUniSpeedButton;
+    UniContainerPanel1: TUniContainerPanel;
+    cDataEnt: TUniDateTimePicker;
+    cXMLOper: TUniDBLookupComboBox;
+    cRamo: TUniDBLookupComboBox;
+    cTipoProd: TUniDBLookupComboBox;
+    cCCusto: TUniDBLookupComboBox;
+    cProcImp: TUniDBLookupComboBox;
+    cProcExp: TUniDBLookupComboBox;
+    cDUIMP: TUniEdit;
+    cDUE: TUniEdit;
+    cEmb: TUniDBLookupComboBox;
+    cOrig: TUniDBLookupComboBox;
+    cFinal: TUniDBLookupComboBox;
+    cEscala: TUniCheckBox;
+    UniGroupBox1: TUniGroupBox;
+    cImoAliq: TUniFormattedNumberEdit;
+    cImoBC: TUniFormattedNumberEdit;
+    cImoValor: TUniFormattedNumberEdit;
+    cUso: TUniComboBox;
+    cSubst: TUniCheckBox;
+    cPreco: TUniGroupBox;
+    cLucro: TUniFormattedNumberEdit;
+    cComissao: TUniFormattedNumberEdit;
+    cCustoFin: TUniFormattedNumberEdit;
+    cCustoFixo: TUniFormattedNumberEdit;
+    cMargem: TUniFormattedNumberEdit;
+    gPerfil: TUniGroupBox;
+    cIsento: TUniCheckBox;
+    cZona_Franca: TUniCheckBox;
+    cInscricaoST: TUniCheckBox;
+    cMicro: TUniCheckBox;
+    UniContainerPanel2: TUniContainerPanel;
+    cLog: TUniStringGrid;
+    NotasEmpresa: TStringField;
+    ItensEmpresa: TStringField;
+    RamosAtv: TFDQuery;
+    dsRamo: TDataSource;
+    CentroCusto: TFDQuery;
+    dsCentroCusto: TDataSource;
     procedure bSairClick(Sender: TObject);
     procedure UniFrameCreate(Sender: TObject);
     procedure bItensClick(Sender: TObject);
@@ -405,7 +434,9 @@ type
     procedure bEditItensClick(Sender: TObject);
     procedure bExcItensClick(Sender: TObject);
     procedure bGravItensClick(Sender: TObject);
-    procedure UniButton1Click(Sender: TObject);
+    procedure bArquivosMultiCompleted(Sender: TObject; Files: TUniFileInfoArray);
+    procedure bXMLClick(Sender: TObject);
+    procedure bXMLSairClick(Sender: TObject);
   private
     function PeriodoBloqueado: boolean;
     function Movimentado: boolean;
@@ -425,7 +456,7 @@ type
 
 implementation
 
-uses MainModule, Main, ValidaCRUD, FiscalNFTerceirosItens, FiscalNFTerceirosXML;
+uses MainModule, Main, ValidaCRUD, FiscalNFTerceirosItens, ImportaNFe;
 
 var
   FrameItem: TfFiscalNFTerceirosItens;
@@ -437,9 +468,64 @@ begin
      MainForm.PagePrincipal.Pages[MainForm.PagePrincipal.ActivePageIndex].free;
 end;
 
-procedure TfFiscalNFTerceiros.UniButton1Click(Sender: TObject);
+procedure TfFiscalNFTerceiros.bArquivosMultiCompleted(Sender: TObject; Files: TUniFileInfoArray);
+var
+  i: Integer;
+  Importador: TImportadorNFe;
+  Param: TImportaNFeParams;            
 begin
-     fFiscalNFTerceirosXML.showModaL;
+     Importador := TImportadorNFe.Create(UniMainModule.Conecta);
+     Param      := TImportaNFeParams.Create;     
+                               
+     Importador.NFe.Operacao   := Operacao.fieldbyname('Codigo').asinteger;
+     Importador.NFe.MovInv     := Operacao.fieldbyname('Movimenta_Inventario').asboolean;
+     Importador.NFe.MovEst     := Operacao.fieldbyname('Movimenta_Estoque').asboolean;
+     Importador.NFe.MovEstRep  := Operacao.fieldbyname('Movimenta_EstoqueRep').asboolean;
+     Importador.NFe.Empresa    := Empresas.FieldByName('CNPJ').asstring;
+     Importador.NFe.dEntrada   := cDataEnt.DateTime;
+     Importador.NFe.hEntrada   := time;
+     Importador.NFe.EmitRamo   := RamosAtv.fieldbyname('Codigo').asinteger;
+     Importador.NFe.EmitIsento := cIsento.Checked;
+     Importador.NFe.EmitZonaF  := cZona_Franca.Checked;
+     Importador.NFe.EmitIST    := cInscricaoST.Checked;
+     Importador.NFe.EmitMicro  := cMicro.Checked;
+     Importador.NFe.CentCus    := CentroCusto.fieldbyname('Codigo').asstring;
+
+     Param.SubstNF := cSubst.Checked;
+     
+     try
+        for i := 0 to high(Files) do begin
+            cLog.RowCount := cLog.RowCount+1;
+            try
+               Param.Arquivo := Files[i].CacheFile;
+               Importador.ImportarXML(Param);
+               
+               cLog.cells[0, i] := Files[i].OriginalFileName;
+               clog.cells[1, i] := 'SUCESSO';
+            except
+               on E: Exception do begin
+                  cLog.Cells[0, i] := Files[i].OriginalFileName;
+                  clog.cells[1, i] := 'ERRO: '+E.Message;
+               end;
+            end;
+        end;
+     finally
+        Importador.Free;
+     end;
+end;
+
+procedure TfFiscalNFTerceiros.bXMLClick(Sender: TObject);
+var
+  i: integer;
+begin
+     for i := 0 to pred(Pasta.PageCount) do begin
+         Pasta.Pages[i].Enabled := false;
+     end;
+     pBarraNav.Enabled := false;
+     TabXML.TabVisible := true;
+     TabXML.Enabled    := true;
+     Pasta.ActivePage  := TabXML;
+     cDataEnt.DateTime := now;
 end;
 
 procedure TfFiscalNFTerceiros.UniFrameCreate(Sender: TObject);
@@ -480,11 +566,10 @@ begin
            sql.add('      ,Quantidade');
            sql.add('      ,Valor_Unitario');
            sql.add('      ,Empresa');
-           sql.add('      ,Chave');
            sql.add('      ,CFOP');
            sql.add('      ,Estoque_Minimo = isnull((select Estoque_MinimoPerc from Produtos where Codigo = Codigo_Mercadoria), 0)');
            sql.add('from NotasItens');
-           sql.add('order by Empresa, Chave');
+           sql.add('order by Empresa');
            open;
       end;
       with Empresas do begin
@@ -577,6 +662,17 @@ begin
       with NaturezaFrete do begin
            sql.Clear;
            sql.Add('select Codigo, Descricao from NaturezaFrete order by Descricao');
+           Open;
+      end;
+      with RamosAtv do begin
+           sql.clear;
+           sql.add('select Codigo, Descricao from RamoAtividade where isnull(Comissionado, 0) <> 1 order by Descricao');
+           Open;
+      end;
+      with CentroCusto do begin
+           sql.clear;
+           sql.add('select Codigo, Nome from CentroCusto where Empresa = :pEmp order by Codigo');
+           ParamByName('pEmp').asstring := Empresas.fieldbyname('CNPJ').asstring;
            Open;
       end;
 end;
@@ -1642,6 +1738,18 @@ begin
 *)
 end;
 
+procedure TfFiscalNFTerceiros.bXMLSairClick(Sender: TObject);
+var
+  i: integer;
+begin
+     TabXML.TabVisible := false;
+      for i := 0 to pred(Pasta.PageCount) do begin
+          Pasta.Pages[i].Enabled := true;
+      end;
+      Pasta.ActivePage  := TabCapa;
+      pBarraNav.Enabled := true;
+end;
+
 procedure TfFiscalNFTerceiros.bManiForaClick(Sender: TObject);
 var
    mSel:integer;
@@ -1697,9 +1805,9 @@ begin
         try
             LigaBotoesItens(false);
             mNomeAba  := 'ITEMS DA NOTA FISCAL: '+FormatFloat('0000', Notas.fieldbyname('Nota').asinteger)+' ('+NotasDestinatario_Nome.asstring+')';
-            FrameItem := TfFiscalNFTerceirosItens.create(uniTabSheet1, UniMainModule.mEmpresaAtiva);
+            FrameItem := TfFiscalNFTerceirosItens.create(TabItem, UniMainModule.mEmpresaAtiva);
             with FrameItem do begin
-                 Parent := uniTabSheet1;
+                 Parent := TabItem;
                  Align  := alClient;
                  with ItensNF do begin
                       sql.clear;
@@ -2033,8 +2141,8 @@ begin
         try
             LigaBotoesItens(false);
             mNomeAba          := 'ITEMS DA NOTA FISCAL: '+FormatFloat('0000', Notas.fieldbyname('Nota').asinteger)+' ('+NotasDestinatario_Nome.asstring+')';
-            FrameItem         := TfFiscalNFTerceirosItens.create(uniTabSheet1, UniMainModule.mEmpresaAtiva);
-            FrameItem.Parent  := uniTabSheet1;
+            FrameItem         := TfFiscalNFTerceirosItens.create(TabItem, UniMainModule.mEmpresaAtiva);
+            FrameItem.Parent  := TabItem;
             FrameItem.Align   := alClient;
             FrameItem.ItensNF.edit;
         except on E: Exception do

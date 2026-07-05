@@ -3,22 +3,34 @@ unit ImportaNFe;
 interface
 
 uses 
-  System.SysUtils, System.Classes, System.DateUtils, System.Generics.Collections, Xml.XMLDoc, Xml.XMLIntf, Xml.adomxmldom, FireDAC.Comp.Client, FireDAC.Stan.Param, Dialogs;
+  System.SysUtils, System.Classes, System.DateUtils, System.Generics.Collections, System.Variants, Xml.XMLDoc, Xml.XMLIntf, Xml.adomxmldom, FireDAC.Comp.Client, FireDAC.Stan.Param, Dialogs;
   
 type
   TNFeItem = class
   public
     Item: Integer;
-    Codigo: String;
-    CodigoBarras: String;
-    Descricao: String;
+    Codigo: integer;
+    CodFab: string;
+    ProcImp: string;
+    ProcExp: string;
+    DUIMP: string;
+    DUE: string;
+    Embar: integer;
+    TipoProd: integer;
+    OrigProd: integer;
+    Escala: boolean;
+    FinalProd: integer;
+    GTIN: string;
+    Descricao: string;
+    DescrAdic: string;
     NCM: String;
     CEST: String;
     CFOP: String;
+    cBenef: string;
     Unidade: String;
     Quantidade: Double;
-    ValorUnitario: Double;
-    ValorTotal: Double;
+    vUnitario: Double;
+    vTotal: Double;
     CSTICMS: String;
     CSTIPI: String;
     CSTPIS: String;
@@ -36,7 +48,8 @@ type
   TNFe = class
   public
     NotaID: Integer;
-    Empresa: Integer;
+    DestCNPJ: string;
+    Empresa: string;
     Numero: Integer;
     Serie: Integer;
     Chave: String;
@@ -45,10 +58,35 @@ type
     dEntrada: TDateTime;
     hEntrada: TDateTime;
     Natureza: String;
+    Operacao: integer;
+    CentCus: string;
+    MovInv: boolean;
+    MovEst: boolean;
+    MovEstRep: boolean;
+    EmitCod: integer;
     EmitCNPJ: String;
+    EmitCPF: String;
     EmitNome: String;
-    DestCNPJ: String;
-    DestNome: String;
+    EmitFant: String;
+    EmitRua: String;
+    EmitNro: String;
+    EmitBairro: String;
+    EmitMun: String;
+    EmitMunNome: String;
+    EmitUF: String;
+    EmitCEP: String;
+    EmitPais: String;
+    EmitTel: String;
+    EmitIE: String;
+    EmitSimples: boolean;
+    EmitMEI: boolean;
+    EmitCompl: string;
+    EmitJur: boolean;
+    EmitRamo: integer;
+    EmitIsento: boolean;
+    EmitZonaF: boolean;
+    EmitIST: boolean;
+    EmitMicro: boolean;
     ValorProdutos: Double;
     ValorFrete: Double;
     ValorSeguro: Double;
@@ -63,7 +101,6 @@ type
     ValorCOFINS: Double;
     ValorTotal: Double;
     Itens: TObjectList<TNFeItem>;
-    Operacao: integer;
     Modelo: string;
     Inf_Compl: widestring;
     Inf_Compl2: widestring;
@@ -84,29 +121,43 @@ type
     constructor Create;
     destructor Destroy; override;
   end;
+  
+type
+  TImportaNFeParams = class
+  public
+    Arquivo: string;
+    SubstNF: boolean;
+  end;
 
 type
   TImportadorNFe = class
   private
     FConn: TFDConnection;
     FNFe: TNFe;
-    function GetValor(Node : IXMLNode; Campo : String):String;
+    function GetValor(Node: IXMLNode; Campo: String):String;
     function ExisteNota:Boolean;
     function GerarNotaID:Integer;
     procedure LerCabecalho(XML:IXMLDocument);
     procedure LerItens(XML:IXMLDocument);
-    procedure GravarCabecalho;
+    procedure GravarCabecalho(Par: TImportaNFeParams);
     procedure GravarItens;
     function StrToFloatXML(const Valor: String): Double;
     function LocalizarInfNFe(XML: IXMLDocument): IXMLNode;
     function GetNode(Node: IXMLNode; const Path: String): IXMLNode;
+    function CadastraFornecedor: integer;
+    function ExisteEmpresa: Boolean;
+    function CadastraProduto(Item: TNFeItem): integer;
   public
-    constructor Create(AConn:TFDConnection);
+    mID: integer;
+    property NFe: TNFe read FNFe;
+    constructor Create(AConn: TFDConnection);
     destructor Destroy; override;
-    function ImportarXML(Empresa, Operacao:Integer;Arquivo:String):Boolean;
+    function ImportarXML(Params: TImportaNFeParams): Boolean;
   end;
 
 implementation
+
+uses FiscalNFTerceiros, Funcoes;
 
 constructor TNFe.Create;
 begin
@@ -122,7 +173,7 @@ end;
 constructor TImportadorNFe.Create(AConn:TFDConnection);
 begin
      FConn := AConn;
-     FNFe := TNFe.Create;
+     FNFe  := TNFe.Create;
 end;
 
 destructor TImportadorNFe.Destroy;
@@ -140,32 +191,58 @@ end;
 
 function TImportadorNFe.GerarNotaID:Integer;
 var
-   Q: TFDQuery;
+   tab: TFDQuery;
 begin
-   Q := TFDQuery.Create(nil);
+   tab := TFDQuery.Create(nil);
    try
-      Q.Connection := FConn;
-      Q.SQL.Text   := 'select isnull(max(Nota_id),0)+1 NotaID from NotasFiscais';
-      Q.Open;
-      Result := Q.FieldByName('NotaID').AsInteger;
+      with tab do begin 
+           Connection := FConn;
+           sql.Text   := 'select isnull(max(Nota_id),0)+1 NotaID from NotasFiscais';
+           open;
+           result := fieldbyname('NotaID').asinteger;
+      end;
    finally
-      Q.Free;
+      tab.Free;
    end;
 end;
 
 function TImportadorNFe.ExisteNota:Boolean;
 var
-   Q: TFDQuery;
+   tab: TFDQuery;
 begin
-     Q := TFDQuery.Create(nil);
+     tab := TFDQuery.Create(nil);
      try
-        Q.Connection := FConn;
-        Q.SQL.Text   := 'select Nota_id from NotasFiscais where Chave = :C ';
-        Q.ParamByName('C').AsString := FNFe.Chave;
-        Q.Open;
-        Result := not Q.IsEmpty;
+        with tab do begin
+             Connection := FConn;
+             SQL.Text   := 'select Nota_id from NotasFiscais where Chave = :Chave ';
+             ParamByName('Chave').AsString := FNFe.Chave;
+             Open;
+             mID    := fieldbyname('Nota_id').asinteger;
+             Result := not IsEmpty;
+        end;
      finally
-        Q.Free;
+        tab.Free;
+     end;
+end;
+
+function TImportadorNFe.ExisteEmpresa:Boolean;
+var
+   tab: TFDQuery;
+begin
+     result := true;
+     if trim(FNFe.DestCNPJ) <> '' then begin
+        tab := TFDQuery.Create(nil);
+        try
+           with tab do begin  
+                Connection := FConn;
+                SQL.Text := 'select CNPJ from Empresas where CNPJ = :pcnpj ';
+                ParamByName('pcnpj').AsString := FNFe.DestCNPJ;
+                Open;
+                Result := not IsEmpty;
+           end;
+        finally
+           tab.Free;
+        end;
      end;
 end;
 
@@ -192,84 +269,12 @@ begin
         if XML.DocumentElement.NodeName = 'NFe' then Result := XML.DocumentElement.ChildNodes.FindNode('infNFe');
 end;
 
-{
-procedure TImportadorNFe.LerCabecalho(XML: IXMLDocument);
-var
-  infNFe, ide, emit, dest, total, ICMSTot, infAdic, Transp, Transporta, Vol, ProtNFe, infProt: IXMLNode;
-begin
-     infNFe := LocalizarInfNFe(XML);
-     if not Assigned(infNFe) then raise Exception.Create('XML inválido.');
-
-     ide        := infNFe.ChildNodes['ide'];
-     emit       := infNFe.ChildNodes['emit'];
-     dest       := infNFe.ChildNodes['dest'];
-     total      := infNFe.ChildNodes['total'];
-     infAdic    := infNFe.ChildNodes['infAdic'];
-     Transp     := infNFe.ChildNodes['transp'];
-     Transporta := Transp.ChildNodes['transporta'];
-     Vol        := Transp.ChildNodes['vol'];
-     ICMSTot    := total.ChildNodes['ICMSTot'];
-     ProtNFe    := infNFe.ChildNodes['protNFe'];
-     infProt    := ProtNFe.ChildNodes['infProt'];
-
-     if GetValor(ide,'dhEmi') <> '' then begin 
-        FNFe.dEmissao := ISO8601ToDate(GetValor(ide,'dhEmi'));
-        FNFe.hEmissao := TimeOf(FNFe.dEmissao);
-     end;
-     if GetValor(ide,'dhSaiEnt') <> '' then begin 
-        FNFe.dEntrada := ISO8601ToDate(GetValor(ide,'dhSaiEnt'));
-        FNFe.hEntrada := TimeOf(FNFe.dEntrada);
-     end;
-     if FNFe.DestCNPJ = '' then FNFe.DestCNPJ := GetValor(dest,'CPF');
-     
-     FNFe.Chave         := Copy(infNFe.Attributes['Id'], 4, 44);
-     FNFe.Numero        := StrToIntDef(GetValor(ide,'nNF'),0);
-     FNFe.Serie         := StrToIntDef(GetValor(ide,'serie'),0);
-     FNFe.Modelo        := GetValor(ide,'mod');
-     FNFe.Natureza      := GetValor(ide,'natOp');
-     FNFe.EmitCNPJ      := GetValor(emit,'CNPJ');
-     FNFe.EmitNome      := GetValor(emit,'xNome');
-     FNFe.DestCNPJ      := GetValor(dest,'CNPJ');
-     FNFe.DestNome      := GetValor(dest,'xNome');
-     FNFe.ValorBCICMS   := StrToFloatXML(GetValor(ICMSTot,'vBC'));
-     FNFe.ValorICMS     := StrToFloatXML(GetValor(ICMSTot,'vICMS'));
-     FNFe.ValorBCST     := StrToFloatXML(GetValor(ICMSTot,'vBCST'));
-     FNFe.ValorST       := StrToFloatXML(GetValor(ICMSTot,'vST'));
-     FNFe.ValorProdutos := StrToFloatXML(GetValor(ICMSTot,'vProd'));
-     FNFe.ValorFrete    := StrToFloatXML(GetValor(ICMSTot,'vFrete'));
-     FNFe.ValorSeguro   := StrToFloatXML(GetValor(ICMSTot,'vSeg'));
-     FNFe.ValorDesconto := StrToFloatXML(GetValor(ICMSTot,'vDesc'));
-     FNFe.ValorDespesas := StrToFloatXML(GetValor(ICMSTot,'vOutro'));
-     FNFe.ValorIPI      := StrToFloatXML(GetValor(ICMSTot,'vIPI'));
-     FNFe.ValorPIS      := StrToFloatXML(GetValor(ICMSTot,'vPIS'));
-     FNFe.ValorCOFINS   := StrToFloatXML(GetValor(ICMSTot,'vCOFINS'));
-     FNFe.ValorTotal    := StrToFloatXML(GetValor(ICMSTot,'vNF'));
-     FNFe.Inf_Compl     := GetValor(infAdic,'infAdFisco');
-     FNFe.Inf_Compl2    := GetValor(infAdic,'infCpl');
-     FNFe.Mod_Frete     := StrToIntDef(GetValor(Transp,'modFrete'),0);
-     FNFe.Trans_CNPJ    := GetValor(Transporta,'CNPJ');
-     FNFe.Trans_Nome    := GetValor(Transporta,'xNome');
-     FNFe.Trans_IE      := GetValor(Transporta,'IE');
-     FNFe.Trans_End     := GetValor(Transporta,'xEnder');
-     FNFe.Trans_Mun     := GetValor(Transporta,'xMun');
-     FNFe.Trans_UF      := GetValor(Transporta,'UF');
-     FNFe.Vol_Qtde      := StrToFloatXML(GetValor(Vol,'qVol'));
-     FNFe.Vol_Esp       := GetValor(Vol,'esp');
-     FNFe.Vol_PesoL     := StrToFloatXML(GetValor(Vol,'pesoL'));
-     FNFe.Vol_PesoB     := StrToFloatXML(GetValor(Vol,'pesoB'));
-
-     FNFe.Num_Prot      := GetValor(infProt,'nProt');
-     //FNFe.Data_Prot     := ISO8601ToDate(GetValor(infProt,'dhRecbto'));
-     FNFe.Data_Prot     := date;
-     
-end;
-}
-
 procedure TImportadorNFe.LerCabecalho(XML: IXMLDocument);
 var
    infNFe
   ,ide
   ,emit
+  ,emitEnd
   ,dest
   ,total
   ,ICMSTot
@@ -280,13 +285,17 @@ var
   ,Root
   ,ProtNFe
   ,infProt: IXMLNode;
+   ttmp: TFDQuery;
 begin
+     ttmp := TFDQuery.Create(nil);
+     ttmp.Connection := FConn;
+     
      infNFe := LocalizarInfNFe(XML);
-     if not Assigned(infNFe) then
-       raise Exception.Create('XML inválido.');
+     if not Assigned(infNFe) then raise Exception.Create('XML inválido.');
 
      ide     := infNFe.ChildNodes.FindNode('ide');
      emit    := infNFe.ChildNodes.FindNode('emit');
+     emitEnd := emit.ChildNodes.FindNode('enderEmit');
      dest    := infNFe.ChildNodes.FindNode('dest');
      total   := infNFe.ChildNodes.FindNode('total');
      infAdic := infNFe.ChildNodes.FindNode('infAdic');
@@ -299,7 +308,6 @@ begin
         Transporta := nil;
         Vol := nil;
      end;
-
      if Assigned(total) then
         ICMSTot := total.ChildNodes.FindNode('ICMSTot')
      else
@@ -310,22 +318,52 @@ begin
         FNFe.dEmissao := ISO8601ToDate(GetValor(ide,'dhEmi'));
         FNFe.hEmissao := TimeOf(FNFe.dEmissao);
      end;
-     if GetValor(ide,'dhSaiEnt') <> '' then begin
-        FNFe.dEntrada := ISO8601ToDate(GetValor(ide,'dhSaiEnt'));
-        FNFe.hEntrada := TimeOf(FNFe.dEntrada);
+
+     // Dados da Nota.
+     FNFe.Chave    := Copy(infNFe.Attributes['Id'],4,44);
+     FNFe.Numero   := StrToIntDef(GetValor(ide,'nNF'),0);
+     FNFe.Serie    := StrToIntDef(GetValor(ide,'serie'),0);
+     FNFe.Modelo   := GetValor(ide,'mod');
+     FNFe.Natureza := GetValor(ide,'natOp');
+     FNFe.EmitCNPJ := GetValor(dest,'CNPJ');
+     
+     // Dados do Emitente/Fornecedor.
+     // Procura o fornecedor pelo CNPJ ou CPF, não encontrando cadastra pega o codigo e adiciona a nota fiscal.
+     FNFe.EmitCNPJ    := GetValor(emit,'CNPJ');
+     FNFe.EmitCPF     := GetValor(emit,'CPF');
+     FNFe.EmitNome    := GetValor(emit,'xNome');
+     FNFe.EmitFant    := GetValor(emit,'xFant');
+     FNFe.EmitIE      := GetValor(emit,'IE');
+     FNFe.EmitSimples := StrToIntDef(GetValor(emit,'CRT'),0) in[1, 2];
+     FNFe.EmitMEI     := StrToIntDef(GetValor(emit,'CRT'),0) = 4;
+     FNFe.EmitRua     := GetValor(emitEnd,'xLgr');
+     FNFe.EmitNro     := GetValor(emitEnd,'nro');
+     FNFe.EmitBairro  := GetValor(emitEnd,'xBairro');
+     FNFe.EmitMun     := GetValor(emitEnd,'cMun');
+     FNFe.EmitMunNome := GetValor(emitEnd,'xMun');
+     FNFe.EmitUF      := GetValor(emitEnd,'UF');
+     FNFe.EmitCEP     := GetValor(emitEnd,'CEP');
+     FNFe.EmitPais    := GetValor(emitEnd,'cPais');
+     FNFe.EmitTel     := GetValor(emitEnd,'fone');
+     FNFe.EmitCompl   := GetValor(emitEnd,'xCpl');
+     FNFe.EmitJur     := trim(FNFe.EmitCNPJ) <> '';
+     
+     with ttmp do begin
+          sql.clear;
+          sql.add('select Codigo from Destinatarios where (CNPJ= :pCNPJCPF or CPF = :pCNPJCPF)');
+          parambyname('pCNPJCPF').asstring := trim(FNFe.EmitCNPJ)+trim(FNFe.EmitCPF);
+          open;
+          if fieldbyname('Codigo').asinteger > 0 then begin
+             FNFe.EmitCod := fieldbyname('Codigo').asinteger;
+          end else begin
+             FNFe.EmitCod := CadastraFornecedor;
+          end;
      end;
 
-     FNFe.Chave         := Copy(infNFe.Attributes['Id'],4,44);
-     FNFe.Numero        := StrToIntDef(GetValor(ide,'nNF'),0);
-     FNFe.Serie         := StrToIntDef(GetValor(ide,'serie'),0);
-     FNFe.Modelo        := GetValor(ide,'mod');
-     FNFe.Natureza      := GetValor(ide,'natOp');
-     FNFe.EmitCNPJ      := GetValor(emit,'CNPJ');
-     if FNFe.EmitCNPJ = '' then FNFe.EmitCNPJ := GetValor(emit,'CPF');
-     FNFe.EmitNome      := GetValor(emit,'xNome');
-     FNFe.DestCNPJ      := GetValor(dest,'CNPJ');
-     if FNFe.DestCNPJ = '' then FNFe.DestCNPJ := GetValor(dest,'CPF');
-     FNFe.DestNome      := GetValor(dest,'xNome');
+     // Dados do Destinatario.
+     FNFe.DestCNPJ := GetValor(dest,'CNPJ');
+
+     // Valores da Nota.
      FNFe.ValorBCICMS   := StrToFloatXML(GetValor(ICMSTot,'vBC'));
      FNFe.ValorICMS     := StrToFloatXML(GetValor(ICMSTot,'vICMS'));
      FNFe.ValorBCST     := StrToFloatXML(GetValor(ICMSTot,'vBCST'));
@@ -371,28 +409,44 @@ begin
            end;
         end;
      end;
+
+     ttmp.free;
 end;
 
-function TImportadorNFe.ImportarXML(Empresa, Operacao: Integer; Arquivo: String): Boolean;
+function TImportadorNFe.ImportarXML(Params: TImportaNFeParams): Boolean;
 var
   XML: IXMLDocument;
 begin
      Result := False;
      XML    := TXMLDocument.Create(nil);
-     XML.LoadFromFile(Arquivo);
+     XML.LoadFromFile(Params.Arquivo);
      XML.Active    := True;
-     FNFe.Empresa  := Empresa;
-     FNFe.Operacao := Operacao;
+
      LerCabecalho(XML);
-     //if ExisteNota then raise Exception.Create('Esta NF-e já foi importada.');
+
+     // Pega o CNPJ da empresa e verifica se a empresa esta cadastrada.
+     if not ExisteEmpresa then begin
+        raise Exception.Create('NF-e não foi emitida contra nenhum CNPJ cadastrado!');
+     end;
+    
+     // Verifica se a NF-e ja esta cadastrada.
+     if not Params.SubstNF then begin
+        if ExisteNota then begin
+           raise Exception.Create('NF-e ja importada anteriormente');
+        end;
+     end else begin
+       ExisteNota;
+     end;
 
      FNFe.NotaID := GerarNotaID;
 
-     // Na Parte 3 vamos ler os itens
+     // Carrega o XML da NF-e.
      LerItens(XML);
-
-     // Na Parte 4 gravaremos no banco.
-     GravarCabecalho;
+     
+     // Salva a capa da nota no banco.
+     GravarCabecalho(Params);
+     
+     // Salva os itens da nota no banco.
      GravarItens;
 
      Result := True;
@@ -408,9 +462,9 @@ begin
      if not Assigned(Node) then Exit;
      SL := TStringList.Create;
      try
-       SL.Delimiter := '/';
+       SL.Delimiter       := '/';
        SL.StrictDelimiter := True;
-       SL.DelimitedText := Path;
+       SL.DelimitedText   := Path;
        N := Node;
        for I := 0 to SL.Count - 1 do begin
            if not Assigned(N) then Exit;
@@ -424,202 +478,275 @@ end;
 
 procedure TImportadorNFe.LerItens(XML: IXMLDocument);
 var
-  InfNFe, DetNode, Prod, Imp, ICM, PIS, COFINS: IXMLNode;
-  I: Integer;
+  InfNFe
+ ,DetNode
+ ,Prod
+ ,Imp
+ ,ICM
+ ,PIS
+ ,COFINS: IXMLNode;
+  i: Integer;
   Item: TNFeItem;
+  ttmp: TFDQuery;
 begin
-  InfNFe := LocalizarInfNFe(XML);
-  if not Assigned(InfNFe) then raise Exception.Create('infNFe não encontrado.');
+     ttmp := TFDQuery.Create(nil);
+     ttmp.Connection := FConn;
+     
+     InfNFe := LocalizarInfNFe(XML);
+     if not Assigned(infNFe) then raise Exception.Create('XML inválido.');
 
-  FNFe.Itens.Clear;
+     FNFe.Itens.Clear;
 
-  for I := 0 to InfNFe.ChildNodes.Count - 1 do begin
-    if InfNFe.ChildNodes[I].NodeName <> 'det' then Continue;
-    DetNode := InfNFe.ChildNodes[I];
-    Prod    := DetNode.ChildNodes['prod'];
-    Imp     := DetNode.ChildNodes['imposto'];
-    ICM     := nil;
-    PIS     := nil;
-    COFINS  := nil;
-    if Assigned(Imp) then begin
-      ICM    := Imp.ChildNodes.FindNode('ICMS');
-      PIS    := Imp.ChildNodes.FindNode('PIS');
-      COFINS := Imp.ChildNodes.FindNode('COFINS');
-    end;
-    Item := TNFeItem.Create;
+     for i := 0 to pred(InfNFe.ChildNodes.Count) do begin
+         if InfNFe.ChildNodes[i].NodeName <> 'det' then Continue;
+         DetNode := InfNFe.ChildNodes[i];
+         Prod    := DetNode.ChildNodes['prod'];
+         Imp     := DetNode.ChildNodes['imposto'];
+         ICM     := nil;
+         PIS     := nil;
+         COFINS  := nil;
+         if Assigned(Imp) then begin
+            ICM    := Imp.ChildNodes.FindNode('ICMS');
+            PIS    := Imp.ChildNodes.FindNode('PIS');
+            COFINS := Imp.ChildNodes.FindNode('COFINS');
+         end;
 
-    // Identificação
-    Item.Item         := StrToIntDef(GetValor(DetNode,'nItem'),0);
-    Item.Codigo       := GetValor(Prod,'cProd');
-    Item.CodigoBarras := GetValor(Prod,'cEAN');
-    Item.Descricao    := GetValor(Prod,'xProd');
-    Item.NCM          := GetValor(Prod,'NCM');
-    Item.CEST         := GetValor(Prod,'CEST');
-    Item.CFOP         := GetValor(Prod,'CFOP');
-    Item.Unidade      := GetValor(Prod,'uCom');
-    
-    // Quantidades e valores
-    Item.Quantidade    := StrToFloatDef(GetValor(Prod,'qCom'),0);
-    Item.ValorUnitario := StrToFloatXML(GetValor(Prod,'vUnCom'));
-    Item.ValorTotal    := StrToFloatXML(GetValor(Prod,'vProd'));
+         Item := TNFeItem.Create;
 
-    // ICMS (simplificado)
-    if Assigned(ICM) then begin
-       Item.CSTICMS := GetValor(ICM.ChildNodes['ICMS00'],'CST') +
-                       GetValor(ICM.ChildNodes['ICMS10'],'CST') +
-                       GetValor(ICM.ChildNodes['ICMS20'],'CST') +
-                       GetValor(ICM.ChildNodes['ICMS40'],'CST') +
-                       GetValor(ICM.ChildNodes['ICMS60'],'CST') +
-                       GetValor(ICM.ChildNodes['ICMS90'],'CST');
+         // Identificação
+         Item.Item      := StrToIntDef(DetNode.Attributes['nItem'], 0);
+         Item.CodFab    := GetValor(Prod,'cProd');
+         Item.GTIN      := GetValor(Prod,'cEAN');
+         Item.Descricao := GetValor(Prod,'xProd');
+         
+         if Assigned(DetNode.ChildNodes.FindNode('infAdProd')) then begin
+            Item.Descricao := Item.Descricao + DetNode.ChildNodes['infAdProd'].Text;
+         end;
 
-      Item.BCICMS := StrToFloatXML(GetValor(ICM.ChildNodes['ICMS00'],'vBC')) +
-                     StrToFloatXML(GetValor(ICM.ChildNodes['ICMS10'],'vBC')) +
-                     StrToFloatXML(GetValor(ICM.ChildNodes['ICMS20'],'vBC'));
+         Item.NCM        := GetValor(Prod,'NCM');
+         Item.CEST       := GetValor(Prod,'CEST');
+         Item.CFOP       := GetValor(Prod,'CFOP');
+         Item.Unidade    := GetValor(Prod,'uCom').toupper;
+         Item.Quantidade := StrToFloatXML(GetValor(Prod,'qCom'));
+         Item.vUnitario  := StrToFloatXML(GetValor(Prod,'vUnCom'));
+         Item.vTotal     := StrToFloatXML(GetValor(Prod,'vProd'));
 
-      Item.VICMS := StrToFloatXML(GetValor(ICM.ChildNodes['ICMS00'],'vICMS')) +
-                    StrToFloatXML(GetValor(ICM.ChildNodes['ICMS10'],'vICMS')) +
-                    StrToFloatXML(GetValor(ICM.ChildNodes['ICMS20'],'vICMS'));
+         // Cadastro do produto.
+         with ttmp do begin
+              sql.clear;
+              sql.add('select Codigo from Produtos where Descricao = :pDesc and Fornecedor = :pForn and NCM = :pNCM');
+              parambyname('pDesc').asstring  := Item.Descricao;
+              parambyname('pForn').asinteger := FNFe.EmitCod;
+              parambyname('pNCM').asstring   := Item.NCM;
+              open;
+              if fieldbyname('Codigo').asinteger > 0 then begin
+                 Item.Codigo := fieldbyname('Codigo').asinteger;
+              end else begin
+                 Item.Codigo := CadastraProduto(Item);
+              end;
+         end;
 
-      Item.BCST := StrToFloatXML(GetValor(ICM.ChildNodes['ICMS10'],'vBCST')) +
-                   StrToFloatXML(GetValor(ICM.ChildNodes['ICMS60'],'vBCST'));
+         // ICMS (simplificado)
+         if Assigned(ICM) then begin
+            Item.CSTICMS := GetValor(ICM.ChildNodes['ICMS00'],'CST') +
+                            GetValor(ICM.ChildNodes['ICMS10'],'CST') +
+                            GetValor(ICM.ChildNodes['ICMS20'],'CST') +
+                            GetValor(ICM.ChildNodes['ICMS40'],'CST') +
+                            GetValor(ICM.ChildNodes['ICMS60'],'CST') +
+                            GetValor(ICM.ChildNodes['ICMS90'],'CST');
+       
+            Item.BCICMS := StrToFloatXML(GetValor(ICM.ChildNodes['ICMS00'],'vBC')) +
+                           StrToFloatXML(GetValor(ICM.ChildNodes['ICMS10'],'vBC')) +
+                           StrToFloatXML(GetValor(ICM.ChildNodes['ICMS20'],'vBC'));
+         
+            Item.VICMS := StrToFloatXML(GetValor(ICM.ChildNodes['ICMS00'],'vICMS')) +
+                          StrToFloatXML(GetValor(ICM.ChildNodes['ICMS10'],'vICMS')) +
+                          StrToFloatXML(GetValor(ICM.ChildNodes['ICMS20'],'vICMS'));
+         
+            Item.BCST := StrToFloatXML(GetValor(ICM.ChildNodes['ICMS10'],'vBCST')) +
+                         StrToFloatXML(GetValor(ICM.ChildNodes['ICMS60'],'vBCST'));
+         
+            Item.VST := StrToFloatXML(GetValor(ICM.ChildNodes['ICMS10'],'vICMSST')) +
+                         StrToFloatXML(GetValor(ICM.ChildNodes['ICMS60'],'vICMSST'));
+         end;
 
-      Item.VST := StrToFloatXML(GetValor(ICM.ChildNodes['ICMS10'],'vICMSST')) +
-                  StrToFloatXML(GetValor(ICM.ChildNodes['ICMS60'],'vICMSST'));
-    end;
+         // PIS
+         if Assigned(PIS) then begin
+            Item.CSTPIS := GetValor(PIS.ChildNodes['PISAliq'],'CST') +
+                           GetValor(PIS.ChildNodes['PISNT'],'CST') +
+                           GetValor(PIS.ChildNodes['PISOutr'],'CST');
+       
+           Item.VPIS := StrToFloatXML(GetValor(PIS.ChildNodes['PISAliq'],'vPIS')) +
+                        StrToFloatXML(GetValor(PIS.ChildNodes['PISOutr'],'vPIS'));
+         end;
 
-    // PIS
-    if Assigned(PIS) then begin
-       Item.CSTPIS := GetValor(PIS.ChildNodes['PISAliq'],'CST') +
-                      GetValor(PIS.ChildNodes['PISNT'],'CST') +
-                      GetValor(PIS.ChildNodes['PISOutr'],'CST');
-
-      Item.VPIS := StrToFloatXML(GetValor(PIS.ChildNodes['PISAliq'],'vPIS')) +
-                   StrToFloatXML(GetValor(PIS.ChildNodes['PISOutr'],'vPIS'));
-    end;
-
-    // COFINS
-    if Assigned(COFINS) then begin
-       Item.CSTCOFINS := GetValor(COFINS.ChildNodes['COFINSAliq'],'CST') +
-                         GetValor(COFINS.ChildNodes['COFINSNT'],'CST') +
-                         GetValor(COFINS.ChildNodes['COFINSOutr'],'CST');
-      Item.VCOFINS := StrToFloatXML(GetValor(COFINS.ChildNodes['COFINSAliq'],'vCOFINS')) +
-                      StrToFloatXML(GetValor(COFINS.ChildNodes['COFINSOutr'],'vCOFINS'));
-    end;
-    FNFe.Itens.Add(Item);
-  end;
+         // COFINS
+         if Assigned(COFINS) then begin
+            Item.CSTCOFINS := GetValor(COFINS.ChildNodes['COFINSAliq'],'CST') +
+                              GetValor(COFINS.ChildNodes['COFINSNT'],'CST') +
+                              GetValor(COFINS.ChildNodes['COFINSOutr'],'CST');
+           Item.VCOFINS := StrToFloatXML(GetValor(COFINS.ChildNodes['COFINSAliq'],'vCOFINS')) +
+                           StrToFloatXML(GetValor(COFINS.ChildNodes['COFINSOutr'],'vCOFINS'));
+         end;
+         FNFe.Itens.Add(Item);
+     end;
 end;
 
-procedure TImportadorNFe.GravarCabecalho;
+procedure TImportadorNFe.GravarCabecalho(Par: TImportaNFeParams);
 var
-  Q: TFDQuery;
+  tNotas: TFDQuery;
 begin
-     Q := TFDQuery.Create(nil);
+     tNotas := TFDQuery.Create(nil);
      try
-       Q.Connection := FConn;
-       with q.sql do begin
-            clear;
-            add('insert into NotasFiscais (');
-            add('            Nota_id');
-            add('           ,Empresa');
-            add('           ,ES');
-            add('           ,Nota');
-            add('           ,Serie');
-            add('           ,Chave');
-            add('           ,Data_Emissao');
-            add('           ,Hora_Emissao');
-            add('           ,Data_ES');
-            add('           ,Hora_ES');
-            add('           ,Destinatario');
-            add('           ,Destinatario_CNPJ_CPF');
-            add('           ,Destinatario_Nome');
-            add('           ,Valor_Produtos');
-            add('           ,Valor_Frete');
-            add('           ,Valor_Seguro');
-            add('           ,Valor_Despesas');
-            add('           ,Valor_Descontos');
-            add('           ,Valor_BCICMS');
-            add('           ,Valor_ICMS');
-            add('           ,Valor_BCICMSST');
-            add('           ,Valor_ICMSST');
-            add('           ,Valor_IPI');
-            add('           ,Valor_PIS');
-            add('           ,Valor_COFINS');
-            add('           ,Valor_TotalNota');
-            add('           ,Emissao');
-            add('           ,Operacao');
-            add('           ,Modelo');
-            add('           ,Inf_Compl');
-            add('           ,Inf_Compl2');
-            add('           ,Modalidade_Frete');
-            add('           ,Cancelada');
-            add('           ,Denegada');
-            add('           ,Volume_Quantidade');
-            add('           ,Volume_Especie');
-            add('           ,Volume_PesoLiquido');
-            add('           ,Volume_PesoBruto');
-            add('           ,Nfe_Protocolo');
-            add('           ,Nfe_DataProtocolo');
-            add('           ,DPEC');
-            add('           ,Beneficio_Fiscal');
-            add('    values (');
-            add('            :Nota_id');
-            add('           ,:Empresa');
-            add('           ,:ES');
-            add('           ,:Nota');
-            add('           ,:Serie');
-            add('           ,:Chave');
-            add('           ,:Data_Emissao');
-            add('           ,:Hora_Emissao');
-            add('           ,:Data_ES');
-            add('           ,:Hora_ES');
-            add('           ,:Dest');
-            add('           ,:CNPJ');
-            add('           ,:Nome');
-            add('           ,:VProd');
-            add('           ,:VFrete');
-            add('           ,:VSeg');
-            add('           ,:VDesc');
-            add('           ,:VOut');
-            add('           ,:VBC');
-            add('           ,:VICMS');
-            add('           ,:VBCST');
-            add('           ,:VST');
-            add('           ,:VIPI');
-            add('           ,:VPIS');
-            add('           ,:VCOFINS');
-            add('           ,:VTotal');
-            add('           ,:Emissao');
-            add('           ,:Operacao');
-            add('           ,:Modelo');
-            add('           ,:Inf_Compl');
-            add('           ,:Inf_Compl2');
-            add('           ,:Mod_Frete');
-            add('           ,0');
-            add('           ,0');
-            add('           ,:Vol_Qtde');
-            add('           ,:Vol_Esp');
-            add('           ,:Vol_PesoL');
-            add('           ,:Vol_PesoB');
-            add('           ,:NumProt');
-            add('           ,:DataProt');
-            add('           ,0');           
-            add('           ,Benef)');
-       end;                 
-       with q do begin                                     
+       tNotas.Connection := FConn;
+       with tNotas do begin
+            sql.clear;
+            sql.add('delete from NotasItens   where Nota_id = :pid');
+            sql.add('delete from NotasFiscais where Nota_id = :pid');
+            parambyname('pid').asinteger := mID;
+            execute;
+            
+            sql.clear;
+            sql.add('insert into NotasFiscais (');
+            sql.add('            Nota_id');
+            sql.add('           ,Empresa');
+            sql.add('           ,ES');
+            sql.add('           ,Nota');
+            sql.add('           ,Serie');
+            sql.add('           ,Chave');
+            sql.add('           ,Data_Emissao');
+            sql.add('           ,Hora_Emissao');
+            sql.add('           ,Data_ES');
+            sql.add('           ,Hora_ES');
+            sql.add('           ,Destinatario');
+            sql.add('           ,Destinatario_CNPJ_CPF');
+            sql.add('           ,Destinatario_Nome');
+            sql.add('           ,Destinatario_Rua');
+            sql.add('           ,Destinatario_RuaNumero');
+            sql.add('           ,Destinatario_Complemento');
+            sql.add('           ,Destinatario_Bairro');
+            sql.add('           ,Destinatario_Municipio');
+            sql.add('           ,Destinatario_MunicipioNome');
+            sql.add('           ,Destinatario_Estado');
+            sql.add('           ,Destinatario_CEP');
+            sql.add('           ,Destinatario_Pais');
+            sql.add('           ,Destinatario_Telefone1');
+            sql.add('           ,Destinatario_IE');
+            sql.add('           ,Destinatario_Juridica');
+            sql.add('           ,Valor_Produtos');
+            sql.add('           ,Valor_Frete');
+            sql.add('           ,Valor_Seguro');
+            sql.add('           ,Valor_Despesas');
+            sql.add('           ,Valor_Descontos');
+            sql.add('           ,Valor_BCICMS');
+            sql.add('           ,Valor_ICMS');
+            sql.add('           ,Valor_BCICMSST');
+            sql.add('           ,Valor_ICMSST');
+            sql.add('           ,Valor_IPI');
+            sql.add('           ,Valor_PIS');
+            sql.add('           ,Valor_COFINS');
+            sql.add('           ,Valor_TotalNota');
+            sql.add('           ,Emissao');
+            sql.add('           ,Operacao');
+            sql.add('           ,Modelo');
+            sql.add('           ,Inf_Compl');
+            sql.add('           ,Inf_Compl2');
+            sql.add('           ,Modalidade_Frete');
+            sql.add('           ,Cancelada');
+            sql.add('           ,Denegada');
+            sql.add('           ,Volume_Quantidade');
+            sql.add('           ,Volume_Especie');
+            sql.add('           ,Volume_PesoLiquido');
+            sql.add('           ,Volume_PesoBruto');
+            sql.add('           ,Nfe_Protocolo');
+            sql.add('           ,Nfe_DataProtocolo');
+            sql.add('           ,DPEC');
+            sql.add('           ,Beneficio_Fiscal');
+            sql.add('           ,Centro_Custo');
+            sql.add('           )');               
+            sql.add('       values (');
+            sql.add('            :Nota_id');
+            sql.add('           ,:Empresa');
+            sql.add('           ,:ES');
+            sql.add('           ,:Nota');
+            sql.add('           ,:Serie');
+            sql.add('           ,:Chave');
+            sql.add('           ,:Data_Emissao');
+            sql.add('           ,:Hora_Emissao');
+            sql.add('           ,:Data_ES');
+            sql.add('           ,:Hora_ES');
+            sql.add('           ,:DestCod');
+            sql.add('           ,:DestCNPJ');
+            sql.add('           ,:DestNome');
+            sql.add('           ,:DestRua');
+            sql.add('           ,:DestRuaNum');
+            sql.add('           ,:DestCompl');
+            sql.add('           ,:DestBairro');
+            sql.add('           ,:DestMun');
+            sql.add('           ,:DestMunNome');
+            sql.add('           ,:DestUF');
+            sql.add('           ,:DestCEP');
+            sql.add('           ,:DestPais');
+            sql.add('           ,:DestTel');
+            sql.add('           ,:DestIE');
+            sql.add('           ,:DestJur');
+            sql.add('           ,:VProd');
+            sql.add('           ,:VFrete');
+            sql.add('           ,:VSeg');
+            sql.add('           ,:VDesc');
+            sql.add('           ,:VOut');
+            sql.add('           ,:VBC');
+            sql.add('           ,:VICMS');
+            sql.add('           ,:VBCST');
+            sql.add('           ,:VST');
+            sql.add('           ,:VIPI');
+            sql.add('           ,:VPIS');
+            sql.add('           ,:VCOFINS');
+            sql.add('           ,:VTotal');
+            sql.add('           ,:Emissao');
+            sql.add('           ,:Operacao');
+            sql.add('           ,:Modelo');
+            sql.add('           ,:Inf_Compl');
+            sql.add('           ,:Inf_Compl2');
+            sql.add('           ,:Mod_Frete');
+            sql.add('           ,0');           // Cancelada.
+            sql.add('           ,0');           // Denegada.
+            sql.add('           ,:Vol_Qtde');
+            sql.add('           ,:Vol_Esp');
+            sql.add('           ,:Vol_PesoL');
+            sql.add('           ,:Vol_PesoB');
+            sql.add('           ,:NumProt');
+            sql.add('           ,:DataProt');
+            sql.add('           ,0');          // DPEC. 
+            sql.add('           ,:Benef');
+            sql.add('           ,:CenCus');
+            sql.add('           )');
+            
             ParamByName('Nota_id').AsInteger       := FNFe.NotaID;
-            ParamByName('Empresa').AsInteger       := FNFe.Empresa;
+            ParamByName('Empresa').asstring        := FNFe.Empresa;
             ParamByName('ES').AsInteger            := 0;
             ParamByName('Nota').AsInteger          := FNFe.Numero;
             ParamByName('Serie').AsInteger         := FNFe.Serie;
-            ParamByName('Modelo').asstring         := FNFe.Modelo;
             ParamByName('Chave').AsString          := FNFe.Chave;
             ParamByName('Data_Emissao').AsDateTime := FNFe.dEmissao;
             ParamByName('Hora_Emissao').AsDateTime := FNFe.hEmissao;
             ParamByName('Data_ES').AsDateTime      := FNFe.dEntrada;
             ParamByName('Hora_ES').AsDateTime      := FNFe.hEntrada;
-            ParamByName('Dest').AsInteger          := FNFe.Empresa;
-            ParamByName('CNPJ').AsString           := FNFe.DestCNPJ;
-            ParamByName('Nome').AsString           := FNFe.DestNome;
+            ParamByName('DestCod').asinteger       := FNFe.EmitCod;
+            ParamByName('DestCNPJ').AsString       := FNFe.EmitCNPJ;
+            ParamByName('DestNome').AsString       := FNFe.EmitNome;
+            ParamByName('DestRua').AsString        := FNFe.EmitRua;
+            ParamByName('DestRuaNum').AsString     := FNFe.EmitNro;
+            ParamByName('DestCompl').AsString      := FNFe.EmitCompl;
+            ParamByName('DestBairro').AsString     := FNFe.EmitBairro;
+            ParamByName('DestMun').AsString        := FNFe.EmitMun;
+            ParamByName('DestMunNome').AsString    := FNFe.EmitMunNome;
+            ParamByName('DestUF').AsString         := FNFe.EmitUF;
+            ParamByName('DestCEP').AsString        := FNFe.EmitCEP;
+            ParamByName('DestPais').AsString       := FNFe.EmitPais;
+            ParamByName('DestTel').AsString        := FNFe.EmitTel;
+            ParamByName('DestIE').AsString         := FNFe.EmitIE;
+            ParamByName('DestJur').asboolean       := FNFe.EmitJur;
             ParamByName('VProd').AsFloat           := FNFe.ValorProdutos;
             ParamByName('VFrete').AsFloat          := FNFe.ValorFrete;
             ParamByName('VSeg').AsFloat            := FNFe.ValorSeguro;
@@ -635,6 +762,7 @@ begin
             ParamByName('VTotal').AsFloat          := FNFe.ValorTotal;
             ParamByName('Emissao').asstring        := 'T';
             ParamByName('Operacao').asinteger      := FNFe.Operacao;
+            ParamByName('Modelo').asstring         := FNFe.Modelo;
             ParamByName('Inf_Compl').value         := FNFe.Inf_Compl;
             ParamByName('Inf_Compl2').value        := FNFe.Inf_Compl2;
             ParamByName('Mod_Frete').asinteger     := FNFe.Mod_Frete;
@@ -642,58 +770,302 @@ begin
             ParamByName('Vol_Esp').asstring        := FNFe.Vol_Esp;
             ParamByName('Vol_PesoL').asfloat       := FNFe.Vol_PesoL;
             ParamByName('Vol_PesoB').asfloat       := FNFe.Vol_PesoB;
-//            ParamByName('Benef').asfloat           :=      //Informado
-
+            ParamByName('Benef').asfloat           := 0;
             ParamByName('NumProt').asstring        := FNFe.Num_Prot;
             ParamByName('DataProt').asDateTime     := FNFe.Data_Prot;
-            
-            sql.SaveToFile('c:\temp\Adiciona_NFe_Web.sql');
-            execsql;
+            ParamByName('CenCus').asstring         := FNFe.CentCus;
+            //sql.SaveToFile('c:\temp\Adiciona_NFe_Web.sql');
+            execute;
+            LogErros('NotasFiscais', 'INSERT', 'Importado XML da NF-e: '+FNFe.Chave);
        end;
      finally
-       Q.Free;
+       tNotas.Free;
      end;
 end;
 
 procedure TImportadorNFe.GravarItens;
 var
-  Q: TFDQuery;
+  tab: TFDQuery;
   Item: TNFeItem;
 begin
-     Q := TFDQuery.Create(nil);
+     tab := TFDQuery.Create(nil);
      try
-       Q.Connection := FConn;
-       with Q do begin
-            sql.text := 'insert into NotasItens (Nota_id, Empresa, Nota, Item, Codigo_Mercadoria, Descricao_Mercadoria, NCM, CFOP, UM, Quantidade, Valor_Unitario, Valor_Total, Valor_BCICMSOp,'+
-                        'Valor_ICMSOp, Valor_BCICMSST, Valor_ICMSST, Valor_PIS, Valor_COFINS, Total_Item)'+
-                        'values (:Nota_id, :Empresa, :Nota, :Item, :Codigo, :Descricao, :NCM, :CFOP, :UM, :Qtd, :VU, :VT, :BCICMS, :ICMS, :BCST, :ST, :PIS, :COFINS, :Total)';
+       tab.Connection := FConn;
+       with tab do begin
+            {
+            sql.text := 'insert into NotasItens (Nota_id, Empresa, Item, Codigo_Mercadoria, Descricao_Mercadoria, NCM, CFOP, UM, Quantidade, Valor_Unitario, Valor_Total, Valor_BCICMSOp,'+
+                        'Valor_ICMSOp, Valor_BCICMSST, Valor_ICMSST, Valor_PIS, Valor_COFINS)'+
+                        'values (:Nota_id, :Empresa, :Item, :Codigo, :Descricao, :NCM, :CFOP, :UM, :Qtd, :VU, :VT, :BCICMS, :ICMS, :BCST, :ST, :PIS, :COFINS, :Total)';
+            }            
+            sql.clear;
+            sql.add('insert into NotasItens (');
+            sql.add('                        Nota_id');
+            sql.add('                       ,Empresa');
+            sql.add('                       ,Item');
+            sql.add('                       ,Codigo_Mercadoria');
+            sql.add('                       ,Codigo_Fabricante');
+            sql.add('                       ,Descricao_Mercadoria');
+            sql.add('                       ,NCM');
+            sql.add('                       ,CFOP');
+            sql.add('                       ,UM');
+            sql.add('                       ,Quantidade');
+            sql.add('                       ,Valor_Unitario');
+            sql.add('                       ,Valor_Total');
+            sql.add('                       ,Valor_BCICMSOp');
+            sql.add('                       ,Valor_ICMSOp');
+            sql.add('                       ,Valor_BCICMSST');
+            sql.add('                       ,Valor_ICMSST');
+            sql.add('                       ,Valor_PIS');
+            sql.add('                       ,Valor_COFINS');
+            sql.add('                       ,Movimenta_Inventario');
+            sql.add('                       ,Movimenta_Estoque');
+            sql.add('                       ,Movimenta_EstoqueRep');
+            sql.add('                       )');
+            sql.add('            values (');
+            sql.add('                    :Nota_id');
+            sql.add('                   ,:Empresa');
+            sql.add('                   ,:Item');
+            sql.add('                   ,:Codigo');
+            sql.add('                   ,:CodFab');
+            sql.add('                   ,:Descricao');
+            sql.add('                   ,:NCM');
+            sql.add('                   ,:CFOP');
+            sql.add('                   ,:UM');
+            sql.add('                   ,:Qtd');
+            sql.add('                   ,:vUnit');
+            sql.add('                   ,:vTotal');
+            sql.add('                   ,:vBCICMS');
+            sql.add('                   ,:vICMS');
+            sql.add('                   ,:vBCST');
+            sql.add('                   ,:vST');
+            sql.add('                   ,:vPIS');
+            sql.add('                   ,:vCOFINS');
+            sql.add('                   ,:MovInv');
+            sql.add('                   ,:MovEst');
+            sql.add('                   ,:MovEstRep');
+            sql.add('                   )');
+                        
             for Item in FNFe.Itens do begin
-                ParamByName('Nota_id').AsInteger  := FNFe.NotaID;
-                ParamByName('Empresa').AsInteger  := FNFe.Empresa;
-                ParamByName('Nota').AsInteger     := FNFe.Numero;
-                ParamByName('Item').AsInteger     := Item.Item;
-                ParamByName('Codigo').AsString    := Item.Codigo;
-                ParamByName('Descricao').AsString := Item.Descricao;
-                ParamByName('NCM').AsString       := Item.NCM;
-                ParamByName('CFOP').AsString      := Item.CFOP;
-                ParamByName('UM').AsString        := Item.Unidade;
-                ParamByName('Qtd').AsFloat        := Item.Quantidade;
-                ParamByName('VU').AsFloat         := Item.ValorUnitario;
-                ParamByName('VT').AsFloat         := Item.ValorTotal;
-                ParamByName('BCICMS').AsFloat     := Item.BCICMS;
-                ParamByName('ICMS').AsFloat       := Item.VICMS;
-                ParamByName('BCST').AsFloat       := Item.BCST;
-                ParamByName('ST').AsFloat         := Item.VST;
-                ParamByName('PIS').AsFloat        := Item.VPIS;
-                ParamByName('COFINS').AsFloat     := Item.VCOFINS;
-                ParamByName('Total').AsFloat      := Item.ValorTotal;
-                execsql;
+                ParamByName('Nota_id').AsInteger   := FNFe.NotaID;
+                ParamByName('Empresa').asstring    := FNFe.Empresa;
+                ParamByName('MovInv').asboolean    := FNFe.MovInv;
+                ParamByName('MovEst').asboolean    := FNFe.MovEst;
+                ParamByName('MovEstRep').asboolean := FNFe.MovEstRep;
+                ParamByName('Item').AsInteger      := Item.Item;
+                ParamByName('Codigo').asinteger    := Item.Codigo;
+                ParamByName('CodFab').asstring     := Item.CodFab;
+                ParamByName('Descricao').AsString  := Item.Descricao;
+                ParamByName('NCM').AsString        := Item.NCM;
+                ParamByName('CFOP').AsString       := Item.CFOP;
+                ParamByName('UM').AsString         := Item.Unidade;
+                ParamByName('Qtd').AsFloat         := Item.Quantidade;
+                ParamByName('vUnit').AsFloat       := Item.vUnitario;
+                ParamByName('vTotal').AsFloat      := Item.vTotal;
+                ParamByName('vBCICMS').AsFloat     := Item.BCICMS;
+                ParamByName('vICMS').AsFloat       := Item.VICMS;
+                ParamByName('vBCST').AsFloat       := Item.BCST;
+                ParamByName('vST').AsFloat         := Item.VST;
+                ParamByName('vPIS').AsFloat        := Item.VPIS;
+                ParamByName('vCOFINS').AsFloat     := Item.VCOFINS;
+                execute;
            end;
        end;
      finally
-       Q.Free;
+       tab.Free;
      end;
 end;
+
+function TImportadorNFe.CadastraFornecedor: integer;
+var
+   ttmp: TFDQuery;
+   mCod: integer;
+begin
+     ttmp := TFDQuery.Create(nil);
+     with ttmp do begin
+          Connection := FConn;
+          sql.clear;
+          sql.add('insert into Destinatarios (');
+          sql.add('                           Codigo');
+          sql.add('                          ,CNPJ');
+          sql.add('                          ,CPF');
+          sql.add('                          ,Nome');
+          sql.add('                          ,Nome_Fantasia');
+          sql.add('                          ,Rua ');
+          sql.add('                          ,Rua_Numero');
+          sql.add('                          ,Bairro');
+          sql.add('                          ,Municipio');
+          sql.add('                          ,Estado');
+          sql.add('                          ,CEP');
+          sql.add('                          ,Pais');
+          sql.add('                          ,Telefone1');
+          sql.add('                          ,Inscricao_Estadual');
+          sql.add('                          ,Simples_Nacional');
+          sql.add('                          ,MEI');
+          sql.add('                          ,Desativado');
+          sql.add('                          ,Fornecedor');
+          sql.add('                          ,Isento');
+          sql.add('                          ,Data_Cadastro');
+          sql.add('                          ,Complemento');
+          sql.add('                          ,Ramo_Atividade');
+          sql.add('                          )');
+          sql.add('            values(');
+          sql.add('                   :pCodigo');
+          sql.add('                  ,:pCNPJ');
+          sql.add('                  ,:pCPF');
+          sql.add('                  ,:pNome');
+          sql.add('                  ,:pFant');
+          sql.add('                  ,:pRua ');
+          sql.add('                  ,:pRuaNum');
+          sql.add('                  ,:pBairro');
+          sql.add('                  ,:pMun');
+          sql.add('                  ,:pUF');
+          sql.add('                  ,:pCEP');
+          sql.add('                  ,:pPais');
+          sql.add('                  ,:pTel');
+          sql.add('                  ,:pIE');
+          sql.add('                  ,:pSimples');
+          sql.add('                  ,:pMEI');
+          sql.add('                  ,0');
+          sql.add('                  ,1');
+          sql.add('                  ,:pIsento');
+          sql.add('                  ,:pDataCad');
+          sql.add('                  ,:pCompl');
+          sql.add('                  ,:pRamo');
+          sql.add('                  )');
+          mCod                               := GeraCodigo('Destinatarios', 'Codigo');
+          parambyname('pCodigo').asinteger   := mCod;
+          parambyname('pCNPJ').asstring      := FNFe.EmitCNPJ;
+          parambyname('pCPF').asstring       := FNFe.EmitCPF;
+          parambyname('pNome').asstring      := FNFe.EmitNome;
+          parambyname('pFant').asstring      := FNFe.EmitFant;
+          parambyname('pRua').asstring       := FNFe.EmitRua;
+          parambyname('pRuaNum').asstring    := FNFe.EmitNro;
+          parambyname('pBairro').asstring    := FNFe.EmitBairro;
+          parambyname('pMun').asstring       := FNFe.EmitMun;
+          parambyname('pUF').asstring        := FNFe.EmitUF;
+          parambyname('pCEP').asstring       := FNFe.EmitCEP;
+          parambyname('pPais').asstring      := FNFe.EmitPais;
+          parambyname('pTel').asstring       := FNFe.EmitTel;
+          parambyname('pIE').asstring        := FNFe.EmitIE;
+          parambyname('pSimples').asboolean  := FNFe.EmitSimples;
+          parambyname('pMEI').asboolean      := FNFe.EmitMEI;
+          parambyname('pIsento').asboolean   := trim(FNFe.EmitIE) = '';
+          parambyname('pDataCad').asdatetime := now;
+          parambyname('pCompl').asstring     := FNFe.EmitCompl;
+          parambyname('pRamo').asinteger     := FNFe.EmitRamo;
+          execute;
+     end;
+     
+     LogErros('Destinatarios', 'INSERT', 'Cadastrado fornecedor na importação do XML da NF-e: '+FNFe.Chave);
+
+     result := mcod;
+     ttmp.free;
+end;
+
+function TImportadorNFe.CadastraProduto(Item: TNFeItem): integer;
+var
+   ttmp: TFDQuery;
+   mCod: integer;
+begin
+     try
+        ttmp := TFDQuery.Create(nil);
+        with ttmp do begin
+             Connection := FConn;
+             sql.clear;
+             sql.add('insert into Produtos (');
+             sql.add('                      Codigo');
+             sql.add('                     ,Codigo_Fabricante');
+             sql.add('                     ,Descricao_Reduzida');
+             sql.add('                     ,Descricao');
+             sql.add('                     ,UM');
+             sql.add('                     ,UM_Origem');
+             sql.add('                     ,UM_Tributaria');
+             sql.add('                     ,Quantidade_Unidade');
+             sql.add('                     ,Quantidade_Volumes');
+             sql.add('                     ,NCM');
+             sql.add('                     ,Estoque_Disponivel');
+             sql.add('                     ,Aliquota_IPI');
+             sql.add('                     ,Aliquota_PISEntrada');
+             sql.add('                     ,Aliquota_COFINSEntrada');
+             sql.add('                     ,Aliquota_II');
+             sql.add('                     ,GTIN_Unidade');
+             sql.add('                     ,GTIN_Caixa');        
+             sql.add('                     ,Fornecedor');
+             sql.add('                     ,Desativado');
+             sql.add('                     ,Tipo_Item');
+             sql.add('                     ,Estoque_MinimoPerc');
+             sql.add('                     ,Origem');
+             sql.add('                     ,Escala_Relevante');
+             sql.add('                     ,CNPJ_Fabricante');
+             //sql.add('                     ,Fabricante');
+             sql.add('                     )');
+             sql.add('            values(');
+             sql.add('                    :Cod');
+             sql.add('                   ,:CodFab');
+             sql.add('                   ,:DescRed');
+             sql.add('                   ,:Desc');
+             sql.add('                   ,:UM');
+             sql.add('                   ,:UMOrig');
+             sql.add('                   ,:UMTrib');
+             sql.add('                   ,:QtdeUni');
+             sql.add('                   ,:QtdeVol');
+             sql.add('                   ,:NCM');
+             sql.add('                   ,:EstDisp');
+             sql.add('                   ,:AliqIPI');
+             sql.add('                   ,:PISEnt');
+             sql.add('                   ,:COFEnt');
+             sql.add('                   ,:AliqII');
+             sql.add('                   ,:GTINUni');
+             sql.add('                   ,:GTINCx');        
+             sql.add('                   ,:Forn');
+             sql.add('                   ,:Desat');
+             sql.add('                   ,:Tipo');
+             sql.add('                   ,:EstMin');
+             sql.add('                   ,:Origem');
+             sql.add('                   ,:Escala');
+             sql.add('                   ,:CNPJFab');
+             //sql.add('                   ,:Fabr');
+             sql.add('                  )');
+          
+             mCod := GeraCodigo('Produtos', 'Codigo');
+             
+             parambyname('Cod').asinteger     := mCod;
+             parambyname('CodFab').asstring   := Item.CodFab;
+             parambyname('DescRed').asstring  := Item.DescrAdic;
+             parambyname('Desc').asstring     := Item.Descricao;
+             parambyname('UM').asstring       := Item.Unidade;
+             parambyname('UMOrig').asstring   := Item.Unidade;
+             parambyname('UMTrib').asstring   := Item.Unidade;
+             parambyname('NCM').asstring      := Item.NCM;
+             parambyname('PISEnt').asfloat    := Item.vPIS;
+             parambyname('COFEnt').asfloat    := Item.vCOFINS;
+             parambyname('GTINUni').asstring  := Item.GTIN;
+             parambyname('GTINCX').asstring   := Item.GTIN;
+             parambyname('Desat').asboolean   := false;
+             parambyname('Tipo').asinteger    := Item.TipoProd;
+             parambyname('Origem').asinteger  := Item.OrigProd;
+             parambyname('Escala').asboolean  := Item.Escala;
+             parambyname('QtdeUni').asinteger := 1;
+             parambyname('QtdeVol').asinteger := 1;
+             parambyname('EstDisp').asfloat   := 0;
+             parambyname('AliqIPI').asfloat   := 0;
+             parambyname('AliqII').asfloat    := 0;
+             parambyname('Forn').asinteger    := FNFe.EmitCod;
+             parambyname('CNPJFab').asstring  := '';
+             parambyname('EstMin').asfloat    := 0;
+             //parambyname('Fabr').asinteger    := 0;
+             execute;
+             result := mcod;
+        end;
+        
+        LogErros('Produtos', 'INSERT', 'Cadastrado produtos na importação do XML da NF-e: '+FNFe.Chave);
+     except on E: Exception do
+        MessageDlg('Cadastro do Produto falhou!'+#13+E.Message, mtError, [mbOK], 0);
+     end;
+
+     ttmp.free;
+end;
+
 
 
 end.

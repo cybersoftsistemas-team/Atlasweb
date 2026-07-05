@@ -167,7 +167,7 @@ object fFatPedidoNF: TfFatPedidoNF
     Width = 1272
     Height = 965
     Hint = ''
-    ActivePage = UniTabSheet1
+    ActivePage = TabSheet1
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -1149,9 +1149,9 @@ object fFatPedidoNF: TfFatPedidoNF
             end
             object bVeiculo: TUniButton
               Left = 607
-              Top = 142
-              Width = 98
-              Height = 26
+              Top = 143
+              Width = 84
+              Height = 25
               Hint = ''
               ShowHint = True
               Caption = 'Ve'#237'culo'

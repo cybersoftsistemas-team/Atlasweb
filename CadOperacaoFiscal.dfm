@@ -238,7 +238,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     Width = 1407
     Height = 765
     Hint = ''
-    ActivePage = UniTabSheet4
+    ActivePage = TabSheet1
     Plain = True
     Align = alClient
     ClientEvents.UniEvents.Strings = (
@@ -451,7 +451,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             Left = 14
             Top = 342
             Width = 160
-            Height = 70
+            Height = 75
             Hint = ''
             ShowHint = True
             DataField = 'Rateio_PISCOFINSEntrada'
@@ -473,7 +473,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             Left = 14
             Top = 129
             Width = 160
-            Height = 70
+            Height = 75
             Hint = ''
             ShowHint = True
             DataField = 'ES'
@@ -522,9 +522,9 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           end
           object cOrigem_AliquotaICMS: TUniDBRadioGroup
             Left = 14
-            Top = 589
+            Top = 587
             Width = 160
-            Height = 74
+            Height = 76
             Hint = ''
             ShowHint = True
             DataField = 'Origem_AliquotaICMS'
@@ -546,10 +546,10 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             Left = 491
             Top = 129
             Width = 180
-            Height = 244
+            Height = 369
             Hint = ''
             ShowHint = True
-            Caption = 'Campos Vis'#237'veis DANFE '
+            Caption = 'Campos Destacados no DANFE '
             TabOrder = 7
             ClientEvents.UniEvents.Strings = (
               
@@ -1238,7 +1238,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             Left = 14
             Top = 233
             Width = 160
-            Height = 70
+            Height = 75
             Hint = ''
             ShowHint = True
             DataField = 'Emissao'
@@ -1256,7 +1256,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
               'P'
               'T')
           end
-          object UniDBLookupComboBox1: TUniDBLookupComboBox
+          object cBeneficio_Fiscal: TUniDBLookupComboBox
             Left = 14
             Top = 67
             Width = 658
@@ -1301,31 +1301,26 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
               'E'
               'D')
           end
-          object cFinalidade: TUniDBComboBox
+          object UniDBLookupComboBox1: TUniDBLookupComboBox
             Left = 14
             Top = 94
             Width = 658
             Height = 25
             Hint = ''
             ShowHint = True
-            AnyMatch = True
+            ParentShowHint = False
+            ListField = 'Codigo; Descricao'
+            ListSource = dstFinalidade
+            KeyField = 'Codigo'
+            ListFieldIndex = 1
+            BorderStyle = ubsInset
             DataField = 'Finalidade_Mercadoria'
             DataSource = dsOperacaoFiscal
-            Items.Strings = (
-              'Revenda'
-              'Consumo'
-              'Devolu'#231#227'o'
-              'Devolu'#231#227'o de Importa'#231#227'o'
-              'Exporta'#231#227'o'
-              'Pr'#243'pria em Terceiros'
-              'Terceiros na Empresa'
-              'Imobilizado'
-              'Outras')
             TabOrder = 12
-            FieldLabel = 'Finalidade'
+            Color = clWindow
+            FieldLabel = 'Finalidade da Mercadoria'
             FieldLabelSeparator = ' '
-            ClearButton = True
-            IconItems = <>
+            NormalizeString = True
           end
         end
       end
@@ -4138,7 +4133,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       FieldName = 'CBS_Suspensao'
       Origin = 'CBS_Suspensao'
     end
-    object OperacaoFiscalFinalidade_Mercadoria: TStringField
+    object OperacaoFiscalFinalidade_Mercadoria: TSmallintField
       FieldName = 'Finalidade_Mercadoria'
       Origin = 'Finalidade_Mercadoria'
     end
@@ -4403,6 +4398,26 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
   object dstClassTribut: TDataSource
     DataSet = tClassTribut
     Left = 40
+    Top = 674
+  end
+  object tFinalidade: TFDQuery
+    BeforePost = OperacaoFiscalBeforePost
+    BeforeDelete = OperacaoFiscalBeforeDelete
+    OnCalcFields = OperacaoFiscalCalcFields
+    Connection = UniMainModule.Conecta
+    FetchOptions.AssignedValues = [evMode, evRowsetSize, evLiveWindowParanoic]
+    FetchOptions.RowsetSize = 250
+    FetchOptions.LiveWindowParanoic = False
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select * from FinalidadesMercadorias')
+    Left = 120
+    Top = 629
+  end
+  object dstFinalidade: TDataSource
+    DataSet = tFinalidade
+    Left = 120
     Top = 674
   end
 end

@@ -130,7 +130,7 @@ type
     UniDBRadioGroup1: TUniDBRadioGroup;
     cAtivo: TUniDBCheckBox;
     UniTabSheet3: TUniTabSheet;
-    UniDBLookupComboBox1: TUniDBLookupComboBox;
+    cBeneficio_Fiscal: TUniDBLookupComboBox;
     tBeneficio: TFDQuery;
     dstBeneficio: TDataSource;
     tServicos: TFDQuery;
@@ -418,13 +418,15 @@ type
     UniDBLookupComboBox7: TUniDBLookupComboBox;
     tClassTribut: TFDQuery;
     dstClassTribut: TDataSource;
-    OperacaoFiscalFinalidade_Mercadoria: TStringField;
-    cFinalidade: TUniDBComboBox;
     UniSpeedButton1: TUniSpeedButton;
     PanelCopia: TUniContainerPanel;
     cCodOper: TUniNumberEdit;
     bCancelFor: TUniSpeedButton;
     bCopiaFor: TUniSpeedButton;
+    OperacaoFiscalFinalidade_Mercadoria: TSmallintField;
+    UniDBLookupComboBox1: TUniDBLookupComboBox;
+    tFinalidade: TFDQuery;
+    dstFinalidade: TDataSource;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
@@ -886,6 +888,13 @@ begin
            sql.clear;
            sql.Add('select * ');
            sql.add('from ClassificacaoTributaria');
+           sql.add('order by Codigo');
+           open;
+      end;
+      with tFinalidade do begin
+           sql.clear;
+           sql.Add('select * ');
+           sql.add('from FinalidadesMercadorias');
            sql.add('order by Codigo');
            open;
       end;

@@ -1,8 +1,8 @@
 object fFiscalNFTerceiros: TfFiscalNFTerceiros
   Left = 0
   Top = 0
-  Width = 1151
-  Height = 748
+  Width = 1350
+  Height = 795
   OnCreate = uniFrameCreate
   OnDestroy = uniFrameDestroy
   Font.Name = 'MS Sans Serif'
@@ -11,10 +11,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     AlignWithMargins = True
     Left = 3
     Top = 38
-    Width = 919
-    Height = 707
+    Width = 1118
+    Height = 754
     Hint = ''
-    ActivePage = uniTabSheet6
+    ActivePage = TabXML
     Align = alClient
     TabOrder = 0
     object UniTabSheet2: TUniTabSheet
@@ -23,8 +23,8 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
-        Width = 911
-        Height = 652
+        Width = 1110
+        Height = 699
         Hint = ''
         CreateOrder = 1
         HeaderTitleAlign = taCenter
@@ -128,7 +128,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
-        Width = 911
+        Width = 1110
         Height = 27
         Hint = ''
         Align = alTop
@@ -196,23 +196,23 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
         end
       end
     end
-    object uniTabSheet6: TUniTabSheet
+    object TabCapa: TUniTabSheet
       Hint = ''
       Caption = 'Capa da Nota Fiscal'
       object Panel2: TUniPanel
         Left = 0
         Top = 0
-        Width = 911
-        Height = 679
+        Width = 1110
+        Height = 726
         Hint = ''
         Align = alClient
         TabOrder = 0
         Caption = ''
         DesignSize = (
-          911
-          679)
+          1110
+          726)
         object Ficha: TUniPanel
-          Left = 22
+          Left = 116
           Top = 13
           Width = 821
           Height = 641
@@ -667,14 +667,14 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
         end
       end
     end
-    object UniTabSheet1: TUniTabSheet
+    object TabItem: TUniTabSheet
       Hint = ''
       Caption = 'Itens'
       object GradeItens: TUniDBGrid
         Left = 65
         Top = 0
-        Width = 846
-        Height = 679
+        Width = 1045
+        Height = 726
         Hint = ''
         Margins.Left = 7
         Margins.Top = 7
@@ -819,7 +819,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
         Left = 0
         Top = 0
         Width = 65
-        Height = 679
+        Height = 726
         Hint = ''
         Margins.Left = 1
         Margins.Bottom = 6
@@ -970,14 +970,14 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
         end
       end
     end
-    object uniTabSheet3: TUniTabSheet
+    object TabSerial: TUniTabSheet
       Hint = ''
       Caption = 'Seriais/Chassis'
       object GradeSerial: TUniDBGrid
         Left = 0
         Top = 0
-        Width = 911
-        Height = 679
+        Width = 1110
+        Height = 726
         Hint = ''
         TitleFont.Name = 'MS Sans Serif'
         Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
@@ -1037,15 +1037,15 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           end>
       end
     end
-    object uniTabSheet4: TUniTabSheet
+    object TabLote: TUniTabSheet
       Hint = ''
       Caption = 'Lotes'
       object GradeLote: TUniDBGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 905
-        Height = 673
+        Width = 1104
+        Height = 720
         Hint = ''
         TitleFont.Name = 'MS Sans Serif'
         Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
@@ -1104,14 +1104,14 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           end>
       end
     end
-    object uniTabSheet5: TUniTabSheet
+    object TabManif: TUniTabSheet
       Hint = ''
       Caption = 'Manifesta'#231#227'o do Destinat'#225'rio'
       object GradeManif: TUniDBGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 905
+        Width = 1104
         Height = 168
         Hint = ''
         TitleFont.Name = 'MS Sans Serif'
@@ -1250,8 +1250,8 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       object cMensagens: TUniMemo
         AlignWithMargins = True
         Left = 3
-        Top = 547
-        Width = 905
+        Top = 594
+        Width = 1104
         Height = 129
         Hint = ''
         ParentFont = False
@@ -1287,11 +1287,609 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
         OnClick = Button1Click
       end
     end
+    object TabXML: TUniTabSheet
+      Hint = ''
+      TabVisible = False
+      Caption = 'Importar XML'
+      DesignSize = (
+        1110
+        726)
+      object UniPanel1: TUniPanel
+        Left = 35
+        Top = 23
+        Width = 952
+        Height = 667
+        Hint = ''
+        ShowHint = True
+        ParentShowHint = False
+        Anchors = [akTop]
+        TabOrder = 0
+        ClientEvents.UniEvents.Strings = (
+          
+            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
+            ' '#39'Ficha'#39';'#13#10'}')
+        ScreenMask.Color = clBlack
+        ScreenMask.Opacity = 1.000000000000000000
+        BorderStyle = ubsSolid
+        TitleAlign = taCenter
+        Title = 'DADOS GERAIS'
+        Caption = ''
+        ParentAlignmentControl = False
+        object UniPanel2: TUniPanel
+          Left = 0
+          Top = 632
+          Width = 952
+          Height = 35
+          Hint = ''
+          Margins.Top = 0
+          ShowHint = True
+          ParentShowHint = False
+          Align = alBottom
+          TabOrder = 1
+          ClientEvents.UniEvents.Strings = (
+            
+              'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+              '= '#39'Pasta'#39';'#13#10'}')
+          BorderStyle = ubsSolid
+          Caption = ''
+          Color = 5526569
+          object bArquivos: TUniFileUploadButton
+            Left = 780
+            Top = 0
+            Width = 131
+            Height = 35
+            Hint = ''
+            ShowHint = True
+            ParentShowHint = False
+            Align = alRight
+            Caption = 'Carregar Arquivos'
+            Filter = '*.xml'
+            Images = UniMainModule.imgBotoes
+            ImageIndex = 9
+            Messages.Uploading = 'Uploading...'
+            Messages.PleaseWait = 'Please Wait'
+            Messages.UploadError = 'Upload Error'
+            Messages.UploadTimeout = 'Timeout occurred...'
+            Messages.MaxSizeError = 'File is bigger than maximum allowed size'
+            Messages.MaxFilesError = 'You can upload maximum %d files.'
+            MultipleFiles = True
+            ShowUploadingMsg = False
+            OnMultiCompleted = bArquivosMultiCompleted
+          end
+          object bXMLSair: TUniSpeedButton
+            Left = 911
+            Top = 0
+            Width = 41
+            Height = 35
+            Hint = 'Fecha a tela de cadastro atual.'
+            ShowHint = True
+            Caption = ''
+            Align = alRight
+            ParentColor = False
+            IconAlign = iaCenter
+            Images = UniMainModule.imgBotoes
+            ImageIndex = 7
+            TabOrder = 2
+            OnClick = bXMLSairClick
+          end
+        end
+        object UniContainerPanel1: TUniContainerPanel
+          Left = 0
+          Top = 0
+          Width = 952
+          Height = 487
+          Hint = ''
+          ShowHint = True
+          ParentColor = False
+          Align = alTop
+          TabOrder = 2
+          ExplicitTop = 7
+          object cDataEnt: TUniDateTimePicker
+            Left = 10
+            Top = 10
+            Width = 262
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            DateTime = 46204.000000000000000000
+            DateFormat = 'dd/MM/yyyy'
+            TimeFormat = 'HH:mm:ss'
+            TabOrder = 1
+            FieldLabel = 'Data de Entrada'
+            FieldLabelWidth = 130
+            FieldLabelSeparator = ' '
+            BorderStyle = ubsInset
+          end
+          object cXMLOper: TUniDBLookupComboBox
+            Left = 10
+            Top = 37
+            Width = 668
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListField = 'Codigo;Descricao'
+            ListSource = dsOperacao
+            KeyField = 'Codigo'
+            ListFieldIndex = 1
+            BorderStyle = ubsInset
+            ClearButton = True
+            AnyMatch = True
+            TabOrder = 2
+            Color = clWindow
+            FieldLabel = 'Opera'#231#227'o Fiscal'
+            FieldLabelWidth = 130
+            FieldLabelSeparator = ' '
+          end
+          object cRamo: TUniDBLookupComboBox
+            Left = 10
+            Top = 64
+            Width = 668
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListField = 'Codigo;Descricao'
+            ListSource = dsRamo
+            KeyField = 'Codigo'
+            ListFieldIndex = 1
+            BorderStyle = ubsInset
+            ClearButton = True
+            AnyMatch = True
+            TabOrder = 3
+            Color = clWindow
+            FieldLabel = 'Ramo Atividade (Forn)'
+            FieldLabelWidth = 130
+            FieldLabelSeparator = ' '
+          end
+          object cTipoProd: TUniDBLookupComboBox
+            Left = 10
+            Top = 199
+            Width = 465
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListField = 'Codigo;Descricao'
+            KeyField = 'Codigo'
+            ListFieldIndex = 1
+            BorderStyle = ubsInset
+            ClearButton = True
+            AnyMatch = True
+            TabOrder = 4
+            Color = clWindow
+            FieldLabel = 'Tipo de Mercadoria'
+            FieldLabelWidth = 130
+            FieldLabelSeparator = ' '
+          end
+          object cCCusto: TUniDBLookupComboBox
+            Left = 10
+            Top = 91
+            Width = 668
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListField = 'Codigo;Nome'
+            ListSource = dsCentroCusto
+            KeyField = 'Codigo'
+            ListFieldIndex = 1
+            BorderStyle = ubsInset
+            ClearButton = True
+            AnyMatch = True
+            TabOrder = 5
+            Color = clWindow
+            FieldLabel = 'Centro de Custos'
+            FieldLabelWidth = 130
+            FieldLabelSeparator = ' '
+          end
+          object cProcImp: TUniDBLookupComboBox
+            Left = 10
+            Top = 118
+            Width = 364
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListField = 'Codigo;Descricao'
+            KeyField = 'Codigo'
+            ListFieldIndex = 1
+            BorderStyle = ubsInset
+            ClearButton = True
+            AnyMatch = True
+            TabOrder = 6
+            Color = clWindow
+            FieldLabel = 'Processo (Imp)'
+            FieldLabelWidth = 130
+            FieldLabelSeparator = ' '
+          end
+          object cProcExp: TUniDBLookupComboBox
+            Left = 10
+            Top = 145
+            Width = 364
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListField = 'Codigo;Descricao'
+            KeyField = 'Codigo'
+            ListFieldIndex = 1
+            BorderStyle = ubsInset
+            ClearButton = True
+            AnyMatch = True
+            TabOrder = 7
+            Color = clWindow
+            FieldLabel = 'Processo (Exp)'
+            FieldLabelWidth = 130
+            FieldLabelSeparator = ' '
+          end
+          object cDUIMP: TUniEdit
+            Left = 384
+            Top = 118
+            Width = 294
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            BorderStyle = ubsInset
+            Text = 'cDUIMP'
+            TabOrder = 8
+            FieldLabel = 'DUIMP'
+            FieldLabelWidth = 60
+            FieldLabelSeparator = ' '
+          end
+          object cDUE: TUniEdit
+            Left = 384
+            Top = 145
+            Width = 294
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            BorderStyle = ubsInset
+            Text = 'UniEdit1'
+            TabOrder = 9
+            FieldLabel = 'DUIMP'
+            FieldLabelWidth = 60
+            FieldLabelSeparator = ' '
+          end
+          object cEmb: TUniDBLookupComboBox
+            Left = 10
+            Top = 172
+            Width = 668
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListField = 'Codigo;Descricao'
+            KeyField = 'Codigo'
+            ListFieldIndex = 1
+            BorderStyle = ubsInset
+            ClearButton = True
+            AnyMatch = True
+            TabOrder = 10
+            Color = clWindow
+            FieldLabel = 'Embarque'
+            FieldLabelWidth = 130
+            FieldLabelSeparator = ' '
+          end
+          object cOrig: TUniDBLookupComboBox
+            Left = 10
+            Top = 226
+            Width = 465
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListField = 'Codigo;Descricao'
+            KeyField = 'Codigo'
+            ListFieldIndex = 1
+            BorderStyle = ubsInset
+            ClearButton = True
+            AnyMatch = True
+            TabOrder = 11
+            Color = clWindow
+            FieldLabel = 'Origem da Mercadoria'
+            FieldLabelWidth = 130
+            FieldLabelSeparator = ' '
+          end
+          object cFinal: TUniDBLookupComboBox
+            Left = 10
+            Top = 253
+            Width = 465
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListField = 'Codigo;Descricao'
+            KeyField = 'Codigo'
+            ListFieldIndex = 1
+            BorderStyle = ubsInset
+            ClearButton = True
+            AnyMatch = True
+            TabOrder = 12
+            Color = clWindow
+            FieldLabel = 'Finalidade da Mercadoria'
+            FieldLabelWidth = 130
+            FieldLabelSeparator = ' '
+          end
+          object cEscala: TUniCheckBox
+            Left = 482
+            Top = 199
+            Width = 200
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            Caption = 'Produzido em Escala Relevante'
+            TabOrder = 13
+          end
+          object UniGroupBox1: TUniGroupBox
+            Left = 694
+            Top = 329
+            Width = 238
+            Height = 132
+            Hint = ''
+            ShowHint = True
+            Caption = 'Imobilizado'
+            TabOrder = 14
+            object cImoAliq: TUniFormattedNumberEdit
+              Left = 5
+              Top = 43
+              Width = 220
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 1
+              FieldLabel = 'Al'#237'quota'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cImoBC: TUniFormattedNumberEdit
+              Left = 5
+              Top = 70
+              Width = 220
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 2
+              FieldLabel = 'Base de C'#225'lculo'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cImoValor: TUniFormattedNumberEdit
+              Left = 5
+              Top = 97
+              Width = 220
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 3
+              FieldLabel = 'Valor'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cUso: TUniComboBox
+              Left = 5
+              Top = 16
+              Width = 220
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              Style = csDropDownList
+              Text = ''
+              Items.Strings = (
+                'Bem'
+                'Componente')
+              TabOrder = 4
+              FieldLabel = 'Uso'
+              FieldLabelSeparator = ' '
+              IconItems = <>
+            end
+          end
+          object cSubst: TUniCheckBox
+            Left = 10
+            Top = 301
+            Width = 216
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            Caption = 'Substituir Notas Fiscais ja cadastradas.'
+            TabOrder = 15
+          end
+          object cPreco: TUniGroupBox
+            Left = 694
+            Top = 147
+            Width = 238
+            Height = 160
+            Hint = ''
+            ShowHint = True
+            Caption = 'Forma'#231#227'o do Pre'#231'o de Venda'
+            TabOrder = 16
+            object cLucro: TUniFormattedNumberEdit
+              Left = 5
+              Top = 16
+              Width = 220
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 1
+              FieldLabel = 'Lucro'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cComissao: TUniFormattedNumberEdit
+              Left = 5
+              Top = 43
+              Width = 220
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 2
+              FieldLabel = 'Comiss'#227'o'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cCustoFin: TUniFormattedNumberEdit
+              Left = 5
+              Top = 70
+              Width = 220
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 3
+              FieldLabel = 'Custo Financeiro'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cCustoFixo: TUniFormattedNumberEdit
+              Left = 5
+              Top = 97
+              Width = 220
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 4
+              FieldLabel = 'Custo Financeiro'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+            object cMargem: TUniFormattedNumberEdit
+              Left = 5
+              Top = 124
+              Width = 220
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              BorderStyle = ubsInset
+              Alignment = taRightJustify
+              TabOrder = 5
+              FieldLabel = 'Custo Financeiro'
+              FieldLabelSeparator = ' '
+              DecimalSeparator = ','
+              ThousandSeparator = '.'
+            end
+          end
+          object gPerfil: TUniGroupBox
+            Left = 694
+            Top = 12
+            Width = 238
+            Height = 116
+            Hint = ''
+            ShowHint = True
+            ParentShowHint = False
+            Caption = 'Caracter'#237'sticas do Emitente'
+            TabOrder = 17
+            ClientEvents.UniEvents.Strings = (
+              
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                '= '#39'Grupo'#39';'#13#10'}'#13#10)
+            object cIsento: TUniCheckBox
+              Left = 13
+              Top = 16
+              Width = 97
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              Caption = 'Isento de IE'
+              ParentFont = False
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              TabOrder = 1
+              FieldLabelWidth = 0
+            end
+            object cZona_Franca: TUniCheckBox
+              Left = 13
+              Top = 38
+              Width = 109
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              Caption = 'Zona_Franca'
+              ParentFont = False
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              TabOrder = 2
+              FieldLabelWidth = 120
+            end
+            object cInscricaoST: TUniCheckBox
+              Left = 13
+              Top = 59
+              Width = 159
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              Caption = 'Possui Inscri'#231#227'o de ST'
+              ParentFont = False
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              TabOrder = 3
+              FieldLabelWidth = 120
+            end
+            object cMicro: TUniCheckBox
+              Left = 13
+              Top = 80
+              Width = 118
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              Caption = 'Micro Empresa'
+              ParentFont = False
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              TabOrder = 4
+              FieldLabelWidth = 120
+            end
+          end
+        end
+        object UniContainerPanel2: TUniContainerPanel
+          Left = 0
+          Top = 487
+          Width = 952
+          Height = 145
+          Hint = ''
+          ShowHint = True
+          ParentColor = False
+          Align = alClient
+          TabOrder = 3
+          object cLog: TUniStringGrid
+            AlignWithMargins = True
+            Left = 3
+            Top = 3
+            Width = 946
+            Height = 139
+            Hint = ''
+            ShowHint = True
+            HeaderTitle = 'LOG'
+            HeaderTitleAlign = taCenter
+            FixedCols = 0
+            FixedRows = 0
+            RowCount = 0
+            ColCount = 2
+            Options = [goVertLine, goHorzLine, goEditing]
+            Columns = <>
+            BorderStyle = ubsInset
+            ForceFit = True
+            Align = alClient
+            TabOrder = 1
+          end
+        end
+      end
+    end
   end
   object pBarraNav: TUniPanel
     Left = 0
     Top = 0
-    Width = 1151
+    Width = 1350
     Height = 35
     Hint = ''
     Align = alTop
@@ -1405,9 +2003,8 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       ImageIndex = 7
       TabOrder = 7
       OnClick = bFecharClick
-      ExplicitLeft = 468
     end
-    object UniButton1: TUniButton
+    object bXML: TUniButton
       Left = 362
       Top = 0
       Width = 110
@@ -1418,15 +2015,15 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       TabOrder = 8
       Images = UniMainModule.imgBotoes
       ImageIndex = 9
-      OnClick = UniButton1Click
+      OnClick = bXMLClick
     end
   end
   object UniPanel3: TUniPanel
     AlignWithMargins = True
-    Left = 928
+    Left = 1127
     Top = 38
     Width = 220
-    Height = 707
+    Height = 754
     Hint = ''
     Align = alRight
     ParentFont = False
@@ -2210,8 +2807,8 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
   end
   object tTmp: TFDQuery
     Connection = UniMainModule.Conecta
-    Left = 346
-    Top = 226
+    Left = 439
+    Top = 125
   end
   object Armazem: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2261,12 +2858,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       'select * from NotasFiscais where Emissao = '#39'T'#39)
     Left = 102
     Top = 121
-    object NotasEmpresa: TStringField
-      FieldName = 'Empresa'
-      Origin = 'Empresa'
-      Required = True
-      Size = 14
-    end
     object NotasNota: TIntegerField
       FieldName = 'Nota'
       Origin = 'Nota'
@@ -2426,43 +3017,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       Origin = 'Operacao_Veiculo'
       FixedChar = True
       Size = 1
-    end
-    object NotasTransporte_Placa: TStringField
-      FieldName = 'Transporte_Placa'
-      Origin = 'Transporte_Placa'
-      FixedChar = True
-      Size = 10
-    end
-    object NotasTransporte_PlacaUF: TStringField
-      FieldName = 'Transporte_PlacaUF'
-      Origin = 'Transporte_PlacaUF'
-      FixedChar = True
-      Size = 2
-    end
-    object NotasTransporte_NomeMotorista: TStringField
-      FieldName = 'Transporte_NomeMotorista'
-      Origin = 'Transporte_NomeMotorista'
-      Size = 40
-    end
-    object NotasTransporte_RGMotorista: TStringField
-      FieldName = 'Transporte_RGMotorista'
-      Origin = 'Transporte_RGMotorista'
-    end
-    object NotasTransporte_CPFMotorista: TStringField
-      FieldName = 'Transporte_CPFMotorista'
-      Origin = 'Transporte_CPFMotorista'
-      Size = 14
-    end
-    object NotasTransporte_Lacre: TMemoField
-      FieldName = 'Transporte_Lacre'
-      Origin = 'Transporte_Lacre'
-      BlobType = ftMemo
-    end
-    object NotasTransporte_CodigoANTT: TStringField
-      FieldName = 'Transporte_CodigoANTT'
-      Origin = 'Transporte_CodigoANTT'
-      FixedChar = True
-      Size = 15
     end
     object NotasTaxa_Cambio: TBCDField
       FieldName = 'Taxa_Cambio'
@@ -2689,35 +3243,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       FieldName = 'Lote'
       Origin = 'Lote'
       Size = 15
-    end
-    object NotasReboque_Placa: TStringField
-      FieldName = 'Reboque_Placa'
-      Origin = 'Reboque_Placa'
-      FixedChar = True
-      Size = 10
-    end
-    object NotasReboque_UF: TStringField
-      FieldName = 'Reboque_UF'
-      Origin = 'Reboque_UF'
-      FixedChar = True
-      Size = 2
-    end
-    object NotasReboque_ANTT: TStringField
-      FieldName = 'Reboque_ANTT'
-      Origin = 'Reboque_ANTT'
-      FixedChar = True
-      Size = 15
-    end
-    object NotasReboque_Lacre: TMemoField
-      FieldName = 'Reboque_Lacre'
-      Origin = 'Reboque_Lacre'
-      BlobType = ftMemo
-    end
-    object NotasEntrega_Retirada: TStringField
-      FieldName = 'Entrega_Retirada'
-      Origin = 'Entrega_Retirada'
-      FixedChar = True
-      Size = 1
     end
     object NotasCTE: TBooleanField
       FieldName = 'CTE'
@@ -3292,6 +3817,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       Origin = 'Chave_Ref'
       Size = 44
     end
+    object NotasEmpresa: TStringField
+      FieldName = 'Empresa'
+      Origin = 'Empresa'
+      Required = True
+      Size = 14
+    end
   end
   object dsNotas: TDataSource
     DataSet = Notas
@@ -3479,17 +4010,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       DisplayFormat = ',##0.0000'
       Precision = 18
     end
-    object ItensEmpresa: TStringField
-      FieldName = 'Empresa'
-      Origin = 'Empresa'
-      Required = True
-      Size = 14
-    end
-    object ItensChave: TStringField
-      FieldName = 'Chave'
-      Origin = 'Chave'
-      Size = 44
-    end
     object ItensCFOP: TStringField
       FieldName = 'CFOP'
       Origin = 'CFOP'
@@ -3509,6 +4029,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       Origin = 'UM'
       FixedChar = True
       Size = 3
+    end
+    object ItensEmpresa: TStringField
+      FieldName = 'Empresa'
+      Origin = 'Empresa'
+      Required = True
+      Size = 14
     end
   end
   object dsItens: TDataSource
@@ -3536,7 +4062,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'SELECT * FROM ModalidadesFrete')
-    Left = 261
+    Left = 260
     Top = 520
   end
   object dsModalFrete: TDataSource
@@ -3557,5 +4083,33 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     DataSet = NaturezaFrete
     Left = 346
     Top = 172
+  end
+  object RamosAtv: TFDQuery
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'SELECT * FROM RamoAtividade')
+    Left = 346
+    Top = 226
+  end
+  object dsRamo: TDataSource
+    DataSet = RamosAtv
+    Left = 346
+    Top = 272
+  end
+  object CentroCusto: TFDQuery
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'SELECT * FROM CentroCusto')
+    Left = 346
+    Top = 322
+  end
+  object dsCentroCusto: TDataSource
+    DataSet = CentroCusto
+    Left = 346
+    Top = 368
   end
 end

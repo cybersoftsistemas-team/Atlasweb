@@ -611,7 +611,7 @@ object fCadDestinatarios: TfCadDestinatarios
             Left = 607
             Top = 21
             Width = 216
-            Height = 517
+            Height = 511
             Hint = ''
             ShowHint = True
             Caption = 'Perfil / Caracter'#237'sticas'
