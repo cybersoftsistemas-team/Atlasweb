@@ -127,6 +127,9 @@ type
   public
     Arquivo: string;
     SubstNF: boolean;
+    Origem: integer;
+    TipoProd: integer;
+    ClassProd: integer;
   end;
 
 type
@@ -149,6 +152,9 @@ type
     function CadastraProduto(Item: TNFeItem): integer;
   public
     mID: integer;
+    mOrigem: integer;
+    mTipoProd: integer;
+    mClassProd: integer;
     property NFe: TNFe read FNFe;
     constructor Create(AConn: TFDConnection);
     destructor Destroy; override;
@@ -439,6 +445,9 @@ begin
      end;
 
      FNFe.NotaID := GerarNotaID;
+     mOrigem     := Params.Origem;
+     mTipoProd   := Params.TipoProd;
+     mClassProd  := Params.ClassProd;
 
      // Carrega o XML da NF-e.
      LerItens(XML);
@@ -992,12 +1001,11 @@ begin
              sql.add('                     ,GTIN_Caixa');        
              sql.add('                     ,Fornecedor');
              sql.add('                     ,Desativado');
-             sql.add('                     ,Tipo_Item');
+             sql.add('                     ,Tipo');
              sql.add('                     ,Estoque_MinimoPerc');
              sql.add('                     ,Origem');
              sql.add('                     ,Escala_Relevante');
              sql.add('                     ,CNPJ_Fabricante');
-             //sql.add('                     ,Fabricante');
              sql.add('                     )');
              sql.add('            values(');
              sql.add('                    :Cod');
@@ -1007,8 +1015,8 @@ begin
              sql.add('                   ,:UM');
              sql.add('                   ,:UMOrig');
              sql.add('                   ,:UMTrib');
-             sql.add('                   ,:QtdeUni');
-             sql.add('                   ,:QtdeVol');
+             sql.add('                   ,1');
+             sql.add('                   ,1');
              sql.add('                   ,:NCM');
              sql.add('                   ,:EstDisp');
              sql.add('                   ,:AliqIPI');
@@ -1024,39 +1032,63 @@ begin
              sql.add('                   ,:Origem');
              sql.add('                   ,:Escala');
              sql.add('                   ,:CNPJFab');
-             //sql.add('                   ,:Fabr');
              sql.add('                  )');
           
              mCod := GeraCodigo('Produtos', 'Codigo');
+
+             parambyname('Cod').asinteger    := mCod;
+             parambyname('CodFab').asstring  := Item.CodFab;
+             parambyname('DescRed').asstring := Item.DescrAdic;
+             parambyname('Desc').asstring    := Item.Descricao;
+             parambyname('UM').asstring      := Item.Unidade;
+             parambyname('UMOrig').asstring  := Item.Unidade;
+             parambyname('UMTrib').asstring  := Item.Unidade;
+             parambyname('NCM').asstring     := Item.NCM;
+             parambyname('PISEnt').asfloat   := Item.vPIS;
+             parambyname('COFEnt').asfloat   := Item.vCOFINS;
+             parambyname('GTINUni').asstring := Item.GTIN;
+             parambyname('GTINCX').asstring  := Item.GTIN;
+             parambyname('Desat').asboolean  := false;
+             parambyname('Tipo').asinteger   := mTipoProd;
+             parambyname('Origem').asinteger := mOrigem;
+             parambyname('Escala').asboolean := Item.Escala;
+             parambyname('EstDisp').asfloat  := 0;
+             parambyname('AliqIPI').asfloat  := 0;
+             parambyname('AliqII').asfloat   := 0;
+             parambyname('Forn').asinteger   := FNFe.EmitCod;
+             parambyname('CNPJFab').asstring := '';
+             parambyname('EstMin').asfloat   := 0;
              
-             parambyname('Cod').asinteger     := mCod;
-             parambyname('CodFab').asstring   := Item.CodFab;
-             parambyname('DescRed').asstring  := Item.DescrAdic;
-             parambyname('Desc').asstring     := Item.Descricao;
-             parambyname('UM').asstring       := Item.Unidade;
-             parambyname('UMOrig').asstring   := Item.Unidade;
-             parambyname('UMTrib').asstring   := Item.Unidade;
-             parambyname('NCM').asstring      := Item.NCM;
-             parambyname('PISEnt').asfloat    := Item.vPIS;
-             parambyname('COFEnt').asfloat    := Item.vCOFINS;
-             parambyname('GTINUni').asstring  := Item.GTIN;
-             parambyname('GTINCX').asstring   := Item.GTIN;
-             parambyname('Desat').asboolean   := false;
-             parambyname('Tipo').asinteger    := Item.TipoProd;
-             parambyname('Origem').asinteger  := Item.OrigProd;
-             parambyname('Escala').asboolean  := Item.Escala;
-             parambyname('QtdeUni').asinteger := 1;
-             parambyname('QtdeVol').asinteger := 1;
-             parambyname('EstDisp').asfloat   := 0;
-             parambyname('AliqIPI').asfloat   := 0;
-             parambyname('AliqII').asfloat    := 0;
-             parambyname('Forn').asinteger    := FNFe.EmitCod;
-             parambyname('CNPJFab').asstring  := '';
-             parambyname('EstMin').asfloat    := 0;
-             //parambyname('Fabr').asinteger    := 0;
              execute;
              result := mcod;
         end;
+
+{
+                                ProdutosEstoque_Disponivel.Value := StrtoFloat(GradeItens.Cells[08,mQtdeItem]);
+                                if not ReferenciasFiscaisZerar_IPI.AsBoolean then begin
+                                   if Trim(GradeItens.Cells[29,mQtdeItem]) <> '' then begin 
+                                      ProdutosAliquota_IPI.Value := StrtoFloat(GradeItens.Cells[29,mQtdeItem]);
+                                   end;
+                                end else begin
+                                   ProdutosAliquota_IPI.Value := 0;
+                                end;
+                                If NCM.Locate('NCM', GradeItens.Cells[04,mQtdeItem], [loCaseInsensitive]) = True then ProdutosAliquota_II.Value := dmFiscal.NCMII.Value;
+
+                                ProdutosEstoque_MinimoPerc.Value := ConfiguracaoEstoque_MinimoPerc.Value;
+
+                                if StrtoInt(Copy(cOrigem.Text,1,1)) in[1, 2, 6, 7] then begin
+                                   ProdutosOrigem.Value := 'M';
+                                end else begin
+                                   ProdutosOrigem.Value := 'N';
+                                end;
+
+                                ProdutosEscala_Relevante.Value := cEscala.Checked;
+                                if cEscala.Checked then begin
+                                   Dados.ProdutosCNPJ_Fabricante.Value := '';
+                                end else begin
+                                   Dados.ProdutosCNPJ_Fabricante.Value := cCNPJ.Text;
+                                end;
+}
         
         LogErros('Produtos', 'INSERT', 'Cadastrado produtos na importação do XML da NF-e: '+FNFe.Chave);
      except on E: Exception do

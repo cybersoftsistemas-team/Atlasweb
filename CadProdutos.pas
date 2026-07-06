@@ -294,6 +294,9 @@ type
     UniContainerPanel2: TUniContainerPanel;
     cEstoque_MinimoPerc: TUniDBEdit;
     cEstoque_Minimo: TUniDBEdit;
+    cClassif: TUniDBLookupComboBox;
+    ClassProd: TFDQuery;
+    dsClassProd: TDataSource;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
@@ -609,6 +612,12 @@ begin
       Estados.SQL.Clear;
       Estados.SQL.add('select UF, Nome from Estados order by Nome');
       Estados.Open;
+      
+      with ClassProd do begin
+           sql.clear;
+           sql.add('select * from ClassificacaoProduto order by Codigo');
+           open;
+      end;
 
       with uniMainModule do begin
            TipoCombustivel.open;
@@ -654,9 +663,10 @@ end;
 procedure TfCadProdutos.ProdutosAfterScroll(DataSet: TDataSet);
 begin
      with Notas do begin
+          {
           sql.clear;
           sql.add('select distinct');
-          sql.add('       Data_Entrada = Data_EntradaSaida');
+          sql.add('       Data_Entrada = Data_ES');
           sql.add('      ,Nota');
           sql.add('      ,Valor_Inventario = round(Valor_Inventario, 4)');
           sql.add('      ,Valor_Entrada    = round(Valor_Unitario, 4)');
@@ -667,6 +677,25 @@ begin
           sql.add('and isnull(Cancelada, 0) = 0');
           sql.add('and isnull(Denegada, 0) = 0');
           sql.add('order by Data_Entrada desc, Nota Desc, Valor_Entrada desc');
+          parambyname('pCodigo').AsInteger := Produtos.fieldbyname('Codigo').AsInteger;
+          sql.SaveToFile('c:\temp\CadProdutos_Notas.sql');
+          open;
+          }
+          sql.clear;
+          sql.add('select distinct');
+          sql.add('       nf.Data_ES');
+          sql.add('      ,nf.Nota');
+          sql.add('      ,Valor_Inventario = isnull(round(ni.Valor_Inventario, 4), 0)');
+          sql.add('      ,Valor_Entrada = isnull(round(ni.Valor_Unitario, 4), 0)');
+          sql.add('      ,nf.Emissao');
+          sql.add('from NotasItens ni');
+          sql.add('inner join NotasFiscais nf');
+          sql.add('on nf.Nota_id = ni.Nota_id');
+          sql.add('where ni.Codigo_Mercadoria = :pCodigo');
+          sql.add('and nf.ES = 0');
+          sql.add('and isnull(nf.Cancelada, 0) = 0');
+          sql.add('and isnull(nf.Denegada, 0) = 0');
+          sql.add('order by Data_ES desc, Nota Desc, Valor_Entrada desc');
           parambyname('pCodigo').AsInteger := Produtos.fieldbyname('Codigo').AsInteger;
           //sql.SaveToFile('c:\temp\CadProdutos_Notas.sql');
           open;

@@ -1383,7 +1383,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           ParentColor = False
           Align = alTop
           TabOrder = 2
-          ExplicitTop = 7
           object cDataEnt: TUniDateTimePicker
             Left = 10
             Top = 10
@@ -1443,11 +1442,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           object cTipoProd: TUniDBLookupComboBox
             Left = 10
             Top = 199
-            Width = 465
+            Width = 668
             Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
+            ListSource = dsTipoProd
             KeyField = 'Codigo'
             ListFieldIndex = 1
             BorderStyle = ubsInset
@@ -1455,7 +1455,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             AnyMatch = True
             TabOrder = 4
             Color = clWindow
-            FieldLabel = 'Tipo de Mercadoria'
+            FieldLabel = 'Tipo Mercadoria'
             FieldLabelWidth = 130
             FieldLabelSeparator = ' '
           end
@@ -1560,6 +1560,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             AnyMatch = True
             TabOrder = 10
             Color = clWindow
+            MatchFieldWidth = False
             FieldLabel = 'Embarque'
             FieldLabelWidth = 130
             FieldLabelSeparator = ' '
@@ -1567,11 +1568,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           object cOrig: TUniDBLookupComboBox
             Left = 10
             Top = 226
-            Width = 465
+            Width = 668
             Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
+            ListSource = dsOrigem
             KeyField = 'Codigo'
             ListFieldIndex = 1
             BorderStyle = ubsInset
@@ -1579,18 +1581,20 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             AnyMatch = True
             TabOrder = 11
             Color = clWindow
-            FieldLabel = 'Origem da Mercadoria'
+            MatchFieldWidth = False
+            FieldLabel = 'Origem Mercadoria'
             FieldLabelWidth = 130
             FieldLabelSeparator = ' '
           end
-          object cFinal: TUniDBLookupComboBox
+          object cClassMerc: TUniDBLookupComboBox
             Left = 10
             Top = 253
-            Width = 465
+            Width = 668
             Height = 25
             Hint = ''
             ShowHint = True
             ListField = 'Codigo;Descricao'
+            ListSource = dsClassProd
             KeyField = 'Codigo'
             ListFieldIndex = 1
             BorderStyle = ubsInset
@@ -1598,18 +1602,19 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             AnyMatch = True
             TabOrder = 12
             Color = clWindow
-            FieldLabel = 'Finalidade da Mercadoria'
+            FieldLabel = 'Classifica'#231#227'o Mercadoria'
             FieldLabelWidth = 130
             FieldLabelSeparator = ' '
           end
           object cEscala: TUniCheckBox
-            Left = 482
-            Top = 199
-            Width = 200
+            Left = 17
+            Top = 301
+            Width = 234
             Height = 25
+            Cursor = crHandPoint
             Hint = ''
             ShowHint = True
-            Caption = 'Produzido em Escala Relevante'
+            Caption = 'Mercadoria Produzido em Escala Relevante'
             TabOrder = 13
           end
           object UniGroupBox1: TUniGroupBox
@@ -1685,10 +1690,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             end
           end
           object cSubst: TUniCheckBox
-            Left = 10
-            Top = 301
+            Left = 17
+            Top = 328
             Width = 216
             Height = 25
+            Cursor = crHandPoint
             Hint = ''
             ShowHint = True
             Caption = 'Substituir Notas Fiscais ja cadastradas.'
@@ -1784,6 +1790,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Top = 12
             Width = 238
             Height = 116
+            Cursor = crHandPoint
             Hint = ''
             ShowHint = True
             ParentShowHint = False
@@ -1798,6 +1805,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
               Top = 16
               Width = 97
               Height = 25
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               Caption = 'Isento de IE'
@@ -1812,6 +1820,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
               Top = 38
               Width = 109
               Height = 25
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               Caption = 'Zona_Franca'
@@ -1826,6 +1835,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
               Top = 59
               Width = 159
               Height = 25
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               Caption = 'Possui Inscri'#231#227'o de ST'
@@ -1840,6 +1850,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
               Top = 80
               Width = 118
               Height = 25
+              Cursor = crHandPoint
               Hint = ''
               ShowHint = True
               Caption = 'Micro Empresa'
@@ -2807,14 +2818,14 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
   end
   object tTmp: TFDQuery
     Connection = UniMainModule.Conecta
-    Left = 439
-    Top = 125
+    Left = 557
+    Top = 499
   end
   object Armazem: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'Select Codigo, Nome, CNPJ from Fornecedores')
-    Left = 182
+    Left = 183
     Top = 222
     object ArmazemCodigo: TIntegerField
       DisplayWidth = 5
@@ -2831,7 +2842,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
   end
   object dsArmazem: TDataSource
     DataSet = Armazem
-    Left = 182
+    Left = 183
     Top = 272
   end
   object CFOP: TFDQuery
@@ -2840,12 +2851,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from CFOP')
-    Left = 100
+    Left = 102
     Top = 222
   end
   object dsCFOP: TDataSource
     DataSet = CFOP
-    Left = 100
+    Left = 102
     Top = 272
   end
   object Notas: TFDQuery
@@ -3826,7 +3837,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
   end
   object dsNotas: TDataSource
     DataSet = Notas
-    Left = 100
+    Left = 102
     Top = 173
   end
   object Fornecedores: TFDQuery
@@ -3835,12 +3846,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'SELECT * FROM Destinatarios where Fornecedor = 1')
-    Left = 101
+    Left = 102
     Top = 421
   end
   object dsFornecedores: TDataSource
     DataSet = Fornecedores
-    Left = 100
+    Left = 102
     Top = 471
   end
   object Processos: TFDQuery
@@ -3849,12 +3860,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'SELECT * FROM ProcessosImp')
-    Left = 100
+    Left = 102
     Top = 520
   end
   object dsProcessos: TDataSource
     DataSet = Processos
-    Left = 100
+    Left = 102
     Top = 569
   end
   object Empresas: TFDQuery
@@ -3863,12 +3874,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'SELECT * FROM Empresas')
-    Left = 261
-    Top = 422
+    Left = 263
+    Top = 421
   end
   object dsEmpresas: TDataSource
     DataSet = Empresas
-    Left = 261
+    Left = 263
     Top = 471
   end
   object ModalPgto: TFDQuery
@@ -3882,7 +3893,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
   end
   object dsModalPgto: TDataSource
     DataSet = ModalPgto
-    Left = 100
+    Left = 102
     Top = 370
   end
   object TiposDoc: TFDQuery
@@ -3891,12 +3902,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'SELECT * FROM TiposDocumentos')
-    Left = 182
+    Left = 183
     Top = 320
   end
   object dsTiposDoc: TDataSource
     DataSet = TiposDoc
-    Left = 182
+    Left = 183
     Top = 370
   end
   object Operacao: TFDQuery
@@ -3907,12 +3918,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       'SELECT * FROM OperacaoFiscal'
       'where Emissao = '#39'T'#39
       'order by Descricao')
-    Left = 181
+    Left = 183
     Top = 421
   end
   object dsOperacao: TDataSource
     DataSet = Operacao
-    Left = 182
+    Left = 183
     Top = 471
   end
   object Modelos: TFDQuery
@@ -3921,12 +3932,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'SELECT * FROM ModelosDocumentos')
-    Left = 182
+    Left = 183
     Top = 520
   end
   object dsModelos: TDataSource
     DataSet = Modelos
-    Left = 182
+    Left = 183
     Top = 569
   end
   object Beneficios: TFDQuery
@@ -3935,13 +3946,13 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from BeneficioFiscal order by Nome')
-    Left = 261
-    Top = 323
+    Left = 263
+    Top = 320
   end
   object dsBeneficios: TDataSource
     DataSet = Beneficios
-    Left = 261
-    Top = 373
+    Left = 263
+    Top = 370
   end
   object Itens: TFDQuery
     IndexFieldNames = 'Nota_id'
@@ -4039,7 +4050,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
   end
   object dsItens: TDataSource
     DataSet = Itens
-    Left = 182
+    Left = 183
     Top = 173
   end
   object ItensNavios: TFDQuery
@@ -4049,7 +4060,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     SQL.Strings = (
       'SELECT * FROM NotasItensNavios')
     Left = 263
-    Top = 123
+    Top = 121
   end
   object dsItensNavios: TDataSource
     DataSet = ItensNavios
@@ -4062,12 +4073,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'SELECT * FROM ModalidadesFrete')
-    Left = 260
+    Left = 263
     Top = 520
   end
   object dsModalFrete: TDataSource
     DataSet = ModalFrete
-    Left = 261
+    Left = 263
     Top = 569
   end
   object NaturezaFrete: TFDQuery
@@ -4077,12 +4088,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     SQL.Strings = (
       'SELECT * FROM NaturezaFrete')
     Left = 346
-    Top = 123
+    Top = 121
   end
   object dsNaturezaFrete: TDataSource
     DataSet = NaturezaFrete
     Left = 346
-    Top = 172
+    Top = 173
   end
   object RamosAtv: TFDQuery
     Connection = UniMainModule.Conecta
@@ -4091,7 +4102,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     SQL.Strings = (
       'SELECT * FROM RamoAtividade')
     Left = 346
-    Top = 226
+    Top = 222
   end
   object dsRamo: TDataSource
     DataSet = RamosAtv
@@ -4105,11 +4116,53 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     SQL.Strings = (
       'SELECT * FROM CentroCusto')
     Left = 346
-    Top = 322
+    Top = 320
   end
   object dsCentroCusto: TDataSource
     DataSet = CentroCusto
     Left = 346
-    Top = 368
+    Top = 370
+  end
+  object Origem: TFDQuery
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'SELECT * FROM OrigemMercadoria')
+    Left = 346
+    Top = 421
+  end
+  object dsOrigem: TDataSource
+    DataSet = Origem
+    Left = 346
+    Top = 471
+  end
+  object TipoProd: TFDQuery
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'SELECT * FROM TipoProduto')
+    Left = 346
+    Top = 520
+  end
+  object dsTipoProd: TDataSource
+    DataSet = TipoProd
+    Left = 346
+    Top = 569
+  end
+  object ClassProd: TFDQuery
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'SELECT * FROM ClassificacaoProduto')
+    Left = 429
+    Top = 121
+  end
+  object dsClassProd: TDataSource
+    DataSet = ClassProd
+    Left = 429
+    Top = 173
   end
 end

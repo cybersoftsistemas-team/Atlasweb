@@ -370,7 +370,7 @@ type
     cDUE: TUniEdit;
     cEmb: TUniDBLookupComboBox;
     cOrig: TUniDBLookupComboBox;
-    cFinal: TUniDBLookupComboBox;
+    cClassMerc: TUniDBLookupComboBox;
     cEscala: TUniCheckBox;
     UniGroupBox1: TUniGroupBox;
     cImoAliq: TUniFormattedNumberEdit;
@@ -397,6 +397,12 @@ type
     dsRamo: TDataSource;
     CentroCusto: TFDQuery;
     dsCentroCusto: TDataSource;
+    Origem: TFDQuery;
+    dsOrigem: TDataSource;
+    TipoProd: TFDQuery;
+    dsTipoProd: TDataSource;
+    ClassProd: TFDQuery;
+    dsClassProd: TDataSource;
     procedure bSairClick(Sender: TObject);
     procedure UniFrameCreate(Sender: TObject);
     procedure bItensClick(Sender: TObject);
@@ -491,7 +497,10 @@ begin
      Importador.NFe.EmitMicro  := cMicro.Checked;
      Importador.NFe.CentCus    := CentroCusto.fieldbyname('Codigo').asstring;
 
-     Param.SubstNF := cSubst.Checked;
+     Param.SubstNF   := cSubst.Checked;
+     Param.Origem    := Origem.fieldbyname('Codigo').asinteger;
+     Param.TipoProd  := TipoProd.fieldbyname('Codigo').asinteger;
+     Param.ClassProd := ClassProd.fieldbyname('Codigo').asinteger;
      
      try
         for i := 0 to high(Files) do begin
@@ -673,6 +682,21 @@ begin
            sql.clear;
            sql.add('select Codigo, Nome from CentroCusto where Empresa = :pEmp order by Codigo');
            ParamByName('pEmp').asstring := Empresas.fieldbyname('CNPJ').asstring;
+           Open;
+      end;
+      with Origem do begin
+           sql.clear;
+           sql.add('select Codigo, Descricao from OrigemMercadoria order by Codigo');
+           Open;
+      end;
+      with TipoProd do begin
+           sql.clear;
+           sql.add('select Codigo, Descricao from TipoProduto order by Codigo');
+           Open;
+      end;
+      with ClassProd do begin
+           sql.clear;
+           sql.add('select Codigo, Descricao from ClassificacaoProduto order by Codigo');
            Open;
       end;
 end;

@@ -125,7 +125,7 @@ object fCadProdutos: TfCadProdutos
     Width = 1284
     Height = 865
     Hint = ''
-    ActivePage = TabValores
+    ActivePage = tabProduto
     Align = alClient
     TabOrder = 0
     object aLista: TUniTabSheet
@@ -299,7 +299,7 @@ object fCadProdutos: TfCadProdutos
           object cCodigo: TUniDBEdit
             Left = 7
             Top = 7
-            Width = 238
+            Width = 250
             Height = 25
             Hint = ''
             Enabled = False
@@ -315,7 +315,7 @@ object fCadProdutos: TfCadProdutos
           end
           object clTipo: TUniDBLookupComboBox
             Left = 7
-            Top = 170
+            Top = 142
             Width = 587
             Height = 25
             Hint = ''
@@ -330,13 +330,13 @@ object fCadProdutos: TfCadProdutos
             AnyMatch = True
             TabOrder = 2
             Color = clWindow
-            FieldLabel = 'Tipo de Produto'
+            FieldLabel = 'Tipo'
             FieldLabelWidth = 140
             FieldLabelSeparator = ' '
           end
           object clNCM: TUniDBLookupComboBox
             Left = 7
-            Top = 62
+            Top = 34
             Width = 587
             Height = 25
             Hint = ''
@@ -358,9 +358,9 @@ object fCadProdutos: TfCadProdutos
             Style = csDropDown
           end
           object cCodigo_Fabricante: TUniDBEdit
-            Left = 7
-            Top = 35
-            Width = 586
+            Left = 267
+            Top = 7
+            Width = 250
             Height = 25
             Hint = ''
             ShowHint = True
@@ -376,7 +376,7 @@ object fCadProdutos: TfCadProdutos
           end
           object cFabricante: TUniDBLookupComboBox
             Left = 7
-            Top = 116
+            Top = 88
             Width = 587
             Height = 25
             Hint = ''
@@ -398,7 +398,7 @@ object fCadProdutos: TfCadProdutos
           end
           object cFornecedor: TUniDBLookupComboBox
             Left = 7
-            Top = 143
+            Top = 115
             Width = 587
             Height = 25
             Hint = ''
@@ -482,12 +482,12 @@ object fCadProdutos: TfCadProdutos
             KeyField = 'Codigo'
             ListFieldIndex = 0
             BorderStyle = ubsInset
-            DataField = 'Tipo_Item'
+            DataField = 'Tipo'
             DataSource = dsProdutos
             AnyMatch = True
             TabOrder = 10
             Color = clWindow
-            FieldLabel = 'Tipo Item (SPED)'
+            FieldLabel = 'Tipo Produto'
             FieldLabelWidth = 140
             FieldLabelSeparator = ' '
           end
@@ -751,7 +751,7 @@ object fCadProdutos: TfCadProdutos
           end
           object cOrigem: TUniDBLookupComboBox
             Left = 7
-            Top = 89
+            Top = 61
             Width = 587
             Height = 25
             Hint = ''
@@ -1158,6 +1158,27 @@ object fCadProdutos: TfCadProdutos
               FieldLabelWidth = 140
               FieldLabelSeparator = ' '
             end
+          end
+          object cClassif: TUniDBLookupComboBox
+            Left = 7
+            Top = 169
+            Width = 587
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListField = 'Codigo;Descricao'
+            ListSource = dsClassProd
+            KeyField = 'Codigo'
+            ListFieldIndex = 0
+            BorderStyle = ubsInset
+            DataField = 'Classificacao'
+            DataSource = dsProdutos
+            AnyMatch = True
+            TabOrder = 27
+            Color = clWindow
+            FieldLabel = 'Classifica'#231#227'o'
+            FieldLabelWidth = 140
+            FieldLabelSeparator = ' '
           end
         end
         object UniContainerPanel2: TUniContainerPanel
@@ -4575,5 +4596,22 @@ object fCadProdutos: TfCadProdutos
     DataSet = tUM
     Left = 208
     Top = 503
+  end
+  object ClassProd: TFDQuery
+    Connection = UniMainModule.Conecta
+    FetchOptions.AssignedValues = [evMode, evRowsetSize, evLiveWindowParanoic]
+    FetchOptions.RowsetSize = 250
+    FetchOptions.LiveWindowParanoic = False
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select * from ClassificacaoProduto')
+    Left = 209
+    Top = 554
+  end
+  object dsClassProd: TDataSource
+    DataSet = ClassProd
+    Left = 209
+    Top = 602
   end
 end
