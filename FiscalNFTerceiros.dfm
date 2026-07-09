@@ -1619,7 +1619,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           end
           object UniGroupBox1: TUniGroupBox
             Left = 694
-            Top = 329
+            Top = 321
             Width = 238
             Height = 132
             Hint = ''
@@ -1702,7 +1702,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           end
           object cPreco: TUniGroupBox
             Left = 694
-            Top = 147
+            Top = 145
             Width = 238
             Height = 160
             Hint = ''
@@ -2818,8 +2818,8 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
   end
   object tTmp: TFDQuery
     Connection = UniMainModule.Conecta
-    Left = 557
-    Top = 499
+    Left = 449
+    Top = 395
   end
   object Armazem: TFDQuery
     Connection = UniMainModule.Conecta

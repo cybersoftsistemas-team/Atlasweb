@@ -420,7 +420,7 @@ object fCadProdutos: TfCadProdutos
           end
           object clLinha: TUniDBLookupComboBox
             Left = 7
-            Top = 197
+            Top = 196
             Width = 587
             Height = 25
             Hint = ''
@@ -441,7 +441,7 @@ object fCadProdutos: TfCadProdutos
           end
           object cGTIN: TUniDBEdit
             Left = 7
-            Top = 251
+            Top = 250
             Width = 587
             Height = 25
             Hint = ''
@@ -457,7 +457,7 @@ object fCadProdutos: TfCadProdutos
           end
           object cGTIN_Unidade: TUniDBEdit
             Left = 7
-            Top = 278
+            Top = 277
             Width = 587
             Height = 25
             Hint = ''
@@ -473,7 +473,7 @@ object fCadProdutos: TfCadProdutos
           end
           object clTipo_Item: TUniDBLookupComboBox
             Left = 7
-            Top = 224
+            Top = 223
             Width = 587
             Height = 25
             Hint = ''
@@ -493,9 +493,9 @@ object fCadProdutos: TfCadProdutos
           end
           object cDescricao_Ingles: TUniDBMemo
             Left = 7
-            Top = 596
+            Top = 595
             Width = 587
-            Height = 100
+            Height = 102
             Hint = ''
             ShowHint = True
             DataField = 'Descricao_Ingles'
@@ -508,7 +508,7 @@ object fCadProdutos: TfCadProdutos
           end
           object cDescricao: TUniDBMemo
             Left = 7
-            Top = 494
+            Top = 493
             Width = 587
             Height = 100
             Hint = ''
@@ -523,7 +523,7 @@ object fCadProdutos: TfCadProdutos
           end
           object cDescricao_Reduzida: TUniDBEdit
             Left = 7
-            Top = 467
+            Top = 466
             Width = 587
             Height = 25
             Hint = ''
@@ -539,7 +539,7 @@ object fCadProdutos: TfCadProdutos
           end
           object cLargura: TUniDBEdit
             Left = 305
-            Top = 385
+            Top = 384
             Width = 289
             Height = 25
             Hint = ''
@@ -555,7 +555,7 @@ object fCadProdutos: TfCadProdutos
           end
           object cUnidade: TUniDBLookupComboBox
             Left = 7
-            Top = 305
+            Top = 304
             Width = 289
             Height = 25
             Hint = ''
@@ -576,7 +576,7 @@ object fCadProdutos: TfCadProdutos
           end
           object clUnidade_Origem: TUniDBLookupComboBox
             Left = 7
-            Top = 332
+            Top = 331
             Width = 289
             Height = 25
             Hint = ''
@@ -597,7 +597,7 @@ object fCadProdutos: TfCadProdutos
           end
           object cQuantidade_Volumes: TUniDBEdit
             Left = 305
-            Top = 305
+            Top = 304
             Width = 289
             Height = 25
             Hint = ''
@@ -613,7 +613,7 @@ object fCadProdutos: TfCadProdutos
           end
           object cAltura: TUniDBEdit
             Left = 7
-            Top = 386
+            Top = 385
             Width = 289
             Height = 25
             Hint = ''
@@ -629,7 +629,7 @@ object fCadProdutos: TfCadProdutos
           end
           object cComprimento: TUniDBEdit
             Left = 7
-            Top = 413
+            Top = 412
             Width = 289
             Height = 25
             Hint = ''
@@ -645,7 +645,7 @@ object fCadProdutos: TfCadProdutos
           end
           object cTipoConversao: TUniDBComboBox
             Left = 7
-            Top = 359
+            Top = 358
             Width = 289
             Height = 25
             Hint = ''
@@ -666,7 +666,7 @@ object fCadProdutos: TfCadProdutos
           end
           object cQuantidade_Unidade: TUniDBEdit
             Left = 305
-            Top = 332
+            Top = 331
             Width = 289
             Height = 25
             Hint = ''
@@ -773,7 +773,7 @@ object fCadProdutos: TfCadProdutos
           end
           object cPeso_Liquido: TUniDBEdit
             Left = 7
-            Top = 440
+            Top = 439
             Width = 289
             Height = 25
             Hint = ''
@@ -789,7 +789,7 @@ object fCadProdutos: TfCadProdutos
           end
           object cPeso_Bruto: TUniDBEdit
             Left = 305
-            Top = 440
+            Top = 439
             Width = 289
             Height = 25
             Hint = ''
