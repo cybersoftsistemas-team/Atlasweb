@@ -360,7 +360,7 @@ type
     bXMLSair: TUniSpeedButton;
     UniContainerPanel1: TUniContainerPanel;
     cDataEnt: TUniDateTimePicker;
-    cXMLOper: TUniDBLookupComboBox;
+    cOper: TUniDBLookupComboBox;
     cRamo: TUniDBLookupComboBox;
     cTipoProd: TUniDBLookupComboBox;
     cCCusto: TUniDBLookupComboBox;
@@ -553,6 +553,8 @@ begin
 
       LigaBotoes(true);
       Pasta.ActivePageIndex := 0;
+      cLog.ColWidths[0] := 400;
+      cLog.ColWidths[1] := 546;
 
       with Notas do begin
            sql.clear;
@@ -604,6 +606,7 @@ begin
            sql.add('      ,Movimenta_Estoque');
            sql.add('      ,Movimenta_EstoqueRep');
            sql.add('      ,Movimenta_Inventario');
+           sql.add('      ,CST_ICMS');
            sql.add('from OperacaoFiscal');
            sql.add('where Emissao = ''T'' ');
            sql.add('order by Descricao');

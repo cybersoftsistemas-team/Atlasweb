@@ -408,7 +408,6 @@ end;
 procedure TMainForm.MenuClick(Sender: TObject);
 var
   FrameClass: TClass;
-  Titulo: string;
 begin
      // Localizar a classe registrada pelo nome.
      FrameClass := FindClass((Sender as TWebTreeMenuNode).AttachedMenuItem.Hint);

@@ -1399,7 +1399,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             FieldLabelSeparator = ' '
             BorderStyle = ubsInset
           end
-          object cXMLOper: TUniDBLookupComboBox
+          object cOper: TUniDBLookupComboBox
             Left = 10
             Top = 37
             Width = 668
@@ -1412,6 +1412,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             ListFieldIndex = 1
             BorderStyle = ubsInset
             ClearButton = True
+            ParentFont = False
             AnyMatch = True
             TabOrder = 2
             Color = clWindow

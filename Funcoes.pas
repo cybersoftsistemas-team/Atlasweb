@@ -458,7 +458,6 @@ end;
 procedure LogDados(Tabela: TDataSet; Descricao, Estado:String);
 var
   i:Integer;
-  NomeTab: string;
 begin
       with uniMainModule, log do begin
            sql.Clear;

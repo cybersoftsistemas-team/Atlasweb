@@ -31,17 +31,32 @@ type
     Quantidade: Double;
     vUnitario: Double;
     vTotal: Double;
+    
+    CSTICMSNF: String;
+    CSTICMSOrig: String;
     CSTICMS: String;
-    CSTIPI: String;
-    CSTPIS: String;
-    CSTCOFINS: String;
+    CSTICMSEnt: String;
     BCICMS: Double;
-    VICMS: Double;
+    vICMS: Double;
     BCST: Double;
-    VST: Double;
-    VIPI: Double;
-    VPIS: Double;
-    VCOFINS: Double;
+    vST: Double;
+
+    CSTIPI: String;
+    cEnq: String;
+    vBCIPI: Double;
+    vIPI: Double;
+    vIPIOrig: Double;
+    pIPI: Double;
+
+    vBCII: Double;
+    vII: Double;
+    vIOF: Double;
+    vDesp: Double;
+    
+    CSTPIS: String;
+    vPIS: Double;
+    vCOFINS: Double;
+    CSTCOFINS: String;
   end;
 
 type
@@ -191,8 +206,8 @@ end;
 function TImportadorNFe.GetValor(Node:IXMLNode; Campo:String):String;
 begin
      Result := '';
-     if Assigned(Node) = False then Exit;
-     if Node.ChildNodes.FindNode(Campo)<>nil then Result := Node.ChildNodes[Campo].Text;
+     if not Assigned(Node) then Exit;
+     if Node.ChildNodes.FindNode(Campo) <> nil then Result := Node.ChildNodes[Campo].Text;
 end;
 
 function TImportadorNFe.GerarNotaID:Integer;
@@ -492,6 +507,8 @@ var
  ,Prod
  ,Imp
  ,ICM
+ ,IPI
+ ,II
  ,PIS
  ,COFINS: IXMLNode;
   i: Integer;
@@ -512,17 +529,21 @@ begin
          Prod    := DetNode.ChildNodes['prod'];
          Imp     := DetNode.ChildNodes['imposto'];
          ICM     := nil;
+         IPI     := nil;
+         II      := nil;
          PIS     := nil;
          COFINS  := nil;
          if Assigned(Imp) then begin
             ICM    := Imp.ChildNodes.FindNode('ICMS');
+            IPI    := Imp.ChildNodes.FindNode('IPI');
+            II     := Imp.ChildNodes.FindNode('II');
             PIS    := Imp.ChildNodes.FindNode('PIS');
             COFINS := Imp.ChildNodes.FindNode('COFINS');
          end;
 
          Item := TNFeItem.Create;
 
-         // Identificação
+         // Identificação.
          Item.Item      := StrToIntDef(DetNode.Attributes['nItem'], 0);
          Item.CodFab    := GetValor(Prod,'cProd');
          Item.GTIN      := GetValor(Prod,'cEAN');
@@ -554,48 +575,64 @@ begin
                  Item.Codigo := CadastraProduto(Item);
               end;
          end;
-
-         // ICMS (simplificado)
+         // Cadastro do produto.
+         with ttmp do begin
+              sql.clear;
+              sql.add('select CST_ICMS from OperacaoFiscal where Codigo = :pOper');
+              parambyname('pOper').asinteger := FNFe.Operacao;
+              open;
+              Item.CSTICMSEnt := fieldbyname('CST_ICMS').asstring;
+         end;
+         // II.
+         if Assigned(II) then begin
+            Item.vBCII := StrToFloatXML(GetValor(II,'vBC'));
+            Item.vDesp := StrToFloatXML(GetValor(II,'vDespAdu'));
+            Item.vII   := StrToFloatXML(GetValor(II,'vII'));
+            Item.vIOF  := StrToFloatXML(GetValor(II,'vIOF'));
+         end;
+         // IPI.
+         if Assigned(IPI) then begin
+            Item.cEnq   := GetValor(IPI.ChildNodes['IPITrib'],'cEnq');
+            Item.CSTIPI := GetValor(IPI.ChildNodes['IPITrib'],'CST');
+            Item.vBCIPI := StrToFloatXML(GetValor(IPI.ChildNodes['IPITrib'],'vBC'));
+            Item.pIPI   := StrToFloatXML(GetValor(IPI.ChildNodes['IPITrib'],'pIPI'));
+            Item.vIPI   := StrToFloatXML(GetValor(IPI.ChildNodes['IPITrib'],'vIPI'));
+         end;
+         // CST IPI.
+         with ttmp do begin
+              sql.clear;
+              sql.add('select CST_Inversa from CSTIPI where Codigo = :pCod');
+              parambyname('pCod').asstring := Item.CSTIPI;
+              open;
+              Item.CSTIPI := fieldbyname('CST_Inversa').asstring;
+         end;
+         // ICMS (simplificado).
          if Assigned(ICM) then begin
-            Item.CSTICMS := GetValor(ICM.ChildNodes['ICMS00'],'CST') +
-                            GetValor(ICM.ChildNodes['ICMS10'],'CST') +
-                            GetValor(ICM.ChildNodes['ICMS20'],'CST') +
-                            GetValor(ICM.ChildNodes['ICMS40'],'CST') +
-                            GetValor(ICM.ChildNodes['ICMS60'],'CST') +
-                            GetValor(ICM.ChildNodes['ICMS90'],'CST');
-       
-            Item.BCICMS := StrToFloatXML(GetValor(ICM.ChildNodes['ICMS00'],'vBC')) +
-                           StrToFloatXML(GetValor(ICM.ChildNodes['ICMS10'],'vBC')) +
-                           StrToFloatXML(GetValor(ICM.ChildNodes['ICMS20'],'vBC'));
-         
-            Item.VICMS := StrToFloatXML(GetValor(ICM.ChildNodes['ICMS00'],'vICMS')) +
-                          StrToFloatXML(GetValor(ICM.ChildNodes['ICMS10'],'vICMS')) +
-                          StrToFloatXML(GetValor(ICM.ChildNodes['ICMS20'],'vICMS'));
-         
-            Item.BCST := StrToFloatXML(GetValor(ICM.ChildNodes['ICMS10'],'vBCST')) +
-                         StrToFloatXML(GetValor(ICM.ChildNodes['ICMS60'],'vBCST'));
-         
-            Item.VST := StrToFloatXML(GetValor(ICM.ChildNodes['ICMS10'],'vICMSST')) +
-                         StrToFloatXML(GetValor(ICM.ChildNodes['ICMS60'],'vICMSST'));
+            with ttmp do begin
+                 sql.clear;
+                 sql.add('select Codigo from CSTICMSTabB order by cast(Codigo as int)');
+                 open;
+                 while not eof do begin
+                       Item.CSTICMSOrig := Item.CSTICMSOrig + GetValor(ICM.ChildNodes['ICMS'+fieldbyname('Codigo').asstring],'orig');
+                       Item.CSTICMS     := Item.CSTICMS     + GetValor(ICM.ChildNodes['ICMS'+fieldbyname('Codigo').asstring],'CST');
+                       Item.BCICMS      := Item.BCICMS      + StrToFloatXML(GetValor(ICM.ChildNodes['ICMS'+fieldbyname('Codigo').asstring],'vBC'));
+                       Item.vICMS       := Item.vICMS       + StrToFloatXML(GetValor(ICM.ChildNodes['ICMS'+fieldbyname('Codigo').asstring],'vICMS'));
+                       Item.BCST        := Item.BCST        + StrToFloatXML(GetValor(ICM.ChildNodes['ICMS'+fieldbyname('Codigo').asstring],'vBCST'));
+                       Item.vST         := Item.vST         + StrToFloatXML(GetValor(ICM.ChildNodes['ICMS'+fieldbyname('Codigo').asstring],'vICMSST'));
+                       next;
+                 end;
+            end;
+            Item.CSTICMSNF  := Item.CSTICMSOrig+Item.CSTICMS;
          end;
-
-         // PIS
+         // PIS.
          if Assigned(PIS) then begin
-            Item.CSTPIS := GetValor(PIS.ChildNodes['PISAliq'],'CST') +
-                           GetValor(PIS.ChildNodes['PISNT'],'CST') +
-                           GetValor(PIS.ChildNodes['PISOutr'],'CST');
-       
-           Item.VPIS := StrToFloatXML(GetValor(PIS.ChildNodes['PISAliq'],'vPIS')) +
-                        StrToFloatXML(GetValor(PIS.ChildNodes['PISOutr'],'vPIS'));
+            Item.CSTPIS := GetValor(PIS.ChildNodes['PISAliq'],'CST') + GetValor(PIS.ChildNodes['PISNT'],'CST') + GetValor(PIS.ChildNodes['PISOutr'],'CST');
+            Item.VPIS   := StrToFloatXML(GetValor(PIS.ChildNodes['PISAliq'],'vPIS')) + StrToFloatXML(GetValor(PIS.ChildNodes['PISOutr'],'vPIS'));
          end;
-
-         // COFINS
+         // COFINS.
          if Assigned(COFINS) then begin
-            Item.CSTCOFINS := GetValor(COFINS.ChildNodes['COFINSAliq'],'CST') +
-                              GetValor(COFINS.ChildNodes['COFINSNT'],'CST') +
-                              GetValor(COFINS.ChildNodes['COFINSOutr'],'CST');
-           Item.VCOFINS := StrToFloatXML(GetValor(COFINS.ChildNodes['COFINSAliq'],'vCOFINS')) +
-                           StrToFloatXML(GetValor(COFINS.ChildNodes['COFINSOutr'],'vCOFINS'));
+            Item.CSTCOFINS := GetValor(COFINS.ChildNodes['COFINSAliq'],'CST') + GetValor(COFINS.ChildNodes['COFINSNT'],'CST') + GetValor(COFINS.ChildNodes['COFINSOutr'],'CST');
+            Item.VCOFINS   := StrToFloatXML(GetValor(COFINS.ChildNodes['COFINSAliq'],'vCOFINS')) + StrToFloatXML(GetValor(COFINS.ChildNodes['COFINSOutr'],'vCOFINS'));
          end;
          FNFe.Itens.Add(Item);
      end;
@@ -801,15 +838,11 @@ begin
      try
        tab.Connection := FConn;
        with tab do begin
-            {
-            sql.text := 'insert into NotasItens (Nota_id, Empresa, Item, Codigo_Mercadoria, Descricao_Mercadoria, NCM, CFOP, UM, Quantidade, Valor_Unitario, Valor_Total, Valor_BCICMSOp,'+
-                        'Valor_ICMSOp, Valor_BCICMSST, Valor_ICMSST, Valor_PIS, Valor_COFINS)'+
-                        'values (:Nota_id, :Empresa, :Item, :Codigo, :Descricao, :NCM, :CFOP, :UM, :Qtd, :VU, :VT, :BCICMS, :ICMS, :BCST, :ST, :PIS, :COFINS, :Total)';
-            }            
             sql.clear;
             sql.add('insert into NotasItens (');
             sql.add('                        Nota_id');
             sql.add('                       ,Empresa');
+            sql.add('                       ,ES');
             sql.add('                       ,Item');
             sql.add('                       ,Codigo_Mercadoria');
             sql.add('                       ,Codigo_Fabricante');
@@ -829,10 +862,24 @@ begin
             sql.add('                       ,Movimenta_Inventario');
             sql.add('                       ,Movimenta_Estoque');
             sql.add('                       ,Movimenta_EstoqueRep');
+            sql.add('                       ,CSTICMS_Terceiros');
+            sql.add('                       ,CSTICMS_TabA');
+            sql.add('                       ,CSTICMS_TabB');
+            sql.add('                       ,CSTIPI');
+            sql.add('                       ,Aliquota_IPI');
+            sql.add('                       ,Valor_BCIPI');
+            sql.add('                       ,Valor_IPIOrig');
+            sql.add('                       ,Valor_IPI');
+            sql.add('                       ,Valor_BCII');
+            sql.add('                       ,Valor_II');
+            sql.add('                       ,Valor_Despesa');
+            sql.add('                       ,CSTPIS');
+            sql.add('                       ,CSTCOFINS');
             sql.add('                       )');
             sql.add('            values (');
             sql.add('                    :Nota_id');
             sql.add('                   ,:Empresa');
+            sql.add('                   ,0');       // Entrada/Saída.
             sql.add('                   ,:Item');
             sql.add('                   ,:Codigo');
             sql.add('                   ,:CodFab');
@@ -852,32 +899,58 @@ begin
             sql.add('                   ,:MovInv');
             sql.add('                   ,:MovEst');
             sql.add('                   ,:MovEstRep');
+            sql.add('                   ,:CSTICMSTerc');
+            sql.add('                   ,:CSTICMSTabA');
+            sql.add('                   ,:CSTICMSTabB');
+            sql.add('                   ,:CSTIPI');
+            sql.add('                   ,:pIPI');
+            sql.add('                   ,:vBCIPI');
+            sql.add('                   ,:vIPIOrig');
+            sql.add('                   ,:vIPI');
+            sql.add('                   ,:vBCII');
+            sql.add('                   ,:vII');
+            sql.add('                   ,:vDespesa');
+            sql.add('                   ,:CSTPIS');
+            sql.add('                   ,:CSTCOFINS');
             sql.add('                   )');
                         
             for Item in FNFe.Itens do begin
-                ParamByName('Nota_id').AsInteger   := FNFe.NotaID;
-                ParamByName('Empresa').asstring    := FNFe.Empresa;
-                ParamByName('MovInv').asboolean    := FNFe.MovInv;
-                ParamByName('MovEst').asboolean    := FNFe.MovEst;
-                ParamByName('MovEstRep').asboolean := FNFe.MovEstRep;
-                ParamByName('Item').AsInteger      := Item.Item;
-                ParamByName('Codigo').asinteger    := Item.Codigo;
-                ParamByName('CodFab').asstring     := Item.CodFab;
-                ParamByName('Descricao').AsString  := Item.Descricao;
-                ParamByName('NCM').AsString        := Item.NCM;
-                ParamByName('CFOP').AsString       := Item.CFOP;
-                ParamByName('UM').AsString         := Item.Unidade;
-                ParamByName('Qtd').AsFloat         := Item.Quantidade;
-                ParamByName('vUnit').AsFloat       := Item.vUnitario;
-                ParamByName('vTotal').AsFloat      := Item.vTotal;
-                ParamByName('vBCICMS').AsFloat     := Item.BCICMS;
-                ParamByName('vICMS').AsFloat       := Item.VICMS;
-                ParamByName('vBCST').AsFloat       := Item.BCST;
-                ParamByName('vST').AsFloat         := Item.VST;
-                ParamByName('vPIS').AsFloat        := Item.VPIS;
-                ParamByName('vCOFINS').AsFloat     := Item.VCOFINS;
+                ParamByName('Nota_id').AsInteger    := FNFe.NotaID;
+                ParamByName('Empresa').asstring     := FNFe.Empresa;
+                ParamByName('MovInv').asboolean     := FNFe.MovInv;
+                ParamByName('MovEst').asboolean     := FNFe.MovEst;
+                ParamByName('MovEstRep').asboolean  := FNFe.MovEstRep;
+                ParamByName('Item').AsInteger       := Item.Item;
+                ParamByName('Codigo').asinteger     := Item.Codigo;
+                ParamByName('CodFab').asstring      := Item.CodFab;
+                ParamByName('Descricao').AsString   := Item.Descricao;
+                ParamByName('NCM').AsString         := Item.NCM;
+                ParamByName('CFOP').AsString        := Item.CFOP;
+                ParamByName('UM').AsString          := Item.Unidade;
+                ParamByName('Qtd').AsFloat          := Item.Quantidade;
+                ParamByName('vUnit').AsFloat        := Item.vUnitario;
+                ParamByName('vTotal').AsFloat       := Item.vTotal;
+                ParamByName('vBCICMS').AsFloat      := Item.BCICMS;
+                ParamByName('vICMS').AsFloat        := Item.VICMS;
+                ParamByName('vBCST').AsFloat        := Item.BCST;
+                ParamByName('vST').AsFloat          := Item.VST;
+                ParamByName('vPIS').AsFloat         := Item.VPIS;
+                ParamByName('vCOFINS').AsFloat      := Item.VCOFINS;
+                ParamByName('CSTICMSTerc').asstring := Item.CSTICMSNF;
+                ParamByName('CSTICMSTabA').asstring := copy(Item.CSTICMSEnt, 1, 1);
+                ParamByName('CSTICMSTabB').asstring := copy(Item.CSTICMSEnt, 2, 2);
+                ParamByName('CSTIPI').asstring      := Item.CSTIPI;
+                ParamByName('pIPI').AsFloat         := Item.pIPI;
+                ParamByName('vBCIPI').asfloat       := Item.vBCIPI;
+                ParamByName('vIPIOrig').asfloat     := Item.vIPIOrig;
+                ParamByName('vIPI').asfloat         := Item.vIPI;
+                ParamByName('vBCII').asfloat        := Item.vBCII;
+                ParamByName('vII').asfloat          := Item.vII;
+                ParamByName('vDespesa').asfloat     := Item.vDesp;
+                ParamByName('CSTPIS').asstring      := Item.CSTPIS;
+                ParamByName('CSTCOFINS').asstring   := Item.CSTCOFINS;
                 execute;
-           end;
+            end;
        end;
      finally
        tab.Free;
