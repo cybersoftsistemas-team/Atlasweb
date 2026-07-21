@@ -430,6 +430,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             DataSource = dsOperacaoFiscal
             TabOrder = 1
             FieldLabel = 'C'#243'digo'
+            FieldLabelWidth = 110
             FieldLabelSeparator = ' '
             BorderStyle = ubsInset
           end
@@ -444,6 +445,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             DataSource = dsOperacaoFiscal
             TabOrder = 2
             FieldLabel = 'Descri'#231#227'o'
+            FieldLabelWidth = 110
             FieldLabelSeparator = ' '
             BorderStyle = ubsInset
           end
@@ -1274,6 +1276,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             TabOrder = 10
             Color = clWindow
             FieldLabel = 'Beneficio Fiscal'
+            FieldLabelWidth = 110
             FieldLabelSeparator = ' '
             NormalizeString = True
           end
@@ -1318,7 +1321,8 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             DataSource = dsOperacaoFiscal
             TabOrder = 12
             Color = clWindow
-            FieldLabel = 'Finalidade da Mercadoria'
+            FieldLabel = 'Finalidade Mercadoria'
+            FieldLabelWidth = 110
             FieldLabelSeparator = ' '
             NormalizeString = True
           end

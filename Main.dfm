@@ -16,9 +16,9 @@ object MainForm: TMainForm
   PixelsPerInch = 96
   TextHeight = 13
   object unipane: TUniContainerPanel
-    Left = 300
+    Left = 350
     Top = 68
-    Width = 926
+    Width = 876
     Height = 698
     Hint = ''
     ParentColor = False
@@ -26,11 +26,13 @@ object MainForm: TMainForm
     ScreenMask.ShowMessage = False
     ScreenMask.Color = clRed
     TabOrder = 0
+    ExplicitLeft = 300
+    ExplicitWidth = 926
     object PagePrincipal: TUniPageControl
       Left = 0
-      Top = 0
-      Width = 926
-      Height = 698
+      Top = 50
+      Width = 876
+      Height = 648
       Hint = ''
       ActivePage = pInicio
       Plain = True
@@ -40,6 +42,9 @@ object MainForm: TMainForm
           'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
           '= '#39'Pasta'#39';'#13#10'}')
       TabOrder = 1
+      ExplicitTop = 0
+      ExplicitWidth = 926
+      ExplicitHeight = 698
       object pInicio: TUniTabSheet
         Hint = ''
         Caption = 'Inicio'
@@ -47,11 +52,13 @@ object MainForm: TMainForm
         ScreenMask.Message = 'A G U A R D E . . .'
         ScreenMask.Target = pInicio
         ScreenMask.Color = clRed
+        ExplicitWidth = 918
+        ExplicitHeight = 670
         object ScrollPrincipal: TUniScrollBox
           Left = 0
           Top = 0
-          Width = 918
-          Height = 670
+          Width = 868
+          Height = 620
           Hint = ''
           Align = alClient
           Color = 4730899
@@ -61,19 +68,10 @@ object MainForm: TMainForm
               '= '#39'PastaInterna'#39';'#13#10'}')
           TabOrder = 0
           ScrollDirection = sdVertical
+          ExplicitWidth = 918
+          ExplicitHeight = 670
           ScrollHeight = 140
           ScrollWidth = 135
-          object pAtalhos: TUniContainerPanel
-            Left = 0
-            Top = 0
-            Width = 916
-            Height = 50
-            Hint = ''
-            ParentColor = False
-            Color = 4730899
-            Align = alTop
-            TabOrder = 0
-          end
           object UniButton1: TUniButton
             Left = 20
             Top = 74
@@ -81,11 +79,24 @@ object MainForm: TMainForm
             Height = 66
             Hint = ''
             Caption = 'Buscar DUIMP'
-            TabOrder = 1
+            TabOrder = 0
             OnClick = UniButton1Click
           end
         end
       end
+    end
+    object pAtalhos: TUniContainerPanel
+      Left = 0
+      Top = 0
+      Width = 876
+      Height = 50
+      Hint = ''
+      ParentColor = False
+      Color = 4730899
+      Align = alTop
+      TabOrder = 2
+      ExplicitTop = 8
+      ExplicitWidth = 926
     end
   end
   object pTitulo: TUniPanel
@@ -272,7 +283,7 @@ object MainForm: TMainForm
   object pMenu: TUniContainerPanel
     Left = 0
     Top = 68
-    Width = 300
+    Width = 350
     Height = 698
     Hint = ''
     ParentColor = False
@@ -281,17 +292,18 @@ object MainForm: TMainForm
     object UniContainerPanel2: TUniContainerPanel
       Left = 0
       Top = 32
-      Width = 300
+      Width = 350
       Height = 32
       Hint = ''
       ParentColor = False
       Color = 7293440
       Align = alTop
       TabOrder = 1
+      ExplicitWidth = 300
       object cPesquisa: TUniEdit
         Left = 0
         Top = 0
-        Width = 300
+        Width = 350
         Height = 32
         Hint = ''
         BodyRTL = False
@@ -305,12 +317,13 @@ object MainForm: TMainForm
         InputType = 'search'
         Images = ImgMenu
         OnChange = cPesquisaChange
+        ExplicitWidth = 300
       end
     end
     object Menu: TUniTreeMenu
       Left = 0
       Top = 64
-      Width = 300
+      Width = 350
       Height = 634
       Hint = ''
       Align = alClient
@@ -320,11 +333,12 @@ object MainForm: TMainForm
       Color = 4730899
       SingleExpand = True
       ExpanderOnly = False
+      ExplicitWidth = 300
     end
     object UniPanel3: TUniPanel
       Left = 0
       Top = 0
-      Width = 300
+      Width = 350
       Height = 32
       Hint = ''
       Align = alTop
@@ -336,10 +350,11 @@ object MainForm: TMainForm
       BorderStyle = ubsNone
       Caption = ''
       Color = clNone
+      ExplicitWidth = 300
       object bFecharTodos: TUniButton
-        Left = 193
+        Left = 47
         Top = 0
-        Width = 104
+        Width = 108
         Height = 32
         Hint = ''
         Caption = 'Fechar Abas'
@@ -348,25 +363,28 @@ object MainForm: TMainForm
         Scale = bbsSmall
         IconCls = 'delete'
         OnClick = bFecharTodosClick
+        ExplicitLeft = 176
       end
       object bMudarEmpresa: TUniButton
-        Left = 44
+        Left = 155
         Top = 0
-        Width = 149
+        Width = 154
         Height = 32
         Hint = ''
-        Caption = 'Trocar Empresa Ativa'
+        Caption = 'Trocar Empresa'
         Align = alLeft
         TabOrder = 2
         Scale = bbsSmall
         ScaleButton = False
         IconCls = 'team'
         OnClick = bMudarEmpresaClick
+        ExplicitLeft = -18
+        ExplicitTop = 3
       end
       object bMenu: TUniButton
         Left = 0
         Top = 0
-        Width = 44
+        Width = 47
         Height = 32
         Hint = ''
         Caption = '<i class="fa fa-bars" aria-hidden="true"></i>'
@@ -375,6 +393,22 @@ object MainForm: TMainForm
         Scale = bbsSmall
         ScaleButton = False
         OnClick = bMenuClick
+      end
+      object bFechar: TUniSpeedButton
+        Left = 309
+        Top = 0
+        Width = 41
+        Height = 32
+        Hint = 'Fecha a tela de cadastro atual.'
+        Caption = ''
+        Align = alClient
+        ParentColor = False
+        IconAlign = iaCenter
+        Images = UniMainModule.imgBotoes
+        ImageIndex = 7
+        TabOrder = 4
+        OnClick = bFecharClick
+        ExplicitTop = -6
       end
     end
   end

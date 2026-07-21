@@ -1483,67 +1483,41 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           object cProcImp: TUniDBLookupComboBox
             Left = 10
             Top = 118
-            Width = 364
+            Width = 668
             Height = 25
             Hint = ''
             ShowHint = True
-            ListField = 'Codigo;Descricao'
-            KeyField = 'Codigo'
+            ListField = 'Declaracao;Processo'
+            ListSource = dsProcessoImp
+            KeyField = 'Processo'
             ListFieldIndex = 1
             BorderStyle = ubsInset
             ClearButton = True
             AnyMatch = True
             TabOrder = 6
             Color = clWindow
-            FieldLabel = 'Processo (Imp)'
+            FieldLabel = 'Processo (Importa'#231#227'o)'
             FieldLabelWidth = 130
             FieldLabelSeparator = ' '
           end
           object cProcExp: TUniDBLookupComboBox
             Left = 10
             Top = 145
-            Width = 364
+            Width = 668
             Height = 25
             Hint = ''
             ShowHint = True
-            ListField = 'Codigo;Descricao'
-            KeyField = 'Codigo'
+            ListField = 'Declaracao;Processo'
+            ListSource = dsProcessoExp
+            KeyField = 'Processo'
             ListFieldIndex = 1
             BorderStyle = ubsInset
             ClearButton = True
             AnyMatch = True
             TabOrder = 7
             Color = clWindow
-            FieldLabel = 'Processo (Exp)'
+            FieldLabel = 'Processo (Exporta'#231#227'o)'
             FieldLabelWidth = 130
-            FieldLabelSeparator = ' '
-          end
-          object cDUIMP: TUniEdit
-            Left = 384
-            Top = 118
-            Width = 294
-            Height = 25
-            Hint = ''
-            ShowHint = True
-            BorderStyle = ubsInset
-            Text = 'cDUIMP'
-            TabOrder = 8
-            FieldLabel = 'DUIMP'
-            FieldLabelWidth = 60
-            FieldLabelSeparator = ' '
-          end
-          object cDUE: TUniEdit
-            Left = 384
-            Top = 145
-            Width = 294
-            Height = 25
-            Hint = ''
-            ShowHint = True
-            BorderStyle = ubsInset
-            Text = 'UniEdit1'
-            TabOrder = 9
-            FieldLabel = 'DUIMP'
-            FieldLabelWidth = 60
             FieldLabelSeparator = ' '
           end
           object cEmb: TUniDBLookupComboBox
@@ -1553,13 +1527,14 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Height = 25
             Hint = ''
             ShowHint = True
-            ListField = 'Codigo;Descricao'
+            ListField = 'Codigo;Navio_Nome;Processo'
+            ListSource = dsEmbarques
             KeyField = 'Codigo'
             ListFieldIndex = 1
             BorderStyle = ubsInset
             ClearButton = True
             AnyMatch = True
-            TabOrder = 10
+            TabOrder = 8
             Color = clWindow
             MatchFieldWidth = False
             FieldLabel = 'Embarque'
@@ -1580,7 +1555,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             BorderStyle = ubsInset
             ClearButton = True
             AnyMatch = True
-            TabOrder = 11
+            TabOrder = 9
             Color = clWindow
             MatchFieldWidth = False
             FieldLabel = 'Origem Mercadoria'
@@ -1601,7 +1576,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             BorderStyle = ubsInset
             ClearButton = True
             AnyMatch = True
-            TabOrder = 12
+            TabOrder = 10
             Color = clWindow
             FieldLabel = 'Classifica'#231#227'o Mercadoria'
             FieldLabelWidth = 130
@@ -1616,7 +1591,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Hint = ''
             ShowHint = True
             Caption = 'Mercadoria Produzido em Escala Relevante'
-            TabOrder = 13
+            TabOrder = 11
           end
           object UniGroupBox1: TUniGroupBox
             Left = 694
@@ -1626,7 +1601,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Hint = ''
             ShowHint = True
             Caption = 'Imobilizado'
-            TabOrder = 14
+            TabOrder = 12
             object cImoAliq: TUniFormattedNumberEdit
               Left = 5
               Top = 43
@@ -1699,7 +1674,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Hint = ''
             ShowHint = True
             Caption = 'Substituir Notas Fiscais ja cadastradas.'
-            TabOrder = 15
+            TabOrder = 13
           end
           object cPreco: TUniGroupBox
             Left = 694
@@ -1709,7 +1684,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Hint = ''
             ShowHint = True
             Caption = 'Forma'#231#227'o do Pre'#231'o de Venda'
-            TabOrder = 16
+            TabOrder = 14
             object cLucro: TUniFormattedNumberEdit
               Left = 5
               Top = 16
@@ -1796,7 +1771,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             ShowHint = True
             ParentShowHint = False
             Caption = 'Caracter'#237'sticas do Emitente'
-            TabOrder = 17
+            TabOrder = 15
             ClientEvents.UniEvents.Strings = (
               
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
@@ -3855,17 +3830,17 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     Left = 102
     Top = 471
   end
-  object Processos: TFDQuery
+  object ProcessoImp: TFDQuery
     Connection = UniMainModule.Conecta
     UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
-      'SELECT * FROM ProcessosImp')
+      'SELECT Processo, DUIMP FROM ProcessosImp')
     Left = 102
     Top = 520
   end
-  object dsProcessos: TDataSource
-    DataSet = Processos
+  object dsProcessoImp: TDataSource
+    DataSet = ProcessoImp
     Left = 102
     Top = 569
   end
@@ -4165,5 +4140,40 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     DataSet = ClassProd
     Left = 429
     Top = 173
+  end
+  object ProcessoExp: TFDQuery
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'SELECT Processo, DUE FROM ProcessosExp')
+    Left = 103
+    Top = 621
+  end
+  object dsProcessoExp: TDataSource
+    DataSet = ProcessoExp
+    Left = 103
+    Top = 670
+  end
+  object Embarques: TFDQuery
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select Codigo'
+      '      ,Navio'
+      
+        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
+        'o)'
+      '      ,Processo '
+      '      ,Empresa'
+      'from Embarques')
+    Left = 181
+    Top = 621
+  end
+  object dsEmbarques: TDataSource
+    DataSet = Embarques
+    Left = 181
+    Top = 670
   end
 end

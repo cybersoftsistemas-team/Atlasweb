@@ -50,7 +50,7 @@ type
     TiposDoc: TFDQuery;
     ModalPgto: TFDQuery;
     Empresas: TFDQuery;
-    Processos: TFDQuery;
+    ProcessoImp: TFDQuery;
     Fornecedores: TFDQuery;
     Notas: TFDQuery;
     CFOP: TFDQuery;
@@ -64,7 +64,7 @@ type
     dsCFOP: TDataSource;
     dsNotas: TDataSource;
     dsFornecedores: TDataSource;
-    dsProcessos: TDataSource;
+    dsProcessoImp: TDataSource;
     dsEmpresas: TDataSource;
     dsModalPgto: TDataSource;
     dsTiposDoc: TDataSource;
@@ -366,8 +366,6 @@ type
     cCCusto: TUniDBLookupComboBox;
     cProcImp: TUniDBLookupComboBox;
     cProcExp: TUniDBLookupComboBox;
-    cDUIMP: TUniEdit;
-    cDUE: TUniEdit;
     cEmb: TUniDBLookupComboBox;
     cOrig: TUniDBLookupComboBox;
     cClassMerc: TUniDBLookupComboBox;
@@ -403,6 +401,10 @@ type
     dsTipoProd: TDataSource;
     ClassProd: TFDQuery;
     dsClassProd: TDataSource;
+    ProcessoExp: TFDQuery;
+    dsProcessoExp: TDataSource;
+    Embarques: TFDQuery;
+    dsEmbarques: TDataSource;
     procedure bSairClick(Sender: TObject);
     procedure UniFrameCreate(Sender: TObject);
     procedure bItensClick(Sender: TObject);
@@ -496,6 +498,14 @@ begin
      Importador.NFe.EmitIST    := cInscricaoST.Checked;
      Importador.NFe.EmitMicro  := cMicro.Checked;
      Importador.NFe.CentCus    := CentroCusto.fieldbyname('Codigo').asstring;
+     if trim(cProcImp.text) <> '' then begin
+        Importador.NFe.ProcImp    := ProcessoImp.fieldbyname('Processo').asstring;
+        Importador.NFe.Declaracao := ProcessoImp.fieldbyname('Declaracao').asstring;
+     end;
+     if trim(cProcExp.text) <> '' then begin
+        Importador.NFe.ProcExp    := ProcessoExp.fieldbyname('Processo').asstring;
+        Importador.NFe.Declaracao := ProcessoExp.fieldbyname('Declaracao').asstring;
+     end;
 
      Param.SubstNF   := cSubst.Checked;
      Param.Origem    := Origem.fieldbyname('Codigo').asinteger;
@@ -649,21 +659,26 @@ begin
            sql.Add('select Codigo, Descricao, Eletronico from ModelosDocumentos order by Codigo');
            Open;
       end;
-      with Processos do begin
+      with ProcessoImp do begin
            sql.Clear;
            sql.add('select Processo');
            sql.add('      ,Declaracao = DUIMP');
-           sql.add('      ,Tipo = ''I'' ');
            sql.add('from ProcessosImp');
            sql.add('where Desativado <> 1');
            sql.add('and Data_Encerramento is null');
-           sql.add('union all');
+           sql.add('and Empresa = :pEmp');
+           ParamByName('pEmp').asstring := Empresas.fieldbyname('CNPJ').asstring;
+           open;
+      end;
+      with ProcessoExp do begin
+           sql.Clear;
            sql.add('select Processo');
            sql.add('      ,Declaracao = DUE');
-           sql.add('      ,Tipo = ''E'' ');
            sql.add('from ProcessosExp');
            sql.add('where Desativado <> 1');
            sql.add('and Data_Encerramento is null');
+           sql.add('and Empresa = :pEmp');
+           ParamByName('pEmp').asstring := Empresas.fieldbyname('CNPJ').asstring;
            open;
       end;
       with ModalFrete do begin
@@ -701,6 +716,19 @@ begin
            sql.clear;
            sql.add('select Codigo, Descricao from ClassificacaoProduto order by Codigo');
            Open;
+      end;
+      with Embarques do begin
+           sql.clear;  
+           sql.add('select Codigo');
+           sql.add('      ,Navio');
+           sql.add('      ,Navio_Nome = (select Nome from Navios where Codigo = Navio)');
+           sql.add('      ,Processo');
+           sql.add('      ,Empresa');
+           sql.add('from Embarques');
+           sql.add('where Empresa = :pEmp');
+           sql.add('and Status = ''ATIVO'' ');
+           ParamByName('pEmp').asstring := Empresas.fieldbyname('CNPJ').asstring;
+           open;
       end;
 end;
 
@@ -2253,9 +2281,9 @@ begin
              ItensNFNCM.value                  := Produtos.fieldbyname('NCM').value;
              ItensNFUM.value                   := Produtos.fieldbyname('UM').asstring;
              ItensNFEXTIPI.value               := NCM.fieldbyname('Codigo_EXTIPI').asinteger;
-             ItensNFMovimenta_Estoque.value    := Operacao.fieldbyname('Movimenta_Estoque').value;
-             ItensNFMovimenta_EstoqueRep.value := Operacao.fieldbyname('Movimenta_EstoqueRep').value;
-             ItensNFMovimenta_Inventario.value := Operacao.fieldbyname('Movimenta_Inventario').value;
+//             ItensNFMovimenta_Estoque.value    := Operacao.fieldbyname('Movimenta_Estoque').value;
+//             ItensNFMovimenta_EstoqueRep.value := Operacao.fieldbyname('Movimenta_EstoqueRep').value;
+//             ItensNFMovimenta_Inventario.value := Operacao.fieldbyname('Movimenta_Inventario').value;
              ItensNF.post; 
              
              TfDialogo.Execute(UniApplication, 'Sucesso', 'Item salvo na nota fiscal.');  

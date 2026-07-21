@@ -11,11 +11,13 @@ type
     Item: Integer;
     Codigo: integer;
     CodFab: string;
+    
     ProcImp: string;
     ProcExp: string;
-    DUIMP: string;
-    DUE: string;
+    Declaracao: string;
+    Adicao: integer;
     Embar: integer;
+    
     TipoProd: integer;
     OrigProd: integer;
     Escala: boolean;
@@ -57,6 +59,9 @@ type
     vPIS: Double;
     vCOFINS: Double;
     CSTCOFINS: String;
+
+    CSTCBS: string;
+    ClassTrib: string;
   end;
 
 type
@@ -132,6 +137,9 @@ type
     Vol_PesoB: Double;
     Num_Prot: string;
     Data_Prot: TDateTime;
+    Declaracao: string;
+    ProcImp: string;
+    ProcExp: string;
     
     constructor Create;
     destructor Destroy; override;
@@ -157,7 +165,7 @@ type
     function GerarNotaID:Integer;
     procedure LerCabecalho(XML:IXMLDocument);
     procedure LerItens(XML:IXMLDocument);
-    procedure GravarCabecalho(Par: TImportaNFeParams);
+    procedure GravarCabecalho;
     procedure GravarItens;
     function StrToFloatXML(const Valor: String): Double;
     function LocalizarInfNFe(XML: IXMLDocument): IXMLNode;
@@ -468,7 +476,7 @@ begin
      LerItens(XML);
      
      // Salva a capa da nota no banco.
-     GravarCabecalho(Params);
+     GravarCabecalho;
      
      // Salva os itens da nota no banco.
      GravarItens;
@@ -510,6 +518,9 @@ var
  ,IPI
  ,II
  ,PIS
+ ,IBSCBS
+ ,DI
+ ,Adicao
  ,COFINS: IXMLNode;
   i: Integer;
   Item: TNFeItem;
@@ -527,18 +538,27 @@ begin
          if InfNFe.ChildNodes[i].NodeName <> 'det' then Continue;
          DetNode := InfNFe.ChildNodes[i];
          Prod    := DetNode.ChildNodes['prod'];
+         DI      := Prod.ChildNodes['DI'];
          Imp     := DetNode.ChildNodes['imposto'];
+         
          ICM     := nil;
          IPI     := nil;
          II      := nil;
          PIS     := nil;
          COFINS  := nil;
+         IBSCBS  := nil;
+         Adicao  := nil;
+         
          if Assigned(Imp) then begin
             ICM    := Imp.ChildNodes.FindNode('ICMS');
             IPI    := Imp.ChildNodes.FindNode('IPI');
             II     := Imp.ChildNodes.FindNode('II');
             PIS    := Imp.ChildNodes.FindNode('PIS');
             COFINS := Imp.ChildNodes.FindNode('COFINS');
+            IBSCBS := Imp.ChildNodes.FindNode('IBSCBS');
+         end;
+         if Assigned(DI) then begin
+            Adicao := Di.ChildNodes.FindNode('adi');
          end;
 
          Item := TNFeItem.Create;
@@ -634,11 +654,20 @@ begin
             Item.CSTCOFINS := GetValor(COFINS.ChildNodes['COFINSAliq'],'CST') + GetValor(COFINS.ChildNodes['COFINSNT'],'CST') + GetValor(COFINS.ChildNodes['COFINSOutr'],'CST');
             Item.VCOFINS   := StrToFloatXML(GetValor(COFINS.ChildNodes['COFINSAliq'],'vCOFINS')) + StrToFloatXML(GetValor(COFINS.ChildNodes['COFINSOutr'],'vCOFINS'));
          end;
+         // IBS/CBS.
+         if Assigned(IBSCBS) then begin
+            Item.CSTCBS    := GetValor(IBSCBS,'CST');
+            Item.ClassTrib := GetValor(IBSCBS,'cClassTrib');
+         end;
+         //DUIMP
+         Item.Declaracao := iif(FNFe.Declaracao= '',  GetValor(DI, 'nDI'), FNFe.Declaracao);
+         Item.Adicao     := StrToIntDef(GetValor(Adicao, 'nAdicao'), 0);
+
          FNFe.Itens.Add(Item);
      end;
 end;
 
-procedure TImportadorNFe.GravarCabecalho(Par: TImportaNFeParams);
+procedure TImportadorNFe.GravarCabecalho;
 var
   tNotas: TFDQuery;
 begin
@@ -794,18 +823,18 @@ begin
             ParamByName('DestIE').AsString         := FNFe.EmitIE;
             ParamByName('DestJur').asboolean       := FNFe.EmitJur;
             ParamByName('VProd').AsFloat           := FNFe.ValorProdutos;
-            ParamByName('VFrete').AsFloat          := FNFe.ValorFrete;
-            ParamByName('VSeg').AsFloat            := FNFe.ValorSeguro;
-            ParamByName('VDesc').AsFloat           := FNFe.ValorDesconto;
-            ParamByName('VOut').AsFloat            := FNFe.ValorDespesas;
-            ParamByName('VBC').AsFloat             := FNFe.ValorBCICMS;
-            ParamByName('VICMS').AsFloat           := FNFe.ValorICMS;
-            ParamByName('VBCST').AsFloat           := FNFe.ValorBCST;
-            ParamByName('VST').AsFloat             := FNFe.ValorST;
-            ParamByName('VIPI').AsFloat            := FNFe.ValorIPI;
-            ParamByName('VPIS').AsFloat            := FNFe.ValorPIS;
-            ParamByName('VCOFINS').AsFloat         := FNFe.ValorCOFINS;
-            ParamByName('VTotal').AsFloat          := FNFe.ValorTotal;
+            ParamByName('vFrete').AsFloat          := FNFe.ValorFrete;
+            ParamByName('vSeg').AsFloat            := FNFe.ValorSeguro;
+            ParamByName('vDesc').AsFloat           := FNFe.ValorDesconto;
+            ParamByName('vOut').AsFloat            := FNFe.ValorDespesas;
+            ParamByName('vBC').AsFloat             := FNFe.ValorBCICMS;
+            ParamByName('vICMS').AsFloat           := FNFe.ValorICMS;
+            ParamByName('vBCST').AsFloat           := FNFe.ValorBCST;
+            ParamByName('vST').AsFloat             := FNFe.ValorST;
+            ParamByName('vIPI').AsFloat            := FNFe.ValorIPI;
+            ParamByName('vPIS').AsFloat            := FNFe.ValorPIS;
+            ParamByName('vCOFINS').AsFloat         := FNFe.ValorCOFINS;
+            ParamByName('vTotal').AsFloat          := FNFe.ValorTotal;
             ParamByName('Emissao').asstring        := 'T';
             ParamByName('Operacao').asinteger      := FNFe.Operacao;
             ParamByName('Modelo').asstring         := FNFe.Modelo;
@@ -831,9 +860,13 @@ end;
 
 procedure TImportadorNFe.GravarItens;
 var
-  tab: TFDQuery;
+  tab
+ ,Prod: TFDQuery;
   Item: TNFeItem;
 begin
+     Prod := TFDQuery.Create(nil);
+     Prod.Connection := FConn;
+
      tab := TFDQuery.Create(nil);
      try
        tab.Connection := FConn;
@@ -852,6 +885,7 @@ begin
             sql.add('                       ,UM');
             sql.add('                       ,Quantidade');
             sql.add('                       ,Valor_Unitario');
+            sql.add('                       ,Valor_UnitarioOrig');
             sql.add('                       ,Valor_Total');
             sql.add('                       ,Valor_BCICMSOp');
             sql.add('                       ,Valor_ICMSOp');
@@ -859,9 +893,6 @@ begin
             sql.add('                       ,Valor_ICMSST');
             sql.add('                       ,Valor_PIS');
             sql.add('                       ,Valor_COFINS');
-            sql.add('                       ,Movimenta_Inventario');
-            sql.add('                       ,Movimenta_Estoque');
-            sql.add('                       ,Movimenta_EstoqueRep');
             sql.add('                       ,CSTICMS_Terceiros');
             sql.add('                       ,CSTICMS_TabA');
             sql.add('                       ,CSTICMS_TabB');
@@ -875,6 +906,15 @@ begin
             sql.add('                       ,Valor_Despesa');
             sql.add('                       ,CSTPIS');
             sql.add('                       ,CSTCOFINS');
+            sql.add('                       ,CSTCBS');
+            sql.add('                       ,CSTIBS');
+            sql.add('                       ,Declaracao');
+            sql.add('                       ,Adicao');
+            sql.add('                       ,Peso_Liquido');
+            sql.add('                       ,Peso_Bruto');
+            sql.add('                       ,Veiculo');
+            sql.add('                       ,Processo_Imp');
+            sql.add('                       ,Processo_Exp');
             sql.add('                       )');
             sql.add('            values (');
             sql.add('                    :Nota_id');
@@ -889,6 +929,7 @@ begin
             sql.add('                   ,:UM');
             sql.add('                   ,:Qtd');
             sql.add('                   ,:vUnit');
+            sql.add('                   ,:vUnit');
             sql.add('                   ,:vTotal');
             sql.add('                   ,:vBCICMS');
             sql.add('                   ,:vICMS');
@@ -896,9 +937,6 @@ begin
             sql.add('                   ,:vST');
             sql.add('                   ,:vPIS');
             sql.add('                   ,:vCOFINS');
-            sql.add('                   ,:MovInv');
-            sql.add('                   ,:MovEst');
-            sql.add('                   ,:MovEstRep');
             sql.add('                   ,:CSTICMSTerc');
             sql.add('                   ,:CSTICMSTabA');
             sql.add('                   ,:CSTICMSTabB');
@@ -912,14 +950,28 @@ begin
             sql.add('                   ,:vDespesa');
             sql.add('                   ,:CSTPIS');
             sql.add('                   ,:CSTCOFINS');
+            sql.add('                   ,:CSTCBS');
+            sql.add('                   ,:CSTCBS');
+            sql.add('                   ,:Decl');
+            sql.add('                   ,:Adi');
+            sql.add('                   ,:PesoL');
+            sql.add('                   ,:PesoB');
+            sql.add('                   ,0');                   // Veículo.
+            sql.add('                   ,:ProcImp');            
+            sql.add('                   ,:ProcExp');            
             sql.add('                   )');
                         
             for Item in FNFe.Itens do begin
+                with Prod do begin
+                     sql.clear;
+                     sql.add('select Peso_Liquido, Peso_Bruto from Produtos where Codigo = :pCod');
+                     parambyname('pCod').asinteger := Item.Codigo;
+                     open;
+                end;
                 ParamByName('Nota_id').AsInteger    := FNFe.NotaID;
                 ParamByName('Empresa').asstring     := FNFe.Empresa;
-                ParamByName('MovInv').asboolean     := FNFe.MovInv;
-                ParamByName('MovEst').asboolean     := FNFe.MovEst;
-                ParamByName('MovEstRep').asboolean  := FNFe.MovEstRep;
+                ParamByName('ProcImp').asstring     := FNFe.ProcImp;
+                ParamByName('ProcExp').asstring     := FNFe.ProcExp;
                 ParamByName('Item').AsInteger       := Item.Item;
                 ParamByName('Codigo').asinteger     := Item.Codigo;
                 ParamByName('CodFab').asstring      := Item.CodFab;
@@ -943,12 +995,17 @@ begin
                 ParamByName('pIPI').AsFloat         := Item.pIPI;
                 ParamByName('vBCIPI').asfloat       := Item.vBCIPI;
                 ParamByName('vIPIOrig').asfloat     := Item.vIPIOrig;
-                ParamByName('vIPI').asfloat         := Item.vIPI;
+                ParamByName('vIPI').asfloat         := Item.vIPI / Item.Quantidade;
                 ParamByName('vBCII').asfloat        := Item.vBCII;
                 ParamByName('vII').asfloat          := Item.vII;
                 ParamByName('vDespesa').asfloat     := Item.vDesp;
                 ParamByName('CSTPIS').asstring      := Item.CSTPIS;
                 ParamByName('CSTCOFINS').asstring   := Item.CSTCOFINS;
+                ParamByName('CSTCBS').asstring      := Item.CSTCBS;
+                ParamByName('Decl').asstring        := Item.Declaracao;
+                ParamByName('Adi').asinteger        := Item.Adicao;
+                ParamByName('PesoL').asfloat        := Prod.fieldbyname('Peso_Liquido').asfloat;
+                ParamByName('PesoB').asfloat        := Prod.fieldbyname('Peso_Bruto').asfloat;
                 execute;
             end;
        end;

@@ -85,3 +85,23 @@ CAMPOS QUE PRECISAM VERIFICAR
 MANIFESTAR NOTA FISCAL DE TERCEIROS
 =============================================================================================================================
 [ ] Efetuar manifestação da nota.
+
+
+
+
+
+Finalidade_Mercadoria
+---------------------
+Revenda
+Consumo
+Devolução
+Exportação
+Própria em Poder de Terceiros
+Terceiros em Poder da Empresa
+Imobilizado
+Outras
+
+
+
+
+NFe_Util_2Gv5.02b.exe /verysilent /components="DLL" /DIR=".\teste"

@@ -27,7 +27,6 @@ type
     UniScreenMask1: TUniScreenMask;
     Alerta: TUniSweetAlert;
     UniScreenMask2: TUniScreenMask;
-    pAtalhos: TUniContainerPanel;
     pMenu: TUniContainerPanel;
     UniContainerPanel2: TUniContainerPanel;
     cPesquisa: TUniEdit;
@@ -43,6 +42,8 @@ type
     iLogoCyber: TUniImage;
     UniButton1: TUniButton;
     lVersao: TUniLabel;
+    pAtalhos: TUniContainerPanel;
+    bFechar: TUniSpeedButton;
     procedure cPesquisaChange(Sender: TObject);
     procedure mnSairClick(Sender: TObject);
     procedure bFecharTodosClick(Sender: TObject);
@@ -52,6 +53,7 @@ type
     procedure UniFormBeforeShow(Sender: TObject);
     procedure UniFormCreate(Sender: TObject);
     procedure UniButton1Click(Sender: TObject);
+    procedure bFecharClick(Sender: TObject);
 //    procedure mnFiscalNFTerceirosClick(Sender: TObject);
   private
     { Private declarations }
@@ -211,6 +213,11 @@ begin
 end;
 
 // Fecha todas as abas abertas.
+procedure TMainForm.bFecharClick(Sender: TObject);
+begin
+     Close;
+end;
+
 procedure TMainForm.bFecharTodosClick(Sender: TObject);
 var
    i:integer;
