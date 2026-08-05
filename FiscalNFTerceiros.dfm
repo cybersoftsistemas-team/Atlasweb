@@ -14,7 +14,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     Width = 1118
     Height = 754
     Hint = ''
-    ActivePage = TabXML
+    ActivePage = TabCapa
     Align = alClient
     TabOrder = 0
     object UniTabSheet2: TUniTabSheet
@@ -2845,10 +2845,47 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       'select * from NotasFiscais where Emissao = '#39'T'#39)
     Left = 102
     Top = 121
+    object NotasNota_id: TIntegerField
+      FieldName = 'Nota_id'
+      Origin = 'Nota_id'
+    end
+    object NotasEmpresa: TStringField
+      FieldName = 'Empresa'
+      Origin = 'Empresa'
+      Size = 14
+    end
     object NotasNota: TIntegerField
       FieldName = 'Nota'
       Origin = 'Nota'
-      Required = True
+    end
+    object NotasChave: TStringField
+      FieldName = 'Chave'
+      Origin = 'Chave'
+      Size = 44
+    end
+    object NotasData_Emissao: TDateField
+      FieldName = 'Data_Emissao'
+      Origin = 'Data_Emissao'
+    end
+    object NotasHora_Emissao: TTimeField
+      FieldName = 'Hora_Emissao'
+      Origin = 'Hora_Emissao'
+    end
+    object NotasES: TSmallintField
+      FieldName = 'ES'
+      Origin = 'ES'
+    end
+    object NotasData_ES: TDateField
+      FieldName = 'Data_ES'
+      Origin = 'Data_ES'
+    end
+    object NotasHora_ES: TTimeField
+      FieldName = 'Hora_ES'
+      Origin = 'Hora_ES'
+    end
+    object NotasOperacao: TSmallintField
+      FieldName = 'Operacao'
+      Origin = 'Operacao'
     end
     object NotasEmissao: TStringField
       FieldName = 'Emissao'
@@ -2872,15 +2909,17 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       FixedChar = True
       Size = 2
     end
-    object NotasLucro: TBCDField
+    object NotasLucro: TFMTBCDField
       FieldName = 'Lucro'
       Origin = 'Lucro'
       Precision = 18
+      Size = 6
     end
-    object NotasLucro_Valor: TBCDField
+    object NotasLucro_Valor: TFMTBCDField
       FieldName = 'Lucro_Valor'
       Origin = 'Lucro_Valor'
       Precision = 18
+      Size = 6
     end
     object NotasDeclaracao_Numero: TStringField
       FieldName = 'Declaracao_Numero'
@@ -2896,6 +2935,16 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       Origin = 'Inscricao_Substituto'
       Size = 15
     end
+    object NotasInf_Compl: TMemoField
+      FieldName = 'Inf_Compl'
+      Origin = 'Inf_Compl'
+      BlobType = ftMemo
+    end
+    object NotasInf_Compl2: TMemoField
+      FieldName = 'Inf_Compl2'
+      Origin = 'Inf_Compl2'
+      BlobType = ftMemo
+    end
     object NotasTransportador_Codigo: TIntegerField
       FieldName = 'Transportador_Codigo'
       Origin = 'Transportador_Codigo'
@@ -2904,10 +2953,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       FieldName = 'Modalidade_Frete'
       Origin = 'Modalidade_Frete'
     end
-    object NotasVolume_Quantidade: TBCDField
+    object NotasVolume_Quantidade: TFMTBCDField
       FieldName = 'Volume_Quantidade'
       Origin = 'Volume_Quantidade'
       Precision = 18
+      Size = 6
     end
     object NotasVolume_Especie: TStringField
       FieldName = 'Volume_Especie'
@@ -2921,24 +2971,27 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       FieldName = 'Volume_Numero'
       Origin = 'Volume_Numero'
     end
-    object NotasVolume_PesoLiquido: TBCDField
+    object NotasVolume_PesoLiquido: TFMTBCDField
       FieldName = 'Volume_PesoLiquido'
       Origin = 'Volume_PesoLiquido'
       Precision = 18
+      Size = 6
     end
-    object NotasVolume_PesoBruto: TBCDField
+    object NotasVolume_PesoBruto: TFMTBCDField
       FieldName = 'Volume_PesoBruto'
       Origin = 'Volume_PesoBruto'
       Precision = 18
+      Size = 6
     end
     object NotasModalidade_Pgto: TSmallintField
       FieldName = 'Modalidade_Pgto'
       Origin = 'Modalidade_Pgto'
     end
-    object NotasDesconto_Percentual: TBCDField
+    object NotasDesconto_Percentual: TFMTBCDField
       FieldName = 'Desconto_Percentual'
       Origin = 'Desconto_Percentual'
       Precision = 18
+      Size = 6
     end
     object NotasDesconto_Tipo: TStringField
       FieldName = 'Desconto_Tipo'
@@ -2970,11 +3023,24 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       Origin = 'Motivo_Cancelamento'
       Size = 60
     end
+    object NotasNota_Ref: TSmallintField
+      FieldName = 'Nota_Ref'
+      Origin = 'Nota_Ref'
+    end
+    object NotasData_Ref: TSQLTimeStampField
+      FieldName = 'Data_Ref'
+      Origin = 'Data_Ref'
+    end
+    object NotasChave_Ref: TStringField
+      FieldName = 'Chave_Ref'
+      Origin = 'Chave_Ref'
+      Size = 44
+    end
     object NotasNFe_Lote: TFMTBCDField
       FieldName = 'NFe_Lote'
       Origin = 'NFe_Lote'
       Precision = 18
-      Size = 0
+      Size = 6
     end
     object NotasNFe_Recibo: TStringField
       FieldName = 'NFe_Recibo'
@@ -2999,21 +3065,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       FieldName = 'DPEC'
       Origin = 'DPEC'
     end
-    object NotasOperacao_Veiculo: TStringField
-      FieldName = 'Operacao_Veiculo'
-      Origin = 'Operacao_Veiculo'
-      FixedChar = True
-      Size = 1
-    end
-    object NotasTaxa_Cambio: TBCDField
-      FieldName = 'Taxa_Cambio'
-      Origin = 'Taxa_Cambio'
-      Precision = 18
-    end
-    object NotasBeneficio_Fiscal: TSmallintField
-      FieldName = 'Beneficio_Fiscal'
-      Origin = 'Beneficio_Fiscal'
-    end
     object NotasDPEC_Protocolo: TStringField
       FieldName = 'DPEC_Protocolo'
       Origin = 'DPEC_Protocolo'
@@ -3023,14 +3074,31 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       FieldName = 'DPEC_DataProtocolo'
       Origin = 'DPEC_DataProtocolo'
     end
+    object NotasOperacao_Veiculo: TStringField
+      FieldName = 'Operacao_Veiculo'
+      Origin = 'Operacao_Veiculo'
+      FixedChar = True
+      Size = 1
+    end
+    object NotasTaxa_Cambio: TFMTBCDField
+      FieldName = 'Taxa_Cambio'
+      Origin = 'Taxa_Cambio'
+      Precision = 18
+      Size = 6
+    end
+    object NotasBeneficio_Fiscal: TSmallintField
+      FieldName = 'Beneficio_Fiscal'
+      Origin = 'Beneficio_Fiscal'
+    end
     object NotasRepresentante: TSmallintField
       FieldName = 'Representante'
       Origin = 'Representante'
     end
-    object NotasRepresentante_Comissao: TBCDField
+    object NotasRepresentante_Comissao: TFMTBCDField
       FieldName = 'Representante_Comissao'
       Origin = 'Representante_Comissao'
       Precision = 18
+      Size = 6
     end
     object NotasImportacao: TBooleanField
       FieldName = 'Importacao'
@@ -3126,10 +3194,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       FieldName = 'Pedido_Nota'
       Origin = 'Pedido_Nota'
     end
-    object NotasReducao_ICMSOper: TBCDField
+    object NotasReducao_ICMSOper: TFMTBCDField
       FieldName = 'Reducao_ICMSOper'
       Origin = 'Reducao_ICMSOper'
       Precision = 18
+      Size = 6
     end
     object NotasApuracao_PISCOFINS: TBooleanField
       FieldName = 'Apuracao_PISCOFINS'
@@ -3143,20 +3212,23 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       FieldName = 'ICMS_Destacar'
       Origin = 'ICMS_Destacar'
     end
-    object NotasAliquota_IRPJ: TBCDField
+    object NotasAliquota_IRPJ: TFMTBCDField
       FieldName = 'Aliquota_IRPJ'
       Origin = 'Aliquota_IRPJ'
       Precision = 18
+      Size = 6
     end
-    object NotasAliquota_CSLL: TBCDField
+    object NotasAliquota_CSLL: TFMTBCDField
       FieldName = 'Aliquota_CSLL'
       Origin = 'Aliquota_CSLL'
       Precision = 18
+      Size = 6
     end
-    object NotasComissao: TBCDField
+    object NotasComissao: TFMTBCDField
       FieldName = 'Comissao'
       Origin = 'Comissao'
       Precision = 18
+      Size = 6
     end
     object NotasPedido_Representante: TStringField
       FieldName = 'Pedido_Representante'
@@ -3208,10 +3280,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       FieldName = 'NFE_Estorno'
       Origin = 'NFE_Estorno'
     end
-    object NotasRepresentante_ComissaoGer: TBCDField
+    object NotasRepresentante_ComissaoGer: TFMTBCDField
       FieldName = 'Representante_ComissaoGer'
       Origin = 'Representante_ComissaoGer'
       Precision = 18
+      Size = 6
     end
     object NotasVendedor: TStringField
       FieldName = 'Vendedor'
@@ -3230,6 +3303,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       FieldName = 'Lote'
       Origin = 'Lote'
       Size = 15
+    end
+    object NotasEntrega_Retirada: TStringField
+      FieldName = 'Entrega_Retirada'
+      Origin = 'Entrega_Retirada'
+      FixedChar = True
+      Size = 1
     end
     object NotasCTE: TBooleanField
       FieldName = 'CTE'
@@ -3258,395 +3337,473 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       FieldName = 'Envio_Armazem'
       Origin = 'Envio_Armazem'
     end
-    object NotasAtendente_Comissao: TBCDField
+    object NotasAtendente_Comissao: TFMTBCDField
       FieldName = 'Atendente_Comissao'
       Origin = 'Atendente_Comissao'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_Inventario: TBCDField
+    object NotasValor_Inventario: TFMTBCDField
       FieldName = 'Valor_Inventario'
       Origin = 'Valor_Inventario'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_ICMSDesonerado: TBCDField
+    object NotasValor_ICMSDesonerado: TFMTBCDField
       FieldName = 'Valor_ICMSDesonerado'
       Origin = 'Valor_ICMSDesonerado'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_PIS: TBCDField
+    object NotasValor_PIS: TFMTBCDField
       FieldName = 'Valor_PIS'
       Origin = 'Valor_PIS'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_COFINS: TBCDField
+    object NotasValor_COFINS: TFMTBCDField
       FieldName = 'Valor_COFINS'
       Origin = 'Valor_COFINS'
       Precision = 18
+      Size = 6
     end
-    object NotasAliquota_ICMSOper: TBCDField
+    object NotasAliquota_ICMSOper: TFMTBCDField
       FieldName = 'Aliquota_ICMSOper'
       Origin = 'Aliquota_ICMSOper'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_BCICMS: TBCDField
+    object NotasValor_BCICMS: TFMTBCDField
       FieldName = 'Valor_BCICMS'
       Origin = 'Valor_BCICMS'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_ICMS: TBCDField
+    object NotasValor_ICMS: TFMTBCDField
       FieldName = 'Valor_ICMS'
       Origin = 'Valor_ICMS'
       Precision = 18
+      Size = 6
     end
-    object NotasAliquota_ICMSSub: TBCDField
+    object NotasAliquota_ICMSSub: TFMTBCDField
       FieldName = 'Aliquota_ICMSSub'
       Origin = 'Aliquota_ICMSSub'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_BCICMSST: TBCDField
+    object NotasValor_BCICMSST: TFMTBCDField
       FieldName = 'Valor_BCICMSST'
       Origin = 'Valor_BCICMSST'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_ICMSST: TBCDField
+    object NotasValor_ICMSST: TFMTBCDField
       FieldName = 'Valor_ICMSST'
       Origin = 'Valor_ICMSST'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_Produtos: TBCDField
+    object NotasValor_Produtos: TFMTBCDField
       FieldName = 'Valor_Produtos'
       Origin = 'Valor_Produtos'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_Frete: TBCDField
+    object NotasValor_Frete: TFMTBCDField
       FieldName = 'Valor_Frete'
       Origin = 'Valor_Frete'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_Seguro: TBCDField
+    object NotasValor_Seguro: TFMTBCDField
       FieldName = 'Valor_Seguro'
       Origin = 'Valor_Seguro'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_Despesas: TBCDField
+    object NotasValor_Despesas: TFMTBCDField
       FieldName = 'Valor_Despesas'
       Origin = 'Valor_Despesas'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_BCIPI: TBCDField
+    object NotasValor_BCIPI: TFMTBCDField
       FieldName = 'Valor_BCIPI'
       Origin = 'Valor_BCIPI'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_IPI: TBCDField
+    object NotasValor_IPI: TFMTBCDField
       FieldName = 'Valor_IPI'
       Origin = 'Valor_IPI'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_TotalNota: TBCDField
+    object NotasValor_TotalNota: TFMTBCDField
       FieldName = 'Valor_TotalNota'
       Origin = 'Valor_TotalNota'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_RateioDespesas: TBCDField
+    object NotasValor_RateioDespesas: TFMTBCDField
       FieldName = 'Valor_RateioDespesas'
       Origin = 'Valor_RateioDespesas'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_MVA: TBCDField
+    object NotasValor_MVA: TFMTBCDField
       FieldName = 'Valor_MVA'
       Origin = 'Valor_MVA'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_ICMSReducao: TBCDField
+    object NotasValor_ICMSReducao: TFMTBCDField
       FieldName = 'Valor_ICMSReducao'
       Origin = 'Valor_ICMSReducao'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_II: TBCDField
+    object NotasValor_II: TFMTBCDField
       FieldName = 'Valor_II'
       Origin = 'Valor_II'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_DUMPING: TBCDField
+    object NotasValor_DUMPING: TFMTBCDField
       FieldName = 'Valor_DUMPING'
       Origin = 'Valor_DUMPING'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_Descontos: TBCDField
+    object NotasValor_Descontos: TFMTBCDField
       FieldName = 'Valor_Descontos'
       Origin = 'Valor_Descontos'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_IsentasICMS: TBCDField
+    object NotasValor_IsentasICMS: TFMTBCDField
       FieldName = 'Valor_IsentasICMS'
       Origin = 'Valor_IsentasICMS'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_OutrasICMS: TBCDField
+    object NotasValor_OutrasICMS: TFMTBCDField
       FieldName = 'Valor_OutrasICMS'
       Origin = 'Valor_OutrasICMS'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_IsentasIPI: TBCDField
+    object NotasValor_IsentasIPI: TFMTBCDField
       FieldName = 'Valor_IsentasIPI'
       Origin = 'Valor_IsentasIPI'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_OutrasIPI: TBCDField
+    object NotasValor_OutrasIPI: TFMTBCDField
       FieldName = 'Valor_OutrasIPI'
       Origin = 'Valor_OutrasIPI'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_BCMVA: TBCDField
+    object NotasValor_BCMVA: TFMTBCDField
       FieldName = 'Valor_BCMVA'
       Origin = 'Valor_BCMVA'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_BCICMSApuracao: TBCDField
+    object NotasValor_BCICMSApuracao: TFMTBCDField
       FieldName = 'Valor_BCICMSApuracao'
       Origin = 'Valor_BCICMSApuracao'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_ICMSApuracao: TBCDField
+    object NotasValor_ICMSApuracao: TFMTBCDField
       FieldName = 'Valor_ICMSApuracao'
       Origin = 'Valor_ICMSApuracao'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_MediaBCR: TBCDField
+    object NotasValor_MediaBCR: TFMTBCDField
       FieldName = 'Valor_MediaBCR'
       Origin = 'Valor_MediaBCR'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_PIS2: TBCDField
+    object NotasValor_PIS2: TFMTBCDField
       FieldName = 'Valor_PIS2'
       Origin = 'Valor_PIS2'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_COFINS2: TBCDField
+    object NotasValor_COFINS2: TFMTBCDField
       FieldName = 'Valor_COFINS2'
       Origin = 'Valor_COFINS2'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_BCPIS: TBCDField
+    object NotasValor_BCPIS: TFMTBCDField
       FieldName = 'Valor_BCPIS'
       Origin = 'Valor_BCPIS'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_IRPJ: TBCDField
+    object NotasValor_IRPJ: TFMTBCDField
       FieldName = 'Valor_IRPJ'
       Origin = 'Valor_IRPJ'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_CSLL: TBCDField
+    object NotasValor_CSLL: TFMTBCDField
       FieldName = 'Valor_CSLL'
       Origin = 'Valor_CSLL'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_Comissao: TBCDField
+    object NotasValor_Comissao: TFMTBCDField
       FieldName = 'Valor_Comissao'
       Origin = 'Valor_Comissao'
       Precision = 18
+      Size = 6
     end
-    object NotasTotal_Impostos: TBCDField
+    object NotasTotal_Impostos: TFMTBCDField
       FieldName = 'Total_Impostos'
       Origin = 'Total_Impostos'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_BCICMSDest: TBCDField
+    object NotasValor_BCICMSDest: TFMTBCDField
       FieldName = 'Valor_BCICMSDest'
       Origin = 'Valor_BCICMSDest'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_ICMSDest: TBCDField
+    object NotasValor_ICMSDest: TFMTBCDField
       FieldName = 'Valor_ICMSDest'
       Origin = 'Valor_ICMSDest'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_DIFAL: TBCDField
+    object NotasValor_DIFAL: TFMTBCDField
       FieldName = 'Valor_DIFAL'
       Origin = 'Valor_DIFAL'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_DIFALOrig: TBCDField
+    object NotasValor_DIFALOrig: TFMTBCDField
       FieldName = 'Valor_DIFALOrig'
       Origin = 'Valor_DIFALOrig'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_DIFALDest: TBCDField
+    object NotasValor_DIFALDest: TFMTBCDField
       FieldName = 'Valor_DIFALDest'
       Origin = 'Valor_DIFALDest'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_FCPDest: TBCDField
+    object NotasValor_FCPDest: TFMTBCDField
       FieldName = 'Valor_FCPDest'
       Origin = 'Valor_FCPDest'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_FCPICMSDest: TBCDField
+    object NotasValor_FCPICMSDest: TFMTBCDField
       FieldName = 'Valor_FCPICMSDest'
       Origin = 'Valor_FCPICMSDest'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_FCPICMSOrig: TBCDField
+    object NotasValor_FCPICMSOrig: TFMTBCDField
       FieldName = 'Valor_FCPICMSOrig'
       Origin = 'Valor_FCPICMSOrig'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_CIF: TBCDField
+    object NotasValor_CIF: TFMTBCDField
       FieldName = 'Valor_CIF'
       Origin = 'Valor_CIF'
       Precision = 18
+      Size = 6
     end
-    object NotasDIFAL_AliqInterna: TBCDField
+    object NotasDIFAL_AliqInterna: TFMTBCDField
       FieldName = 'DIFAL_AliqInterna'
       Origin = 'DIFAL_AliqInterna'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_BCFCPST: TBCDField
+    object NotasValor_BCFCPST: TFMTBCDField
       FieldName = 'Valor_BCFCPST'
       Origin = 'Valor_BCFCPST'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_FCPST: TBCDField
+    object NotasValor_FCPST: TFMTBCDField
       FieldName = 'Valor_FCPST'
       Origin = 'Valor_FCPST'
       Precision = 18
+      Size = 6
     end
-    object NotasAliquota_FCPST: TBCDField
+    object NotasAliquota_FCPST: TFMTBCDField
       FieldName = 'Aliquota_FCPST'
       Origin = 'Aliquota_FCPST'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_BCFCP: TBCDField
+    object NotasValor_BCFCP: TFMTBCDField
       FieldName = 'Valor_BCFCP'
       Origin = 'Valor_BCFCP'
       Precision = 18
+      Size = 6
     end
-    object NotasAliquota_FCP: TBCDField
+    object NotasAliquota_FCP: TFMTBCDField
       FieldName = 'Aliquota_FCP'
       Origin = 'Aliquota_FCP'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_FCP: TBCDField
+    object NotasValor_FCP: TFMTBCDField
       FieldName = 'Valor_FCP'
       Origin = 'Valor_FCP'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_AFRMM: TBCDField
+    object NotasValor_AFRMM: TFMTBCDField
       FieldName = 'Valor_AFRMM'
       Origin = 'Valor_AFRMM'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_BCDIFAL: TBCDField
+    object NotasValor_BCDIFAL: TFMTBCDField
       FieldName = 'Valor_BCDIFAL'
       Origin = 'Valor_BCDIFAL'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_BCDIFALST: TBCDField
+    object NotasValor_BCDIFALST: TFMTBCDField
       FieldName = 'Valor_BCDIFALST'
       Origin = 'Valor_BCDIFALST'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_BCICMSMono: TBCDField
+    object NotasValor_BCICMSMono: TFMTBCDField
       FieldName = 'Valor_BCICMSMono'
       Origin = 'Valor_BCICMSMono'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_BCICMSMonoRet: TBCDField
+    object NotasValor_BCICMSMonoRet: TFMTBCDField
       FieldName = 'Valor_BCICMSMonoRet'
       Origin = 'Valor_BCICMSMonoRet'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_BCICMSPresumido: TBCDField
+    object NotasValor_BCICMSPresumido: TFMTBCDField
       FieldName = 'Valor_BCICMSPresumido'
       Origin = 'Valor_BCICMSPresumido'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_BCII: TBCDField
+    object NotasValor_BCII: TFMTBCDField
       FieldName = 'Valor_BCII'
       Origin = 'Valor_BCII'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_COFINSST: TBCDField
+    object NotasValor_COFINSST: TFMTBCDField
       FieldName = 'Valor_COFINSST'
       Origin = 'Valor_COFINSST'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_ICMSDif: TBCDField
+    object NotasValor_ICMSDif: TFMTBCDField
       FieldName = 'Valor_ICMSDif'
       Origin = 'Valor_ICMSDif'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_ICMSMono: TBCDField
+    object NotasValor_ICMSMono: TFMTBCDField
       FieldName = 'Valor_ICMSMono'
       Origin = 'Valor_ICMSMono'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_ICMSMonoRet: TBCDField
+    object NotasValor_ICMSMonoRet: TFMTBCDField
       FieldName = 'Valor_ICMSMonoRet'
       Origin = 'Valor_ICMSMonoRet'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_ICMSPresumido: TBCDField
+    object NotasValor_ICMSPresumido: TFMTBCDField
       FieldName = 'Valor_ICMSPresumido'
       Origin = 'Valor_ICMSPresumido'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_PISST: TBCDField
+    object NotasValor_PISST: TFMTBCDField
       FieldName = 'Valor_PISST'
       Origin = 'Valor_PISST'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_BCIBS: TBCDField
+    object NotasValor_BCIBS: TFMTBCDField
       FieldName = 'Valor_BCIBS'
       Origin = 'Valor_BCIBS'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_IBS: TBCDField
+    object NotasValor_IBS: TFMTBCDField
       FieldName = 'Valor_IBS'
       Origin = 'Valor_IBS'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_BCCBS: TBCDField
+    object NotasValor_BCCBS: TFMTBCDField
       FieldName = 'Valor_BCCBS'
       Origin = 'Valor_BCCBS'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_CBS: TBCDField
+    object NotasValor_CBS: TFMTBCDField
       FieldName = 'Valor_CBS'
       Origin = 'Valor_CBS'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_BCIS: TBCDField
+    object NotasValor_BCIS: TFMTBCDField
       FieldName = 'Valor_BCIS'
       Origin = 'Valor_BCIS'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_IS: TBCDField
+    object NotasValor_IS: TFMTBCDField
       FieldName = 'Valor_IS'
       Origin = 'Valor_IS'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_IsentasICMSST: TBCDField
+    object NotasValor_IsentasICMSST: TFMTBCDField
       FieldName = 'Valor_IsentasICMSST'
       Origin = 'Valor_IsentasICMSST'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_OutrasICMSST: TBCDField
+    object NotasValor_OutrasICMSST: TFMTBCDField
       FieldName = 'Valor_OutrasICMSST'
       Origin = 'Valor_OutrasICMSST'
       Precision = 18
+      Size = 6
     end
-    object NotasValor_ProdutosOrig: TBCDField
+    object NotasValor_ProdutosOrig: TFMTBCDField
       FieldName = 'Valor_ProdutosOrig'
       Origin = 'Valor_ProdutosOrig'
       Precision = 18
+      Size = 6
     end
-    object NotasAliquota_ICMSPresumido: TBCDField
+    object NotasAliquota_ICMSPresumido: TFMTBCDField
       FieldName = 'Aliquota_ICMSPresumido'
       Origin = 'Aliquota_ICMSPresumido'
       Precision = 18
+      Size = 6
     end
     object NotasModalidade: TSmallintField
       FieldName = 'Modalidade'
@@ -3692,10 +3849,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       FieldName = 'Incentivo_Codigo'
       Origin = 'Incentivo_Codigo'
     end
-    object NotasMedia_BCR: TBCDField
+    object NotasMedia_BCR: TFMTBCDField
       FieldName = 'Media_BCR'
       Origin = 'Media_BCR'
       Precision = 18
+      Size = 6
     end
     object NotasRemessa: TBooleanField
       FieldName = 'Remessa'
@@ -3733,82 +3891,9 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       FieldName = 'Origem_Mercadoria'
       Origin = 'Origem_Mercadoria'
     end
-    object NotasOperacao: TSmallintField
-      FieldName = 'Operacao'
-      Origin = 'Operacao'
-    end
-    object NotasOperacao_Descricao: TStringField
-      FieldKind = fkLookup
-      FieldName = 'Operacao_Descricao'
-      LookupDataSet = Operacao
-      LookupKeyFields = 'Codigo'
-      LookupResultField = 'Descricao'
-      KeyFields = 'Operacao'
-      Size = 60
-      Lookup = True
-    end
-    object NotasChave: TStringField
-      FieldName = 'Chave'
-      Origin = 'Chave'
-      EditMask = '##.##.##.##.##.###.###/####-##-###.###.###-###-###.###.###-#;0'
-      Size = 44
-    end
-    object NotasES: TSmallintField
-      FieldName = 'ES'
-      Origin = 'ES'
-    end
     object NotasLancamento_Financeiro: TIntegerField
       FieldName = 'Lancamento_Financeiro'
-    end
-    object NotasData_ES: TDateField
-      FieldName = 'Data_ES'
-      Origin = 'Data_ES'
-    end
-    object NotasData_Emissao: TDateField
-      FieldName = 'Data_Emissao'
-      Origin = 'Data_Emissao'
-    end
-    object NotasNota_id: TIntegerField
-      FieldName = 'Nota_id'
-      Origin = 'Nota_id'
-    end
-    object NotasHora_Emissao: TTimeField
-      FieldName = 'Hora_Emissao'
-      Origin = 'Hora_Emissao'
-    end
-    object NotasHora_ES: TTimeField
-      FieldName = 'Hora_ES'
-      Origin = 'Hora_ES'
-    end
-    object NotasInf_Compl: TMemoField
-      FieldName = 'Inf_Compl'
-      Origin = 'Inf_Compl'
-      BlobType = ftMemo
-    end
-    object NotasInf_Compl2: TMemoField
-      FieldName = 'Inf_Compl2'
-      Origin = 'Inf_Compl2'
-      BlobType = ftMemo
-    end
-    object NotasNota_Ref: TSmallintField
-      FieldName = 'Nota_Ref'
-      Origin = 'Nota_Ref'
-    end
-    object NotasData_Ref: TSQLTimeStampField
-      FieldName = 'Data_Ref'
-      Origin = 'Data_Ref'
-      Required = True
-    end
-    object NotasChave_Ref: TStringField
-      FieldName = 'Chave_Ref'
-      Origin = 'Chave_Ref'
-      Size = 44
-    end
-    object NotasEmpresa: TStringField
-      FieldName = 'Empresa'
-      Origin = 'Empresa'
-      Required = True
-      Size = 14
+      Origin = 'Lancamento_Financeiro'
     end
   end
   object dsNotas: TDataSource
@@ -3948,26 +4033,22 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       '      ,Quantidade'
       '      ,Valor_Unitario'
       '      ,Empresa'
-      '      ,Chave'
       '      ,CFOP'
       
         '      ,Estoque_Minimo = isnull((select Estoque_MinimoPerc from P' +
         'rodutos where Codigo = Codigo_Mercadoria), 0)'
       'from NotasItens'
-      'where emissao = '#39'T'#39
-      'order by Empresa, Chave')
+      'order by Empresa')
     Left = 183
     Top = 121
     object ItensNota_id: TIntegerField
       FieldName = 'Nota_id'
       Origin = 'Nota_id'
+      Required = True
     end
     object ItensItem: TSmallintField
-      DisplayWidth = 4
       FieldName = 'Item'
       Origin = 'Item'
-      DisplayFormat = '0000'
-      EditFormat = '0000'
     end
     object ItensCodigo_Mercadoria: TIntegerField
       FieldName = 'Codigo_Mercadoria'
@@ -3981,35 +4062,8 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object ItensNCM: TStringField
       FieldName = 'NCM'
       Origin = 'NCM'
-      EditMask = '##.##.####;0'
       FixedChar = True
       Size = 8
-    end
-    object ItensQuantidade: TBCDField
-      FieldName = 'Quantidade'
-      Origin = 'Quantidade'
-      DisplayFormat = ',##0.000'
-      Precision = 18
-    end
-    object ItensValor_Unitario: TBCDField
-      FieldName = 'Valor_Unitario'
-      Origin = 'Valor_Unitario'
-      DisplayFormat = ',##0.0000'
-      Precision = 18
-    end
-    object ItensCFOP: TStringField
-      FieldName = 'CFOP'
-      Origin = 'CFOP'
-      EditMask = '#.###;0'
-      Size = 4
-    end
-    object ItensEstoque_Minimo: TBCDField
-      FieldName = 'Estoque_Minimo'
-      Origin = 'Estoque_Minimo'
-      ReadOnly = True
-      Required = True
-      DisplayFormat = '#0.00%'
-      Precision = 18
     end
     object ItensUM: TStringField
       FieldName = 'UM'
@@ -4017,11 +4071,36 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       FixedChar = True
       Size = 3
     end
+    object ItensQuantidade: TFMTBCDField
+      FieldName = 'Quantidade'
+      Origin = 'Quantidade'
+      Precision = 18
+      Size = 6
+    end
+    object ItensValor_Unitario: TFMTBCDField
+      FieldName = 'Valor_Unitario'
+      Origin = 'Valor_Unitario'
+      Precision = 18
+      Size = 6
+    end
     object ItensEmpresa: TStringField
       FieldName = 'Empresa'
       Origin = 'Empresa'
       Required = True
       Size = 14
+    end
+    object ItensCFOP: TStringField
+      FieldName = 'CFOP'
+      Origin = 'CFOP'
+      Size = 4
+    end
+    object ItensEstoque_Minimo: TFMTBCDField
+      FieldName = 'Estoque_Minimo'
+      Origin = 'Estoque_Minimo'
+      ReadOnly = True
+      Required = True
+      Precision = 18
+      Size = 6
     end
   end
   object dsItens: TDataSource

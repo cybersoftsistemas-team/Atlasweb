@@ -1,8 +1,8 @@
 object MainForm: TMainForm
   Left = 0
   Top = 0
-  ClientHeight = 766
-  ClientWidth = 1226
+  ClientHeight = 726
+  ClientWidth = 1454
   Caption = 'MainForm'
   BorderStyle = bsNone
   WindowState = wsMaximized
@@ -18,21 +18,19 @@ object MainForm: TMainForm
   object unipane: TUniContainerPanel
     Left = 350
     Top = 68
-    Width = 876
-    Height = 698
+    Width = 1104
+    Height = 658
     Hint = ''
     ParentColor = False
     Align = alClient
     ScreenMask.ShowMessage = False
     ScreenMask.Color = clRed
     TabOrder = 0
-    ExplicitLeft = 300
-    ExplicitWidth = 926
     object PagePrincipal: TUniPageControl
       Left = 0
       Top = 50
-      Width = 876
-      Height = 648
+      Width = 1104
+      Height = 608
       Hint = ''
       ActivePage = pInicio
       Plain = True
@@ -42,9 +40,6 @@ object MainForm: TMainForm
           'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
           '= '#39'Pasta'#39';'#13#10'}')
       TabOrder = 1
-      ExplicitTop = 0
-      ExplicitWidth = 926
-      ExplicitHeight = 698
       object pInicio: TUniTabSheet
         Hint = ''
         Caption = 'Inicio'
@@ -52,57 +47,63 @@ object MainForm: TMainForm
         ScreenMask.Message = 'A G U A R D E . . .'
         ScreenMask.Target = pInicio
         ScreenMask.Color = clRed
-        ExplicitWidth = 918
-        ExplicitHeight = 670
-        object ScrollPrincipal: TUniScrollBox
+        ClientEvents.UniEvents.Strings = (
+          
+            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+            '= '#39'cybersoft-background'#39';'#13#10'}')
+        object iLogoCyber: TUniImage
           Left = 0
           Top = 0
-          Width = 868
-          Height = 620
+          Width = 1096
+          Height = 580
           Hint = ''
+          Margins.Left = 150
+          Margins.Top = 120
+          Margins.Right = 150
+          Margins.Bottom = 120
+          Center = True
+          Proportional = True
           Align = alClient
-          Color = 4730899
+          Transparent = True
           ClientEvents.UniEvents.Strings = (
             
               'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-              '= '#39'PastaInterna'#39';'#13#10'}')
-          TabOrder = 0
-          ScrollDirection = sdVertical
-          ExplicitWidth = 918
-          ExplicitHeight = 670
-          ScrollHeight = 140
-          ScrollWidth = 135
-          object UniButton1: TUniButton
-            Left = 20
-            Top = 74
-            Width = 115
-            Height = 66
-            Hint = ''
-            Caption = 'Buscar DUIMP'
-            TabOrder = 0
-            OnClick = UniButton1Click
-          end
+              '= '#39'cybersoft-logo'#39';'#13#10'}')
+          ScreenMask.Enabled = True
+          ExplicitLeft = 222
+          ExplicitTop = 148
+          ExplicitWidth = 512
+          ExplicitHeight = 197
+        end
+        object UniButton1: TUniButton
+          Left = 20
+          Top = 74
+          Width = 115
+          Height = 66
+          Hint = ''
+          Visible = False
+          Caption = 'Buscar DUIMP'
+          TabOrder = 1
+          OnClick = UniButton1Click
         end
       end
     end
     object pAtalhos: TUniContainerPanel
       Left = 0
       Top = 0
-      Width = 876
+      Width = 1104
       Height = 50
       Hint = ''
       ParentColor = False
       Color = 4730899
       Align = alTop
       TabOrder = 2
-      ExplicitTop = 8
-      ExplicitWidth = 926
     end
   end
   object pTitulo: TUniPanel
     Left = 0
     Top = 0
-    Width = 1226
+    Width = 1454
     Height = 68
     Hint = ''
     Margins.Left = 0
@@ -122,12 +123,12 @@ object MainForm: TMainForm
     BorderStyle = ubsNone
     Alignment = taLeftJustify
     Caption = ''
-    Color = clNone
+    Color = 7494461
     DesignSize = (
-      1226
+      1454
       68)
     object pUser: TUniPanel
-      Left = 535
+      Left = 763
       Top = 0
       Width = 691
       Height = 68
@@ -150,7 +151,7 @@ object MainForm: TMainForm
       BorderStyle = ubsNone
       Alignment = taRightJustify
       Caption = ''
-      Color = clNone
+      Color = 7494461
       object lUser: TUniLabel
         Left = 32
         Top = 15
@@ -161,7 +162,7 @@ object MainForm: TMainForm
         AutoSize = False
         Caption = 'lUser'
         ParentFont = False
-        Font.Color = clActiveCaption
+        Font.Color = clWhite
         Font.Height = -13
         Font.Name = 'Calibri'
         Font.Style = [fsUnderline]
@@ -204,17 +205,17 @@ object MainForm: TMainForm
           '14.123.456/0001-48 - XGMA Participa'#231#245'es Com'#233'rcio Importa'#231#227'o e Ex' +
           'porta'#231#227'o'
         ParentFont = False
-        Font.Color = clActiveCaption
+        Font.Color = clWhite
         Font.Height = -13
         Font.Name = 'Calibri'
         ParentColor = False
-        Color = 12615680
+        Color = clWhite
         TabOrder = 3
       end
     end
     object UniPanel1: TUniPanel
       AlignWithMargins = True
-      Left = 1099
+      Left = 1327
       Top = 2
       Width = 124
       Height = 63
@@ -235,7 +236,7 @@ object MainForm: TMainForm
       end
     end
     object iLogoAtlas: TUniImage
-      Left = 157
+      Left = 0
       Top = 0
       Width = 259
       Height = 68
@@ -244,47 +245,12 @@ object MainForm: TMainForm
       Align = alLeft
       ScreenMask.Enabled = True
     end
-    object iLogoCyber: TUniImage
-      AlignWithMargins = True
-      Left = 3
-      Top = 3
-      Width = 151
-      Height = 62
-      Hint = ''
-      Center = True
-      Stretch = True
-      Proportional = True
-      Align = alLeft
-      ClientEvents.UniEvents.Strings = (
-        
-          'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-          '= '#39'Painel'#39';'#13#10'}')
-      ScreenMask.Enabled = True
-    end
-    object lVersao: TUniLabel
-      Left = 232
-      Top = 49
-      Width = 172
-      Height = 16
-      Hint = ''
-      Alignment = taCenter
-      AutoSize = False
-      Caption = 'Vers'#227'o 1.00'
-      ParentFont = False
-      Font.Color = clInactiveBorder
-      Font.Height = -13
-      Font.Name = 'Calibri'
-      ParentColor = False
-      Color = 4227327
-      Transparent = False
-      TabOrder = 5
-    end
   end
   object pMenu: TUniContainerPanel
     Left = 0
     Top = 68
     Width = 350
-    Height = 698
+    Height = 658
     Hint = ''
     ParentColor = False
     Align = alLeft
@@ -299,7 +265,6 @@ object MainForm: TMainForm
       Color = 7293440
       Align = alTop
       TabOrder = 1
-      ExplicitWidth = 300
       object cPesquisa: TUniEdit
         Left = 0
         Top = 0
@@ -317,14 +282,13 @@ object MainForm: TMainForm
         InputType = 'search'
         Images = ImgMenu
         OnChange = cPesquisaChange
-        ExplicitWidth = 300
       end
     end
     object Menu: TUniTreeMenu
       Left = 0
       Top = 64
       Width = 350
-      Height = 634
+      Height = 594
       Hint = ''
       Align = alClient
       Items.FontData = {0100000000}
@@ -333,7 +297,6 @@ object MainForm: TMainForm
       Color = 4730899
       SingleExpand = True
       ExpanderOnly = False
-      ExplicitWidth = 300
     end
     object UniPanel3: TUniPanel
       Left = 0
@@ -350,7 +313,6 @@ object MainForm: TMainForm
       BorderStyle = ubsNone
       Caption = ''
       Color = clNone
-      ExplicitWidth = 300
       object bFecharTodos: TUniButton
         Left = 47
         Top = 0
@@ -363,7 +325,6 @@ object MainForm: TMainForm
         Scale = bbsSmall
         IconCls = 'delete'
         OnClick = bFecharTodosClick
-        ExplicitLeft = 176
       end
       object bMudarEmpresa: TUniButton
         Left = 155
@@ -378,8 +339,6 @@ object MainForm: TMainForm
         ScaleButton = False
         IconCls = 'team'
         OnClick = bMudarEmpresaClick
-        ExplicitLeft = -18
-        ExplicitTop = 3
       end
       object bMenu: TUniButton
         Left = 0
@@ -408,7 +367,6 @@ object MainForm: TMainForm
         ImageIndex = 7
         TabOrder = 4
         OnClick = bFecharClick
-        ExplicitTop = -6
       end
     end
   end

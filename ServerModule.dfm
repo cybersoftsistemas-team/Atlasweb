@@ -10,7 +10,8 @@ object UniServerModule: TUniServerModule
   Bindings = <>
   MainFormDisplayMode = mfPage
   CustomFiles.Strings = (
-    '\files\css\Cyber_Estilo01.css')
+    '\files\css\Cyber_Estilo01.css'
+    '')
   ServerMessages.UnavailableErrMsg = 'Erro de Communica'#231#227'o'
   ServerMessages.LoadingMessage = 'Carregando...'
   ServerMessages.ExceptionTemplate.Strings = (

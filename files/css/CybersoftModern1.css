@@ -1,0 +1,1312 @@
+/******************************************************************************
+ *
+ *  CYBERSOFT MODERN UI
+ *  Core Theme
+ *  Parte 01-A
+ *
+ *  Compatível:
+ *      uniGUI Premium
+ *      Glass Theme
+ *      ExtJS 7
+ *
+ ******************************************************************************/
+
+/**************************************************
+*
+* VARIÁVEIS
+*
+**************************************************/
+:root{
+    --cs-primary:#2563EB;
+    --cs-primary-light:#4F8EF7;
+    --cs-success:#16A34A;
+    --cs-warning:#F59E0B;
+    --cs-danger:#DC2626;
+    --cs-background:#F4F7FB;
+    --cs-card:#FFFFFF;
+    --cs-border:#DCE3EB;
+    --cs-text:#273240;
+    --cs-text-light:#64748B;
+    --cs-radius:10px;
+    --cs-shadow-small:
+        0 2px 6px rgba(0,0,0,.06);
+    --cs-shadow:
+        0 8px 25px rgba(0,0,0,.08);
+    --cs-shadow-large:
+        0 20px 45px rgba(0,0,0,.15);
+}
+/**************************************************
+*
+* BODY
+*
+**************************************************/
+html{
+    height:100%;
+}
+body{
+    height:100%;
+    margin:0;
+    padding:0;
+    background:var(--cs-background);
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+    color:var(--cs-text);
+}
+/**************************************************
+*
+* FONTES
+*
+**************************************************/
+.x-body,
+.x-panel,
+.x-window,
+.x-grid,
+.x-toolbar,
+.x-btn,
+.x-form-field{
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif !important;
+
+    color:var(--cs-text);
+}
+/**************************************************
+*
+* SELEÇÃO DE TEXTO
+*
+**************************************************/
+::selection{
+    background:#2563EB;
+    color:white;
+}
+/**************************************************
+*
+* LINKS
+*
+**************************************************/
+a{
+    color:var(--cs-primary);
+    text-decoration:none;
+}
+a:hover{
+    color:#1D4ED8;
+}
+/**************************************************
+*
+* TRANSIÇÕES
+*
+**************************************************/
+*{
+    transition:
+        background .20s,
+        color .20s,
+        border-color .20s,
+        box-shadow .20s,
+        transform .20s;
+}
+/**************************************************
+*
+* SCROLLBAR
+*
+**************************************************/
+::-webkit-scrollbar{
+    width:11px;
+    height:11px;
+}
+::-webkit-scrollbar-track{
+    background:#EEF2F7;
+}
+::-webkit-scrollbar-thumb{
+    background:#C9D4E2;
+    border-radius:30px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background:#94A3B8;
+}
+/**************************************************
+*
+* PAINÉIS
+*
+**************************************************/
+.x-panel{
+    border-radius:12px !important;
+    border:1px solid var(--cs-border) !important;
+    box-shadow:var(--cs-shadow-small);
+    overflow:hidden;
+}
+/**************************************************
+*
+* BODY DOS PAINÉIS
+*
+**************************************************/
+.x-panel-body{
+    background:white !important;
+}
+/**************************************************
+*
+* PANEL HEADER
+*
+**************************************************/
+.x-panel-header{
+    background:white !important;
+    border-bottom:
+        1px solid var(--cs-border);
+    font-size:14px;
+    font-weight:600;
+}
+/**************************************************
+*
+* CONTAINERS
+*
+**************************************************/
+.x-container{
+    background:transparent;
+}
+/**************************************************
+*
+* FORM
+*
+**************************************************/
+.x-window{
+    border-radius:14px !important;
+    overflow:hidden;
+    border:none !important;
+    box-shadow:var(--cs-shadow-large);
+}
+/**************************************************
+*
+* HEADER DA JANELA
+*
+**************************************************/
+.x-window-header{
+    background:white !important;
+    border-bottom:
+        1px solid var(--cs-border);
+}
+/**************************************************
+*
+* BODY DA JANELA
+*
+**************************************************/
+.x-window-body{
+    background:#FFFFFF !important;
+}
+/**************************************************
+*
+* TOOLBAR
+*
+**************************************************/
+.x-toolbar{
+    background:white !important;
+    border:none !important;
+    border-bottom:
+        1px solid var(--cs-border);
+}
+/**************************************************
+*
+* STATUSBAR
+*
+**************************************************/
+.x-statusbar{
+    background:white !important;
+    border-top:
+        1px solid var(--cs-border);
+}
+/**************************************************
+*
+* SPLITTER
+*
+**************************************************/
+.x-splitter{
+    background:#EEF2F7;
+}
+/**************************************************
+*
+* FIELDSET
+*
+**************************************************/
+.x-fieldset{
+    border-radius:10px;
+    border:1px solid var(--cs-border);
+    background:white;
+}
+/**************************************************
+*
+* LEGEND
+*
+**************************************************/
+.x-fieldset-header{
+    font-weight:600;
+    color:var(--cs-primary);
+}
+/**************************************************
+*
+* CARTÕES
+*
+**************************************************/
+.cs-card{
+    background:white;
+    border-radius:14px;
+    box-shadow:var(--cs-shadow);
+    padding:20px;
+}
+/**************************************************
+*
+* HELPERS
+*
+**************************************************/
+.cs-shadow{
+    box-shadow:var(--cs-shadow);
+}
+.cs-radius{
+    border-radius:var(--cs-radius);
+}
+.cs-round{
+    border-radius:50%;
+}
+.cs-center{
+    text-align:center;
+}
+.cs-right{
+    text-align:right;
+}
+.cs-left{
+    text-align:left;
+}
+.cs-hidden{
+    display:none;
+}
+.cs-flex{
+    display:flex;
+}
+.cs-column{
+    flex-direction:column;
+}
+.cs-row{
+    flex-direction:row;
+}
+.cs-space{
+    justify-content:space-between;
+}
+.cs-middle{
+    align-items:center;
+}
+
+
+/******************************************************************************
+ *
+ *  CYBERSOFT MODERN UI
+ *  Core Theme
+ *  Parte 01-A
+ *
+ *  Compatível:
+ *      uniGUI Premium
+ *      Glass Theme
+ *      ExtJS 7
+ *
+ ******************************************************************************/
+
+/**************************************************
+*
+* VARIÁVEIS
+*
+**************************************************/
+:root{
+    --cs-primary:#2563EB;
+    --cs-primary-light:#4F8EF7;
+    --cs-success:#16A34A;
+    --cs-warning:#F59E0B;
+    --cs-danger:#DC2626;
+    --cs-background:#F4F7FB;
+    --cs-card:#FFFFFF;
+    --cs-border:#DCE3EB;
+    --cs-text:#273240;
+    --cs-text-light:#64748B;
+    --cs-radius:10px;
+    --cs-shadow-small:
+        0 2px 6px rgba(0,0,0,.06);
+    --cs-shadow:
+        0 8px 25px rgba(0,0,0,.08);
+    --cs-shadow-large:
+        0 20px 45px rgba(0,0,0,.15);
+}
+/**************************************************
+*
+* BODY
+*
+**************************************************/
+html{
+    height:100%;
+}
+body{
+    height:100%;
+    margin:0;
+    padding:0;
+    background:var(--cs-background);
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+    color:var(--cs-text);
+}
+/**************************************************
+*
+* FONTES
+*
+**************************************************/
+.x-body,
+.x-panel,
+.x-window,
+.x-grid,
+.x-toolbar,
+.x-btn,
+.x-form-field{
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif !important;
+    color:var(--cs-text);
+}
+/**************************************************
+*
+* SELEÇÃO DE TEXTO
+*
+**************************************************/
+::selection{
+    background:#2563EB;
+    color:white;
+}
+/**************************************************
+*
+* LINKS
+*
+**************************************************/
+a{
+    color:var(--cs-primary);
+    text-decoration:none;
+}
+a:hover{
+    color:#1D4ED8;
+}
+/**************************************************
+*
+* TRANSIÇÕES
+*
+**************************************************/
+*{
+    transition:
+        background .20s,
+        color .20s,
+        border-color .20s,
+        box-shadow .20s,
+        transform .20s;
+}
+/**************************************************
+*
+* SCROLLBAR
+*
+**************************************************/
+::-webkit-scrollbar{
+    width:11px;
+    height:11px;
+}
+::-webkit-scrollbar-track{
+    background:#EEF2F7;
+}
+::-webkit-scrollbar-thumb{
+    background:#C9D4E2;
+    border-radius:30px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background:#94A3B8;
+}
+/**************************************************
+*
+* PAINÉIS
+*
+**************************************************/
+.x-panel{
+    border-radius:12px !important;
+    border:1px solid var(--cs-border) !important;
+    box-shadow:var(--cs-shadow-small);
+    overflow:hidden;
+}
+/**************************************************
+*
+* BODY DOS PAINÉIS
+*
+**************************************************/
+.x-panel-body{
+    background:white !important;
+}
+/**************************************************
+*
+* PANEL HEADER
+*
+**************************************************/
+.x-panel-header{
+    background:white !important;
+    border-bottom:
+        1px solid var(--cs-border);
+    font-size:14px;
+    font-weight:600;
+}
+/**************************************************
+*
+* CONTAINERS
+*
+**************************************************/
+.x-container{
+    background:transparent;
+}
+/**************************************************
+*
+* FORM
+*
+**************************************************/
+.x-window{
+    border-radius:14px !important;
+    overflow:hidden;
+    border:none !important;
+    box-shadow:var(--cs-shadow-large);
+}
+/**************************************************
+*
+* HEADER DA JANELA
+*
+**************************************************/
+.x-window-header{
+    background:white !important;
+    border-bottom:
+        1px solid var(--cs-border);
+}
+/**************************************************
+*
+* BODY DA JANELA
+*
+**************************************************/
+.x-window-body{
+    background:#FFFFFF !important;
+}
+/**************************************************
+*
+* TOOLBAR
+*
+**************************************************/
+.x-toolbar{
+    background:white !important;
+    border:none !important;
+    border-bottom:
+        1px solid var(--cs-border);
+}
+/**************************************************
+*
+* STATUSBAR
+*
+**************************************************/
+.x-statusbar{
+    background:white !important;
+    border-top:
+        1px solid var(--cs-border);
+}
+/**************************************************
+*
+* SPLITTER
+*
+**************************************************/
+.x-splitter{
+    background:#EEF2F7;
+}
+/**************************************************
+*
+* FIELDSET
+*
+**************************************************/
+.x-fieldset{
+    border-radius:10px;
+    border:1px solid var(--cs-border);
+    background:white;
+}
+/**************************************************
+*
+* LEGEND
+*
+**************************************************/
+.x-fieldset-header{
+    font-weight:600;
+    color:var(--cs-primary);
+}
+/**************************************************
+*
+* CARTÕES
+*
+**************************************************/
+.cs-card{
+    background:white;
+    border-radius:14px;
+    box-shadow:var(--cs-shadow);
+    padding:20px;
+}
+/**************************************************
+*
+* HELPERS
+*
+**************************************************/
+.cs-shadow{
+    box-shadow:var(--cs-shadow);
+}
+.cs-radius{
+    border-radius:var(--cs-radius);
+}
+.cs-round{
+    border-radius:50%;
+}
+.cs-center{
+    text-align:center;
+}
+.cs-right{
+    text-align:right;
+}
+.cs-left{
+    text-align:left;
+}
+.cs-hidden{
+    display:none;
+}
+.cs-flex{
+    display:flex;
+}
+.cs-column{
+    flex-direction:column;
+}
+.cs-row{
+    flex-direction:row;
+}
+.cs-space{
+    justify-content:space-between;
+}
+.cs-middle{
+    align-items:center;
+}
+
+
+
+
+
+
+
+
+
+/******************************************************************************
+ CYBERSOFT MODERN UI
+ BUTTONS - Parte A
+******************************************************************************/
+
+/* BOTÃO PADRÃO */
+.x-btn{
+border-radius:10px!important;
+transition:all .20s ease!important;
+box-shadow:none;
+font-weight:600;
+}
+
+.x-btn-button{
+border-radius:10px!important;
+}
+
+.x-btn-inner{
+font-family:"Segoe UI",Arial,sans-serif!important;
+font-size:13px;
+font-weight:600;
+letter-spacing:.2px;
+}
+
+/* BOTÕES PADRÃO */
+.x-btn-default-small,
+.x-btn-default-medium,
+.x-btn-default-large{
+background:linear-gradient(180deg,#3B82F6,#2563EB)!important;
+border:1px solid #2563EB!important;
+color:#FFF!important;
+}
+
+.x-btn-default-small .x-btn-inner,
+.x-btn-default-medium .x-btn-inner,
+.x-btn-default-large .x-btn-inner{
+color:#FFF!important;
+}
+
+/* HOVER */
+.x-btn-default-small:hover,
+.x-btn-default-medium:hover,
+.x-btn-default-large:hover{
+background:linear-gradient(180deg,#4F8EF7,#1D4ED8)!important;
+transform:translateY(-1px);
+box-shadow:0 8px 18px rgba(37,99,235,.25);
+}
+
+/* CLICK */
+.x-btn-pressed{
+transform:scale(.98);
+}
+
+/* DISABLED */
+.x-btn-disabled{
+opacity:.55!important;
+filter:grayscale(.15);
+}
+
+/* BOTÃO BRANCO */
+.cs-btn-white{
+background:#FFF!important;
+border:1px solid #DCE3EB!important;
+color:#334155!important;
+}
+
+.cs-btn-white:hover{
+background:#F8FAFC!important;
+}
+
+/* SUCESSO */
+.cs-btn-success{
+background:linear-gradient(#22C55E,#16A34A)!important;
+border-color:#16A34A!important;
+color:#FFF!important;
+}
+
+.cs-btn-success:hover{
+background:linear-gradient(#34D399,#15803D)!important;
+box-shadow:0 8px 20px rgba(22,163,74,.25);
+}
+
+/* PERIGO */
+.cs-btn-danger{
+background:linear-gradient(#EF4444,#DC2626)!important;
+border-color:#DC2626!important;
+color:#FFF!important;
+}
+
+.cs-btn-danger:hover{
+background:linear-gradient(#F87171,#B91C1C)!important;
+box-shadow:0 8px 20px rgba(220,38,38,.25);
+}
+
+/* AVISO */
+.cs-btn-warning{
+background:linear-gradient(#FBBF24,#F59E0B)!important;
+border-color:#F59E0B!important;
+color:#FFF!important;
+}
+
+/* CINZA */
+.cs-btn-secondary{
+background:#E5E7EB!important;
+border-color:#CBD5E1!important;
+color:#334155!important;
+}
+
+/* CRUD */
+.cs-btn-new{background:#2563EB!important;border-color:#2563EB!important;color:#FFF!important;}
+.cs-btn-edit{background:#0891B2!important;border-color:#0891B2!important;color:#FFF!important;}
+.cs-btn-save{background:#16A34A!important;border-color:#16A34A!important;color:#FFF!important;}
+.cs-btn-delete{background:#DC2626!important;border-color:#DC2626!important;color:#FFF!important;}
+.cs-btn-search{background:#4338CA!important;border-color:#4338CA!important;color:#FFF!important;}
+.cs-btn-print{background:#6B7280!important;border-color:#6B7280!important;color:#FFF!important;}
+.cs-btn-cancel{background:#9CA3AF!important;border-color:#9CA3AF!important;color:#FFF!important;}
+
+/* TOOLBAR */
+.x-toolbar .x-btn{
+margin:2px;
+border-radius:8px!important;
+}
+
+/* MENU */
+.x-menu-item{
+transition:.15s;
+}
+
+.x-menu-item:hover{
+background:#EEF5FF!important;
+}
+
+/* ÍCONES */
+.x-btn-icon-el{
+opacity:.95;
+transition:.2s;
+}
+
+.x-btn:hover .x-btn-icon-el{
+transform:scale(1.08);
+}
+
+/* BOTÃO REDONDO */
+.cs-btn-round{
+border-radius:50%!important;
+width:38px;
+height:38px;
+padding:0!important;
+}
+
+/* BOTÃO OUTLINE */
+.cs-btn-outline{
+background:transparent!important;
+border:1px solid #2563EB!important;
+color:#2563EB!important;
+}
+
+.cs-btn-outline:hover{
+background:#DBEAFE!important;
+}
+
+/* BOTÃO GLASS */
+.cs-btn-glass{
+background:rgba(255,255,255,.55)!important;
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.45)!important;
+box-shadow:0 4px 14px rgba(0,0,0,.08);
+}
+
+.cs-btn-glass:hover{
+background:rgba(255,255,255,.85)!important;
+}
+
+/* TAMANHOS */
+.cs-btn-xs .x-btn-inner{font-size:11px;}
+.cs-btn-sm .x-btn-inner{font-size:12px;}
+.cs-btn-lg .x-btn-inner{font-size:15px;}
+.cs-btn-xl .x-btn-inner{font-size:17px;}
+
+/* ALTURAS */
+.cs-btn-h30{height:30px!important;}
+.cs-btn-h36{height:36px!important;}
+.cs-btn-h40{height:40px!important;}
+.cs-btn-h46{height:46px!important;}
+.cs-btn-h52{height:52px!important;}
+
+/* EFEITO RIPPLE SIMPLES */
+.x-btn:after{
+content:"";
+position:absolute;
+left:0;
+top:0;
+width:100%;
+height:100%;
+border-radius:inherit;
+pointer-events:none;
+transition:.25s;
+}
+
+.x-btn:active:after{
+background:rgba(255,255,255,.18);
+}
+
+/* FOCO */
+.x-btn-focus{
+outline:none!important;
+box-shadow:0 0 0 4px rgba(59,130,246,.18)!important;
+}
+
+
+
+
+
+
+
+
+/******************************************************************************
+ CYBERSOFT MODERN UI
+ FORMS - Parte A
+******************************************************************************/
+
+/* CAMPOS */
+.x-form-text,.x-form-text-default,.x-form-field,.x-form-trigger-wrap{
+background:#FFF!important;
+border:1px solid #DCE3EB!important;
+border-radius:10px!important;
+color:#273240!important;
+font-family:"Segoe UI",Arial,sans-serif!important;
+font-size:13px!important;
+transition:all .20s ease!important;
+box-shadow:none!important;
+}
+
+/* ALTURA PADRÃO */
+.x-form-text,.x-form-trigger-wrap{
+min-height:36px!important;
+}
+
+/* HOVER */
+.x-form-text:hover,
+.x-form-trigger-wrap:hover{
+border-color:#93C5FD!important;
+}
+
+/* FOCO */
+.x-form-focus,
+.x-form-trigger-wrap-focus{
+border-color:#2563EB!important;
+box-shadow:0 0 0 4px rgba(37,99,235,.12)!important;
+}
+
+/* PLACEHOLDER */
+.x-form-empty-field{
+color:#94A3B8!important;
+font-style:italic;
+}
+
+/* READONLY */
+.x-form-readonly{
+background:#F8FAFC!important;
+color:#64748B!important;
+}
+
+/* INVÁLIDO */
+.x-form-invalid-field{
+border-color:#DC2626!important;
+box-shadow:0 0 0 3px rgba(220,38,38,.10)!important;
+}
+
+/* LABEL */
+.x-form-item-label{
+font-weight:600!important;
+color:#334155!important;
+padding-bottom:4px;
+}
+
+/* OBRIGATÓRIO */
+.cs-required .x-form-item-label:after{
+content:" *";
+color:#DC2626;
+font-weight:bold;
+}
+
+/* MEMO */
+.x-form-textarea{
+border-radius:10px!important;
+padding:8px!important;
+resize:vertical;
+}
+
+/* COMBO */
+.x-form-arrow-trigger{
+background:#F8FAFC!important;
+border-left:1px solid #DCE3EB!important;
+border-radius:0 10px 10px 0!important;
+}
+
+.x-form-arrow-trigger:hover{
+background:#EEF5FF!important;
+}
+
+/* PICKERS */
+.x-boundlist{
+border-radius:10px!important;
+border:1px solid #DCE3EB!important;
+box-shadow:0 10px 25px rgba(0,0,0,.12)!important;
+overflow:hidden;
+}
+
+.x-boundlist-item{
+padding:8px 12px!important;
+transition:.15s;
+}
+
+.x-boundlist-item-over{
+background:#EEF5FF!important;
+}
+
+.x-boundlist-selected{
+background:#DBEAFE!important;
+font-weight:600;
+}
+
+/* DATE PICKER */
+.x-datepicker{
+border-radius:12px!important;
+overflow:hidden;
+border:1px solid #DCE3EB!important;
+}
+
+.x-datepicker-header{
+background:#2563EB!important;
+color:#FFF!important;
+}
+
+.x-datepicker-selected .x-datepicker-date{
+background:#2563EB!important;
+border-radius:6px;
+color:#FFF!important;
+}
+
+.x-datepicker-date:hover{
+background:#DBEAFE!important;
+border-radius:6px;
+}
+
+/* CHECKBOX */
+.x-form-cb-wrap{
+display:flex;
+align-items:center;
+}
+
+.x-form-checkbox{
+transform:scale(1.15);
+cursor:pointer;
+}
+
+/* RADIO */
+.x-form-radio{
+transform:scale(1.15);
+cursor:pointer;
+}
+
+/* SWITCH */
+.cs-switch{
+position:relative;
+display:inline-block;
+width:48px;
+height:24px;
+background:#CBD5E1;
+border-radius:24px;
+transition:.25s;
+cursor:pointer;
+}
+
+.cs-switch:before{
+content:"";
+position:absolute;
+width:20px;
+height:20px;
+left:2px;
+top:2px;
+background:#FFF;
+border-radius:50%;
+transition:.25s;
+box-shadow:0 2px 6px rgba(0,0,0,.15);
+}
+
+.cs-switch.active{
+background:#2563EB;
+}
+
+.cs-switch.active:before{
+left:26px;
+}
+
+/* FIELDSET */
+.x-fieldset{
+background:#FFF!important;
+border-radius:12px!important;
+border:1px solid #DCE3EB!important;
+}
+
+.x-fieldset-header-text{
+font-weight:600!important;
+color:#2563EB!important;
+}
+
+/* SEPARADOR */
+.cs-form-divider{
+height:1px;
+background:#E5E7EB;
+margin:15px 0;
+}
+
+/* INPUT COM ÍCONE */
+.cs-input-icon{
+position:relative;
+}
+
+.cs-input-icon i{
+position:absolute;
+left:12px;
+top:50%;
+transform:translateY(-50%);
+color:#94A3B8;
+z-index:10;
+}
+
+.cs-input-icon input{
+padding-left:34px!important;
+}
+
+/* TAMANHOS */
+.cs-input-sm input{height:30px!important;}
+.cs-input-md input{height:36px!important;}
+.cs-input-lg input{height:42px!important;}
+.cs-input-xl input{height:48px!important;}
+
+/* ANIMAÇÃO */
+.x-form-text,
+.x-form-trigger-wrap,
+.x-form-textarea{
+transition:border-color .20s,box-shadow .20s,background .20s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/******************************************************************************
+ CYBERSOFT MODERN UI
+ GRID - Parte A
+******************************************************************************/
+
+/* GRID */
+.x-grid{
+background:#FFF!important;
+border:1px solid #DCE3EB!important;
+border-radius:12px!important;
+overflow:hidden;
+box-shadow:0 4px 12px rgba(0,0,0,.05);
+}
+
+/* VIEW */
+.x-grid-view{
+background:#FFF!important;
+}
+
+/* HEADER */
+.x-grid-header-ct{
+background:#F8FAFC!important;
+border-bottom:1px solid #DCE3EB!important;
+}
+
+/* COLUNAS */
+.x-column-header{
+background:#F8FAFC!important;
+border-right:1px solid #E5E7EB!important;
+font-family:"Segoe UI",Arial,sans-serif!important;
+font-size:13px!important;
+font-weight:600!important;
+color:#334155!important;
+height:40px!important;
+}
+
+.x-column-header:last-child{
+border-right:none!important;
+}
+
+.x-column-header-over{
+background:#EEF5FF!important;
+}
+
+/* TEXTO HEADER */
+.x-column-header-text{
+color:#334155!important;
+}
+
+/* LINHAS */
+.x-grid-item{
+background:#FFF!important;
+border-bottom:1px solid #F1F5F9!important;
+transition:background .15s ease;
+}
+
+/* LINHAS ZEBRADAS */
+.x-grid-item:nth-child(even){
+background:#FBFCFE!important;
+}
+
+/* HOVER */
+.x-grid-item-over{
+background:#EEF5FF!important;
+}
+
+/* SELECIONADA */
+.x-grid-item-selected{
+background:#DBEAFE!important;
+}
+
+.x-grid-item-selected .x-grid-cell{
+color:#1E3A8A!important;
+font-weight:600;
+}
+
+/* CÉLULAS */
+.x-grid-cell{
+border-right:1px solid #F1F5F9!important;
+padding:8px 10px!important;
+font-size:13px!important;
+color:#334155!important;
+}
+
+.x-grid-cell:last-child{
+border-right:none!important;
+}
+
+/* FOCO */
+.x-grid-item-focused{
+outline:none!important;
+}
+
+/* LINHA ATIVA */
+.x-grid-item-focused .x-grid-cell{
+box-shadow:inset 3px 0 #2563EB;
+}
+
+/* GRID COMPACTA */
+.cs-grid-compact .x-grid-cell{
+padding:5px 8px!important;
+font-size:12px!important;
+}
+
+/* GRID CONFORTO */
+.cs-grid-comfort .x-grid-cell{
+padding:11px 14px!important;
+}
+
+/* NÚMEROS */
+.cs-grid-number{
+text-align:right!important;
+font-variant-numeric:tabular-nums;
+}
+
+/* CENTRALIZADO */
+.cs-grid-center{
+text-align:center!important;
+}
+
+/* CHECK COLUMN */
+.x-grid-checkcolumn{
+cursor:pointer;
+transform:scale(1.10);
+}
+
+/* ROW NUMBERER */
+.x-grid-cell-row-numberer{
+background:#F8FAFC!important;
+font-weight:600;
+color:#64748B!important;
+}
+
+/* LINHA NOVA */
+.cs-grid-new{
+background:#ECFDF5!important;
+}
+
+/* LINHA ALTERADA */
+.cs-grid-edit{
+background:#FEFCE8!important;
+}
+
+/* LINHA EXCLUÍDA */
+.cs-grid-delete{
+background:#FEF2F2!important;
+}
+
+/* BADGES DENTRO DA GRID */
+.cs-grid-badge{
+display:inline-block;
+padding:4px 10px;
+border-radius:999px;
+font-size:11px;
+font-weight:600;
+}
+
+.cs-grid-badge-success{
+background:#DCFCE7;
+color:#166534;
+}
+
+.cs-grid-badge-warning{
+background:#FEF3C7;
+color:#92400E;
+}
+
+.cs-grid-badge-danger{
+background:#FEE2E2;
+color:#991B1B;
+}
+
+.cs-grid-badge-info{
+background:#DBEAFE;
+color:#1D4ED8;
+}
+
+/* PAGINAÇÃO */
+.x-toolbar-footer{
+background:#FFF!important;
+border-top:1px solid #E5E7EB!important;
+}
+
+/* BOTÕES PAGINAÇÃO */
+.x-toolbar-footer .x-btn{
+border-radius:8px!important;
+}
+
+/* STATUS BAR */
+.x-statusbar{
+background:#FFF!important;
+border-top:1px solid #E5E7EB!important;
+font-size:12px;
+}
+
+/* SCROLL GRID */
+.x-grid-view::-webkit-scrollbar{
+width:10px;
+height:10px;
+}
+
+.x-grid-view::-webkit-scrollbar-thumb{
+background:#CBD5E1;
+border-radius:20px;
+}
+
+.x-grid-view::-webkit-scrollbar-thumb:hover{
+background:#94A3B8;
+}
+
+/* AGRUPAMENTO */
+.x-grid-group-hd{
+background:#EFF6FF!important;
+color:#1D4ED8!important;
+font-weight:600!important;
+padding:8px 12px!important;
+border-top:1px solid #DBEAFE!important;
+border-bottom:1px solid #DBEAFE!important;
+}
+
+/* RESUMO */
+.x-grid-row-summary .x-grid-cell{
+background:#F8FAFC!important;
+font-weight:bold;
+}
+
+/* GRID VAZIA */
+.x-grid-empty{
+padding:40px;
+text-align:center;
+font-size:15px;
+color:#94A3B8;
+}
+
+/* LINHAS COM CLIQUE */
+.cs-grid-clickable .x-grid-item{
+cursor:pointer;
+}
+
+.cs-grid-clickable .x-grid-item:hover{
+transform:scale(1.002);
+}
+
+/* EFEITO GLASS */
+.cs-grid-glass{
+background:rgba(255,255,255,.75)!important;
+backdrop-filter:blur(12px);
+}
+
+
+
+
