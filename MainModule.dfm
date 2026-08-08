@@ -10,8 +10,8 @@ object UniMainModule: TUniMainModule
   ServerMessages.InvalidSessionMessage = 'Sess'#227'o inv'#225'lida ou tempo limite da sess'#227'o excedido.'
   ServerMessages.TerminateMessage = 'Sess'#227'o web terminada.'
   Title = 'ATLAS WEB'
-  Height = 532
-  Width = 692
+  Height = 511
+  Width = 663
   object imgBotoes: TUniNativeImageList
     Left = 300
     Top = 20

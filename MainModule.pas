@@ -6,8 +6,7 @@ uses
   uniGUIMainModule, SysUtils, Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.UI.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Phys, FireDAC.Phys.MSSQL,
   FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client, uniGUIBaseClasses, uniGUIClasses, uniImageList, FireDAC.Comp.DataSet,
-  FireDAC.Stan.StorageBin, dialogs, FireDAC.Phys.Intf, FireDAC.Phys.MSSQLDef, FireDAC.DApt.Intf, System.Actions, Vcl.ActnList,
-  Vcl.DBActns, uniMainMenu, IniFiles, forms, uniSweetAlert;
+  FireDAC.Phys.Intf, FireDAC.Phys.MSSQLDef, FireDAC.DApt.Intf, FireDAC.Stan.StorageBin, iniFiles, Dialogs;
 
 type
   TUniMainModule = class(TUniGUIMainModule)
@@ -92,11 +91,10 @@ begin
       end;
 end;
 
-
 initialization
   RegisterMainModuleClass(TUniMainModule);
 
+
+  
+  
 end.
-
-
-

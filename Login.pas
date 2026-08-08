@@ -12,17 +12,16 @@ type
   TTelaLogin = class(TUniLoginForm)
     UniContainerPanel1: TUniContainerPanel;
     pLogin: TUniContainerPanel;
-    UniImage1: TUniImage;
-    cLogSenha: TUniEdit;
-    bEntrar: TUniBitBtn;
-    bCancelar: TUniBitBtn;
-    cLogUser: TUniEdit;
-    iLogoCyber: TUniImage;
+    iLogoAtlas: TUniImage;
     UniHTMLFrame1: TUniHTMLFrame;
     Clientes: TFDQuery;
+    iLogoCyber: TUniImage;
+    cLogUser: TUniEdit;
+    cLogSenha: TUniEdit;
+    bEntrar: TUniBitBtn;
+    UniLabel1: TUniLabel;
     procedure bEntrarClick(Sender: TObject);
     procedure UniLoginFormShow(Sender: TObject);
-    procedure bCancelarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -103,11 +102,11 @@ begin
              with MainForm do begin
                   lUser.Caption    := TelaLogin.cLogUser.Text;
                   lEmpresa.Caption := FormatMaskText('##.###.###/####-##;0', fieldByName('Empresa_CNPJ').asstring) + ' - '+fieldByName('Empresa').asstring;
-                  if FileExists(uniMainModule.mLogoCyber) then begin
-                     iLogoCyber.Picture.LoadFromFile(uniMainModule.mLogoCyber);
-                  end;
                   if FileExists(uniMainModule.mLogoAtlas) then begin
                      iLogoAtlas.Picture.LoadFromFile(uniMainModule.mLogoAtlas);
+                  end;
+                  if FileExists(uniMainModule.mLogoCyber) then begin
+                     iLogoCyber.Picture.LoadFromFile(uniMainModule.mLogoCyber);
                   end;
                   if FileExists(tTmp.FieldByName('Foto').AsString) then begin
                      iFoto.Picture.LoadFromFile(tTmp.FieldByName('Foto').AsString);
@@ -118,13 +117,6 @@ begin
              end;
           end;
      end;
-end;
-
-procedure TTelaLogin.bCancelarClick(Sender: TObject);
-begin
-     // Se o login é validado entra no sistema.
-     ModalResult := mrCancel;
-     Application.Terminate;
 end;
 
 procedure TTelaLogin.UniLoginFormShow(Sender: TObject);
@@ -143,6 +135,9 @@ begin
      
      if FileExists(uniMainModule.mLogoCyber) then begin
         iLogoCyber.Picture.LoadFromFile(uniMainModule.mLogoCyber);
+     end;
+     if FileExists(uniMainModule.mLogoAtlas) then begin
+        iLogoAtlas.Picture.LoadFromFile(uniMainModule.mLogoAtlas);
      end;
 
      //-----------------------------[ REMOVER APÓS TESTES ]--------------------------------\\

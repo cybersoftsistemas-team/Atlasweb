@@ -14,7 +14,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     Width = 1118
     Height = 754
     Hint = ''
-    ActivePage = TabCapa
+    ActivePage = TabItem
     Align = alClient
     TabOrder = 0
     object UniTabSheet2: TUniTabSheet

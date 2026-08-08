@@ -150,9 +150,9 @@ begin
       with FechamentoFiscal do begin
            sql.Clear;      
            sql.add('insert into FechamentoFiscal (Ano, Mes, Nome_Mes, Fechado, Empresa)');
-           sql.add('       select Ano      = year(Data_Entrada)');
-           sql.add('             ,Mes      = month(Data_Entrada)');
-           sql.add('             ,Nome_Mes = case month(Data_Entrada)');
+           sql.add('       select Ano      = year(Data_ES)');
+           sql.add('             ,Mes      = month(Data_ES)');
+           sql.add('             ,Nome_Mes = case month(Data_ES)');
            sql.add('                              when  1 then ''Janeiro'' ');
            sql.add('                              when  2 then ''Fevereiro'' ');
            sql.add('                              when  3 then ''Março'' ');
@@ -166,11 +166,12 @@ begin
            sql.add('                              when 11 then ''Novembro''');
            sql.add('                              when 12 then ''Dezembro'' ');
            sql.add('                         end');
-           sql.add('             ,Fechado  = 0');
+           sql.add('             ,Fechado = 0');
            sql.add('             ,Empresa = '+UniMainModule.mEmpresaAtiva);
-           sql.add('              from   NotasTerceiros');
-           sql.add('              where (select count(*) from FechamentoFiscal where Ano = year(Data_Entrada) and Mes = month(Data_Entrada)) = 0');
-           sql.add('              group by year(Data_Entrada), month(Data_Entrada)');
+           sql.add('              from NotasFiscais');
+           sql.add('              where Emissao = ''T'' ');
+           sql.add('              and (select count(*) from FechamentoFiscal where Ano = year(Data_ES) and Mes = month(Data_ES)) = 0');
+           sql.add('              group by year(Data_ES), month(Data_ES)');
            sql.add('              order by Ano, Mes');
            execute;
            

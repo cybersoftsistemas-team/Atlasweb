@@ -410,4 +410,3 @@ object fFiscal_BloquearPeriodo: TfFiscal_BloquearPeriodo
     Top = 4
   end
 end
-

@@ -498,7 +498,7 @@ begin
      Pasta.ActivePageIndex := 0;
      with Empresas do begin
           sql.clear;
-          sql.add('select * from Empresas order by Razao_Social, CNPJ, Numero_Filial');
+          sql.add('select * from Empresas order by Razao_Social, CNPJ, Filial');
           open;
      end;
      with Estados do begin

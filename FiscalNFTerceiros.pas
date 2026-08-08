@@ -2268,14 +2268,14 @@ begin
                 end;
              end;                        
              ItensNFEmpresa.value              := NotasEmpresa.value;
-             ItensNFEmissao.value              := 'T';
-             ItensNFNota.value                 := NotasNota.value;
+             //ItensNFEmissao.value              := 'T';
+             //ItensNFNota.value                 := NotasNota.value;
              ItensNFES.value                   := 0;
-             ItensNFChave.value                := NotasChave.value;
-             ItensNFData_Emissao.value         := NotasData_Emissao.value;
-             ItensNFData_ES.value              := NotasData_ES.value;
-             ItensNFDestinatario.value         := NotasDestinatario.value;
-             ItensNFOperacao.value             := NotasOperacao.value;
+             //ItensNFChave.value                := NotasChave.value;
+             //ItensNFData_Emissao.value         := NotasData_Emissao.value;
+             //ItensNFData_ES.value              := NotasData_ES.value;
+             //ItensNFDestinatario.value         := NotasDestinatario.value;
+             //ItensNFOperacao.value             := NotasOperacao.value;
              ItensNFCodigo_Fabricante.value    := Produtos.fieldbyname('Codigo_Fabricante').value;
              ItensNFDescricao_Mercadoria.value := Produtos.fieldbyname('Descricao').value;
              ItensNFNCM.value                  := Produtos.fieldbyname('NCM').value;
@@ -2357,7 +2357,6 @@ begin
                 TfDialogo.Execute(UniApplication, 'Bloqueado', 'Não pode alterar, data da nota fiscal esta dentro de um período fiscal fechado.');
              end;
           end;
-          
           // Fechamento Contabil.
           sql.clear;
           sql.add('select Qtde = count(*) from FechamentoContabil where Ano = :pAno and Mes = :pMes and Fechado = 1');
@@ -2372,7 +2371,6 @@ begin
                 TfDialogo.Execute(UniApplication, 'Bloqueado', 'Esta nota fiscal não pode ser alterada, Esta dentro de um período contabil fechado');
              end;
           end;
-          
           // Lançamento financeiro bachado.
           if not result and (NotasLancamento_Financeiro.asinteger > 0) then begin
              sql.clear;
@@ -2387,24 +2385,28 @@ begin
           // Item movimentado posterior a data da nota.
           if result = false then begin
              sql.clear;
-             sql.add('select Qtde = (select isnull(count(Nota), 0)');
-             sql.add('               from NotasItens ni');
-             sql.add('               where ni.ES = 1');
-             sql.add('               and ni.Data_Emissao >= :pData');
-             sql.add('               and Codigo_Mercadoria in(select Codigo_Mercadoria from NotasItens where Empresa = :pEmpresa and Nota = :pNota and Data_Emissao >= :pData)) +');
-             sql.add('              (select isnull(count(Pedido), 0)');
-             sql.add('               from PedidosNFItens pi');
-             sql.add('               where pi.ES = 1');
-             sql.add('               and Codigo_Mercadoria in(select Codigo_Mercadoria from NotasItens where Empresa = :pEmpresa and Nota = :pNota and Data_Emissao >= :pData)) +');
-             sql.add('              (select isnull(count(Produto_Saida), 0)');
-             sql.add('               from EstoqueTransferencia');
-             sql.add('               where Produto_Saida in(select Codigo_Mercadoria from NotasItens where Empresa = :pEmpresa and Nota = :pNota and Data_Emissao >= :pData)');
-             sql.add('               and Data_Transferencia >= :pData)');
-             parambyname('pNota').value    := NotasNota.asinteger;
-             parambyname('pData').asdate   := NotasData_ES.value;
-             parambyname('pEmpresa').value := NotasEmpresa.value;
+             sql.add('select Codigo_Mercadoria');
+             sql.add('  from NotasItens ni');
+             sql.add('  inner join NotasFiscais nf on nf.Nota_id = ni.Nota_id');
+             sql.add('  where ni.Codigo_Mercadoria = :Cod');
+             sql.add('  and nf.Data_Emissao >= :Data');
+             sql.add('  and nf.Empresa = :Emp');
+             sql.add('union all');
+             sql.add('  select Codigo_Mercadoria');
+             sql.add('  from PedidosNFItens pi');
+             sql.add('  where pi.Codigo_Mercadoria = :Cod');
+             sql.add('  and pi.Empresa = :Emp');
+             sql.add('union all');
+             sql.add('  select Produto_Saida');
+             sql.add('  from EstoqueTransferencia et');
+             sql.add('  where et.Produto_Saida = :Cod');
+             sql.add('  and et.Data_Transferencia >= :Data');
+             sql.add('  and et.Empresa = :Emp');
+             parambyname('Data').asdate := NotasData_ES.value;
+             parambyname('Emp').value   := NotasEmpresa.value;
+             parambyname('Cod').value   := ItensCodigo_Mercadoria.asinteger;
              open;
-             if fieldbyname('Qtde').asinteger > 0 then begin
+             if recordcount > 0 then begin
                 result := true;
                 TfDialogo.Execute(UniApplication, 'Bloqueado', 'Nota fiscal não pode ser alterada, alguns itens foram movimentados com data igual ou posterior.');
              end;

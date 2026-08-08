@@ -1,0 +1,936 @@
+/* ==========================================================================
+   ATLAS / UNIGUI — CSS REFINADO
+   Baseado no CSS original enviado pelo usuário.
+   Objetivos:
+   - eliminar propriedades inválidas e regras conflitantes;
+   - padronizar tipografia, espaçamentos, bordas e estados;
+   - manter as classes personalizadas existentes;
+   - preservar o visual azul/grafite e o fundo Cybersoft;
+   - melhorar campos, grids, botões, abas, painéis, menus e toggles.
+   ========================================================================== */
+
+/* ==========================================================================
+   01. TOKENS / VARIÁVEIS
+   ========================================================================== */
+:root {
+    --atlas-primary: #287f9f;
+    --atlas-primary-dark: #1e647f;
+    --atlas-primary-light: #5aa9c2;
+    --atlas-accent: #e3902b;
+    --atlas-success: #22a866;
+    --atlas-danger: #d9534f;
+    --atlas-warning: #d99a24;
+
+    --atlas-bg: #eef2f5;
+    --atlas-surface: #ffffff;
+    --atlas-surface-soft: #f5f7f9;
+    --atlas-surface-dark: #4b4f58;
+    --atlas-menu: #344653;
+
+    --atlas-border: #c8d0d6;
+    --atlas-border-light: #dfe5e9;
+    --atlas-text: #20262b;
+    --atlas-text-muted: #66727c;
+    --atlas-text-inverse: #ffffff;
+
+    --atlas-radius: 5px;
+    --atlas-radius-small: 3px;
+    --atlas-shadow: 0 4px 14px rgba(0,0,0,.16);
+    --atlas-shadow-soft: 0 2px 8px rgba(0,0,0,.10);
+
+    --atlas-font: Arial, Helvetica, sans-serif;
+    --atlas-font-size: 10px;
+    --atlas-control-height: 25px;
+}
+
+/* ==========================================================================
+   02. NORMALIZAÇÃO
+   ========================================================================== */
+.x-border-box,
+.x-border-box *,
+.x-border-box *::before,
+.x-border-box *::after {
+    box-sizing: border-box;
+}
+
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.x-body,
+.x-form-field,
+.x-btn,
+.x-panel,
+.x-grid,
+.x-tab,
+.x-menu,
+.x-treelist {
+    font-family: var(--atlas-font);
+}
+
+.x-form-text,
+.x-form-field,
+.x-btn-inner,
+.x-tab-inner,
+.x-panel-header-title,
+.x-column-header-text,
+.x-grid-cell,
+.x-form-item-label {
+    font-size: var(--atlas-font-size);
+}
+
+/* ==========================================================================
+   03. ÁREA PRINCIPAL
+   ========================================================================== */
+.x-form-textarea {
+    min-height: 100% !important;
+}
+
+.x-item-disabled .x-mask {
+    background: transparent !important;
+    opacity: 0 !important;
+}
+
+/* ==========================================================================
+   04. VÍDEO / FUNDO DE ABERTURA
+   ========================================================================== */
+video::-webkit-media-controls-timeline,
+video::-webkit-media-controls-play-button,
+video::-webkit-media-controls-volume-slider,
+video::-webkit-media-controls-mute-button,
+video::-webkit-media-controls-current-time-display {
+    display: none;
+}
+
+video {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    inset: 0;
+}
+
+.Fundo {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* ==========================================================================
+   05. LOGIN
+   ========================================================================== */
+.CaixaLog {
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.78);
+    border-radius: 6px 30px;
+    background-color: #365c69;
+    background-image:
+        radial-gradient(circle at 50% 18%,
+            rgba(160,220,255,.30) 0%,
+            rgba(110,180,210,.18) 18%,
+            rgba(70,120,145,.10) 35%,
+            rgba(0,0,0,0) 55%),
+        radial-gradient(circle at 50% -15%,
+            rgba(255,255,255,.12) 0%,
+            rgba(255,255,255,.04) 35%,
+            rgba(255,255,255,0) 65%),
+        radial-gradient(circle,
+            rgba(0,0,0,0) 45%,
+            rgba(0,0,0,.18) 100%),
+        linear-gradient(180deg,
+            #527d8b 0%,
+            #456d79 18%,
+            #3c6471 40%,
+            #355b69 65%,
+            #2d4d59 100%);
+    background-size: cover;
+    background-position: center;
+    box-shadow:
+        0 6px 14px rgba(0,0,0,.22),
+        0 18px 40px rgba(0,0,0,.18);
+    opacity: .92;
+    transition: box-shadow .25s ease, transform .25s ease;
+}
+
+/* ==========================================================================
+   06. TÍTULOS
+   ========================================================================== */
+.Titulo {
+    text-shadow: 0 2px 4px rgba(0,0,0,.60);
+}
+
+/* ==========================================================================
+   07. BARRA DE PESQUISA
+   ========================================================================== */
+.BarraPesquisa {
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: var(--atlas-radius);
+    background-color: #7e8992;
+    background-image: url("/files/images/Painel1.jpg");
+    background-size: cover;
+    background-position: center;
+    box-shadow: var(--atlas-shadow-soft);
+}
+
+/* ==========================================================================
+   08. MENU LATERAL
+   ========================================================================== */
+.x-treelist-nav {
+    padding: 0;
+    overflow: auto !important;
+    border: none !important;
+    background-color: var(--atlas-menu);
+    background-image: url("/files/images/fundomenu_Peq.png");
+    background-position: 24px 0;
+    background-repeat: repeat;
+    scrollbar-width: thin;
+    scrollbar-color: #adb3b8 #516579;
+}
+
+.x-treelist-nav::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+.x-treelist-nav::-webkit-scrollbar-track {
+    background: rgba(0,0,0,.12);
+}
+
+.x-treelist-nav::-webkit-scrollbar-thumb {
+    border-radius: 7px;
+    background: #adb3b8;
+}
+
+.x-treelist-nav .x-treelist-item-text {
+    height: 30px;
+    margin: 0;
+    padding: 7px 10px 7px 24px;
+    color: var(--atlas-accent);
+    font: 10px/16px var(--atlas-font);
+    text-shadow: 1px 1px 2px rgba(0,0,0,.85);
+}
+
+.x-treelist-nav .x-treelist-item-icon::before,
+.x-treelist-nav .x-treelist-item-tool::before,
+.x-treelist-nav .x-treelist-item-expander {
+    line-height: 34px;
+}
+
+.x-treelist-nav .x-treelist-item {
+    transition: background-color .18s ease;
+}
+
+.x-treelist-nav .x-treelist-item:hover {
+    background-color: rgba(255,255,255,.06);
+}
+
+/* ==========================================================================
+   09. BARRAS
+   ========================================================================== */
+.BarraPrincipal {
+    background-color: var(--atlas-surface-dark) !important;
+    border: none !important;
+}
+
+.BarraEdicao {
+    background-color: var(--atlas-menu);
+    background-image: url("/files/images/fundomenu_Peq.png");
+    background-size: cover;
+}
+
+/* ==========================================================================
+   10. GRIDS
+   ========================================================================== */
+.x-grid {
+    border-radius: var(--atlas-radius);
+    overflow: hidden;
+}
+
+.x-grid-cell {
+    height: 24px;
+    vertical-align: middle;
+    color: var(--atlas-text);
+    font: 10px/16px var(--atlas-font);
+}
+
+.x-grid-cell-inner {
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 4px 6px;
+}
+
+.x-grid-item {
+    transition: background-color .12s ease;
+}
+
+.x-grid-item-over {
+    background-color: #edf5f8;
+}
+
+.x-grid-item-selected {
+    color: #fff !important;
+    background-color: var(--atlas-primary) !important;
+}
+
+.x-grid-item-selected .x-grid-cell {
+    color: #fff !important;
+}
+
+.x-column-header {
+    height: 28px;
+    border-right: 1px solid #c9d0d5;
+    outline: 0;
+    background: linear-gradient(180deg, #f8fafb 0%, #e7ecef 100%);
+    color: #26333b;
+    font: bold 10px/16px var(--atlas-font);
+    text-transform: uppercase;
+}
+
+.x-column-header-inner {
+    padding: 6px 7px;
+}
+
+.x-column-header-default-horizontal.x-header-noborder {
+    height: 28px;
+    padding: 0;
+}
+
+/* ==========================================================================
+   11. PAINÉIS
+   ========================================================================== */
+.x-panel-header-default,
+.x-panel-header-default-horizontal {
+    height: 24px;
+    min-height: 24px;
+    padding: 0 10px;
+
+    display: flex;
+    align-items: center;
+
+    border: 1px solid rgba(40,127,159,.30);
+    border-radius: 5px 5px 0 0;
+    background: linear-gradient(
+        180deg,
+        #367f9b 0%,
+        #276d87 100%
+    );
+}
+
+.x-panel-header-title-default {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+    padding: 0 4px;
+
+    color: #fff;
+    font: bold 10px/1 Arial, Helvetica, sans-serif;
+}
+
+/*
+.x-panel-header-default,
+.x-panel-header-default-horizontal {
+    min-height: 22px; 
+    height: 22px;
+    padding: 3px 8px;
+    padding: 6px 10px;
+    border: 1px solid rgba(40,127,159,.30);
+    border-radius: var(--atlas-radius) var(--atlas-radius) 0 0;
+    background: linear-gradient(180deg, #367f9b 0%, #276d87 100%);
+}
+
+.x-panel-header-title-default {
+    padding: 0 4px;
+    color: #fff;
+    font: bold 12px/16px var(--atlas-font);
+}
+*/
+.x-panel-body-default {
+    border: none !important;
+    background: transparent;
+    color: var(--atlas-text);
+    font: 10px var(--atlas-font);
+}
+
+.Painel {
+    overflow: hidden;
+    border: 1px solid var(--atlas-border);
+    border-radius: var(--atlas-radius);
+    background-color: var(--atlas-surface);
+    background-image: url("/files/images/Painel1.jpg");
+    background-repeat: repeat;
+    box-shadow: var(--atlas-shadow-soft);
+}
+
+/* ==========================================================================
+   12. FICHA / CRUD
+   ========================================================================== */
+.Ficha {
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,.18);
+    border-radius: var(--atlas-radius);
+    background-color: var(--atlas-surface);
+    background-image: url("/files/images/Painel1.jpg");
+    background-repeat: repeat;
+    box-shadow: var(--atlas-shadow);
+}
+
+.FichaSSombra {
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: var(--atlas-radius);
+    background-color: var(--atlas-surface);
+    background-image: url("/files/images/Painel1.jpg");
+    background-repeat: repeat;
+}
+
+/* ==========================================================================
+   13. PAGECONTROL / ABAS
+   ========================================================================== */
+.Pasta {
+    border: none !important;
+    background-color: #4f5e6b !important;
+}
+
+.PastaInterna {
+    padding: 0;
+    border: 2px solid rgba(67,102,108,.38);
+    border-radius: var(--atlas-radius);
+    background-color: #4f5e6b !important;
+    box-shadow: var(--atlas-shadow);
+}
+
+.PastaPrincipal {
+    border-radius: var(--atlas-radius);
+    background-color: #545429;
+    box-shadow: var(--atlas-shadow-soft);
+}
+
+.PastaItens {
+    border-style: solid;
+    border-width: 1px 0 1px 1px;
+    border-color: #c7c7c7;
+    color: var(--atlas-text);
+    font: bold 10px var(--atlas-font);
+}
+
+.BarraNavInterna {
+    border: 1px solid rgba(0,0,0,.20);
+    border-radius: var(--atlas-radius);
+    background-color: #444f57 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,.22);
+}
+
+.x-tab-bar {
+    background-color: #f4f6f7 !important;
+    background-image: url("/files/images/Painel1.jpg");
+}
+
+.x-tab-inner-default {
+    max-width: 100%;
+    color: #fff;
+    font: bold 10px/16px var(--atlas-font);
+}
+
+.x-tab-default-top {
+    height: 28px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px 6px 0 0;
+    background-color: #4c9dd8;
+    transition: background-color .18s ease, color .18s ease;
+}
+
+.x-tab-default-top:hover {
+    background-color: #3989c2;
+}
+
+.x-tab.x-tab-active.x-tab-default {
+    background-color: var(--atlas-primary);
+}
+
+.x-tab.x-tab-active.x-tab-default .x-tab-inner-default {
+    color: #fff;
+}
+
+.pcSemBarraAzul .x-tab-bar-default {
+    border-bottom: none !important;
+    background: transparent !important;
+}
+
+.pcSemBarraAzul .x-tab-panel-body-default {
+    border-top: none !important;
+}
+
+.pcSemBarraAzul .x-panel-header {
+    border: none !important;
+    background: transparent !important;
+}
+
+/* ==========================================================================
+   14. CAMPOS — PADRÃO
+   ========================================================================== */
+.x-form-field {
+    color: var(--atlas-text);
+    font: 11px var(--atlas-font);
+}
+
+.x-form-text,
+.x-form-text-default {
+    min-height: var(--atlas-control-height);
+    padding: 3px 7px;
+    border-radius: var(--atlas-radius-small);
+    color: var(--atlas-text);
+    background: rgba(96,141,132,.08);
+    font: 11px var(--atlas-font);
+    transition: border-color .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+
+.x-form-text:focus,
+.x-form-text-default:focus {
+    background-color: #fff;
+}
+
+.x-form-trigger-wrap-default {
+    min-height: var(--atlas-control-height);
+    border: 1px solid var(--atlas-border);
+    border-radius: var(--atlas-radius-small);
+    background-color: #fff;
+    transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+.x-form-trigger-wrap-default:focus-within {
+    border-color: var(--atlas-primary-light);
+    box-shadow: 0 0 0 2px rgba(40,127,159,.12);
+}
+/*
+.x-form-item-label-default {
+    padding: 4px 6px;
+    color: #26333b;
+    font: bold 10px/16px var(--atlas-font);
+    background: transparent;
+}
+*/
+.x-form-item-label-default {
+    padding: 4px 6px;
+    color: #000;
+    font: bold 10px/16px Arial, Helvetica, sans-serif;
+    background: linear-gradient(
+        356deg,
+        #28b7c9 0%,
+        #8ebedb 55%,
+        #9dcae1 100%
+    );
+    border-radius: 3px 0 0 3px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.35);
+}
+
+.x-form-item-label-default .x-form-item-label-text {
+    color: inherit;
+}
+
+.x-form-item-body > .x-form-field,
+.x-form-item-body > .x-form-trigger-wrap {
+    margin-left: 2px;
+}
+
+/* Estados dos campos */
+.x-form-invalid .x-form-text,
+.x-form-invalid .x-form-trigger-wrap {
+    border-color: var(--atlas-danger) !important;
+}
+
+.x-form-focus .x-form-text,
+.x-form-focus .x-form-trigger-wrap {
+    border-color: var(--atlas-primary) !important;
+}
+
+/* ==========================================================================
+   15. CLASSES PERSONALIZADAS DE CAMPOS
+   ========================================================================== */
+.CampoEspecial,
+.CampoDestaque,
+.CampoSimples,
+.CampoDesativado {
+    border-radius: var(--atlas-radius-small);
+}
+
+.CampoEspecial {
+    padding: 2px 5px;
+    color: #111;
+    background: rgba(98,26,127,.08);
+    font: bold 11px var(--atlas-font);
+    font-family: "JetBrains Mono", "Courier New", monospace;
+}
+
+.CampoDestaque {
+    padding: 2px 5px;
+    color: #111;
+    background: rgba(98,26,127,.08);
+    font: bold 11px var(--atlas-font);
+}
+
+.CampoDesativado {
+    min-height: var(--atlas-control-height);
+    padding: 2px 5px;
+    color: #3d4246;
+    background: #e7e9ec;
+    font: 11px var(--atlas-font);
+}
+
+.CampoSimples {
+    padding: 2px 5px;
+    color: var(--atlas-text);
+    font: 10px var(--atlas-font);
+}
+
+/* ==========================================================================
+   16. CAMPOS DESABILITADOS
+   ========================================================================== */
+.x-item-disabled .x-form-text,
+.x-item-disabled .x-form-trigger-wrap,
+.x-item-disabled .x-form-field {
+    color: #4b5359 !important;
+    background-color: #e9ecef !important;
+    opacity: 1 !important;
+}
+
+.x-item-disabled .x-form-item-label,
+.x-item-disabled .x-form-item-label-text,
+.x-item-disabled .x-form-trigger {
+    color: #4b5359 !important;
+    opacity: 1 !important;
+}
+
+/* ==========================================================================
+   17. CHECKBOX / RADIO / FIELDSET
+   ========================================================================== */
+.x-form-cb-label {
+    color: #222;
+    font: normal 10px/16px var(--atlas-font);
+}
+
+.x-form-cb-label-default {
+    margin-top: 3px;
+    color: #222;
+    font: normal 10px/16px var(--atlas-font);
+}
+
+.x-fieldset-default {
+    border: 1px solid var(--atlas-border);
+    border-radius: var(--atlas-radius);
+}
+
+.x-fieldset-header-default > .x-fieldset-header-text,
+.x-fieldset-header-text {
+    padding: 3px 0;
+    color: #34414a;
+    font: bold 10px/16px var(--atlas-font);
+}
+
+.x-form-table {
+    border: 1px solid var(--atlas-border);
+    border-radius: var(--atlas-radius);
+}
+
+.x-form-type-radio label {
+    padding-top: 0 !important;
+    padding-left: 5px !important;
+}
+
+.x-form-type-radio input {
+    margin-left: 0 !important;
+}
+
+/* ==========================================================================
+   18. TOGGLE SWITCH
+   ========================================================================== */
+.x-form-cb-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-height: 20px;
+}
+
+.x-form-cb-wrap .x-form-cb-label {
+    display: inline-block;
+    margin: 0 0 0 18px;
+    line-height: 16px;
+    white-space: nowrap;
+}
+
+.x-form-checkbox {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 32px !important;
+    height: 16px !important;
+    transform: translateY(-50%);
+    border: none !important;
+    border-radius: 16px;
+    background: #d1d5db !important;
+    background-image: none !important;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
+    transition: background-color .22s ease;
+}
+
+.x-form-checkbox::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,.30);
+    transition: left .22s ease;
+}
+
+.x-form-cb-checked .x-form-checkbox {
+    background-color: var(--atlas-success) !important;
+}
+
+.x-form-cb-checked .x-form-checkbox::after {
+    left: 18px;
+}
+
+.x-item-disabled .x-form-checkbox {
+    cursor: not-allowed;
+    background-color: #cbd5e1 !important;
+    opacity: 1 !important;
+    filter: none !important;
+}
+
+.x-item-disabled .x-form-checkbox::after {
+    background-color: #fff !important;
+    opacity: 1 !important;
+}
+
+.x-item-disabled.x-form-cb-checked .x-form-checkbox,
+.x-form-cb-checked.x-item-disabled .x-form-checkbox {
+    background-color: #7fb3d5 !important;
+}
+
+/* ==========================================================================
+   19. COMBOS / DBLOOKUP / TRIGGERS
+   ========================================================================== */
+.x-form-trigger {
+    border: none !important;
+    border-radius: 0 var(--atlas-radius-small) var(--atlas-radius-small) 0;
+    background-color: transparent !important;
+    color: #34414a;
+    cursor: pointer;
+    transition: background-color .16s ease;
+}
+
+.x-form-trigger-wrap {
+    background-color: transparent !important;
+}
+
+.x-form-trigger:hover {
+    border-radius: 4px;
+    background-color: #e8eef1 !important;
+}
+
+/* Mantém o mecanismo de trigger do Ext/uniGUI.
+   Não sobrescrever background-image aqui para não quebrar o ícone nativo. */
+
+/* ==========================================================================
+   20. BOTÕES
+   ========================================================================== */
+.x-btn {
+    border-radius: var(--atlas-radius-small);
+    transition:
+        background-color .18s ease,
+        border-color .18s ease,
+        box-shadow .18s ease,
+        transform .08s ease;
+}
+
+.x-btn:active {
+    transform: translateY(1px);
+}
+
+.x-btn-default-small .x-btn-inner,
+.x-btn-default-medium .x-btn-inner,
+.x-btn-default-large .x-btn-inner {
+    color: inherit;
+    font-family: var(--atlas-font);
+}
+
+.x-btn-default-small .x-btn-inner {
+    font-size: 10px;
+}
+
+.x-btn-default-medium .x-btn-inner,
+.x-btn-default-large .x-btn-inner {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.BotaoCor {
+    border: 1px solid rgba(0,0,0,.12) !important;
+    border-radius: var(--atlas-radius-small);
+    background: var(--atlas-primary) !important;
+    color: #fff !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,.12);
+    transition: background-color .20s ease, box-shadow .20s ease;
+}
+
+.BotaoCor:hover {
+    background: var(--atlas-primary-dark) !important;
+    box-shadow: 0 3px 8px rgba(0,0,0,.18);
+}
+
+.BotaoDegrade {
+    border-radius: var(--atlas-radius-small);
+    background-image: url("/files/images/fundo8.jpg");
+    background-size: cover;
+    box-shadow: 0 2px 6px rgba(52,52,52,.30);
+    font: 10px var(--atlas-font);
+}
+
+.imgBotao {
+    border: 1px solid #2a6e9f;
+    border-radius: 10%;
+}
+
+/* ==========================================================================
+   21. LABELS
+   ========================================================================== */
+.LabelDestaque,
+.Label {
+    padding: 5px 6px;
+    border-radius: var(--atlas-radius-small);
+    font: bold 10px/16px var(--atlas-font);
+}
+
+.LabelDestaque {
+    color: #111;
+    background: rgba(98,26,127,.08);
+}
+
+.Label {
+    color: #4682b4;
+    background: transparent;
+}
+
+/* ==========================================================================
+   22. PAINEL SIMPLES / CÍRCULO
+   ========================================================================== */
+.CaixaSimples {
+    color: #fff;
+    font: bold 10px/16px var(--atlas-font);
+    background: rgba(187,186,193,.24);
+    border-radius: var(--atlas-radius);
+}
+
+.CaixaCirculo {
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: var(--atlas-shadow);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.CaixaCirculo:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 22px rgba(0,0,0,.22);
+}
+
+/* ==========================================================================
+   23. BACKGROUND CYBERSOFT
+   ========================================================================== */
+.cybersoft-background {
+    position: relative;
+    isolation: isolate;
+    background-color: #365c69;
+    background-image:
+        radial-gradient(circle at 50% 18%,
+            rgba(160,220,255,.30) 0%,
+            rgba(110,180,210,.18) 18%,
+            rgba(70,120,145,.10) 35%,
+            rgba(0,0,0,0) 55%),
+        radial-gradient(circle at 50% -15%,
+            rgba(255,255,255,.12) 0%,
+            rgba(255,255,255,.04) 35%,
+            rgba(255,255,255,0) 65%),
+        radial-gradient(circle,
+            rgba(0,0,0,0) 45%,
+            rgba(0,0,0,.18) 100%),
+        linear-gradient(180deg,
+            #527d8b 0%,
+            #456d79 18%,
+            #3c6471 40%,
+            #355b69 65%,
+            #2d4d59 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.cybersoft-background::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+        repeating-linear-gradient(
+            90deg,
+            rgba(255,255,255,.010) 0,
+            rgba(255,255,255,.010) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+    opacity: .30;
+}
+
+.logoGlow {
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    width: 700px;
+    height: 350px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background:
+        radial-gradient(circle,
+            rgba(170,220,255,.18) 0%,
+            rgba(120,190,230,.12) 25%,
+            rgba(0,0,0,0) 75%);
+    filter: blur(30px);
+    pointer-events: none;
+}
+
+.cybersoft-logo img {
+    filter: drop-shadow(0 8px 8px rgba(0,0,0,.55));
+}
+
+/* ==========================================================================
+   24. UTILITÁRIOS
+   ========================================================================== */
+.textoDestaque {
+    color: var(--atlas-primary-dark);
+    font-weight: bold;
+}
+
+.textoSucesso {
+    color: var(--atlas-success);
+    font-weight: bold;
+}
+
+.textoErro {
+    color: var(--atlas-danger);
+    font-weight: bold;
+}
+
+.textoAviso {
+    color: var(--atlas-warning);
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   FIM
+   ========================================================================== */

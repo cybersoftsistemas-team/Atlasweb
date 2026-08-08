@@ -259,7 +259,7 @@ object fCadEmpresas: TfCadEmpresas
               Height = 25
               Hint = ''
               ShowHint = True
-              DataField = 'Numero_Filial'
+              DataField = 'Filial'
               DataSource = dsEmpresas
               ParentFont = False
               Font.Height = -13

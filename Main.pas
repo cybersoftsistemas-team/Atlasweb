@@ -37,11 +37,11 @@ type
     TabMenu: TFDQuery;
     dstMenu: TDataSource;
     MenuPrincipal: TUniMenuItems;
-    iLogoAtlas: TUniImage;
     pAtalhos: TUniContainerPanel;
     bFechar: TUniSpeedButton;
-    iLogoCyber: TUniImage;
     UniButton1: TUniButton;
+    iLogoCyber: TUniImage;
+    iLogoAtlas: TUniImage;
     procedure cPesquisaChange(Sender: TObject);
     procedure mnSairClick(Sender: TObject);
     procedure bFecharTodosClick(Sender: TObject);
@@ -309,7 +309,6 @@ var
 begin
      // Carrega os atalhos selecionados.
      //lVersao.Caption := 'Versão '+VersaoEXE(Application.ExeName);
-//unilabel1.Caption := 'width: '+inttostr(Screen.width) + #13+'Height: '+inttostr(Screen.Height);
      mPath           := GetDLLPath+'files\';
      Atalhos         := TFDQuery.Create(nil);
      with Atalhos do begin
