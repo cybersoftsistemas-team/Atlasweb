@@ -26,7 +26,6 @@ object MainForm: TMainForm
     ScreenMask.ShowMessage = False
     ScreenMask.Color = clRed
     TabOrder = 0
-    ExplicitHeight = 658
     object PagePrincipal: TUniPageControl
       Left = 0
       Top = 50
@@ -41,7 +40,6 @@ object MainForm: TMainForm
           'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
           '= '#39'Pasta'#39';'#13#10'}')
       TabOrder = 1
-      ExplicitHeight = 608
       object pInicio: TUniTabSheet
         Hint = ''
         Caption = 'Inicio'
@@ -53,7 +51,6 @@ object MainForm: TMainForm
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'cybersoft-background'#39';'#13#10'}')
-        ExplicitHeight = 580
         object UniButton1: TUniButton
           Left = 20
           Top = 74
@@ -87,10 +84,6 @@ object MainForm: TMainForm
               '= '#39'cybersoft-logo'#39';'#13#10'}')
           PersistentCache = False
           FitWidth = True
-          ExplicitLeft = 200
-          ExplicitTop = 122
-          ExplicitWidth = 696
-          ExplicitHeight = 339
         end
       end
     end
@@ -442,7 +435,6 @@ object MainForm: TMainForm
       Align = alLeft
       Transparent = True
       ScreenMask.Enabled = True
-      ExplicitLeft = 0
     end
   end
   object pMenu: TUniContainerPanel
@@ -454,7 +446,6 @@ object MainForm: TMainForm
     ParentColor = False
     Align = alLeft
     TabOrder = 2
-    ExplicitHeight = 658
     object UniContainerPanel2: TUniContainerPanel
       Left = 0
       Top = 32
@@ -497,7 +488,6 @@ object MainForm: TMainForm
       Color = 4730899
       SingleExpand = True
       ExpanderOnly = False
-      ExplicitHeight = 594
     end
     object UniPanel3: TUniPanel
       Left = 0
@@ -515,7 +505,7 @@ object MainForm: TMainForm
       Caption = ''
       Color = clNone
       object bFecharTodos: TUniButton
-        Left = 47
+        Left = 201
         Top = 0
         Width = 108
         Height = 32
@@ -526,9 +516,11 @@ object MainForm: TMainForm
         Scale = bbsSmall
         IconCls = 'delete'
         OnClick = bFecharTodosClick
+        ExplicitLeft = 236
+        ExplicitTop = 3
       end
       object bMudarEmpresa: TUniButton
-        Left = 155
+        Left = 47
         Top = 0
         Width = 154
         Height = 32
@@ -540,6 +532,7 @@ object MainForm: TMainForm
         ScaleButton = False
         IconCls = 'team'
         OnClick = bMudarEmpresaClick
+        ExplicitLeft = 155
       end
       object bMenu: TUniButton
         Left = 0

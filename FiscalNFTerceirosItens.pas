@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, uniGUITypes, uniGUIAbstractClasses, uniGUIClasses, uniGUIFrame, uniCheckBox, uniDBCheckBox, 
   uniDateTimePicker, uniDBDateTimePicker, uniButton, uniDBEdit, uniMultiItem, uniComboBox, uniDBComboBox, uniDBLookupComboBox, uniEdit, uniPanel, uniGUIBaseClasses, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
-  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, uniSpeedButton, uniBitBtn, uniBasicGrid, uniDBGrid;
+  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, uniSpeedButton, uniBitBtn, uniBasicGrid, uniDBGrid, uniMemo;
 
 type
   TfFiscalNFTerceirosItens = class(TUniFrame)
@@ -16,7 +16,6 @@ type
     cCIAP_BCICMS: TUniDBFormattedNumberEdit;
     cCIAP_ValorICMS: TUniDBFormattedNumberEdit;
     UniPanel12: TUniPanel;
-    cCSTCBS: TUniDBLookupComboBox;
     cTotalCBS: TUniFormattedNumberEdit;
     cValor_CBS: TUniDBFormattedNumberEdit;
     cValor_BCCBS: TUniDBFormattedNumberEdit;
@@ -107,7 +106,7 @@ type
     CSTICMSTabB: TFDQuery;
     CSTIPI: TFDQuery;
     dsCSTIPI: TDataSource;
-    UniDBLookupComboBox1: TUniDBLookupComboBox;
+    cCSTCBS: TUniDBLookupComboBox;
     CSTCBS: TFDQuery;
     dsCSTCBS: TDataSource;
     CSTIBS: TFDQuery;
@@ -401,7 +400,7 @@ begin
           sql.clear;
           sql.add('select Codigo');
           sql.add('      ,Descricao');
-          sql.add('from CSTICMSTabA');                                                            
+          sql.add('from CSTICMSTabB');                                                            
           sql.add('order by Codigo');
           open;
      end;
@@ -446,7 +445,6 @@ begin
           sql.add('order by Codigo');
           open;
      end;
-
      cProcesso_Imp.Enabled := cProcesso_Exp.Text = '';
      cProcesso_Exp.Enabled := cProcesso_Imp.Text = '';
      cProduto.SetFocus;

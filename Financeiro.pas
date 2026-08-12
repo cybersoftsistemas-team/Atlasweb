@@ -75,16 +75,6 @@ type
     cMes: TUniSegmentedButton;
     cDia: TUniSegmentedButton;
     cAno: TUniSpinEdit;
-    BaixasRegistro: TLargeintField;
-    BaixasTipo: TStringField;
-    BaixasValor: TBCDField;
-    BaixasBanco: TSmallintField;
-    BaixasValor_Multa: TBCDField;
-    BaixasValor_Juros: TBCDField;
-    BaixasValor_Desconto: TBCDField;
-    BaixasEmpresa: TStringField;
-    BaixasBanco_Nome: TStringField;
-    BaixasObservacao: TMemoField;
     UniTabSheet3: TUniTabSheet;
     pFicha2: TUniPanel;
     cBxBanco: TUniDBLookupComboBox;
@@ -93,14 +83,6 @@ type
     bSalvarBaixa: TUniButton;
     bCancelarBaixa: TUniSpeedButton;
     cBxClassificacao: TUniDBEdit;
-    BaixasForma_PgtoDoc: TStringField;
-    BaixasTaxa_FechamentoCambio: TBCDField;
-    BaixasTaxa_Data: TSQLTimeStampField;
-    BaixasNumero_ContratoCambio: TStringField;
-    BaixasOrigem_Multa: TStringField;
-    BaixasOrigem_Desconto: TStringField;
-    BaixasBanco_Conta: TStringField;
-    BaixasConciliado: TBooleanField;
     UniGroupBox4: TUniGroupBox;
     cBxValor_Doc: TUniFormattedNumberEdit;
     cBxValor_Parcela: TUniFormattedNumberEdit;
@@ -127,38 +109,10 @@ type
     cBxValor_Multa: TUniFormattedNumberEdit;
     cBXValor_Desconto: TUniFormattedNumberEdit;
     cBxValor: TUniFormattedNumberEdit;
-    BaixasData: TDateField;
-    BaixasCompensacao: TBooleanField;
     Lista: TFDQuery;
     dsLista: TDataSource;
-    ListaTipo: TStringField;
-    ListaCentro_Custo: TStringField;
-    ListaData_Vencimento: TDateField;
-    ListaValor_Documento: TBCDField;
-    ListaValor_Parcela: TBCDField;
-    ListaDocumento_Numero: TStringField;
-    ListaProcesso: TStringField;
-    ListaParcela: TStringField;
-    ListaBaixa: TBooleanField;
-    ListaBeneficiario: TStringField;
-    ListaValor_Juros: TBCDField;
-    ListaValor_Multa: TBCDField;
-    ListaValor_Desconto: TBCDField;
-    ListaValor_Total: TBCDField;
-    ListaValor_Operacao: TBCDField;
-    BaixasCompensacao_Numero: TSmallintField;
-    ListaNome: TStringField;
-    ListaTitulo: TLargeintField;
-    BaixasTitulo: TLargeintField;
     ListaAd: TFDQuery;
     dsListaAd: TDataSource;
-    ListaAdTitulo: TLargeintField;
-    ListaAdValor_Total: TBCDField;
-    ListaAdDocumento_Data: TDateField;
-    ListaAdAdiantamento_Numero: TIntegerField;
-    ListaAdBanco: TSmallintField;
-    ListaAdTipo: TStringField;
-    ListaAdBeneficiario: TStringField;
     Lancamentos: TFDQuery;
     cDocNumFiltro: TUniEdit;
     bBloquear: TUniButton;
@@ -186,8 +140,6 @@ type
     brTotais: TUniSegmentedButton;
     UniContainerPanel1: TUniContainerPanel;
     EmpresasFechamento_Financeiro: TDateField;
-    ListaOrigem: TStringField;
-    ListaVinculo: TIntegerField;
     UniTabSheet7: TUniTabSheet;
     UniDBGrid3: TUniDBGrid;
     PagarReceberDocs: TFDQuery;
@@ -231,11 +183,67 @@ type
     cBanco: TUniDBLookupComboBox;
     UniDBLookupComboBox11: TUniDBLookupComboBox;
     cValor_Baixado: TUniFormattedNumberEdit;
-    ListaValor_Aberto: TFMTBCDField;
-    ListaValor_Baixas: TFMTBCDField;
-    ListaAdValor_Baixado: TFMTBCDField;
+    ListaTitulo: TLargeintField;
     ListaClassificacao: TStringField;
+    ListaTipo: TStringField;
+    ListaCentro_Custo: TStringField;
+    ListaData_Vencimento: TDateField;
+    ListaValor_Documento: TFMTBCDField;
+    ListaValor_Parcela: TFMTBCDField;
+    ListaDocumento_Numero: TStringField;
+    ListaProcesso: TStringField;
+    ListaBaixa: TBooleanField;
+    ListaNome: TStringField;
+    ListaBeneficiario: TStringField;
+    ListaValor_Juros: TFMTBCDField;
+    ListaValor_Multa: TFMTBCDField;
+    ListaValor_Desconto: TFMTBCDField;
+    ListaValor_Total: TFMTBCDField;
+    ListaValor_Operacao: TFMTBCDField;
+    ListaValor_Baixas: TFMTBCDField;
+    ListaValor_Aberto: TFMTBCDField;
+    ListaParcela: TStringField;
+    ListaOrigem: TStringField;
+    ListaVinculo: TIntegerField;
+    BaixasRegistro: TLargeintField;
+    BaixasEmpresa: TStringField;
+    BaixasTitulo: TLargeintField;
+    BaixasData: TDateField;
+    BaixasTipo: TStringField;
+    BaixasBanco: TSmallintField;
+    BaixasValor: TFMTBCDField;
+    BaixasValor_Multa: TFMTBCDField;
+    BaixasValor_Juros: TFMTBCDField;
+    BaixasValor_Desconto: TFMTBCDField;
     BaixasForma_Pgto: TSmallintField;
+    BaixasForma_PgtoDoc: TStringField;
+    BaixasCheque_Nominal: TStringField;
+    BaixasCheque_Assinado: TStringField;
+    BaixasCheque_Visado: TBooleanField;
+    BaixasCheque_Cruzado: TBooleanField;
+    BaixasTaxa_FechamentoCambio: TFMTBCDField;
+    BaixasTaxa_Data: TSQLTimeStampField;
+    BaixasNumero_ContratoCambio: TStringField;
+    BaixasOrigem_Multa: TStringField;
+    BaixasOrigem_Juros: TStringField;
+    BaixasOrigem_Desconto: TStringField;
+    BaixasBanco_Conta: TStringField;
+    BaixasConciliado: TBooleanField;
+    BaixasObservacao: TMemoField;
+    BaixasCompensacao: TBooleanField;
+    BaixasCompensacao_Numero: TSmallintField;
+    BaixasLote: TIntegerField;
+    BaixasBordero: TIntegerField;
+    BaixasBordero_Data: TDateField;
+    BaixasBanco_Nome: TStringField;
+    ListaAdTitulo: TLargeintField;
+    ListaAdValor_Total: TFMTBCDField;
+    ListaAdDocumento_Data: TDateField;
+    ListaAdAdiantamento_Numero: TIntegerField;
+    ListaAdBanco: TSmallintField;
+    ListaAdTipo: TStringField;
+    ListaAdValor_Baixado: TFMTBCDField;
+    ListaAdBeneficiario: TStringField;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
@@ -678,7 +686,7 @@ begin
       // Alinhando todas as ficha de dados ao centro do form.
       for i := 0 to ComponentCount -1 do begin
           if Components[i] is TUniPanel then begin
-             if (Components[i].Name <> 'PanelBanco') and (Components[i].Name <> 'PanelValores') then begin
+             if TuniPanel(Components[i]).tag = 0 then begin
                 TuniPanel(Components[i]).Top   := 30;
                 TuniPanel(Components[i]).Left  := (Pasta.Width - TuniPanel(Components[i]).Width) div 2;
                 TuniPanel(Components[i]).Color := clNone
@@ -750,7 +758,7 @@ begin
            sql.add('and   Data_Encerramento is null');
            sql.add('union all');
            sql.add('select Processo');
-           sql.add('      ,Declaracao = DE');
+           sql.add('      ,Declaracao = DUE');
            sql.add('      ,Tipo = ''EXPORTAÇÃO'' ');
            sql.add('      ,Cliente');
            sql.add('      ,Cliente_Nome = (select Nome from Destinatarios Dst where dst.Codigo = pe.Cliente)');
@@ -796,12 +804,12 @@ begin
            sql.clear;
            sql.add('select Razao_Social');
            sql.add('      ,CNPJ');
-           sql.add('      ,Unidade = case when isnull(Numero_Filial, 0) = 0 then ''MATRIZ'' else ''FILIAL ''+cast(numero_Filial as char(3)) end');
+           sql.add('      ,Unidade = case when isnull(Filial, 0) = 0 then ''MATRIZ'' else ''FILIAL ''+cast(Filial as char(3)) end');
            sql.add('      ,Fechamento_Financeiro');
            sql.add('      ,Estado');
            sql.add('from  Empresas');
            sql.add('where substring(CNPJ, 1, 8) = '+quotedstr(copy(UniMainModule.mEmpresaAtiva, 1, 8)) );
-           sql.add('order by CNPJ, Numero_Filial');
+           sql.add('order by CNPJ, Filial');
            open;
       end;
       with Config do begin
@@ -1159,6 +1167,7 @@ begin
       end;
 
       with Lista do begin
+           {
            sql.clear;
            sql.Add('select Titulo');
            sql.Add('      ,Classificacao');
@@ -1189,6 +1198,38 @@ begin
            sql.Add('      ,Vinculo');
            sql.Add('from PagarReceber pr');
            sql.Add('where Empresa = '+quotedstr(uniMainModule.mEmpresaAtiva));
+           }
+
+          sql.clear;
+          sql.Add('select pr.Titulo,');
+          sql.Add('       pr.Classificacao,');
+          sql.Add('       pr.Tipo,');
+          sql.Add('       pr.Centro_Custo,');
+          sql.Add('       pr.Data_Vencimento,');
+          sql.Add('       pr.Valor_Documento,');
+          sql.Add('       pr.Valor_Parcela,');
+          sql.Add('       pr.Documento_Numero,');
+          sql.Add('       pr.Processo,');
+          sql.Add('       pr.Parcela,');
+          sql.Add('       pr.Valor_Juros,');
+          sql.Add('       pr.Valor_Multa,');
+          sql.Add('       pr.Valor_Desconto,');
+          sql.Add('       pr.Valor_Total,');
+          sql.Add('       pr.Valor_Operacao,');
+          sql.Add('       Valor_Baixas = isnull(Baixas.Valor_Baixas, 0),');
+          sql.Add('       Valor_Aberto = pr.Valor_Parcela - isnull(Baixas.Valor_Baixas, 0),');
+          sql.Add('       Baixa = cast(case when isnull(Baixas.Valor_Baixas, 0) = 0 then 0 else 1 end as bit),');
+          sql.Add('       Nome = pc.Nome_Financeiro,');
+          sql.Add('       Beneficiario = case when isnull(pr.Transferencia, 0) = 0 then dst.Nome else b.Nome end,');
+          sql.Add('       pr.Observacao,');
+          sql.Add('       pr.Origem,');
+          sql.Add('       pr.Vinculo');
+          sql.Add('from PagarReceber pr');
+          sql.Add('outer apply (select Valor_Baixas = sum(prb.Valor) from PagarReceberBaixas prb where prb.Empresa = pr.Empresa and prb.Titulo = pr.Titulo) Baixas');
+          sql.Add('left join PlanoContas pc on pc.Conta = pr.Classificacao');
+          sql.Add('left join Destinatarios dst on dst.Codigo = pr.Beneficiario');
+          sql.Add('left join Bancos b on b.Codigo = pr.Banco');
+          sql.Add('where pr.Empresa = '+quotedstr(uniMainModule.mEmpresaAtiva));
            if not cAgrupar.checked then begin
               sql.Add('and pr.Data_Vencimento = :pData');
               parambyName('pData').AsDate := cCalend.DateTime;

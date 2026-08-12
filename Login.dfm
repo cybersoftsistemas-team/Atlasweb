@@ -53,14 +53,14 @@ object TelaLogin: TTelaLogin
           '= '#39'video'#39';'#13#10'}')
     end
     object pLogin: TUniContainerPanel
-      Left = 155
-      Top = 135
+      Left = 158
+      Top = 122
       Width = 642
       Height = 374
       Cursor = crHandPoint
       Hint = ''
       ParentColor = False
-      Color = clWhite
+      Color = clTeal
       Anchors = []
       ClientEvents.UniEvents.Strings = (
         
@@ -90,22 +90,26 @@ object TelaLogin: TTelaLogin
             '= '#39'cybersoft-logo'#39';'#13#10'}')
         FitWidth = True
       end
-      object iLogoCyber: TUniImage
-        Left = 102
-        Top = 302
-        Width = 114
-        Height = 69
+      object UniLabel1: TUniLabel
+        Left = 299
+        Top = 119
+        Width = 53
+        Height = 22
         Hint = ''
-        Visible = False
-        Center = True
-        Proportional = True
-        Transparent = True
-        FitWidth = True
+        Caption = 'Login'
+        ParentFont = False
+        Font.Color = clWhite
+        Font.Height = -19
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentColor = False
+        Color = clNone
+        TabOrder = 2
       end
       object cLogUser: TUniEdit
         AlignWithMargins = True
         Left = 299
-        Top = 144
+        Top = 147
         Width = 300
         Height = 25
         Hint = ''
@@ -124,7 +128,7 @@ object TelaLogin: TTelaLogin
       object cLogSenha: TUniEdit
         AlignWithMargins = True
         Left = 299
-        Top = 184
+        Top = 187
         Width = 300
         Height = 25
         Hint = ''
@@ -141,32 +145,18 @@ object TelaLogin: TTelaLogin
         SelectOnFocus = True
       end
       object bEntrar: TUniBitBtn
-        Left = 391
-        Top = 234
-        Width = 103
-        Height = 36
+        Left = 407
+        Top = 231
+        Width = 83
+        Height = 28
         Hint = ''
         Caption = 'ENTRAR'
-        Anchors = [akRight, akBottom]
+        Anchors = [akRight]
         TabOrder = 5
         Scale = bbsSmall
         IconPosition = ipButtonEdge
         Images = UniMainModule.imgBotoes
         OnClick = bEntrarClick
-      end
-      object UniLabel1: TUniLabel
-        Left = 299
-        Top = 115
-        Width = 53
-        Height = 22
-        Hint = ''
-        Caption = 'Login'
-        ParentFont = False
-        Font.Color = clWhite
-        Font.Height = -19
-        Font.Name = 'Arial'
-        Font.Style = [fsBold]
-        TabOrder = 6
       end
     end
   end

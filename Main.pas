@@ -210,12 +210,12 @@ begin
      Close;
 end;
 
-// Fecha todas as abas abertas.
 procedure TMainForm.bFecharClick(Sender: TObject);
 begin
      Close;
 end;
 
+// Fecha todas as abas abertas.
 procedure TMainForm.bFecharTodosClick(Sender: TObject);
 var
    i:integer;

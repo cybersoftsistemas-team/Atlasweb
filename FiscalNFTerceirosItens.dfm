@@ -150,32 +150,8 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
         BorderStyle = ubsInset
         ShowCaption = False
         TitleVisible = True
-        Title = 'Reforma Tribut'#225'ria - IS / CBS / IBS'
+        Title = 'Reforma Tribut'#225'ria - IBS / CBS'
         Caption = ''
-        object cCSTCBS: TUniDBLookupComboBox
-          Left = 64
-          Top = -60
-          Width = 742
-          Height = 25
-          Hint = ''
-          ShowHint = True
-          ParentShowHint = False
-          ListField = 'Codigo;Descricao'
-          KeyField = 'Codigo'
-          ListFieldIndex = 1
-          BorderStyle = ubsInset
-          ClearButton = True
-          DataField = 'CSTCBS'
-          DataSource = dsItensNF
-          AnyMatch = True
-          TabOrder = 5
-          Color = clWindow
-          FieldLabel = 'CST CBS'
-          FieldLabelSeparator = ' '
-          ForceSelection = True
-          NormalizeString = True
-          Style = csDropDown
-        end
         object cTotalCBS: TUniFormattedNumberEdit
           Left = 575
           Top = 8
@@ -268,7 +244,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           ShowHint = True
           ParentShowHint = False
           ListField = 'Codigo;Descricao'
-          ListSource = dsCSTCBS
+          ListSource = dsCSTIBS
           KeyField = 'Codigo'
           ListFieldIndex = 1
           BorderStyle = ubsInset
@@ -276,7 +252,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           DataField = 'CSTIBS'
           DataSource = dsItensNF
           AnyMatch = True
-          TabOrder = 10
+          TabOrder = 9
           Color = clWindow
           FieldLabel = 'CST IBS'
           FieldLabelSeparator = ' '
@@ -294,7 +270,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           ParentShowHint = False
           BorderStyle = ubsInset
           Alignment = taRightJustify
-          TabOrder = 9
+          TabOrder = 8
           TabStop = False
           Color = 15720158
           ReadOnly = True
@@ -319,7 +295,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           DataField = 'Valor_IBS'
           DataSource = dsItensNF
           Alignment = taRightJustify
-          TabOrder = 8
+          TabOrder = 7
           SelectOnFocus = True
           FieldLabel = 'Valor'
           FieldLabelWidth = 40
@@ -339,7 +315,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           DataField = 'Valor_BCIBS'
           DataSource = dsItensNF
           Alignment = taRightJustify
-          TabOrder = 6
+          TabOrder = 5
           SelectOnFocus = True
           FieldLabel = 'BC IBS'
           FieldLabelSeparator = ' '
@@ -358,7 +334,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           DataField = 'Aliquota_IBS'
           DataSource = dsItensNF
           Alignment = taRightJustify
-          TabOrder = 7
+          TabOrder = 6
           SelectOnFocus = True
           FieldLabel = 'Al'#237'quota'
           FieldLabelWidth = 50
@@ -367,7 +343,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           ThousandSeparator = '.'
           BorderStyle = ubsInset
         end
-        object UniDBLookupComboBox1: TUniDBLookupComboBox
+        object cCSTCBS: TUniDBLookupComboBox
           Left = 8
           Top = 35
           Width = 742
@@ -384,7 +360,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           DataField = 'CSTCBS'
           DataSource = dsItensNF
           AnyMatch = True
-          TabOrder = 11
+          TabOrder = 10
           Color = clWindow
           FieldLabel = 'CST IBS'
           FieldLabelSeparator = ' '
@@ -751,7 +727,6 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           AnyMatch = True
           TabOrder = 17
           Color = clWindow
-          AutoEdit = False
           FieldLabel = 'Produto'
           Style = csDropDown
         end
@@ -2807,7 +2782,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       'from Embarques'
       'where Empresa = '#39'07922103000158'#39
       'order by Processo')
-    Left = 931
+    Left = 930
     Top = 406
   end
   object dsCSTCBS: TDataSource

@@ -40,14 +40,13 @@ video {
 /*--------------------------------------------------------[ TELA DE LOG IN ]------------------------------------------------------*/
 .CaixaLog {
    border-style: solid;
-   border-width: 1px;
+   border-width: 2px;
    border-radius: 6px 30px;
    border-color: white;
    overflow: hidden;
    transition: .5s ease;
    box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 40px 0 rgba(0, 0, 0, 0.19);
-   opacity: .85;               
-
+   opacity: .85;
 
     /* Cor base */
     background-color:#365C69;
@@ -320,17 +319,11 @@ video {
 
 /*--------------------------------------------------------[ PAINEL SIMPLES ]---------------------------------------------------------*/
 .CaixaSimples {
-   /*
-   border-radius:5px;
-   border: 1px solid silver;
-   text-font: bold 10px helvetica !important;
-   */
    color: #fff;
    font-size: 10px;
    font-weight: bold;
    font-family: helvetica, arial, verdana, sans-serif;
    line-height: 16px;
-   background-color: #bbbac13d;
 }
         
 .CaixaCirculo{
@@ -341,20 +334,17 @@ video {
 }   
 
 .x-panel-header-title-default {
-    /*
-    color: #264897;
-    */
-    color: #000;
+    color: white;
     font-size: 10px;
     font-weight: bold;
     font-family: helvetica, arial, verdana, sans-serif;
     line-height: 16px;
-    padding: 0 4px;
+    padding: 0 6px;
 }
 
 .x-panel-header-default-horizontal {
     padding: 10px 15px 22px;
-    background-color: #5c7e8336;
+    background: linear-gradient(180deg, #367f9b 0%, #276d87 100%);
 }
 
 /*----------------------------------------------------------[ FICHA DE CRUD ]---------------------------------------------------------*/
@@ -364,11 +354,6 @@ video {
    border-width: 1px solid inset #000;
    border-radius: 5px;
    background-color: #EEE9E9;
-/*
-   background-image: url("/files/images/Green Speckled.bmp");
-   background-image: url("/files/images/Painel1.jpg");
-   background-image: url("/files/images/painel2.jpg");
-*/
    background-image: url("/files/images/Painel1.jpg");
    background-repeat: repeat;
 }
@@ -382,13 +367,7 @@ video {
 }
 
 /*--------------------------------------------------------[ PASTA (PageControls) ]-----------------------------------------------------*/
-
 .Pasta {
-   /*
-    background-image:url("/files/images/fundopasta1.png");
-    background-image:url("files/images/fundomenu_Peq.png");
-    background-image:url("files/images/fundopasta2.png");
-   */
    background-color:#696969;
    background-color: #4f5e6b !important;
    border-style: none;
@@ -413,10 +392,6 @@ video {
    border-style: solid;
    border-width: 1px 0px 1px 1px;
    border-color: silver;
-   /* 
-   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 40px 0 rgba(0, 0, 0, 0.19);
-   background-color: #006666;
-   */
    font: bold 10px helvetica !important;
  } 
  
@@ -466,9 +441,6 @@ video {
   border-style: solid;
   border-color: #c2c2c2 #dadada #dadada;
   border-radius: 0px;
-  /*
-   box-shadow: -1px 0px 2px 0px #696969;
-  */
 }
                         
 .x-form-item-label-default {
@@ -487,29 +459,7 @@ video {
    background-color: #608d8417;
 }
 
-/*
-.x-form-text-default {
-    color: #000;
-    padding: 3px 6px 2px;
-    background: rgb(30 117 229 / 0%);
-    background-color: #5566732e;
-    font: bold 11px helvetica, arial, verdana, sans-serif;
-    min-height: 22px;
-}
-*/
-
 .x-panel-body-default {
-    /*
-    background: #E6E6FA;
-    background-color: #e0e7e600 !important;
-    color: #4682B4;
-    background-color: #4f5e6b !important;
-    background-color: #e0e7e600 !important;
-    background-image: url("/files/images/Painel1.jpg");
-    background: #E6E6FA;
-    background-opacity: 50%;
-    padding: 10px 0 0;
-    */
     background: none;
     border-color: #c2c2c2;
     font-size: 10px;
@@ -570,21 +520,11 @@ video {
    font: bold 10px helvetica !important;
    color: #000;
    border-radius: 3px;
-   /*
-   line-height: 14px;
-   padding-top: 0px;
-   padding-bottom: 0px;
-   */
 }
 
-                 
 /* Titulos dos Groups */
 .x-fieldset-header-text {
    font: bold 10px helvetica !important;
-   /*
-   color: #EEC900;
-   text-transform: uppercase;      
-   */
    color: #000;
 }
                         
@@ -648,44 +588,15 @@ video {
     padding: 6px;
     font: bold 10px helvetica, arial, verdana, sans-serif;
     color: color: #4682B4;
-
-    /*
-     color: black;
-     background: #621a7f21;
-     text-transform: uppercase;
-    */     
 }
 
 /*---------------------------------------------------------[ Classe dos botoões ]------------------------------------------------------*/
-/*
-.x-btn-default-small {
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -ms-border-radius: 3px;
-    -o-border-radius: 3px;
-    border-radius: 3px;
-    padding: 2px 2px 2px 2px;
-    border-width: 1px;
-    border-style: outset;
-    background-image: none;
-    background-color: #13d0eb;
-    background-image: -webkit-gradient(linear, top, bottom, color-stop(0%, #4c9dd8), color-stop(50%, #3892d4), color-stop(51%, #358bc9), color-stop(0%, #3892d4));
-    /* background-image: -webkit-linear-gradient(top, #4c9dd8, #3892d4 50%, #358bc9 51%, #3892d4); */
-    background-image: -moz-linear-gradient(top, #4c9dd8, #3892d4 50%, #358bc9 51%, #3892d4);
-    background-image: -o-linear-gradient(top, #4c9dd8, #3892d4 50%, #358bc9 51%, #3892d4);
-    background-image: -ms-linear-gradient(top, #4c9dd8, #3892d4 50%, #358bc9 51%, #3892d4);
-    background-image: linear-gradient(top,#4c9dd8, #3892d4 50%, #358bc9 51%, #3892d4);
-}
-*/
-
 element.style {
     width: 628px;
     left: 0px;
     height: 33px;
     top: 25px;
 }
-
-
 
 /*--------------------------------------------[ Toggle swith ]-----------------------------------------------------*/
 /* Wrapper do checkbox */
@@ -710,12 +621,10 @@ element.style {
   background-image: none !important;
   border: none !important;
   box-shadow: #c4cfc8 1px -1px 1px !important;
-
   position: absolute;
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-
   width: 32px !important;   /* ↓ menor */
   height: 16px !important;  /* ↓ menor */
   background-color: #d1d5db !important;
@@ -740,9 +649,6 @@ element.style {
 /* Ligado */
 .x-form-cb-checked .x-form-checkbox {
   background-color: #22c55e !important;    /* verde */
- /*
-  background-color: #6197c9 !important;    /* Azul  */
- */      
 }
 
 .x-form-cb-checked .x-form-checkbox::after {
@@ -762,7 +668,6 @@ element.style {
 .x-form-type-radio label {
   padding-left: 5px !important; /* valor padrão */
   padding-top: 0px !important; /* valor padrão */
-
 }
 
 .x-form-type-radio input {
@@ -806,13 +711,7 @@ element.style {
 
 /*-------------------| REMOVE ESCURECIMENTO DOS COMPONENTES DESABILITADOS |------------------------*/
 /* TRANSPARENCIA DA TELA QUANDO DESABILITADA.*/
-/*
-.x-item-disabled .x-form-item-label, .x-item-disabled, .x-form-trigger, .x-panel, .x-item-disabled .x-form-item-label-text {
-   filter: alpha(opacity=100);
-   opacity: 1;
-   color: #000;
-}
-*/
+
 .x-item-disabled .x-mask {
    background: none;
    opacity: 100%;
@@ -838,15 +737,6 @@ element.style {
     background-color: #7fb3d5 !important;
 }
 
-
-
-
-
-
-
-
-
-
 /* ===========================================================
    CYBERSOFT BACKGROUND
    ===========================================================*/
@@ -867,19 +757,7 @@ element.style {
     background-size:cover;
     background-position:center center;
 }
-/*
-.cybersoft-background:before{
-    content:'';
-    position:absolute;
-    left:0;
-    top:0;
-    right:0;
-    bottom:0;
-    pointer-events:none;
-    background-image: repeating-linear-gradient(90deg,rgba(255,255,255,.010) 0px,rgba(255,255,255,.010) 1px,transparent 1px,transparent 4px);
-    opacity:.30;
-}
-*/
+
 .logoGlow{
     position:absolute;
     left:50%;
@@ -892,10 +770,8 @@ element.style {
     filter:blur(30px);
     pointer-events:none;
 }
+
 .cybersoft-logo img{
     filter:
-/*        drop-shadow(0px 1px 3px rgba(200, 220, 255,.35))*/
         drop-shadow(0px 8px 8px rgba(0,0,0,.55));
-/*        drop-shadow(0px 18px 25px rgba(0,0,0,.45));
-
 }

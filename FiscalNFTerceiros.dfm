@@ -2767,7 +2767,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'SELECT * FROM Fornecedores ')
-    Left = 263
+    Left = 255
     Top = 222
     object TransportadorCodigo: TIntegerField
       DisplayWidth = 5
@@ -2789,13 +2789,13 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
   end
   object dsTransportador: TDataSource
     DataSet = Transportador
-    Left = 263
+    Left = 255
     Top = 272
   end
   object tTmp: TFDQuery
     Connection = UniMainModule.Conecta
-    Left = 449
-    Top = 395
+    Left = 469
+    Top = 123
   end
   object Armazem: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2844,7 +2844,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     SQL.Strings = (
       'select * from NotasFiscais where Emissao = '#39'T'#39)
     Left = 102
-    Top = 121
+    Top = 123
     object NotasNota_id: TIntegerField
       FieldName = 'Nota_id'
       Origin = 'Nota_id'
@@ -3935,12 +3935,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'SELECT * FROM Empresas')
-    Left = 263
+    Left = 255
     Top = 421
   end
   object dsEmpresas: TDataSource
     DataSet = Empresas
-    Left = 263
+    Left = 255
     Top = 471
   end
   object ModalPgto: TFDQuery
@@ -4007,12 +4007,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from BeneficioFiscal order by Nome')
-    Left = 263
+    Left = 255
     Top = 320
   end
   object dsBeneficios: TDataSource
     DataSet = Beneficios
-    Left = 263
+    Left = 255
     Top = 370
   end
   object Itens: TFDQuery
@@ -4040,7 +4040,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       'from NotasItens'
       'order by Empresa')
     Left = 183
-    Top = 121
+    Top = 123
     object ItensNota_id: TIntegerField
       FieldName = 'Nota_id'
       Origin = 'Nota_id'
@@ -4114,12 +4114,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'SELECT * FROM NotasItensNavios')
-    Left = 263
-    Top = 121
+    Left = 255
+    Top = 123
   end
   object dsItensNavios: TDataSource
     DataSet = ItensNavios
-    Left = 263
+    Left = 255
     Top = 173
   end
   object ModalFrete: TFDQuery
@@ -4128,12 +4128,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'SELECT * FROM ModalidadesFrete')
-    Left = 263
+    Left = 255
     Top = 520
   end
   object dsModalFrete: TDataSource
     DataSet = ModalFrete
-    Left = 263
+    Left = 255
     Top = 569
   end
   object NaturezaFrete: TFDQuery
@@ -4142,12 +4142,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'SELECT * FROM NaturezaFrete')
-    Left = 346
-    Top = 121
+    Left = 338
+    Top = 123
   end
   object dsNaturezaFrete: TDataSource
     DataSet = NaturezaFrete
-    Left = 346
+    Left = 338
     Top = 173
   end
   object RamosAtv: TFDQuery
@@ -4156,12 +4156,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'SELECT * FROM RamoAtividade')
-    Left = 346
+    Left = 338
     Top = 222
   end
   object dsRamo: TDataSource
     DataSet = RamosAtv
-    Left = 346
+    Left = 338
     Top = 272
   end
   object CentroCusto: TFDQuery
@@ -4170,12 +4170,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'SELECT * FROM CentroCusto')
-    Left = 346
+    Left = 338
     Top = 320
   end
   object dsCentroCusto: TDataSource
     DataSet = CentroCusto
-    Left = 346
+    Left = 338
     Top = 370
   end
   object Origem: TFDQuery
@@ -4184,12 +4184,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'SELECT * FROM OrigemMercadoria')
-    Left = 346
+    Left = 338
     Top = 421
   end
   object dsOrigem: TDataSource
     DataSet = Origem
-    Left = 346
+    Left = 338
     Top = 471
   end
   object TipoProd: TFDQuery
@@ -4198,12 +4198,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'SELECT * FROM TipoProduto')
-    Left = 346
+    Left = 338
     Top = 520
   end
   object dsTipoProd: TDataSource
     DataSet = TipoProd
-    Left = 346
+    Left = 338
     Top = 569
   end
   object ClassProd: TFDQuery
@@ -4212,12 +4212,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'SELECT * FROM ClassificacaoProduto')
-    Left = 429
-    Top = 121
+    Left = 418
+    Top = 123
   end
   object dsClassProd: TDataSource
     DataSet = ClassProd
-    Left = 429
+    Left = 418
     Top = 173
   end
   object ProcessoExp: TFDQuery

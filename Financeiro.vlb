@@ -16,9 +16,6 @@ Coordinates=446,10,140,168
 [Lista]
 Coordinates=172,10,120,476
 
-[ListaValor_Multa]
-Coordinates=711,243,111,36
-
 [cValor_Multa]
 Coordinates=2219,878,90,36
 
@@ -28,26 +25,14 @@ Coordinates=2088,878,45,36
 [bBaixar]
 Coordinates=1882,878,58,36
 
-[ListaValor_Desconto]
-Coordinates=711,573,133,36
-
 [cValor_Baixado]
 Coordinates=1767,878,105,36
-
-[ListaAdValor_Total]
-Coordinates=711,683,124,36
-
-[BaixasTipo]
-Coordinates=711,738,78,36
 
 [tTmp]
 Coordinates=1340,10,44,58
 
 [dsProcessos]
 Coordinates=539,1167,88,36
-
-[BaixasCompensacao]
-Coordinates=711,793,136,36
 
 [Contratos]
 Coordinates=1622,10,70,58
@@ -58,9 +43,6 @@ Coordinates=1702,878,55,36
 [Embarques]
 Coordinates=904,10,80,58
 
-[BaixasTaxa_FechamentoCambio]
-Coordinates=711,958,204,36
-
 [cDataBloqueio]
 Coordinates=1455,878,98,36
 
@@ -69,9 +51,6 @@ Coordinates=1374,878,71,36
 
 [cValorBaixa]
 Coordinates=1281,878,83,36
-
-[BaixasBanco]
-Coordinates=711,1178,89,36
 
 [cPago_Cliente]
 Coordinates=1173,878,98,36
@@ -106,9 +85,6 @@ Coordinates=481,878,112,36
 [UniPanel1]
 Coordinates=397,878,74,36
 
-[BaixasNumero_ContratoCambio]
-Coordinates=960,1,199,36
-
 [cBxValor_Doc]
 Coordinates=291,878,96,36
 
@@ -126,9 +102,6 @@ Coordinates=2317,832,105,36
 
 [bExcluir]
 Coordinates=2246,832,61,36
-
-[ListaValor_Total]
-Coordinates=960,221,108,36
 
 [Adiantamentos]
 Coordinates=596,10,134,124
@@ -154,9 +127,6 @@ Coordinates=1358,832,185,36
 [UniPanel8]
 Coordinates=1274,832,74,36
 
-[BaixasOrigem_Multa]
-Coordinates=960,826,134,36
-
 [UniDBFormattedNumberEdit2]
 Coordinates=988,832,185,36
 
@@ -169,9 +139,6 @@ Coordinates=821,832,47,36
 [cDocumento]
 Coordinates=725,832,86,36
 
-[ListaAdDocumento_Data]
-Coordinates=960,1101,157,36
-
 [cProcesso]
 Coordinates=641,832,74,36
 
@@ -180,18 +147,6 @@ Coordinates=544,832,87,36
 
 [UniTabSheet5]
 Coordinates=437,832,97,36
-
-[BaixasCheque_Assinado]
-Coordinates=960,1321,158,36
-
-[BaixasObservacao]
-Coordinates=960,1376,122,36
-
-[BaixasValor]
-Coordinates=960,1431,83,36
-
-[BaixasValor_Juros]
-Coordinates=960,1486,122,36
 
 [cDesconto_Liquidacao]
 Coordinates=282,832,145,36
@@ -202,17 +157,8 @@ Coordinates=215,832,57,36
 [cEmbarque]
 Coordinates=125,832,80,36
 
-[BaixasEmpresa]
-Coordinates=832,1649,104,36
-
 [cBxValor_Multa]
 Coordinates=10,832,105,36
-
-[BaixasBanco_Conta]
-Coordinates=584,1649,131,36
-
-[ListaTitulo]
-Coordinates=505,1649,74,36
 
 [cValor_Parcela]
 Coordinates=2326,786,102,36
@@ -227,9 +173,6 @@ Coordinates=2238,786,78,36
 [cCodigoBarras]
 Coordinates=2128,786,100,36
 
-[ListaValor_Juros]
-Coordinates=1197,1,111,36
-
 [cDocNumFiltro]
 Coordinates=2018,786,100,36
 
@@ -238,9 +181,6 @@ Coordinates=1934,786,74,36
 
 [brTotais]
 Coordinates=1863,786,61,36
-
-[BaixasValor_Multa]
-Coordinates=1197,166,122,36
 
 [UniScrollBox1]
 Coordinates=1757,786,96,36
@@ -314,9 +254,6 @@ Coordinates=0,0,67,36
 [dsContratos]
 Coordinates=193,1479,84,36
 
-[ListaDocumento_Numero]
-Coordinates=1197,1101,160,36
-
 [cBenefFiltro]
 Coordinates=234,786,84,36
 
@@ -341,9 +278,6 @@ Coordinates=2199,740,97,36
 [gCambio]
 Coordinates=2123,740,66,36
 
-[ListaAdBeneficiario]
-Coordinates=1197,1541,125,36
-
 [UniTabSheet1]
 Coordinates=2016,740,97,36
 
@@ -361,12 +295,6 @@ Coordinates=262,1207,91,36
 
 [cBxObs]
 Coordinates=1716,740,59,36
-
-[BaixasForma_PgtoDoc]
-Coordinates=870,1723,146,36
-
-[BaixasRegistro]
-Coordinates=761,1723,101,36
 
 [bBlocCanc]
 Coordinates=1629,740,77,36
@@ -392,9 +320,6 @@ Coordinates=1363,740,96,36
 [EmpresasEstado]
 Coordinates=316,1723,112,36
 
-[BaixasData]
-Coordinates=227,1723,80,36
-
 [cTaxa_Cambial]
 Coordinates=1249,740,104,36
 
@@ -407,12 +332,6 @@ Coordinates=1102,740,67,36
 [pFicha1]
 Coordinates=1032,740,60,36
 
-[BaixasCompensacao_Numero]
-Coordinates=1395,111,188,36
-
-[ListaValor_Documento]
-Coordinates=1395,166,145,36
-
 [Beneficiario]
 Coordinates=740,10,82,58
 
@@ -422,17 +341,8 @@ Coordinates=928,740,94,36
 [AdiantamentosCNPJ]
 Coordinates=1395,276,133,36
 
-[BaixasValor_Desconto]
-Coordinates=1395,331,145,36
-
-[ListaNome]
-Coordinates=1395,386,76,36
-
 [UniPanel3]
 Coordinates=844,740,74,36
-
-[BaixasCheque_Nominal]
-Coordinates=1395,496,152,36
 
 [cRecuperavel]
 Coordinates=741,740,93,36
@@ -458,14 +368,8 @@ Coordinates=273,740,90,36
 [UniDBGrid1]
 Coordinates=180,740,83,36
 
-[BaixasCheque_Cruzado]
-Coordinates=1395,881,153,36
-
 [bAdicionar]
 Coordinates=94,740,76,36
-
-[BaixasTaxa_Data]
-Coordinates=1395,991,116,36
 
 [UniPanel5]
 Coordinates=10,740,74,36
@@ -482,9 +386,6 @@ Coordinates=2187,694,96,36
 [cBxValor_Baixado]
 Coordinates=2057,694,120,36
 
-[ListaTipo]
-Coordinates=1395,1266,67,36
-
 [cNumero_CC]
 Coordinates=1955,694,92,36
 
@@ -494,23 +395,11 @@ Coordinates=351,1479,76,36
 [cBeneficiario]
 Coordinates=1856,694,89,36
 
-[ListaProcesso]
-Coordinates=1395,1431,95,36
-
-[BaixasConciliado]
-Coordinates=1395,1541,114,36
-
 [cData_Vencimento]
 Coordinates=1723,694,123,36
 
 [dsModal]
 Coordinates=539,1475,63,36
-
-[ListaAdAdiantamento_Numero]
-Coordinates=1395,1651,189,36
-
-[ListaAdTipo]
-Coordinates=1395,1706,83,36
 
 [cCalend]
 Coordinates=1651,694,62,36
@@ -521,23 +410,14 @@ Coordinates=711,1,93,36
 [cBxValor_Parcela]
 Coordinates=1524,694,117,36
 
-[ListaParcela]
-Coordinates=1187,1797,86,36
-
 [cNumero_Documento]
 Coordinates=1375,694,139,36
-
-[ListaCentro_Custo]
-Coordinates=909,1797,121,36
 
 [Modal]
 Coordinates=1563,10,49,58
 
 [EmpresasUnidade]
 Coordinates=780,1797,120,36
-
-[ListaValor_Operacao]
-Coordinates=641,1797,135,36
 
 [bEstornar]
 Coordinates=1295,694,70,36
@@ -560,9 +440,6 @@ Coordinates=539,144,111,36
 [Cotacao]
 Coordinates=1394,10,62,58
 
-[ListaAdTitulo]
-Coordinates=87,1797,89,36
-
 [dsListaAd]
 Coordinates=539,529,71,36
 
@@ -584,9 +461,6 @@ Coordinates=521,694,171,36
 [cEmpresa]
 Coordinates=439,694,72,36
 
-[ListaBaixa]
-Coordinates=1622,276,74,36
-
 [dsBeneficiario]
 Coordinates=361,1101,96,36
 
@@ -596,14 +470,8 @@ Coordinates=355,694,74,36
 [cBXValor_Desconto]
 Coordinates=216,694,129,36
 
-[BaixasBanco_Nome]
-Coordinates=1622,441,130,36
-
 [cBanco]
 Coordinates=149,694,57,36
-
-[ListaBeneficiario]
-Coordinates=1622,551,110,36
 
 [cBxForma_PgtoDoc]
 Coordinates=10,694,129,36
@@ -611,38 +479,20 @@ Coordinates=10,694,129,36
 [cDocumento_Data]
 Coordinates=2316,10,121,36
 
-[BaixasTitulo]
-Coordinates=1622,716,85,36
-
 [EmpresasRazao_Social]
 Coordinates=1622,771,151,36
 
 [FormaPgto]
 Coordinates=1769,10,78,58
 
-[ListaValor_Parcela]
-Coordinates=1622,826,123,36
-
-[BaixasCheque_Visado]
-Coordinates=1622,881,144,36
-
 [UniTabSheet2]
 Coordinates=2209,10,97,36
-
-[ListaData_Vencimento]
-Coordinates=1622,991,144,36
 
 [tDias]
 Coordinates=994,10,44,58
 
-[BaixasOrigem_Desconto]
-Coordinates=1622,1101,156,36
-
 [cNumeroPgto]
 Coordinates=1976,10,93,36
-
-[ListaAdBanco]
-Coordinates=1622,1211,94,36
 
 [bLimparFiltro]
 Coordinates=221,924,90,36
@@ -654,7 +504,7 @@ Coordinates=165,924,46,36
 Coordinates=92,924,63,36
 
 []
-Coordinates=69,1649,134,36
+Coordinates=87,1797,89,36
 
 [cClassificacao]
 Coordinates=1789,832,55,36

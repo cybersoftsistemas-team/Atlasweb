@@ -15,11 +15,10 @@ type
     iLogoAtlas: TUniImage;
     UniHTMLFrame1: TUniHTMLFrame;
     Clientes: TFDQuery;
-    iLogoCyber: TUniImage;
+    UniLabel1: TUniLabel;
     cLogUser: TUniEdit;
     cLogSenha: TUniEdit;
     bEntrar: TUniBitBtn;
-    UniLabel1: TUniLabel;
     procedure bEntrarClick(Sender: TObject);
     procedure UniLoginFormShow(Sender: TObject);
   private
@@ -133,9 +132,6 @@ begin
      pLogin.Left := (TelaLogin.Width - pLogin.Width) div 2;
      pLogin.Top  := (TelaLogin.Height- pLogin.Height) div 2;
      
-     if FileExists(uniMainModule.mLogoCyber) then begin
-        iLogoCyber.Picture.LoadFromFile(uniMainModule.mLogoCyber);
-     end;
      if FileExists(uniMainModule.mLogoAtlas) then begin
         iLogoAtlas.Picture.LoadFromFile(uniMainModule.mLogoAtlas);
      end;
