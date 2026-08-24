@@ -397,7 +397,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           DataField = 'Quantidade'
           DataSource = dsItensNF
           Alignment = taRightJustify
-          TabOrder = 6
+          TabOrder = 7
           SelectOnFocus = True
           FieldLabel = 'Quantidade'
           FieldLabelSeparator = ' '
@@ -417,7 +417,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           DataField = 'Valor_Desconto'
           DataSource = dsItensNF
           Alignment = taRightJustify
-          TabOrder = 8
+          TabOrder = 9
           SelectOnFocus = True
           FieldLabel = 'Valor Desconto'
           FieldLabelSeparator = ' '
@@ -442,7 +442,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           DataField = 'CFOP'
           DataSource = dsItensNF
           AnyMatch = True
-          TabOrder = 1
+          TabOrder = 2
           Color = clWindow
           FieldLabel = 'CFOP'
           FieldLabelSeparator = ' '
@@ -450,31 +450,30 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           NormalizeString = True
           Style = csDropDown
         end
-        object cProcesso_Imp: TUniDBLookupComboBox
+        object cProcesso: TUniDBLookupComboBox
           Left = 8
           Top = 62
-          Width = 368
+          Width = 502
           Height = 25
           Hint = ''
           ShowHint = True
           ParentShowHint = False
-          ListField = 'Processo;DUIMP'
-          ListSource = dsProcessoImp
+          ListField = 'Processo;Declaracao'
+          ListSource = dsProcessos
           KeyField = 'Processo'
           ListFieldIndex = 1
           BorderStyle = ubsInset
           ClearButton = True
-          DataField = 'Processo_Imp'
+          DataField = 'Processo'
           DataSource = dsItensNF
           AnyMatch = True
-          TabOrder = 2
+          TabOrder = 3
           Color = clWindow
           FieldLabel = 'Processo (Imp)'
           FieldLabelSeparator = ' '
           ForceSelection = True
           NormalizeString = True
           Style = csDropDown
-          OnExit = cProcesso_ImpExit
         end
         object cValor_Unitario: TUniDBFormattedNumberEdit
           Left = 8
@@ -487,7 +486,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           DataField = 'Valor_Unitario'
           DataSource = dsItensNF
           Alignment = taRightJustify
-          TabOrder = 7
+          TabOrder = 8
           SelectOnFocus = True
           FieldLabel = 'Valor Unit'#225'rio'
           FieldLabelSeparator = ' '
@@ -506,7 +505,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           ParentShowHint = False
           DataField = 'NCM'
           DataSource = dsItensNF
-          TabOrder = 3
+          TabOrder = 4
           TabStop = False
           ReadOnly = True
           FieldLabel = 'NCM'
@@ -524,7 +523,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           DataField = 'Peso_Liquido'
           DataSource = dsItensNF
           Alignment = taRightJustify
-          TabOrder = 4
+          TabOrder = 5
           SelectOnFocus = True
           FieldLabel = 'Peso L'#237'quido'
           FieldLabelSeparator = ' '
@@ -543,7 +542,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           DataField = 'Peso_Bruto'
           DataSource = dsItensNF
           Alignment = taRightJustify
-          TabOrder = 5
+          TabOrder = 6
           SelectOnFocus = True
           FieldLabel = 'Peso Bruto'
           FieldLabelSeparator = ' '
@@ -568,7 +567,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           DataField = 'Embarque'
           DataSource = dsItensNF
           AnyMatch = True
-          TabOrder = 9
+          TabOrder = 10
           Color = clWindow
           FieldLabel = 'Embarque'
           FieldLabelSeparator = ' '
@@ -587,7 +586,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           DataField = 'Valor_UnitarioOrig'
           DataSource = dsItensNF
           Alignment = taRightJustify
-          TabOrder = 10
+          TabOrder = 11
           TabStop = False
           Color = 15720158
           ReadOnly = True
@@ -610,7 +609,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           DataField = 'Valor_Total'
           DataSource = dsItensNF
           Alignment = taRightJustify
-          TabOrder = 11
+          TabOrder = 12
           TabStop = False
           Color = 15720158
           ReadOnly = True
@@ -629,7 +628,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           Height = 44
           Hint = ''
           Caption = 'Detalhe'
-          TabOrder = 12
+          TabOrder = 13
           ScaleButton = False
           IconAlign = iaCenter
         end
@@ -640,7 +639,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           Height = 44
           Hint = ''
           Caption = 'Serial/Chassi'
-          TabOrder = 13
+          TabOrder = 14
           ScaleButton = False
           IconAlign = iaCenter
         end
@@ -655,7 +654,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           DataField = 'Valor_Inventario'
           DataSource = dsItensNF
           Alignment = taRightJustify
-          TabOrder = 14
+          TabOrder = 15
           SelectOnFocus = True
           FieldLabel = 'Valor Desconto'
           FieldLabelSeparator = ' '
@@ -674,7 +673,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           DataField = 'Consumo_Energia'
           DataSource = dsItensNF
           Alignment = taRightJustify
-          TabOrder = 15
+          TabOrder = 16
           SelectOnFocus = True
           FieldLabel = 'Consumo Energia'
           FieldLabelSeparator = ' '
@@ -683,49 +682,21 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           ThousandSeparator = '.'
           BorderStyle = ubsInset
         end
-        object cProcesso_Exp: TUniDBLookupComboBox
-          Left = 382
-          Top = 62
-          Width = 368
-          Height = 25
-          Hint = ''
-          ShowHint = True
-          ParentShowHint = False
-          ListField = 'Processo;DUE'
-          ListSource = dsProcessoExp
-          KeyField = 'Processo'
-          ListFieldIndex = 1
-          BorderStyle = ubsInset
-          ClearButton = True
-          DataField = 'Processo_Exp'
-          DataSource = dsItensNF
-          AnyMatch = True
-          TabOrder = 16
-          Color = clWindow
-          FieldLabel = 'Processo (Exp)'
-          FieldLabelSeparator = ' '
-          ForceSelection = True
-          NormalizeString = True
-          Style = csDropDown
-          OnExit = cProcesso_ExpExit
-        end
         object cProduto: TUniDBLookupComboBox
           Left = 8
           Top = 8
           Width = 742
           Height = 25
           Hint = ''
-          ListField = 'Codigo;NCM;Descricao_Reduzida'
+          ListField = 'Codigo;Descricao_Reduzida'
           ListSource = dsProdutos
           KeyField = 'Codigo'
-          ListFieldIndex = 2
+          ListFieldIndex = 0
           BorderStyle = ubsInset
-          ClearButton = True
           DataField = 'Codigo_Mercadoria'
           DataSource = dsItensNF
-          ParentFont = False
           AnyMatch = True
-          TabOrder = 17
+          TabOrder = 0
           Color = clWindow
           FieldLabel = 'Produto'
           Style = csDropDown
@@ -1648,19 +1619,31 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
     Left = 848
     Top = 263
   end
-  object ProcessoImp: TFDQuery
+  object Processos: TFDQuery
     CachedUpdates = True
     Connection = UniMainModule.Conecta
     UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
-      'select * from ProcessosImp'
-      '')
+      'select Tipo = '#39'IMP'#39' '
+      '      ,Processo'
+      '      ,Declaracao = DUIMP'
+      'from ProcessosImp'
+      'where isnull(DUIMP, '#39#39') <> '#39#39' '
+      'and isnull(Processo_Fechamento, '#39#39') <> '#39#39' '
+      'union all'
+      'select Tipo = '#39'EXP'#39' '
+      '      ,Processo'
+      '      ,Declaracao = DUE'
+      'from ProcessosExp'
+      'where isnull(DUE, '#39#39') <> '#39#39' '
+      'and Processo_Fechamento is not null'
+      'order by Tipo, Processo')
     Left = 848
     Top = 312
   end
-  object dsProcessoImp: TDataSource
-    DataSet = ProcessoImp
+  object dsProcessos: TDataSource
+    DataSet = Processos
     Left = 848
     Top = 359
   end
@@ -1696,14 +1679,211 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
     Left = 848
     Top = 550
   end
-  object ItensNF: TFDQuery
+  object Embarques: TFDQuery
+    CachedUpdates = True
     Connection = UniMainModule.Conecta
-    UpdateOptions.AssignedValues = [uvAutoCommitUpdates]
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
-      'select * from NotasItens ')
-    Left = 848
+      'select Codigo'
+      '      ,Navio'
+      
+        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
+        'o)'
+      '      ,Processo'
+      #9'  --,Empresa'
+      'from Embarques'
+      'where Empresa = '#39'07922103000158'#39
+      'order by Processo')
+    Left = 931
     Top = 25
+  end
+  object dsEmbarques: TDataSource
+    DataSet = Embarques
+    Left = 931
+    Top = 71
+  end
+  object CSTICMSTabA: TFDQuery
+    CachedUpdates = True
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select Codigo'
+      '      ,Navio'
+      
+        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
+        'o)'
+      '      ,Processo'
+      #9'  --,Empresa'
+      'from Embarques'
+      'where Empresa = '#39'07922103000158'#39
+      'order by Processo')
+    Left = 931
+    Top = 121
+  end
+  object dsCSTICMSTabA: TDataSource
+    DataSet = CSTICMSTabA
+    Left = 931
+    Top = 170
+  end
+  object dsCSTICMSTabB: TDataSource
+    DataSet = CSTICMSTabB
+    Left = 931
+    Top = 263
+  end
+  object CSTICMSTabB: TFDQuery
+    CachedUpdates = True
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select Codigo'
+      '      ,Navio'
+      
+        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
+        'o)'
+      '      ,Processo'
+      #9'  --,Empresa'
+      'from Embarques'
+      'where Empresa = '#39'07922103000158'#39
+      'order by Processo')
+    Left = 931
+    Top = 217
+  end
+  object CSTIPI: TFDQuery
+    CachedUpdates = True
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select Codigo'
+      '      ,Navio'
+      
+        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
+        'o)'
+      '      ,Processo'
+      #9'  --,Empresa'
+      'from Embarques'
+      'where Empresa = '#39'07922103000158'#39
+      'order by Processo')
+    Left = 931
+    Top = 313
+  end
+  object dsCSTIPI: TDataSource
+    DataSet = CSTIPI
+    Left = 931
+    Top = 359
+  end
+  object CSTCBS: TFDQuery
+    CachedUpdates = True
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select Codigo'
+      '      ,Navio'
+      
+        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
+        'o)'
+      '      ,Processo'
+      #9'  --,Empresa'
+      'from Embarques'
+      'where Empresa = '#39'07922103000158'#39
+      'order by Processo')
+    Left = 930
+    Top = 406
+  end
+  object dsCSTCBS: TDataSource
+    DataSet = CSTCBS
+    Left = 931
+    Top = 455
+  end
+  object CSTIBS: TFDQuery
+    CachedUpdates = True
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select Codigo'
+      '      ,Navio'
+      
+        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
+        'o)'
+      '      ,Processo'
+      #9'  --,Empresa'
+      'from Embarques'
+      'where Empresa = '#39'07922103000158'#39
+      'order by Processo')
+    Left = 931
+    Top = 501
+  end
+  object dsCSTIBS: TDataSource
+    DataSet = CSTIBS
+    Left = 931
+    Top = 550
+  end
+  object CSTPIS: TFDQuery
+    CachedUpdates = True
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select Codigo'
+      '      ,Navio'
+      
+        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
+        'o)'
+      '      ,Processo'
+      #9'  --,Empresa'
+      'from Embarques'
+      'where Empresa = '#39'07922103000158'#39
+      'order by Processo')
+    Left = 1014
+    Top = 26
+  end
+  object dsCSTPIS: TDataSource
+    DataSet = CSTPIS
+    Left = 1014
+    Top = 75
+  end
+  object CSTCOFINS: TFDQuery
+    CachedUpdates = True
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select Codigo'
+      '      ,Navio'
+      
+        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
+        'o)'
+      '      ,Processo'
+      #9'  --,Empresa'
+      'from Embarques'
+      'where Empresa = '#39'07922103000158'#39
+      'order by Processo')
+    Left = 1014
+    Top = 121
+  end
+  object dsCSTCOFINS: TDataSource
+    DataSet = CSTCOFINS
+    Left = 1014
+    Top = 170
+  end
+  object ItensNF: TFDQuery
+    Connection = UniMainModule.Conecta
+    FetchOptions.AssignedValues = [evMode, evRowsetSize, evLiveWindowParanoic]
+    FetchOptions.RowsetSize = 250
+    FetchOptions.LiveWindowParanoic = False
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select *'
+      'from NotasItens'
+      '')
+    Left = 849
+    Top = 24
     object ItensNFNota_id: TIntegerField
       FieldName = 'Nota_id'
       Origin = 'Nota_id'
@@ -1841,16 +2021,6 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
     object ItensNFDeclaracao: TStringField
       FieldName = 'Declaracao'
       Origin = 'Declaracao'
-      Size = 15
-    end
-    object ItensNFProcesso_Imp: TStringField
-      FieldName = 'Processo_Imp'
-      Origin = 'Processo_Imp'
-      Size = 15
-    end
-    object ItensNFProcesso_Exp: TStringField
-      FieldName = 'Processo_Exp'
-      Origin = 'Processo_Exp'
       Size = 15
     end
     object ItensNFReducao_ICMSST: TFMTBCDField
@@ -2669,197 +2839,10 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       FieldName = 'Item_Referencia'
       Origin = 'Item_Referencia'
     end
-  end
-  object Embarques: TFDQuery
-    CachedUpdates = True
-    Connection = UniMainModule.Conecta
-    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
-    UpdateOptions.AutoCommitUpdates = True
-    SQL.Strings = (
-      'select Codigo'
-      '      ,Navio'
-      
-        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
-        'o)'
-      '      ,Processo'
-      #9'  --,Empresa'
-      'from Embarques'
-      'where Empresa = '#39'07922103000158'#39
-      'order by Processo')
-    Left = 931
-    Top = 25
-  end
-  object dsEmbarques: TDataSource
-    DataSet = Embarques
-    Left = 931
-    Top = 71
-  end
-  object CSTICMSTabA: TFDQuery
-    CachedUpdates = True
-    Connection = UniMainModule.Conecta
-    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
-    UpdateOptions.AutoCommitUpdates = True
-    SQL.Strings = (
-      'select Codigo'
-      '      ,Navio'
-      
-        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
-        'o)'
-      '      ,Processo'
-      #9'  --,Empresa'
-      'from Embarques'
-      'where Empresa = '#39'07922103000158'#39
-      'order by Processo')
-    Left = 931
-    Top = 121
-  end
-  object dsCSTICMSTabA: TDataSource
-    DataSet = CSTICMSTabA
-    Left = 931
-    Top = 170
-  end
-  object dsCSTICMSTabB: TDataSource
-    DataSet = CSTICMSTabB
-    Left = 931
-    Top = 263
-  end
-  object CSTICMSTabB: TFDQuery
-    CachedUpdates = True
-    Connection = UniMainModule.Conecta
-    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
-    UpdateOptions.AutoCommitUpdates = True
-    SQL.Strings = (
-      'select Codigo'
-      '      ,Navio'
-      
-        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
-        'o)'
-      '      ,Processo'
-      #9'  --,Empresa'
-      'from Embarques'
-      'where Empresa = '#39'07922103000158'#39
-      'order by Processo')
-    Left = 931
-    Top = 217
-  end
-  object CSTIPI: TFDQuery
-    CachedUpdates = True
-    Connection = UniMainModule.Conecta
-    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
-    UpdateOptions.AutoCommitUpdates = True
-    SQL.Strings = (
-      'select Codigo'
-      '      ,Navio'
-      
-        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
-        'o)'
-      '      ,Processo'
-      #9'  --,Empresa'
-      'from Embarques'
-      'where Empresa = '#39'07922103000158'#39
-      'order by Processo')
-    Left = 931
-    Top = 313
-  end
-  object dsCSTIPI: TDataSource
-    DataSet = CSTIPI
-    Left = 931
-    Top = 359
-  end
-  object CSTCBS: TFDQuery
-    CachedUpdates = True
-    Connection = UniMainModule.Conecta
-    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
-    UpdateOptions.AutoCommitUpdates = True
-    SQL.Strings = (
-      'select Codigo'
-      '      ,Navio'
-      
-        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
-        'o)'
-      '      ,Processo'
-      #9'  --,Empresa'
-      'from Embarques'
-      'where Empresa = '#39'07922103000158'#39
-      'order by Processo')
-    Left = 930
-    Top = 406
-  end
-  object dsCSTCBS: TDataSource
-    DataSet = CSTCBS
-    Left = 931
-    Top = 455
-  end
-  object CSTIBS: TFDQuery
-    CachedUpdates = True
-    Connection = UniMainModule.Conecta
-    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
-    UpdateOptions.AutoCommitUpdates = True
-    SQL.Strings = (
-      'select Codigo'
-      '      ,Navio'
-      
-        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
-        'o)'
-      '      ,Processo'
-      #9'  --,Empresa'
-      'from Embarques'
-      'where Empresa = '#39'07922103000158'#39
-      'order by Processo')
-    Left = 931
-    Top = 501
-  end
-  object dsCSTIBS: TDataSource
-    DataSet = CSTIBS
-    Left = 931
-    Top = 550
-  end
-  object CSTPIS: TFDQuery
-    CachedUpdates = True
-    Connection = UniMainModule.Conecta
-    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
-    UpdateOptions.AutoCommitUpdates = True
-    SQL.Strings = (
-      'select Codigo'
-      '      ,Navio'
-      
-        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
-        'o)'
-      '      ,Processo'
-      #9'  --,Empresa'
-      'from Embarques'
-      'where Empresa = '#39'07922103000158'#39
-      'order by Processo')
-    Left = 1014
-    Top = 26
-  end
-  object dsCSTPIS: TDataSource
-    DataSet = CSTPIS
-    Left = 1014
-    Top = 75
-  end
-  object CSTCOFINS: TFDQuery
-    CachedUpdates = True
-    Connection = UniMainModule.Conecta
-    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
-    UpdateOptions.AutoCommitUpdates = True
-    SQL.Strings = (
-      'select Codigo'
-      '      ,Navio'
-      
-        '      ,Navio_Nome = (select Nome from Navios where Codigo = Navi' +
-        'o)'
-      '      ,Processo'
-      #9'  --,Empresa'
-      'from Embarques'
-      'where Empresa = '#39'07922103000158'#39
-      'order by Processo')
-    Left = 1014
-    Top = 121
-  end
-  object dsCSTCOFINS: TDataSource
-    DataSet = CSTCOFINS
-    Left = 1014
-    Top = 170
+    object ItensNFProcesso: TStringField
+      FieldName = 'Processo'
+      Origin = 'Processo'
+      Size = 15
+    end
   end
 end

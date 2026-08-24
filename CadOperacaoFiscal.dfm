@@ -3848,10 +3848,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
       Origin = 'Empresa'
       Size = 14
     end
-    object OperacaoFiscalAliquota_ISS: TBCDField
-      FieldName = 'Aliquota_ISS'
-      Origin = 'Aliquota_ISS'
-    end
     object OperacaoFiscalPlano_COFINS: TStringField
       FieldName = 'Plano_COFINS'
       Origin = 'Plano_COFINS'
@@ -4140,6 +4136,12 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     object OperacaoFiscalFinalidade_Mercadoria: TSmallintField
       FieldName = 'Finalidade_Mercadoria'
       Origin = 'Finalidade_Mercadoria'
+    end
+    object OperacaoFiscalAliquota_ISS: TFMTBCDField
+      FieldName = 'Aliquota_ISS'
+      Origin = 'Aliquota_ISS'
+      Precision = 18
+      Size = 6
     end
   end
   object dsOperacaoFiscal: TDataSource

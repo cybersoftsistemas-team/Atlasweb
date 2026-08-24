@@ -7,7 +7,7 @@ uses
   uniGUIFrame, UniPageControl, uniDBGrid, uniPanel, uniDBLookUpComboBox, uniDBCheckBox, uniScrollBox, uniSpeedButton, uniDateTimePicker,
   uniDBDateTimePicker, uniButton, uniBitBtn, uniDBNavigator, uniEdit, uniDBEdit, uniDBMemo, uniBasicGrid, uniGUIBaseClasses, uniComboBox, UniGroupBox, uniSpinEdit, unimToggle,
   FireDAC.Comp.Client, Funcoes, Data.DB, uniSweetAlert, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, uniMemo, uniRadioGroup, uniCheckBox, uniMultiItem,
-  uniDBComboBox, uniLabel, uniImage, uniDBRadioGroup, Dialogo, Dateutils, uniFileUpload, uniStringGrid;
+  uniDBComboBox, uniLabel, uniImage, uniDBRadioGroup, Dialogo, Dateutils, uniFileUpload, uniStringGrid, System.AnsiStrings;
 
 type
   TfFiscalNFTerceiros = class(TuniFrame)
@@ -118,7 +118,7 @@ type
     ValorBCCBS: TUniDBFormattedNumberEdit;
     cValorCBS: TUniDBFormattedNumberEdit;
     TabItem: TUniTabSheet;
-    UniTabSheet2: TUniTabSheet;
+    TabLista: TUniTabSheet;
     Grade: TUniDBGrid;
     pBarraPesq: TUniPanel;
     cPesquisa: TUniEdit;
@@ -404,7 +404,6 @@ type
     ItensValor_Unitario: TFMTBCDField;
     ItensEmpresa: TStringField;
     ItensCFOP: TStringField;
-    ItensEstoque_Minimo: TFMTBCDField;
     procedure bSairClick(Sender: TObject);
     procedure UniFrameCreate(Sender: TObject);
     procedure bItensClick(Sender: TObject);
@@ -445,11 +444,13 @@ type
     procedure bArquivosMultiCompleted(Sender: TObject; Files: TUniFileInfoArray);
     procedure bXMLClick(Sender: TObject);
     procedure bXMLSairClick(Sender: TObject);
+    procedure bExcTodosItensClick(Sender: TObject);
   private
     function PeriodoBloqueado: boolean;
     function Movimentado: boolean;
     procedure LigaBotoesItens(Estado: boolean);
     function VerBloqueios: boolean;
+    procedure FrameFilhoFechou(Sender: TObject);
     { Private declarations }
   public
     { Public declarations }
@@ -612,6 +613,7 @@ begin
       end;
       with Operacao do begin
            sql.add('select Codigo');
+           sql.add('      ,Destino_Origem');
            sql.add('      ,Descricao');
            sql.add('      ,Movimenta_Estoque');
            sql.add('      ,Movimenta_EstoqueRep');
@@ -1798,11 +1800,12 @@ var
   i: integer;
 begin
      TabXML.TabVisible := false;
-      for i := 0 to pred(Pasta.PageCount) do begin
-          Pasta.Pages[i].Enabled := true;
-      end;
-      Pasta.ActivePage  := TabCapa;
-      pBarraNav.Enabled := true;
+     for i := 0 to pred(Pasta.PageCount) do begin
+         Pasta.Pages[i].Enabled := true;
+     end;
+     Pasta.ActivePage  := TabCapa;
+     pBarraNav.Enabled := true;
+     Notas.Refresh;
 end;
 
 procedure TfFiscalNFTerceiros.bManiForaClick(Sender: TObject);
@@ -1856,40 +1859,16 @@ end;
 procedure TfFiscalNFTerceiros.bAddItensClick(Sender: TObject);
 begin
      // Se estiver bloqueado não deixa alterar.
-     if not VerBloqueios then begin 
-        try
-            LigaBotoesItens(false);
-            mNomeAba  := 'ITEMS DA NOTA FISCAL: '+FormatFloat('0000', Notas.fieldbyname('Nota').asinteger)+' ('+NotasDestinatario_Nome.asstring+')';
-            FrameItem := TfFiscalNFTerceirosItens.create(TabItem, UniMainModule.mEmpresaAtiva);
-            with FrameItem do begin
-                 Parent := TabItem;
-                 Align  := alClient;
-
-                 with ItensNF do begin
-                      sql.clear;
-                      sql.add('select *');
-                      sql.add('      ,Estoque_Minimo = isnull((select Estoque_MinimoPerc from Produtos where Codigo = Codigo_Mercadoria), 0)');
-                      sql.add('from NotasItens');
-                      sql.add('where Nota_id = :pID');
-                      parambyname('pID').Value  := NotasNota_id.value;
-                      open;
-                      append;
-                           ItensNFNota_id.value := NotasNota_id.value;
-                           ItensNFEmpresa.value := NotasEmpresa.value;
-                           
-                      // Isso resolve o problema de preencher o dblookupcombobox a primeira vez e limpar o campo.     
-                      UniSession.Synchronize;                            
-                 end;
-            end;
-        except on E: Exception do 
-            begin
-               MessageDlgN('Falha desconhecida, não pode adicionar um novo registro!'+#13+E.Message, mtError, [mbOK]);
-               FrameItem.ItensNF.Cancel;
-               FreeAndNil(FrameItem);
-               LigaBotoesItens(true);
-               abort;
-            end;
-        end;
+     if VerBloqueios then abort;
+     try
+         LigaBotoesItens(false);
+         pBarraNav.Enabled   := false;
+         FrameItem           := TfFiscalNFTerceirosItens.create(TabItem, UniMainModule.mEmpresaAtiva, NotasNota_id.asinteger, 0, 'Adicionar', Operacao.fieldbyname('Destino_Origem').asstring);
+         FrameItem.Parent    := TabItem;
+         FrameItem.Align     := alClient;
+         FrameItem.OnDestroy := FrameFilhoFechou;
+     except on E: Exception do
+        MessageDlgN('Falha desconhecida, não pode adicionar um novo registro!'+#13+E.Message, mtError, [mbOK]);
      end;
 end;
 
@@ -1926,25 +1905,25 @@ var
   mitem: integer;
 begin
      // Se estiver bloqueado não deixa alterar.
+     if VerBloqueios then abort;
+     
      MessageDlg('Deseja realmente excluir o item ['+ItensItem.asstring+'] da nota fiscal: ', mtConfirmation,mbYesNo,
                  procedure(Comp:TComponent; ARes: Integer)
                  begin
                       if ARes = mrYes then begin
-                         if not VerBloqueios then begin 
-                            try 
-                               with ttmp do begin 
-                                    mItem := ItensItem.asinteger;
-                                    sql.clear;
-                                    sql.add('delete from NotasItens where Nota_Id = :pid and Item = :pItem');
-                                    parambyname('pid').value   := ItensNota_id.asinteger;
-                                    parambyname('pitem').value := ItensItem.asinteger;
-                                    execute;
-                               end;
-                               Itens.Refresh;
-                               TfDialogo.Execute(UniApplication, 'Sucesso', 'Item ['+inttostr(mItem)+'] excluído da nota fiscal');  
-                            except on E: Exception do
-                               TfDialogo.Execute(UniApplication, 'Erro', E.Message);
+                         try 
+                            with ttmp do begin 
+                                 mItem := ItensItem.asinteger;
+                                 sql.clear;
+                                 sql.add('delete from NotasItens where Nota_Id = :pid and Item = :pItem');
+                                 parambyname('pid').value   := ItensNota_id.asinteger;
+                                 parambyname('pitem').value := ItensItem.asinteger;
+                                 execute;
                             end;
+                            Itens.Refresh;
+                            TfDialogo.Execute(UniApplication, 'Sucesso', 'Item ['+inttostr(mItem)+'] excluído da nota fiscal');  
+                         except on E: Exception do
+                            TfDialogo.Execute(UniApplication, 'Erro', E.Message);
                          end;
                       end;
                  end);
@@ -2102,6 +2081,30 @@ begin
      end;
 end;
 
+procedure TfFiscalNFTerceiros.bExcTodosItensClick(Sender: TObject);
+begin
+     // Se estiver bloqueado não deixa alterar.
+     if VerBloqueios then abort;
+     
+     MessageDlg('Deseja realmente excluir todos os itens da nota fiscal: ', mtConfirmation,mbYesNo,
+                 procedure(Comp:TComponent; ARes: Integer)
+                 begin
+                      if ARes = mrYes then begin
+                         try 
+                            with ttmp do begin 
+                                 sql.clear;
+                                 sql.add('delete from NotasItens where Nota_Id = :pid');
+                                 parambyname('pid').value := ItensNota_id.asinteger;
+                                 execute;
+                            end;
+                            TfDialogo.Execute(UniApplication, 'Sucesso', 'Todos os itens foram excluídos da nota fiscal');  
+                         except on E: Exception do
+                            TfDialogo.Execute(UniApplication, 'Erro', E.Message);
+                         end;
+                      end;
+                 end);
+end;
+
 procedure TfFiscalNFTerceiros.bSalvarClick(Sender: TObject);
 begin
      if VerBloqueios then abort;
@@ -2159,7 +2162,6 @@ begin
         TfDialogo.Execute(UniApplication, 'Sucesso', 'Nota fiscal salva no banco de dados');  
      except on E: Exception do
         TfDialogo.Execute(UniApplication, 'Erro', E.Message);
-        //MessageDlgN('Falha desconhecida, não pode salvar a nota fiscal!'+#13+E.Message, mtError, [mbOK]);
      end;
 end;
 
@@ -2179,61 +2181,72 @@ end;
 procedure TfFiscalNFTerceiros.bEditarClick(Sender: TObject);
 begin
      // Se estiver bloqueado não deixa alterar.
-     if not VerBloqueios then begin 
-        try
-            Pasta.ActivePageIndex := 1; 
-            LigaBotoes(false);
-            cNota.Enabled        := false;
-            cChave.Enabled       := false;
-            cDataEmissao.Enabled := false;
-            cDataEntrada.Enabled := false;
-         
-            // Guardando as informações em caso de alteração para ajustar os itens.
-            mDataEmi_Antes  := NotasData_Emissao.value;
-            mDataEnt_Antes  := NotasData_ES.value;
-            mDest_Antes     := NotasDestinatario.AsInteger;
-            mOper_Antes     := NotasOperacao.AsInteger;
+     if VerBloqueios then abort;
+     
+     try
+         Pasta.ActivePageIndex := 1; 
+         LigaBotoes(false);
+         cNota.Enabled        := false;
+         cChave.Enabled       := false;
+         cDataEmissao.Enabled := false;
+         cDataEntrada.Enabled := false;
+      
+         // Guardando as informações em caso de alteração para ajustar os itens.
+         mDataEmi_Antes  := NotasData_Emissao.value;
+         mDataEnt_Antes  := NotasData_ES.value;
+         mDest_Antes     := NotasDestinatario.AsInteger;
+         mOper_Antes     := NotasOperacao.AsInteger;
 
-            Notas.Edit;
-            cBeneficio.setfocus;
-        except on E: Exception do
-            MessageDlgN('Falha desconhecida, não pode editar o registro corrente!'+#13+E.Message, mtError, [mbOK]);
-        end;
+         Notas.Edit;
+         cBeneficio.setfocus;
+     except on E: Exception do
+         MessageDlgN('Falha desconhecida, não pode editar o registro corrente!'+#13+E.Message, mtError, [mbOK]);
      end;
 end;
 
 procedure TfFiscalNFTerceiros.bEditItensClick(Sender: TObject);
 begin
      // Se estiver bloqueado não deixa alterar.
-     if not VerBloqueios then begin 
-        try
-            LigaBotoesItens(false);
-            mNomeAba  := 'ITEMS DA NOTA FISCAL: '+FormatFloat('0000', Notas.fieldbyname('Nota').asinteger)+' ('+NotasDestinatario_Nome.asstring+')';
-            FrameItem := TfFiscalNFTerceirosItens.create(TabItem, UniMainModule.mEmpresaAtiva);
-            with FrameItem do begin
-                 Parent := TabItem;
-                 Align  := alClient;
-                 with ItensNF do begin
-                      sql.clear;
-                      sql.add('select *');
-                      sql.add('from NotasItens');
-                      sql.add('where Nota_id = :ID');
-                      sql.add('and Item = :Item');
-                      parambyname('ID').Value  := NotasNota_id.value;
-                      parambyname('Item').Value  := ItensItem.asinteger;
-                      open;
-                      edit;
-                 end;
-            end;
-        except on E: Exception do 
-            begin
-               MessageDlgN('Falha desconhecida, não pode editar o registro!'+#13+E.Message, mtError, [mbOK]);
-               FrameItem.ItensNF.Cancel;
-               FreeAndNil(FrameItem);
-               LigaBotoesItens(true);
-               abort;
-            end;
-        end;
+     if VerBloqueios then abort;
+{     
+     try
+         LigaBotoesItens(false);
+//         mNomeAba  := 'ITEMS DA NOTA FISCAL: '+FormatFloat('0000', Notas.fieldbyname('Nota').asinteger)+' ('+NotasDestinatario_Nome.asstring+')';
+         FrameItem := TfFiscalNFTerceirosItens.create(TabItem, UniMainModule.mEmpresaAtiva);
+         with FrameItem do begin
+              Parent := TabItem;
+              Align  := alClient;
+              with ItensNF do begin
+                   sql.clear;
+                   sql.add('select *');
+                   sql.add('from NotasItens');
+                   sql.add('where Nota_id = :ID');
+                   sql.add('and Item = :Item');
+                   parambyname('ID').Value  := NotasNota_id.value;
+                   parambyname('Item').Value  := ItensItem.asinteger;
+                   open;
+                   edit;
+              end;
+         end;
+     except on E: Exception do 
+         begin
+            MessageDlgN('Falha desconhecida, não pode editar o registro!'+#13+E.Message, mtError, [mbOK]);
+            FrameItem.ItensNF.Cancel;
+            FreeAndNil(FrameItem);
+            LigaBotoesItens(true);
+            abort;
+         end;
+     end;
+}
+     try
+         LigaBotoesItens(false);
+         pBarraNav.Enabled   := false;
+         FrameItem           := TfFiscalNFTerceirosItens.create(TabItem, UniMainModule.mEmpresaAtiva, NotasNota_id.asinteger, 0, 'Editar', Operacao.fieldbyname('Destino_Origem').asstring);
+         FrameItem.Parent    := TabItem;
+         FrameItem.Align     := alClient;
+         FrameItem.OnDestroy := FrameFilhoFechou;
+     except on E: Exception do
+        MessageDlgN('Falha desconhecida, não pode adicionar um novo registro!'+#13+E.Message, mtError, [mbOK]);
      end;
      
 end;
@@ -2281,6 +2294,38 @@ end;
 procedure TfFiscalNFTerceiros.bGravItensClick(Sender: TObject);
 begin
      with FrameItem do begin 
+          // Validação de todos os campos.
+          CampoVazio(cProduto,'"Produto" é obrigatório!');
+          CampoVazio(cCFOP,'"CFOP" é obrigatório!');
+          if (MatchText(Operacao.FieldByName('Destino_Origem').asstring, ['I', 'E'])) then begin 
+             CampoVazio(cProcesso,'"Processo" é obrigatório para esse tipo de operação!');
+          end;
+//          if not OpFiscal.fieldbyname('Complementar').AsBoolean and (PedidosNFItens.fieldbyname('Quantidade').asfloat <= 0) then begin
+//             CampoVazio(cQtde,'"Quantidade" do item inválida!');
+//          end;
+//          CampoVazio(cValor_Unitario,'"Valor Unitario" do item inválido!"');
+//          
+//          // Verifica Estoque.
+//          if OpFiscal.fieldbyname('Movimenta_Estoque').asboolean and (PedidosNF.FieldByName('ES').AsInteger = 1) then begin
+//             if not Produtos.fieldbyname('Estoque_Navio').asboolean then begin
+//                mEstoque := EstoqueProduto(PedidosNFItens.fieldbyname('Codigo_Mercadoria').asinteger);
+//             end else begin
+//                mEstoque := EstoqueProdutoEmb(PedidosNFItens.fieldbyname('Codigo_Mercadoria').asinteger, PedidosNFItens.fieldbyname('Embarque').asinteger);
+//             end;
+//          end;
+//          if PedidosNFItens.state = dsEdit then mEstoque := mEstoque + mQtde;
+//          if ValidaCampo(cQtde, PedidosNFItens.fieldbyname('Quantidade').asfloat, mEstoque, '>', 'Quantidade maior que a disponível para este item'+#13+#13+'Estoque Disponível: '+FormatFloat(',##0.000', mEstoque), 'SEM ESTOQUE') then Abort;
+//
+//          // Verifica Inventario.
+//          if OpFiscal.fieldbyname('Movimenta_Inventario').asboolean and (PedidosNF.FieldByName('ES').AsInteger = 1) then begin
+//             if not Produtos.fieldbyname('Estoque_Navio').asboolean then begin
+//                mEstoque := InventarioProduto(PedidosNFItens.fieldbyname('Codigo_Mercadoria').asinteger);
+//             end;
+//          end;
+//          if PedidosNFItens.state = dsEdit then mEstoque := mEstoque + mQtde;
+//          if ValidaCampo(cQtde, PedidosNFItens.fieldbyname('Quantidade').asfloat, mEstoque, '>', 'Quantidade maior que a disponível para este item'+#13+#13+'Inventario Disponível: '+FormatFloat(',##0.000', mEstoque), 'SEM INVENTÁRIO') then Abort;
+
+     
           try
              with NCM do begin
                   sql.Clear;
@@ -2301,22 +2346,12 @@ begin
              end;                        
              ItensNFNota_id.value              := NotasNota_id.value;
              ItensNFEmpresa.value              := NotasEmpresa.value;
-             //ItensNFEmissao.value              := 'T';
-             //ItensNFNota.value                 := NotasNota.value;
              ItensNFES.value                   := 0;
-             //ItensNFChave.value                := NotasChave.value;
-             //ItensNFData_Emissao.value         := NotasData_Emissao.value;
-             //ItensNFData_ES.value              := NotasData_ES.value;
-             //ItensNFDestinatario.value         := NotasDestinatario.value;
-             //ItensNFOperacao.value             := NotasOperacao.value;
              ItensNFCodigo_Fabricante.value    := Produtos.fieldbyname('Codigo_Fabricante').value;
              ItensNFDescricao_Mercadoria.value := Produtos.fieldbyname('Descricao').value;
              ItensNFNCM.value                  := Produtos.fieldbyname('NCM').value;
-             ItensNFUM.value                   := Produtos.fieldbyname('UM').asstring;
+             ItensNFUM.asstring                := Produtos.fieldbyname('UM').asstring;
              ItensNFEXTIPI.value               := NCM.fieldbyname('Codigo_EXTIPI').asinteger;
-//             ItensNFMovimenta_Estoque.value    := Operacao.fieldbyname('Movimenta_Estoque').value;
-//             ItensNFMovimenta_EstoqueRep.value := Operacao.fieldbyname('Movimenta_EstoqueRep').value;
-//             ItensNFMovimenta_Inventario.value := Operacao.fieldbyname('Movimenta_Inventario').value;
              ItensNF.post; 
              
              TfDialogo.Execute(UniApplication, 'Sucesso', 'Item salvo na nota fiscal.');  
@@ -2325,6 +2360,8 @@ begin
           end;
      end;
      FreeAndNil(FrameItem);
+     Itens.Cancel;
+     Itens.Refresh;
      LigaBotoesItens(true);
 end;
 
@@ -2445,6 +2482,14 @@ begin
              end;
           end;
      end;
+end;
+
+procedure TfFiscalNFTerceiros.FrameFilhoFechou(Sender: TObject);
+begin
+    // Restaurar estado original
+    GradeItens.show;
+    BarraItens.show;
+    pBarraNav.Enabled := true;
 end;
 
      

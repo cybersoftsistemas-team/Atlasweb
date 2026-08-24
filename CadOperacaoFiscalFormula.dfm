@@ -906,6 +906,8 @@ object fCadOperacaoFiscalFormula: TfCadOperacaoFiscalFormula
       Width = 172
       Height = 27
       Hint = ''
+      MaxValue = 99
+      MinValue = 1
       TabOrder = 11
       FieldLabel = 'Ordem de Calculo'
       FieldLabelSeparator = ' '

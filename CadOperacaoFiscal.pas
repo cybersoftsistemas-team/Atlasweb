@@ -297,7 +297,6 @@ type
     OperacaoFiscalVisiveis_AFRMM: TBooleanField;
     OperacaoFiscalVisivel_AFRMM: TBooleanField;
     OperacaoFiscalEmpresa: TStringField;
-    OperacaoFiscalAliquota_ISS: TBCDField;
     OperacaoFiscalPlano_COFINS: TStringField;
     OperacaoFiscalPlano_ICMSOper: TStringField;
     OperacaoFiscalPlano_ICMSST: TStringField;
@@ -427,6 +426,7 @@ type
     UniDBLookupComboBox1: TUniDBLookupComboBox;
     tFinalidade: TFDQuery;
     dstFinalidade: TDataSource;
+    OperacaoFiscalAliquota_ISS: TFMTBCDField;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);

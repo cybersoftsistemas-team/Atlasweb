@@ -1,14 +1,14 @@
 object fFatPedidoNFItem: TfFatPedidoNFItem
   Left = 0
   Top = 0
-  Width = 968
+  Width = 873
   Height = 1900
   OnCreate = UniFrameCreate
   TabOrder = 0
   object UniPageControl1: TUniPageControl
     Left = 0
     Top = 0
-    Width = 968
+    Width = 873
     Height = 1900
     Hint = ''
     ActivePage = UniTabSheet3
@@ -21,7 +21,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       object UniContainerPanel1: TUniContainerPanel
         Left = 0
         Top = 0
-        Width = 960
+        Width = 865
         Height = 1872
         Hint = ''
         ParentColor = False
@@ -33,12 +33,12 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          960
+          865
           1872)
         ScrollHeight = 1872
-        ScrollWidth = 960
+        ScrollWidth = 865
         object UniPanel3: TUniPanel
-          Left = 43
+          Left = 38
           Top = 15
           Width = 784
           Height = 1743
@@ -650,7 +650,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
               Hint = ''
               ShowHint = True
               ParentShowHint = False
-              ListField = 'Tipo;Declaracao;Processo'
+              ListField = 'Declaracao;Processo'
               ListSource = dsProcessos
               KeyField = 'Processo'
               ListFieldIndex = 1
@@ -2739,7 +2739,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 954
+        Width = 859
         Height = 506
         Hint = ''
         HeaderTitle = 'F'#211'RMULAS DOS CALCULOS DO PEDIDO'
@@ -2784,7 +2784,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
         AlignWithMargins = True
         Left = 3
         Top = 515
-        Width = 954
+        Width = 859
         Height = 1354
         Hint = ''
         BorderStyle = ubsInset
@@ -2819,14 +2819,18 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       FieldName = 'Pedido'
       Origin = 'Pedido'
     end
+    object PedidosNFItensItem: TSmallintField
+      FieldName = 'Item'
+      Origin = 'Item'
+    end
     object PedidosNFItensEmpresa: TStringField
       FieldName = 'Empresa'
       Origin = 'Empresa'
       Size = 14
     end
-    object PedidosNFItensItem: TSmallintField
-      FieldName = 'Item'
-      Origin = 'Item'
+    object PedidosNFItensES: TSmallintField
+      FieldName = 'ES'
+      Origin = 'ES'
     end
     object PedidosNFItensOperacao: TSmallintField
       FieldName = 'Operacao'
@@ -2884,17 +2888,39 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       FixedChar = True
       Size = 2
     end
+    object PedidosNFItensCSTICMS_TabA: TStringField
+      FieldName = 'CSTICMS_TabA'
+      Origin = 'CSTICMS_TabA'
+      FixedChar = True
+      Size = 2
+    end
+    object PedidosNFItensCSTICMS_TabB: TStringField
+      FieldName = 'CSTICMS_TabB'
+      Origin = 'CSTICMS_TabB'
+      FixedChar = True
+      Size = 3
+    end
     object PedidosNFItensAdicao: TSmallintField
       FieldName = 'Adicao'
       Origin = 'Adicao'
     end
-    object PedidosNFItensPeso_Liquido: TBCDField
+    object PedidosNFItensQuantidade: TFMTBCDField
+      FieldName = 'Quantidade'
+      Origin = 'Quantidade'
+      Precision = 18
+      Size = 3
+    end
+    object PedidosNFItensPeso_Liquido: TFMTBCDField
       FieldName = 'Peso_Liquido'
       Origin = 'Peso_Liquido'
+      Precision = 18
+      Size = 3
     end
-    object PedidosNFItensPeso_Bruto: TBCDField
+    object PedidosNFItensPeso_Bruto: TFMTBCDField
       FieldName = 'Peso_Bruto'
       Origin = 'Peso_Bruto'
+      Precision = 18
+      Size = 3
     end
     object PedidosNFItensMovimenta_Inventario: TBooleanField
       FieldName = 'Movimenta_Inventario'
@@ -2903,6 +2929,14 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     object PedidosNFItensMovimenta_Estoque: TBooleanField
       FieldName = 'Movimenta_Estoque'
       Origin = 'Movimenta_Estoque'
+    end
+    object PedidosNFItensMovimenta_EstoqueRep: TBooleanField
+      FieldName = 'Movimenta_EstoqueRep'
+      Origin = 'Movimenta_EstoqueRep'
+    end
+    object PedidosNFItensMovimenta_EstoqueInd: TBooleanField
+      FieldName = 'Movimenta_EstoqueInd'
+      Origin = 'Movimenta_EstoqueInd'
     end
     object PedidosNFItensModalidade_BCICMS: TSmallintField
       FieldName = 'Modalidade_BCICMS'
@@ -2917,13 +2951,19 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       Origin = 'Processo'
       Size = 15
     end
-    object PedidosNFItensRateio_ICMSProcesso: TBCDField
+    object PedidosNFItensRateio_ICMSProcesso: TFMTBCDField
       FieldName = 'Rateio_ICMSProcesso'
       Origin = 'Rateio_ICMSProcesso'
+      Precision = 18
+      Size = 6
     end
     object PedidosNFItensApuracao_PISCOFINS: TBooleanField
       FieldName = 'Apuracao_PISCOFINS'
       Origin = 'Apuracao_PISCOFINS'
+    end
+    object PedidosNFItensFinalidade_Mercadoria: TSmallintField
+      FieldName = 'Finalidade_Mercadoria'
+      Origin = 'Finalidade_Mercadoria'
     end
     object PedidosNFItensRegistro_Adicao: TIntegerField
       FieldName = 'Registro_Adicao'
@@ -2940,7 +2980,6 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     object PedidosNFItensChaveNF_Referencia: TStringField
       FieldName = 'ChaveNF_Referencia'
       Origin = 'ChaveNF_Referencia'
-      EditMask = '##.##.##.##.##.###.###/####-##-###.###.###-###-###.###.###-#'
       Size = 44
     end
     object PedidosNFItensDataNF_Referencia: TDateField
@@ -2960,10 +2999,6 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       FieldName = 'Devolucao'
       Origin = 'Devolucao'
     end
-    object PedidosNFItensMovimenta_EstoqueRep: TBooleanField
-      FieldName = 'Movimenta_EstoqueRep'
-      Origin = 'Movimenta_EstoqueRep'
-    end
     object PedidosNFItensCEST: TStringField
       FieldName = 'CEST'
       Origin = 'CEST'
@@ -2978,574 +3013,687 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       FieldName = 'Ordem'
       Origin = 'Ordem'
     end
-    object PedidosNFItensFator_Cambio: TBCDField
+    object PedidosNFItensAliquota_ICMSSTAnt: TFMTBCDField
+      FieldName = 'Aliquota_ICMSSTAnt'
+      Origin = 'Aliquota_ICMSSTAnt'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensFator_Cambio: TFMTBCDField
       FieldName = 'Fator_Cambio'
       Origin = 'Fator_Cambio'
+      Precision = 18
+      Size = 6
     end
     object PedidosNFItensOrigem_Mercadoria: TSmallintField
       FieldName = 'Origem_Mercadoria'
       Origin = 'Origem_Mercadoria'
+    end
+    object PedidosNFItensEmbarque: TIntegerField
+      FieldName = 'Embarque'
+      Origin = 'Embarque'
     end
     object PedidosNFItensNumero_BL: TStringField
       FieldName = 'Numero_BL'
       Origin = 'Numero_BL'
       Size = 15
     end
-    object PedidosNFItensValor_BCDIFAL: TBCDField
+    object PedidosNFItensCodigo_CredPres: TStringField
+      FieldName = 'Codigo_CredPres'
+      Origin = 'Codigo_CredPres'
+      Size = 8
+    end
+    object PedidosNFItensSequencia: TIntegerField
+      FieldName = 'Sequencia'
+      Origin = 'Sequencia'
+    end
+    object PedidosNFItensValor_BCDIFAL: TFMTBCDField
       FieldName = 'Valor_BCDIFAL'
       Origin = 'Valor_BCDIFAL'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_BCDIFALST: TBCDField
+    object PedidosNFItensValor_BCDIFALST: TFMTBCDField
       FieldName = 'Valor_BCDIFALST'
       Origin = 'Valor_BCDIFALST'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_BCICMSMono: TBCDField
+    object PedidosNFItensValor_BCICMSMono: TFMTBCDField
       FieldName = 'Valor_BCICMSMono'
       Origin = 'Valor_BCICMSMono'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_BCICMSMonoRet: TBCDField
+    object PedidosNFItensValor_BCICMSMonoRet: TFMTBCDField
       FieldName = 'Valor_BCICMSMonoRet'
       Origin = 'Valor_BCICMSMonoRet'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_BCICMSPresumido: TBCDField
+    object PedidosNFItensValor_BCICMSPresumido: TFMTBCDField
       FieldName = 'Valor_BCICMSPresumido'
       Origin = 'Valor_BCICMSPresumido'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_COFINSST: TBCDField
+    object PedidosNFItensValor_COFINSST: TFMTBCDField
       FieldName = 'Valor_COFINSST'
       Origin = 'Valor_COFINSST'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_ICMSMono: TBCDField
+    object PedidosNFItensValor_ICMSMono: TFMTBCDField
       FieldName = 'Valor_ICMSMono'
       Origin = 'Valor_ICMSMono'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_ICMSMonoRet: TBCDField
+    object PedidosNFItensValor_ICMSMonoRet: TFMTBCDField
       FieldName = 'Valor_ICMSMonoRet'
       Origin = 'Valor_ICMSMonoRet'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_ICMSPresumido: TBCDField
+    object PedidosNFItensValor_ICMSPresumido: TFMTBCDField
       FieldName = 'Valor_ICMSPresumido'
       Origin = 'Valor_ICMSPresumido'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_PISST: TBCDField
+    object PedidosNFItensValor_PISST: TFMTBCDField
       FieldName = 'Valor_PISST'
       Origin = 'Valor_PISST'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensFator_Produto: TBCDField
+    object PedidosNFItensFator_Produto: TFMTBCDField
       FieldName = 'Fator_Produto'
       Origin = 'Fator_Produto'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_Unitario: TBCDField
+    object PedidosNFItensValor_Unitario: TFMTBCDField
       FieldName = 'Valor_Unitario'
       Origin = 'Valor_Unitario'
-      Required = True
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensQuantidade: TBCDField
-      FieldName = 'Quantidade'
-      Origin = 'Quantidade'
-      Required = True
-      DisplayFormat = ',##0.000'
-    end
-    object PedidosNFItensValor_BCIPI: TBCDField
+    object PedidosNFItensValor_BCIPI: TFMTBCDField
       FieldName = 'Valor_BCIPI'
       Origin = 'Valor_BCIPI'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensAliquota_IPI: TBCDField
+    object PedidosNFItensAliquota_IPI: TFMTBCDField
       FieldName = 'Aliquota_IPI'
       Origin = 'Aliquota_IPI'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_IPI: TBCDField
+    object PedidosNFItensValor_IPI: TFMTBCDField
       FieldName = 'Valor_IPI'
       Origin = 'Valor_IPI'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensAliquota_II: TBCDField
+    object PedidosNFItensAliquota_II: TFMTBCDField
       FieldName = 'Aliquota_II'
       Origin = 'Aliquota_II'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_II: TBCDField
+    object PedidosNFItensValor_II: TFMTBCDField
       FieldName = 'Valor_II'
       Origin = 'Valor_II'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_BCICMSST: TBCDField
-      FieldName = 'Valor_BCICMSST'
-      Origin = 'Valor_BCICMSST'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensAliquota_ICMSST: TBCDField
-      FieldName = 'Aliquota_ICMSST'
-      Origin = 'Aliquota_ICMSST'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_ICMSST: TBCDField
-      FieldName = 'Valor_ICMSST'
-      Origin = 'Valor_ICMSST'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_BCMVA: TBCDField
-      FieldName = 'Valor_BCMVA'
-      Origin = 'Valor_BCMVA'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensAliquota_MVA: TBCDField
-      FieldName = 'Aliquota_MVA'
-      Origin = 'Aliquota_MVA'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_MVA: TBCDField
-      FieldName = 'Valor_MVA'
-      Origin = 'Valor_MVA'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensAliquota_PIS: TBCDField
-      FieldName = 'Aliquota_PIS'
-      Origin = 'Aliquota_PIS'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_BCPIS: TBCDField
-      FieldName = 'Valor_BCPIS'
-      Origin = 'Valor_BCPIS'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_PIS: TBCDField
-      FieldName = 'Valor_PIS'
-      Origin = 'Valor_PIS'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensAliquota_COFINS: TBCDField
-      FieldName = 'Aliquota_COFINS'
-      Origin = 'Aliquota_COFINS'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_BCCOFINS: TBCDField
-      FieldName = 'Valor_BCCOFINS'
-      Origin = 'Valor_BCCOFINS'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_COFINS: TBCDField
-      FieldName = 'Valor_COFINS'
-      Origin = 'Valor_COFINS'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_Frete: TBCDField
-      FieldName = 'Valor_Frete'
-      Origin = 'Valor_Frete'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_Seguro: TBCDField
-      FieldName = 'Valor_Seguro'
-      Origin = 'Valor_Seguro'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_Despesa: TBCDField
-      FieldName = 'Valor_Despesa'
-      Origin = 'Valor_Despesa'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_BCFCPST: TBCDField
-      FieldName = 'Valor_BCFCPST'
-      Origin = 'Valor_BCFCPST'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_FCPST: TBCDField
-      FieldName = 'Valor_FCPST'
-      Origin = 'Valor_FCPST'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_BCFCP: TBCDField
-      FieldName = 'Valor_BCFCP'
-      Origin = 'Valor_BCFCP'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_FCP: TBCDField
-      FieldName = 'Valor_FCP'
-      Origin = 'Valor_FCP'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_BCICMSDest: TBCDField
-      FieldName = 'Valor_BCICMSDest'
-      Origin = 'Valor_BCICMSDest'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensAliquota_ICMSDest: TBCDField
-      FieldName = 'Aliquota_ICMSDest'
-      Origin = 'Aliquota_ICMSDest'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_ICMSDest: TBCDField
-      FieldName = 'Valor_ICMSDest'
-      Origin = 'Valor_ICMSDest'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_DIFAL: TBCDField
-      FieldName = 'Valor_DIFAL'
-      Origin = 'Valor_DIFAL'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensPercentual_DIFALOrig: TBCDField
-      FieldName = 'Percentual_DIFALOrig'
-      Origin = 'Percentual_DIFALOrig'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_DIFALOrig: TBCDField
-      FieldName = 'Valor_DIFALOrig'
-      Origin = 'Valor_DIFALOrig'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensPercentual_DIFALDest: TBCDField
-      FieldName = 'Percentual_DIFALDest'
-      Origin = 'Percentual_DIFALDest'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_DIFALDest: TBCDField
-      FieldName = 'Valor_DIFALDest'
-      Origin = 'Valor_DIFALDest'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_DIFALST: TBCDField
-      FieldName = 'Valor_DIFALST'
-      Origin = 'Valor_DIFALST'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensAliquota_FCP: TBCDField
-      FieldName = 'Aliquota_FCP'
-      Origin = 'Aliquota_FCP'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_FCPDest: TBCDField
-      FieldName = 'Valor_FCPDest'
-      Origin = 'Valor_FCPDest'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensPercentual_FCPICMSOrig: TBCDField
-      FieldName = 'Percentual_FCPICMSOrig'
-      Origin = 'Percentual_FCPICMSOrig'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_FCPICMSDest: TBCDField
-      FieldName = 'Valor_FCPICMSDest'
-      Origin = 'Valor_FCPICMSDest'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_ICMSDesonerado: TBCDField
-      FieldName = 'Valor_ICMSDesonerado'
-      Origin = 'Valor_ICMSDesonerado'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_ICMSSTAnt: TBCDField
-      FieldName = 'Valor_ICMSSTAnt'
-      Origin = 'Valor_ICMSSTAnt'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_ICMSAnt: TBCDField
-      FieldName = 'Valor_ICMSAnt'
-      Origin = 'Valor_ICMSAnt'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_CIF: TBCDField
-      FieldName = 'Valor_CIF'
-      Origin = 'Valor_CIF'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_Pauta: TBCDField
-      FieldName = 'Valor_Pauta'
-      Origin = 'Valor_Pauta'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_AFRMM: TBCDField
-      FieldName = 'Valor_AFRMM'
-      Origin = 'Valor_AFRMM'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_BCII: TBCDField
-      FieldName = 'Valor_BCII'
-      Origin = 'Valor_BCII'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_IsentasICMS: TBCDField
-      FieldName = 'Valor_IsentasICMS'
-      Origin = 'Valor_IsentasICMS'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_OutrasICMS: TBCDField
-      FieldName = 'Valor_OutrasICMS'
-      Origin = 'Valor_OutrasICMS'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_IsentasIPI: TBCDField
-      FieldName = 'Valor_IsentasIPI'
-      Origin = 'Valor_IsentasIPI'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_OutrasIPI: TBCDField
-      FieldName = 'Valor_OutrasIPI'
-      Origin = 'Valor_OutrasIPI'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_BCICMSOp: TBCDField
+    object PedidosNFItensValor_BCICMSOp: TFMTBCDField
       FieldName = 'Valor_BCICMSOp'
       Origin = 'Valor_BCICMSOp'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensAliquota_ICMSOp: TBCDField
+    object PedidosNFItensAliquota_ICMSOp: TFMTBCDField
       FieldName = 'Aliquota_ICMSOp'
       Origin = 'Aliquota_ICMSOp'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_ICMSOp: TBCDField
+    object PedidosNFItensValor_ICMSOp: TFMTBCDField
       FieldName = 'Valor_ICMSOp'
       Origin = 'Valor_ICMSOp'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensAliquota_ICMSEntrada: TBCDField
+    object PedidosNFItensAliquota_ICMSEntrada: TFMTBCDField
       FieldName = 'Aliquota_ICMSEntrada'
       Origin = 'Aliquota_ICMSEntrada'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensAliquota_ICMSPresumido: TBCDField
-      FieldName = 'Aliquota_ICMSPresumido'
-      Origin = 'Aliquota_ICMSPresumido'
-      DisplayFormat = ',##0.00'
+    object PedidosNFItensValor_BCICMSST: TFMTBCDField
+      FieldName = 'Valor_BCICMSST'
+      Origin = 'Valor_BCICMSST'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensAliquota_ICMSDif: TBCDField
-      FieldName = 'Aliquota_ICMSDif'
-      Origin = 'Aliquota_ICMSDif'
-      DisplayFormat = ',##0.00'
+    object PedidosNFItensAliquota_ICMSST: TFMTBCDField
+      FieldName = 'Aliquota_ICMSST'
+      Origin = 'Aliquota_ICMSST'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_BCICMSApuracao: TBCDField
-      FieldName = 'Valor_BCICMSApuracao'
-      Origin = 'Valor_BCICMSApuracao'
-      DisplayFormat = ',##0.00'
+    object PedidosNFItensValor_ICMSST: TFMTBCDField
+      FieldName = 'Valor_ICMSST'
+      Origin = 'Valor_ICMSST'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_ICMSApuracao: TBCDField
-      FieldName = 'Valor_ICMSApuracao'
-      Origin = 'Valor_ICMSApuracao'
-      DisplayFormat = ',##0.00'
+    object PedidosNFItensValor_BCMVA: TFMTBCDField
+      FieldName = 'Valor_BCMVA'
+      Origin = 'Valor_BCMVA'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_MediaBCR: TBCDField
-      FieldName = 'Valor_MediaBCR'
-      Origin = 'Valor_MediaBCR'
-      DisplayFormat = ',##0.00'
+    object PedidosNFItensAliquota_MVA: TFMTBCDField
+      FieldName = 'Aliquota_MVA'
+      Origin = 'Aliquota_MVA'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_TotalNota: TBCDField
-      FieldName = 'Valor_TotalNota'
-      Origin = 'Valor_TotalNota'
-      DisplayFormat = ',##0.00'
+    object PedidosNFItensValor_MVA: TFMTBCDField
+      FieldName = 'Valor_MVA'
+      Origin = 'Valor_MVA'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_Inventario: TBCDField
-      FieldName = 'Valor_Inventario'
-      Origin = 'Valor_Inventario'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_Dumping: TBCDField
-      FieldName = 'Valor_Dumping'
-      Origin = 'Valor_Dumping'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensPercentual_Lucro: TBCDField
-      FieldName = 'Percentual_Lucro'
-      Origin = 'Percentual_Lucro'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_Lucro: TBCDField
-      FieldName = 'Valor_Lucro'
-      Origin = 'Valor_Lucro'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_PIS2: TBCDField
-      FieldName = 'Valor_PIS2'
-      Origin = 'Valor_PIS2'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_COFINS2: TBCDField
-      FieldName = 'Valor_COFINS2'
-      Origin = 'Valor_COFINS2'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensAliquota_IRPJ: TBCDField
-      FieldName = 'Aliquota_IRPJ'
-      Origin = 'Aliquota_IRPJ'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_IRPJ: TBCDField
-      FieldName = 'Valor_IRPJ'
-      Origin = 'Valor_IRPJ'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensAliquota_CSLL: TBCDField
-      FieldName = 'Aliquota_CSLL'
-      Origin = 'Aliquota_CSLL'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_CSLL: TBCDField
-      FieldName = 'Valor_CSLL'
-      Origin = 'Valor_CSLL'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensRateio_FreteTerrNac: TBCDField
-      FieldName = 'Rateio_FreteTerrNac'
-      Origin = 'Rateio_FreteTerrNac'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensPercentual_Desconto: TBCDField
-      FieldName = 'Percentual_Desconto'
-      Origin = 'Percentual_Desconto'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_Desconto: TBCDField
-      FieldName = 'Valor_Desconto'
-      Origin = 'Valor_Desconto'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensAliquota_PISRed: TBCDField
-      FieldName = 'Aliquota_PISRed'
-      Origin = 'Aliquota_PISRed'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensAliquota_COFINSRed: TBCDField
-      FieldName = 'Aliquota_COFINSRed'
-      Origin = 'Aliquota_COFINSRed'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensRateio_SISCOMEX: TBCDField
-      FieldName = 'Rateio_SISCOMEX'
-      Origin = 'Rateio_SISCOMEX'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensPercentual_Comissao: TBCDField
-      FieldName = 'Percentual_Comissao'
-      Origin = 'Percentual_Comissao'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_Comissao: TBCDField
-      FieldName = 'Valor_Comissao'
-      Origin = 'Valor_Comissao'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensPercentual_RedICMSST: TBCDField
-      FieldName = 'Percentual_RedICMSST'
-      Origin = 'Percentual_RedICMSST'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_ICMSDif: TBCDField
-      FieldName = 'Valor_ICMSDif'
-      Origin = 'Valor_ICMSDif'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensPercentual_Beneficio: TBCDField
-      FieldName = 'Percentual_Beneficio'
-      Origin = 'Percentual_Beneficio'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensPercentual_ICMSMono: TBCDField
-      FieldName = 'Percentual_ICMSMono'
-      Origin = 'Percentual_ICMSMono'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensPercentual_ICMSMonoRet: TBCDField
-      FieldName = 'Percentual_ICMSMonoRet'
-      Origin = 'Percentual_ICMSMonoRet'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensAliquota_ICMSOpRed: TBCDField
+    object PedidosNFItensAliquota_ICMSOpRed: TFMTBCDField
       FieldName = 'Aliquota_ICMSOpRed'
       Origin = 'Aliquota_ICMSOpRed'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_ICMSOpRed: TBCDField
+    object PedidosNFItensValor_ICMSOpRed: TFMTBCDField
       FieldName = 'Valor_ICMSOpRed'
       Origin = 'Valor_ICMSOpRed'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensAliquota_ICMSOpIntegral: TBCDField
+    object PedidosNFItensAliquota_PIS: TFMTBCDField
+      FieldName = 'Aliquota_PIS'
+      Origin = 'Aliquota_PIS'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_BCPIS: TFMTBCDField
+      FieldName = 'Valor_BCPIS'
+      Origin = 'Valor_BCPIS'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_PIS: TFMTBCDField
+      FieldName = 'Valor_PIS'
+      Origin = 'Valor_PIS'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensAliquota_COFINS: TFMTBCDField
+      FieldName = 'Aliquota_COFINS'
+      Origin = 'Aliquota_COFINS'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_BCCOFINS: TFMTBCDField
+      FieldName = 'Valor_BCCOFINS'
+      Origin = 'Valor_BCCOFINS'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_COFINS: TFMTBCDField
+      FieldName = 'Valor_COFINS'
+      Origin = 'Valor_COFINS'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_Frete: TFMTBCDField
+      FieldName = 'Valor_Frete'
+      Origin = 'Valor_Frete'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_Seguro: TFMTBCDField
+      FieldName = 'Valor_Seguro'
+      Origin = 'Valor_Seguro'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_Despesa: TFMTBCDField
+      FieldName = 'Valor_Despesa'
+      Origin = 'Valor_Despesa'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_BCFCPST: TFMTBCDField
+      FieldName = 'Valor_BCFCPST'
+      Origin = 'Valor_BCFCPST'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_FCPST: TFMTBCDField
+      FieldName = 'Valor_FCPST'
+      Origin = 'Valor_FCPST'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_BCFCP: TFMTBCDField
+      FieldName = 'Valor_BCFCP'
+      Origin = 'Valor_BCFCP'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_FCP: TFMTBCDField
+      FieldName = 'Valor_FCP'
+      Origin = 'Valor_FCP'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_BCICMSDest: TFMTBCDField
+      FieldName = 'Valor_BCICMSDest'
+      Origin = 'Valor_BCICMSDest'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensAliquota_ICMSDest: TFMTBCDField
+      FieldName = 'Aliquota_ICMSDest'
+      Origin = 'Aliquota_ICMSDest'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_ICMSDest: TFMTBCDField
+      FieldName = 'Valor_ICMSDest'
+      Origin = 'Valor_ICMSDest'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_DIFAL: TFMTBCDField
+      FieldName = 'Valor_DIFAL'
+      Origin = 'Valor_DIFAL'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensPercentual_DIFALOrig: TFMTBCDField
+      FieldName = 'Percentual_DIFALOrig'
+      Origin = 'Percentual_DIFALOrig'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_DIFALOrig: TFMTBCDField
+      FieldName = 'Valor_DIFALOrig'
+      Origin = 'Valor_DIFALOrig'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensPercentual_DIFALDest: TFMTBCDField
+      FieldName = 'Percentual_DIFALDest'
+      Origin = 'Percentual_DIFALDest'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_DIFALDest: TFMTBCDField
+      FieldName = 'Valor_DIFALDest'
+      Origin = 'Valor_DIFALDest'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_DIFALST: TFMTBCDField
+      FieldName = 'Valor_DIFALST'
+      Origin = 'Valor_DIFALST'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensAliquota_FCP: TFMTBCDField
+      FieldName = 'Aliquota_FCP'
+      Origin = 'Aliquota_FCP'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_FCPDest: TFMTBCDField
+      FieldName = 'Valor_FCPDest'
+      Origin = 'Valor_FCPDest'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensPercentual_FCPICMSOrig: TFMTBCDField
+      FieldName = 'Percentual_FCPICMSOrig'
+      Origin = 'Percentual_FCPICMSOrig'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_FCPICMSDest: TFMTBCDField
+      FieldName = 'Valor_FCPICMSDest'
+      Origin = 'Valor_FCPICMSDest'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_ICMSDesonerado: TFMTBCDField
+      FieldName = 'Valor_ICMSDesonerado'
+      Origin = 'Valor_ICMSDesonerado'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_BCICMSSTAnt: TFMTBCDField
+      FieldName = 'Valor_BCICMSSTAnt'
+      Origin = 'Valor_BCICMSSTAnt'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_ICMSSTAnt: TFMTBCDField
+      FieldName = 'Valor_ICMSSTAnt'
+      Origin = 'Valor_ICMSSTAnt'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_ICMSAnt: TFMTBCDField
+      FieldName = 'Valor_ICMSAnt'
+      Origin = 'Valor_ICMSAnt'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_CIF: TFMTBCDField
+      FieldName = 'Valor_CIF'
+      Origin = 'Valor_CIF'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_Pauta: TFMTBCDField
+      FieldName = 'Valor_Pauta'
+      Origin = 'Valor_Pauta'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_AFRMM: TFMTBCDField
+      FieldName = 'Valor_AFRMM'
+      Origin = 'Valor_AFRMM'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_BCII: TFMTBCDField
+      FieldName = 'Valor_BCII'
+      Origin = 'Valor_BCII'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_IsentasICMS: TFMTBCDField
+      FieldName = 'Valor_IsentasICMS'
+      Origin = 'Valor_IsentasICMS'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_OutrasICMS: TFMTBCDField
+      FieldName = 'Valor_OutrasICMS'
+      Origin = 'Valor_OutrasICMS'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_IsentasIPI: TFMTBCDField
+      FieldName = 'Valor_IsentasIPI'
+      Origin = 'Valor_IsentasIPI'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_OutrasIPI: TFMTBCDField
+      FieldName = 'Valor_OutrasIPI'
+      Origin = 'Valor_OutrasIPI'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_BCICMSApuracao: TFMTBCDField
+      FieldName = 'Valor_BCICMSApuracao'
+      Origin = 'Valor_BCICMSApuracao'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_ICMSApuracao: TFMTBCDField
+      FieldName = 'Valor_ICMSApuracao'
+      Origin = 'Valor_ICMSApuracao'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_MediaBCR: TFMTBCDField
+      FieldName = 'Valor_MediaBCR'
+      Origin = 'Valor_MediaBCR'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_TotalNota: TFMTBCDField
+      FieldName = 'Valor_TotalNota'
+      Origin = 'Valor_TotalNota'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_Impostos: TFMTBCDField
+      FieldName = 'Valor_Impostos'
+      Origin = 'Valor_Impostos'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_Inventario: TFMTBCDField
+      FieldName = 'Valor_Inventario'
+      Origin = 'Valor_Inventario'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_Dumping: TFMTBCDField
+      FieldName = 'Valor_Dumping'
+      Origin = 'Valor_Dumping'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensPercentual_Lucro: TFMTBCDField
+      FieldName = 'Percentual_Lucro'
+      Origin = 'Percentual_Lucro'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_Lucro: TFMTBCDField
+      FieldName = 'Valor_Lucro'
+      Origin = 'Valor_Lucro'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_PIS2: TFMTBCDField
+      FieldName = 'Valor_PIS2'
+      Origin = 'Valor_PIS2'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_COFINS2: TFMTBCDField
+      FieldName = 'Valor_COFINS2'
+      Origin = 'Valor_COFINS2'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensAliquota_IRPJ: TFMTBCDField
+      FieldName = 'Aliquota_IRPJ'
+      Origin = 'Aliquota_IRPJ'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_IRPJ: TFMTBCDField
+      FieldName = 'Valor_IRPJ'
+      Origin = 'Valor_IRPJ'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensAliquota_CSLL: TFMTBCDField
+      FieldName = 'Aliquota_CSLL'
+      Origin = 'Aliquota_CSLL'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_CSLL: TFMTBCDField
+      FieldName = 'Valor_CSLL'
+      Origin = 'Valor_CSLL'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensRateio_FreteTerrNac: TFMTBCDField
+      FieldName = 'Rateio_FreteTerrNac'
+      Origin = 'Rateio_FreteTerrNac'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensPercentual_Desconto: TFMTBCDField
+      FieldName = 'Percentual_Desconto'
+      Origin = 'Percentual_Desconto'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_Desconto: TFMTBCDField
+      FieldName = 'Valor_Desconto'
+      Origin = 'Valor_Desconto'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensAliquota_PISRed: TFMTBCDField
+      FieldName = 'Aliquota_PISRed'
+      Origin = 'Aliquota_PISRed'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensAliquota_COFINSRed: TFMTBCDField
+      FieldName = 'Aliquota_COFINSRed'
+      Origin = 'Aliquota_COFINSRed'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensAliquota_ICMSOpIntegral: TFMTBCDField
       FieldName = 'Aliquota_ICMSOpIntegral'
       Origin = 'Aliquota_ICMSOpIntegral'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensAliquota_ICMSOPRed2: TBCDField
+    object PedidosNFItensRateio_SISCOMEX: TFMTBCDField
+      FieldName = 'Rateio_SISCOMEX'
+      Origin = 'Rateio_SISCOMEX'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensPercentual_Comissao: TFMTBCDField
+      FieldName = 'Percentual_Comissao'
+      Origin = 'Percentual_Comissao'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_Comissao: TFMTBCDField
+      FieldName = 'Valor_Comissao'
+      Origin = 'Valor_Comissao'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensPercentual_RedICMSST: TFMTBCDField
+      FieldName = 'Percentual_RedICMSST'
+      Origin = 'Percentual_RedICMSST'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensAliquota_ICMSDif: TFMTBCDField
+      FieldName = 'Aliquota_ICMSDif'
+      Origin = 'Aliquota_ICMSDif'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensValor_ICMSDif: TFMTBCDField
+      FieldName = 'Valor_ICMSDif'
+      Origin = 'Valor_ICMSDif'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensAliquota_ICMSPresumido: TFMTBCDField
+      FieldName = 'Aliquota_ICMSPresumido'
+      Origin = 'Aliquota_ICMSPresumido'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensAliquota_ICMSOPRed2: TFMTBCDField
       FieldName = 'Aliquota_ICMSOPRed2'
       Origin = 'Aliquota_ICMSOPRed2'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensCSTICMS_TabA: TStringField
-      FieldName = 'CSTICMS_TabA'
-      Origin = 'CSTICMS_TabA'
-      FixedChar = True
-      Size = 2
+    object PedidosNFItensPercentual_Beneficio: TFMTBCDField
+      FieldName = 'Percentual_Beneficio'
+      Origin = 'Percentual_Beneficio'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensCSTICMS_TabB: TStringField
-      FieldName = 'CSTICMS_TabB'
-      Origin = 'CSTICMS_TabB'
-      FixedChar = True
-      Size = 3
+    object PedidosNFItensPercentual_ICMSMono: TFMTBCDField
+      FieldName = 'Percentual_ICMSMono'
+      Origin = 'Percentual_ICMSMono'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensES: TSmallintField
-      FieldName = 'ES'
-      Origin = 'ES'
+    object PedidosNFItensPercentual_ICMSMonoRet: TFMTBCDField
+      FieldName = 'Percentual_ICMSMonoRet'
+      Origin = 'Percentual_ICMSMonoRet'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensEmbarque: TIntegerField
-      FieldName = 'Embarque'
-      Origin = 'Embarque'
-    end
-    object PedidosNFItensBL: TStringField
-      FieldName = 'BL'
-      Origin = 'BL'
-      Size = 15
-    end
-    object PedidosNFItensValor_BCIBS: TBCDField
+    object PedidosNFItensValor_BCIBS: TFMTBCDField
       FieldName = 'Valor_BCIBS'
       Origin = 'Valor_BCIBS'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensAliquota_IBS: TBCDField
+    object PedidosNFItensAliquota_IBS: TFMTBCDField
       FieldName = 'Aliquota_IBS'
       Origin = 'Aliquota_IBS'
-      DisplayFormat = ',##0.00'
-      currency = True
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_IBS: TBCDField
+    object PedidosNFItensValor_IBS: TFMTBCDField
       FieldName = 'Valor_IBS'
       Origin = 'Valor_IBS'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_BCCBS: TBCDField
+    object PedidosNFItensValor_BCCBS: TFMTBCDField
       FieldName = 'Valor_BCCBS'
       Origin = 'Valor_BCCBS'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensAliquota_CBS: TBCDField
+    object PedidosNFItensAliquota_CBS: TFMTBCDField
       FieldName = 'Aliquota_CBS'
       Origin = 'Aliquota_CBS'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_CBS: TBCDField
+    object PedidosNFItensValor_CBS: TFMTBCDField
       FieldName = 'Valor_CBS'
       Origin = 'Valor_CBS'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_BCIS: TBCDField
+    object PedidosNFItensValor_BCIS: TFMTBCDField
       FieldName = 'Valor_BCIS'
       Origin = 'Valor_BCIS'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensAliquota_IS: TBCDField
+    object PedidosNFItensAliquota_IS: TFMTBCDField
       FieldName = 'Aliquota_IS'
       Origin = 'Aliquota_IS'
-      DisplayFormat = ',##0.00'
-      currency = True
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_IS: TBCDField
+    object PedidosNFItensValor_IS: TFMTBCDField
       FieldName = 'Valor_IS'
       Origin = 'Valor_IS'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
     object PedidosNFItensCSTIBS: TStringField
       FieldName = 'CSTIBS'
@@ -3557,28 +3705,28 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       Origin = 'CSTCBS'
       Size = 3
     end
-    object PedidosNFItensAliquota_ICMSSTAnt: TBCDField
-      FieldName = 'Aliquota_ICMSSTAnt'
-      Origin = 'Aliquota_ICMSSTAnt'
+    object PedidosNFItensBL: TStringField
+      FieldName = 'BL'
+      Origin = 'BL'
+      Size = 15
     end
-    object PedidosNFItensValor_BCICMSSTAnt: TBCDField
-      FieldName = 'Valor_BCICMSSTAnt'
-      Origin = 'Valor_BCICMSSTAnt'
-      DisplayFormat = ',##0.00'
-    end
-    object PedidosNFItensValor_BCICMSDif: TBCDField
+    object PedidosNFItensValor_BCICMSDif: TFMTBCDField
       FieldName = 'Valor_BCICMSDif'
       Origin = 'Valor_BCICMSDif'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensValor_IPIDevol: TBCDField
+    object PedidosNFItensValor_IPIDevol: TFMTBCDField
       FieldName = 'Valor_IPIDevol'
       Origin = 'Valor_IPIDevol'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object PedidosNFItensPercentual_IPIDevol: TBCDField
+    object PedidosNFItensPercentual_IPIDevol: TFMTBCDField
       FieldName = 'Percentual_IPIDevol'
       Origin = 'Percentual_IPIDevol'
+      Precision = 18
+      Size = 6
     end
     object PedidosNFItensBeneficio_Fiscal: TStringField
       FieldName = 'Beneficio_Fiscal'
@@ -3590,28 +3738,6 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       FieldName = 'Declaracao'
       Origin = 'Declaracao'
       Size = 15
-    end
-    object PedidosNFItensMovimenta_EstoqueInd: TBooleanField
-      FieldName = 'Movimenta_EstoqueInd'
-      Origin = 'Movimenta_EstoqueInd'
-    end
-    object PedidosNFItensCodigo_CredPres: TStringField
-      FieldName = 'Codigo_CredPres'
-      Origin = 'Codigo_CredPres'
-      Size = 8
-    end
-    object PedidosNFItensSequencia: TIntegerField
-      FieldName = 'Sequencia'
-      Origin = 'Sequencia'
-    end
-    object PedidosNFItensValor_Impostos: TBCDField
-      FieldName = 'Valor_Impostos'
-      Origin = 'Valor_Impostos'
-      Precision = 18
-    end
-    object PedidosNFItensFinalidade_Mercadoria: TSmallintField
-      FieldName = 'Finalidade_Mercadoria'
-      Origin = 'Finalidade_Mercadoria'
     end
     object PedidosNFItensItem_Declaracao: TSmallintField
       FieldName = 'Item_Declaracao'
@@ -3679,90 +3805,118 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       'where Desativado <> 1'
       'and isnull(NCM, '#39#39') <> '#39#39' '
       'order by Descricao')
-    Left = 426
-    Top = 147
+    Left = 428
+    Top = 148
     object ProdutosCodigo: TIntegerField
-      Alignment = taCenter
       FieldName = 'Codigo'
       Origin = 'Codigo'
       Required = True
-      DisplayFormat = '0000000000;0'
     end
     object ProdutosDescricao: TStringField
       FieldName = 'Descricao'
       Origin = 'Descricao'
       Size = 60
     end
-    object ProdutosValor_Venda: TBCDField
-      FieldName = 'Valor_Venda'
-      Origin = 'Valor_Venda'
-    end
-    object ProdutosValor_ConsumidorFinal: TBCDField
-      FieldName = 'Valor_ConsumidorFinal'
-      Origin = 'Valor_ConsumidorFinal'
-    end
-    object ProdutosValor_CustoMedio: TBCDField
-      FieldName = 'Valor_CustoMedio'
-      Origin = 'Valor_CustoMedio'
-    end
-    object ProdutosValor_Entrada: TBCDField
-      FieldName = 'Valor_Entrada'
-      Origin = 'Valor_Entrada'
-    end
-    object ProdutosValor_IPI: TBCDField
-      FieldName = 'Valor_IPI'
-      Origin = 'Valor_IPI'
-    end
     object ProdutosNCM: TStringField
-      Alignment = taCenter
       FieldName = 'NCM'
       Origin = 'NCM'
-      EditMask = '####.##.####;0'
       Size = 10
     end
-    object ProdutosAliquota_IPI: TBCDField
+    object ProdutosValor_Venda: TFMTBCDField
+      FieldName = 'Valor_Venda'
+      Origin = 'Valor_Venda'
+      Precision = 18
+      Size = 6
+    end
+    object ProdutosValor_ConsumidorFinal: TFMTBCDField
+      FieldName = 'Valor_ConsumidorFinal'
+      Origin = 'Valor_ConsumidorFinal'
+      Precision = 18
+      Size = 6
+    end
+    object ProdutosValor_CustoMedio: TFMTBCDField
+      FieldName = 'Valor_CustoMedio'
+      Origin = 'Valor_CustoMedio'
+      Precision = 18
+      Size = 6
+    end
+    object ProdutosValor_Entrada: TFMTBCDField
+      FieldName = 'Valor_Entrada'
+      Origin = 'Valor_Entrada'
+      Precision = 18
+      Size = 6
+    end
+    object ProdutosAliquota_IPI: TFMTBCDField
       FieldName = 'Aliquota_IPI'
       Origin = 'Aliquota_IPI'
+      Precision = 18
+      Size = 6
     end
-    object ProdutosAliquota_II: TBCDField
+    object ProdutosValor_IPI: TFMTBCDField
+      FieldName = 'Valor_IPI'
+      Origin = 'Valor_IPI'
+      Precision = 18
+      Size = 6
+    end
+    object ProdutosAliquota_II: TFMTBCDField
       FieldName = 'Aliquota_II'
       Origin = 'Aliquota_II'
+      Precision = 18
+      Size = 6
     end
-    object ProdutosValor_II: TBCDField
+    object ProdutosValor_II: TFMTBCDField
       FieldName = 'Valor_II'
       Origin = 'Valor_II'
+      Precision = 18
+      Size = 6
     end
-    object ProdutosReducao_PIS: TBCDField
-      FieldName = 'Reducao_PIS'
-      Origin = 'Reducao_PIS'
-    end
-    object ProdutosReducao_COFINS: TBCDField
-      FieldName = 'Reducao_COFINS'
-      Origin = 'Reducao_COFINS'
-    end
-    object ProdutosAliquota_PIS: TBCDField
+    object ProdutosAliquota_PIS: TFMTBCDField
       FieldName = 'Aliquota_PIS'
       Origin = 'Aliquota_PIS'
+      Precision = 18
+      Size = 6
     end
-    object ProdutosAliquota_COFINS: TBCDField
+    object ProdutosAliquota_COFINS: TFMTBCDField
       FieldName = 'Aliquota_COFINS'
       Origin = 'Aliquota_COFINS'
+      Precision = 18
+      Size = 6
     end
-    object ProdutosAliquota_PISEntrada: TBCDField
+    object ProdutosAliquota_PISEntrada: TFMTBCDField
       FieldName = 'Aliquota_PISEntrada'
       Origin = 'Aliquota_PISEntrada'
+      Precision = 18
+      Size = 6
     end
-    object ProdutosAliquota_COFINSEntrada: TBCDField
+    object ProdutosAliquota_COFINSEntrada: TFMTBCDField
       FieldName = 'Aliquota_COFINSEntrada'
       Origin = 'Aliquota_COFINSEntrada'
+      Precision = 18
+      Size = 6
     end
-    object ProdutosAliquota_PISSaida: TBCDField
+    object ProdutosAliquota_PISSaida: TFMTBCDField
       FieldName = 'Aliquota_PISSaida'
       Origin = 'Aliquota_PISSaida'
+      Precision = 18
+      Size = 6
     end
-    object ProdutosAliquota_COFINSSaida: TBCDField
+    object ProdutosAliquota_COFINSSaida: TFMTBCDField
       FieldName = 'Aliquota_COFINSSaida'
       Origin = 'Aliquota_COFINSSaida'
+      Precision = 18
+      Size = 6
+    end
+    object ProdutosReducao_PIS: TFMTBCDField
+      FieldName = 'Reducao_PIS'
+      Origin = 'Reducao_PIS'
+      Precision = 18
+      Size = 6
+    end
+    object ProdutosReducao_COFINS: TFMTBCDField
+      FieldName = 'Reducao_COFINS'
+      Origin = 'Reducao_COFINS'
+      Precision = 18
+      Size = 6
     end
     object ProdutosCSTPIS_AliquotaUM: TBooleanField
       FieldName = 'CSTPIS_AliquotaUM'
@@ -3792,31 +3946,45 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       FieldName = 'CSTPIS_Outras'
       Origin = 'CSTPIS_Outras'
     end
-    object ProdutosOrigem: TStringField
+    object ProdutosOrigem: TSmallintField
       FieldName = 'Origem'
       Origin = 'Origem'
-      FixedChar = True
-      Size = 1
     end
-    object ProdutosICMS_ForaEstadoEnt: TBCDField
+    object ProdutosICMS_ForaEstadoEnt: TFMTBCDField
       FieldName = 'ICMS_ForaEstadoEnt'
       Origin = 'ICMS_ForaEstadoEnt'
+      Precision = 18
+      Size = 6
     end
-    object ProdutosICMS_ForaEstadoSai: TBCDField
+    object ProdutosICMS_ForaEstadoSai: TFMTBCDField
       FieldName = 'ICMS_ForaEstadoSai'
       Origin = 'ICMS_ForaEstadoSai'
+      Precision = 18
+      Size = 6
     end
-    object ProdutosICMS_DentroEstadoEnt: TBCDField
+    object ProdutosICMS_DentroEstadoEnt: TFMTBCDField
       FieldName = 'ICMS_DentroEstadoEnt'
       Origin = 'ICMS_DentroEstadoEnt'
+      Precision = 18
+      Size = 6
     end
-    object ProdutosICMS_DentroEstadoSai: TBCDField
+    object ProdutosICMS_DentroEstadoSai: TFMTBCDField
       FieldName = 'ICMS_DentroEstadoSai'
       Origin = 'ICMS_DentroEstadoSai'
+      Precision = 18
+      Size = 6
     end
-    object ProdutosICMS_DentroEstadoSimples: TBCDField
+    object ProdutosICMS_DentroEstadoSimples: TFMTBCDField
       FieldName = 'ICMS_DentroEstadoSimples'
       Origin = 'ICMS_DentroEstadoSimples'
+      Precision = 18
+      Size = 6
+    end
+    object ProdutosAliquota_IBS: TFMTBCDField
+      FieldName = 'Aliquota_IBS'
+      Origin = 'Aliquota_IBS'
+      Precision = 18
+      Size = 6
     end
     object ProdutosTabela_CAMEX: TBooleanField
       FieldName = 'Tabela_CAMEX'
@@ -3825,11 +3993,13 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     object ProdutosCSTICMS_Entrada: TStringField
       FieldName = 'CSTICMS_Entrada'
       Origin = 'CSTICMS_Entrada'
+      FixedChar = True
       Size = 3
     end
     object ProdutosCSTICMS_Saida: TStringField
       FieldName = 'CSTICMS_Saida'
       Origin = 'CSTICMS_Saida'
+      FixedChar = True
       Size = 3
     end
     object ProdutosBeneficio_FiscalEnt: TStringField
@@ -3849,23 +4019,26 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     object ProdutosUM: TStringField
       FieldName = 'UM'
       Origin = 'UM'
-      Size = 3
+      FixedChar = True
+      Size = 10
     end
-    object ProdutosPeso_Liquido: TBCDField
+    object ProdutosPeso_Liquido: TFMTBCDField
       FieldName = 'Peso_Liquido'
       Origin = 'Peso_Liquido'
+      Precision = 18
+      Size = 6
     end
-    object ProdutosPeso_Bruto: TBCDField
+    object ProdutosPeso_Bruto: TFMTBCDField
       FieldName = 'Peso_Bruto'
       Origin = 'Peso_Bruto'
+      Precision = 18
+      Size = 6
     end
-    object ProdutosAliquota_IBS: TBCDField
-      FieldName = 'Aliquota_IBS'
-      Origin = 'Aliquota_IBS'
-    end
-    object ProdutosEstoque_Minimo: TBCDField
+    object ProdutosEstoque_Minimo: TFMTBCDField
       FieldName = 'Estoque_Minimo'
       Origin = 'Estoque_Minimo'
+      Precision = 18
+      Size = 6
     end
     object ProdutosEstoque_Navio: TBooleanField
       FieldName = 'Estoque_Navio'

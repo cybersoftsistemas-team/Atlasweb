@@ -29,7 +29,7 @@ type
     cQtde: TUniDBFormattedNumberEdit;
     cValor_Desconto: TUniDBFormattedNumberEdit;
     cCFOP: TUniDBLookupComboBox;
-    cProcesso_Imp: TUniDBLookupComboBox;
+    cProcesso: TUniDBLookupComboBox;
     cValor_Unitario: TUniDBFormattedNumberEdit;
     cNCM: TUniDBEdit;
     cPeso_Liquido: TUniDBFormattedNumberEdit;
@@ -89,15 +89,12 @@ type
     dsProdutos: TDataSource;
     CFOP: TFDQuery;
     dsCFOP: TDataSource;
-    ProcessoImp: TFDQuery;
-    dsProcessoImp: TDataSource;
+    Processos: TFDQuery;
+    dsProcessos: TDataSource;
     ProcessoExp: TFDQuery;
     dsProcessoExp: TDataSource;
-    cProcesso_Exp: TUniDBLookupComboBox;
     NCM: TFDQuery;
     dsNCM: TDataSource;
-    ItensNF: TFDQuery;
-    cProduto: TUniDBLookupComboBox;
     Embarques: TFDQuery;
     dsEmbarques: TDataSource;
     CSTICMSTabA: TFDQuery;
@@ -115,6 +112,7 @@ type
     dsCSTPIS: TDataSource;
     CSTCOFINS: TFDQuery;
     dsCSTCOFINS: TDataSource;
+    ItensNF: TFDQuery;
     ItensNFNota_id: TIntegerField;
     ItensNFEmpresa: TStringField;
     ItensNFES: TSmallintField;
@@ -142,8 +140,6 @@ type
     ItensNFModalidade_BCICMS: TSmallintField;
     ItensNFModalidade_BCICMSST: TSmallintField;
     ItensNFDeclaracao: TStringField;
-    ItensNFProcesso_Imp: TStringField;
-    ItensNFProcesso_Exp: TStringField;
     ItensNFReducao_ICMSST: TFMTBCDField;
     ItensNFNota_Referencia: TStringField;
     ItensNFData_Referencia: TSQLTimeStampField;
@@ -283,15 +279,19 @@ type
     ItensNFValor_BCICMSSTOrig: TFMTBCDField;
     ItensNFCIAP_TipoItem: TSmallintField;
     ItensNFItem_Referencia: TSmallintField;
+    cProduto: TUniDBLookupComboBox;
+    ItensNFProcesso: TStringField;
     procedure UniFrameCreate(Sender: TObject);
-    procedure cProcesso_ImpExit(Sender: TObject);
-    procedure cProcesso_ExpExit(Sender: TObject);
   private
     { Private declarations }
-    mEmpresa: string;
+    mEmpresa
+   ,mOper
+   ,mDestOrig: string;
+    mID
+   ,mItem: integer;
   public
     { Public declarations }
-    constructor Create(aOwner: TComponent; pEmpresa: string); reintroduce;
+    constructor Create(aOwner: TComponent; pEmpresa: string; pID, pItem: integer; pOper, pDestOrig: string); reintroduce;
   end;
 
 implementation
@@ -300,22 +300,16 @@ implementation
 
 uses ServerModule;
 
-procedure TfFiscalNFTerceirosItens.cProcesso_ExpExit(Sender: TObject);
-begin
-     cProcesso_Imp.Enabled := cProcesso_Exp.Text = '';
-end;
-
-procedure TfFiscalNFTerceirosItens.cProcesso_ImpExit(Sender: TObject);
-begin
-     cProcesso_Exp.Enabled := cProcesso_Imp.Text = '';
-end;
-
-constructor TfFiscalNFTerceirosItens.Create(aOwner: TComponent; pEmpresa: string);
+constructor TfFiscalNFTerceirosItens.Create(aOwner: TComponent; pEmpresa: string; pID, pItem: integer; pOper, pDestOrig: string); 
 begin
     inherited Create(aOwner);
-    mEmpresa := pEmpresa;
+    mEmpresa  := pEmpresa;
+    mID       := pID;
+    mItem     := pItem;
+    mOper     := pOper;
+    mDestOrig := pDestOrig;
 end;
-
+    
 procedure TfFiscalNFTerceirosItens.UniFrameCreate(Sender: TObject);
 var
    lArq: string;
@@ -330,6 +324,21 @@ begin
      lArq := UniServerModule.FilesFolder +'images\icones\SerialProduto.bmp';
      if FileExists(lArq) then bSerial.Glyph.LoadFromFile(lArq);
 
+     with ItensNF do begin
+          sql.clear;
+          sql.add('select *');
+          sql.add('from NotasItens');
+          sql.add('where Nota_id = :pID');
+          parambyname('pID').Value := mID;
+          open;
+          if mOper = 'Adicionar' then begin
+             Append;
+                  ItensNFNota_id.value := mID;
+                  ItensNFEmpresa.value := mEmpresa;
+          end;
+          if mOper = 'Editar' then Edit;;
+          UniSession.Synchronize;                            
+     end;
      with Produtos do begin
           sql.clear;
           sql.add('select Codigo');
@@ -354,26 +363,21 @@ begin
           sql.add('order by Descricao');
           open;
      end;
-     with ProcessoImp do begin
+     with Processos do begin
           sql.clear;
           sql.add('select Processo');
-          sql.add('      ,DUIMP');
-          sql.add('from ProcessosImp');
-          sql.add('where Empresa = :pEmp');
-          sql.add('and Desativado <> 1');
+          if mDestOrig = 'I' then begin
+             sql.Add('      ,Declaracao = DUIMP');
+             sql.add('from ProcessosImp');
+             sql.add('where isnull(DUIMP, '''') <> '''' ');
+          end;
+          if mDestOrig = 'E' then begin
+             sql.Add('      ,Declaracao = DUE');
+             sql.Add('from ProcessosExp');
+             sql.Add('where isnull(DUE, '''') <> '''' ');
+          end;
+          sql.add('and Processo_Fechamento is not null');
           sql.add('order by Processo');
-          parambyname('pEmp').value := mEmpresa;
-          open;
-     end;
-     with ProcessoExp do begin
-          sql.clear;
-          sql.add('select Processo');
-          sql.add('      ,DUE');
-          sql.add('from ProcessosExp');
-          sql.add('where Empresa = :pEmp');
-          sql.add('and Desativado <> 1');
-          sql.add('order by Processo');
-          parambyname('pEmp').value := mEmpresa;
           open;
      end;
      with Embarques do begin
@@ -445,8 +449,6 @@ begin
           sql.add('order by Codigo');
           open;
      end;
-     cProcesso_Imp.Enabled := cProcesso_Exp.Text = '';
-     cProcesso_Exp.Enabled := cProcesso_Imp.Text = '';
      cProduto.SetFocus;
 end;
 

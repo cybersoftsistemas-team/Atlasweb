@@ -29,10 +29,10 @@ function IIf(Expressao: Variant; ParteTRUE, ParteFALSE: Variant): Variant;
 function PastaDLL: string;
 function Calculo(Formula: widestring): string;
 function Percentual(Valor, Percent: Real): Real;
-function CalculaMacro(pForm: TComponent; pFormula: String): Real;
+function CalculaTudo(pOper: integer; pTipo: string; gFormula: TuniStringGrid; cLog: tuniMemo; pTabDestino: TFDQuery; pFrame: TuniFrame; pForm: TuniForm): boolean;
+function CalculaMacro(pForm: TComponent; pFormula, Campo: String): Real;
 function SubstituirCampos(pForm: TComponent; pCampo: string): string;
 function SubstituirCondicao(Campo: string): string;
-function CalculaTudo(pOper: integer; pTipo: string; gFormula: TuniStringGrid; cLog: tuniMemo; pTabDestino: TFDQuery; pFrame: TuniFrame; pForm: TuniForm): boolean;
 function PegaCSTIPI(pOper, pProd: integer): string;
 function PegaCSTPIS(pOper, pProd, pDest: Integer): string;
 function PegaCSTCOFINS(pOper, pProd, pDest: Integer): string;
@@ -931,11 +931,6 @@ var
     EndOfCurrentString: integer;
     sList: TStringList;
 begin
-//     BaseString := StringReplace(BaseString,  #8, '', [rfReplaceAll, rfIgnoreCase]);
-//     BaseString := StringReplace(BaseString, #10, '', [rfReplaceAll, rfIgnoreCase]);
-//     BaseString := StringReplace(BaseString, #12, '', [rfReplaceAll, rfIgnoreCase]);
-//     BaseString := StringReplace(BaseString, #13, '', [rfReplaceAll, rfIgnoreCase]);
-
      sList := TStringList.create;
      Repeat
            EndOfCurrentString := Pos(BreakString, BaseString);
@@ -946,7 +941,6 @@ begin
 
            BaseString := Copy(BaseString, EndOfCurrentString + length(BreakString), length(BaseString) - EndOfCurrentString);
      Until EndOfCurrentString = 0;
-
      result := sList;
 end;
 
@@ -1722,7 +1716,8 @@ begin
      tEstoque := TFDQuery.Create(nil);
      with tEstoque do begin
           Connection := uniMainModule.Conecta;
-          sql.Clear;
+          sql.clear;
+          {
           sql.Add('select Disponivel = cast((isnull((select sum(Quantidade)');
           sql.Add('                                  from NotasItens');
           sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
@@ -1758,6 +1753,47 @@ begin
           sql.Add('                                  and isnull(Faturado, 0) = 0');
           sql.Add('                                  and (select isnull(Cancelado, 0) from PedidosRepresentantes pr where pr.Pedido = pri.Pedido) = 0');
           sql.Add('                                  and (select Local from PedidosRepresentantes pr where pr.Pedido = pri.Pedido) < 4), 0)');
+          }
+          sql.Add('select Disponivel =  cast(isnull(sum(Movimento), 0) as decimal(18,3)) from');
+          sql.Add('/* [ NOTAS FISCAIS ]----------------------------------------------------------------*/');
+          sql.Add('(select Movimento = iif(nf.ES = 0, ni.Quantidade, -ni.Quantidade)');
+          sql.Add('from Notasitens ni');
+          sql.Add('inner join Notasfiscais nf on nf.Nota_id = ni.Nota_id');
+          sql.Add('inner join OperacaoFiscal op on op.Codigo = nf.Operacao');
+          sql.Add('where ni.Codigo_Mercadoria = :pCodigo');
+          sql.Add('and nf.ES in (0,1)');
+          sql.Add('and op.Movimenta_Estoque = 1');
+          sql.Add('and isnull(nf.Cancelada,0) <> 1');
+          sql.Add('and isnull(nf.Denegada,0) <> 1');
+          sql.Add('union all');
+          sql.Add('/* [ TRANSFERÊNCIA ENTRADA ]--------------------------------------------------------*/');
+          sql.Add('select Quantidade_Entrada from EstoqueTransferencia where Produto_Entrada = :pCodigo');
+          sql.Add('union all');
+          sql.Add('/* [ ESTOQUE INICIAL ]--------------------------------------------------------------*/');
+          sql.Add('select Quantidade from EstoqueAbertura where Produto = :pCodigo');
+          sql.Add('union all');
+          sql.Add('/* [ TRANSFERÊNCIA SAÍDA ]----------------------------------------------------------*/');
+          sql.Add('select -Quantidade_Entrada from EstoqueTransferencia where Produto_Saida = :pCodigo');
+          sql.Add('union all');
+          sql.Add('/* [PEDIDOS NF - SAÍDA ]------------------------------------------------------------*/');
+          sql.Add('select -pi.Quantidade');
+          sql.Add('from PedidosNFItens pi');
+          sql.Add('inner join PedidosNF pn on pn.Pedido = pi.Pedido');
+          sql.Add('inner join OperacaoFiscal op on op.Codigo = pn.Operacao');
+          sql.Add('where pi.Codigo_Mercadoria = :pCodigo');
+          sql.Add('and pi.ES = 1');
+          sql.Add('and op.Movimenta_Estoque = 1');
+          sql.Add('union all');
+          sql.Add('/* [PEDIDOS DE REPRESENTANTES - RESERVADO ]----------------------------------------*/');
+          sql.Add('select -pri.Quantidade');
+          sql.Add('from PedidosRepresentantesItens pri');
+          sql.Add('inner join PedidosRepresentantes pr on pr.Pedido = pri.Pedido');
+          sql.Add('where pri.Codigo_Mercadoria = :pCodigo ');
+          sql.Add('and isnull(pr.Faturamento,0) = 0');
+          sql.Add('and isnull(pr.Faturado,0) = 0');
+          sql.Add('and isnull(pr.Cancelado,0) = 0');
+          sql.Add('and pr.Local < 4');
+          sql.Add(') as Movimentos;');
           ParamByName('pCodigo').AsInteger := pProduto;
           //sql.SavetoFile('c:\temp\Funcoes_Apura_Estoque.sql');
           open;
@@ -1831,6 +1867,7 @@ begin
      with tInventario do begin
           Connection := uniMainModule.Conecta;
           sql.clear;
+          {
           sql.Add('select Disponivel = cast((isnull((select sum(Quantidade)');
           sql.Add('                                  from NotasItens');
           sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
@@ -1868,6 +1905,47 @@ begin
           sql.Add('                                  and isnull(Faturado, 0) = 0');
           sql.Add('                                  and (select isnull(Cancelado, 0) from PedidosRepresentantes pr where pr.Pedido = pri.Pedido) = 0');
           sql.Add('                                  and (select Local from PedidosRepresentantes pr where pr.Pedido = pri.Pedido) < 4), 0)');
+          }
+          sql.Add('select Disponivel =  cast(isnull(sum(Movimento), 0) as decimal(18,3)) from');
+          sql.Add('/* [ NOTAS FISCAIS ]----------------------------------------------------------------*/');
+          sql.Add('(select Movimento = iif(nf.ES = 0, ni.Quantidade, -ni.Quantidade)');
+          sql.Add('from Notasitens ni');
+          sql.Add('inner join Notasfiscais nf on nf.Nota_id = ni.Nota_id');
+          sql.Add('inner join OperacaoFiscal op on op.Codigo = nf.Operacao');
+          sql.Add('where ni.Codigo_Mercadoria = :pCodigo');
+          sql.Add('and nf.ES in (0,1)');
+          sql.Add('and op.Movimenta_Inventario = 1');
+          sql.Add('and isnull(nf.Cancelada,0) <> 1');
+          sql.Add('and isnull(nf.Denegada,0) <> 1');
+          sql.Add('union all');
+          sql.Add('/* [ TRANSFERÊNCIA ENTRADA ]--------------------------------------------------------*/');
+          sql.Add('select Quantidade_Entrada from EstoqueTransferencia where Produto_Entrada = :pCodigo');
+          sql.Add('union all');
+          sql.Add('/* [ ESTOQUE INICIAL ]--------------------------------------------------------------*/');
+          sql.Add('select Quantidade from EstoqueAbertura where Produto = :pCodigo');
+          sql.Add('union all');
+          sql.Add('/* [ TRANSFERÊNCIA SAÍDA ]----------------------------------------------------------*/');
+          sql.Add('select -Quantidade_Entrada from EstoqueTransferencia where Produto_Saida = :pCodigo');
+          sql.Add('union all');
+          sql.Add('/* [PEDIDOS NF - SAÍDA ]------------------------------------------------------------*/');
+          sql.Add('select -pi.Quantidade');
+          sql.Add('from PedidosNFItens pi');
+          sql.Add('inner join PedidosNF pn on pn.Pedido = pi.Pedido');
+          sql.Add('inner join OperacaoFiscal op on op.Codigo = pn.Operacao');
+          sql.Add('where pi.Codigo_Mercadoria = :pCodigo');
+          sql.Add('and pi.ES = 1');
+          sql.Add('and op.Movimenta_Inventario = 1');
+          sql.Add('union all');
+          sql.Add('/* [PEDIDOS DE REPRESENTANTES - RESERVADO ]----------------------------------------*/');
+          sql.Add('select -pri.Quantidade');
+          sql.Add('from PedidosRepresentantesItens pri');
+          sql.Add('inner join PedidosRepresentantes pr on pr.Pedido = pri.Pedido');
+          sql.Add('where pri.Codigo_Mercadoria = :pCodigo ');
+          sql.Add('and isnull(pr.Faturamento,0) = 0');
+          sql.Add('and isnull(pr.Faturado,0) = 0');
+          sql.Add('and isnull(pr.Cancelado,0) = 0');
+          sql.Add('and pr.Local < 4');
+          sql.Add(') as Movimentos;');
           ParamByName('pCodigo').AsInteger := pProduto;
           //sql.SavetoFile('c:\temp\Funcoes_Apura_Estoque.sql');
           open;
@@ -1953,8 +2031,134 @@ begin
      end;
 end;
 
+(*=================================================================================================*
+Executa os calculos dos itens da nota fiscal.
+---------------------------------------------
+  Parametros:
+      pOper      : Operação fiscal.
+      pTipo      : Item/Total: se calculos dos itens ou totalizadores.   
+      gFormula   : O grid que ira receber as formulas no form origem.
+      cLog       : O memo que ira receber o log de erros no form origem.
+      pTabDestino: A Tabela de Itens da nota.
+      pFrame     : o Frame de origem (Quando for uniForm passar nil em pFrame.
+      pForm      : o Form de origem (Quando for uniFrame passar nil em pForm.
+ *=================================================================================================*)
+function CalculaTudo(pOper: integer; pTipo: string; gFormula: TuniStringGrid; cLog: tuniMemo; pTabDestino: TFDQuery; pFrame: TuniFrame; pForm: TuniForm): boolean;
+var
+   mValor: real;
+   mAliqImp
+  ,mCSTImp: string;
+   tFormulasItens
+  ,Campos: TFDQuery;
+   tImpostos: TFDMemTable;  
+begin
+     // Limpa a tabela de impostos.
+     try 
+        Campos            := TFDQuery.Create(nil);
+        Campos.Connection := uniMainModule.Conecta;
+        mValor            := 0;
+
+        tImpostos := TFDMemTable.Create(nil);
+        with tImpostos do begin
+             Close;
+             FieldDefs.Clear;
+             FieldDefs.Add('Ordem_Calculo', ftSmallint);
+             FieldDefs.Add('Descricao'    , ftString, 60);
+             FieldDefs.Add('Campo'        , ftString, 60);
+             FieldDefs.Add('Aliquota'     , ftFloat);
+             FieldDefs.Add('Valor'        , ftCurrency);
+             FieldDefs.Add('Total'        , ftCurrency);
+             FieldDefs.Add('CST'          , ftString, 5);
+             CreateDataSet;
+             EmptyDataSet;
+        end;
+        tFormulasItens            := TFDQuery.Create(nil);
+        tFormulasItens.Connection := uniMainModule.Conecta;
+        with tFormulasItens do begin
+             sql.clear;
+             sql.add('select Campo');
+             sql.add('      ,Formula');
+             sql.add('      ,Campo_Aliquota');
+             sql.add('      ,Campo_CST');
+             sql.add('      ,Ordem_Calculo');
+             sql.add('      ,Descricao');
+             sql.add('from OperacaoFiscalFormulas');
+             sql.add('where Operacao = :pOp');
+             sql.add('and Tipo = :pTipo');
+             sql.add('and isnull(Desativada, 0) = 0');
+             sql.add('order by Ordem_Calculo');
+             parambyname('pOp').AsInteger  := pOper;
+             parambyname('pTipo').asstring := pTipo;
+             open;
+             first;
+
+             while not eof do begin
+                   // Pula o calculo do valor unitário pois ja foi calculado anteriormente.
+                   if fieldbyname('Campo').AsString <> 'Valor_Unitario' then begin
+                      gFormula.Cells[0, gFormula.RowCount-1] := fieldbyname('Campo').AsString;
+                      gFormula.Cells[1, gFormula.RowCount-1] := fieldbyname('Formula').AsString;
+                      with Campos do begin
+                           sql.clear;
+                           sql.add('select Campo');
+                           sql.add('      ,Tabela');
+                           sql.add('      ,Campo_Chave');
+                           sql.add('      ,Pesquisa');
+                           sql.add('      ,Percentual');
+                           sql.Add('from Campos');
+                           sql.Add('where Campo in('+ListaCampos(tFormulasItens.fieldbyname('Formula').AsString, 0)+')');
+                           sql.add('order by Tabela');
+                           open;
+                      end;
+                      // Faz o cálculo da formula e Acha o campo.
+                      try
+//MessageDlg(fieldbyname('Ordem_Calculo').asstring+': '+fieldbyname('Campo').asstring+#13+ListaCampos(tFormulasItens.fieldbyname('Formula').AsString, 0), mterror, [mbok]);
+//cLog.lines.add('<< '+fieldbyname('Ordem_Calculo').asstring+'  '+fieldbyname('Campo').asstring+' >> '+fieldbyname('Formula').AsString);
+                         if pFrame <> nil then begin
+                            mValor := CalculaMacro(pFrame, fieldbyname('Formula').AsString, fieldbyname('Campo').asstring);
+                         end else begin
+                            mValor := CalculaMacro(pForm, fieldbyname('Formula').AsString, fieldbyname('Campo').asstring);
+                         end;
+                      except On E: Exception do
+                         begin
+                             cLog.Lines.add('Ocorreu um erro de cálculo: '+E.Message);
+                             cLog.lines.Add(fieldbyname('Formula').AsString);
+                         end;
+                      end;
+                      pTabDestino.fieldbyname(fieldbyname('Campo').AsString).value := mValor;
+//                      if pFrame <> nil then begin
+//                         mCp := pFrame.FindComponent('c'+trim(fieldbyname('Campo').asstring));
+//                      end else begin
+//                         mCp := pForm.FindComponent('c'+trim(fieldbyname('Campo').asstring));
+//                      end;
+                      with tImpostos do begin
+                           mAliqImp := trim(tFormulasItens.fieldbyname('Campo_Aliquota').asstring);
+                           mCSTImp  := trim(tFormulasItens.fieldbyname('Campo_CST').asstring);
+                           append;
+                                 fieldbyname('Ordem_Calculo').Value := tFormulasItens.FieldByName('Ordem_Calculo').Value;
+                                 fieldbyname('Descricao').Value     := tFormulasItens.FieldByName('Descricao').Value;
+                                 fieldbyname('Campo').Value         := tFormulasItens.fieldbyname('Campo').value;
+                                 fieldbyname('Valor').Value         := mValor;
+                                 fieldbyname('Total').Value         := mValor * pTabDestino.fieldbyname('Quantidade').value;
+                                 if mAliqImp <> '' then begin
+                                    fieldbyname('Aliquota').Value := pTabDestino.fieldbyname(mAliqImp).asfloat;
+                                 end;
+                                 if mCSTImp <> '' then begin
+                                    fieldbyname('CST').Value := pTabDestino.fieldbyname(mCSTImp).asstring;
+                                 end;
+                           post;
+                      end;
+                   end;
+                   next;
+             end;
+        end;
+        result := true;
+     except
+        result := false;
+     end;
+end;
+
 // Efetua a conversão do texto da formula para valores.
-function CalculaMacro(pForm: TComponent; pFormula: String): Real;
+function CalculaMacro(pForm: TComponent; pFormula, Campo: String): Real;
 var
    mCalc: String;
    mResultado: real;
@@ -1979,12 +2183,12 @@ begin
           open;
 
           // Convertendo a formula do campo.
-          mCalc := StringReplace(pFormula, #13,'',[rfReplaceAll]);
-          mCalc := StringReplace(mCalc   , #12,'',[rfReplaceAll]);
-          mCalc := StringReplace(mCalc   , #10,'',[rfReplaceAll]);
+          mCalc := StringReplace(trim(pFormula), #13,'',[rfReplaceAll]);
+          mCalc := StringReplace(mCalc, #12,'',[rfReplaceAll]);
+          mCalc := StringReplace(mCalc, #10,'',[rfReplaceAll]);
           first;
           if recordcount > 0 then begin
-             while not Eof do begin
+             while not eof do begin
                    mCalc := stringreplace(mCalc, fieldbyname('Campo').AsString, SubstituirCampos(pForm, fieldbyname('Campo').AsString), [rfReplaceAll]);
                    tcampos.Next;
              end;
@@ -2001,9 +2205,12 @@ begin
               Memo := pForm.FindComponent('cLog') as TUniMemo;
               if Assigned(Memo) then begin
                  Memo.Lines.Add('');
-                 Memo.Lines.Add(stringofchar('>', 30)+' ERRO NA FÓRMULA DO CAMPO '+stringofchar('<', 30));
-                 Memo.Lines.Add(pFormula);
-                 Memo.Lines.add(E.Message);
+                 Memo.Lines.Add('ERRO NA FÓRMULA DO CAMPO '+stringofchar('=', 160));
+                 Memo.Lines.Add('   CAMPO: '+Campo);
+                 Memo.Lines.Add('   FORMULA: '+trim(pFormula));
+                 Memo.Lines.add('   ERRO: '+trim(E.Message));
+                 Memo.Lines.add(stringofchar('=', 188));
+                 Memo.Lines.Add('');
               end;
               mResultado := 0;
          end;
@@ -2110,130 +2317,6 @@ begin
            end;
      end;
      result := Campo;
-end;
-
-(*=================================================================================================*
-Executa os calculos dos itens da nota fiscao.
----------------------------------------------
-  Parametros:
-      pOper      : Operação fiscal.
-      pTipo      : Item/Total: se calculos dos itens ou totalizadores.   
-      gFormula   : O grid que ira receber as formulas no form origem.
-      cLog       : O memo que ira receber o log de erros no form origem.
-      pTabDestino: A Tabela de Itens da nota.
-      pFrame     : o Frame de origem (Quando for uniForm passar nil em pFrame.
-      pForm      : o Form de origem (Quando for uniFrame passar nil em pForm.
- *=================================================================================================*)
-function CalculaTudo(pOper: integer; pTipo: string; gFormula: TuniStringGrid; cLog: tuniMemo; pTabDestino: TFDQuery; pFrame: TuniFrame; pForm: TuniForm): boolean;
-var
-   mValor: real;
-//   mCp: TComponent;
-   mAliqImp
-  ,mCSTImp: string;
-   tFormulasItens
-  ,Campos: TFDQuery;
-   tImpostos: TFDMemTable;  
-begin
-     // Limpa a tabela de impostos.
-     try 
-        Campos            := TFDQuery.Create(nil);
-        Campos.Connection := uniMainModule.Conecta;
-        mValor            := 0;
-
-        tImpostos := TFDMemTable.Create(nil);
-        with tImpostos do begin
-             Close;
-             FieldDefs.Clear;
-             FieldDefs.Add('Ordem_Calculo', ftSmallint);
-             FieldDefs.Add('Descricao'    , ftString, 60);
-             FieldDefs.Add('Campo'        , ftString, 60);
-             FieldDefs.Add('Aliquota'     , ftFloat);
-             FieldDefs.Add('Valor'        , ftCurrency);
-             FieldDefs.Add('Total'        , ftCurrency);
-             FieldDefs.Add('CST'          , ftString, 5);
-             CreateDataSet;
-             EmptyDataSet;
-        end;
-        tFormulasItens            := TFDQuery.Create(nil);
-        tFormulasItens.Connection := uniMainModule.Conecta;
-        with tFormulasItens do begin
-             sql.clear;
-             sql.add('select Campo');
-             sql.add('      ,Formula');
-             sql.add('      ,Campo_Aliquota');
-             sql.add('      ,Campo_CST');
-             sql.add('      ,Ordem_Calculo');
-             sql.add('      ,Descricao');
-             sql.add('from OperacaoFiscalFormulas');
-             sql.add('where Operacao = :pOp');
-             sql.add('and Tipo = :pTipo');
-             sql.add('and isnull(Desativada, 0) = 0');
-             sql.add('order by Ordem_Calculo');
-             parambyname('pOp').AsInteger  := pOper;
-             parambyname('pTipo').asstring := pTipo;
-             open;
-             first;
-             while not eof do begin
-                   // Pula o calculo do valor unitário pois ja foi calculado anteriormente.
-                   if fieldbyname('Campo').AsString <> 'Valor_Unitario' then begin
-                      gFormula.Cells[0, gFormula.RowCount-1] := fieldbyname('Campo').AsString;
-                      gFormula.Cells[1, gFormula.RowCount-1] := fieldbyname('Formula').AsString;
-                      with Campos do begin
-                           sql.clear;
-                           sql.add('select Campo');
-                           sql.add('      ,Tabela');
-                           sql.add('      ,Campo_Chave');
-                           sql.add('      ,Pesquisa');
-                           sql.add('      ,Percentual');
-                           sql.Add('from Campos');
-                           sql.Add('where Campo in('+ListaCampos(tFormulasItens.fieldbyname('Formula').AsString, 0)+')');
-                           sql.add('order by Tabela');
-                           open;
-                      end;
-                      // Faz o cálculo da formula e Acha o campo.
-                      try
-                         if pFrame <> nil then begin
-                            mValor := CalculaMacro(pFrame, fieldbyname('Formula').AsString);
-                         end else begin
-                            mValor := CalculaMacro(pForm, fieldbyname('Formula').AsString);
-                         end;
-                      except On E: Exception do
-                         begin
-                             cLog.Lines.add('Ocorreu um erro de cálculo: '+E.Message);
-                             cLog.lines.Add(fieldbyname('Formula').AsString);
-                         end;
-                      end;
-                      pTabDestino.fieldbyname(fieldbyname('Campo').AsString).value := mValor;
-//                      if pFrame <> nil then begin
-//                         mCp := pFrame.FindComponent('c'+trim(fieldbyname('Campo').asstring));
-//                      end else begin
-//                         mCp := pForm.FindComponent('c'+trim(fieldbyname('Campo').asstring));
-//                      end;
-                      with tImpostos do begin
-                           mAliqImp := trim(tFormulasItens.fieldbyname('Campo_Aliquota').asstring);
-                           mCSTImp  := trim(tFormulasItens.fieldbyname('Campo_CST').asstring);
-                           append;
-                                 fieldbyname('Ordem_Calculo').Value := tFormulasItens.FieldByName('Ordem_Calculo').Value;
-                                 fieldbyname('Descricao').Value     := tFormulasItens.FieldByName('Descricao').Value;
-                                 fieldbyname('Campo').Value         := tFormulasItens.fieldbyname('Campo').value;
-                                 fieldbyname('Valor').Value         := mValor;
-                                 fieldbyname('Total').Value         := mValor * pTabDestino.fieldbyname('Quantidade').value;
-                                 if mAliqImp <> '' then begin
-                                    fieldbyname('Aliquota').Value := pTabDestino.fieldbyname(mAliqImp).asfloat;
-                                 end;
-                                 if mCSTImp <> '' then begin
-                                    fieldbyname('CST').Value := pTabDestino.fieldbyname(mCSTImp).asstring;
-                                 end;
-                           post;
-                      end;
-                   end;
-                   next;
-             end;
-        end;
-        result := true;
-     except
-        result := false;
-     end;
 end;
 
 function PegaCSTIPI(pOper, pProd: Integer): string;

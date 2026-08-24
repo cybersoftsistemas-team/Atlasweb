@@ -153,6 +153,7 @@ object TelaLogin: TTelaLogin
         Caption = 'ENTRAR'
         Anchors = [akRight]
         TabOrder = 5
+        Transparency = toNone
         Scale = bbsSmall
         IconPosition = ipButtonEdge
         Images = UniMainModule.imgBotoes

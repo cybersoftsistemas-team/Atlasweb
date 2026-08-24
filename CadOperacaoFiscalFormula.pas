@@ -340,12 +340,14 @@ begin
 
             with tCampos do begin
                  DisableControls;
-                 sql.clear;
-                 sql.Add('select *');
-                 sql.add('from Campos');
-                 sql.add('where Campo in('+mLista+')');
-                 //sql.SaveToFile('c:\temp\Lista_Campo_Formula.sql');
-                 open;
+                 if trim(mLista) <> '' then begin
+                    sql.clear;
+                    sql.Add('select *');
+                    sql.add('from Campos');
+                    sql.add('where Campo in('+mLista+')');
+                    //sql.SaveToFile('c:\temp\Lista_Campo_Formula.sql');
+                    open;
+                 end;
                  mLista := '';
 
                  First;

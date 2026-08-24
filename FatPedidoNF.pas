@@ -191,9 +191,9 @@ type
     PedidosNFItensDescricao_Mercadoria: TMemoField;
     PedidosNFItensNCM: TStringField;
     PedidosNFItensUM: TStringField;
-    PedidosNFItensQuantidade: TBCDField;
-    PedidosNFItensValor_Unitario: TBCDField;
     cEmpresa: TUniDBLookupComboBox;
+    PedidosNFItensValor_Unitario: TFMTBCDField;
+    PedidosNFItensQuantidade: TFMTBCDField;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
@@ -515,7 +515,7 @@ begin
              Alerta.AlertType := atInfo;
              Alerta.Title     := 'ATENÇÃO';
              Alerta.TitleText := 'ESTOQUE MÍNIMO';
-             Alerta.Text      := 'Ateção!'+#13+#13+'Estoque do produto atingiu estoque mínimo: '+FormatFloat(',##0.000', ProdutosEstoque_Minimo.Value);
+             Alerta.Text      := 'Ateção!'+#13+#13+'Estoque do produto atingiu estoque mínimo: '+FormatFloat(',##0.000', ProdutosEstoque_Minimo.asfloat);
              MessageBeep(MB_ICONINFORMATION);
              Alerta.Execute;
           end;

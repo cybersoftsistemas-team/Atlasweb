@@ -167,7 +167,7 @@ object fFatPedidoNF: TfFatPedidoNF
     Width = 1272
     Height = 965
     Hint = ''
-    ActivePage = TabSheet1
+    ActivePage = UniTabSheet1
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -2908,7 +2908,15 @@ object fFatPedidoNF: TfFatPedidoNF
     UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
-      'select *'
+      'select Pedido'
+      '      ,Item'
+      '      ,CFOP'
+      '      ,Codigo_Mercadoria'
+      '      ,Descricao_Mercadoria'
+      '      ,NCM'
+      '      ,UM'
+      '      ,Valor_Unitario'
+      '      ,Quantidade'
       'from PedidosNFitens'
       '')
     Left = 310
@@ -2949,15 +2957,17 @@ object fFatPedidoNF: TfFatPedidoNF
       FixedChar = True
       Size = 3
     end
-    object PedidosNFItensQuantidade: TBCDField
-      FieldName = 'Quantidade'
-      Origin = 'Quantidade'
-      DisplayFormat = ',##0.000'
-    end
-    object PedidosNFItensValor_Unitario: TBCDField
+    object PedidosNFItensValor_Unitario: TFMTBCDField
       FieldName = 'Valor_Unitario'
       Origin = 'Valor_Unitario'
-      DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
+    end
+    object PedidosNFItensQuantidade: TFMTBCDField
+      FieldName = 'Quantidade'
+      Origin = 'Quantidade'
+      Precision = 18
+      Size = 3
     end
   end
   object dsPedidosNFItens: TDataSource

@@ -17,7 +17,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     ActivePage = TabItem
     Align = alClient
     TabOrder = 0
-    object UniTabSheet2: TUniTabSheet
+    object TabLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
       object Grade: TUniDBGrid
@@ -949,6 +949,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           Images = UniMainModule.imgBotoes
           ImageIndex = 25
           TabOrder = 6
+          OnClick = bExcTodosItensClick
         end
         object bNFRef: TUniSpeedButton
           AlignWithMargins = True
@@ -2794,8 +2795,8 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
   end
   object tTmp: TFDQuery
     Connection = UniMainModule.Conecta
-    Left = 469
-    Top = 123
+    Left = 508
+    Top = 126
   end
   object Armazem: TFDQuery
     Connection = UniMainModule.Conecta
@@ -4016,10 +4017,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     Top = 370
   end
   object Itens: TFDQuery
-    IndexFieldNames = 'Nota_id'
+    IndexFieldNames = 'Nota_id;Item'
     MasterSource = dsNotas
     MasterFields = 'Nota_id'
-    DetailFields = 'Empresa;Chave'
+    DetailFields = 'Nota_id'
     Connection = UniMainModule.Conecta
     UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
@@ -4093,14 +4094,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       FieldName = 'CFOP'
       Origin = 'CFOP'
       Size = 4
-    end
-    object ItensEstoque_Minimo: TFMTBCDField
-      FieldName = 'Estoque_Minimo'
-      Origin = 'Estoque_Minimo'
-      ReadOnly = True
-      Required = True
-      Precision = 18
-      Size = 6
     end
   end
   object dsItens: TDataSource
