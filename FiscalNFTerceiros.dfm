@@ -420,9 +420,9 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Top = 145
             Width = 800
             Height = 25
-            Hint = 'Informe o "Tipo de Opera'#231#227'o"'
+            Hint = 'Informe qual a "Opera'#231#227'o Fiscal"'
             ShowHint = True
-            ListField = 'Descricao'
+            ListField = 'Codigo;Descricao'
             ListSource = dsOperacao
             KeyField = 'Codigo'
             ListFieldIndex = 0
@@ -436,7 +436,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             AnyMatch = True
             TabOrder = 7
             Color = clWindow
-            FieldLabel = 'Tipo de Opera'#231#227'o'
+            FieldLabel = 'Opera'#231#227'o Fiscal'
             FieldLabelWidth = 125
             FieldLabelSeparator = ' '
             Style = csDropDown
@@ -454,7 +454,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             ListField = 'CNPJ;Nome'
             ListSource = dsFornecedores
             KeyField = 'Codigo'
-            ListFieldIndex = 0
+            ListFieldIndex = 1
             BorderStyle = ubsInset
             DataField = 'Destinatario'
             DataSource = dsNotas
@@ -4094,6 +4094,14 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       FieldName = 'CFOP'
       Origin = 'CFOP'
       Size = 4
+    end
+    object ItensEstoque_Minimo: TFMTBCDField
+      FieldName = 'Estoque_Minimo'
+      Origin = 'Estoque_Minimo'
+      ReadOnly = True
+      Required = True
+      Precision = 18
+      Size = 6
     end
   end
   object dsItens: TDataSource

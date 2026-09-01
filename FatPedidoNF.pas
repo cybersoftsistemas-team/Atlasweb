@@ -3,12 +3,12 @@
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, uniGUITypes, uniGUIAbstractClasses, uniGUIClasses, system.ansistrings,
-  uniGUIFrame, UniPageControl, uniDBGrid, uniPanel, uniDBLookUpComboBox, uniDBCheckBox, uniScrollBox, uniSpeedButton, uniDateTimePicker,
-  uniDBDateTimePicker, uniButton, uniBitBtn, uniDBNavigator, uniEdit, uniDBEdit, uniDBMemo, uniBasicGrid, uniGUIBaseClasses, uniComboBox, UniGroupBox, uniSpinEdit, unimToggle,
-  FireDAC.Comp.Client, Funcoes, Data.DB, uniSweetAlert, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async,
-  FireDAC.DApt, Vcl.Menus, uniMainMenu, FireDAC.Comp.DataSet, uniMemo, uniDBComboBox, uniMultiItem, uniDBText, uniLabel, uniRadioGroup, uniDBRadioGroup, uniStringGrid, uniDBTreeGrid, CalcExpress, 
-  System.Generics.Collections, uniCheckBox, uniToolBar, uniListBox, uniSegmentedButton, System.Rtti, System.RegularExpressions;
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, uniGUITypes, uniGUIAbstractClasses, uniGUIClasses, system.ansistrings, uniGUIFrame, UniPageControl, 
+  uniDBGrid, uniPanel, uniDBLookUpComboBox, uniDBCheckBox, uniScrollBox, uniSpeedButton, uniDateTimePicker, uniDBDateTimePicker, uniButton, uniBitBtn, uniDBNavigator, uniEdit, 
+  uniDBEdit, uniDBMemo, uniBasicGrid, uniGUIBaseClasses, uniComboBox, UniGroupBox, uniSpinEdit, unimToggle, FireDAC.Comp.Client, Funcoes, Data.DB, uniSweetAlert, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, uniMainMenu, FireDAC.Comp.DataSet, 
+  uniMemo, uniDBComboBox, uniMultiItem, uniDBText, uniLabel, uniRadioGroup, uniDBRadioGroup, uniStringGrid, uniDBTreeGrid, CalcExpress, System.Generics.Collections, uniCheckBox, 
+  uniToolBar, uniListBox, uniSegmentedButton, System.Rtti, System.RegularExpressions, Vcl.Menus;
 
 type
   TfFatPedidoNF = class(TUniFrame)
@@ -221,7 +221,7 @@ type
     function SubstituirCampos(Campo: string): string;
     function SubstituirCondicao(Campo: string): string;
     procedure FrameFilhoFechou(Sender: TObject);
-    procedure TotalizaPedido;
+    procedure TotalizaPedido(AQuery: TFDQuery; APedido: Integer; const AEmpresa: string);
     { Private declarations }
   public
     { Public declarations }
@@ -280,7 +280,7 @@ begin
                           try
                              if ARes = mrYes then begin
                                 Delete;
-                                TotalizaPedido;
+                                TotalizaPedido(ttmp, PedidosNF.fieldbyname('Pedido').asinteger, PedidosNF.fieldbyname('Empresa').asstring);
                                 Alerta.Text := 'Item excluído do Pedido!';
                                 Alerta.Execute;
                              end;
@@ -324,7 +324,7 @@ begin
                                    parambyname('pPed').value := PedidosNF.FieldByName('Pedido').AsInteger;
                                    execute;
                                    PedidosNFItens.Refresh;
-                                   TotalizaPedido;
+                                   TotalizaPedido(ttmp, PedidosNF.fieldbyname('Pedido').asinteger, PedidosNF.fieldbyname('Empresa').asstring);
                               end;
                               Alerta.Text := 'Todos os itens foram removidos do Pedido!';
                               Alerta.Execute;
@@ -396,7 +396,7 @@ begin
           if CampoVazio(cForma_Pagamento,'"Forma de Pagamento" é obrigatório!') then Abort;
           with ttmp do begin
                sql.Clear;
-               sql.Add('select Nome from Municipios where Codigo = :pCodigo');
+               sql.add('select Nome from Municipios where Codigo = :pCodigo');
                parambyname('pCodigo').value := Destinatarios.FieldByName('Municipio').AsString;
                open;
           end;
@@ -481,7 +481,7 @@ begin
                    if State = dsInsert then begin
                       with ttmp do begin
                            sql.clear;
-                           sql.Add('select isnull(max(Item), 0)+1 as Item from PedidosNFItens where Pedido = :pPed');
+                           sql.add('select isnull(max(Item), 0)+1 as Item from PedidosNFItens where Pedido = :pPed');
                            parambyname('pPed').Value := PedidosNF.Fieldbyname('Pedido').value;
                            Open;
                            PedidosNFITens.fieldByName('Item').Value := ttmp.fieldbyname('Item').AsInteger;
@@ -530,7 +530,6 @@ procedure TfFatPedidoNF.bCancelarClick(Sender: TObject);
 begin
       PedidosNF.Cancel;
       LigaBotoes(true);
-      //PanelDados1.Enabled := false;
 end;
 
 procedure TfFatPedidoNF.bCancItensClick(Sender: TObject);
@@ -594,7 +593,7 @@ end;
 procedure TfFatPedidoNF.FrameFilhoFechou(Sender: TObject);
 begin
     // Restaurar estado original
-    TotalizaPedido;
+    TotalizaPedido(ttmp, PedidosNF.fieldbyname('Pedido').asinteger, PedidosNF.fieldbyname('Empresa').asstring);
     GradeItens.show;
     BarraItens.show;
     pBarraNav.Enabled := true;
@@ -650,18 +649,18 @@ begin
       with PedidosNF do begin
            sql.clear;
            sql.add('select *');
-           sql.Add('from PedidosNF');
-           sql.Add('order by Pedido');
+           sql.add('from PedidosNF');
+           sql.add('order by Pedido');
            open;
       end;
       with Empresas do begin
            sql.Clear;
-           sql.Add('select CNPJ');
-           sql.Add('      ,Estado');
+           sql.add('select CNPJ');
+           sql.add('      ,Estado');
            sql.add('      ,Unidade = case when isnull(Filial, 0) = 0 then ''MATRIZ'' else ''FILIAL ''+cast(Filial as char(3)) end');
-           sql.Add('      ,Razao_Social');
-           sql.Add('      ,Regime_Tributario');
-           sql.Add('from Empresas');
+           sql.add('      ,Razao_Social');
+           sql.add('      ,Regime_Tributario');
+           sql.add('from Empresas');
            sql.add('where substring(CNPJ, 1, 8) = '+quotedstr(copy(UniMainModule.mEmpresaAtiva, 1, 8)) );
            open;
       end;
@@ -677,16 +676,16 @@ begin
       with OpFiscal do begin
            sql.clear;
            sql.add('select Codigo');
-           sql.Add('      ,Descricao');
-           sql.Add('      ,Destino_Origem');
-           sql.Add('      ,Tipo = iif(ES = 0, ''ENTRADA'', ''SAÍDA'') ');
-           sql.Add('      ,ES');
-           sql.Add('      ,Nota_Referencia');
-           sql.Add('      ,Apuracao_PISCOFINS');
-           sql.Add('      ,Transportador');
-           sql.Add('      ,Transferencia');
-           sql.Add('      ,Complementar');
-           sql.Add('from OperacaoFiscal');
+           sql.add('      ,Descricao');
+           sql.add('      ,Destino_Origem');
+           sql.add('      ,Tipo = iif(ES = 0, ''ENTRADA'', ''SAÍDA'') ');
+           sql.add('      ,ES');
+           sql.add('      ,Nota_Referencia');
+           sql.add('      ,Apuracao_PISCOFINS');
+           sql.add('      ,Transportador');
+           sql.add('      ,Transferencia');
+           sql.add('      ,Complementar');
+           sql.add('from OperacaoFiscal');
            sql.add('order by Tipo, Descricao');
            open;
       end;
@@ -696,7 +695,7 @@ begin
               sql.clear;
               sql.add('select Chave');
               sql.add('      ,Data_Emissao');
-              sql.Add('      ,Processo');
+              sql.add('      ,Processo');
               sql.add('from NotasFiscais');
               sql.add('where isnull(Cancelada, 0) = 0');
               sql.add('and isnull(Denegada, 0) = 0');
@@ -718,7 +717,7 @@ begin
            sql.add('      ,Nome');
            sql.add('      ,CNPJ_CPF = iif(isnull(CNPJ, '''') <> '''', replicate(''0'', 14-len(isnull(CNPJ,'''')))+isnull(CNPJ,''''), replicate(''0'', 14-len(isnull(CPF, '''')))+isnull(CPF,''''))');
            sql.add('from Destinatarios');
-           sql.Add('where isnull(Transportador, 0) = 1');
+           sql.add('where isnull(Transportador, 0) = 1');
            sql.add('order by Nome');
            open;
       end;
@@ -728,7 +727,7 @@ begin
            sql.add('      ,Nome');
            sql.add('      ,CNPJ');
            sql.add('from Destinatarios');
-           sql.Add('where isnull(Armazem, 0) = 1');
+           sql.add('where isnull(Armazem, 0) = 1');
            sql.add('order by Nome');
            open;
       end;
@@ -738,7 +737,7 @@ begin
            sql.add('      ,Nome');
            sql.add('      ,CNPJ');
            sql.add('from Destinatarios');
-           sql.Add('where isnull(Representante, 0) = 1');
+           sql.add('where isnull(Representante, 0) = 1');
            sql.add('order by Nome');
            open;
       end;
@@ -748,7 +747,7 @@ begin
            sql.add('      ,Nome');
            sql.add('      ,CNPJ');
            sql.add('from Destinatarios');
-           sql.Add('where isnull(Atendente_Call, 0) = 1');
+           sql.add('where isnull(Atendente_Call, 0) = 1');
            sql.add('order by Nome');
            open;
       end;
@@ -833,9 +832,9 @@ end;
 
 procedure TfFatPedidoNF.cPesquisaKeyDown(Sender: TObject; var Key: Word;Shift: TShiftState);
 begin
-      if Key = VK_RETURN then begin
-         bPesquisa.Click;
-      end;
+     if Key = VK_RETURN then begin
+        bPesquisa.Click;
+     end;
 end;
 
 procedure TfFatPedidoNF.bPesquisaClick(Sender: TObject);
@@ -919,7 +918,6 @@ var
   CampoNome
  ,NomeDataSet: string;
   DataSet: TDataSet;
-  mValor: real;
 begin
      Result      := '';
      NomeDataSet := copy(Campo, 1, pos('_', Campo)-1);
@@ -1009,33 +1007,72 @@ begin
      result := Campo;
 end;
 
-procedure TfFatPedidoNF.TotalizaPedido;
+procedure TfFatPedidoNF.TotalizaPedido(aQuery: TFDQuery;aPedido: Integer;const aEmpresa: string);
 var
-  msql: widestring;
-  mCampo: string;
+  msql, CamposSet, CamposSum, NomeCampo, NomeFilho: string;
 begin
-     with ttmp do begin
+     CamposSet := '';
+     CamposSum := '';
+     //===========================================
+     // Busca os campos que devem ser totalizados.
+     // Regras:
+     //   - Tipo = Totalizador
+     //   - Existe em PedidosNF
+     //   - Existe em PedidosNFitens
+     //   - distinct evita campos duplicados
+     //===========================================
+     with aQuery do begin
+          close;
           sql.clear;
-          sql.Add('select Campo from CamposCalculaveis where Tipo = ''Totalizador'' and Tabela = ''PedidosNF'' and Ativo = 1');
+          sql.add('select distinct cc.Campo, cc.Campo_Filho');
+          sql.add('from CamposCalculaveis cc');
+          sql.add('inner join sys.columns cPN');
+          sql.add('on cPN.object_id = object_id(''dbo.PedidosNF'') and cPN.name = cc.Campo');
+          sql.add('inner join sys.columns cITN on cITN.object_id = object_id(''dbo.PedidosNFitens'') and cITN.name = cc.Campo');
+          sql.add('where cc.Tipo = ''Totalizador'' ');
+          sql.add('order by cc.Campo');
           open;
-          first;
-     end;     
-     with tTotaliza do begin
-          sql.clear;
-          msql := '';
-          msql := 'update PedidosNF set ';
-          while not ttmp.eof do begin
-                mCampo := ttmp.FieldByName('Campo').asstring + stringofchar(' ', 20-Length(ttmp.FieldByName('Campo').asstring));
-                msql   := msql + #13 + '                '+mCampo + ' = isnull((select sum(isnull(' + mCampo + ', 0)) from PedidosNFitens pni where pni.Pedido = '+PedidosNF.fieldbyname('Pedido').asstring+'), 0),';
-                ttmp.next;
+          //======================================
+          // Monta dinamicamente:
+          //   pn.[Campo] = isnull(itn.[Campo], 0)
+          // e:
+          //   sum(isnull([Campo], 0)) AS [Campo]
+          //======================================
+          while not eof do begin
+                NomeCampo := aQuery.FieldByName('Campo').AsString;
+                NomeFilho := aQuery.FieldByName('Campo_Filho').AsString;
+                // Protege o nome do campo para uso entre [ ].
+                NomeCampo := StringReplace(NomeCampo,']',']]',[rfReplaceAll]);
+                NomeFilho := StringReplace(NomeFilho,']',']]',[rfReplaceAll]);
+                // set.
+                if CamposSet <> '' then CamposSet := CamposSet + '   ,';
+                CamposSet := CamposSet + 'pn.[' + NomeFilho + ']'+stringofchar(' ', 23-Length(ttmp.FieldByName('Campo').asstring)) + ' = isnull(itn.[' + NomeCampo + '], 0)'+#13;
+                // sum.
+                if CamposSum <> '' then CamposSum := CamposSum + '      ,';
+                CamposSum := CamposSum + 'sum(isnull([' + NomeCampo + '], 0))'+stringofchar(' ', 23-Length(ttmp.FieldByName('Campo_Filho').asstring)) +' as [' + NomeCampo + ']'+#13;
+                next;
           end;
-          msql := copy(msql, 1, length(msql)-1);
-          msql := msql+#13+'where Pedido = '+PedidosNF.fieldbyname('Pedido').asstring;
-          sql.add(msql);
-          //sql.SaveToFile('c:\temp\Totaliza_PedidoNF.sql');
-          execute;
+          close;
+          // Nenhum campo encontrado.
+          if CamposSet = '' then exit;
+          // Monta o update final.
+          msql := 'update pn' + sLineBreak +
+                  'set ' + CamposSet + sLineBreak +
+                  'from dbo.PedidosNF pn' + sLineBreak +
+                  'cross join (' + sLineBreak +
+                  'select ' + CamposSum + sLineBreak +
+                  'from dbo.PedidosNFitens' + sLineBreak +
+                  'where Pedido = :Pedido' + sLineBreak +
+                  'and Empresa = :Empresa' + sLineBreak +
+                  ') itn' + sLineBreak + 'where pn.Pedido = :Pedido' + sLineBreak + ' and pn.Empresa = :Empresa';
+          // Executa.
+          sql.Text := msql;
+          ParamByName('Pedido').AsInteger := aPedido;
+          ParamByName('Empresa').AsString := aEmpresa;
+          //sql.savetofile('c:\temp\Atlas_Totalizador.sql');
+          execsql;
+          PedidosNF.Refresh;
      end;
-     PedidosNF.Refresh;
 end;
 
 

@@ -402,7 +402,6 @@ begin
              Showmessage('Não pode editar o registro corrente!'+#13+#13+'Existem "Pedidos" feitos utilizando esse destinatário."'+#13+'Exclua o "Pedido" para poder alterar este destinatário.');
              Abort;
           end;
-
           try
               LigaBotoes(false);
               Destinatarios.Edit;
@@ -433,7 +432,7 @@ begin
           // Não deixa excluir se ja existe movimento para o cliente.
           if Existe(Notas, 'Destinatario', FieldByName('Codigo').Asstring) then begin
              MessageDlg('Este Destinatário não pode ser excluido, pois existem "Notas Fiscais" emitidas para ele.'+#13+#13+
-                        'Para que ele não apareça mais na relação marque-o como "Desativado".', mtConfirmation, [mbok]);
+                        'Para que ele não apareça mais na relação, Desative-o no cadastro.', mtConfirmation, [mbok]);
              Cancel;
              Abort;
           end;

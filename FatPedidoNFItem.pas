@@ -928,14 +928,14 @@ begin
           sql.add('select * from CSTCOFINS');
           open;
      end;
-     with CSTICMSB do begin
-          sql.clear;
-          sql.add('select * from CSTICMSTabB order by Codigo');
-          open;
-     end;
      with CSTICMSA do begin
           sql.clear;
           sql.add('select * from CSTICMSTabA order by Codigo');
+          open;
+     end;
+     with CSTICMSB do begin
+          sql.clear;
+          sql.add('select * from CSTICMSTabB order by Codigo');
           open;
      end;
      with TabPISCOFINS do begin
@@ -1007,13 +1007,14 @@ begin
           sql.add('      ,Empresa');
           sql.add('from ICMS');
           sql.Add('where UF = :pUF');
-          parambyname('pUF').value := PedidosNF.FieldByName('Destinatario_Estado').AsString;
+          sql.Add('and Empresa = :pEmp');
+          parambyname('pUF').value  := PedidosNF.FieldByName('Destinatario_Estado').AsString;
+          parambyname('pEmp').value := PedidosNF.FieldByName('Empresa').AsString;
           open;
      end;
      
      // Totaliza os campos de total dos itens.
      TotalizaItens;
-
      cProduto.setfocus;
 end;
 

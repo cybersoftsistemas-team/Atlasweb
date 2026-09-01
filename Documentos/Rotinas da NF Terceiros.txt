@@ -4,8 +4,6 @@ ESTOQUE MINIMO +--> POR NOTA       (NUMERO DA NOTA)
                | 
                +--> TODOS PRODUTOS (GERAL)
 
-
-
 =============================================================================================================================
 ALTERAÇÃO DA NF TERCEIRO
 =============================================================================================================================
@@ -27,10 +25,10 @@ EXCLUSÃO DA NF TERCEIROS
 [ok] Excluir as entradas de Lotes feitos pela NF.
 [ok] Excluir os itens cadastrados no CIAP pela entrada da NF.
 [ok] Excluir Lançamentos financeiros originados da NF que não estiverem baixados.
-[--] Ajustar as quantidade do estoque do embarque.                                        --> (Isso sera feito de outra forma).
+[--] Ajustar as quantidade do estoque do embarque.                                       --> (Isso sera feito de outra forma).
 [ok] Excluir as notas da tabela de notas dos Embarques.
 [ok] Excluir lançamentos contabeis originados da NF.
-[--] Excluir Itens da NF da ficha de Estoque/Inventario e reprocessar os itens de ambos.  --> (Analisar outra forma pra isso).
+[--] Excluir Itens da NF da ficha de Estoque/Inventario e reprocessar os itens de ambos. --> (Analisar outra forma pra isso).
 [ok] Excluir Itens da NF.
 
 =============================================================================================================================
@@ -40,6 +38,16 @@ SALVAR NF TERCEIROS
 [ok] Verifica se já existe nota com o mesmo Número, Data e fornecedor no cadastro.
 [ok] Verifica se as datas estão dentro de período fechado.
 [ok] Atualiza os itens da nota fiscal com os dados da capa.
+
+=============================================================================================================================
+SALVAR ITENS
+=============================================================================================================================
+[  ] Verificar campos obrigatórios.
+[  ] Calcular valor do inventario ou pegar da ficha de estoque.
+[  ] Criar parcelas no imobilizado em casa de (Compra para ativo imobilizado).
+[  ] Atualizar valores do cadastro do produtos Custo Médio/ Valor Entrada/ Estoque minímo Perc/ Minímo.
+[  ] Ajuste de lotes/Detalhes.
+[  ] Adicionar itens a tabela de embarques.
 
 =============================================================================================================================
 ALTERAR ITENS
@@ -54,16 +62,6 @@ EXCLUIR ITENS
 [  ] Excluir do imobilizado caso não tenha sido utilizado nenhuma parcela.
 [  ] Excluir controle de lotes.
 [  ] Excluir tabela de itens dos embarques.
-
-=============================================================================================================================
-SALVAR ITENS
-=============================================================================================================================
-[  ] Verificar campos obrigatórios.
-[  ] Calcular valor do inventario ou pegar da ficha de estoque.
-[  ] Criar parcelas no imobilizado em casa de (Compra para ativo imobilizado).
-[  ] Atualizar valores do cadastro do produtos Custo Médio/ Valor Entrada/ Estoque minímo Perc/ Minímo.
-[  ] Ajuste de lotes/Detalhes.
-[  ] Adicionar itens a tabela de embarques.
 
 =============================================================================================================================
 IMPORTAR XML 
@@ -85,23 +83,3 @@ CAMPOS QUE PRECISAM VERIFICAR
 MANIFESTAR NOTA FISCAL DE TERCEIROS
 =============================================================================================================================
 [ ] Efetuar manifestação da nota.
-
-
-
-
-
-Finalidade_Mercadoria
----------------------
-Revenda
-Consumo
-Devolução
-Exportação
-Própria em Poder de Terceiros
-Terceiros em Poder da Empresa
-Imobilizado
-Outras
-
-
-
-
-NFe_Util_2Gv5.02b.exe /verysilent /components="DLL" /DIR=".\teste"

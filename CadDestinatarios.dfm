@@ -4594,7 +4594,6 @@ object fCadDestinatarios: TfCadDestinatarios
               Left = 245
               Top = 164
               Width = 97
-              Height = 22
               Hint = ''
               ShowHint = True
               DataField = 'FTP_Passive'
@@ -5211,10 +5210,11 @@ object fCadDestinatarios: TfCadDestinatarios
     Top = 666
   end
   object Notas: TFDQuery
+    Connection = UniMainModule.Conecta
     UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
-      'SELECT * FROM Notas ORDER BY NFe_Chave')
+      'SELECT * FROM NotasFiscais ORDER BY Chave')
     Left = 191
     Top = 79
   end

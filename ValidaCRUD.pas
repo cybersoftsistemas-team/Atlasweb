@@ -39,7 +39,10 @@ begin
     //UniSession.AddJS(Comp.JSName + '.focus();');
 end;
 
-// PROCESSAMENTO RECURSIVO
+{=============================================================
+ Os campos do form devem estar com a propriedade "Tag = 1".
+ PROCESSAMENTO RECURSIVO
+ =============================================================}
 class function TValidaCRUD.Processar(Container: TWinControl): Boolean;
    function Percorrer(c: TWinControl): Boolean;
    var
@@ -56,7 +59,7 @@ class function TValidaCRUD.Processar(Container: TWinControl): Boolean;
 
           Comp := TUniControl(Ctrl);
           if (Comp.Tag = 1) and CampoVazio(Comp) then begin
-             TfDialogo.Execute(UniApplication, 'Obrigatorio', Comp.Hint);
+             TfDialogo.Execute(UniApplication, 'Obrigatorio', 'Campo obrigatório!', Comp.Hint);
              UniSession.AddJS('setTimeout(function(){'+Comp.JSName + '.focus();' +'}, 150);');
              Exit(False);
           end;

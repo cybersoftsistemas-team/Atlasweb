@@ -6,7 +6,7 @@ uses
     SysUtils, Windows, FireDAC.Comp.Client, Dialogs, MaskUtils, System.Variants, DB, Forms, uniSpeedButton, uniPanel, UniPageControl, System.Classes, CalcExpress, UniGUIClasses,
     uniGUIForm, uniGUIFrame, uniMemo, DBCommon, uniDBLookUpComboBox, uniDBComboBox, uniComboBox, uniDBDateTimePicker, uniDBEdit, uniEdit, uniGuiDialogs, TypInfo, Data.SqlTimSt,
     uniSweetAlert, FireDAC.Stan.Param, uniMainMenu, uniDBNavigator, uniButton, uniScrollBox, System.RegularExpressions, System.Rtti, uniStringGrid, DateUtils, ComObj, uniDBMemo,
-    uniDBRadioGroup;
+    uniDBRadioGroup, ClipBrd;
 
 
 // Funções de checagens.
@@ -171,16 +171,22 @@ End;
 
 function Existe(Tabela:TFDQuery; Campo, Codigo:string):boolean;
 var
-   Pesq:TFDQuery;
-   TabNome:string;
+   Pesq: TFDQuery;
+   TabNome: string;
 begin
-     TabNome         := GetTableNameFromSQL(Tabela.Text);
-     Pesq            := TFDQuery.Create(nil);
-     Pesq.Connection := uniMainModule.Conecta;
-     Pesq.sql.clear;
-     Pesq.sql.add('select Achou = count(*) from '+TabNome+' where '+Campo+' = ' + QuotedStr(Codigo));
-     Pesq.Open;
-     Existe := Pesq.FieldByName('Achou').AsInteger > 0;
+     TabNome := GetTableNameFromSQL(Tabela.sql.Text);
+     Pesq    := TFDQuery.Create(nil);
+     with Pesq do begin
+          Connection := uniMainModule.Conecta;
+          sql.clear;
+          sql.add('if exists (select 1 from '+TabNome+' where '+Campo+' = '+QuotedStr(Codigo)+')');
+          sql.add('   select cast(1 as bit) as Existe');
+          sql.add('else');
+          sql.add('   select cast(0 as bit) as Existe');
+          sql.savetofile('c:\temp\Atlas_NFTerceiros_Excluir_Destinatario.sql.');
+          open;
+          Existe := fieldbyname('Existe').asboolean;
+     end;
      Pesq.Free;
 end;
 
@@ -190,7 +196,7 @@ var
    Pesq:TFDQuery;
    TabNome:string;
 begin
-     TabNome := GetTableNameFromSQL(Tabela.Text);
+     TabNome := GetTableNameFromSQL(Tabela.sql.Text);
      Pesq    := TFDQuery.Create(nil);
      with Pesq do begin
           Connection := uniMainModule.Conecta;
@@ -535,7 +541,7 @@ var
   tTemp: TFDQuery;
   tab: string;
 begin
-     Tab      := GetTableNameFromSQL(Tabela.text);
+     Tab      := GetTableNameFromSQL(Tabela.sql.text);
      Pesquisa := '';
      tTemp    := TFDQuery.Create(nil);
      with tTemp do begin
@@ -557,7 +563,7 @@ function Filtra(Tabela:TFDQuery; CampoPesq, Busca:string):string;
 var
    scr: string;
 begin
-    scr := 'select * from '+GetTableNameFromSQL(Tabela.text)+' where '+CampoPesq+' like '+quotedstr('%'+Busca+'%');
+    scr := 'select * from '+GetTableNameFromSQL(Tabela.sql.text)+' where '+CampoPesq+' like '+quotedstr('%'+Busca+'%');
     with Tabela do begin
           sql.Clear;
           sql.add(scr);
@@ -574,7 +580,7 @@ var
   x, iSelect, iFrom: Integer;
   Texto, Tab: string;
 begin
-     texto   := Tabela.Text;
+     texto   := Tabela.sql.Text;
      iSelect := 0;
      iFrom   := 0;
      for x := 1 to Length(Texto) do begin
@@ -2111,8 +2117,6 @@ begin
                       end;
                       // Faz o cálculo da formula e Acha o campo.
                       try
-//MessageDlg(fieldbyname('Ordem_Calculo').asstring+': '+fieldbyname('Campo').asstring+#13+ListaCampos(tFormulasItens.fieldbyname('Formula').AsString, 0), mterror, [mbok]);
-//cLog.lines.add('<< '+fieldbyname('Ordem_Calculo').asstring+'  '+fieldbyname('Campo').asstring+' >> '+fieldbyname('Formula').AsString);
                          if pFrame <> nil then begin
                             mValor := CalculaMacro(pFrame, fieldbyname('Formula').AsString, fieldbyname('Campo').asstring);
                          end else begin
@@ -2125,11 +2129,6 @@ begin
                          end;
                       end;
                       pTabDestino.fieldbyname(fieldbyname('Campo').AsString).value := mValor;
-//                      if pFrame <> nil then begin
-//                         mCp := pFrame.FindComponent('c'+trim(fieldbyname('Campo').asstring));
-//                      end else begin
-//                         mCp := pForm.FindComponent('c'+trim(fieldbyname('Campo').asstring));
-//                      end;
                       with tImpostos do begin
                            mAliqImp := trim(tFormulasItens.fieldbyname('Campo_Aliquota').asstring);
                            mCSTImp  := trim(tFormulasItens.fieldbyname('Campo_CST').asstring);
@@ -2197,6 +2196,7 @@ begin
           end;
      end;
      try
+if (campo = 'Valor_CBS') then Clipboard.AsText := mCalc;
          Macro.Formula := mCalc;
          mResultado    := Macro.Calc([0]);
          if mResultado < 0 then mResultado := 0;

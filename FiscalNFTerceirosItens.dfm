@@ -426,6 +426,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           BorderStyle = ubsInset
         end
         object cCFOP: TUniDBLookupComboBox
+          Tag = 1
           Left = 8
           Top = 35
           Width = 742
@@ -476,6 +477,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           Style = csDropDown
         end
         object cValor_Unitario: TUniDBFormattedNumberEdit
+          Tag = 1
           Left = 8
           Top = 170
           Width = 240
@@ -683,6 +685,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           BorderStyle = ubsInset
         end
         object cProduto: TUniDBLookupComboBox
+          Tag = 1
           Left = 8
           Top = 8
           Width = 742
