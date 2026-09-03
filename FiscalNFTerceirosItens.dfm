@@ -431,7 +431,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           Top = 35
           Width = 742
           Height = 25
-          Hint = ''
+          Hint = 'CFOP'
           ShowHint = True
           ParentShowHint = False
           ListField = 'Codigo;Descricao'

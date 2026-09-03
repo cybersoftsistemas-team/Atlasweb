@@ -56,6 +56,7 @@ function SomaData(Data: TSQLTimeStamp; Dias: Integer): TSQLTimeStamp;
 procedure LogDados(Tabela: TDataSet; Descricao, Estado: String);
 procedure LogErros(Tabela, Operacao, Descricao:String);
 function GeraCodigo(Tabela, Campo:string):integer;
+function GeraItem(Tabela, Campo, Condicao:string):integer;
 function Existe(Tabela:TFDQuery;Campo,Codigo:string):boolean;
 function ExisteData(Tabela:TFDQuery;Campo:String; pData:TDate):boolean;
 function Pesquisa(Tabela:TFDQuery; CampoChave, CampoPesq, Busca:string):string;
@@ -222,6 +223,25 @@ begin
           GeraCodigo := FieldByName(Campo).AsInteger;
      end;
      Tab.Free;
+end;
+
+function GeraItem(Tabela, Campo, Condicao:string):integer;
+var
+   Tab:TFDQuery;
+begin
+     try
+        Tab := TFDQuery.Create(nil);
+        with Tab do begin
+             Connection := uniMainModule.Conecta;
+             sql.clear;
+             sql.Add('select isnull(max('+Campo+'), 0)+1 as '+Campo+' from '+Tabela+' where '+Condicao);
+             sql.savetofile('c:\temp\Atlas_Funcoes_GeraItem.sql');
+             open;
+             GeraItem := FieldByName(Campo).AsInteger;
+        end;
+     finally
+        Tab.Free;
+     end;
 end;
 
 function GeraNumeroLan(pLote:integer; pData:TDate):integer;
@@ -2196,7 +2216,7 @@ begin
           end;
      end;
      try
-if (campo = 'Valor_CBS') then Clipboard.AsText := mCalc;
+         if (campo = 'Valor_CBS') then Clipboard.AsText := mCalc;
          Macro.Formula := mCalc;
          mResultado    := Macro.Calc([0]);
          if mResultado < 0 then mResultado := 0;

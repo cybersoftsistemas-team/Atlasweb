@@ -3,7 +3,7 @@
 interface
 
 uses System.SysUtils, System.Classes, Vcl.Controls, uniGUIClasses, uniGUIApplication, uniDBEdit, uniDBComboBox, uniDBLookUpComboBox, uniDBDateTimePicker,
-     uniDBCheckBox, uniDBMemo, uniDBRadioGroup, uniGuiDialogs, Dialogs, Dialogo, Vcl.Graphics;
+     uniDBCheckBox, uniDBMemo, uniDBRadioGroup, uniGuiDialogs, Dialogs, Dialogo, Vcl.Graphics, system.RTTI;
 
   type
      TValidaCRUD = class
@@ -43,6 +43,7 @@ end;
  Os campos do form devem estar com a propriedade "Tag = 1".
  PROCESSAMENTO RECURSIVO
  =============================================================}
+ (*
 class function TValidaCRUD.Processar(Container: TWinControl): Boolean;
    function Percorrer(c: TWinControl): Boolean;
    var
@@ -68,6 +69,52 @@ class function TValidaCRUD.Processar(Container: TWinControl): Boolean;
 begin
      Result := Percorrer(Container);
 end;
+*)
+{=============================================================
+ Os campos do form devem estar com a propriedade "Tag = 1".
+ PROCESSAMENTO RECURSIVO
+ =============================================================}
+class function TValidaCRUD.Processar(Container: TWinControl): Boolean;
+  function Percorrer(c: TWinControl): Boolean;
+  var
+    i: Integer;
+    Ctrl: TControl;
+    Comp: TUniControl;
+    ctx: TRttiContext;
+    prop: TRttiProperty;
+    RotuloCampo: string;
+  begin
+       Result := true;
+       for i := 0 to pred(c.ControlCount) do begin
+           Ctrl := c.Controls[i];
+           if Ctrl is TWinControl then
+           if not Percorrer(TWinControl(Ctrl)) then  Exit(false);
+           if not (Ctrl is TUniControl) then Continue;
+           Comp := TUniControl(Ctrl);
+           if (Comp.Tag = 1) and CampoVazio(Comp) then begin
+              // Configura um valor padrão (fallback)
+              RotuloCampo := Comp.Hint;
+              if RotuloCampo = '' then RotuloCampo := Comp.Name;
+              // Tenta capturar o FieldLabel dinamicamente via RTTI
+              ctx := TRttiContext.Create;
+              try
+                prop := ctx.GetType(Comp.ClassType).GetProperty('FieldLabel');
+                if (prop <> nil) and (prop.IsReadable) then RotuloCampo := prop.GetValue(Comp).AsString;
+              finally
+                ctx.Free;
+              end;
+
+              // Exibe a mensagem com o FieldLabel (ou Hint se não tiver FieldLabel)
+              TfDialogo.Execute(UniApplication, 'Obrigatorio', 'O campo "' + RotuloCampo + '" é obrigatório!', '');
+              UniSession.AddJS('setTimeout(function(){' + Comp.JSName + '.focus();' + '}, 150);');
+              Exit(False);
+           end;
+       end;
+  end;
+begin
+     Result := Percorrer(Container);
+end;
+
 
 //ENTRY POINT
 class function TValidaCRUD.ValidarFormulario(Container: TWinControl): Boolean;

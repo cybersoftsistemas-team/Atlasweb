@@ -341,15 +341,18 @@ begin
      end;
      with Produtos do begin
           sql.clear;
-          sql.add('select Codigo');
-          sql.add('      ,Codigo_Fabricante');
-          sql.add('      ,NCM');
-          sql.add('      ,Descricao');
-          sql.add('      ,Descricao_Reduzida');
-          sql.add('      ,UM');
-          sql.add('from Produtos');
-          sql.add('where Desativado <> 1');
-          sql.add('order by Codigo');
+          sql.add('select prd.Codigo');
+          sql.add('      ,prd.Codigo_Fabricante');
+          sql.add('      ,prd.NCM');
+          sql.add('      ,prd.Descricao');
+          sql.add('      ,prd.Descricao_Reduzida');
+          sql.add('      ,prd.UM');
+          sql.add('      ,NCM.Codigo_EXTIPI');
+          sql.add('from Produtos prd');
+          sql.add('inner join NCM on prd.NCM = NCM.NCM');
+          sql.add('where prd.Desativado <> 1');
+          sql.add('order by prd.Codigo');
+          //sql.savetofile('c:\temp\Atlas_NotasTerceirosItens_Produtos.sql');
           open;
      end;
      with CFOP do begin
@@ -365,19 +368,26 @@ begin
      end;
      with Processos do begin
           sql.clear;
-          sql.add('select Processo');
           if mDestOrig = 'I' then begin
+             sql.add('select Processo');
              sql.Add('      ,Declaracao = DUIMP');
              sql.add('from ProcessosImp');
              sql.add('where isnull(DUIMP, '''') <> '''' ');
+             sql.add('and Processo_Fechamento is not null');
           end;
           if mDestOrig = 'E' then begin
+             sql.add('select Processo');
              sql.Add('      ,Declaracao = DUE');
              sql.Add('from ProcessosExp');
              sql.Add('where isnull(DUE, '''') <> '''' ');
+             sql.add('and Processo_Fechamento is not null');
           end;
-          sql.add('and Processo_Fechamento is not null');
+          if mDestOrig = 'D' then begin
+             sql.add('select Processo = null');
+             sql.Add('      ,Declaracao = null');
+          end;
           sql.add('order by Processo');
+          //sql.savetofile('c:\temp\Atlas_NotasTerceirosItens_Processos.sql');
           open;
      end;
      with Embarques do begin

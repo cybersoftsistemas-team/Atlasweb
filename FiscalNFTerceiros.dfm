@@ -20,6 +20,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -199,6 +203,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabCapa: TUniTabSheet
       Hint = ''
       Caption = 'Capa da Nota Fiscal'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object Panel2: TUniPanel
         Left = 0
         Top = 0
@@ -670,6 +678,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabItem: TUniTabSheet
       Hint = ''
       Caption = 'Itens'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object GradeItens: TUniDBGrid
         Left = 65
         Top = 0
@@ -727,6 +739,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Font.Style = [fsBold]
             Alignment = taCenter
             ReadOnly = True
+            DisplayFormat = '#.###'
           end
           item
             FieldName = 'Codigo_Mercadoria'
@@ -784,6 +797,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Font.Name = 'Calibri'
             Font.Style = [fsBold]
             ReadOnly = True
+            DisplayFormat = ',##0.000'
           end
           item
             FieldName = 'Valor_Unitario'
@@ -795,6 +809,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Font.Name = 'Calibri'
             Font.Style = [fsBold]
             ReadOnly = True
+            DisplayFormat = ',##0.00'
           end
           item
             FieldName = 'Valor_Total'
@@ -804,6 +819,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Width = 129
             Font.Name = 'Calibri'
             ReadOnly = True
+            DisplayFormat = ',##0.00'
           end
           item
             FieldName = 'Estoque_Minimo'
@@ -813,6 +829,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Width = 80
             Font.Name = 'Calibri'
             ReadOnly = True
+            DisplayFormat = ',##0.000'
           end>
       end
       object BarraItens: TUniPanel
@@ -974,6 +991,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabSerial: TUniTabSheet
       Hint = ''
       Caption = 'Seriais/Chassis'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object GradeSerial: TUniDBGrid
         Left = 0
         Top = 0
@@ -1041,6 +1062,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabLote: TUniTabSheet
       Hint = ''
       Caption = 'Lotes'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object GradeLote: TUniDBGrid
         AlignWithMargins = True
         Left = 3
@@ -1108,6 +1133,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabManif: TUniTabSheet
       Hint = ''
       Caption = 'Manifesta'#231#227'o do Destinat'#225'rio'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object GradeManif: TUniDBGrid
         AlignWithMargins = True
         Left = 3
@@ -1292,6 +1321,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       Hint = ''
       TabVisible = False
       Caption = 'Importar XML'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       DesignSize = (
         1110
         726)
@@ -4033,6 +4066,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       '      ,UM'
       '      ,Quantidade'
       '      ,Valor_Unitario'
+      '      ,Valor_Total = Valor_Unitario * Quantidade'
       '      ,Empresa'
       '      ,CFOP'
       
@@ -4102,6 +4136,13 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       Required = True
       Precision = 18
       Size = 6
+    end
+    object ItensValor_Total: TFMTBCDField
+      FieldName = 'Valor_Total'
+      Origin = 'Valor_Total'
+      ReadOnly = True
+      Precision = 37
+      Size = 12
     end
   end
   object dsItens: TDataSource
@@ -4255,5 +4296,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     DataSet = Embarques
     Left = 181
     Top = 670
+  end
+  object tSaldo: TFDQuery
+    Connection = UniMainModule.Conecta
+    Left = 510
+    Top = 182
   end
 end

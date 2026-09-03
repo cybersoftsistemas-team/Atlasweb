@@ -100,7 +100,8 @@ uses
   ValidaCRUD in 'ValidaCRUD.pas',
   Dialogo in 'Dialogo.pas' {fDialogo: TUniForm},
   FiscalNFTerceirosItens in 'FiscalNFTerceirosItens.pas' {fFiscalNFTerceirosItens: TUniFrame},
-  ImportaNFe in 'ImportaNFe.pas';
+  ImportaNFe in 'ImportaNFe.pas',
+  FichaEstoque in 'FichaEstoque.pas';
 
 (*uses p/gerador*)
 

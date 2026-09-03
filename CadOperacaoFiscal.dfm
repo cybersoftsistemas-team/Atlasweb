@@ -397,12 +397,12 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
         DesignSize = (
           1397
           735)
-        ScrollHeight = 702
+        ScrollHeight = 698
         object pFicha1: TUniPanel
           Left = 200
           Top = 20
-          Width = 686
-          Height = 682
+          Width = 707
+          Height = 678
           Hint = ''
           Enabled = False
           ShowHint = True
@@ -437,7 +437,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           object cDescricao: TUniDBEdit
             Left = 14
             Top = 40
-            Width = 658
+            Width = 677
             Height = 25
             Hint = ''
             ShowHint = True
@@ -451,9 +451,10 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           end
           object cRateio_PISCOFINSEntrada: TUniDBRadioGroup
             Left = 14
-            Top = 342
+            Top = 308
             Width = 160
             Height = 75
+            Cursor = crHandPoint
             Hint = ''
             ShowHint = True
             DataField = 'Rateio_PISCOFINSEntrada'
@@ -476,6 +477,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             Top = 129
             Width = 160
             Height = 75
+            Cursor = crHandPoint
             Hint = ''
             ShowHint = True
             DataField = 'ES'
@@ -494,10 +496,11 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
               '1')
           end
           object cOrigem_ValorUnitario: TUniDBRadioGroup
-            Left = 492
-            Top = 517
-            Width = 185
+            Left = 491
+            Top = 389
+            Width = 200
             Height = 146
+            Cursor = crHandPoint
             Hint = ''
             Visible = False
             ShowHint = True
@@ -524,9 +527,10 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           end
           object cOrigem_AliquotaICMS: TUniDBRadioGroup
             Left = 14
-            Top = 587
+            Top = 512
             Width = 160
             Height = 76
+            Cursor = crHandPoint
             Hint = ''
             ShowHint = True
             DataField = 'Origem_AliquotaICMS'
@@ -547,8 +551,9 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           object GroupBox3: TUniGroupBox
             Left = 491
             Top = 129
-            Width = 180
-            Height = 369
+            Width = 200
+            Height = 247
+            Cursor = crHandPoint
             Hint = ''
             ShowHint = True
             Caption = 'Campos Destacados no DANFE '
@@ -746,10 +751,11 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
             end
           end
           object GroupBox2: TUniGroupBox
-            Left = 192
+            Left = 190
             Top = 129
-            Width = 281
-            Height = 533
+            Width = 285
+            Height = 536
+            Cursor = crHandPoint
             Hint = ''
             ShowHint = True
             Caption = ' Par'#226'metros Diversos '
@@ -1238,9 +1244,10 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           end
           object UniDBRadioGroup1: TUniDBRadioGroup
             Left = 14
-            Top = 233
+            Top = 217
             Width = 160
             Height = 75
+            Cursor = crHandPoint
             Hint = ''
             ShowHint = True
             DataField = 'Emissao'
@@ -1261,7 +1268,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           object cBeneficio_Fiscal: TUniDBLookupComboBox
             Left = 14
             Top = 67
-            Width = 658
+            Width = 677
             Height = 25
             Hint = ''
             ShowHint = True
@@ -1282,9 +1289,10 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           end
           object UniDBRadioGroup2: TUniDBRadioGroup
             Left = 14
-            Top = 452
+            Top = 397
             Width = 160
             Height = 100
+            Cursor = crHandPoint
             Hint = ''
             ShowHint = True
             DataField = 'Destino_Origem'
@@ -1307,7 +1315,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
           object UniDBLookupComboBox1: TUniDBLookupComboBox
             Left = 14
             Top = 94
-            Width = 658
+            Width = 677
             Height = 25
             Hint = ''
             ShowHint = True
@@ -3950,10 +3958,6 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     object OperacaoFiscalInventario_Terceiros: TBooleanField
       FieldName = 'Inventario_Terceiros'
       Origin = 'Inventario_Terceiros'
-    end
-    object OperacaoFiscalMovimenta_EstoqueInd: TBooleanField
-      FieldName = 'Movimenta_EstoqueInd'
-      Origin = 'Movimenta_EstoqueInd'
     end
     object OperacaoFiscalCFOP_Dentro: TStringField
       FieldName = 'CFOP_Dentro'

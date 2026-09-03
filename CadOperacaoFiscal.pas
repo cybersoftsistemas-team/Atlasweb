@@ -318,7 +318,6 @@ type
     OperacaoFiscalBeneficio_Fiscal: TSmallintField;
     OperacaoFiscalInventario_Estoque: TBooleanField;
     OperacaoFiscalInventario_Terceiros: TBooleanField;
-    OperacaoFiscalMovimenta_EstoqueInd: TBooleanField;
     OperacaoFiscalCFOP_Dentro: TStringField;
     OperacaoFiscalCFOP_Fora: TStringField;
     OperacaoFiscalCFOP_IndEntrada: TStringField;

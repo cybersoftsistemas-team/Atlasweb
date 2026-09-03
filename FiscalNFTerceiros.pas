@@ -405,6 +405,8 @@ type
     ItensEmpresa: TStringField;
     ItensCFOP: TStringField;
     ItensEstoque_Minimo: TFMTBCDField;
+    ItensValor_Total: TFMTBCDField;
+    tSaldo: TFDQuery;
     procedure bSairClick(Sender: TObject);
     procedure UniFrameCreate(Sender: TObject);
     procedure bItensClick(Sender: TObject);
@@ -449,8 +451,8 @@ type
   private
     function PeriodoBloqueado: boolean;
     function Movimentado: boolean;
-    procedure LigaBotoesItens(Estado: boolean);
     function VerBloqueios: boolean;
+    procedure LigaBotoesItens(Estado: boolean);
     procedure FrameFilhoFechou(Sender: TObject);
     { Private declarations }
   public
@@ -466,7 +468,7 @@ type
 
 implementation
 
-uses MainModule, Main, ValidaCRUD, FiscalNFTerceirosItens, ImportaNFe;
+uses MainModule, Main, ValidaCRUD, FiscalNFTerceirosItens, ImportaNFe, FichaEstoque;
 
 var
   FrameItem: TfFiscalNFTerceirosItens;
@@ -566,38 +568,17 @@ begin
       Pasta.ActivePageIndex := 0;
       cLog.ColWidths[0]     := 400;
       cLog.ColWidths[1]     := 546;
-
+      
       with Notas do begin
            sql.clear;
-           sql.Add('select *');
+           sql.add('select *');
            sql.add('from NotasFiscais');
-           sql.add('where Emissao = ''T'' ');
-           sql.add('and Empresa = :pEmpresa');
+           sql.add('where Empresa = :pEmpresa');
+           sql.add('and Emissao = ''T'' ');
            sql.Add('order by Data_ES, Nota');
            parambyname('pEmpresa').value := UniMainModule.mEmpresaAtiva;
-           Open;
-      end;
-      {
-      with Itens do begin
-           sql.clear;
-           sql.Add('select Nota_id');
-           sql.add('      ,Item');
-           sql.add('      ,Codigo_Mercadoria');
-           sql.add('      ,Descricao_Mercadoria');
-           sql.add('      ,NCM');
-           sql.add('      ,UM');
-           sql.add('      ,Quantidade');
-           sql.add('      ,Valor_Unitario');
-           sql.add('      ,Empresa');
-           sql.add('      ,CFOP');
-           sql.add('      ,Estoque_Minimo = isnull((select Estoque_MinimoPerc from Produtos where Codigo = Codigo_Mercadoria), 0)');
-           sql.add('from NotasItens ni');
-           sql.add('where (select Emissao from NotasFiscais nf where nf.Nota_id = ni.Nota_id) = ''T'' ');
-           sql.add('order by Empresa, Nota_id, Item');
            open;
       end;
-      }
-
       with Itens do begin
            sql.clear;
            sql.add('select ni.Nota_id');
@@ -608,6 +589,7 @@ begin
            sql.add('      ,ni.UM');
            sql.add('      ,ni.Quantidade');
            sql.add('      ,ni.Valor_Unitario');
+           sql.add('      ,Valor_Total = round(ni.Valor_Unitario, 2) * ni.Quantidade');
            sql.add('      ,ni.Empresa');
            sql.add('      ,ni.CFOP');
            sql.add('      ,isnull(p.Estoque_MinimoPerc, 0) as Estoque_Minimo');
@@ -619,8 +601,8 @@ begin
            open;
       end;
       with Empresas do begin
-           sql.Clear;
-           sql.Add('select CNPJ');
+           sql.clear;
+           sql.add('select CNPJ');
            sql.add('      ,Razao_Social');
            sql.add('      ,Filial');
            sql.add('      ,Estado');
@@ -631,9 +613,9 @@ begin
            cEmpresa.KeyValue := Empresas.fieldbyname('CNPJ').value;
       end;
       with Beneficios do begin
-           sql.Clear;
-           sql.Add('select Codigo, Nome from BeneficioFiscal order by Nome');
-           Open;
+           sql.clear;
+           sql.add('select Codigo, Nome from BeneficioFiscal order by Nome');
+           open;
       end;
       with Operacao do begin
            sql.add('select Codigo');
@@ -649,8 +631,8 @@ begin
            open;
       end;
       with Fornecedores do begin
-           sql.Clear;
-           sql.Add('select Codigo');
+           sql.clear;
+           sql.add('select Codigo');
            sql.add('      ,CNPJ');
            sql.add('      ,CPF');
            sql.add('      ,Nome');
@@ -658,17 +640,17 @@ begin
            sql.add('from Destinatarios');
            sql.add('where Fornecedor = 1');
            sql.add('order by Nome');
-           Open;
+           open;
       end;
       with Transportador do begin
-           sql.Clear;
+           sql.clear;
            sql.Add('select Codigo');
            sql.add('      ,CNPJ');
            sql.add('      ,Nome');
            sql.add('from Destinatarios');
            sql.add('where Transportador = 1');
            sql.add('order by Nome');
-           Open;
+           open;
       end;
       with Armazem do begin
            sql.clear;
@@ -678,70 +660,48 @@ begin
            sql.add('from Destinatarios');
            sql.add('where Armazem = 1');
            sql.add('order by Nome');
-           Open;
-      end;
-      with Modelos do begin
-           sql.Clear;
-           sql.Add('select Codigo, Descricao, Eletronico from ModelosDocumentos order by Codigo');
-           Open;
-      end;
-      with ProcessoImp do begin
-           sql.Clear;
-           sql.add('select Processo');
-           sql.add('      ,Declaracao = DUIMP');
-           sql.add('from ProcessosImp');
-           sql.add('where Desativado <> 1');
-           sql.add('and Data_Encerramento is null');
-           sql.add('and Empresa = :pEmp');
-           ParamByName('pEmp').asstring := Empresas.fieldbyname('CNPJ').asstring;
            open;
       end;
-      with ProcessoExp do begin
-           sql.Clear;
-           sql.add('select Processo');
-           sql.add('      ,Declaracao = DUE');
-           sql.add('from ProcessosExp');
-           sql.add('where Desativado <> 1');
-           sql.add('and Data_Encerramento is null');
-           sql.add('and Empresa = :pEmp');
-           ParamByName('pEmp').asstring := Empresas.fieldbyname('CNPJ').asstring;
+      with Modelos do begin
+           sql.clear;
+           sql.add('select Codigo, Descricao, Eletronico from ModelosDocumentos order by Codigo');
            open;
       end;
       with ModalFrete do begin
            sql.Clear;
            sql.Add('select Codigo, Descricao from ModalidadesFrete order by Descricao');
-           Open;
+           open;
       end;
       with NaturezaFrete do begin
            sql.Clear;
            sql.Add('select Codigo, Descricao from NaturezaFrete order by Descricao');
-           Open;
+           open;
       end;
       with RamosAtv do begin
            sql.clear;
            sql.add('select Codigo, Descricao from RamoAtividade where isnull(Comissionado, 0) <> 1 order by Descricao');
-           Open;
+           open;
       end;
       with CentroCusto do begin
            sql.clear;
            sql.add('select Codigo, Nome from CentroCusto where Empresa = :pEmp order by Codigo');
            ParamByName('pEmp').asstring := Empresas.fieldbyname('CNPJ').asstring;
-           Open;
+           open;
       end;
       with Origem do begin
            sql.clear;
            sql.add('select Codigo, Descricao from OrigemMercadoria order by Codigo');
-           Open;
+           open;
       end;
       with TipoProd do begin
            sql.clear;
            sql.add('select Codigo, Descricao from TipoProduto order by Codigo');
-           Open;
+           open;
       end;
       with ClassProd do begin
            sql.clear;
            sql.add('select Codigo, Descricao from ClassificacaoProduto order by Codigo');
-           Open;
+           open;
       end;
       with Embarques do begin
            sql.clear;  
@@ -832,7 +792,7 @@ begin
                  ParamByName('pData').AsDate          := mDataEmiAntiga;
                  ParamByName('pFornecedor').AsInteger := NotasTerceirosFornecedor.AsInteger;
                  ParamByName('pNatureza').AsString    := NotasTerceirosNatureza_Codigo.Value;
-                 Open;
+                 open;
      end;
                  First;
 
@@ -859,7 +819,7 @@ begin
                        ParamByName('pNota').AsInteger       := NotasTerceirosNota.Value;
                        ParamByName('pEmissao').AsDate       := NotasTerceirosData_Emissao.Value;
                        ParamByName('pFornecedor').AsInteger := NotasTerceirosFornecedor.Value;
-                       Open;
+                       open;
                        First;
                        while not eof do begin
                              if (EstoqueProduto(FieldByName('Codigo_Mercadoria').AsInteger) - FieldByName('Quantidade').AsFloat) < 0 then begin
@@ -883,7 +843,7 @@ begin
               ParamByName('pNota').AsInteger := NotasTerceirosNota.AsInteger;
               ParamByName('pData').AsDate    := NotasTerceirosData_Entrada.AsDateTime;
               ParamByName('pForn').AsInteger := NotasTerceirosFornecedor.AsInteger;
-              Open;
+              open;
                ifFieldByName('Qtde').AsInteger > 0 then begin
                   MessageDlg('Nota Fiscal não pode ser "Excluída" !'+#13+#13+'Alguns produtos constam em pedidos de nota fiscal existentes.', mtError, [mbOK], 0);
                   Abort;
@@ -898,7 +858,7 @@ begin
               ParamByName('pNota').AsInteger := NotasTerceirosNota.AsInteger;
               ParamByName('pData').AsDate    := NotasTerceirosData_Entrada.AsDateTime;
               ParamByName('pForn').AsInteger := NotasTerceirosFornecedor.AsInteger;
-              Open;
+              open;
                ifFieldByName('Qtde').AsInteger > 0 then begin
                   MessageDlg('Nota Fiscal não pode ser "Excluída" !'+#13+#13+'Existem transferências feitas com alguns produtos que constam da nota fiscal.', mtError, [mbOK], 0);
                   Abort;
@@ -911,7 +871,7 @@ begin
                  ParamByName('pNota').AsInteger       := NotasTerceirosNota.Value;
                  ParamByName('pData').AsDate          := NotasTerceirosData_Emissao.Value;
                  ParamByName('pFornecedor').AsInteger := NotasTerceirosFornecedor.AsInteger;
-                 Open;
+                 open;
 
      with Produtos do begin
                  sql.Clear;
@@ -919,7 +879,7 @@ begin
                  ParamByName('pNota').AsInteger       := NotasTerceirosNota.Value;
                  ParamByName('pData').AsDate          := NotasTerceirosData_Emissao.Value;
                  ParamByName('pFornecedor').AsInteger := NotasTerceirosFornecedor.AsInteger;
-                 Open;
+                 open;
      end;
 
                  sql.Clear;
@@ -929,7 +889,7 @@ begin
                  ParamByName('pNota').AsInteger       := NotasTerceirosNota.Value;
                  ParamByName('pData').AsDate          := NotasTerceirosData_Entrada.Value;
                  ParamByName('pFornecedor').AsInteger := NotasTerceirosFornecedor.Value;
-                 Open;
+                 open;
 
      with NotasItens do begin
                  sql.Clear;
@@ -939,7 +899,7 @@ begin
                  ParamByName('pNota').AsInteger       := NotasTerceirosNota.Value;
                  ParamByName('pData').AsDate          := NotasTerceirosData_Entrada.Value;
                  ParamByName('pFornecedor').AsInteger := NotasTerceirosFornecedor.Value;
-                 Open;
+                 open;
      end;
 
      with Adicoes do begin
@@ -950,7 +910,7 @@ begin
                  ParamByName('pNota').AsInteger       := NotasTerceirosNota.Value;
                  ParamByName('pData').AsDate          := NotasTerceirosData_Entrada.Value;
                  ParamByName('pFornecedor').AsInteger := NotasTerceirosFornecedor.Value;
-                 Open;
+                 open;
      end;
 
                   Janela_Processamento := TJanela_Processamento.Create(Self);
@@ -1113,7 +1073,7 @@ begin
                     ParamByName('pNota').AsInteger   := NotasTerceirosNota.AsInteger;
                     ParamByName('pData').AsDate      := NotasTerceirosData_Entrada.AsDateTime;
                     ParamByName('pDest').AsInteger   := NotasTerceirosFornecedor.AsInteger;
-                    Open;
+                    open;
      end;
 
                      // Reprocessa os saldos da ficha de estoque.
@@ -1133,7 +1093,7 @@ begin
                     ParamByName('pNota').AsInteger   := NotasTerceirosNota.AsInteger;
                     ParamByName('pData').AsDate      := NotasTerceirosData_Entrada.AsDateTime;
                     ParamByName('pDest').AsInteger   := NotasTerceirosFornecedor.AsInteger;
-                    Open;
+                    open;
      end;
 
                      // Reprocessa os saldos da ficha de inventario.
@@ -1201,7 +1161,7 @@ begin
                sql.Clear;
                sql.Add('select * from NotasTerceiros WHERE(Servico IS NULL) and (ISNULL(Provisoria,0) <> 1)');
                sql.Add('order by Data_Entrada, Nota');
-               Open;
+               open;
      end;
 
                 mNotaXML         := TEdit.Create(FiscalNFTerceiros);
@@ -1314,7 +1274,7 @@ begin
           sql.Add('order by Produto_Codigo, Numero');
           ParamByName('pNota').AsInteger := NotasTerceirosNota.Value;
           ParamByName('pData').AsDate    := NotasTerceirosData_Emissao.Value;
-          Open;
+          open;
      end;
 
            TabSheet3.Caption := 'Seriais/Chassis ['+ InttoStr(ProdutosSeriais.RecordCount)+']';
@@ -1326,7 +1286,7 @@ begin
           sql.Add('order by Produto_Codigo, Lote');
           ParamByName('pNota').AsInteger := NotasTerceirosNota.Value;
           ParamByName('pData').AsDate    := NotasTerceirosData_Emissao.Value;
-          Open;
+          open;
      end;
            TabSheet4.Caption := 'Lotes ['+ InttoStr(ProdutosDetalhe.RecordCount)+']';
       end;
@@ -1360,7 +1320,7 @@ begin
            else
               sql.Add('and   ISNULL(Manifestada, 0) = 1');
            sql.Add('order by Data_Emissao, Nota');
-           Open;
+           open;
       end;
 *)
 end;
@@ -1493,7 +1453,7 @@ begin
                  sql.Clear;
                  sql.Add('select * from NotasTerceiros where NFe_cNF = :pChave');
                  ParamByName('pChave').AsString := tManifesto.FieldbyName('NFe_cNF').asstring;
-                 Open;
+                 open;
                  Edit;
                                  NotasTerceirosManifesto_Protocolo.Value     := Protocolo;
                                  NotasTerceirosManifesto_DataProtocolo.Value := StrtoDateTime(Copy(ProtocoloData,9,2)+'/'+Copy(ProtocoloData,6,2)+'/'+Copy(ProtocoloData,1,4)+' '+Copy(ProtocoloData,12,11));
@@ -1524,7 +1484,7 @@ begin
                        sql.Clear;
                        sql.Add('select * from NotasTerceiros where NFe_cNF = :pChave');
                        ParamByName('pChave').AsString := tManifesto.FieldbyName('NFe_cNF').asstring;
-                       Open;
+                       open;
                        Edit;
                                        if trim(NotasTerceirosManifesto_Protocolo.asstring) = '' then
                                           NotasTerceirosManifesto_Protocolo.Value     := '000000000000000';
@@ -1545,7 +1505,7 @@ begin
       end;
       tManifesto.close;
       Panel2.Enabled := true;
-      tManifesto.Open;
+      tManifesto.open;
       Screen.Cursor := crDefault;
 *)
 end;
@@ -1850,7 +1810,7 @@ begin
                    sql.Clear;
                    sql.Add('select * from NotasTerceiros where NFe_cNF = :pChave');
                    ParamByName('pChave').AsString := tManifesto.FieldbyName('NFe_cNF').asstring;
-                   Open;
+                   open;
 
                     if (NotasTerceiros.FieldByName('Manifesto_Protocolo').Asstring = '000000000000000') or (NotasTerceiros.FieldByName('Manifesto_Protocolo').Asstring = '') then begin
                        if notFieldByName('Manifestada').AsBoolean then begin
@@ -1876,7 +1836,7 @@ begin
                  end;
              end;
              tManifesto.close;
-             tManifesto.Open;
+             tManifesto.open;
           end;
      end;
 *)
@@ -1964,47 +1924,49 @@ begin
      if VerBloqueios then Abort;
      
      with Notas do begin
-          MessageDlg('Deseja realmente excluir esta nota fiscal: '+#13+#13+NotasChave.value, mtConfirmation,mbYesNo,
+          MessageDlg('Deseja realmente excluir esta nota fiscal: '+#13+#13+'Número: '+NotasNota.asstring + #13 + 'Chave: '+NotasChave.value, mtConfirmation,mbYesNo,
                       procedure(Comp:TComponent; ARes: Integer)
                       begin
                             if ARes = mrYes then begin
                                try
                                   with ttmp do begin
                                        sql.clear;
-                                       // Indisponibiliza todos os chassis ou seriais dos produtos da nota.');
+                                       sql.add('-- INDISPONIBILIZA TODOS OS CHASSIS OU SERIAIS DOS PRODUTOS DA NOTA.');
                                        sql.add('update ProdutosSeriais set Disponivel = 0');
                                        sql.add('where Empresa = :pEmp');
-                                       sql.add('and Produto IN (select Codigo_Mercadoria from NotasItens where Empresa = :pEmp and Nota = :pNota and Data_Emissao = :pData and Destinatario = :pBene)');
-                                       // Exclui o vínculo dos chassis/seriais com a nota.');
-                                       sql.add('delete from ProdutosSeriaisNotas');
-                                       sql.add('where Empresa = :pEmp');
-                                       sql.add('and Emissao = ''T'' ');
-                                       sql.add('and Nota = :pNota');
-                                       sql.add('and Data = :pData');
-                                       sql.add('and Produto in (select Codigo_Mercadoria from NotasItens where Empresa = :pEmp and Nota = :pNota and Data_Emissao = :pData and Destinatario = :pBene and Emissao = ''T'')');
-                                       // Exclui produtos seriais que não possuem mais vínculos.
-                                       sql.add('delete from ProdutosSeriais');
-                                       sql.add('where not exists (select 1 from ProdutosSeriaisNotas psn where psn.Produto = ProdutosSeriais.Produto)');
-                                       // Exclui os detalhes dos produtos da nota.
-                                       sql.add('delete from ProdutosDetalhe');
-                                       sql.add('where Empresa = :pEmp');
-                                       sql.add('and Nota_Entrada = :pNota');
-                                       sql.add('and Data_Entrada = :pData');
-                                       sql.add('and Produto in(select Codigo_Mercadoria from NotasItens where Empresa = :pEmp and Nota = :pNota and Data_Emissao = :pData and Destinatario = :pBene)');
-                                       // Exclui o imobilizado relacionado à nota.
-                                       sql.add('delete from Imobilizado where Empresa = :pEmp and Nota = :pNota and Data_Nota = :pData and Fornecedor = :pBene');
-                                       // Exclui contas a pagar/receber.
-                                       sql.add('delete from PagarReceber where Documento_Numero = :pNota and Documento_Data = :pData and Origem = :pOrig and Beneficiario = :pBene');
-                                       // Exclui os itens de navios relacionados à nota.
-                                       sql.add('delete from NotasItensNavios where Nota = :pNota and Data_Emissao = :pData and Saida_Entrada = 0 and Emissor = ''T'' ');
-                                       // Exclui a ficha de estoque.
-                                       sql.add('delete from FichaEstoque where Nota = :pNota and Data = :pDataES and Destinatario_Codigo = :pBene');
-                                       // Exclui a ficha de inventário.
-                                       sql.add('delete from FichaInventario where Nota = :pNota and Data = :pDataES and Destinatario_Codigo = :pBene');
-                                       // Exclui os lançamentos.
-                                       sql.add('delete from Lancamentos where Origem = :pOrig and Origem_Numero = :pNota and Beneficiario = :pBene and Data = :pDataES');
-                                       // Por último, exclui os itens da nota.
-                                       sql.add('delete from NotasItens where Empresa = :pEmp and Nota = :pNota and Data_Emissao = :pData and Destinatario = :pBene');
+                                       sql.add('and Produto in(select Codigo_Mercadoria from NotasItens where Empresa = :pEmp and Nota_id = :pid);');
+                                       
+                                       sql.add('-- EXCLUI O VÍNCULO DOS CHASSIS/SERIAIS COM A NOTA.');
+                                       sql.add('delete from ProdutosSeriaisNotas where Empresa = :pEmp and Nota_id = :pid;');
+                                       //sql.add('and Produto in(select Codigo_Mercadoria from NotasItens where Empresa = :pEmp and Nota_id = :pid);');
+                                       
+//                                       sql.add('-- EXCLUI PRODUTOS SERIAIS QUE NÃO POSSUEM MAIS VÍNCULOS.');
+//                                       sql.add('delete from ProdutosSeriais');
+//                                       sql.add('where not exists(select 1 from ProdutosSeriaisNotas psn where psn.Produto = ProdutosSeriais.Produto);');
+
+                                       sql.add('-- EXCLUI OS DETALHES DOS PRODUTOS DA NOTA.');
+                                       sql.add('delete from ProdutosDetalhe where Empresa = :pEmp and Nota_id = :pid');
+                                       
+                                       sql.add('-- EXCLUI O IMOBILIZADO RELACIONADO À NOTA.');
+                                       sql.add('delete from Imobilizado where Empresa = :pEmp and Nota_id = :pid;');
+                                       
+                                       sql.add('-- EXCLUI CONTAS A PAGAR/RECEBER.');
+                                       sql.add('delete from PagarReceber where Nota_id = :pid');
+                                       
+                                       sql.add('-- EXCLUI OS ITENS DE NAVIOS RELACIONADOS À NOTA.');
+                                       sql.add('delete from NotasItensNavios where Nota_id = :pid;');
+                                       
+                                       sql.add('-- EXCLUI A FICHA DE ESTOQUE.');
+                                       sql.add('delete from FichaEstoque where Empresa = :pEmp and Nota_id = :pid;');
+                                       
+                                       sql.add('-- EXCLUI A FICHA DE INVENTÁRIO.');
+                                       sql.add('delete from FichaInventario where Empresa = :pEmp and Nota_id = :pid;');
+                                       
+                                       sql.add('-- EXCLUI OS LANÇAMENTOS.');
+                                       sql.add('delete from Lancamentos where Empresa = :pEmp and Nota_id = :pid;');
+                                       
+                                       sql.add('-- POR ÚLTIMO, EXCLUI OS ITENS DA NOTA.');
+                                       sql.add('delete from NotasItens where Empresa = :pEmp and Nota_id = :pid;');
                                        // Ajustando o percentual do estoque mínimo no cadastro do produto.
                                        msql := TStringList.create;
                                        Itens.first;
@@ -2017,12 +1979,13 @@ begin
                                        end;
                                        if trim(msql.text) <> '' then sql.add(msql.Text);
                                        // Parâmetros.
-                                       parambyName('pEmp').asstring      := NotasEmpresa.asstring;
-                                       parambyName('pNota').AsInteger    := NotasNota.AsInteger;
-                                       parambyName('pData').AsDateTime   := NotasData_Emissao.AsDateTime;
-                                       parambyName('pDataES').AsDateTime := NotasData_ES.AsDateTime;
-                                       parambyName('pBene').AsInteger    := NotasDestinatario.AsInteger;
-                                       parambyName('pOrig').AsString     := 'NFT';
+                                       parambyName('pEmp').asstring := NotasEmpresa.asstring;
+                                       parambyName('pid').asinteger := NotasNota_id.asinteger;
+//                                       parambyName('pNota').AsInteger    := NotasNota.AsInteger;
+//                                       parambyName('pData').AsDateTime   := NotasData_Emissao.AsDateTime;
+//                                       parambyName('pDataES').AsDateTime := NotasData_ES.AsDateTime;
+//                                       parambyName('pBene').AsInteger    := NotasDestinatario.AsInteger;
+//                                       parambyName('pOrig').AsString     := 'NFT';
                                        sql.savetofile('c:\temp\Atlas_Delete_NFTerceiros.sql');
 
                                        UniMainModule.Conecta.StartTransaction;
@@ -2261,12 +2224,14 @@ begin
 end;
 
 procedure TfFiscalNFTerceiros.bGravItensClick(Sender: TObject);
+var
+   mItem: integer;
 begin
      with FrameItem do begin 
-          // Verifica todos os campos obrigatório, o campo obrigatório deve estar com a propriedade "Tag = 1".
+          // Verifica todos os campos obrigatórios que estão com a propriedade "Tag = 1".
           if not TValidaCRUD.ValidarFormulario(Ficha) then abort;
           
-          // Validação de campos com vinculos em outros campos.
+          // Validação de campos com vínculos em outros campos.
           if (MatchText(Operacao.FieldByName('Destino_Origem').asstring, ['I', 'E'])) then begin 
              CampoVazio(cProcesso,'"Processo" é obrigatório para esse tipo de operação!');
           end;
@@ -2275,28 +2240,80 @@ begin
           end;
           
           try
-             NCM.sql.Clear;
-             NCM.sql.Add('select Codigo_EXTIPI from NCM where NCM = '+quotedstr(Produtos.fieldbyname('NCM').value));
-             NCM.open;
-             if ItensNF.State = dsInsert then begin
+             if ItensNF.state = dsInsert then begin 
+                mItem := GeraItem('NotasItens', 'Item', 'Empresa = '+NotasEmpresa.asstring+' and Nota_id = '+NotasNota_id.asstring);
+             end else begin
+                mItem := ItensNFItem.AsInteger;
+                // Exclui o item da ficha de estoque em caso de alteração.
                 with ttmp do begin
                      sql.clear;
-                     sql.Add('select isnull(max(Item), 0)+1 as Item from NotasItens where Nota_Id = :pID');
-                     parambyname('pID').Value  := NotasNota_id.value;
-                     Open;
-                     ItensNFItem.Value := fieldbyname('Item').AsInteger;
+                     sql.add('delete from FichaEstoque where Empresa = :pEmp and Nota_id = :pid and Codigo_Mercadoria = :pCod and Item = :pItem');
+                     ParamByName('pEmp').value  := ItensNFEmpresa.asstring;
+                     ParamByName('pid').value   := ItensNFNota_id.AsInteger;
+                     ParamByName('pCod').value  := ItensNFCodigo_Mercadoria.AsInteger;
+                     ParamByName('pItem').value := ItensNFItem.AsInteger;
+                     execute;
                 end;
-             end;                        
+             end;
+             
+             // Dados do item.
              ItensNFNota_id.value              := NotasNota_id.value;
              ItensNFEmpresa.value              := NotasEmpresa.value;
+             ItensNFItem.value                 := mItem;
              ItensNFES.value                   := 0;
              ItensNFCodigo_Fabricante.value    := Produtos.fieldbyname('Codigo_Fabricante').value;
              ItensNFDescricao_Mercadoria.value := Produtos.fieldbyname('Descricao').value;
              ItensNFNCM.value                  := Produtos.fieldbyname('NCM').value;
              ItensNFUM.asstring                := Produtos.fieldbyname('UM').asstring;
-             ItensNFEXTIPI.value               := NCM.fieldbyname('Codigo_EXTIPI').asinteger;
+             ItensNFEXTIPI.value               := Produtos.fieldbyname('Codigo_EXTIPI').asinteger;
              ItensNF.post; 
              
+             // Movimenta ficha de estoque se operação fiscal movimentar estoque.
+             if Operacao.fieldbyname('Movimenta_Estoque').asboolean or Operacao.fieldbyname('Movimenta_Inventario').asboolean then begin
+                with tSaldo do begin
+                     sql.clear;
+                     sql.add('select Qtde_Saldo');
+                     sql.add('      ,Unitario_Saldo');
+                     sql.add('      ,Total_Saldo');
+                     sql.add('from FichaEstoque');
+                     sql.add('where Codigo_Mercadoria = :pCod');
+                     sql.add('and Empresa = :pEmp');
+                     sql.add('and Registro = (select max(Registro) from FichaEstoque where Codigo_Mercadoria = :pCod and Empresa = :pEmp)');
+                     parambyname('pCod').asinteger := ItensNFCodigo_Mercadoria.asinteger;
+                     parambyname('pEmp').asstring  := NotasEmpresa.asstring;
+                     open;
+                end;
+                mItem := GeraItem('FichaEstoque', 'Item', 'Empresa = '+NotasEmpresa.asstring+' and Nota_id = '+NotasNota_id.asstring+' and Codigo_Mercadoria = '+ItensNFCodigo_Mercadoria.asstring);
+             
+                GravarFichaEstoqueEntrada(uniMainModule.Conecta
+                                         ,GeraCodigo('FichaEstoque', 'Registro')
+                                         ,NotasEmpresa.asstring
+                                         ,mItem
+                                         ,ItensNFCodigo_Mercadoria.AsInteger
+                                         ,ItensNFDescricao_Mercadoria.AsString
+                                         ,ItensNFNCM.AsString
+                                         ,ItensNFUM.AsString
+                                         ,ItensNFCFOP.AsString
+                                         ,Operacao.fieldbyname('Finalidade_Mercadoria').AsInteger
+                                         ,ItensNFNota_id.AsInteger
+                                         ,NotasNota.AsInteger
+                                         ,NotasData_ES.Value
+                                         ,ItensNFItem.asinteger
+                                         ,NotasDestinatario.AsInteger
+                                         ,NotasDestinatario_Nome.AsString
+                                         ,NotasDestinatario_CNPJ_CPF.AsString
+                                         ,NotasDestinatario_CNPJ_CPF.AsString
+                                         ,ItensNFQuantidade.AsFloat
+                                         ,ItensNFValor_Inventario.ascurrency
+                                         ,ItensNFProcesso.AsString
+                                         ,NotasModalidade.AsInteger
+                                         ,tSaldo.FieldByName('Qtde_Saldo').AsFloat
+                                         ,tSaldo.FieldByName('Total_Saldo').AsCurrency
+                                         ,Operacao.fieldbyname('Movimenta_Estoque').asboolean
+                                         ,Operacao.fieldbyname('Movimenta_Inventario').asboolean
+                                         ,Operacao.fieldbyname('Movimenta_Ind').asboolean);
+             end;
+
              TfDialogo.Execute(UniApplication, 'Sucesso', 'Sucesso', 'Item salvo na nota fiscal.');
           except on E: Exception do
              TfDialogo.Execute(UniApplication, 'Erro', 'Erro ao salvar!', E.Message);
@@ -2315,7 +2332,7 @@ begin
      with Notas do begin
           sql.Clear;
           sql.add('select * from NotasFiscais where Emissao = ''T'' and Nota like '+quotedstr('%'+cPesquisa.text+'%'));
-          Open;
+          open;
           if recordcount = 0 then begin
              MessageDlg('Nenhum registro encontrado!', mtInformation, [mbOK]);
           end;
@@ -2324,9 +2341,9 @@ end;
 
 procedure TfFiscalNFTerceiros.cPesquisaKeyDown(Sender: TObject; var Key: Word;Shift: TShiftState);
 begin
-      if Key = VK_RETURN then begin
-         bPesquisaClick(self);
-      end;
+     if Key = VK_RETURN then begin
+        bPesquisaClick(self);
+     end;
 end;
  
 procedure TfFiscalNFTerceiros.NotasBeforeDelete(DataSet: TDataSet);
@@ -2341,7 +2358,6 @@ end;
 
 procedure TfFiscalNFTerceiros.LigaBotoesItens(Estado:boolean);
 begin
-//     BarraItens.Enabled     := BarraItens.Visible;
      pBarraNav.Enabled      := Estado;
      bAdditens.Enabled      := Estado;
      bEditItens.Enabled     := Estado and (Itens.RecordCount > 0);
@@ -2358,11 +2374,12 @@ begin
      with ttmp do begin
           // Fechamento Fiscal.
           sql.clear;
-          sql.add('select Qtde = count(*) from FechamentoFiscal where Ano = :pAno and Mes = :pMes and Fechado = 1');
+          sql.add('select case when exists(select 1 from FechamentoFiscal where Empresa = :pEmp and Ano = :pAno and Mes = :pMes and Fechado = 1) then 1 else 0 end as Fechado');
           parambyname('pAno').AsInteger := YearOf(NotasData_ES.Value);
           parambyname('pMes').AsInteger := MonthOf(NotasData_ES.Value);
+          parambyname('pEmp').value     := UniMainModule.mEmpresaAtiva;
           open;
-          if fieldbyname('Qtde').asinteger > 0 then begin
+          if fieldbyname('Fechado').asinteger = 1 then begin
              result := true;   
              if Notas.State in[dsEdit, dsInsert] then begin
                 TfDialogo.Execute(UniApplication, 'Bloqueado', 'Bloqueio', 'Não pode salvar, data da nota fiscal esta dentro de um período fiscal fechado.');
@@ -2372,11 +2389,12 @@ begin
           end;
           // Fechamento Contabil.
           sql.clear;
-          sql.add('select Qtde = count(*) from FechamentoContabil where Ano = :pAno and Mes = :pMes and Fechado = 1');
+          sql.add('select case when exists(select 1 from FechamentoContabil where Empresa = :pEmp and Ano = :pAno and Mes = :pMes and Fechado = 1) then 1 else 0 end as Fechado');
           parambyname('pAno').AsInteger := YearOf(NotasData_ES.Value);
           parambyname('pMes').AsInteger := MonthOf(NotasData_ES.Value);
+          parambyname('pEmp').value     := UniMainModule.mEmpresaAtiva;
           open;
-          if fieldbyname('Qtde').asinteger > 0 then begin
+          if fieldbyname('Fechado').asinteger = 1 then begin
              result := true;   
              if Notas.State in[dsEdit, dsInsert] then begin
                 TfDialogo.Execute(UniApplication, 'Bloqueado', 'Bloqueio', 'Não pode salvar, data da nota fiscal, Esta dentro de um período contabil fechado');
@@ -2387,10 +2405,12 @@ begin
           // Lançamento financeiro bachado.
           if not result and (NotasLancamento_Financeiro.asinteger > 0) then begin
              sql.clear;
-             sql.add('select Qtde = count(*) from PagarReceberBaixas where Titulo in(select Titulo from PagarReceber where Titulo = :pTitulo)');
+             sql.add('create index IX_PagarReceberBaixas_Empresa_Titulo on PagarReceberBaixas (Empresa, Titulo);');
+             sql.add('select Baixado = case when exists(select 1 from PagarReceberBaixas where Empresa = :pEmp and Titulo = :pTitulo) then 1 else 0 end;');
              parambyname('pTitulo').value := NotasLancamento_Financeiro.asinteger;
+             parambyname('pEmp').value    := UniMainModule.mEmpresaAtiva;
              open;
-             if fieldbyname('Qtde').asinteger > 0 then begin
+             if fieldbyname('Baixado').asinteger = 1 then begin
                 result := true;   
                 TfDialogo.Execute(UniApplication, 'Baixado', 'Financeiro', 'Esta nota fiscal não pode ser Alterada ou Excluída, Lançamento financeiro baixado, estorne a baixa primeiro');
              end;
