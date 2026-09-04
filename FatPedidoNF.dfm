@@ -167,7 +167,7 @@ object fFatPedidoNF: TfFatPedidoNF
     Width = 1272
     Height = 965
     Hint = ''
-    ActivePage = UniTabSheet1
+    ActivePage = aLista
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -2805,7 +2805,7 @@ object fFatPedidoNF: TfFatPedidoNF
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'select * from pedidosNF')
-    Left = 135
+    Left = 138
     Top = 66
   end
   object Macro: TCalcExpress

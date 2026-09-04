@@ -101,7 +101,8 @@ uses
   Dialogo in 'Dialogo.pas' {fDialogo: TUniForm},
   FiscalNFTerceirosItens in 'FiscalNFTerceirosItens.pas' {fFiscalNFTerceirosItens: TUniFrame},
   ImportaNFe in 'ImportaNFe.pas',
-  FichaEstoque in 'FichaEstoque.pas';
+  FichaEstoque in 'FichaEstoque.pas',
+  Estoque_Industrializacao in 'Estoque_Industrializacao.pas' {fEstoque_Industrializacao: TUniFrame};
 
 (*uses p/gerador*)
 

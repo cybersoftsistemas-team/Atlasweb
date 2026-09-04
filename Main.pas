@@ -52,7 +52,6 @@ type
     procedure UniFormCreate(Sender: TObject);
     procedure UniButton1Click(Sender: TObject);
     procedure bFecharClick(Sender: TObject);
-//    procedure mnFiscalNFTerceirosClick(Sender: TObject);
   private
     { Private declarations }
     procedure CriaAba(nFrame: TuniFrame; dFrame: string; Fechar: Boolean);
@@ -144,7 +143,8 @@ uses
  ,ComexContratoCambio
  ,ComexInvoice
  ,CadLPCO
- ,FiscalNFTerceiros;(*uses p/gerador*)
+ ,FiscalNFTerceiros
+ ,Estoque_Industrializacao;(*uses p/gerador*)
 
 function MainForm: TMainForm;
 begin
@@ -499,10 +499,12 @@ initialization
   RegisterClass(TfComexInvoice);
   RegisterClass(TfCadLPCO);
   RegisterClass(TfFiscalNFTerceiros);
+  RegisterClass(TfEstoque_Industrializacao);
   (*RegisterClass p/gerador*)
 
   
 end.
+
 
 
 
