@@ -7,7 +7,7 @@ uses
   uniPanel, uniDBLookUpComboBox, uniDBCheckBox, uniScrollBox, uniSpeedButton, uniDateTimePicker, uniDBDateTimePicker, uniButton, uniBitBtn, uniDBNavigator, uniEdit, 
   uniDBEdit, uniDBMemo, uniBasicGrid, uniGUIBaseClasses, uniComboBox, UniGroupBox, uniSpinEdit, unimToggle, FireDAC.Comp.Client, Funcoes, Data.DB, uniSweetAlert, 
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, 
-  FireDAC.Comp.DataSet, uniCheckBox, uniMultiItem, uniDBComboBox;
+  FireDAC.Comp.DataSet, uniCheckBox, uniMultiItem, uniDBComboBox, System.Math;
 
 type
   TfEstoque_Industrializacao = class(TuniFrame)
@@ -15,33 +15,11 @@ type
     Produtos: TFDQuery;
     ProdutosCodigo: TIntegerField;
     ttmp: TFDQuery;
-    tSaldo: TFDQuery;
-    tNotas: TFDQuery;
-    dstNotas: TDataSource;
-    tEmpresa: TFDQuery;
     Processos: TFDQuery;
     dsProcessos: TDataSource;
-    tMatPrima: TFDQuery;
-    IntegerField1: TIntegerField;
-    StringField1: TStringField;
-    dstMatPrima: TDataSource;
     Alerta: TUniSweetAlert;
     MatPrima: TFDQuery;
     dsMatPrima: TDataSource;
-    FichaEstoque: TFDQuery;
-    dsFichaEstoque: TDataSource;
-    Adicoes: TFDQuery;
-    dsdicoes: TDataSource;
-    NotasTerceirosItens: TFDQuery;
-    dsNotasTerceirosItens: TDataSource;
-    NotasItens: TFDQuery;
-    dsNotasItens: TDataSource;
-    ProdutosTransferencia: TFDQuery;
-    dsProdutosTransferencia: TDataSource;
-    temp: TFDQuery;
-    dstemp: TDataSource;
-    FichaInventario: TFDQuery;
-    dsFichaInventario: TDataSource;
     pBarraNav: TUniPanel;
     Navega: TUniDBNavigator;
     bAdicionar_: TUniSpeedButton;
@@ -70,19 +48,26 @@ type
     cPesquisa: TUniEdit;
     bPesquisa: TUniSpeedButton;
     Panel2: TUniPanel;
-    cProduto: TUniDBLookupComboBox;
-    cQtde: TUniDBEdit;
     DBGrid2: TUniDBGrid;
-    cData: TUniDBDateTimePicker;
-    cNota: TUniDBEdit;
-    DBEdit1: TUniDBEdit;
-    cProcessoOrigem: TUniDBLookupComboBox;
-    DBCheckBox1: TUniDBCheckBox;
-    DBCheckBox2: TUniDBCheckBox;
-    cEstoque: TUniEdit;
     ProdutosDescricao_Reduzida: TStringField;
     IndustrialDescricao: TStringField;
     IndustrialEmpresa: TStringField;
+    Ficha: TUniPanel;
+    cProduto: TUniDBLookupComboBox;
+    cQtde: TUniDBEdit;
+    cData: TUniDBDateTimePicker;
+    cNota: TUniDBEdit;
+    cValor_Unitario: TUniDBEdit;
+    cProcesso: TUniDBLookupComboBox;
+    DBCheckBox1: TUniDBCheckBox;
+    DBCheckBox2: TUniDBCheckBox;
+    cEstoque: TUniEdit;
+    EstoqueTransf: TFDQuery;
+    dsEstoqueTransf: TDataSource;
+    cDestinatario: TUniDBLookupComboBox;
+    IndustrialDestinatario: TSmallintField;
+    IndustrialCFOP: TStringField;
+    cCFOP: TUniDBLookupComboBox;
     procedure UniFrameCreate(Sender: TObject);
     procedure NavegaClick(Sender: TObject; Button: TNavigateBtn);
     procedure cCodigoExit(Sender: TObject);
@@ -100,11 +85,13 @@ type
     procedure cPesquisaKeyDown(Sender: TObject; var Key: Word;Shift: TShiftState);
     procedure IndustrializacaoAfterPost(DataSet: TDataSet);
     procedure IndustrializacaoBeforeDelete(DataSet: TDataSet);
+    procedure IndustrialAfterScroll(DataSet: TDataSet);
   private
     { Private declarations }
     procedure FiltraMateria;
     procedure SalvaMov;
     procedure DeletaMov;
+    function SaldoMatPrima: boolean;
   public
     { Public declarations }
   end;
@@ -113,7 +100,7 @@ implementation
 
 {$R *.dfm}
 
-uses MainModule, Main;
+uses MainModule, Main, ValidaCRUD, Dialogo;
 
 procedure TfEstoque_Industrializacao.UniFrameCreate(Sender: TObject);
 var
@@ -127,6 +114,7 @@ begin
             TuniPanel(Components[i]).Color := clNone
          end;
      end;
+     Pasta.ActivePageIndex := 0;
      with Industrial do begin
           sql.clear;
           sql.Add('select * from Industrializacao order by Data desc, Codigo_Mercadoria');
@@ -158,7 +146,7 @@ begin
           open;
      end;
      }
-     FiltraMateria;
+//     FiltraMateria;
 end;
 
 procedure TfEstoque_Industrializacao.cCodigoExit(Sender: TObject);
@@ -199,42 +187,61 @@ end;
 
 procedure TfEstoque_Industrializacao.cProdutoExit(Sender: TObject);
 begin
-     FiltraMateria;
+//     FiltraMateria;
 end;
 
-{
 procedure TfEstoque_Industrializacao.FiltraMateria;
 begin
-   begin
-          with tProcesso do begin
-               sql.clear;
-               sql.add('select Processo');
-               sql.Add('      ,Modalidade_Importacao');
-               sql.Add('from ProcessosDocumentos');
-               sql.Add('where Numero_Declaracao in(select DI from Adicoes where Codigo_Mercadoria = :pCod)');
-               sql.Add('and isnull(Desativado, 0) = 0');
-               sql.Add('order by Processo');
-               parambyname('pCod').Value := Industrial.FieldByName('Codigo_Mercadoria').AsInteger;
-               open; 
-               cProcessoOrigem.Enabled := recordcount > 0;
-          end;
-          with ProdutosMateriaPrima do begin
-               if (RecordCount > 0) or (Industrial.State = dsInsert) then begin
-                  sql.clear;
-                  sql.Add('select *');
-                  sql.add('      ,Saldo = ((select isnull(sum(Quantidade), 0) from NotasTerceirosItens nti where nti.Codigo_Mercadoria = pmp.Codigo_MateriaPrima and Movimenta_Estoque = 1) + ');
-                  sql.add('                (select isnull(sum(Quantidade), 0) from NotasItens npi where npi.Codigo_Mercadoria = pmp.Codigo_MateriaPrima and Saida_Entrada = 0 and Movimenta_Estoque = 1) +');
-                  sql.add('                (select isnull(sum(Quantidade_Entrada), 0) from ProdutosTransferencia prt where prt.Produto_Entrada = pmp.Codigo_MateriaPrima and Estoque = 1)) -');
-                  sql.add('               ((select isnull(sum(Quantidade), 0) from NotasItens npi where npi.Codigo_Mercadoria = pmp.Codigo_MateriaPrima and Saida_Entrada = 1 and Movimenta_Estoque = 1) +');
-                  sql.add('                (select isnull(sum(Quantidade), 0) from ProdutosTransferencia prt where prt.Produto_Saida = pmp.Codigo_MateriaPrima and Estoque = 1))');
-                  sql.Add('from ProdutosMateriaPrima pmp');
-                  sql.Add('where Codigo_Produto = ' + iif(Industrial.FieldByName('Codigo_Mercadoria').AsString <> '', Industrial.FieldByName('Codigo_Mercadoria').AsString, '0'));
-                  open;
-               end;
-          end;
+     with Processos do begin
+          sql.clear;
+          sql.add('select Processo');
+          sql.Add('      ,Modalidade');
+          sql.Add('from ProcessosImp');
+          sql.Add('where DUIMP in(select DUIMP from Adicoes where Codigo_Mercadoria = :pCod)');
+          sql.Add('and isnull(Desativado, 0) = 0');
+          sql.Add('order by Processo');
+          parambyname('pCod').Value := Industrial.FieldByName('Codigo_Mercadoria').AsInteger;
+          open; 
+          cProcesso.Enabled := recordcount > 0;
+     end;
+     with MatPrima do begin
+          sql.clear;
+          sql.add('with');
+          sql.add('    MovimentacaoNotas as');
+          sql.add('    (select ni.Codigo_Mercadoria');
+          sql.add('           ,Saldo = sum(case when nf.es = 0 then ni.Quantidade');
+          sql.add('                             when nf.es = 1 then -ni.Quantidade');
+          sql.add('                       else');
+          sql.add('                            0');
+          sql.add('                       end)');
+          sql.add('    from NotasItens as ni');
+          sql.add('    inner join NotasFiscais as nf on nf.nota_id = ni.nota_id inner join OperacaoFiscal as op on op.Codigo = nf.Operacao where op.Movimenta_Estoque = 1');
+          sql.add('    group by ni.Codigo_Mercadoria),');
+          sql.add('    MovimentacaoTransferencia as');
+          sql.add('    (select produto');
+          sql.add('           ,Saldo = sum(Quantidade)');
+          sql.add('            from (select et.Produto_Entrada as Produto');
+          sql.add('                        ,et.Quantidade_Entrada as Quantidade');
+          sql.add('            from EstoqueTransferencia as et');
+          sql.add('            union all');
+          sql.add('            select et.Produto_Saida');
+          sql.add('                 ,-et.Quantidade_Saida');
+          sql.add('            from EstoqueTransferencia as et');
+          sql.add('            ) as x');
+          sql.add('    group by Produto)');
+          sql.add('select mp.*');
+          sql.add('      ,Saldo = isnull(n.Saldo, 0) + isnull(t.Saldo, 0)');
+          sql.add('      ,p.Descricao');
+          sql.add('from ProdutosMateriaPrima as mp');
+          sql.add('inner join produtos as p on p.codigo = mp.codigo_materiaprima');
+          sql.add('left join MovimentacaoNotas as n on n.Codigo_Mercadoria = mp.Codigo_MateriaPrima');
+          sql.add('left join MovimentacaoTransferencia as t on t.Produto = mp.Codigo_Materiaprima');
+          sql.add('where mp.Codigo_Produto = :pCod');
+          parambyname('pCod').asinteger := Industrial.FieldByName('Codigo_Mercadoria').AsInteger;
+          open;
      end;
 end;
-}
+{
 procedure TfEstoque_Industrializacao.FiltraMateria;
 begin
      with Processos do begin
@@ -251,7 +258,7 @@ begin
           cProcessoOrigem.Enabled := not IsEmpty;
      end;
      with MatPrima do begin
-          if (not IsEmpty) or (Industrial.State = dsInsert) then begin
+//          if (not IsEmpty) or (Industrial.State = dsInsert) then begin
              sql.clear;
              sql.add('with Materias as(select distinct Codigo_MateriaPrima from ProdutosMateriaPrima where Codigo_Produto = :pCod)');
              sql.add('     select pmp.*');
@@ -300,11 +307,12 @@ begin
              sql.add(') pt on pt.Codigo_Mercadoria = pmp.Codigo_MateriaPrima');
              sql.add('where pmp.Codigo_Produto = :pCod');
              paramByName('pCod').AsInteger := Industrial.FieldByName('Codigo_Mercadoria').AsInteger;
+             sql.savetofile('c:\temp\Atlas_INdustriali_Materia_Prima.sql');
              open;
-          end;
+//          end;
      end;
 end;
-
+ }
 procedure TfEstoque_Industrializacao.NavegaBeforeAction(Sender: TObject; Button: TNavigateBtn);
 var
    mProd: widestring;
@@ -437,28 +445,58 @@ end;
 
 // Ficha de estoque - "ENTRADA" (Efetua a baixa da matéria prima de industrialização).
 procedure TfEstoque_Industrializacao.SalvaMov;
-var       
-   mRegEst
-  ,mRegInv
-  ,mItemEst
-  ,mItemInv: integer;
-   mVlrUniEst
-  ,mVlrUniInv: real;
+var
+  mReg: integer;
 begin
+     // Adiciona "ENTRADA" do produto industrializado na tabela de transferência com tipo = "IND: industrialização".
+     with ttmp do begin
+          sql.clear;
+          sql.Add('select isnull(max(Registro), 0)+1 as Registro from EstoqueTransferencia');
+          Open;
+          mReg := fieldbyname('Registro').asinteger;
+     end;
+     with ttmp do begin
+          sql.clear;
+//          sql.add('insert into EstoqueTransferencia values('
+     end;
+     with EstoqueTransf do begin
+          sql.clear;
+          sql.add('select * from EstoqueTransferencia where 1 = 0 order by registro desc');
+          open;
+          append;
+               fieldbyname('Registro').value             := mReg;
+               fieldbyname('Empresa').value              := Industrial.fieldbyname('Empresa').asstring;
+               fieldbyname('Produto_Entrada').value      := Industrial.FieldByName('Codigo_Mercadoria').AsInteger;
+               fieldbyname('Produto_Saida').value        := 0;
+               fieldbyname('Quantidade_Entrada').value   := Roundto(Industrial.fieldbyname('Quantidade').AsFloat, -3);
+               fieldbyname('Quantidade_Saida').value     := 0;
+               fieldbyname('Valor_Unitario').value       := Industrial.fieldbyname('Valor_Unitario').ascurrency;
+               fieldbyname('Data_Transferencia').value   := Industrial.fieldbyname('Data').value;
+               fieldbyname('Processo_Entrada').value     := Industrial.fieldbyname('Processo').asstring;
+               fieldbyname('Processo_Saida').value       := null;
+               fieldbyname('Motivo').value               := 'IND';
+               fieldbyname('Nota').value                 := Industrial.fieldbyname('Registro').value;
+               fieldbyname('CFOP').value                 := Industrial.fieldbyname('CFOP').value;
+               fieldbyname('Observacao').value           := 'ENTRADA DE MERCADORIA INDUSTRIALIZADA REGISTRO FISCAL:' + Industrial.fieldbyname('Registro').asstring+ ' DE '+Industrial.fieldbyname('Data').AsString;
+               fieldbyname('Movimenta_Estoque').value    := Industrial.fieldbyname('Movimenta_Estoque').asboolean;
+               fieldbyname('Movimenta_Inventario').value := Industrial.fieldbyname('Movimenta_Inventario').asboolean;
+          post;
+     end;
+
+
+
+{
+     with ttmp do begin
+          // Exclui os itens criados na tabela de transferências anteriormente.
+          sql.clear;
+          sql.add('delete from EstoqueTransferencia where Empresa = :pEmp and Nota = :pNota and Data_Transferencia = :pData and Motivo = ''IND'' ');
+          parambyname('pEmp').value  := Industrial.fieldbyname('Empresa').asstring;
+          parambyname('pNota').value := Industrial.fieldbyname('Registro').asinteger;
+          parambyname('pData').value := Industrial.FieldByName('Data').value;
+          execute;
+     end;
+}     
 (*
-   begin
-          with ProdutosTransferencia do begin
-               // Exclui os itens criados na tabela de transferências anteriormente para a nota fiscal.
-               sql.clear;
-               sql.add('delete from ProdutosTransferencia where Nota = :pNota and Data_Transferencia = :pData and Motivo = ''IND'' ');
-               parambyname('pNota').value := Industrial.fieldbyname('Registro').asinteger;
-               parambyname('pData').value := Industrial.FieldByName('Data').value;
-               execute;
-               sql.clear;
-               sql.add('select * from ProdutosTransferencia where Produto_Entrada = :pProduto');
-               parambyname('pProduto').asinteger := Industrial.fieldbyname('Codigo_Mercadoria').asinteger;
-               Open;
-          end;
           with ttmp do begin
                sql.clear;
                sql.Add('select RegEst = (select isnull(max(Registro), 0)+1 from FichaEstoque)');
@@ -768,7 +806,6 @@ begin
                 
                 ProdutosMateriaPrima.Next;
           end;
-     end;
 *)     
 end;
 
@@ -778,7 +815,11 @@ begin
            try
               LigaBotoes(false);
               Append;
-                   FieldByName('Empresa').Value := UniMainModule.mEmpresaAtiva;
+                   FieldByName('Empresa').Value              := UniMainModule.mEmpresaAtiva;
+                   FieldByName('Data').Value                 := now;
+                   FieldByName('Movimenta_Estoque').Value    := true;
+                   FieldByName('Movimenta_Inventario').Value := false;
+              cProduto.SetFocus;     
            except on E: Exception do
               MessageDlgN('Falha desconhecida, não pode adicionar um novo registro!'+#13+E.Message, mtError, [mbOK]);
            end;
@@ -802,13 +843,24 @@ end;
 
 procedure TfEstoque_Industrializacao.bSalvar_Click(Sender: TObject);
 begin
+     // Verifica todos os campos obrigatórios: O campo obrigatório deve estar com a propriedade "Tag = 1".
+     if not TValidaCRUD.ValidarFormulario(Ficha) then abort;
+     
+     // Verifica se todas as matérias-primas do produto tem estoque disponível.
+     if not SaldoMatPrima then abort;
+      
      with Industrial do begin
           try
               // Gera o registro em caso de inclusão.
               if State = dsInsert then begin
-                 FieldByName('Registro').Value := GeraCodigo('Industrializacao', 'Registro');
+                 fieldbyname('Registro').Value := GeraCodigo('Industrializacao', 'Registro');
               end;
-              Post;
+              
+              post;
+
+              // Movimentações de estoque e inventario.
+              if Industrial.fieldbyname('Movimenta_Estoque').asboolean then SalvaMov;
+              
               LigaBotoes(true);
               Alerta.Text := 'Registro salvo no banco de dados!'; 
               Alerta.Execute;
@@ -820,8 +872,8 @@ end;
 
 procedure TfEstoque_Industrializacao.bCancelar_Click(Sender: TObject);
 begin
-      Industrial.Cancel;
-      LigaBotoes(true);
+     Industrial.Cancel;
+     LigaBotoes(true);
 end;
 
 procedure TfEstoque_Industrializacao.bEditar_Click(Sender: TObject);
@@ -855,6 +907,7 @@ begin
      bAdicionar_.Enabled := Estado;
      bCancelar_.Enabled  := not Estado;
      bSalvar_.Enabled    := not Estado;
+     Ficha.Enabled       := not Estado;
 end;
 
 procedure TfEstoque_Industrializacao.bFechar_Click(Sender: TObject);
@@ -878,6 +931,11 @@ begin
       end;
 end;
  
+procedure TfEstoque_Industrializacao.IndustrialAfterScroll(DataSet: TDataSet);
+begin
+     FiltraMateria;
+end;
+
 procedure TfEstoque_Industrializacao.IndustrializacaoAfterPost(DataSet: TDataSet);
 begin
       LogDados(DataSet, DataSet.FieldByName('Codigo').AsString, EstadoTabela(DataSet));
@@ -887,5 +945,79 @@ procedure TfEstoque_Industrializacao.IndustrializacaoBeforeDelete(DataSet: TData
 begin
       LogDados(DataSet, DataSet.FieldByName('Codigo').AsString, 'Delete');
 end;
+
+function TfEstoque_Industrializacao.SaldoMatPrima: boolean;
+var 
+  mProd: string;
+begin
+     // Verifica se há materia-prima suficiente para a quantidade de produtos no estoque.
+     with ttmp do begin
+          sql.clear;
+          sql.add('with MateriasPrimas as (select pmp.Codigo_MateriaPrima as Codigo');
+          sql.add('                              ,pmp.Quantidade_Utilizada');
+          sql.add('                        from ProdutosMateriaPrima pmp');
+          sql.add('                        where pmp.Codigo_Produto = :pCod),');
+          sql.add('Movimentacoes as (select ni.Codigo_Mercadoria');
+          sql.add('                        ,sum(case when ni.ES = 0 then ni.Quantidade else 0 end) as Quantidade_Entrada');
+          sql.add('                        ,sum(case when ni.ES = 1 then ni.Quantidade else 0 end) as Quantidade_Saida');
+          sql.add('                  from NotasFiscais nf');
+          sql.add('                  inner join NotasItens ni on ni.Nota_id = nf.Nota_id inner join OperacaoFiscal op ON op.Codigo = nf.Operacao');
+          sql.add('                  inner join MateriasPrimas mp ON mp.Codigo = ni.Codigo_Mercadoria');
+          sql.add('                  where nf.Empresa = :pEmp');
+          sql.add('                  and op.Movimenta_Estoque = 1');
+          sql.add('                  group by ni.Codigo_Mercadoria),');
+          sql.add('Transferencias as (select Codigo_MateriaPrima');
+          sql.add('                         ,sum(Quantidade_Entrada) as Quantidade_Entrada');
+          sql.add('                         ,sum(Quantidade_Saida) as Quantidade_Saida');
+          sql.add('                   from (select et.Produto_Entrada as Codigo_MateriaPrima');
+          sql.add('                               ,et.Quantidade_Entrada');
+          sql.add('                               ,cast(0 as decimal(18,4)) as Quantidade_Saida');
+          sql.add('                         from EstoqueTransferencia et inner join MateriasPrimas mp on mp.Codigo = et.Produto_Entrada');
+          sql.add('                         where et.Empresa = :pEmp');
+          sql.add('                         union all');
+          sql.add('                         select et.Produto_Saida as Codigo_MateriaPrima');
+          sql.add('                               ,cast(0 as decimal(18,4)) as Quantidade_Entrada');
+          sql.add('                               ,et.Quantidade_Saida');
+          sql.add('                         from EstoqueTransferencia et inner join MateriasPrimas mp on mp.Codigo = et.Produto_Saida');
+          sql.add('                         where et.Empresa = :pEmp');
+          sql.add(') as T');
+          sql.add('group by Codigo_MateriaPrima),');
+          sql.add('Resultado as (select mp.Codigo');
+          sql.add('                    ,prd.Descricao_Reduzida as Descricao');
+          sql.add('                    ,mp.Quantidade_Utilizada');
+          sql.add('                    ,isnull(mv.Quantidade_Entrada, 0) + isnull(tr.Quantidade_Entrada, 0) - isnull(mv.Quantidade_Saida, 0) - isnull(tr.Quantidade_Saida, 0) as Saldo');
+          sql.add('              from MateriasPrimas mp ');
+          sql.add('              left join Produtos prd on prd.Codigo = mp.Codigo');
+          sql.add('              left join Movimentacoes mv ON mv.Codigo_Mercadoria = mp.Codigo');
+          sql.add('              left join Transferencias tr ON tr.Codigo_MateriaPrima = mp.Codigo)');
+          sql.add('select Codigo');
+          sql.add('      ,Descricao');
+          sql.add('      ,Quantidade_Utilizada');
+          sql.add('      ,Saldo = cast(Saldo as decimal(18, 3))');
+          sql.add('from Resultado');
+          sql.add('where Saldo < (Quantidade_Utilizada * :pQtde)');
+          sql.add('order by Descricao');
+          parambyname('pEmp').AsString  := UniMainModule.mEmpresaAtiva;
+          parambyname('pCod').AsInteger := Industrial.FieldByName('Codigo_Mercaria').asinteger;
+          parambyname('pQtde').AsFloat  := Industrial.FieldByName('Quantidade').AsFloat;
+          //sql.savetofile('c:\temp\Atlas_Industrializacao_Estoque_Materia_Prima.sql');
+          open;
+          
+          result := recordcount = 0;
+          if not result then begin
+             mProd := 'Matérias-primas sem estoque disponivel:'+#13;
+             while not eof do begin
+                   mProd := concat(mProd, '     '
+                                  ,formatfloat('000000', fieldbyname('Codigo').asinteger), ': '
+                                  ,fieldbyname('Descricao').AsString + ' Estoque: '
+                                  ,formatfloat(',##0.000', fieldbyname('Saldo').asfloat), #13);
+                   next;
+             end;
+             mProd := concat(mProd, #13, 'Industrialização não pode ser efetuada com a quantidade solicitada!');
+             TfDialogo.Execute(UniApplication, 'aviso', 'Atenção', mProd);  
+          end;
+     end;
+end;
+
 
 end.

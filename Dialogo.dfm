@@ -5,7 +5,7 @@ object fDialogo: TfDialogo
   Margins.Top = 0
   Margins.Right = 0
   Margins.Bottom = 0
-  ClientHeight = 305
+  ClientHeight = 321
   ClientWidth = 557
   Caption = 'fDialogo'
   Color = clWindow
@@ -46,25 +46,9 @@ object fDialogo: TfDialogo
     Font.Style = [fsBold]
     TabOrder = 1
   end
-  object lmsg: TUniLabel
-    AlignWithMargins = True
-    Left = 10
-    Top = 156
-    Width = 537
-    Height = 73
-    Hint = ''
-    Alignment = taCenter
-    AutoSize = False
-    Caption = 'Informe o n'#250'mero da nota fiscal'
-    ParentFont = False
-    Font.Color = clBlack
-    Font.Height = -19
-    Font.Name = 'Arial'
-    TabOrder = 2
-  end
   object bOK: TUniButton
     Left = 240
-    Top = 247
+    Top = 271
     Width = 77
     Height = 32
     Hint = ''
@@ -72,9 +56,20 @@ object fDialogo: TfDialogo
     ParentFont = False
     Font.Height = -13
     Font.Style = [fsBold]
-    TabOrder = 3
+    TabOrder = 2
     ScaleButton = False
     Color = 16750694
     OnClick = bOKClick
+  end
+  object lmsg: TUniMemo
+    Left = 10
+    Top = 157
+    Width = 537
+    Height = 101
+    Hint = ''
+    BorderStyle = ubsNone
+    Lines.Strings = (
+      'lmsg')
+    TabOrder = 3
   end
 end

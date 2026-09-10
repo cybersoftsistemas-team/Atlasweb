@@ -23,7 +23,6 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
     BorderStyle = ubsNone
     Caption = ''
     Color = 5526569
-    ExplicitWidth = 848
     object Navega: TUniDBNavigator
       Left = 0
       Top = 0
@@ -144,13 +143,9 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
     ActivePage = TabDados
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 848
-    ExplicitHeight = 605
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitWidth = 840
-      ExplicitHeight = 577
       object pFicha: TUniPanel
         Left = 0
         Top = 0
@@ -172,8 +167,6 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
         Title = 'DADOS GERAIS'
         Caption = ''
         ParentAlignmentControl = False
-        ExplicitWidth = 840
-        ExplicitHeight = 577
         object DBGrid1: TUniDBGrid
           AlignWithMargins = True
           Left = 3
@@ -288,7 +281,6 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
           BorderStyle = ubsNone
           Caption = ''
           Color = clNone
-          ExplicitWidth = 840
           object cPesquisa: TUniEdit
             Left = 0
             Top = 0
@@ -325,19 +317,16 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
     end
     object TabDados: TUniTabSheet
       Hint = ''
-      Caption = 'Dados'
-      ExplicitWidth = 840
-      ExplicitHeight = 577
+      Caption = 'Ficha'
       DesignSize = (
         930
         682)
       object Panel2: TUniPanel
-        Left = 82
-        Top = 17
-        Width = 787
-        Height = 531
+        Left = 107
+        Top = 16
+        Width = 799
+        Height = 642
         Hint = ''
-        Enabled = False
         ShowHint = True
         ParentShowHint = False
         Anchors = [akTop]
@@ -348,56 +337,21 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
             '= '#39'Ficha'#39';'#13#10'}')
         BorderStyle = ubsSolid
         Caption = ''
-        object cProduto: TUniDBLookupComboBox
-          Left = 18
-          Top = 18
-          Width = 750
-          Height = 25
-          Hint = ''
-          ShowHint = True
-          ListField = 'Codigo;Descricao_Reduzida'
-          ListSource = dsProdutos
-          KeyField = 'Codigo'
-          ListFieldIndex = 1
-          BorderStyle = ubsInset
-          DataField = 'Codigo_Mercadoria'
-          DataSource = dsIndustrial
-          ParentFont = False
-          Font.Style = [fsBold]
-          TabOrder = 1
-          Color = clWindow
-          FieldLabel = 'Produto'
-          FieldLabelSeparator = ' '
-          OnExit = cProdutoExit
-        end
-        object cQtde: TUniDBEdit
-          Left = 18
-          Top = 126
-          Width = 250
-          Height = 25
-          Hint = ''
-          ShowHint = True
-          DataField = 'Quantidade'
-          DataSource = dsIndustrial
-          ParentFont = False
-          Font.Style = [fsBold]
-          TabOrder = 5
-          FieldLabel = 'Quantidade'
-          FieldLabelSeparator = ' '
-          BorderStyle = ubsInset
-        end
         object DBGrid2: TUniDBGrid
           AlignWithMargins = True
           Left = 6
-          Top = 251
-          Width = 775
-          Height = 274
+          Top = 364
+          Width = 787
+          Height = 272
           Hint = ''
           Margins.Left = 6
           Margins.Top = 0
           Margins.Right = 6
           Margins.Bottom = 6
+          Enabled = False
           ShowHint = True
+          HeaderTitle = 'MAT'#201'RIA-PRIMA UTILIZADA PELO PRODUTO'
+          HeaderTitleAlign = taCenter
           TitleFont.Style = [fsBold]
           DataSource = dsMatPrima
           Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgTabs, dgCancelOnExit]
@@ -409,7 +363,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
           TrackOver = False
           Align = alBottom
           ParentFont = False
-          TabOrder = 8
+          TabOrder = 1
           Columns = <
             item
               FieldName = 'Codigo_MateriaPrima'
@@ -438,7 +392,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
             item
               FieldName = 'Quantidade_Utilizada'
               Title.Alignment = taCenter
-              Title.Caption = 'Qtde Util'
+              Title.Caption = 'Quantidade'
               Width = 92
               ReadOnly = True
             end
@@ -450,131 +404,255 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
               ReadOnly = True
             end>
         end
-        object cData: TUniDBDateTimePicker
-          Left = 18
-          Top = 99
-          Width = 250
-          Height = 25
+        object Ficha: TUniPanel
+          AlignWithMargins = True
+          Left = 6
+          Top = 6
+          Width = 787
+          Height = 352
           Hint = ''
-          ShowHint = True
-          DataField = 'Data'
-          DataSource = dsIndustrial
-          DateTime = 46268.000000000000000000
-          DateFormat = 'dd/MM/yyyy'
-          TimeFormat = 'HH:mm:ss'
-          TabOrder = 2
-          ParentFont = False
-          Font.Color = clBlack
-          Font.Style = [fsBold]
-          BorderStyle = ubsInset
-          FieldLabel = 'Data Entrada'
-          FieldLabelSeparator = ' '
-        end
-        object cNota: TUniDBEdit
-          Left = 18
-          Top = 45
-          Width = 750
-          Height = 25
-          Hint = ''
-          ShowHint = True
-          DataField = 'Notas'
-          DataSource = dsIndustrial
-          ParentFont = False
-          Font.Style = [fsBold]
-          TabOrder = 4
-          FieldLabel = 'Notas Entrada'
-          FieldLabelSeparator = ' '
-          BorderStyle = ubsInset
-        end
-        object DBEdit1: TUniDBEdit
-          Left = 18
-          Top = 153
-          Width = 250
-          Height = 25
-          Hint = ''
-          ShowHint = True
-          DataField = 'Valor_Unitario'
-          DataSource = dsIndustrial
-          ParentFont = False
-          Font.Style = [fsBold]
-          TabOrder = 6
-          FieldLabel = 'Valor Unit'#225'rio'
-          FieldLabelSeparator = ' '
-          BorderStyle = ubsInset
-        end
-        object cProcessoOrigem: TUniDBLookupComboBox
-          Left = 18
-          Top = 72
-          Width = 367
-          Height = 25
-          Hint = ''
-          ShowHint = True
-          ListSource = dsProcessos
-          ListFieldIndex = 0
-          BorderStyle = ubsInset
-          DataField = 'Processo'
-          DataSource = dsIndustrial
-          ParentFont = False
-          Font.Pitch = fpFixed
-          Font.Style = [fsBold]
-          TabOrder = 3
-          Color = clWindow
-          FieldLabel = 'Processo'
-          FieldLabelSeparator = ' '
-        end
-        object DBCheckBox1: TUniDBCheckBox
-          Left = 18
-          Top = 217
-          Width = 130
-          Height = 25
-          Hint = ''
-          ShowHint = True
-          DataField = 'Movimenta_Inventario'
-          DataSource = dsIndustrial
-          Caption = 'Movimenta inventario'
-          TabOrder = 7
-          ParentColor = False
-          Color = clBtnFace
-        end
-        object DBCheckBox2: TUniDBCheckBox
-          Left = 18
-          Top = 190
-          Width = 130
-          Height = 25
-          Hint = ''
-          ShowHint = True
-          DataField = 'Movimenta_Estoque'
-          DataSource = dsIndustrial
-          Caption = 'Movimenta Estoque'
-          TabOrder = 9
-          ParentColor = False
-          Color = clBtnFace
-        end
-        object cEstoque: TUniEdit
-          Left = 274
-          Top = 126
-          Width = 183
-          Height = 25
-          Hint = ''
+          Margins.Left = 6
+          Margins.Top = 6
+          Margins.Right = 6
+          Margins.Bottom = 6
           Enabled = False
           ShowHint = True
-          Alignment = taRightJustify
-          Text = 'cEstoque'
-          ParentFont = False
-          Font.Style = [fsBold]
-          TabOrder = 10
-          Color = 16759739
-          ReadOnly = True
+          Align = alTop
+          TabOrder = 2
+          BorderStyle = ubsInset
+          ShowCaption = False
+          Caption = 'Ficha'
+          object cProduto: TUniDBLookupComboBox
+            Tag = 1
+            Left = 16
+            Top = 16
+            Width = 750
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListField = 'Codigo;Descricao_Reduzida'
+            ListSource = dsProdutos
+            KeyField = 'Codigo'
+            ListFieldIndex = 1
+            BorderStyle = ubsInset
+            DataField = 'Codigo_Mercadoria'
+            DataSource = dsIndustrial
+            ParentFont = False
+            Font.Style = [fsBold]
+            TabOrder = 1
+            Color = clWindow
+            FieldLabel = 'Produto'
+            FieldLabelWidth = 80
+            FieldLabelSeparator = ' '
+            ForceSelection = True
+            OnExit = cProdutoExit
+          end
+          object cQtde: TUniDBEdit
+            Tag = 1
+            Left = 16
+            Top = 178
+            Width = 250
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            DataField = 'Quantidade'
+            DataSource = dsIndustrial
+            ParentFont = False
+            Font.Style = [fsBold]
+            TabOrder = 5
+            FieldLabel = 'Quantidade'
+            FieldLabelWidth = 80
+            FieldLabelSeparator = ' '
+            SelectOnFocus = True
+            BorderStyle = ubsInset
+          end
+          object cData: TUniDBDateTimePicker
+            Tag = 1
+            Left = 16
+            Top = 43
+            Width = 250
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            DataField = 'Data'
+            DataSource = dsIndustrial
+            DateTime = 46268.000000000000000000
+            DateFormat = 'dd/MM/yyyy'
+            TimeFormat = 'HH:mm:ss'
+            TabOrder = 2
+            ParentFont = False
+            Font.Color = clBlack
+            Font.Style = [fsBold]
+            BorderStyle = ubsInset
+            FieldLabel = 'Data Entrada'
+            FieldLabelWidth = 80
+            FieldLabelSeparator = ' '
+          end
+          object cNota: TUniDBEdit
+            Left = 16
+            Top = 124
+            Width = 750
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            DataField = 'Notas'
+            DataSource = dsIndustrial
+            ParentFont = False
+            Font.Style = [fsBold]
+            TabOrder = 3
+            FieldLabel = 'Notas Entrada'
+            FieldLabelWidth = 80
+            FieldLabelSeparator = ' '
+            SelectOnFocus = True
+            BorderStyle = ubsInset
+          end
+          object cValor_Unitario: TUniDBEdit
+            Tag = 1
+            Left = 16
+            Top = 205
+            Width = 250
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            DataField = 'Valor_Unitario'
+            DataSource = dsIndustrial
+            ParentFont = False
+            Font.Style = [fsBold]
+            TabOrder = 6
+            FieldLabel = 'Valor Unit'#225'rio'
+            FieldLabelWidth = 80
+            FieldLabelSeparator = ' '
+            SelectOnFocus = True
+            BorderStyle = ubsInset
+          end
+          object cProcesso: TUniDBLookupComboBox
+            Left = 16
+            Top = 151
+            Width = 367
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListSource = dsProcessos
+            ListFieldIndex = 0
+            BorderStyle = ubsInset
+            DataField = 'Processo'
+            DataSource = dsIndustrial
+            ParentFont = False
+            Font.Pitch = fpFixed
+            Font.Style = [fsBold]
+            TabOrder = 4
+            Color = clWindow
+            FieldLabel = 'Processo'
+            FieldLabelWidth = 80
+            FieldLabelSeparator = ' '
+            ForceSelection = True
+          end
+          object DBCheckBox1: TUniDBCheckBox
+            Left = 16
+            Top = 272
+            Width = 130
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            DataField = 'Movimenta_Inventario'
+            DataSource = dsIndustrial
+            Caption = 'Movimenta inventario'
+            TabOrder = 8
+            ParentColor = False
+            Color = clBtnFace
+          end
+          object DBCheckBox2: TUniDBCheckBox
+            Left = 16
+            Top = 245
+            Width = 130
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            DataField = 'Movimenta_Estoque'
+            DataSource = dsIndustrial
+            Caption = 'Movimenta Estoque'
+            TabOrder = 7
+            ParentColor = False
+            Color = clBtnFace
+          end
+          object cEstoque: TUniEdit
+            Left = 272
+            Top = 178
+            Width = 183
+            Height = 25
+            Hint = ''
+            Enabled = False
+            ShowHint = True
+            BorderStyle = ubsInset
+            Alignment = taRightJustify
+            Text = '0'
+            ParentFont = False
+            Font.Style = [fsBold]
+            TabOrder = 9
+            Color = 16759739
+            ReadOnly = True
+          end
+          object cDestinatario: TUniDBLookupComboBox
+            Tag = 1
+            Left = 16
+            Top = 70
+            Width = 750
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListField = 'Codigo;Descricao_Reduzida'
+            ListSource = dsProdutos
+            KeyField = 'Codigo'
+            ListFieldIndex = 1
+            BorderStyle = ubsInset
+            DataField = 'Destinatario'
+            DataSource = dsIndustrial
+            ParentFont = False
+            Font.Style = [fsBold]
+            TabOrder = 10
+            Color = clWindow
+            FieldLabel = 'Fornecedor'
+            FieldLabelWidth = 80
+            FieldLabelSeparator = ' '
+            ForceSelection = True
+            OnExit = cProdutoExit
+          end
+          object cCFOP: TUniDBLookupComboBox
+            Tag = 1
+            Left = 16
+            Top = 97
+            Width = 750
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListField = 'Codigo;Descricao_Reduzida'
+            ListSource = dsProdutos
+            KeyField = 'Codigo'
+            ListFieldIndex = 1
+            BorderStyle = ubsInset
+            DataField = 'Destinatario'
+            DataSource = dsIndustrial
+            ParentFont = False
+            Font.Style = [fsBold]
+            TabOrder = 11
+            Color = clWindow
+            FieldLabel = 'Fornecedor'
+            FieldLabelWidth = 80
+            FieldLabelSeparator = ' '
+            ForceSelection = True
+            OnExit = cProdutoExit
+          end
         end
       end
     end
   end
   object dsProdutos: TDataSource
     DataSet = Produtos
-    Left = 37
-    Top = 260
+    Left = 203
+    Top = 437
   end
   object Produtos: TFDQuery
+    Active = True
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'select Codigo'
@@ -583,8 +661,8 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
       
         'where Codigo in(select distinct Codigo_Produto from ProdutosMate' +
         'riaPrima)')
-    Left = 37
-    Top = 213
+    Left = 203
+    Top = 386
     object ProdutosCodigo: TIntegerField
       DisplayWidth = 10
       FieldName = 'Codigo'
@@ -596,27 +674,9 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
     end
   end
   object ttmp: TFDQuery
-    Left = 545
-    Top = 146
-  end
-  object tSaldo: TFDQuery
-    Left = 546
-    Top = 97
-  end
-  object tNotas: TFDQuery
-    SQL.Strings = (
-      'select Nota, Data_Emissao from NotasTerceirosItens')
-    Left = 622
-    Top = 146
-  end
-  object dstNotas: TDataSource
-    DataSet = tNotas
-    Left = 624
-    Top = 198
-  end
-  object tEmpresa: TFDQuery
-    Left = 699
-    Top = 146
+    Connection = UniMainModule.Conecta
+    Left = 315
+    Top = 528
   end
   object Processos: TFDQuery
     Connection = UniMainModule.Conecta
@@ -628,36 +688,13 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
       'from ProcessosImp'
       'where Desativado <> 1 '
       'order by Processo')
-    Left = 37
-    Top = 308
+    Left = 268
+    Top = 386
   end
   object dsProcessos: TDataSource
     DataSet = Processos
-    Left = 37
-    Top = 356
-  end
-  object tMatPrima: TFDQuery
-    SQL.Strings = (
-      'select * '
-      '      ,Saldo = cast(0 as float)'
-      'from ProdutosMateriaPrima '
-      'where Codigo_Produto = 20')
-    Left = 534
-    Top = 294
-    object IntegerField1: TIntegerField
-      DisplayWidth = 10
-      FieldName = 'Codigo'
-    end
-    object StringField1: TStringField
-      FieldName = 'Descricao'
-      ReadOnly = True
-      Size = 250
-    end
-  end
-  object dstMatPrima: TDataSource
-    DataSet = tMatPrima
-    Left = 535
-    Top = 345
+    Left = 268
+    Top = 437
   end
   object Alerta: TUniSweetAlert
     Title = ' '
@@ -675,119 +712,22 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'SELECT * FROM ProdutosMateriaPrima')
-    Left = 38
-    Top = 410
+    Left = 334
+    Top = 386
   end
   object dsMatPrima: TDataSource
     DataSet = MatPrima
-    Left = 38
-    Top = 460
-  end
-  object FichaEstoque: TFDQuery
-    Connection = UniMainModule.Conecta
-    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
-    UpdateOptions.AutoCommitUpdates = True
-    SQL.Strings = (
-      'SELECT * FROM FichaEstoque')
-    Left = 297
-    Top = 193
-  end
-  object dsFichaEstoque: TDataSource
-    DataSet = FichaEstoque
-    Left = 297
-    Top = 243
-  end
-  object Adicoes: TFDQuery
-    Connection = UniMainModule.Conecta
-    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
-    UpdateOptions.AutoCommitUpdates = True
-    SQL.Strings = (
-      'SELECT * FROM dicoes')
-    Left = 296
-    Top = 293
-  end
-  object dsdicoes: TDataSource
-    DataSet = Adicoes
-    Left = 297
-    Top = 343
-  end
-  object NotasTerceirosItens: TFDQuery
-    Connection = UniMainModule.Conecta
-    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
-    UpdateOptions.AutoCommitUpdates = True
-    SQL.Strings = (
-      'SELECT * FROM NotasTerceirosItens')
-    Left = 297
-    Top = 393
-  end
-  object dsNotasTerceirosItens: TDataSource
-    DataSet = NotasTerceirosItens
-    Left = 297
-    Top = 443
-  end
-  object NotasItens: TFDQuery
-    Connection = UniMainModule.Conecta
-    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
-    UpdateOptions.AutoCommitUpdates = True
-    SQL.Strings = (
-      'SELECT * FROM NotasItens')
-    Left = 297
-    Top = 493
-  end
-  object dsNotasItens: TDataSource
-    DataSet = NotasItens
-    Left = 297
-    Top = 543
-  end
-  object ProdutosTransferencia: TFDQuery
-    Connection = UniMainModule.Conecta
-    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
-    UpdateOptions.AutoCommitUpdates = True
-    SQL.Strings = (
-      'SELECT * FROM ProdutosTransferencia')
-    Left = 397
-    Top = 93
-  end
-  object dsProdutosTransferencia: TDataSource
-    DataSet = ProdutosTransferencia
-    Left = 398
-    Top = 146
-  end
-  object temp: TFDQuery
-    Connection = UniMainModule.Conecta
-    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
-    UpdateOptions.AutoCommitUpdates = True
-    SQL.Strings = (
-      'SELECT * FROM temp')
-    Left = 397
-    Top = 293
-  end
-  object dstemp: TDataSource
-    DataSet = temp
-    Left = 397
-    Top = 343
-  end
-  object FichaInventario: TFDQuery
-    Connection = UniMainModule.Conecta
-    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
-    UpdateOptions.AutoCommitUpdates = True
-    SQL.Strings = (
-      'SELECT * FROM FichaInventario')
-    Left = 397
-    Top = 393
-  end
-  object dsFichaInventario: TDataSource
-    DataSet = FichaInventario
-    Left = 397
-    Top = 443
+    Left = 334
+    Top = 437
   end
   object Industrial: TFDQuery
+    AfterScroll = IndustrialAfterScroll
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'select * from Industrializacao'
       '')
-    Left = 37
-    Top = 117
+    Left = 141
+    Top = 386
     object IndustrialRegistro: TIntegerField
       FieldName = 'Registro'
       Origin = 'Registro'
@@ -844,10 +784,34 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
       Required = True
       Size = 14
     end
+    object IndustrialDestinatario: TSmallintField
+      FieldName = 'Destinatario'
+      Origin = 'Destinatario'
+    end
+    object IndustrialCFOP: TStringField
+      FieldName = 'CFOP'
+      Origin = 'CFOP'
+      FixedChar = True
+      Size = 4
+    end
   end
   object dsIndustrial: TDataSource
     DataSet = Industrial
-    Left = 37
-    Top = 162
+    Left = 141
+    Top = 437
+  end
+  object EstoqueTransf: TFDQuery
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'SELECT top 1 * FROM EstoqueTransferencia')
+    Left = 409
+    Top = 386
+  end
+  object dsEstoqueTransf: TDataSource
+    DataSet = EstoqueTransf
+    Left = 409
+    Top = 437
   end
 end

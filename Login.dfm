@@ -145,10 +145,10 @@ object TelaLogin: TTelaLogin
         SelectOnFocus = True
       end
       object bEntrar: TUniBitBtn
-        Left = 407
+        Left = 397
         Top = 231
-        Width = 83
-        Height = 28
+        Width = 93
+        Height = 36
         Hint = ''
         Caption = 'ENTRAR'
         Anchors = [akRight]

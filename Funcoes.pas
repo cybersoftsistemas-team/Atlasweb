@@ -3486,7 +3486,7 @@ begin
            TempFichaInv.SQL.Add('-- TRANSFERÊNCIAS DE SALDO DE ESTOQUE (SAÍDAS) --');
            TempFichaInv.SQL.Add('UNION ALL ');
            TempFichaInv.SQL.Add('SELECT  Codigo              = Produto_Saida');
-           TempFichaInv.SQL.Add('       ,Descricao           = CAST((SELECT SUBSTRING(Descricao, 1, 250) FROM Produtos WHERE Codigo = Produto_Saida) AS VARCHAR(250))');
+           TempFichaInv.SQL.Add('       ,Descricao           = CAST((SELECT SUBSTRING(Descricao, 1,.- 250) FROM Produtos WHERE Codigo = Produto_Saida) AS VARCHAR(250))');
            TempFichaInv.SQL.Add('       ,UM                  = (SELECT Unidade FROM Produtos WHERE Codigo = Produto_Saida)');
            TempFichaInv.SQL.Add('       ,NCM                 = (SELECT NCM     FROM Produtos WHERE Codigo = Produto_Saida) ');
            TempFichaInv.SQL.Add('       ,CFOP                = null');
