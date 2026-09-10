@@ -68,6 +68,10 @@ type
     IndustrialDestinatario: TSmallintField;
     IndustrialCFOP: TStringField;
     cCFOP: TUniDBLookupComboBox;
+    Fornecedores: TFDQuery;
+    dsFornecedores: TDataSource;
+    CFOP: TFDQuery;
+    dsCFOP: TDataSource;
     procedure UniFrameCreate(Sender: TObject);
     procedure NavegaClick(Sender: TObject; Button: TNavigateBtn);
     procedure cCodigoExit(Sender: TObject);
@@ -126,6 +130,27 @@ begin
           sql.add('      ,Descricao_Reduzida');
           sql.add('from Produtos p');
           sql.add('where exists (select 1 from ProdutosMateriaPrima pm where pm.Codigo_Produto = p.Codigo)');
+          open;
+     end;     
+     with Fornecedores do begin
+          sql.clear;
+          sql.add('select Codigo');
+          sql.add('      ,CNPJ');
+          sql.add('      ,Nome');
+          sql.add('from Destinatarios');
+          sql.add('where Fornecedor = 1');
+          sql.add('and Desativado <> 1');
+          open;
+     end;     
+     with CFOP do begin
+          sql.clear;
+          sql.add('select Codigo');
+          sql.add('      ,Descricao');
+          sql.add('from CFOP');
+          sql.add('where Desativada <> 1');
+          sql.add('and ES = 0');
+          sql.add('and Servico <> 1');
+          sql.add('and Descricao like ''%NDUSTR%'' and Descricao like ''%Retorno%'' ');
           open;
      end;     
      {
@@ -197,12 +222,11 @@ begin
           sql.add('select Processo');
           sql.Add('      ,Modalidade');
           sql.Add('from ProcessosImp');
-          sql.Add('where DUIMP in(select DUIMP from Adicoes where Codigo_Mercadoria = :pCod)');
+          sql.add('where exists(select 1 from Adicoes ad where ad.Codigo_Mercadoria = :pCod)');
           sql.Add('and isnull(Desativado, 0) = 0');
           sql.Add('order by Processo');
           parambyname('pCod').Value := Industrial.FieldByName('Codigo_Mercadoria').AsInteger;
           open; 
-          cProcesso.Enabled := recordcount > 0;
      end;
      with MatPrima do begin
           sql.clear;
@@ -215,7 +239,11 @@ begin
           sql.add('                            0');
           sql.add('                       end)');
           sql.add('    from NotasItens as ni');
-          sql.add('    inner join NotasFiscais as nf on nf.nota_id = ni.nota_id inner join OperacaoFiscal as op on op.Codigo = nf.Operacao where op.Movimenta_Estoque = 1');
+          sql.add('    inner join NotasFiscais as nf on nf.nota_id = ni.nota_id');
+          sql.add('    inner join OperacaoFiscal as op on op.Codigo = nf.Operacao');
+          sql.add('    where op.Movimenta_Estoque = 1');
+          sql.add('    and nf.Cancelada <> 1');
+          sql.add('    and nf.Denegada <> 1');
           sql.add('    group by ni.Codigo_Mercadoria),');
           sql.add('    MovimentacaoTransferencia as');
           sql.add('    (select produto');

@@ -194,7 +194,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
               Title.Font.Style = [fsBold]
               Width = 73
               ReadOnly = True
-              DisplayFormat = '00000000;0'
+              DisplayFormat = '00000000'
             end
             item
               FieldName = 'Descricao'
@@ -325,7 +325,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
         Left = 107
         Top = 16
         Width = 799
-        Height = 642
+        Height = 599
         Hint = ''
         ShowHint = True
         ParentShowHint = False
@@ -340,7 +340,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
         object DBGrid2: TUniDBGrid
           AlignWithMargins = True
           Left = 6
-          Top = 364
+          Top = 321
           Width = 787
           Height = 272
           Hint = ''
@@ -409,7 +409,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
           Left = 6
           Top = 6
           Width = 787
-          Height = 352
+          Height = 307
           Hint = ''
           Margins.Left = 6
           Margins.Top = 6
@@ -459,7 +459,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
             DataSource = dsIndustrial
             ParentFont = False
             Font.Style = [fsBold]
-            TabOrder = 5
+            TabOrder = 7
             FieldLabel = 'Quantidade'
             FieldLabelWidth = 80
             FieldLabelSeparator = ' '
@@ -469,7 +469,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
           object cData: TUniDBDateTimePicker
             Tag = 1
             Left = 16
-            Top = 43
+            Top = 39
             Width = 250
             Height = 25
             Hint = ''
@@ -499,7 +499,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
             DataSource = dsIndustrial
             ParentFont = False
             Font.Style = [fsBold]
-            TabOrder = 3
+            TabOrder = 5
             FieldLabel = 'Notas Entrada'
             FieldLabelWidth = 80
             FieldLabelSeparator = ' '
@@ -518,7 +518,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
             DataSource = dsIndustrial
             ParentFont = False
             Font.Style = [fsBold]
-            TabOrder = 6
+            TabOrder = 8
             FieldLabel = 'Valor Unit'#225'rio'
             FieldLabelWidth = 80
             FieldLabelSeparator = ' '
@@ -528,7 +528,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
           object cProcesso: TUniDBLookupComboBox
             Left = 16
             Top = 151
-            Width = 367
+            Width = 439
             Height = 25
             Hint = ''
             ShowHint = True
@@ -540,7 +540,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
             ParentFont = False
             Font.Pitch = fpFixed
             Font.Style = [fsBold]
-            TabOrder = 4
+            TabOrder = 6
             Color = clWindow
             FieldLabel = 'Processo'
             FieldLabelWidth = 80
@@ -557,7 +557,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
             DataField = 'Movimenta_Inventario'
             DataSource = dsIndustrial
             Caption = 'Movimenta inventario'
-            TabOrder = 8
+            TabOrder = 10
             ParentColor = False
             Color = clBtnFace
           end
@@ -571,7 +571,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
             DataField = 'Movimenta_Estoque'
             DataSource = dsIndustrial
             Caption = 'Movimenta Estoque'
-            TabOrder = 7
+            TabOrder = 9
             ParentColor = False
             Color = clBtnFace
           end
@@ -588,7 +588,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
             Text = '0'
             ParentFont = False
             Font.Style = [fsBold]
-            TabOrder = 9
+            TabOrder = 11
             Color = 16759739
             ReadOnly = True
           end
@@ -600,16 +600,16 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
             Height = 25
             Hint = ''
             ShowHint = True
-            ListField = 'Codigo;Descricao_Reduzida'
-            ListSource = dsProdutos
+            ListField = 'CNPJ;Codigo;Nome'
+            ListSource = dsFornecedores
             KeyField = 'Codigo'
-            ListFieldIndex = 1
+            ListFieldIndex = 2
             BorderStyle = ubsInset
             DataField = 'Destinatario'
             DataSource = dsIndustrial
             ParentFont = False
             Font.Style = [fsBold]
-            TabOrder = 10
+            TabOrder = 3
             Color = clWindow
             FieldLabel = 'Fornecedor'
             FieldLabelWidth = 80
@@ -625,18 +625,18 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
             Height = 25
             Hint = ''
             ShowHint = True
-            ListField = 'Codigo;Descricao_Reduzida'
-            ListSource = dsProdutos
+            ListField = 'Codigo;Descricao'
+            ListSource = dsCFOP
             KeyField = 'Codigo'
             ListFieldIndex = 1
             BorderStyle = ubsInset
-            DataField = 'Destinatario'
+            DataField = 'CFOP'
             DataSource = dsIndustrial
             ParentFont = False
             Font.Style = [fsBold]
-            TabOrder = 11
+            TabOrder = 4
             Color = clWindow
-            FieldLabel = 'Fornecedor'
+            FieldLabel = 'CFOP'
             FieldLabelWidth = 80
             FieldLabelSeparator = ' '
             ForceSelection = True
@@ -675,8 +675,8 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
   end
   object ttmp: TFDQuery
     Connection = UniMainModule.Conecta
-    Left = 315
-    Top = 528
+    Left = 332
+    Top = 510
   end
   object Processos: TFDQuery
     Connection = UniMainModule.Conecta
@@ -812,6 +812,34 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
   object dsEstoqueTransf: TDataSource
     DataSet = EstoqueTransf
     Left = 409
+    Top = 437
+  end
+  object Fornecedores: TFDQuery
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'SELECT * FROM Destinatarios where Fornecedor = 1')
+    Left = 496
+    Top = 386
+  end
+  object dsFornecedores: TDataSource
+    DataSet = Fornecedores
+    Left = 496
+    Top = 437
+  end
+  object CFOP: TFDQuery
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'SELECT * FROM Destinatarios where Fornecedor = 1')
+    Left = 562
+    Top = 386
+  end
+  object dsCFOP: TDataSource
+    DataSet = CFOP
+    Left = 562
     Top = 437
   end
 end
