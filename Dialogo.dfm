@@ -5,7 +5,7 @@ object fDialogo: TfDialogo
   Margins.Top = 0
   Margins.Right = 0
   Margins.Bottom = 0
-  ClientHeight = 321
+  ClientHeight = 329
   ClientWidth = 557
   Caption = 'fDialogo'
   Color = clWindow
@@ -18,6 +18,9 @@ object fDialogo: TfDialogo
     
       'window.beforeInit=function window.beforeInit(sender, config)'#13#10'{'#13 +
       #10'  config.cls = '#39'Ficha'#39';'#13#10'}')
+  DesignSize = (
+    557
+    329)
   PixelsPerInch = 96
   TextHeight = 13
   object Icone: TUniImage
@@ -41,18 +44,20 @@ object fDialogo: TfDialogo
     Caption = 'Campo Obrigat'#243'rio!'
     ParentFont = False
     Font.Color = clBlack
-    Font.Height = -21
+    Font.Height = -19
     Font.Name = 'Arial'
     Font.Style = [fsBold]
     TabOrder = 1
   end
   object bOK: TUniButton
+    AlignWithMargins = True
     Left = 240
-    Top = 271
+    Top = 279
     Width = 77
     Height = 32
     Hint = ''
     Caption = 'OK'
+    Anchors = [akLeft, akBottom]
     ParentFont = False
     Font.Height = -13
     Font.Style = [fsBold]
@@ -63,13 +68,14 @@ object fDialogo: TfDialogo
   end
   object lmsg: TUniMemo
     Left = 10
-    Top = 157
+    Top = 151
     Width = 537
-    Height = 101
+    Height = 116
     Hint = ''
     BorderStyle = ubsNone
     Lines.Strings = (
       'lmsg')
+    Color = clWhite
     TabOrder = 3
   end
 end

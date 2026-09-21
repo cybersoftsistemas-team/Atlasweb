@@ -1,15 +1,15 @@
 object fEstoque_Industrializacao: TfEstoque_Industrializacao
   Left = 0
   Top = 0
-  Width = 938
-  Height = 745
+  Width = 897
+  Height = 691
   OnCreate = uniFrameCreate
   OnDestroy = uniFrameDestroy
   TabOrder = 0
   object pBarraNav: TUniPanel
     Left = 0
     Top = 0
-    Width = 938
+    Width = 897
     Height = 35
     Hint = ''
     ShowHint = True
@@ -137,8 +137,8 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
   object Pasta: TUniPageControl
     Left = 0
     Top = 35
-    Width = 938
-    Height = 710
+    Width = 897
+    Height = 656
     Hint = ''
     ActivePage = TabDados
     Align = alClient
@@ -149,8 +149,8 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
       object pFicha: TUniPanel
         Left = 0
         Top = 0
-        Width = 930
-        Height = 682
+        Width = 889
+        Height = 628
         Hint = ''
         ShowHint = True
         ParentShowHint = False
@@ -167,12 +167,12 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
         Title = 'DADOS GERAIS'
         Caption = ''
         ParentAlignmentControl = False
-        object DBGrid1: TUniDBGrid
+        object gIndust: TUniDBGrid
           AlignWithMargins = True
           Left = 3
           Top = 28
-          Width = 924
-          Height = 644
+          Width = 883
+          Height = 590
           Hint = ''
           Margins.Bottom = 10
           ShowHint = True
@@ -186,6 +186,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
           Align = alClient
           ParentFont = False
           TabOrder = 1
+          OnDblClick = gIndustDblClick
           Columns = <
             item
               FieldName = 'Codigo_Mercadoria'
@@ -268,7 +269,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
         object pBarraPesq: TUniPanel
           Left = 0
           Top = 0
-          Width = 930
+          Width = 889
           Height = 25
           Hint = ''
           ShowHint = True
@@ -319,13 +320,13 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
       Hint = ''
       Caption = 'Ficha'
       DesignSize = (
-        930
-        682)
+        889
+        628)
       object Panel2: TUniPanel
-        Left = 107
+        Left = 36
         Top = 16
         Width = 799
-        Height = 599
+        Height = 549
         Hint = ''
         ShowHint = True
         ParentShowHint = False
@@ -337,12 +338,12 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
             '= '#39'Ficha'#39';'#13#10'}')
         BorderStyle = ubsSolid
         Caption = ''
-        object DBGrid2: TUniDBGrid
+        object gMateria: TUniDBGrid
           AlignWithMargins = True
           Left = 6
-          Top = 321
+          Top = 283
           Width = 787
-          Height = 272
+          Height = 260
           Hint = ''
           Margins.Left = 6
           Margins.Top = 0
@@ -405,11 +406,12 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
             end>
         end
         object Ficha: TUniPanel
+          Tag = 1
           AlignWithMargins = True
           Left = 6
           Top = 6
           Width = 787
-          Height = 307
+          Height = 271
           Hint = ''
           Margins.Left = 6
           Margins.Top = 6
@@ -425,7 +427,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
           object cProduto: TUniDBLookupComboBox
             Tag = 1
             Left = 16
-            Top = 16
+            Top = 40
             Width = 750
             Height = 25
             Hint = ''
@@ -450,7 +452,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
           object cQtde: TUniDBEdit
             Tag = 1
             Left = 16
-            Top = 178
+            Top = 202
             Width = 250
             Height = 25
             Hint = ''
@@ -469,7 +471,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
           object cData: TUniDBDateTimePicker
             Tag = 1
             Left = 16
-            Top = 39
+            Top = 67
             Width = 250
             Height = 25
             Hint = ''
@@ -490,7 +492,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
           end
           object cNota: TUniDBEdit
             Left = 16
-            Top = 124
+            Top = 148
             Width = 750
             Height = 25
             Hint = ''
@@ -509,7 +511,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
           object cValor_Unitario: TUniDBEdit
             Tag = 1
             Left = 16
-            Top = 205
+            Top = 229
             Width = 250
             Height = 25
             Hint = ''
@@ -527,7 +529,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
           end
           object cProcesso: TUniDBLookupComboBox
             Left = 16
-            Top = 151
+            Top = 175
             Width = 439
             Height = 25
             Hint = ''
@@ -547,37 +549,9 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
             FieldLabelSeparator = ' '
             ForceSelection = True
           end
-          object DBCheckBox1: TUniDBCheckBox
-            Left = 16
-            Top = 272
-            Width = 130
-            Height = 25
-            Hint = ''
-            ShowHint = True
-            DataField = 'Movimenta_Inventario'
-            DataSource = dsIndustrial
-            Caption = 'Movimenta inventario'
-            TabOrder = 10
-            ParentColor = False
-            Color = clBtnFace
-          end
-          object DBCheckBox2: TUniDBCheckBox
-            Left = 16
-            Top = 245
-            Width = 130
-            Height = 25
-            Hint = ''
-            ShowHint = True
-            DataField = 'Movimenta_Estoque'
-            DataSource = dsIndustrial
-            Caption = 'Movimenta Estoque'
-            TabOrder = 9
-            ParentColor = False
-            Color = clBtnFace
-          end
           object cEstoque: TUniEdit
             Left = 272
-            Top = 178
+            Top = 202
             Width = 183
             Height = 25
             Hint = ''
@@ -588,14 +562,17 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
             Text = '0'
             ParentFont = False
             Font.Style = [fsBold]
-            TabOrder = 11
+            TabOrder = 9
             Color = 16759739
             ReadOnly = True
+            FieldLabel = 'Estoque'
+            FieldLabelWidth = 60
+            FieldLabelSeparator = ' '
           end
           object cDestinatario: TUniDBLookupComboBox
             Tag = 1
             Left = 16
-            Top = 70
+            Top = 94
             Width = 750
             Height = 25
             Hint = ''
@@ -620,7 +597,7 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
           object cCFOP: TUniDBLookupComboBox
             Tag = 1
             Left = 16
-            Top = 97
+            Top = 121
             Width = 750
             Height = 25
             Hint = ''
@@ -642,6 +619,31 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
             ForceSelection = True
             OnExit = cProdutoExit
           end
+          object cEmpresa: TUniDBLookupComboBox
+            Tag = 1
+            Left = 16
+            Top = 13
+            Width = 750
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListField = 'CNPJ;Filial; Razao_Social'
+            ListSource = dsEmpresas
+            KeyField = 'CNPJ'
+            ListFieldIndex = 2
+            BorderStyle = ubsInset
+            DataField = 'Empresa'
+            DataSource = dsIndustrial
+            ParentFont = False
+            Font.Style = [fsBold]
+            TabOrder = 10
+            Color = clWindow
+            FieldLabel = 'Empresa'
+            FieldLabelWidth = 80
+            FieldLabelSeparator = ' '
+            ForceSelection = True
+            OnExit = cProdutoExit
+          end
         end
       end
     end
@@ -652,7 +654,6 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
     Top = 437
   end
   object Produtos: TFDQuery
-    Active = True
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'select Codigo'
@@ -663,15 +664,6 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
         'riaPrima)')
     Left = 203
     Top = 386
-    object ProdutosCodigo: TIntegerField
-      DisplayWidth = 10
-      FieldName = 'Codigo'
-    end
-    object ProdutosDescricao_Reduzida: TStringField
-      FieldName = 'Descricao_Reduzida'
-      Origin = 'Descricao_Reduzida'
-      Size = 60
-    end
   end
   object ttmp: TFDQuery
     Connection = UniMainModule.Conecta
@@ -728,13 +720,30 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
       '')
     Left = 141
     Top = 386
-    object IndustrialRegistro: TIntegerField
+    object IndustrialRegistro: TFDAutoIncField
       FieldName = 'Registro'
       Origin = 'Registro'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object IndustrialEmpresa: TStringField
+      FieldName = 'Empresa'
+      Origin = 'Empresa'
+      Required = True
+      Size = 14
+    end
+    object IndustrialData: TDateField
+      FieldName = 'Data'
+      Origin = 'Data'
     end
     object IndustrialCodigo_Mercadoria: TIntegerField
       FieldName = 'Codigo_Mercadoria'
       Origin = 'Codigo_Mercadoria'
+    end
+    object IndustrialProcesso: TStringField
+      FieldName = 'Processo'
+      Origin = 'Processo'
+      Size = 15
     end
     object IndustrialQuantidade: TFloatField
       FieldName = 'Quantidade'
@@ -744,53 +753,21 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
     object IndustrialValor_Unitario: TCurrencyField
       FieldName = 'Valor_Unitario'
       Origin = 'Valor_Unitario'
-      DisplayFormat = ',##0.00'
+      DisplayFormat = ',##0.0000'
     end
-    object IndustrialData: TSQLTimeStampField
-      FieldName = 'Data'
-      Origin = 'Data'
+    object IndustrialDestinatario: TSmallintField
+      FieldName = 'Destinatario'
+      Origin = 'Destinatario'
     end
     object IndustrialNotas: TStringField
       FieldName = 'Notas'
       Origin = 'Notas'
       Size = 60
     end
-    object IndustrialProcesso: TStringField
-      FieldName = 'Processo'
-      Origin = 'Processo'
-      Size = 15
-    end
-    object IndustrialMovimenta_Estoque: TBooleanField
-      FieldName = 'Movimenta_Estoque'
-      Origin = 'Movimenta_Estoque'
-    end
-    object IndustrialMovimenta_Inventario: TBooleanField
-      FieldName = 'Movimenta_Inventario'
-      Origin = 'Movimenta_Inventario'
-    end
-    object IndustrialDescricao: TStringField
-      FieldKind = fkLookup
-      FieldName = 'Descricao'
-      LookupDataSet = Produtos
-      LookupKeyFields = 'Codigo'
-      LookupResultField = 'Descricao_Reduzida'
-      KeyFields = 'Codigo_Mercadoria'
-      Size = 150
-      Lookup = True
-    end
-    object IndustrialEmpresa: TStringField
-      FieldName = 'Empresa'
-      Origin = 'Empresa'
-      Required = True
-      Size = 14
-    end
-    object IndustrialDestinatario: TSmallintField
-      FieldName = 'Destinatario'
-      Origin = 'Destinatario'
-    end
     object IndustrialCFOP: TStringField
       FieldName = 'CFOP'
       Origin = 'CFOP'
+      EditMask = '#.###;0'
       FixedChar = True
       Size = 4
     end
@@ -841,5 +818,45 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
     DataSet = CFOP
     Left = 562
     Top = 437
+  end
+  object tValor: TFDQuery
+    Connection = UniMainModule.Conecta
+    Left = 387
+    Top = 511
+  end
+  object Empresas: TFDQuery
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select CNPJ, Filial, Razao_Social from Empresas')
+    Left = 619
+    Top = 386
+  end
+  object dsEmpresas: TDataSource
+    DataSet = Empresas
+    Left = 619
+    Top = 437
+  end
+  object FichaEstoque: TFDQuery
+    Connection = UniMainModule.Conecta
+    Left = 681
+    Top = 386
+  end
+  object MascaraSal: TUniScreenMask
+    AttachedControl = bSalvar_
+    Enabled = True
+    DisplayMessage = 'Aguarde processando ficha de Estoque/Inventario'
+    TargetControl = Panel2
+    Left = 483
+    Top = 510
+  end
+  object MascaraExc: TUniScreenMask
+    AttachedControl = bExcluir_
+    Enabled = True
+    DisplayMessage = 'Aguarde processando ficha de Estoque/Inventario'
+    TargetControl = Panel2
+    Left = 561
+    Top = 509
   end
 end

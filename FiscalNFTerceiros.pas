@@ -2285,33 +2285,30 @@ begin
                 end;
                 mItem := GeraItem('FichaEstoque', 'Item', 'Empresa = '+NotasEmpresa.asstring+' and Nota_id = '+NotasNota_id.asstring+' and Codigo_Mercadoria = '+ItensNFCodigo_Mercadoria.asstring);
              
-                GravarFichaEstoqueEntrada(uniMainModule.Conecta
-                                         ,GeraCodigo('FichaEstoque', 'Registro')
-                                         ,NotasEmpresa.asstring
-                                         ,mItem
-                                         ,ItensNFCodigo_Mercadoria.AsInteger
-                                         ,ItensNFDescricao_Mercadoria.AsString
-                                         ,ItensNFNCM.AsString
-                                         ,ItensNFUM.AsString
-                                         ,ItensNFCFOP.AsString
-                                         ,Operacao.fieldbyname('Finalidade_Mercadoria').AsInteger
-                                         ,ItensNFNota_id.AsInteger
-                                         ,NotasNota.AsInteger
-                                         ,NotasData_ES.Value
-                                         ,ItensNFItem.asinteger
-                                         ,NotasDestinatario.AsInteger
-                                         ,NotasDestinatario_Nome.AsString
-                                         ,NotasDestinatario_CNPJ_CPF.AsString
-                                         ,NotasDestinatario_CNPJ_CPF.AsString
-                                         ,ItensNFQuantidade.AsFloat
-                                         ,ItensNFValor_Inventario.ascurrency
-                                         ,ItensNFProcesso.AsString
-                                         ,NotasModalidade.AsInteger
-                                         ,tSaldo.FieldByName('Qtde_Saldo').AsFloat
-                                         ,tSaldo.FieldByName('Total_Saldo').AsCurrency
-                                         ,Operacao.fieldbyname('Movimenta_Estoque').asboolean
-                                         ,Operacao.fieldbyname('Movimenta_Inventario').asboolean
-                                         ,Operacao.fieldbyname('Movimenta_Ind').asboolean);
+                GravarFichas(NotasEmpresa.asstring
+                            ,ItensNFCodigo_Mercadoria.AsInteger
+                            ,ItensNFDescricao_Mercadoria.AsString
+                            ,ItensNFNCM.AsString
+                            ,ItensNFUM.AsString
+                            ,ItensNFCFOP.AsString
+                            ,Operacao.fieldbyname('Finalidade_Mercadoria').AsInteger
+                            ,ItensNFNota_id.AsInteger
+                            ,NotasNota.AsInteger
+                            ,NotasData_ES.Value
+                            ,ItensNFItem.asinteger
+                            ,NotasDestinatario.AsInteger
+                            ,NotasDestinatario_Nome.AsString
+                            ,NotasDestinatario_CNPJ_CPF.AsString
+                            ,NotasDestinatario_CNPJ_CPF.AsString
+                            ,ItensNFQuantidade.AsFloat
+                            ,ItensNFValor_Inventario.ascurrency
+                            ,ItensNFProcesso.AsString
+                            ,NotasModalidade.AsInteger
+                            ,tSaldo.FieldByName('Qtde_Saldo').AsFloat
+                            ,tSaldo.FieldByName('Total_Saldo').AsCurrency
+                            ,Operacao.fieldbyname('Movimenta_Estoque').asboolean
+                            ,Operacao.fieldbyname('Movimenta_Inventario').asboolean
+                            ,'NFT');
              end;
 
              TfDialogo.Execute(UniApplication, 'Sucesso', 'Sucesso', 'Item salvo na nota fiscal.');

@@ -6,13 +6,12 @@ uses System.SysUtils, System.Classes, Vcl.Controls, Vcl.Forms, Vcl.Imaging.pngim
 
 type
    TDialogResultProc = reference to procedure(AResult: Integer);
-   TfDialogo = class(TUniForm)
-     Icone: TUniImage;
-     lTipo: TUniLabel;
-     bOK: TUniButton;
-    lmsg: TUniMemo;
- 
-     procedure bOKClick(Sender: TObject);
+     TfDialogo = class(TUniForm)
+       Icone: TUniImage;
+       lTipo: TUniLabel;
+       bOK: TUniButton;
+       lmsg: TUniMemo;
+   procedure bOKClick(Sender: TObject);
   public
     class procedure Execute(AOwner: TComponent;const aIcone, aTitulo, aMensagem: string;ACallback: TDialogResultProc = nil);
   end;
@@ -38,9 +37,11 @@ begin
      lArquivo          := UniServerModule.FilesFolder +'images\icones\' +aIcone +'.png';
      frm.lmsg.clear;
      Frm.lmsg.Lines.add(aMensagem);
-
+     if trim(aMensagem) = '' then begin
+        Frm.lmsg.Visible := false;
+        Frm.Height       := Frm.Height - Frm.lmsg.Height;
+     end;
      if FileExists(lArquivo) then Frm.Icone.Picture.LoadFromFile(lArquivo);
-     
      Frm.ShowModal(procedure(Sender: TComponent; AResult: Integer)
                    begin
                        if Assigned(ACallback) then begin 

@@ -144,7 +144,8 @@ uses
  ,ComexInvoice
  ,CadLPCO
  ,FiscalNFTerceiros
- ,Estoque_Industrializacao;(*uses p/gerador*)
+ ,Estoque_Industrializacao
+ ,Estoque_ProcessarEstoque;(*uses p/gerador*)
 
 function MainForm: TMainForm;
 begin
@@ -500,6 +501,7 @@ initialization
   RegisterClass(TfCadLPCO);
   RegisterClass(TfFiscalNFTerceiros);
   RegisterClass(TfEstoque_Industrializacao);
+  RegisterClass(TfEstoque_ProcessarEstoque);
   (*RegisterClass p/gerador*)
 
   

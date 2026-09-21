@@ -102,7 +102,8 @@ uses
   FiscalNFTerceirosItens in 'FiscalNFTerceirosItens.pas' {fFiscalNFTerceirosItens: TUniFrame},
   ImportaNFe in 'ImportaNFe.pas',
   FichaEstoque in 'FichaEstoque.pas',
-  Estoque_Industrializacao in 'Estoque_Industrializacao.pas' {fEstoque_Industrializacao: TUniFrame};
+  Estoque_Industrializacao in 'Estoque_Industrializacao.pas' {fEstoque_Industrializacao: TUniFrame},
+  Estoque_ProcessarEstoque in 'Estoque_ProcessarEstoque.pas' {fEstoque_ProcessarEstoque: TUniFrame};
 
 (*uses p/gerador*)
 

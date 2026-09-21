@@ -20,6 +20,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -199,6 +203,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabCapa: TUniTabSheet
       Hint = ''
       Caption = 'Capa da Nota Fiscal'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object Panel2: TUniPanel
         Left = 0
         Top = 0
@@ -670,6 +678,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabItem: TUniTabSheet
       Hint = ''
       Caption = 'Itens'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object GradeItens: TUniDBGrid
         Left = 65
         Top = 0
@@ -979,6 +991,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabSerial: TUniTabSheet
       Hint = ''
       Caption = 'Seriais/Chassis'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object GradeSerial: TUniDBGrid
         Left = 0
         Top = 0
@@ -1046,6 +1062,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabLote: TUniTabSheet
       Hint = ''
       Caption = 'Lotes'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object GradeLote: TUniDBGrid
         AlignWithMargins = True
         Left = 3
@@ -1113,6 +1133,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabManif: TUniTabSheet
       Hint = ''
       Caption = 'Manifesta'#231#227'o do Destinat'#225'rio'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object GradeManif: TUniDBGrid
         AlignWithMargins = True
         Left = 3
@@ -1297,6 +1321,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       Hint = ''
       TabVisible = False
       Caption = 'Importar XML'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       DesignSize = (
         1110
         726)

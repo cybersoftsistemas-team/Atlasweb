@@ -1312,7 +1312,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
               'E'
               'D')
           end
-          object UniDBLookupComboBox1: TUniDBLookupComboBox
+          object cFinalidade: TUniDBLookupComboBox
             Left = 14
             Top = 94
             Width = 677

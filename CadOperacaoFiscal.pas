@@ -422,7 +422,7 @@ type
     bCancelFor: TUniSpeedButton;
     bCopiaFor: TUniSpeedButton;
     OperacaoFiscalFinalidade_Mercadoria: TSmallintField;
-    UniDBLookupComboBox1: TUniDBLookupComboBox;
+    cFinalidade: TUniDBLookupComboBox;
     tFinalidade: TFDQuery;
     dstFinalidade: TDataSource;
     OperacaoFiscalAliquota_ISS: TFMTBCDField;

@@ -235,7 +235,7 @@ begin
              Connection := uniMainModule.Conecta;
              sql.clear;
              sql.Add('select isnull(max('+Campo+'), 0)+1 as '+Campo+' from '+Tabela+' where '+Condicao);
-             sql.savetofile('c:\temp\Atlas_Funcoes_GeraItem.sql');
+             //sql.savetofile('c:\temp\Atlas_Funcoes_GeraItem.sql');
              open;
              GeraItem := FieldByName(Campo).AsInteger;
         end;
