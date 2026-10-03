@@ -1,8 +1,8 @@
 object fCadUsuarios: TfCadUsuarios
   Left = 0
   Top = 0
-  Width = 1435
-  Height = 980
+  Width = 1071
+  Height = 833
   OnCreate = UniFrameCreate
   OnDestroy = UniFrameDestroy
   TabOrder = 0
@@ -10,7 +10,7 @@ object fCadUsuarios: TfCadUsuarios
   object UniPanel1: TUniPanel
     Left = 0
     Top = 0
-    Width = 1435
+    Width = 1071
     Height = 35
     Hint = ''
     Align = alTop
@@ -22,6 +22,7 @@ object fCadUsuarios: TfCadUsuarios
     BorderStyle = ubsNone
     Caption = ''
     Color = 5526569
+    ExplicitWidth = 1435
     object Navega: TUniDBNavigator
       Left = 0
       Top = 0
@@ -123,25 +124,29 @@ object fCadUsuarios: TfCadUsuarios
   object Pasta: TUniPageControl
     Left = 0
     Top = 35
-    Width = 1435
-    Height = 945
+    Width = 1071
+    Height = 798
     Hint = ''
     BodyRTL = False
-    ActivePage = aLista
+    ActivePage = aFicha
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
         'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
         's = '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 1
+    ExplicitWidth = 1435
+    ExplicitHeight = 945
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitWidth = 1427
+      ExplicitHeight = 917
       object UniDBGrid1: TUniDBGrid
         Left = 0
         Top = 27
-        Width = 1427
-        Height = 890
+        Width = 1063
+        Height = 743
         Hint = ''
         HeaderTitleAlign = taCenter
         DataSource = dsUsuarios
@@ -199,7 +204,7 @@ object fCadUsuarios: TfCadUsuarios
       object UniPanel2: TUniPanel
         Left = 0
         Top = 0
-        Width = 1427
+        Width = 1063
         Height = 27
         Hint = ''
         Align = alTop
@@ -211,6 +216,7 @@ object fCadUsuarios: TfCadUsuarios
         BorderStyle = ubsNone
         Caption = ''
         Color = clNone
+        ExplicitWidth = 1427
         object bPesquisa: TUniSpeedButton
           Left = 520
           Top = 0
@@ -243,11 +249,13 @@ object fCadUsuarios: TfCadUsuarios
     object aFicha: TUniTabSheet
       Hint = ''
       Caption = 'Dados do Us'#250'ario'
+      ExplicitWidth = 1427
+      ExplicitHeight = 917
       object sFicha: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1427
-        Height = 917
+        Width = 1063
+        Height = 770
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -255,17 +263,18 @@ object fCadUsuarios: TfCadUsuarios
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
             's = '#39'Pasta'#39#13#10'}')
         TabOrder = 0
+        ExplicitHeight = 800
         DesignSize = (
-          1425
-          915)
-        ScrollHeight = 884
+          1044
+          768)
+        ScrollHeight = 1008
+        ScrollWidth = 647
         object pFicha: TUniPanel
-          Left = 126
-          Top = 14
-          Width = 965
-          Height = 870
+          Left = 39
+          Top = 11
+          Width = 966
+          Height = 743
           Hint = ''
-          Enabled = False
           ShowHint = True
           ParentShowHint = False
           Anchors = [akTop]
@@ -274,11 +283,10 @@ object fCadUsuarios: TfCadUsuarios
             
               'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'   config.cls' +
               ' = '#39'Ficha'#39';'#13#10'}')
-          BorderStyle = ubsNone
+          BorderStyle = ubsSolid
           TitleAlign = taCenter
           Title = 'CADASTRO DE USU'#193'RIOS'
           Caption = ''
-          Color = clTeal
           object cNome: TUniDBEdit
             Left = 11
             Top = 39
@@ -457,128 +465,261 @@ object fCadUsuarios: TfCadUsuarios
           object UniPanel4: TUniPanel
             Tag = 1
             Left = 611
-            Top = 174
+            Top = 165
             Width = 342
-            Height = 671
+            Height = 562
             Hint = ''
             ShowHint = True
             TabOrder = 8
-            ClientEvents.UniEvents.Strings = (
-              'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' '#13#10'}')
-            BorderStyle = ubsInset
+            BorderStyle = ubsSolid
             TitleVisible = True
             TitleAlign = taCenter
             Title = 'Permiss'#245'es'
             Caption = ''
             object tMenu: TUniTreeView
-              AlignWithMargins = True
-              Left = 1
-              Top = 40
-              Width = 340
-              Height = 613
+              Left = 0
+              Top = 32
+              Width = 342
+              Height = 530
               Hint = ''
               ShowHint = True
               ParentShowHint = False
               Items.FontData = {0100000000}
               AutoExpand = True
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                  '= '#39'Painel'#39';'#13#10'}')
               Font.Name = 'Calibri'
               ParentFont = False
+              Align = alClient
               TabOrder = 1
               Color = clWindow
-              BorderStyle = ubsInset
+              BorderStyle = ubsSingle
               UseCheckBox = True
               UseArrows = True
               OnClick = tMenuClick
+              ExplicitLeft = 1
+              ExplicitTop = 31
+              ExplicitWidth = 340
+              ExplicitHeight = 328
             end
-            object bSelTudo: TUniSpeedButton
-              Left = 93
-              Top = 4
-              Width = 30
-              Height = 30
+            object UniPanel5: TUniPanel
+              Left = 0
+              Top = 0
+              Width = 342
+              Height = 32
               Hint = ''
               ShowHint = True
-              Caption = ''
-              ParentFont = False
-              ParentColor = False
-              IconAlign = iaTop
-              Images = UniMainModule.imgBotoes
-              ImageIndex = 4
+              Align = alTop
               TabOrder = 2
-              OnClick = bSelTudoClick
+              BorderStyle = ubsInset
+              ShowCaption = False
+              TitleAlign = taCenter
+              Title = 'Permiss'#245'es'
+              Caption = 'UniPanel5'
+              ExplicitLeft = 1
+              ExplicitTop = 1
+              ExplicitWidth = 340
+              object bSelTudo: TUniSpeedButton
+                Left = 191
+                Top = 1
+                Width = 30
+                Height = 30
+                Hint = ''
+                ShowHint = True
+                Caption = ''
+                Align = alRight
+                ParentFont = False
+                ParentColor = False
+                IconAlign = iaTop
+                Images = UniMainModule.imgBotoes
+                ImageIndex = 4
+                TabOrder = 1
+                OnClick = bSelTudoClick
+                ExplicitLeft = 164
+              end
+              object bDesTudo: TUniSpeedButton
+                Left = 221
+                Top = 1
+                Width = 30
+                Height = 30
+                Hint = ''
+                ShowHint = True
+                Caption = ''
+                Align = alRight
+                ParentFont = False
+                ParentColor = False
+                IconAlign = iaTop
+                Images = UniMainModule.imgBotoes
+                ImageIndex = 6
+                TabOrder = 2
+                OnClick = bDesTudoClick
+                ExplicitLeft = 199
+              end
+              object bExpand: TUniSpeedButton
+                Left = 251
+                Top = 1
+                Width = 30
+                Height = 30
+                Hint = ''
+                ShowHint = True
+                Caption = ''
+                Align = alRight
+                ParentFont = False
+                ParentColor = False
+                IconAlign = iaTop
+                Images = UniMainModule.imgBotoes
+                ImageIndex = 11
+                TabOrder = 3
+                OnClick = bExpandClick
+                ExplicitLeft = 234
+              end
+              object bRecolhe: TUniSpeedButton
+                Left = 281
+                Top = 1
+                Width = 30
+                Height = 30
+                Hint = ''
+                ShowHint = True
+                Caption = ''
+                Align = alRight
+                ParentFont = False
+                ParentColor = False
+                IconAlign = iaTop
+                Images = UniMainModule.imgBotoes
+                ImageIndex = 12
+                TabOrder = 4
+                OnClick = bRecolheClick
+                ExplicitLeft = 269
+              end
+              object bRecarga: TUniSpeedButton
+                Left = 311
+                Top = 1
+                Width = 30
+                Height = 30
+                Hint = ''
+                ShowHint = True
+                Caption = ''
+                Align = alRight
+                ParentFont = False
+                ParentColor = False
+                IconAlign = iaTop
+                Images = UniMainModule.imgBotoes
+                ImageIndex = 14
+                TabOrder = 5
+                ExplicitLeft = 304
+              end
             end
-            object bDesTudo: TUniSpeedButton
-              Left = 127
-              Top = 4
-              Width = 30
-              Height = 30
-              Hint = ''
-              ShowHint = True
-              Caption = ''
-              ParentFont = False
-              ParentColor = False
-              IconAlign = iaTop
-              Images = UniMainModule.imgBotoes
-              ImageIndex = 6
-              TabOrder = 3
-              OnClick = bDesTudoClick
-            end
-            object bExpand: TUniSpeedButton
-              Left = 161
-              Top = 4
-              Width = 30
-              Height = 30
-              Hint = ''
-              ShowHint = True
-              Caption = ''
-              ParentFont = False
-              ParentColor = False
-              IconAlign = iaTop
-              Images = UniMainModule.imgBotoes
-              ImageIndex = 11
-              TabOrder = 4
-              OnClick = bExpandClick
-            end
-            object bRecolhe: TUniSpeedButton
-              Left = 195
-              Top = 4
-              Width = 30
-              Height = 30
-              Hint = ''
-              ShowHint = True
-              Caption = ''
-              ParentFont = False
-              ParentColor = False
-              IconAlign = iaTop
-              Images = UniMainModule.imgBotoes
-              ImageIndex = 12
-              TabOrder = 5
-              OnClick = bRecolheClick
-            end
-            object bRecarga: TUniSpeedButton
-              Left = 229
-              Top = 4
-              Width = 30
-              Height = 30
-              Hint = ''
-              ShowHint = True
-              Caption = ''
-              ParentFont = False
-              ParentColor = False
-              IconAlign = iaTop
-              Images = UniMainModule.imgBotoes
-              ImageIndex = 14
-              TabOrder = 6
-            end
+          end
+          object UniDBEdit1: TUniDBEdit
+            Left = 11
+            Top = 174
+            Width = 584
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            DataField = 'Email'
+            DataSource = dsUsuarios
+            ParentFont = False
+            Font.Height = -13
+            Font.Style = [fsBold]
+            TabOrder = 9
+            FieldLabel = 'Email'
+            FieldLabelSeparator = ' '
+            SelectOnFocus = True
+            BorderStyle = ubsInset
+          end
+          object cRepresent: TUniDBLookupComboBox
+            Left = 11
+            Top = 201
+            Width = 584
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListField = 'Codigo;Nome'
+            ListSource = dsRepresentantes
+            KeyField = 'Codigo'
+            ListFieldIndex = 0
+            BorderStyle = ubsInset
+            DataField = 'Codigo_Representante'
+            DataSource = dsUsuarios
+            TabOrder = 10
+            Color = clWindow
+            FieldLabel = 'N'#237'vel de Acesso'
+            FieldLabelSeparator = ' '
+          end
+          object UniDBEdit2: TUniDBEdit
+            Left = 11
+            Top = 228
+            Width = 220
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            DataField = 'Lucro_Min'
+            DataSource = dsUsuarios
+            ParentFont = False
+            Font.Height = -13
+            Font.Style = [fsBold]
+            TabOrder = 11
+            InputMask.MaskChar = ' '
+            InputMask.UnmaskText = True
+            InputMask.RemoveWhiteSpace = True
+            FieldLabel = 'Lucro % M'#237'nimo'
+            FieldLabelSeparator = ' '
+            SelectOnFocus = True
+            BorderStyle = ubsInset
+          end
+          object UniDBEdit3: TUniDBEdit
+            Left = 236
+            Top = 228
+            Width = 220
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            DataField = 'Lucro_Max'
+            DataSource = dsUsuarios
+            ParentFont = False
+            Font.Height = -13
+            Font.Style = [fsBold]
+            TabOrder = 12
+            InputMask.MaskChar = ' '
+            InputMask.UnmaskText = True
+            InputMask.RemoveWhiteSpace = True
+            FieldLabel = 'Lucro % Max'#237'mo'
+            FieldLabelSeparator = ' '
+            SelectOnFocus = True
+            BorderStyle = ubsInset
+          end
+          object uTradutor: TUniDBLookupComboBox
+            Left = 343
+            Top = 12
+            Width = 252
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListField = 'Descricao'
+            ListSource = dsIdiomas
+            KeyField = 'Codigo'
+            ListFieldIndex = 0
+            BorderStyle = ubsInset
+            DataField = 'Idioma'
+            DataSource = dsUsuarios
+            TabOrder = 13
+            Color = clWindow
+            FieldLabel = 'Idioma'
+            FieldLabelSeparator = ' '
           end
           object UniGroupBox1: TUniGroupBox
             Left = 12
             Top = 275
-            Width = 287
-            Height = 268
+            Width = 274
+            Height = 261
+            Cursor = crArrow
             Hint = ''
             ShowHint = True
             Caption = 'Par'#226'metros Diversos'
-            TabOrder = 9
+            TabOrder = 14
             object UniDBCheckBox1: TUniDBCheckBox
               Left = 6
               Top = 18
@@ -721,14 +862,15 @@ object fCadUsuarios: TfCadUsuarios
             end
           end
           object UniGroupBox2: TUniGroupBox
-            Left = 317
+            Left = 307
             Top = 275
-            Width = 278
-            Height = 268
+            Width = 260
+            Height = 261
+            Cursor = crArrow
             Hint = ''
             ShowHint = True
             Caption = 'Checagens'
-            TabOrder = 10
+            TabOrder = 15
             object UniDBCheckBox11: TUniDBCheckBox
               Left = 6
               Top = 18
@@ -834,7 +976,7 @@ object fCadUsuarios: TfCadUsuarios
               Height = 17
               Hint = ''
               ShowHint = True
-              DataField = 'Checagem_ClientesAtraso'
+              DataField = 'Checagem_ClientesMovimento'
               DataSource = dsUsuarios
               Caption = 'Clientes sem movimenta'#231#227'o no per'#237'odo'
               TabOrder = 8
@@ -898,94 +1040,16 @@ object fCadUsuarios: TfCadUsuarios
               Color = clBtnFace
             end
           end
-          object UniDBEdit1: TUniDBEdit
-            Left = 11
-            Top = 174
-            Width = 584
-            Height = 25
-            Hint = ''
-            ShowHint = True
-            DataField = 'Email'
-            DataSource = dsUsuarios
-            ParentFont = False
-            Font.Height = -13
-            Font.Style = [fsBold]
-            TabOrder = 11
-            FieldLabel = 'Email'
-            FieldLabelSeparator = ' '
-            SelectOnFocus = True
-            BorderStyle = ubsInset
-          end
-          object cRepresent: TUniDBLookupComboBox
-            Left = 11
-            Top = 201
-            Width = 584
-            Height = 25
-            Hint = ''
-            ShowHint = True
-            ListField = 'Codigo;Nome'
-            ListSource = dsRepresentantes
-            KeyField = 'Codigo'
-            ListFieldIndex = 0
-            BorderStyle = ubsInset
-            DataField = 'Codigo_Representante'
-            DataSource = dsUsuarios
-            TabOrder = 12
-            Color = clWindow
-            FieldLabel = 'N'#237'vel de Acesso'
-            FieldLabelSeparator = ' '
-          end
-          object UniDBEdit2: TUniDBEdit
-            Left = 11
-            Top = 228
-            Width = 220
-            Height = 25
-            Hint = ''
-            ShowHint = True
-            DataField = 'Lucro_Min'
-            DataSource = dsUsuarios
-            ParentFont = False
-            Font.Height = -13
-            Font.Style = [fsBold]
-            TabOrder = 13
-            InputMask.MaskChar = ' '
-            InputMask.UnmaskText = True
-            InputMask.RemoveWhiteSpace = True
-            FieldLabel = 'Lucro % M'#237'nimo'
-            FieldLabelSeparator = ' '
-            SelectOnFocus = True
-            BorderStyle = ubsInset
-          end
-          object UniDBEdit3: TUniDBEdit
-            Left = 236
-            Top = 228
-            Width = 220
-            Height = 25
-            Hint = ''
-            ShowHint = True
-            DataField = 'Lucro_Max'
-            DataSource = dsUsuarios
-            ParentFont = False
-            Font.Height = -13
-            Font.Style = [fsBold]
-            TabOrder = 14
-            InputMask.MaskChar = ' '
-            InputMask.UnmaskText = True
-            InputMask.RemoveWhiteSpace = True
-            FieldLabel = 'Lucro % Max'#237'mo'
-            FieldLabelSeparator = ' '
-            SelectOnFocus = True
-            BorderStyle = ubsInset
-          end
           object UniGroupBox3: TUniGroupBox
             Left = 12
-            Top = 559
-            Width = 287
+            Top = 551
+            Width = 274
             Height = 175
+            Cursor = crArrow
             Hint = ''
             ShowHint = True
             Caption = 'Abas visiveis no gerenciador de Pedidos'
-            TabOrder = 15
+            TabOrder = 16
             object UniDBCheckBox23: TUniDBCheckBox
               Left = 6
               Top = 18
@@ -1086,6 +1150,15 @@ object fCadUsuarios: TfCadUsuarios
             end
           end
         end
+        object UniContainerPanel1: TUniContainerPanel
+          Left = 391
+          Top = 984
+          Width = 256
+          Height = 24
+          Hint = ''
+          ParentColor = False
+          TabOrder = 1
+        end
       end
     end
   end
@@ -1114,8 +1187,228 @@ object fCadUsuarios: TfCadUsuarios
       'SELECT * FROM Usuarios')
     Left = 39
     Top = 131
+    object UsuariosMatricula: TStringField
+      FieldName = 'Matricula'
+      Origin = 'Matricula'
+      Size = 15
+    end
+    object UsuariosEmpresa: TStringField
+      FieldName = 'Empresa'
+      Origin = 'Empresa'
+      Size = 14
+    end
+    object UsuariosDesativado: TBooleanField
+      FieldName = 'Desativado'
+      Origin = 'Desativado'
+    end
+    object UsuariosNome: TStringField
+      FieldName = 'Nome'
+      Origin = 'Nome'
+      Size = 50
+    end
+    object UsuariosSetor: TStringField
+      FieldName = 'Setor'
+      Origin = 'Setor'
+      Size = 30
+    end
+    object UsuariosFuncao: TStringField
+      FieldName = 'Funcao'
+      Origin = 'Funcao'
+      Size = 60
+    end
+    object UsuariosChave: TStringField
+      FieldName = 'Chave'
+      Origin = 'Chave'
+      Size = 30
+    end
+    object UsuariosChave_Cadastro: TBooleanField
+      FieldName = 'Chave_Cadastro'
+      Origin = 'Chave_Cadastro'
+    end
+    object UsuariosNivel: TSmallintField
+      FieldName = 'Nivel'
+      Origin = 'Nivel'
+    end
+    object UsuariosBaixa_Automatica: TBooleanField
+      FieldName = 'Baixa_Automatica'
+      Origin = 'Baixa_Automatica'
+    end
+    object UsuariosBackup_Automatico: TBooleanField
+      FieldName = 'Backup_Automatico'
+      Origin = 'Backup_Automatico'
+    end
+    object UsuariosCodigo_Representante: TSmallintField
+      FieldName = 'Codigo_Representante'
+      Origin = 'Codigo_Representante'
+    end
+    object UsuariosCall_CenterTodos: TBooleanField
+      FieldName = 'Call_CenterTodos'
+      Origin = 'Call_CenterTodos'
+    end
+    object UsuariosSistema_Externo: TStringField
+      FieldName = 'Sistema_Externo'
+      Origin = 'Sistema_Externo'
+      Size = 15
+    end
+    object UsuariosSistema_ExternoUsuario: TStringField
+      FieldName = 'Sistema_ExternoUsuario'
+      Origin = 'Sistema_ExternoUsuario'
+      Size = 60
+    end
+    object UsuariosSistema_ExternoChave: TStringField
+      FieldName = 'Sistema_ExternoChave'
+      Origin = 'Sistema_ExternoChave'
+      Size = 30
+    end
+    object UsuariosLucro_Min: TFMTBCDField
+      FieldName = 'Lucro_Min'
+      Origin = 'Lucro_Min'
+      Precision = 18
+      Size = 6
+    end
+    object UsuariosLucro_Max: TFMTBCDField
+      FieldName = 'Lucro_Max'
+      Origin = 'Lucro_Max'
+      Precision = 18
+      Size = 6
+    end
+    object UsuariosFoto: TStringField
+      FieldName = 'Foto'
+      Origin = 'Foto'
+      Size = 120
+    end
+    object UsuariosDepartamento: TStringField
+      FieldName = 'Departamento'
+      Origin = 'Departamento'
+      Size = 60
+    end
+    object UsuariosCargo: TStringField
+      FieldName = 'Cargo'
+      Origin = 'Cargo'
+      Size = 60
+    end
+    object UsuariosEmail: TStringField
+      FieldName = 'Email'
+      Origin = 'Email'
+      Size = 60
+    end
+    object UsuariosIdioma: TStringField
+      FieldName = 'Idioma'
+      Origin = 'Idioma'
+      Size = 10
+    end
+    object UsuariosFinanceiro_Operacional: TBooleanField
+      FieldName = 'Financeiro_Operacional'
+      Origin = 'Financeiro_Operacional'
+    end
+    object UsuariosChecagem: TBooleanField
+      FieldName = 'Checagem'
+      Origin = 'Checagem'
+    end
+    object UsuariosCall_Center: TBooleanField
+      FieldName = 'Call_Center'
+      Origin = 'Call_Center'
+    end
+    object UsuariosSistema_ExternoSenha: TStringField
+      FieldName = 'Sistema_ExternoSenha'
+      Origin = 'Sistema_ExternoSenha'
+      Size = 30
+    end
+    object UsuariosComprador: TBooleanField
+      FieldName = 'Comprador'
+      Origin = 'Comprador'
+    end
+    object UsuariosGerente: TBooleanField
+      FieldName = 'Gerente'
+      Origin = 'Gerente'
+    end
+    object UsuariosDiretor: TBooleanField
+      FieldName = 'Diretor'
+      Origin = 'Diretor'
+    end
+    object UsuariosPedidoRep_VerLib: TBooleanField
+      FieldName = 'PedidoRep_VerLib'
+      Origin = 'PedidoRep_VerLib'
+    end
+    object UsuariosPedidoRep_VerCof: TBooleanField
+      FieldName = 'PedidoRep_VerCof'
+      Origin = 'PedidoRep_VerCof'
+    end
+    object UsuariosPedidoRep_VerFat: TBooleanField
+      FieldName = 'PedidoRep_VerFat'
+      Origin = 'PedidoRep_VerFat'
+    end
+    object UsuariosPedidoRep_VerDesp: TBooleanField
+      FieldName = 'PedidoRep_VerDesp'
+      Origin = 'PedidoRep_VerDesp'
+    end
+    object UsuariosPedidoRep_VerSep: TBooleanField
+      FieldName = 'PedidoRep_VerSep'
+      Origin = 'PedidoRep_VerSep'
+    end
+    object UsuariosPedidoRep_VerAgFat: TBooleanField
+      FieldName = 'PedidoRep_VerAgFat'
+      Origin = 'PedidoRep_VerAgFat'
+    end
+    object UsuariosChecagem_Demurrage: TBooleanField
+      FieldName = 'Checagem_Demurrage'
+      Origin = 'Checagem_Demurrage'
+    end
+    object UsuariosChecagem_ContratoClientes: TBooleanField
+      FieldName = 'Checagem_ContratoClientes'
+      Origin = 'Checagem_ContratoClientes'
+    end
+    object UsuariosChecagem_Radar: TBooleanField
+      FieldName = 'Checagem_Radar'
+      Origin = 'Checagem_Radar'
+    end
+    object UsuariosChecagem_Viculacoes: TBooleanField
+      FieldName = 'Checagem_Viculacoes'
+      Origin = 'Checagem_Viculacoes'
+    end
+    object UsuariosChecagem_PrazoRetorno: TBooleanField
+      FieldName = 'Checagem_PrazoRetorno'
+      Origin = 'Checagem_PrazoRetorno'
+    end
+    object UsuariosChecagem_ProcessoContainer: TBooleanField
+      FieldName = 'Checagem_ProcessoContainer'
+      Origin = 'Checagem_ProcessoContainer'
+    end
+    object UsuariosChecagem_PrazoArquivos: TBooleanField
+      FieldName = 'Checagem_PrazoArquivos'
+      Origin = 'Checagem_PrazoArquivos'
+    end
+    object UsuariosChecagem_EstoqueMinimo: TBooleanField
+      FieldName = 'Checagem_EstoqueMinimo'
+      Origin = 'Checagem_EstoqueMinimo'
+    end
+    object UsuariosChecagem_ClientesAtraso: TBooleanField
+      FieldName = 'Checagem_ClientesAtraso'
+      Origin = 'Checagem_ClientesAtraso'
+    end
+    object UsuariosChecagem_ClientesMovimento: TBooleanField
+      FieldName = 'Checagem_ClientesMovimento'
+      Origin = 'Checagem_ClientesMovimento'
+    end
+    object UsuariosChecagem_Exoneracao: TBooleanField
+      FieldName = 'Checagem_Exoneracao'
+      Origin = 'Checagem_Exoneracao'
+    end
+    object UsuariosChecagem_DIDA: TBooleanField
+      FieldName = 'Checagem_DIDA'
+      Origin = 'Checagem_DIDA'
+    end
+    object UsuariosPedidoRep_AlterarPed: TBooleanField
+      FieldName = 'PedidoRep_AlterarPed'
+      Origin = 'PedidoRep_AlterarPed'
+    end
+    object UsuariosChecagem_Pagamentos: TBooleanField
+      FieldName = 'Checagem_Pagamentos'
+      Origin = 'Checagem_Pagamentos'
+    end
   end
   object Permissoes: TFDQuery
+    AutoCalcFields = False
     Connection = UniMainModule.Conecta
     UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
@@ -1142,8 +1435,7 @@ object fCadUsuarios: TfCadUsuarios
     CancelButtonText = 'Cancelar'
     Width = 400
     Padding = 20
-    Left = 39
-    Top = 79
+    Left = 434
   end
   object Representantes: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1161,5 +1453,20 @@ object fCadUsuarios: TfCadUsuarios
     DataSet = Representantes
     Left = 38
     Top = 482
+  end
+  object Idiomas: TFDQuery
+    AutoCalcFields = False
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select * from Idiomas')
+    Left = 39
+    Top = 536
+  end
+  object dsIdiomas: TDataSource
+    DataSet = Idiomas
+    Left = 38
+    Top = 589
   end
 end

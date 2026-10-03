@@ -44,6 +44,16 @@ type
     iFoto: TUniImage;
     UniPanel4: TUniPanel;
     tMenu: TUniTreeView;
+    bFoto: TUniFileUploadButton;
+    UniDBEdit1: TUniDBEdit;
+    Representantes: TFDQuery;
+    cRepresent: TUniDBLookupComboBox;
+    dsRepresentantes: TDataSource;
+    UniDBEdit2: TUniDBEdit;
+    UniDBEdit3: TUniDBEdit;
+    uTradutor: TUniDBLookupComboBox;
+    Idiomas: TFDQuery;
+    dsIdiomas: TDataSource;
     UniGroupBox1: TUniGroupBox;
     UniDBCheckBox1: TUniDBCheckBox;
     UniDBCheckBox2: TUniDBCheckBox;
@@ -55,7 +65,6 @@ type
     UniDBCheckBox8: TUniDBCheckBox;
     UniDBCheckBox9: TUniDBCheckBox;
     UniDBCheckBox10: TUniDBCheckBox;
-    bFoto: TUniFileUploadButton;
     UniGroupBox2: TUniGroupBox;
     UniDBCheckBox11: TUniDBCheckBox;
     UniDBCheckBox12: TUniDBCheckBox;
@@ -69,17 +78,6 @@ type
     UniDBCheckBox16: TUniDBCheckBox;
     UniDBCheckBox21: TUniDBCheckBox;
     UniDBCheckBox22: TUniDBCheckBox;
-    bSelTudo: TUniSpeedButton;
-    bDesTudo: TUniSpeedButton;
-    bExpand: TUniSpeedButton;
-    bRecolhe: TUniSpeedButton;
-    bRecarga: TUniSpeedButton;
-    UniDBEdit1: TUniDBEdit;
-    Representantes: TFDQuery;
-    cRepresent: TUniDBLookupComboBox;
-    dsRepresentantes: TDataSource;
-    UniDBEdit2: TUniDBEdit;
-    UniDBEdit3: TUniDBEdit;
     UniGroupBox3: TUniGroupBox;
     UniDBCheckBox23: TUniDBCheckBox;
     UniDBCheckBox24: TUniDBCheckBox;
@@ -88,6 +86,63 @@ type
     UniDBCheckBox27: TUniDBCheckBox;
     UniDBCheckBox28: TUniDBCheckBox;
     UniDBCheckBox30: TUniDBCheckBox;
+    UsuariosMatricula: TStringField;
+    UsuariosEmpresa: TStringField;
+    UsuariosDesativado: TBooleanField;
+    UsuariosNome: TStringField;
+    UsuariosSetor: TStringField;
+    UsuariosFuncao: TStringField;
+    UsuariosChave: TStringField;
+    UsuariosChave_Cadastro: TBooleanField;
+    UsuariosNivel: TSmallintField;
+    UsuariosBaixa_Automatica: TBooleanField;
+    UsuariosBackup_Automatico: TBooleanField;
+    UsuariosCodigo_Representante: TSmallintField;
+    UsuariosCall_CenterTodos: TBooleanField;
+    UsuariosSistema_Externo: TStringField;
+    UsuariosSistema_ExternoUsuario: TStringField;
+    UsuariosSistema_ExternoChave: TStringField;
+    UsuariosLucro_Min: TFMTBCDField;
+    UsuariosLucro_Max: TFMTBCDField;
+    UsuariosFoto: TStringField;
+    UsuariosDepartamento: TStringField;
+    UsuariosCargo: TStringField;
+    UsuariosEmail: TStringField;
+    UsuariosIdioma: TStringField;
+    UsuariosFinanceiro_Operacional: TBooleanField;
+    UsuariosChecagem: TBooleanField;
+    UsuariosCall_Center: TBooleanField;
+    UsuariosSistema_ExternoSenha: TStringField;
+    UsuariosComprador: TBooleanField;
+    UsuariosGerente: TBooleanField;
+    UsuariosDiretor: TBooleanField;
+    UsuariosPedidoRep_VerLib: TBooleanField;
+    UsuariosPedidoRep_VerCof: TBooleanField;
+    UsuariosPedidoRep_VerFat: TBooleanField;
+    UsuariosPedidoRep_VerDesp: TBooleanField;
+    UsuariosPedidoRep_VerSep: TBooleanField;
+    UsuariosPedidoRep_VerAgFat: TBooleanField;
+    UsuariosChecagem_Demurrage: TBooleanField;
+    UsuariosChecagem_ContratoClientes: TBooleanField;
+    UsuariosChecagem_Radar: TBooleanField;
+    UsuariosChecagem_Viculacoes: TBooleanField;
+    UsuariosChecagem_PrazoRetorno: TBooleanField;
+    UsuariosChecagem_ProcessoContainer: TBooleanField;
+    UsuariosChecagem_PrazoArquivos: TBooleanField;
+    UsuariosChecagem_EstoqueMinimo: TBooleanField;
+    UsuariosChecagem_ClientesAtraso: TBooleanField;
+    UsuariosChecagem_ClientesMovimento: TBooleanField;
+    UsuariosChecagem_Exoneracao: TBooleanField;
+    UsuariosChecagem_DIDA: TBooleanField;
+    UsuariosPedidoRep_AlterarPed: TBooleanField;
+    UsuariosChecagem_Pagamentos: TBooleanField;
+    UniPanel5: TUniPanel;
+    bSelTudo: TUniSpeedButton;
+    bDesTudo: TUniSpeedButton;
+    bExpand: TUniSpeedButton;
+    bRecolhe: TUniSpeedButton;
+    bRecarga: TUniSpeedButton;
+    UniContainerPanel1: TUniContainerPanel;
     procedure UniFrameCreate(Sender: TObject);
     procedure UniFrameDestroy(Sender: TObject);
     procedure bAdicionarClick(Sender: TObject);
@@ -316,42 +371,47 @@ procedure TfCadUsuarios.UniFrameCreate(Sender: TObject);
 var
    i:integer;
 begin
-      // Alinhando todas as ficha de dados ao centro do form.
-      for i := 0 to ComponentCount -1 do begin
-          if (Components[i] is TUniPanel) and (Components[i].Tag = 0) then begin
-             TuniPanel(Components[i]).Top   := 30;
-             TuniPanel(Components[i]).Left  := (Pasta.Width - TuniPanel(Components[i]).Width) div 2;
-             TuniPanel(Components[i]).Color := clNone;
-          end;
-      end;
-      with Usuarios do begin
-           sql.clear;
-           sql.add('select * from Usuarios order by Nome');
-           open;
-      end;
-      with Niveis do begin
-           sql.clear;
-           sql.add('select * from UsuariosNivel order by Descricao');
-           open;
-      end;
-      with Permissoes do begin 
-           sql.Clear;
-           sql.Add('select * from UsuariosPermissoes order by Matricula, Indice');
-           open;
-      end;
-      with Representantes do begin 
-           sql.Clear;
-           sql.add('select Codigo');
-           sql.add('      ,Nome');
-           sql.add('from Destinatarios');
-           sql.add('where Representante = 1');
-           sql.add('and isnull(Desativado, 0) = 0');
-           Open;
-      end;
-      
-      LigaBotoes(true);
-      Pasta.ActivePageIndex := 0;
-      tMenu.FullExpand
+     // Alinhando todas as ficha de dados ao centro do form.
+     for i := 0 to ComponentCount -1 do begin
+         if (Components[i] is TUniPanel) and (Components[i].Tag = 0) then begin
+            TuniPanel(Components[i]).Top   := 30;
+            TuniPanel(Components[i]).Left  := (Pasta.Width - TuniPanel(Components[i]).Width) div 2;
+            TuniPanel(Components[i]).Color := clNone;
+         end;
+     end;
+     with Usuarios do begin
+          sql.clear;
+          sql.add('select * from Usuarios order by Nome');
+          open;
+     end;
+     with Niveis do begin
+          sql.clear;
+          sql.add('select * from UsuariosNivel order by Descricao');
+          open;
+     end;
+     with Permissoes do begin 
+          sql.Clear;
+          sql.Add('select * from UsuariosPermissoes order by Matricula, Indice');
+          open;
+     end;
+     with Idiomas do begin 
+          sql.Clear;
+          sql.Add('select * from Idiomas order by Descricao');
+          open;
+     end;
+     with Representantes do begin 
+          sql.Clear;
+          sql.add('select Codigo');
+          sql.add('      ,Nome');
+          sql.add('from Destinatarios');
+          sql.add('where Representante = 1');
+          sql.add('and isnull(Desativado, 0) = 0');
+          Open;
+     end;
+     
+     LigaBotoes(true);
+     tMenu.FullExpand;
+//     Pasta.ActivePageIndex := 0;
 end;
 
 procedure TfCadUsuarios.UniFrameDestroy(Sender: TObject);

@@ -283,6 +283,7 @@ object UniMainModule: TUniMainModule
     FetchOptions.LiveWindowParanoic = False
     ResourceOptions.AssignedValues = [rvCmdExecMode]
     ResourceOptions.CmdExecMode = amNonBlocking
+    Connected = True
     LoginPrompt = False
     Left = 115
     Top = 18

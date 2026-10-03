@@ -15,6 +15,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     Plain = True
     Align = alClient
     TabOrder = 0
+    ExplicitLeft = -3
     object UniTabSheet3: TUniTabSheet
       Hint = ''
       Caption = 'Itens do Pedido'
@@ -39,7 +40,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
         ScrollWidth = 865
         object UniPanel3: TUniPanel
           Left = 38
-          Top = 15
+          Top = 14
           Width = 784
           Height = 1743
           Hint = ''

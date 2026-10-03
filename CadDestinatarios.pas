@@ -8,7 +8,7 @@ uses
   uniEdit, uniDBEdit, uniDBMemo, uniGUIBaseClasses, FireDAC.Comp.Client, uniDBLookUpComboBox, uniCheckBox,uniDBComboBox, uniGroupBox, uniDBRadioGroup,
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, uniMemo, uniRadioGroup, uniDateTimePicker, uniMultiItem, uniComboBox, uniBasicGrid, uniBitBtn, uniScreenMask,
-  unimToggle, unimDBToggle, uniSweetAlert, uniLabel, uniWidgets;
+  uniLabel, uniSweetAlert; 
 
 type
   TfCadDestinatarios = class(TUniFrame)
@@ -633,7 +633,7 @@ procedure TfCadDestinatarios.UniframeCreate(Sender: TObject);
 var
   i:integer;
 begin
-      // Alinhando todas as ficha de dados ao centro do form.
+      // Alinhando todas as fichas de dados ao centro do form.
       for i := 0 to ComponentCount -1 do begin
           if Components[i] is TUniPanel then begin
              TuniPanel(Components[i]).Top   := 30;
@@ -784,23 +784,23 @@ function TfCadDestinatarios.Obriga(NomeCampo:TObject; NomeField:string):boolean;
 var
    texto:string;
 begin
-      result := true;
-      with Destinatarios do begin
-           if trim(FieldByName(NomeField).AsString) = '' then begin
-              if NomeCampo is TuniDBEdit then begin
-                 texto := Quotedstr(TuniDBEdit(NomeCampo).FieldLabel);
-              end;
-              if NomeCampo is TuniDBLookUpComboBox then begin
-                 texto := Quotedstr(TuniDBLookUpComboBox(NomeCampo).FieldLabel);
-              end;
+     result := true;
+     with Destinatarios do begin
+          if trim(FieldByName(NomeField).AsString) = '' then begin
+             if NomeCampo is TuniDBEdit then begin
+                texto := Quotedstr(TuniDBEdit(NomeCampo).FieldLabel);
+             end;
+             if NomeCampo is TuniDBLookUpComboBox then begin
+                texto := Quotedstr(TuniDBLookUpComboBox(NomeCampo).FieldLabel);
+             end;
 
-              MessageDlg('Campo obrigatório!'+#13+#13+'É necessário informar o '+texto+'.', mtError, [mbOK]);
+             MessageDlg('Campo obrigatório!'+#13+#13+'É necessário informar o '+texto+'.', mtError, [mbOK]);
 
-              if NomeCampo is TuniDBEdit then TuniDBEdit(NomeCampo).Setfocus;
-              if NomeCampo is TuniDBLookUpComboBox then TuniDBLookUpComboBox(NomeCampo).Setfocus;
-              result := false;
-           end;
-      end;
+             if NomeCampo is TuniDBEdit then TuniDBEdit(NomeCampo).Setfocus;
+             if NomeCampo is TuniDBLookUpComboBox then TuniDBLookUpComboBox(NomeCampo).Setfocus;
+             result := false;
+          end;
+     end;
 end;
 
 procedure TfCadDestinatarios.LigaBotoes2(Estado:boolean);

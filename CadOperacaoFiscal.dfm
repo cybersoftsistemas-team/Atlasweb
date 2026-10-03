@@ -238,7 +238,7 @@ object fCadOperacaoFiscal: TfCadOperacaoFiscal
     Width = 1407
     Height = 765
     Hint = ''
-    ActivePage = TabSheet1
+    ActivePage = UniTabSheet4
     Plain = True
     Align = alClient
     ClientEvents.UniEvents.Strings = (

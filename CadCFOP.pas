@@ -56,7 +56,7 @@ type
     CFOPApuracao_PISCOFINS: TBooleanField;
     CFOPPrazo_Retorno: TSmallintField;
     CFOPDesativada: TBooleanField;
-    CFOPEstado: TStringField;
+    CFOPDentro_Fora: TStringField;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
@@ -84,14 +84,14 @@ uses MainModule, Main;
 
 procedure TfCadCFOP.bAdicionarClick(Sender: TObject);
 begin
-      with CFOP do begin
-           try
-               LigaBotoes(false);
-               Append;
-           except
-               Showmessage('Não pode adicionar um novo registro!');
-           end;
-      end;
+     with CFOP do begin
+          try
+              LigaBotoes(false);
+              Append;
+          except
+              Showmessage('Não pode adicionar um novo registro!');
+          end;
+     end;
 end;
 
 procedure TfCadCFOP.bExcluirClick(Sender: TObject);
@@ -111,38 +111,38 @@ end;
 
 procedure TfCadCFOP.bGravarClick(Sender: TObject);
 begin
-      with CFOP do begin
-           if (State = dsInsert) and (Existe(CFOP, 'Codigo', FieldByName('Codigo').AsString)) then begin
-              MessageDlg('Já existe um "Descricao" cadastrado com esse codigo!'+#13+#13, mtError, [mbOK]);
-              cCodigo.SetFocus;
-              Abort;
-           end;
-           if Trim(FieldByName('Codigo').AsString) = '' then begin
-              MessageDlg('O campo "Codigo" não pode ficar em branco!', mtError, [mbOK]);
-              cCodigo.SetFocus;
-              Abort;
-           end;
-           if Trim(FieldByName('Descricao').AsString) = '' then begin
-              MessageDlg('O campo "Descricao" não pode ficar em branco!', mtError, [mbOK]);
-              cDescricao.SetFocus;
-              Abort;
-           end;
+     with CFOP do begin
+          if (State = dsInsert) and (Existe(CFOP, 'Codigo', FieldByName('Codigo').AsString)) then begin
+             MessageDlg('Já existe um "Descricao" cadastrado com esse codigo!'+#13+#13, mtError, [mbOK]);
+             cCodigo.SetFocus;
+             Abort;
+          end;
+          if Trim(FieldByName('Codigo').AsString) = '' then begin
+             MessageDlg('O campo "Codigo" não pode ficar em branco!', mtError, [mbOK]);
+             cCodigo.SetFocus;
+             Abort;
+          end;
+          if Trim(FieldByName('Descricao').AsString) = '' then begin
+             MessageDlg('O campo "Descricao" não pode ficar em branco!', mtError, [mbOK]);
+             cDescricao.SetFocus;
+             Abort;
+          end;
 
-           try
-               Post;
-               LigaBotoes(true);
-               Alerta.Text := 'Registro salvo no banco de dados!';
-               Alerta.Execute;
-           except
-               Showmessage('Falha desconhecida, não pode salvar o registro corrente!');
-           end;
-      end;
+          try
+              Post;
+              LigaBotoes(true);
+              Alerta.Text := 'Registro salvo no banco de dados!';
+              Alerta.Execute;
+          except
+              Showmessage('Falha desconhecida, não pode salvar o registro corrente!');
+          end;
+     end;
 end;
 
 procedure TfCadCFOP.bCancelarClick(Sender: TObject);
 begin
-      CFOP.Cancel;
-      LigaBotoes(true);
+     CFOP.Cancel;
+     LigaBotoes(true);
 end;
 
 procedure TfCadCFOP.bEditarClick(Sender: TObject);
@@ -160,17 +160,17 @@ procedure TfCadCFOP.UniFrameDestroy(Sender: TObject);
 var
    i:integer;
 begin
-      // Fecha todas as tabelas do form.
-      for i := 0 to pred(ComponentCount) do begin
-          if Components[i] is TFDQuery then begin
-             TFDQuery(Components[i]).close;
-          end;
-      end;
+     // Fecha todas as tabelas do form.
+     for i := 0 to pred(ComponentCount) do begin
+         if Components[i] is TFDQuery then begin
+            TFDQuery(Components[i]).close;
+         end;
+     end;
 end;
 
 procedure TfCadCFOP.bFecharClick(Sender: TObject);
 begin
-      MainForm.PagePrincipal.Pages[MainForm.PagePrincipal.ActivePageIndex].free;
+     MainForm.PagePrincipal.Pages[MainForm.PagePrincipal.ActivePageIndex].free;
 end;
 
 procedure TfCadCFOP.LigaBotoes(Estado:boolean);
@@ -189,30 +189,30 @@ procedure TfCadCFOP.UniFrameCreate(Sender: TObject);
 var
   i:integer;
 begin
-      // Alinhando todas as ficha de dados ao centro do form.
-      for i := 0 to ComponentCount -1 do begin
-          if Components[i] is TUniPanel then begin
-             TuniPanel(Components[i]).Top   := 30;
-             TuniPanel(Components[i]).Left  := (Pasta.Width - TuniPanel(Components[i]).Width) div 2;
-             TuniPanel(Components[i]).Color := clNone
-          end;
-      end;
+     // Alinhando todas as ficha de dados ao centro do form.
+     for i := 0 to ComponentCount -1 do begin
+         if Components[i] is TUniPanel then begin
+            TuniPanel(Components[i]).Top   := 30;
+            TuniPanel(Components[i]).Left  := (Pasta.Width - TuniPanel(Components[i]).Width) div 2;
+            TuniPanel(Components[i]).Color := clNone
+         end;
+     end;
 
-      LigaBotoes(true);
-      Pasta.ActivePageIndex := 0;
+     LigaBotoes(true);
+     Pasta.ActivePageIndex := 0;
 
-      with CFOP do begin
-           sql.clear;
-           sql.add('select * from CFOP order by Codigo');
-           open;
-      end;
+     with CFOP do begin
+          sql.clear;
+          sql.add('select * from CFOP order by Codigo');
+          open;
+     end;
 end;
 
 procedure TfCadCFOP.cPesquisaKeyDown(Sender: TObject; var Key: Word;Shift: TShiftState);
 begin
-      if Key = VK_RETURN then begin
-         bPesquisa.Click;
-      end;
+     if Key = VK_RETURN then begin
+        bPesquisa.Click;
+     end;
 end;
 
 procedure TfCadCFOP.bPesquisaClick(Sender: TObject);

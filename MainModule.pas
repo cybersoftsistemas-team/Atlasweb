@@ -29,15 +29,18 @@ type
     procedure UniGUIMainModuleCreate(Sender: TObject);
   private
     { Private declarations }
+    procedure UniGUIMainModuleDestroy(Sender: TObject);    
   public
     { Public declarations }
     mEmpresaAtiva
    ,mUsuarioAtivo
+   ,mIdioma
    ,mUsuarioMatricula
    ,mPath
    ,mLogoCyber
    ,mLogoAtlas: string;
   end;
+  
 
 function UniMainModule: TUniMainModule;
 
@@ -89,6 +92,10 @@ begin
                 Meses.FieldByName('Nome').Value := NomeMes(i);
           Meses.Post;
       end;
+end;
+
+procedure TUniMainModule.UniGUIMainModuleDestroy(Sender: TObject);
+begin
 end;
 
 initialization

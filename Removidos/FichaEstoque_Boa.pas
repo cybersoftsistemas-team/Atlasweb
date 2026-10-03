@@ -220,11 +220,18 @@ procedure ProcessaFichas(pFicha: TFDQuery; pCodEmp: integer; pNomeEmp, pCNPJEmp:
       pCodEmp   = Codigo do Fornecedor ou da Empresa.
       pNomeEmp  = Nome do Fornecedor ou da Empresa.
       pCNPJEmp  = CNPJ do Fornecedor ou da Empresa.
-      pNota     = Número de indentificação da nota "Nota_id".
-      pData     = Datga da Nota.
+      pDesc     = Descricao da mercadoria:
+                       0 = Nota Fiscal.
+                       1 = Cadastro do produto.
+      pData     = Data da Nota.
+      pNota     = NUmero da Nota/Registro.
       pProdutos = Lista de produtos para processar ('' = para todos).
-      pOrigem   = Origem dos dados "NFP, NFT, ABR, TRF, IND...".
-}
+      pOrigem   = Origem dos dados:
+                       "NFP" = Nota fiscal propria.
+                       "NFT" = Nota fiscal de terceiros.
+                       "ABR" = Saldo de Abertura de estoque.
+                       "TRF" = Transferencia de produtos
+                       "IND" = INdustrialização.}
 var
   mscript: widestring;
 begin 

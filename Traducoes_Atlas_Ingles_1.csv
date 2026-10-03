@@ -1,0 +1,65 @@
+Chave;TextoOriginal;Idioma;Traducao;Propriedade;Arquivo
+aLista.Pasta.fCadAlugueis;Lista;en-US;List;Caption;C:\Projetos\Atlasweb\CadAlugueis.dfm
+UniTabSheet1;Dados Gerais;en-US;General Data;Caption;C:\Projetos\Atlasweb\CadAlugueis.dfm
+pFicha1.UniScrollBox1.UniTabSheet1;DADOS GERAIS;en-US;GENERAL DATA;Title;C:\Projetos\Atlasweb\CadAlugueis.dfm
+cCodigo.pFicha1.UniScrollBox1.UniTabSheet1;Código;en-US;Code;FieldLabel;C:\Projetos\Atlasweb\CadAlugueis.dfm
+cDescricao.pFicha1.UniScrollBox1.UniTabSheet1;Descrição;en-US;Description;FieldLabel;C:\Projetos\Atlasweb\CadAlugueis.dfm
+cValor.pFicha1.UniScrollBox1.UniTabSheet1;Valor;en-US;Value;FieldLabel;C:\Projetos\Atlasweb\CadAlugueis.dfm
+cDia_Vencimento.pFicha1.UniScrollBox1.UniTabSheet1;Dia de Vencimento;en-US;Due Day;FieldLabel;C:\Projetos\Atlasweb\CadAlugueis.dfm
+cAliquota_COFINS.pFicha1.UniScrollBox1.UniTabSheet1;Alíquota da COFINS;en-US;COFINS Tax Rate;FieldLabel;C:\Projetos\Atlasweb\CadAlugueis.dfm
+cAliquota_PIS.pFicha1.UniScrollBox1.UniTabSheet1;Alíquota do PIS;en-US;PIS Tax Rate;FieldLabel;C:\Projetos\Atlasweb\CadAlugueis.dfm
+cInicio.pFicha1.UniScrollBox1.UniTabSheet1;Data de Inicio;en-US;Start Date;FieldLabel;C:\Projetos\Atlasweb\CadAlugueis.dfm
+cTermino.pFicha1.UniScrollBox1.UniTabSheet1;Data de Término;en-US;End Date;FieldLabel;C:\Projetos\Atlasweb\CadAlugueis.dfm
+aLista.Pasta.fCadBancos;Lista;en-US;List;Caption;C:\Projetos\Atlasweb\CadBancos.dfm
+cNome.pFicha1.UniScrollBox1.UniTabSheet1;Nome;en-US;Name;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+cConta.pFicha1.UniScrollBox1.UniTabSheet1;Conta Corrente;en-US;Checking Account;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+cAgencia.pFicha1.UniScrollBox1.UniTabSheet1;Agência;en-US;Agency;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+cSaldo.pFicha1.UniScrollBox1.UniTabSheet1;Saldo;en-US;Balance;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+cNumero_Banco.pFicha1.UniScrollBox1.UniTabSheet1;Código do Banco;en-US;Bank Code;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+cCheque.pFicha1.UniScrollBox1.UniTabSheet1;Nº Último Cheque;en-US;Last Check No.;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+cCodigo_Destinatario.pFicha1.UniScrollBox1.UniTabSheet1;Código de Destinatário;en-US;Recipient Code;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+cData_Fechamento.pFicha1.UniScrollBox1.UniTabSheet1;Data Fechamento;en-US;Closing Date;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+cDesativado.pFicha1.UniScrollBox1.UniTabSheet1;Desativado;en-US;Disabled;Caption;C:\Projetos\Atlasweb\CadBancos.dfm
+cSwift_Code.pFicha1.UniScrollBox1.UniTabSheet1;Swift Code;en-US;Swift Code;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+cIBAN.pFicha1.UniScrollBox1.UniTabSheet1;Nº IBAN;en-US;IBAN No.;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+cContaContabil.pFicha1.UniScrollBox1.UniTabSheet1;Conta Contabil;en-US;Accounting Account;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+cTipoConta.pFicha1.UniScrollBox1.UniTabSheet1;Tipo de Conta;en-US;Account Type;Caption;C:\Projetos\Atlasweb\CadBancos.dfm
+cDigito_cc.pFicha1.UniScrollBox1.UniTabSheet1;Digito CC;en-US;Account Digit;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+cDigito_ag.pFicha1.UniScrollBox1.UniTabSheet1;Digito Ag;en-US;Agency Digit;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+UniDBLookupComboBox1.pFicha1.UniScrollBox1.UniTabSheet1;Empresa;en-US;Company;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+UniTabSheet2;Dados de Boleto;en-US;Bank Slip Data;Caption;C:\Projetos\Atlasweb\CadBancos.dfm
+pFicha2.UniScrollBox2.UniTabSheet2;DADOS GERAIS;en-US;GENERAL DATA;Title;C:\Projetos\Atlasweb\CadBancos.dfm
+cCarteira.pFicha2.UniScrollBox2.UniTabSheet2;Carteira Boleto;en-US;Bank Slip Portfolio;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+cCodigo_Cedente.pFicha2.UniScrollBox2.UniTabSheet2;Código Cedente;en-US;Assignor Code;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+cNome_Boleto.pFicha2.UniScrollBox2.UniTabSheet2;Nome Impressão Boleto;en-US;Bank Slip Print Name;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+cConvenio.pFicha2.UniScrollBox2.UniTabSheet2;Convênio;en-US;Agreement;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+cBoleto_LocalPagamento.pFicha2.UniScrollBox2.UniTabSheet2;Local Pagto.Boleto;en-US;Bank Slip Payment Place;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+cBoletos_Remessa.pFicha2.UniScrollBox2.UniTabSheet2;Nº Última Remessa;en-US;Last Remittance No.;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+cNome_Remessa.pFicha2.UniScrollBox2.UniTabSheet2;Nome arquivo remessa;en-US;Remittance File Name;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+cCarteira_Remessa.pFicha2.UniScrollBox2.UniTabSheet2;Carteira Remessa;en-US;Remittance Portfolio;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+cCodigo_Transmissao.pFicha2.UniScrollBox2.UniTabSheet2;Codigo de Transmissão;en-US;Transmission Code;FieldLabel;C:\Projetos\Atlasweb\CadBancos.dfm
+aLista.Pasta.fCadBeneficiosFiscais;Lista;en-US;List;Caption;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+TabSheet1;Benefícios;en-US;Benefits;Caption;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+pFicha.UniScrollBox1.TabSheet1;DADOS GERAIS;en-US;GENERAL DATA;Title;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+cCodigo.pFicha.UniScrollBox1.TabSheet1;Código ;en-US;Code ;FieldLabel;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+cNome.pFicha.UniScrollBox1.TabSheet1;Nome;en-US;Name;FieldLabel;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+GroupBox1.pFicha.UniScrollBox1.TabSheet1;BC ICMS(Entrada);en-US;ICMS Tax Base (Inbound);Caption;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+cBCICMSEnt_FOB.GroupBox1.pFicha.UniScrollBox1.TabSheet1;FOB;en-US;FOB;Caption;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+cBCICMSEnt_Frete.GroupBox1.pFicha.UniScrollBox1.TabSheet1;Frete;en-US;Freight;Caption;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+cBCICMSEnt_Seguro.GroupBox1.pFicha.UniScrollBox1.TabSheet1;Seguro;en-US;Insurance;Caption;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+cBCICMSEnt_II.GroupBox1.pFicha.UniScrollBox1.TabSheet1;II;en-US;Import Tax;Caption;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+cBCICMSEnt_IPI.GroupBox1.pFicha.UniScrollBox1.TabSheet1;IPI;en-US;IPI;Caption;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+cBCICMSEnt_PIS.GroupBox1.pFicha.UniScrollBox1.TabSheet1;PIS;en-US;PIS;Caption;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+cBCICMSEnt_COFINS.GroupBox1.pFicha.UniScrollBox1.TabSheet1;COFINS;en-US;COFINS;Caption;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+cBCICMSEnt_Despesas.GroupBox1.pFicha.UniScrollBox1.TabSheet1;Despesas;en-US;Expenses;Caption;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+cVencimento_ICMS.pFicha.UniScrollBox1.TabSheet1;Vencimento ICMS Operacional;en-US;Operational ICMS Due Date;FieldLabel;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+cEstado.pFicha.UniScrollBox1.TabSheet1;Estado;en-US;State;FieldLabel;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+cReducaoICMS_Entrada.pFicha.UniScrollBox1.TabSheet1;Redução BC ICMS Entrada (%);en-US;Inbound ICMS Tax Base Reduction (%);FieldLabel;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+cReducaoICMS_Saida.pFicha.UniScrollBox1.TabSheet1;Redução BC ICMS Saída (%);en-US;Outbound ICMS Tax Base Reduction (%);FieldLabel;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+cICMS_Diferido.pFicha.UniScrollBox1.TabSheet1;ICMS Diferido;en-US;Deferred ICMS;Caption;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+cVencimento_ICMSSub.pFicha.UniScrollBox1.TabSheet1;Vencimento ICMS Substitutivo;en-US;Substitute ICMS Due Date;FieldLabel;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+cReducao_AliquotaICMS.pFicha.UniScrollBox1.TabSheet1;Redução Aliquota ICMS (%);en-US;ICMS Tax Rate Reduction (%);FieldLabel;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+cInativa.pFicha.UniScrollBox1.TabSheet1;Inativa;en-US;Inactive;Caption;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+cCodigo_Receita.pFicha.UniScrollBox1.TabSheet1;Código da Receita;en-US;Revenue Code;FieldLabel;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+cCaucao_RetBANDES.pFicha.UniScrollBox1.TabSheet1;Caução Retenção BANDES;en-US;BANDES Retention Escrow;FieldLabel;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm
+cValor_TaxaCartorio.pFicha.UniScrollBox1.TabSheet1;Taxa Registro Contrato Cartório;en-US;Registry Office Contract Registration Fee;FieldLabel;C:\Projetos\Atlasweb\CadBeneficiosFiscais.dfm

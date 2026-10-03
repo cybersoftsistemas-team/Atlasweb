@@ -88,11 +88,13 @@ begin
                        sql.add('select Foto      = (select Foto from Usuarios where Email = :pEmail)');
                        sql.add('      ,Logo      = (select Logo from Empresas where CNPJ  = :pCNPJ)');
                        sql.add('      ,Matricula = (select Matricula from Usuarios where Email = :pEmail)');
+                       sql.add('      ,Idioma    = (select Idioma from Usuarios where Email = :pEmail)');
                        parambyname('pEmail').Value := Clientes.FieldByName('Email').asstring;
                        parambyname('pCNPJ').Value  := Clientes.FieldByName('Empresa_CNPJ').asstring;
                        //sql.savetofile('c:\temp\Usuarios_temp.sql');
                        open;
                        mUsuarioMatricula := fieldbyname('Matricula').asstring;
+                       mIdioma           := fieldbyname('Idioma').asstring;
                   end;
              end;
 

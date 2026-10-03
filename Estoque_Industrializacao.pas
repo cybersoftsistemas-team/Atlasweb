@@ -32,23 +32,15 @@ type
     Pasta: TUniPageControl;
     UniTabSheet1: TUniTabSheet;
     TabDados: TUniTabSheet;
-    pFicha: TUniPanel;
-    gIndust: TUniDBGrid;
-    pBarraPesq: TUniPanel;
-    cPesquisa: TUniEdit;
-    bPesquisa: TUniSpeedButton;
     Panel2: TUniPanel;
     gMateria: TUniDBGrid;
     Ficha: TUniPanel;
     cProduto: TUniDBLookupComboBox;
     cQtde: TUniDBEdit;
     cData: TUniDBDateTimePicker;
-    cNota: TUniDBEdit;
     cValor_Unitario: TUniDBEdit;
     cProcesso: TUniDBLookupComboBox;
     cEstoque: TUniEdit;
-    EstoqueTransf: TFDQuery;
-    dsEstoqueTransf: TDataSource;
     cDestinatario: TUniDBLookupComboBox;
     cCFOP: TUniDBLookupComboBox;
     Fornecedores: TFDQuery;
@@ -62,24 +54,27 @@ type
     IndustrialQuantidade: TFloatField;
     IndustrialValor_Unitario: TCurrencyField;
     IndustrialDestinatario: TSmallintField;
-    IndustrialNotas: TStringField;
     IndustrialCFOP: TStringField;
-    tValor: TFDQuery;
     IndustrialRegistro: TFDAutoIncField;
     cEmpresa: TUniDBLookupComboBox;
     Empresas: TFDQuery;
     dsEmpresas: TDataSource;
-    FichaEstoque: TFDQuery;
     MascaraSal: TUniScreenMask;
     MascaraExc: TUniScreenMask;
+    Notas: TFDQuery;
+    dsNotas: TDataSource;
+    gNotas: TUniDBGrid;
+    FichaEstoque: TFDQuery;
+    pBarraPesq: TUniPanel;
+    cPesquisa: TUniEdit;
+    bPesquisa: TUniSpeedButton;
+    gIndust: TUniDBGrid;
     procedure UniFrameCreate(Sender: TObject);
-    procedure cCodigoExit(Sender: TObject);
     procedure cProdutoExit(Sender: TObject);
     procedure bCancelar_Click(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
     procedure bSalvar_Click(Sender: TObject);
     procedure bExcluir_Click(Sender: TObject);
-    procedure UniFrameDestroy(Sender: TObject);
     procedure bAdicionar_Click(Sender: TObject);
     procedure bEditar_Click(Sender: TObject);
     procedure bFechar_Click(Sender: TObject);
@@ -101,7 +96,7 @@ implementation
 
 {$R *.dfm}
 
-uses MainModule, Main, ValidaCRUD, Dialogo, FichaEstoque;
+uses MainModule, Main, ValidaCRUD, Dialogo;
 
 procedure TfEstoque_Industrializacao.UniFrameCreate(Sender: TObject);
 var
@@ -167,65 +162,26 @@ begin
           sql.add('and Descricao like ''%NDUSTR%'' and Descricao like ''%Retorno%'' ');
           open;
      end;     
-     {
-     with tNotas do begin
-          sql.clear;
-          sql.add('select distinct Nota');
-          sql.add('               ,Data_Emissao');
-          sql.add('from NotasTerceirosItens');
-          sql.add('where Codigo_Mercadoria in(select distinct Codigo_Mercadoria from ProdutosMateriaPrima)');
-          open;
-     end;
-     with tEmpresa do begin
-          sql.clear;
-          sql.add('select Codigo, CNPJ, Razao_Social');
-          sql.add('from Empresas');
-          sql.add('where Codigo = :pCod');
-          ParamByName('pCod').Value := Menu_Principal.mEmpresa;
-          open;
-     end;
-     }
-//     FiltraMateria;
-end;
-
-procedure TfEstoque_Industrializacao.cCodigoExit(Sender: TObject);
-begin
-{
-     FiltraMateria;
-     
-     with ttmp do begin
-          // Retorna uma lista de notas em uma string.
-          sql.Clear;
-          sql.Add('select Notas = stuff((select ''/'' + cast(Nota as varchar(9))');
-          sql.Add('from NotasTerceirosItens');
-          sql.Add('where Codigo_Mercadoria in(select Codigo_MateriaPrima from ProdutosMateriaPrima where Codigo_Produto = :pCodigo)');
-          sql.Add('for xml path(''''), type).value(''.'', ''nvarchar(max)''), 1, 2, '''')');
-          parambyname('pCodigo').value := Dados.Industrial.FieldByName('Codigo_Mercadoria').asinteger;
-          //sql.SaveToFile('c:\temp\Industrialização_NotasTerceirosItens.sql');
-          open;
-          Dados.Industrial.fieldbyname('Notas').AsString := fieldbyname('Notas').AsString;
-     end;
-     with tSaldo do begin 
-          // Pega o valor unitario do produto industrializa na ficha de estoque.
-          sql.clear;
-          sql.add('select Unitario_Saldo');
-          sql.add('from FichaEstoque');
-          sql.add('where Codigo = :pCodigo');
-          sql.add('and Registro = (select max(Registro) from FichaEstoque where Codigo = :pCodigo and Unitario_Saldo > 0)');
-          parambyName('pCodigo').AsInteger := Dados.Industrial.FieldByName('Codigo_Mercadoria').asinteger;
-          open;
-          if Dados.Industrial.State = dsInsert then begin
-             Dados.Industrial.FieldByName('Valor_Unitario').Value := fieldbyname('Unitario_Saldo').asfloat;
-          end;
-
-          // Estoque do produto industrializado
-          cEstoque.Text := formatfloat(',##0.000', EstoqueProduto(Dados.Industrial.fieldbyname('Codigo_Mercadoria').AsInteger));
-     end;
-     }
 end;
 
 procedure TfEstoque_Industrializacao.cProdutoExit(Sender: TObject);
 begin
+     // Pega o valor unitario do produto na ficha de estoque.
+     with ttmp do begin
+          sql.clear;
+          sql.add('select top 1');
+          sql.add('       Unitario_Saldo');
+          sql.add('from FichaEstoque');
+          sql.add('where Codigo_Mercadoria = :pCod');
+          sql.add('and Unitario_Saldo > 0');
+          sql.add('order by Registro desc');
+          parambyname('pCod').asinteger := IndustrialCodigo_Mercadoria.asinteger;
+          open;
+          if IndustrialValor_Unitario.AsCurrency = 0 then begin
+             IndustrialValor_Unitario.value := fieldbyname('Unitario_Saldo').AsCurrency;
+          end;
+     end;     
+     
      FiltraMateria;
 end;
 
@@ -282,6 +238,23 @@ begin
           parambyname('pCod').asinteger := Industrial.FieldByName('Codigo_Mercadoria').AsInteger;
           open;
      end;
+     with Notas do begin
+          sql.clear;
+          sql.add('select distinct');
+          sql.add('       nf.Nota');
+          sql.add('      ,nf.Data_Emissao');
+          sql.add('      ,ES = iif(nf.ES = 0, ''ENTRADA'', ''SAÍDA'')');
+          sql.add('      ,Emissao = iif(nf.Emissao = ''P'', ''PROPRIA'', ''TERCEIROS'')');
+          sql.add('      ,nf.Destinatario_Nome');
+          sql.add('      ,nf.Destinatario_CNPJ_CPF');
+          sql.add('from NotasItens ni');
+          sql.add('inner join NotasFiscais nf on nf.Nota_id = ni.Nota_id');
+          sql.add('where exists (select 1 from ProdutosMateriaPrima pmp where pmp.Codigo_Produto = :pCod and pmp.Codigo_MateriaPrima = ni.Codigo_Mercadoria)');
+          sql.add('order by Data_Emissao desc , Nota');
+          parambyname('pCod').asinteger := IndustrialCodigo_Mercadoria.asinteger;
+          //sql.savetofile('c:\temp\Atlas_Industrializacao_Notas.sql');
+          open;
+     end;
 end;
 
 procedure TfEstoque_Industrializacao.gIndustDblClick(Sender: TObject);
@@ -291,19 +264,19 @@ end;
 
 procedure TfEstoque_Industrializacao.bAdicionar_Click(Sender: TObject);
 begin
-      with Industrial do begin
-           try
-              Pasta.ActivePageIndex := 1;
-              LigaBotoes(false);
-              Append;
-                   FieldByName('Empresa').Value := UniMainModule.mEmpresaAtiva;
-                   FieldByName('Data').Value    := date;
-                   
-              cProduto.SetFocus;     
-           except on E: Exception do
-              MessageDlgN('Falha desconhecida, não pode adicionar um novo registro!'+#13+E.Message, mtError, [mbOK]);
-           end;
-      end;
+     with Industrial do begin
+          try
+             Pasta.ActivePageIndex := 1;
+             LigaBotoes(false);
+             Append;
+                  FieldByName('Empresa').Value := UniMainModule.mEmpresaAtiva;
+                  FieldByName('Data').Value    := date;
+                  
+             cProduto.SetFocus;     
+          except on E: Exception do
+             MessageDlgN('Falha desconhecida, não pode adicionar um novo registro!'+#13+E.Message, mtError, [mbOK]);
+          end;
+     end;
 end;
 
 procedure TfEstoque_Industrializacao.bExcluir_Click(Sender: TObject);
@@ -341,14 +314,14 @@ begin
                             // Excluir o registro principal.
                             Delete;
 
-                            ProcessaFichas(FichaEstoque
-                                          ,0
-                                          ,Empresas.FieldByName('Razao_Social').asstring
-                                          ,Empresas.FieldByName('CNPJ').asstring
-                                          ,1                                                   // Descrição Mercadoria: 0=Nota fiscal, 1=Cadastro do produto.
-                                          ,mNota_id
-                                          ,mCodigos
-                                          ,'IND');
+                            FichasEstInv(Empresas.fieldbyname('CNPJ').asstring
+                                        ,0
+                                        ,Empresas.FieldByName('Razao_Social').asstring
+                                        ,Empresas.FieldByName('CNPJ').asstring
+                                        ,1                                                   // Descrição Mercadoria: 0=Nota fiscal, 1=Cadastro do produto.
+                                        ,mNota_id
+                                        ,mCodigos
+                                        ,'IND');
                                           
                             Alerta.Text := 'Registro excluído do banco de dados!';
                             Alerta.Execute;
@@ -364,7 +337,7 @@ begin
      // Verifica todos os campos obrigatórios: O campo obrigatório deve estar com a propriedade "Tag = 1".
      if not TValidaCRUD.ValidarFormulario(Ficha) then abort;
      // Verifica se todas as matérias-primas do produto tem estoque disponível.
-     //if not SaldoMatPrima then abort;
+     if not SaldoMatPrima then abort;
 
      with Industrial do begin
           try
@@ -412,15 +385,16 @@ begin
                    //sql.savetofile('c:\temp\Atlas_Industrialização_Materia_Prima.sql');
                    execsQL;
               end;
+              
               // Processa a ficha de Estoque/Inventario de todos os produtos industrializado (Principal e Matérias-primas).
-              ProcessaFichas(FichaEstoque
-                            ,0
-                            ,Empresas.FieldByName('Razao_Social').asstring
-                            ,Empresas.FieldByName('CNPJ').asstring
-                            ,1                                              // Descrição Mercadoria: 0=Nota fiscal, 1=Cadastro do produto.
-                            ,Industrial.FieldByName('Registro').AsInteger
-                            ,mProdutos
-                            ,'IND');
+              FichasEstInv(Empresas.FieldByName('CNPJ').asstring
+                          ,0
+                          ,Empresas.FieldByName('Razao_Social').asstring
+                          ,Empresas.FieldByName('CNPJ').asstring
+                          ,1                                              // Descrição Mercadoria: 0=Nota fiscal, 1=Cadastro do produto.
+                          ,Industrial.FieldByName('Registro').AsInteger
+                          ,mProdutos
+                          ,'IND');
 
               LigaBotoes(true);
               Alerta.Text := 'Registro salvo no banco de dados!'; 
@@ -446,18 +420,6 @@ begin
          cProduto.setfocus;
      except on E: Exception do
         MessageDlgN('Falha desconhecida, não pode editar o registro corrente!'+#13+E.Message, mtError, [mbOK]);
-     end;
-end;
- 
-procedure TfEstoque_Industrializacao.UniFrameDestroy(Sender: TObject);
-var
-   i:integer;
-begin
-     // Fecha todas as tabelas do form.
-     for i := 0 to pred(ComponentCount) do begin
-         if Components[i] is TFDQuery then begin
-            TFDQuery(Components[i]).close;
-         end;
      end;
 end;
  

@@ -73,6 +73,7 @@ uses
  ,MainModule
  ,uniGUIApplication
  ,Login
+ ,Tradutor 
  ,CadEmpresas
  ,CadUsuarios
  ,CadPaises
@@ -144,8 +145,10 @@ uses
  ,ComexInvoice
  ,CadLPCO
  ,FiscalNFTerceiros
+ ,FiscalNFManifestar
  ,Estoque_Industrializacao
- ,Estoque_ProcessarEstoque;(*uses p/gerador*)
+ ,Estoque_ProcessarEstoque
+ ,Estoque_Imobilizado;(*uses p/gerador*)
 
 function MainForm: TMainForm;
 begin
@@ -202,6 +205,7 @@ begin
            Align  := alClient;
            Parent := TabSheet;
       end;
+      TTradutor.TraduzirFormulario(fCurrentFrame, uniMainModule.mIdioma);
       Refresh;
       PagePrincipal.ActivePage := TabSheet;
 end;
@@ -252,56 +256,7 @@ procedure TMainForm.UniButton1Click(Sender: TObject);
 begin
      fDUIMP.ShowModal;
 end;
-{
-procedure TMainForm.UniFormBeforeShow(Sender: TObject);
-var
-   bAtalho: TuniImage;
-   Atalhos: TFDQuery;
-   mPath  : string;
-begin
-     // Carrega os atalhos selecionados.
-     lVersao.Caption := 'Versão '+VersaoEXE(Application.ExeName);
-     mPath           := GetDLLPath+'files\';
-     Atalhos         := TFDQuery.Create(nil);
-     with Atalhos do begin
-          Connection := UniMainModule.Conecta;
-          sql.clear;
-          sql.add('select * from Atalhos where Usuario = :pUsuario');
-          parambyname('pUsuario').asstring := UniMainModule.mUsuarioAtivo;
-          open;
-          first;
-          while not eof do begin
-                bAtalho := TuniImage.Create(self);
-                with bAtalho do begin
-                     Parent           := MainForm.pAtalhos;
-                     visible          := true;
-                     width            := 45;
-                     Caption          := fieldbyname('Titulo').asstring;
-                     Name             := fieldbyname('Form').asstring;
-                     ImageIndex       := 21;
-                     align            := alLeft;
-                     AlignWithMargins := true;
-                     center           := true;
-                     FitWidth         := true;
-                     Enabled          := true;
-                     stretch          := true;
-                     Cursor           := crHandPoint;
-                     tag              := fieldbyname('Id').asinteger;
-                     hint             := fieldbyname('Titulo').asstring;
-                     ShowHint         := true;
-                     if fileexists(fieldbyname('Icone').asstring) then begin
-                        Picture.LoadFromFile(fieldbyname('Icone').asstring);
-                     end else begin
-                        Picture.LoadFromFile(mpath+'images\icones\Atalho0b.png');
-                     end;
-                     OnClick := MainForm.Botao_Atalho;
-                end;
-                next;
-          end;
-     end;
-     freeandnil(Atalhos);
-end;
-}
+
 procedure TMainForm.UniFormBeforeShow(Sender: TObject);
 var
    bAtalho: TuniImage;
@@ -427,7 +382,8 @@ begin
           end;
      end;
 end;
-                                                              
+
+
 initialization
   RegisterAppFormClass(TMainForm);
 
@@ -500,18 +456,11 @@ initialization
   RegisterClass(TfComexInvoice);
   RegisterClass(TfCadLPCO);
   RegisterClass(TfFiscalNFTerceiros);
+  RegisterClass(TfFiscalNFManifestar);
   RegisterClass(TfEstoque_Industrializacao);
   RegisterClass(TfEstoque_ProcessarEstoque);
+  RegisterClass(TfEstoque_Imobilizado);
   (*RegisterClass p/gerador*)
 
   
 end.
-
-
-
-
-
-
-
-
-

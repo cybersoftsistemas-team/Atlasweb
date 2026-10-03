@@ -102,27 +102,6 @@ object fEstoque_ProcessarEstoque: TfEstoque_ProcessarEstoque
       FieldLabelSeparator = ' '
     end
   end
-  object Timer: TUniTimer
-    ClientEvent.Strings = (
-      'function(sender)'
-      '{'
-      ' '
-      '}')
-    OnTimer = TimerTimer
-    Left = 91
-    Top = 196
-  end
-  object Alerta: TUniSweetAlert
-    Title = ''
-    Text = 'Ficha de "Estoque / Inventario" processadas com sucesso!'
-    ConfirmButtonText = 'OK'
-    CancelButtonText = 'Cancelar'
-    Width = 400
-    Padding = 20
-    TimerMS = 10000
-    Left = 91
-    Top = 244
-  end
   object Empresas: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
@@ -134,5 +113,13 @@ object fEstoque_ProcessarEstoque: TfEstoque_ProcessarEstoque
     DataSet = Empresas
     Left = 91
     Top = 151
+  end
+  object Mascara: TUniScreenMask
+    AttachedControl = bProcessar
+    Enabled = True
+    DisplayMessage = 'Aguarde...Processando ficha de Estoque / Iventario'
+    TargetControl = pnlProcessando
+    Left = 89
+    Top = 214
   end
 end

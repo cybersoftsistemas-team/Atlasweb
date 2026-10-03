@@ -8,27 +8,28 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
   Font.Name = 'MS Sans Serif'
   TabOrder = 0
   object Pasta: TUniPageControl
-    AlignWithMargins = True
-    Left = 3
-    Top = 38
-    Width = 1118
-    Height = 754
+    Left = 0
+    Top = 35
+    Width = 1124
+    Height = 760
     Hint = ''
     ActivePage = TabCapa
+    Plain = True
     Align = alClient
+    ClientEvents.UniEvents.Strings = (
+      'afterCreate=function afterCreate(sender)'#13#10'{'#13#10#13#10'}'
+      
+        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+        '= '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 0
     object TabLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
-        Width = 1110
-        Height = 699
+        Width = 1116
+        Height = 705
         Hint = ''
         CreateOrder = 1
         HeaderTitleAlign = taCenter
@@ -132,7 +133,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
-        Width = 1110
+        Width = 1116
         Height = 27
         Hint = ''
         Align = alTop
@@ -203,26 +204,22 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabCapa: TUniTabSheet
       Hint = ''
       Caption = 'Capa da Nota Fiscal'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object Panel2: TUniPanel
         Left = 0
         Top = 0
-        Width = 1110
-        Height = 726
+        Width = 1116
+        Height = 732
         Hint = ''
         Align = alClient
         TabOrder = 0
         Caption = ''
         DesignSize = (
-          1110
-          726)
+          1116
+          732)
         object Ficha: TUniPanel
-          Left = 116
+          Left = 119
           Top = 13
-          Width = 821
+          Width = 886
           Height = 641
           Hint = ''
           ShowHint = True
@@ -262,7 +259,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             FieldLabelWidth = 125
             FieldLabelSeparator = ' '
             BorderStyle = ubsInset
-            OnChange = cNotaChange
           end
           object cDataEmissao: TUniDBDateTimePicker
             Tag = 1
@@ -288,9 +284,9 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           end
           object cDataEntrada: TUniDBDateTimePicker
             Tag = 1
-            Left = 10
-            Top = 91
-            Width = 300
+            Left = 323
+            Top = 64
+            Width = 275
             Height = 25
             Hint = 'Informe a "Data de Entrada" da Nota fiscal'
             ShowHint = True
@@ -305,7 +301,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Font.Style = [fsBold]
             BorderStyle = ubsInset
             FieldLabel = 'Data da Entrada'
-            FieldLabelWidth = 125
             FieldLabelSeparator = ' '
           end
           object cSerie: TUniDBEdit
@@ -355,7 +350,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           object cObservacao: TUniDBMemo
             Left = 10
             Top = 388
-            Width = 800
+            Width = 650
             Height = 119
             Hint = ''
             ShowHint = True
@@ -399,7 +394,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Tag = 1
             Left = 10
             Top = 253
-            Width = 800
+            Width = 650
             Height = 25
             Hint = 'Informe o "Modelo" da Nota Fiscal'
             ShowHint = True
@@ -425,8 +420,8 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           object cOperacao: TUniDBLookupComboBox
             Tag = 1
             Left = 10
-            Top = 145
-            Width = 800
+            Top = 118
+            Width = 650
             Height = 25
             Hint = 'Informe qual a "Opera'#231#227'o Fiscal"'
             ShowHint = True
@@ -448,14 +443,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             FieldLabelWidth = 125
             FieldLabelSeparator = ' '
             Style = csDropDown
-            OnCloseUp = cOperacaoCloseUp
-            OnExit = cOperacaoCloseUp
           end
           object cFornecedor: TUniDBLookupComboBox
             Tag = 1
             Left = 10
             Top = 172
-            Width = 800
+            Width = 650
             Height = 25
             Hint = 'Informe o "Fornecedor"'
             ShowHint = True
@@ -479,8 +472,8 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Style = csDropDown
           end
           object DBCheckBox1: TUniDBCheckBox
-            Left = 340
-            Top = 9
+            Left = 705
+            Top = 156
             Width = 137
             Height = 25
             Hint = ''
@@ -495,7 +488,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           object cTransportador: TUniDBLookupComboBox
             Left = 10
             Top = 199
-            Width = 800
+            Width = 650
             Height = 25
             Hint = ''
             ShowHint = True
@@ -520,8 +513,8 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           end
           object cBeneficio: TUniDBLookupComboBox
             Left = 10
-            Top = 118
-            Width = 800
+            Top = 91
+            Width = 650
             Height = 25
             Hint = ''
             ShowHint = True
@@ -545,8 +538,8 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Style = csDropDown
           end
           object DBCheckBox2: TUniDBCheckBox
-            Left = 525
-            Top = 9
+            Left = 704
+            Top = 187
             Width = 126
             Height = 25
             Hint = ''
@@ -561,7 +554,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           object cArmazem: TUniDBLookupComboBox
             Left = 10
             Top = 226
-            Width = 800
+            Width = 650
             Height = 25
             Hint = ''
             ShowHint = True
@@ -588,7 +581,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Tag = 1
             Left = 10
             Top = 334
-            Width = 800
+            Width = 650
             Height = 25
             Hint = 'Informe a "Modalidade de Frete"'
             ShowHint = True
@@ -613,7 +606,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             Tag = 1
             Left = 10
             Top = 361
-            Width = 800
+            Width = 650
             Height = 25
             Hint = 'Informe a "Natureza do Frete"'
             ShowHint = True
@@ -635,8 +628,8 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             FieldLabelSeparator = ' '
           end
           object cTipoPgto: TUniDBRadioGroup
-            Left = 680
-            Top = 7
+            Left = 704
+            Top = 23
             Width = 130
             Height = 101
             Hint = ''
@@ -657,7 +650,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           object UniDBMemo1: TUniDBMemo
             Left = 10
             Top = 510
-            Width = 800
+            Width = 650
             Height = 119
             Hint = ''
             ShowHint = True
@@ -672,21 +665,43 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
             FieldLabelWidth = 125
             FieldLabelSeparator = ' '
           end
+          object cCentro_Custo: TUniDBLookupComboBox
+            Left = 10
+            Top = 145
+            Width = 650
+            Height = 25
+            Hint = ''
+            ShowHint = True
+            ListField = 'Nome'
+            ListSource = dsCentroCusto
+            KeyField = 'Codigo'
+            ListFieldIndex = 0
+            BorderStyle = ubsInset
+            DataField = 'Centro_Custo'
+            DataSource = dsNotas
+            ParentFont = False
+            Font.Color = clBlack
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            AnyMatch = True
+            TabOrder = 20
+            Color = clWindow
+            FieldLabel = 'Centro de Custos'
+            FieldLabelWidth = 125
+            FieldLabelSeparator = ' '
+            Style = csDropDown
+          end
         end
       end
     end
     object TabItem: TUniTabSheet
       Hint = ''
       Caption = 'Itens'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object GradeItens: TUniDBGrid
         Left = 65
         Top = 0
-        Width = 1045
-        Height = 726
+        Width = 1051
+        Height = 732
         Hint = ''
         Margins.Left = 7
         Margins.Top = 7
@@ -716,6 +731,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
         TabOrder = 1
         ParentColor = False
         Color = clBtnFace
+        OnDblClick = GradeItensDblClick
         Columns = <
           item
             FieldName = 'Item'
@@ -836,7 +852,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
         Left = 0
         Top = 0
         Width = 65
-        Height = 726
+        Height = 732
         Hint = ''
         Margins.Left = 1
         Margins.Bottom = 6
@@ -991,15 +1007,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabSerial: TUniTabSheet
       Hint = ''
       Caption = 'Seriais/Chassis'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object GradeSerial: TUniDBGrid
         Left = 0
         Top = 0
-        Width = 1110
-        Height = 726
+        Width = 1116
+        Height = 732
         Hint = ''
         TitleFont.Name = 'MS Sans Serif'
         Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
@@ -1062,16 +1074,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabLote: TUniTabSheet
       Hint = ''
       Caption = 'Lotes'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object GradeLote: TUniDBGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 1104
-        Height = 720
+        Width = 1110
+        Height = 726
         Hint = ''
         TitleFont.Name = 'MS Sans Serif'
         Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
@@ -1133,15 +1141,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object TabManif: TUniTabSheet
       Hint = ''
       Caption = 'Manifesta'#231#227'o do Destinat'#225'rio'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object GradeManif: TUniDBGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 1104
+        Width = 1110
         Height = 168
         Hint = ''
         TitleFont.Name = 'MS Sans Serif'
@@ -1187,10 +1191,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           end>
       end
       object bSelTodos: TUniButton
-        Left = 52
-        Top = 275
+        Left = 48
+        Top = 216
         Width = 106
-        Height = 25
+        Height = 35
         Cursor = crHandPoint
         Hint = ''
         ShowHint = True
@@ -1199,10 +1203,10 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
         TabOrder = 1
       end
       object bSelNehum: TUniButton
-        Left = 164
-        Top = 275
+        Left = 160
+        Top = 216
         Width = 114
-        Height = 25
+        Height = 35
         Cursor = crHandPoint
         Hint = ''
         ShowHint = True
@@ -1211,23 +1215,22 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
         TabOrder = 2
       end
       object bManifestar: TUniButton
-        Left = 742
-        Top = 275
+        Left = 814
+        Top = 296
         Width = 90
-        Height = 25
+        Height = 66
         Cursor = crHandPoint
         Hint = '   Mostrar os itens da nota fiscal.'
         ShowHint = True
         ParentShowHint = False
         Caption = 'Manifestar'
         TabOrder = 3
-        OnClick = bManifestarClick
       end
       object Panel4: TUniPanel
-        Left = 117
-        Top = 333
+        Left = 3
+        Top = 280
         Width = 691
-        Height = 161
+        Height = 314
         Hint = ''
         TabOrder = 4
         Caption = ''
@@ -1243,8 +1246,8 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           TabOrder = 1
         end
         object cMotivo: TUniComboBox
-          Left = 44
-          Top = 85
+          Left = 24
+          Top = 40
           Width = 262
           Height = 25
           Hint = ''
@@ -1258,7 +1261,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           Font.Style = [fsBold]
           TabOrder = 2
           IconItems = <>
-          OnChange = cMotivoChange
         end
       end
       object cSit: TUniRadioGroup
@@ -1275,13 +1277,12 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
         ParentFont = False
         Font.Name = 'MS Sans Serif'
         Columns = 2
-        OnClick = cSitClick
       end
       object cMensagens: TUniMemo
         AlignWithMargins = True
         Left = 3
-        Top = 594
-        Width = 1104
+        Top = 600
+        Width = 1110
         Height = 129
         Hint = ''
         ParentFont = False
@@ -1294,42 +1295,36 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       end
       object bManiFora: TUniButton
         Left = 280
-        Top = 213
+        Top = 216
         Width = 132
-        Height = 25
+        Height = 35
         Cursor = crHandPoint
         Hint = ''
         ShowHint = True
         ParentShowHint = False
         Caption = 'Manifesto Fora da Data'
         TabOrder = 7
-        OnClick = bManiForaClick
       end
       object Button1: TUniButton
         Left = 751
         Top = 196
         Width = 75
-        Height = 25
+        Height = 35
         Hint = ''
         Visible = False
         Caption = 'Button1'
         TabOrder = 8
-        OnClick = Button1Click
       end
     end
     object TabXML: TUniTabSheet
       Hint = ''
       TabVisible = False
       Caption = 'Importar XML'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       DesignSize = (
-        1110
-        726)
+        1116
+        732)
       object UniPanel1: TUniPanel
-        Left = 35
+        Left = 38
         Top = 23
         Width = 952
         Height = 667
@@ -1630,7 +1625,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           object UniGroupBox1: TUniGroupBox
             Left = 694
             Top = 321
-            Width = 238
+            Width = 248
             Height = 132
             Hint = ''
             ShowHint = True
@@ -1713,7 +1708,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           object cPreco: TUniGroupBox
             Left = 694
             Top = 145
-            Width = 238
+            Width = 248
             Height = 160
             Hint = ''
             ShowHint = True
@@ -1798,7 +1793,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
           object gPerfil: TUniGroupBox
             Left = 694
             Top = 12
-            Width = 238
+            Width = 248
             Height = 116
             Cursor = crHandPoint
             Hint = ''
@@ -2878,7 +2873,7 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     SQL.Strings = (
       'select * from NotasFiscais where Emissao = '#39'T'#39)
     Left = 102
-    Top = 123
+    Top = 122
     object NotasNota_id: TIntegerField
       FieldName = 'Nota_id'
       Origin = 'Nota_id'
@@ -4301,5 +4296,19 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     Connection = UniMainModule.Conecta
     Left = 510
     Top = 182
+  end
+  object FichaEstoque: TFDQuery
+    Connection = UniMainModule.Conecta
+    SQL.Strings = (
+      'select CNPJ, Filial, Razao_Social from Empresas')
+    Left = 510
+    Top = 249
+  end
+  object Config: TFDQuery
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 510
+    Top = 300
   end
 end

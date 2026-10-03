@@ -131,14 +131,15 @@ object fCadCFOP: TfCadCFOP
     Width = 1288
     Height = 744
     Hint = ''
+    ParentRTL = False
     BodyRTL = False
-    ActivePage = UniTabSheet1
+    ActivePage = aLista
     Plain = True
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
-        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-        's = '#39'PastaInterna'#39';'#13#10'}')
+        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+        '= '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 0
     object aLista: TUniTabSheet
       Hint = ''
@@ -169,6 +170,7 @@ object fCadCFOP: TfCadCFOP
           Align = alLeft
           TabOrder = 1
           EmptyText = 'Pesquisar'
+          ClearButton = True
           OnKeyDown = cPesquisaKeyDown
         end
         object bPesquisa: TUniSpeedButton
@@ -449,7 +451,7 @@ object fCadCFOP: TfCadCFOP
             Height = 54
             Hint = ''
             ShowHint = True
-            DataField = 'Estado'
+            DataField = 'Dentro_Fora'
             DataSource = dsCFOP
             Caption = 'Origem'
             TabOrder = 3
@@ -621,9 +623,9 @@ object fCadCFOP: TfCadCFOP
       FieldName = 'Desativada'
       Origin = 'Desativada'
     end
-    object CFOPEstado: TStringField
-      FieldName = 'Estado'
-      Origin = 'Estado'
+    object CFOPDentro_Fora: TStringField
+      FieldName = 'Dentro_Fora'
+      Origin = 'Dentro_Fora'
       FixedChar = True
       Size = 1
     end

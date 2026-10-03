@@ -51,10 +51,6 @@ object MainForm: TMainForm
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'cybersoft-background'#39';'#13#10'}')
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 256
-        ExplicitHeight = 128
         object UniButton1: TUniButton
           Left = 20
           Top = 74
@@ -520,8 +516,6 @@ object MainForm: TMainForm
         Scale = bbsSmall
         IconCls = 'delete'
         OnClick = bFecharTodosClick
-        ExplicitLeft = 236
-        ExplicitTop = 3
       end
       object bMudarEmpresa: TUniButton
         Left = 47
@@ -536,7 +530,6 @@ object MainForm: TMainForm
         ScaleButton = False
         IconCls = 'team'
         OnClick = bMudarEmpresaClick
-        ExplicitLeft = 155
       end
       object bMenu: TUniButton
         Left = 0

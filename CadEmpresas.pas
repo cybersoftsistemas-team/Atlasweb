@@ -226,7 +226,7 @@ type
     UniDBEdit35: TUniDBEdit;
     UniDBEdit36: TUniDBEdit;
     UniDBCheckBox4: TUniDBCheckBox;
-    UniPanel3: TUniPanel;
+    pAutoriz: TUniPanel;
     UniDBMemo8: TUniDBMemo;
     UniDBMemo9: TUniDBMemo;
     procedure UniFrameCreate(Sender: TObject);

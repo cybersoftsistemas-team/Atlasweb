@@ -14,7 +14,7 @@ object fCadEmpresas: TfCadEmpresas
     Height = 965
     Hint = ''
     BodyRTL = False
-    ActivePage = aFicha
+    ActivePage = aParametros
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -2652,7 +2652,7 @@ object fCadEmpresas: TfCadEmpresas
               '1'
               '2')
           end
-          object UniPanel3: TUniPanel
+          object pAutoriz: TUniPanel
             Tag = 1
             Left = 19
             Top = 327
@@ -2665,7 +2665,7 @@ object fCadEmpresas: TfCadEmpresas
             ShowCaption = False
             TitleVisible = True
             Title = 'Autoriza'#231#245'es para NF-e'
-            Caption = 'UniPanel3'
+            Caption = 'pAutoriz'
             object UniDBMemo8: TUniDBMemo
               Left = 4
               Top = 3

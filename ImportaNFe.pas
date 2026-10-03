@@ -25,6 +25,7 @@ type
     GTIN: string;
     Descricao: string;
     DescrAdic: string;
+    DescrRed: string;
     NCM: String;
     CEST: String;
     CFOP: String;
@@ -68,6 +69,7 @@ type
   TNFe = class
   public
     NotaID: Integer;
+    NotaIDAntes: integer;
     DestCNPJ: string;
     Empresa: string;
     Numero: Integer;
@@ -138,9 +140,7 @@ type
     Num_Prot: string;
     Data_Prot: TDateTime;
     Declaracao: string;
-    ProcImp: string;
-    ProcExp: string;
-    
+    Proc: string;
     constructor Create;
     destructor Destroy; override;
   end;
@@ -153,6 +153,7 @@ type
     Origem: integer;
     TipoProd: integer;
     ClassProd: integer;
+    EmpresaUF: string;
   end;
 
 type
@@ -160,9 +161,9 @@ type
   private
     FConn: TFDConnection;
     FNFe: TNFe;
+//    FNFeItem: TNFeItem;
     function GetValor(Node: IXMLNode; Campo: String):String;
     function ExisteNota:Boolean;
-    function GerarNotaID:Integer;
     procedure LerCabecalho(XML:IXMLDocument);
     procedure LerItens(XML:IXMLDocument);
     procedure GravarCabecalho;
@@ -170,15 +171,17 @@ type
     function StrToFloatXML(const Valor: String): Double;
     function LocalizarInfNFe(XML: IXMLDocument): IXMLNode;
     function GetNode(Node: IXMLNode; const Path: String): IXMLNode;
-    function CadastraFornecedor: integer;
     function ExisteEmpresa: Boolean;
+    function CadastraDestinatario: integer;
     function CadastraProduto(Item: TNFeItem): integer;
   public
     mID: integer;
     mOrigem: integer;
     mTipoProd: integer;
     mClassProd: integer;
+    mEmpresaUF: string;
     property NFe: TNFe read FNFe;
+//    property NfeItem: TNFeItem read FNFeItem;
     constructor Create(AConn: TFDConnection);
     destructor Destroy; override;
     function ImportarXML(Params: TImportaNFeParams): Boolean;
@@ -186,7 +189,7 @@ type
 
 implementation
 
-uses FiscalNFTerceiros, Funcoes;
+uses FiscalNFTerceiros, Funcoes, MainModule;
 
 constructor TNFe.Create;
 begin
@@ -199,15 +202,17 @@ begin
      inherited;
 end;
 
-constructor TImportadorNFe.Create(AConn:TFDConnection);
+constructor TImportadorNFe.Create(aConn:TFDConnection);
 begin
-     FConn := AConn;
-     FNFe  := TNFe.Create;
+     FConn    := AConn;
+     FNFe     := TNFe.Create;
+//     FNFeItem := TNFeItem.Create;
 end;
 
 destructor TImportadorNFe.Destroy;
 begin
      FNFe.Free;
+//     FNFeItem.free;
      inherited;
 end;
 
@@ -216,23 +221,6 @@ begin
      Result := '';
      if not Assigned(Node) then Exit;
      if Node.ChildNodes.FindNode(Campo) <> nil then Result := Node.ChildNodes[Campo].Text;
-end;
-
-function TImportadorNFe.GerarNotaID:Integer;
-var
-   tab: TFDQuery;
-begin
-   tab := TFDQuery.Create(nil);
-   try
-      with tab do begin 
-           Connection := FConn;
-           sql.Text   := 'select isnull(max(Nota_id),0)+1 NotaID from NotasFiscais';
-           open;
-           result := fieldbyname('NotaID').asinteger;
-      end;
-   finally
-      tab.Free;
-   end;
 end;
 
 function TImportadorNFe.ExisteNota:Boolean;
@@ -246,8 +234,9 @@ begin
              SQL.Text   := 'select Nota_id from NotasFiscais where Chave = :Chave ';
              ParamByName('Chave').AsString := FNFe.Chave;
              Open;
-             mID    := fieldbyname('Nota_id').asinteger;
-             Result := not IsEmpty;
+             mID              := fieldbyname('Nota_id').asinteger;
+             FNFe.NotaIDAntes := mID;
+             Result           := not IsEmpty;
         end;
      finally
         tab.Free;
@@ -335,7 +324,7 @@ begin
         Vol        := Transp.ChildNodes.FindNode('vol');
      end else begin
         Transporta := nil;
-        Vol := nil;
+        Vol        := nil;
      end;
      if Assigned(total) then
         ICMSTot := total.ChildNodes.FindNode('ICMSTot')
@@ -385,7 +374,7 @@ begin
           if fieldbyname('Codigo').asinteger > 0 then begin
              FNFe.EmitCod := fieldbyname('Codigo').asinteger;
           end else begin
-             FNFe.EmitCod := CadastraFornecedor;
+             FNFe.EmitCod := CadastraDestinatario;
           end;
      end;
 
@@ -445,32 +434,40 @@ end;
 function TImportadorNFe.ImportarXML(Params: TImportaNFeParams): Boolean;
 var
   XML: IXMLDocument;
+  ttmp, ttmp2: TFDQuery;
 begin
      Result := False;
      XML    := TXMLDocument.Create(nil);
      XML.LoadFromFile(Params.Arquivo);
      XML.Active    := True;
 
+     ttmp := TFDQuery.create(nil);
+     ttmp.Connection := uniMainModule.Conecta;
+
      LerCabecalho(XML);
 
      // Pega o CNPJ da empresa e verifica se a empresa esta cadastrada.
+{     
      if not ExisteEmpresa then begin
         raise Exception.Create('NF-e não foi emitida contra nenhum CNPJ cadastrado!');
      end;
-    
-     // Verifica se a NF-e ja esta cadastrada.
-     if not Params.SubstNF then begin
-        if ExisteNota then begin
-           raise Exception.Create('NF-e ja importada anteriormente');
-        end;
+}    
+     // Verifica se a NF-e já esta cadastrada.
+     if not Params.SubstNF and ExisteNota then begin
+        raise Exception.Create('NF-e ja importada anteriormente');
      end else begin
        ExisteNota;
      end;
+     
+     // Verifica se a NF-e possui o protocolo de autorização.
+     if trim(FNFe.Num_Prot) = '' then begin
+        raise Exception.Create('NF-e invalída, não tem o protocolo de autorização da SEFAZ');
+     end;
 
-     FNFe.NotaID := GerarNotaID;
-     mOrigem     := Params.Origem;
-     mTipoProd   := Params.TipoProd;
-     mClassProd  := Params.ClassProd;
+     mOrigem    := Params.Origem;
+     mTipoProd  := Params.TipoProd;
+     mClassProd := Params.ClassProd;
+     mEmpresaUF := Params.EmpresaUF;
 
      // Carrega o XML da NF-e.
      LerItens(XML);
@@ -481,30 +478,80 @@ begin
      // Salva os itens da nota no banco.
      GravarItens;
 
+     // Fichas de Estoque/Inventario.
+     try
+        with ttmp do begin
+             sql.clear;  
+             sql.add('select Codigos        = string_agg(convert(nvarchar(max), isnull(x.Codigo_Mercadoria, '''')), '','') within group (order by x.Codigo_Mercadoria)');
+             sql.add('      ,Imobilizado    = cast(case when count(case when cf.Imobilizado = 1 then 1 end) > 0 then 1 else 0 end as bit)');
+             sql.add('      ,Processar      = cast(iif(max(x.valor_unitario) > isnull(max(c.Valor_Imobilizado), 0), 1, 0) as bit)');
+             sql.add('      ,Parcelas_Imob  = isnull(max(c.Parcelas_Imobilizado), 48)');
+             sql.add('from (select distinct Codigo_Mercadoria');
+             sql.add('                     ,CFOP');
+             sql.add('                     ,Valor_Unitario');
+             sql.add('      from NotasItens');
+             sql.add('      where Nota_id = :pID) x');
+             sql.add('inner join CFOP cf on cf.Codigo = x.CFOP');
+             sql.add('left join Config c on c.Empresa = :pEmp');
+             parambyname('pid').asinteger := NFe.Notaid;
+             parambyname('pEmp').value    := NFe.Empresa;
+             open;
+             
+             FichasEstInv(NFe.Empresa
+                         ,NFe.EmitCod
+                         ,NFe.EmitNome
+                         ,NFe.EmitCNPJ
+                         ,0
+                         ,NFe.NotaIDAntes
+                         ,fieldbyname('Codigos').asstring
+                         ,'NFT');
+
+             // Ativo imobilizado.
+             ttmp2 := TFDQuery.create(nil);
+             with ttmp2 do begin
+                  Connection := uniMainModule.Conecta;
+                  sql.clear;
+                  sql.add('delete from Imobilizado where Nota_id = :pid');
+                  parambyname('pid').asinteger := NFe.NotaIDAntes;
+                  execsql;
+             end;
+             if fieldbyname('Imobilizado').asboolean and fieldbyname('Processar').AsBoolean then begin
+                SalvaImobilizado(NFe.NotaIDAntes, NFe.NotaID, fieldbyname('Parcelas_Imob').AsInteger);
+             end;
+        end;
+     except on E: Exception do
+        begin
+             raise Exception.Create('Erro ao processar Fichas de Estoque/Inventario/Imobilizado!'+#13+E.Message);
+        end;
+     end;
+     
      Result := True;
+     xml := nil;
+     ttmp.free;
+     ttmp2.free;
 end;
 
 function TImportadorNFe.GetNode(Node: IXMLNode; const Path: String): IXMLNode;
 var
-  SL: TStringList;
-  I: Integer;
-  N: IXMLNode;
+  sl: TStringList;
+  i: Integer;
+  n: IXMLNode;
 begin
      Result := nil;
      if not Assigned(Node) then Exit;
-     SL := TStringList.Create;
+     sl := TStringList.Create;
      try
-       SL.Delimiter       := '/';
-       SL.StrictDelimiter := True;
-       SL.DelimitedText   := Path;
-       N := Node;
-       for I := 0 to SL.Count - 1 do begin
-           if not Assigned(N) then Exit;
-           N := N.ChildNodes.FindNode(SL[I]);
+       sl.Delimiter       := '/';
+       sl.StrictDelimiter := True;
+       sl.DelimitedText   := Path;
+       n := Node;
+       for i := 0 to SL.Count - 1 do begin
+           if not Assigned(n) then Exit;
+           n := n.ChildNodes.FindNode(sl[i]);
        end;
-       Result := N;
+       Result := n;
      finally
-       SL.Free;
+       sl.Free;
      end;
 end;
 
@@ -540,7 +587,6 @@ begin
          Prod    := DetNode.ChildNodes['prod'];
          DI      := Prod.ChildNodes['DI'];
          Imp     := DetNode.ChildNodes['imposto'];
-         
          ICM     := nil;
          IPI     := nil;
          II      := nil;
@@ -568,6 +614,7 @@ begin
          Item.CodFab    := GetValor(Prod,'cProd');
          Item.GTIN      := GetValor(Prod,'cEAN');
          Item.Descricao := GetValor(Prod,'xProd');
+         Item.DescrRed  := copy(GetValor(Prod,'xProd'), 1, 60);
          
          if Assigned(DetNode.ChildNodes.FindNode('infAdProd')) then begin
             Item.Descricao := Item.Descricao + DetNode.ChildNodes['infAdProd'].Text;
@@ -575,7 +622,6 @@ begin
 
          Item.NCM        := GetValor(Prod,'NCM');
          Item.CEST       := GetValor(Prod,'CEST');
-         Item.CFOP       := GetValor(Prod,'CFOP');
          Item.Unidade    := GetValor(Prod,'uCom').toupper;
          Item.Quantidade := StrToFloatXML(GetValor(Prod,'qCom'));
          Item.vUnitario  := StrToFloatXML(GetValor(Prod,'vUnCom'));
@@ -595,13 +641,18 @@ begin
                  Item.Codigo := CadastraProduto(Item);
               end;
          end;
-         // Cadastro do produto.
+         // CST ICMS.
          with ttmp do begin
               sql.clear;
-              sql.add('select CST_ICMS from OperacaoFiscal where Codigo = :pOper');
+              sql.add('select CST_ICMS');
+              sql.add('      ,CFOP_Dentro');
+              sql.add('      ,CFOP_Fora');
+              sql.add('from OperacaoFiscal');
+              sql.add('where Codigo = :pOper');
               parambyname('pOper').asinteger := FNFe.Operacao;
               open;
               Item.CSTICMSEnt := fieldbyname('CST_ICMS').asstring;
+              Item.CFOP       := iif(FNFe.EmitUF = mEmpresaUF, fieldbyname('CFOP_Dentro').asstring, fieldbyname('CFOP_Fora').asstring)
          end;
          // II.
          if Assigned(II) then begin
@@ -683,8 +734,7 @@ begin
             
             sql.clear;
             sql.add('insert into NotasFiscais (');
-            sql.add('            Nota_id');
-            sql.add('           ,Empresa');
+            sql.add('            Empresa');
             sql.add('           ,ES');
             sql.add('           ,Nota');
             sql.add('           ,Serie');
@@ -739,9 +789,9 @@ begin
             sql.add('           ,Beneficio_Fiscal');
             sql.add('           ,Centro_Custo');
             sql.add('           )');               
+            sql.add('output inserted.Nota_id');            
             sql.add('       values (');
-            sql.add('            :Nota_id');
-            sql.add('           ,:Empresa');
+            sql.add('            :Empresa');
             sql.add('           ,:ES');
             sql.add('           ,:Nota');
             sql.add('           ,:Serie');
@@ -796,8 +846,6 @@ begin
             sql.add('           ,:Benef');
             sql.add('           ,:CenCus');
             sql.add('           )');
-            
-            ParamByName('Nota_id').AsInteger       := FNFe.NotaID;
             ParamByName('Empresa').asstring        := FNFe.Empresa;
             ParamByName('ES').AsInteger            := 0;
             ParamByName('Nota').AsInteger          := FNFe.Numero;
@@ -850,7 +898,9 @@ begin
             ParamByName('DataProt').asDateTime     := FNFe.Data_Prot;
             ParamByName('CenCus').asstring         := FNFe.CentCus;
             //sql.SaveToFile('c:\temp\Adiciona_NFe_Web.sql');
-            execute;
+            open;
+            FNFe.NotaID := FieldByName('Nota_id').AsInteger;            
+
             LogErros('NotasFiscais', 'INSERT', 'Importado XML da NF-e: '+FNFe.Chave);
        end;
      finally
@@ -913,8 +963,7 @@ begin
             sql.add('                       ,Peso_Liquido');
             sql.add('                       ,Peso_Bruto');
             sql.add('                       ,Veiculo');
-            sql.add('                       ,Processo_Imp');
-            sql.add('                       ,Processo_Exp');
+            sql.add('                       ,Processo');
             sql.add('                       )');
             sql.add('            values (');
             sql.add('                    :Nota_id');
@@ -957,8 +1006,7 @@ begin
             sql.add('                   ,:PesoL');
             sql.add('                   ,:PesoB');
             sql.add('                   ,0');                   // Veículo.
-            sql.add('                   ,:ProcImp');            
-            sql.add('                   ,:ProcExp');            
+            sql.add('                   ,:Proc');            
             sql.add('                   )');
                         
             for Item in FNFe.Itens do begin
@@ -970,8 +1018,7 @@ begin
                 end;
                 ParamByName('Nota_id').AsInteger    := FNFe.NotaID;
                 ParamByName('Empresa').asstring     := FNFe.Empresa;
-                ParamByName('ProcImp').asstring     := FNFe.ProcImp;
-                ParamByName('ProcExp').asstring     := FNFe.ProcExp;
+                ParamByName('Proc').asstring        := FNFe.Proc;
                 ParamByName('Item').AsInteger       := Item.Item;
                 ParamByName('Codigo').asinteger     := Item.Codigo;
                 ParamByName('CodFab').asstring      := Item.CodFab;
@@ -1014,7 +1061,7 @@ begin
      end;
 end;
 
-function TImportadorNFe.CadastraFornecedor: integer;
+function TImportadorNFe.CadastraDestinatario: integer;
 var
    ttmp: TFDQuery;
    mCod: integer;
@@ -1168,7 +1215,7 @@ begin
 
              parambyname('Cod').asinteger    := mCod;
              parambyname('CodFab').asstring  := Item.CodFab;
-             parambyname('DescRed').asstring := Item.DescrAdic;
+             parambyname('DescRed').asstring := Item.DescrRed;
              parambyname('Desc').asstring    := Item.Descricao;
              parambyname('UM').asstring      := Item.Unidade;
              parambyname('UMOrig').asstring  := Item.Unidade;

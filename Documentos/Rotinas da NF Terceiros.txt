@@ -11,7 +11,7 @@ ALTERAÇÃO DA NF TERCEIRO
 [ok] Verificar se houve baixas de lançamentos originados na NF       --> (se houver bloquear os itens).
 [ok] Verificar o último período contabil encerrado                   --> (se estiver bloqueado bloquear os itens).
 [ok] Verificar se houve movimentação emm data superior entrada da NF --> (Se houve bloquear os itens).
-[  ] Atualizar "FichaEstoque", "FichaEstoqueFora", "FichaEstoqueOutros" --> (Gerar Sequencia por empresa para cada ficha).
+[ok] Atualizar "FichaEstoque"                                        --> (Gerar Sequencia por empresa para cada ficha).
 
 =============================================================================================================================
 EXCLUSÃO DA NF TERCEIROS
@@ -29,9 +29,9 @@ EXCLUSÃO DA NF TERCEIROS
 [--] Ajustar as quantidade do estoque do embarque.                                       --> (Isso sera feito de outra forma).
 [ok] Excluir as notas da tabela de notas dos Embarques.
 [ok] Excluir lançamentos contabeis originados da NF.
-[--] Excluir Itens da NF da ficha de Estoque/Inventario e reprocessar os itens de ambos. --> (Analisar outra forma pra isso).
+[ok] Excluir Itens da NF da ficha de Estoque/Inventario e reprocessar os itens de ambos. --> (Analisar outra forma pra isso).
 [ok] Excluir Itens da NF.
-[  ] Excluir Nota da "FichaEstoque", "FichaEstoqueFora", "FichaEstoqueOutros".
+[ok] Excluir Nota da "FichaEstoque".
 
 =============================================================================================================================
 SALVAR NF TERCEIROS
@@ -44,13 +44,13 @@ SALVAR NF TERCEIROS
 =============================================================================================================================
 SALVAR ITENS
 =============================================================================================================================
-[  ] Verificar campos obrigatórios.
-[  ] Calcular valor do inventario ou pegar da ficha de estoque.
-[  ] Criar parcelas no imobilizado em casa de (Compra para ativo imobilizado).
+[ok] Verificar campos obrigatórios.
+[ok] Calcular valor do inventario ou pegar da ficha de estoque.
+[ok] Criar parcelas no imobilizado em casa de (Compra para ativo imobilizado).
 [  ] Atualizar valores do cadastro do produtos Custo Médio/ Valor Entrada/ Estoque minímo Perc/ Minímo.
 [  ] Ajuste de lotes/Detalhes.
 [  ] Adicionar itens a tabela de embarques.
-[  ] Adicionar itens a "FichaEstoque", "FichaEstoqueFora", "FichaEstoqueOutros".
+[ok] Adicionar itens a "FichaEstoque".
 
 =============================================================================================================================
 ALTERAR ITENS
@@ -65,13 +65,16 @@ EXCLUIR ITENS
 [  ] Excluir do imobilizado caso não tenha sido utilizado nenhuma parcela.
 [  ] Excluir controle de lotes.
 [  ] Excluir tabela de itens dos embarques.
-[  ] Excluir itens da "FichaEstoque", "FichaEstoqueFora", "FichaEstoqueOutros".
+[ok] Excluir itens da "FichaEstoque".
 
 =============================================================================================================================
 IMPORTAR XML 
 =============================================================================================================================
 [ok] Importar xml de nota fiscal de terceiros.
 [  ] Importar xml de CTR.
+[ok] Atualizar ficha de Estoque/Inventario.
+[ok] Adicionar produto ao Imobilizado.
+
 
 CAMPOS QUE PRECISAM VERIFICAR
 -----------------------------
@@ -87,3 +90,21 @@ CAMPOS QUE PRECISAM VERIFICAR
 MANIFESTAR NOTA FISCAL DE TERCEIROS
 =============================================================================================================================
 [ ] Efetuar manifestação da nota.
+
+
+
+
+
+
+ROTEIRO INDUSTRIALIZAÇÃO
+========================
+-> Inclusão
+[ok]   -> Reprocessar fichas de "Estoque/Inventario" de todos os produtos "Industrializado e Matéria-Prima".
+
+-> Alteração
+[ok]   -> Só permitir alteração se não houve movimentação do produto apos o cadastro da industrialização.
+[ok]      -> Reprocessar fichas de "Estoque/Inventario" de todos os produtos "Industrializado e Matéria-Prima".
+ 
+-> Exclusão
+[ok]   -> Só permitir exclusão se não houve movimentação do produto apos o cadastro da industrialização.
+[ok]     -> Reprocessar fichas de "Estoque/Inventario" de todos os produtos "Industrializado e Matéria-Prima".
