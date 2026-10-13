@@ -137,13 +137,6 @@ type
     cCOFINS_CTR: TUniDBFormattedNumberEdit;
     clRamo_CTR: TUniDBLookupComboBox;
     cItem_CTR: TUniDBNumberEdit;
-    UniGroupBox1: TUniGroupBox;
-    GroupBox11: TUniGroupBox;
-    cSPED_MesInventario: TUniDBLookupComboBox;
-    GroupBox18: TUniGroupBox;
-    cPIS_ContaCodigo: TUniDBLookupComboBox;
-    cCOFINS_ContaCodigo: TUniDBLookupComboBox;
-    cConta_Inventario: TUniDBLookupComboBox;
     UniScrollBox8: TUniScrollBox;
     PageControl2: TUniPageControl;
     TabSheet6: TUniTabSheet;
@@ -301,7 +294,7 @@ type
     UniPanel10: TUniPanel;
     GroupBox28: TUniGroupBox;
     clTelevendas_Transportador: TUniDBLookupComboBox;
-    cTipoNota: TUniDBLookupComboBox;
+    cOperacao: TUniDBLookupComboBox;
     cModalidadeFrete: TUniDBComboBox;
     cTelevendas_NaturezaFora: TUniDBLookupComboBox;
     cModalidade: TUniDBLookupComboBox;
@@ -310,15 +303,22 @@ type
     dsMoedas: TDataSource;
     Ramos: TFDQuery;
     dsRamos: TDataSource;
-    TipoNota: TFDQuery;
-    dsTipoNota: TDataSource;
+    Operacao: TFDQuery;
+    dsOperacao: TDataSource;
     ModalPg: TFDQuery;
     dsModalPg: TDataSource;
     cTelevendas_NaturezaDentro: TUniDBLookupComboBox;
-    bDLL: TUniButton;
     cContab_Numeracao: TUniDBCheckBox;
     Alerta: TUniSweetAlert;
     UniDBRadioGroup1: TUniDBRadioGroup;
+    GroupBox11: TUniGroupBox;
+    cSPED_MesInventario: TUniDBLookupComboBox;
+    cConta_Inventario: TUniDBLookupComboBox;
+    GroupBox18: TUniGroupBox;
+    cPIS_ContaCodigo: TUniDBLookupComboBox;
+    cCOFINS_ContaCodigo: TUniDBLookupComboBox;
+    UniContainerPanel1: TUniContainerPanel;
+    bDLL: TUniButton;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
@@ -425,7 +425,7 @@ begin
          Config.Edit;
          cSite.setfocus;
      except
-        Showmessage('Não pode editar o registro corrente!');
+         Showmessage('Não pode editar o registro corrente!');
      end;
 end;
 
@@ -443,7 +443,7 @@ end;
 
 procedure TfConfigSis.bFecharClick(Sender: TObject);
 begin
-      MainForm.PagePrincipal.Pages[MainForm.PagePrincipal.ActivePageIndex].free;
+     MainForm.PagePrincipal.Pages[MainForm.PagePrincipal.ActivePageIndex].free;
 end;
 
 procedure TfConfigSis.LigaBotoes(Estado:boolean);
@@ -487,7 +487,7 @@ begin
 
       with Config do begin
            sql.clear;
-           sql.add('select * from Config order by Empresa');
+           sql.add('select top 1 * from Config');
            open;
       end;
       with Plano do begin
@@ -500,80 +500,80 @@ begin
            Open;
       end;
       with Historicos do begin
-           SQL.Clear;
-           SQL.Add('select Codigo');
-           SQL.Add('      ,Descricao');
-           sql.Add('from Historicos order by Descricao');
-           Open;
+           sql.clear;
+           sql.add('select Codigo');
+           sql.add('      ,Descricao');
+           sql.add('from Historicos order by Descricao');
+           open;
       end;
       with Orgao do begin
-           SQL.Clear;
-           SQL.add('select Codigo');
-           SQL.add('      ,Nome');
-           SQL.add('from Destinatarios');
-           SQL.add('where Orgao_Publico = 1');
-           SQL.add('order by Nome');
-           Open;
+           sql.clear;
+           sql.add('select Codigo');
+           sql.add('      ,Nome');
+           sql.add('from Destinatarios');
+           sql.add('where Orgao_Publico = 1');
+           sql.add('order by Nome');
+           open;
       end;
       with TipoDoc do begin
-           SQL.Clear;
-           SQL.add('select Codigo');
-           SQL.add('     , Nome');
-           SQL.add('from TipoDocumento');
-           SQL.add('order by Nome');
-           Open;
+           sql.clear;
+           sql.add('select Codigo');
+           sql.add('      ,Nome');
+           sql.add('from TipoDocumento');
+           sql.add('order by Nome');
+           open;
       end;
       with Ramos do begin
-           SQL.Clear;
-           SQL.add('select Codigo');
-           SQL.add('     , Descricao');
-           SQL.add('from RamoAtividade');
-           SQL.add('order by Descricao');
-           Open;
+           sql.clear;
+           sql.add('select Codigo');
+           sql.add('      ,Descricao');
+           sql.add('from RamoAtividade');
+           sql.add('order by Descricao');
+           open;
       end;
       with Moedas do begin
-           SQL.Clear;
-           SQL.add('select Codigo');
-           SQL.add('     , Nome');
-           SQL.add('     , Simbolo');
-           SQL.add('from Moedas');
-           SQL.add('order by Nome');
-           Open;
+           sql.clear;
+           sql.add('select Codigo');
+           sql.add('      ,Nome');
+           sql.add('      ,Simbolo');
+           sql.add('from Moedas');
+           sql.add('order by Nome');
+           open;
       end;
-      with TipoNota do begin
-           SQL.Clear;
-           SQL.add('select Codigo');
-           SQL.add('     , Descricao');
-           SQL.add('from TipoNota');
-           SQL.add('order by Descricao');
-           Open;
+      with Operacao do begin
+           sql.clear;
+           sql.add('select Codigo');
+           sql.add('      ,Descricao');
+           sql.add('from OperacaoFiscal');
+           sql.add('order by Descricao');
+           open;
       end;
       with Transp do begin
-           SQL.Clear;
-           SQL.add('select Codigo');
-           SQL.add('     , Nome');
-           SQL.add('     , CNPJ');
-           SQL.add('from Destinatarios');
-           SQL.add('where Transportador = 1');
-           SQL.add('order by Nome');
-           Open;
+           sql.clear;
+           sql.add('select Codigo');
+           sql.add('      ,Nome');
+           sql.add('      ,CNPJ');
+           sql.add('from Destinatarios');
+           sql.add('where Transportador = 1');
+           sql.add('order by Nome');
+           open;
       end;
       with CFOP do begin
-           CFOP.SQL.Clear;
-           CFOP.SQL.add('select Codigo');
-           CFOP.SQL.add('     , Descricao');
-           CFOP.SQL.add('from CFOP');
-           CFOP.SQL.add('where Saida_Entrada = 1');
-           CFOP.SQL.add('order by Descricao');
-           CFOP.Open;
+           sql.Clear;
+           sql.add('select Codigo');
+           sql.add('      ,Descricao');
+           sql.add('from CFOP');
+           sql.add('where ES = 1');
+           sql.add('order by Descricao');
+           open;
       end;
       with ModalPg do begin
-           SQL.Clear;
-           SQL.add('select Codigo');
-           SQL.add('     , Descricao');
-           SQL.add('from ModalidadesPagamento');
-           SQL.add('order by Descricao');
-           Open;
+           sql.clear;
+           sql.add('select Codigo');
+           sql.add('     , Descricao');
+           sql.add('from ModalidadesPagamento');
+           sql.add('order by Descricao');
+           open;
       end;
       uniMainModule.Meses.Open;
 end;

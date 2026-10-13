@@ -16,11 +16,6 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     ActivePage = TabCapa
     Plain = True
     Align = alClient
-    ClientEvents.UniEvents.Strings = (
-      'afterCreate=function afterCreate(sender)'#13#10'{'#13#10#13#10'}'
-      
-        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-        '= '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 0
     object TabLista: TUniTabSheet
       Hint = ''
@@ -2059,11 +2054,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorProdutos: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 6
+      Top = 2
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 5
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2086,11 +2081,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorDespesas: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 28
+      Top = 26
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2113,11 +2108,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorFrete: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 72
+      Top = 74
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2140,11 +2135,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorSeguro: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 94
+      Top = 98
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2167,11 +2162,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorII: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 138
+      Top = 146
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2194,11 +2189,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorIPI: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 182
+      Top = 194
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2221,11 +2216,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorPIS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 226
+      Top = 242
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2248,11 +2243,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorCOFINS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 270
+      Top = 290
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2275,11 +2270,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorICMS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 314
+      Top = 338
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2302,11 +2297,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorICMSST: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 358
+      Top = 386
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2329,11 +2324,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cTotalDesconto: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 556
+      Top = 602
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2356,11 +2351,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorPedido: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 578
+      Top = 626
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2383,11 +2378,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorBCII: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 116
+      Top = 122
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2410,11 +2405,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorBCIPI: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 160
+      Top = 170
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2437,11 +2432,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorBCPIS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 204
+      Top = 218
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2464,11 +2459,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorBCCOFINS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 248
+      Top = 266
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2491,11 +2486,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorBCICMS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 292
+      Top = 314
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2518,11 +2513,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorBCICMSST: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 336
+      Top = 362
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2547,9 +2542,9 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
       Left = 4
       Top = 50
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2572,11 +2567,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorDIFALDest: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 402
+      Top = 434
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2599,11 +2594,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorDIFALOrig: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 380
+      Top = 410
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2626,11 +2621,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorBCIS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 424
+      Top = 458
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2654,11 +2649,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorIS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 446
+      Top = 482
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2682,11 +2677,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorBCIBS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 468
+      Top = 506
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2710,11 +2705,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorIBS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 490
+      Top = 530
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2738,11 +2733,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object ValorBCCBS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 512
+      Top = 554
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2766,11 +2761,11 @@ object fFiscalNFTerceiros: TfFiscalNFTerceiros
     object cValorCBS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 534
+      Top = 578
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False

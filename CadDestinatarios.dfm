@@ -133,12 +133,8 @@ object fCadDestinatarios: TfCadDestinatarios
     Height = 966
     Hint = ''
     BodyRTL = False
-    ActivePage = UniTabSheet9
+    ActivePage = aLista
     Align = alClient
-    ClientEvents.UniEvents.Strings = (
-      
-        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-        '= '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 1
     ScreenMask.Message = 'AGUARDE. . .'
     ScreenMask.Target = Owner
@@ -5214,7 +5210,7 @@ object fCadDestinatarios: TfCadDestinatarios
     CancelButtonText = 'Cancelar'
     Width = 400
     Padding = 20
-    Left = 444
+    Left = 443
     Top = 3
   end
   object DestModal: TFDQuery

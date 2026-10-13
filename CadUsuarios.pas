@@ -180,8 +180,8 @@ uses MainModule, Main, Funcoes, ServerModule;
 
 procedure TfCadUsuarios.bCancelarClick(Sender: TObject);
 begin
-      Usuarios.Cancel;
-      LigaBotoes(true);
+     Usuarios.Cancel;
+     LigaBotoes(true);
 end;
 
 procedure TfCadUsuarios.bDesTudoClick(Sender: TObject);
@@ -195,9 +195,9 @@ end;
 
 procedure TfCadUsuarios.bEditarClick(Sender: TObject);
 begin
-      LigaBotoes(false);
-      Usuarios.Edit;
-      cMatricula.SetFocus;
+     LigaBotoes(false);
+     Usuarios.Edit;
+     cMatricula.SetFocus;
 end;
 
 procedure TfCadUsuarios.bExcluirClick(Sender: TObject);
@@ -396,7 +396,7 @@ begin
      end;
      with Idiomas do begin 
           sql.Clear;
-          sql.Add('select * from Idiomas order by Descricao');
+          sql.Add('select * from Idiomas where Ativo = 1 order by Descricao');
           open;
      end;
      with Representantes do begin 
@@ -411,45 +411,44 @@ begin
      
      LigaBotoes(true);
      tMenu.FullExpand;
-//     Pasta.ActivePageIndex := 0;
 end;
 
 procedure TfCadUsuarios.UniFrameDestroy(Sender: TObject);
 var
    i:integer;
 begin
-      // Fecha todas as tabelas do form.
-      for i := 0 to pred(ComponentCount) do begin
-          if Components[i] is TFDQuery then begin
-             TFDQuery(Components[i]).close;
-          end;
-      end;
+     // Fecha todas as tabelas do form.
+     for i := 0 to pred(ComponentCount) do begin
+         if Components[i] is TFDQuery then begin
+            TFDQuery(Components[i]).close;
+         end;
+     end;
 end;
 
 procedure TfCadUsuarios.UsuariosBeforePost(DataSet: TDataSet);
 begin
-       LogDados(DataSet, DataSet.FieldByName('Nome').AsString, EstadoTabela(DataSet));
+     LogDados(DataSet, DataSet.FieldByName('Nome').AsString, EstadoTabela(DataSet));
 end;
 
 procedure TfCadUsuarios.UsuariosBeforeDelete(DataSet: TDataSet);
 begin
-       LogDados(DataSet, DataSet.FieldByName('Nome').AsString,'Delete');
+     LogDados(DataSet, DataSet.FieldByName('Nome').AsString,'Delete');
 end;
 
 procedure TfCadUsuarios.bSelTudoClick(Sender: TObject);
 var
-    i:integer;
+   i:integer;
 begin
-      for i := 0 to pred(tMenu.Items.Count) do begin
-          tMenu.Items[i].Checked := true;
-      end;
+     for i := 0 to pred(tMenu.Items.Count) do begin
+         tMenu.Items[i].Checked := true;
+     end;
 end;
 
 procedure TfCadUsuarios.bAdicionarClick(Sender: TObject);
 begin
-      LigaBotoes(false);
-      Usuarios.Append;
-      cMatricula.SetFocus;
+     LigaBotoes(false);
+     Usuarios.Append;
+     cMatricula.SetFocus;
 end;
 
 procedure TfCadUsuarios.CarregaMenu;
@@ -495,24 +494,24 @@ end;
 //Para carregar todos os itens de menu em um treeview:
 procedure TfCadUsuarios.PegaMenu(ItemMenu:TuniMenuItem; Nivel:integer; var node1:tuniTreeNode);
 var
-    i:integer;
-    node2:Tunitreenode;
-    s_str:string;
+   i:integer;
+   node2:Tunitreenode;
+   s_str:string;
 begin
-      if Nivel = 0  then begin
-         s_str := ItemMenu.Caption;
-         Delete(s_str, Pos('&', ItemMenu.Caption), 1);
-         node1 := tMenu.Items.Add(nil, s_str);
-      end;
-      for i := 0 to ItemMenu.Count-1 do begin
-          if (ItemMenu.Items[i].Caption <> '-') then Begin
-             s_str := ItemMenu.Items[i].Caption;
-             Delete(s_str, Pos('&', ItemMenu.Items[i].Caption), 1);
-             node2 := tMenu.Items.AddChild(node1,s_str);
-          end;
-          if ItemMenu.Items[I].Count > 0 then
-             PegaMenu(ItemMenu.Items[i], Succ(Nivel), node2);
-      end;
+     if Nivel = 0  then begin
+        s_str := ItemMenu.Caption;
+        Delete(s_str, Pos('&', ItemMenu.Caption), 1);
+        node1 := tMenu.Items.Add(nil, s_str);
+     end;
+     for i := 0 to ItemMenu.Count-1 do begin
+         if (ItemMenu.Items[i].Caption <> '-') then Begin
+            s_str := ItemMenu.Items[i].Caption;
+            Delete(s_str, Pos('&', ItemMenu.Items[i].Caption), 1);
+            node2 := tMenu.Items.AddChild(node1,s_str);
+         end;
+         if ItemMenu.Items[I].Count > 0 then
+            PegaMenu(ItemMenu.Items[i], Succ(Nivel), node2);
+     end;
 end;
 
 

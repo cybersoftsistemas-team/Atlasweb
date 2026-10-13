@@ -10,163 +10,28 @@ object fFiscalNFManifestar: TfFiscalNFManifestar
   DesignSize = (
     1350
     795)
-  object pBarraNav: TUniPanel
-    Left = 0
-    Top = 0
-    Width = 1350
-    Height = 35
-    Hint = ''
-    Align = alTop
-    TabOrder = 0
-    ClientEvents.UniEvents.Strings = (
-      
-        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-        '= '#39'Pasta'#39';'#13#10'}')
-    BorderStyle = ubsNone
-    Caption = ''
-    Color = 5526569
-    ExplicitLeft = 3
-    ExplicitTop = -6
-    object bFechar: TUniSpeedButton
-      Left = 451
-      Top = 0
-      Width = 41
-      Height = 35
-      Hint = 'Fecha a tela de cadastro atual.'
-      Caption = ''
-      Align = alLeft
-      ParentColor = False
-      IconAlign = iaCenter
-      Images = UniMainModule.imgBotoes
-      ImageIndex = 7
-      TabOrder = 1
-      OnClick = bFecharClick
-      ExplicitLeft = 410
-      ExplicitTop = -6
-    end
-    object bSelTodos: TUniButton
-      Left = 0
-      Top = 0
-      Width = 106
-      Height = 35
-      Cursor = crHandPoint
-      Hint = ''
-      ShowHint = True
-      ParentShowHint = False
-      Caption = 'Selecionar Todos'
-      Align = alLeft
-      TabOrder = 2
-      ExplicitLeft = 48
-    end
-    object bSelNehum: TUniButton
-      Left = 106
-      Top = 0
-      Width = 119
-      Height = 35
-      Cursor = crHandPoint
-      Hint = ''
-      ShowHint = True
-      ParentShowHint = False
-      Caption = 'Selecionar Nenhum'
-      Align = alLeft
-      TabOrder = 3
-    end
-    object bManiFora: TUniButton
-      Left = 225
-      Top = 0
-      Width = 136
-      Height = 35
-      Cursor = crHandPoint
-      Hint = ''
-      ShowHint = True
-      ParentShowHint = False
-      Caption = 'Manifesto Fora da Data'
-      Align = alLeft
-      TabOrder = 4
-    end
-    object bManifestar: TUniButton
-      Left = 361
-      Top = 0
-      Width = 90
-      Height = 35
-      Cursor = crHandPoint
-      Hint = '   Mostrar os itens da nota fiscal.'
-      ShowHint = True
-      ParentShowHint = False
-      Caption = 'Manifestar'
-      Align = alLeft
-      TabOrder = 5
-      ExplicitLeft = 324
-      ExplicitTop = -6
-    end
-  end
-  object pBarraPesq: TUniPanel
-    Left = 0
-    Top = 35
-    Width = 1350
-    Height = 27
-    Hint = ''
-    Align = alTop
-    TabOrder = 1
-    ClientEvents.UniEvents.Strings = (
-      
-        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-        ' '#39'BarraPesquisa'#39';'#13#10'}')
-    BorderStyle = ubsNone
-    Caption = ''
-    Color = clNone
-    ExplicitLeft = 8
-    ExplicitTop = 8
-    ExplicitWidth = 1342
-    object cPesquisa: TUniEdit
-      Left = 0
-      Top = 0
-      Width = 385
-      Height = 27
-      Hint = ''
-      BorderStyle = ubsInset
-      Text = ''
-      Align = alLeft
-      TabOrder = 1
-      EmptyText = 'Pesquisar'
-      ClearButton = True
-      OnKeyDown = cPesquisaKeyDown
-    end
-    object bPesquisa: TUniSpeedButton
-      Left = 385
-      Top = 0
-      Width = 25
-      Height = 27
-      Hint = ''
-      Caption = ''
-      Align = alLeft
-      ParentColor = False
-      IconAlign = iaCenter
-      Images = UniMainModule.imgBotoes
-      ImageIndex = 10
-      TabOrder = 2
-      OnClick = bPesquisaClick
-    end
-  end
   object Ficha: TUniPanel
-    Left = 91
-    Top = 84
-    Width = 817
-    Height = 537
+    Left = 66
+    Top = 70
+    Width = 959
+    Height = 643
     Hint = ''
     Anchors = [akLeft]
-    TabOrder = 2
+    TabOrder = 1
     ClientEvents.UniEvents.Strings = (
       
         'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
         '= '#39'Ficha'#39';'#13#10'}')
     BorderStyle = ubsSolid
     Caption = ''
-    object cDataEntrada: TUniDBDateTimePicker
+    DesignSize = (
+      959
+      643)
+    object cData: TUniDBDateTimePicker
       Tag = 1
       Left = 18
-      Top = 19
-      Width = 262
+      Top = 43
+      Width = 250
       Height = 25
       Hint = 'Informe a "Data de Entrada" da Nota fiscal'
       ShowHint = True
@@ -176,7 +41,7 @@ object fFiscalNFManifestar: TfFiscalNFManifestar
       DateTime = 46176.000000000000000000
       DateFormat = 'dd/MM/yyyy'
       TimeFormat = 'HH:mm:ss'
-      TabOrder = 1
+      TabOrder = 0
       ParentFont = False
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
@@ -184,23 +49,28 @@ object fFiscalNFManifestar: TfFiscalNFManifestar
       FieldLabel = 'Data do Evento'
       FieldLabelSeparator = ' '
     end
-    object UniEdit2: TUniEdit
+    object cHora: TUniEdit
+      Tag = 1
       Left = 18
-      Top = 46
-      Width = 262
+      Top = 70
+      Width = 250
+      Height = 25
       Hint = ''
       BorderStyle = ubsInset
-      Text = 'UniEdit2'
+      Text = 'cHora'
       ParentFont = False
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
-      TabOrder = 2
+      TabOrder = 1
       FieldLabel = 'Hora do Evento'
+      FieldLabelSeparator = ' '
+      InputType = 'time'
     end
     object cMotivo: TUniComboBox
+      Tag = 1
       Left = 18
-      Top = 70
-      Width = 262
+      Top = 97
+      Width = 509
       Height = 25
       Hint = ''
       Text = ''
@@ -212,87 +82,233 @@ object fFiscalNFManifestar: TfFiscalNFManifestar
       ParentFont = False
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
-      TabOrder = 3
+      TabOrder = 2
       FieldLabel = 'Motivo'
       IconItems = <>
     end
     object cJustificativa: TUniEdit
       Left = 18
-      Top = 98
-      Width = 630
+      Top = 125
+      Width = 698
       Height = 25
       Hint = ''
       BorderStyle = ubsInset
-      Text = 'cJustificativa'
+      Text = ''
       ParentFont = False
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
-      TabOrder = 4
+      TabOrder = 3
       FieldLabel = 'Justificativa'
     end
-    object cSit: TUniRadioGroup
-      Left = 282
-      Top = 139
-      Width = 254
-      Height = 50
-      Hint = ''
-      Items.Strings = (
-        'N'#227'o Manifestadas'
-        'Manifestadas')
-      Caption = 'Situa'#231#227'o'
-      TabOrder = 5
-      ParentFont = False
-      Font.Name = 'MS Sans Serif'
-      Columns = 2
-    end
-    object GradeManif: TUniDBGrid
+    object Grade: TUniDBGrid
       AlignWithMargins = True
-      Left = 3
-      Top = 208
-      Width = 811
-      Height = 326
+      Left = 5
+      Top = 165
+      Width = 949
+      Height = 304
       Hint = ''
+      Margins.Left = 5
+      Margins.Right = 5
       TitleFont.Name = 'MS Sans Serif'
-      Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgMultiSelect, dgCancelOnExit]
-      LoadMask.Message = 'Loading data...'
+      DataSource = dsNotas
+      Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgCheckSelect, dgCheckSelectCheckOnly, dgAlwaysShowSelection, dgConfirmDelete, dgMultiSelect, dgCancelOnExit, dgDontShowSelected]
+      LoadMask.Message = 'Carregando Notas Fiscais...Aguarde'
+      ForceFit = True
+      BorderStyle = ubsInset
       Align = alBottom
       Font.Name = 'Calibri'
       ParentFont = False
       TabOrder = 6
       Columns = <
         item
-          FieldName = 'Nota'
+          FieldName = 'Chave'
           Title.Alignment = taCenter
-          Title.Caption = 'Nota'
+          Title.Caption = 'N'#186' Nota'
           Title.Font.Style = [fsBold]
-          Width = 80
+          Width = 261
           Font.Name = 'Calibri'
+          Alignment = taCenter
         end
         item
           FieldName = 'Data_Emissao'
           Title.Alignment = taCenter
           Title.Caption = 'Emiss'#227'o'
           Title.Font.Style = [fsBold]
+          Width = 70
+          Font.Name = 'Calibri'
+          Alignment = taCenter
+        end
+        item
+          FieldName = 'Data_ES'
+          Title.Alignment = taCenter
+          Title.Caption = 'Entrada'
+          Title.Font.Style = [fsBold]
           Width = 80
           Font.Name = 'Calibri'
+          Alignment = taCenter
         end
         item
-          FieldName = 'NFe_cNF'
-          Title.Alignment = taCenter
-          Title.Caption = 'Chave NF-e'
-          Title.Font.Style = [fsBold]
-          Width = 325
-          Font.Name = 'Calibri'
-        end
-        item
-          FieldName = 'Fornecedor'
+          FieldName = 'Nome'
           Title.Alignment = taCenter
           Title.Caption = 'Fornecedor'
           Title.Font.Style = [fsBold]
-          Width = 287
+          Width = 259
           Font.Name = 'Calibri'
           ReadOnly = True
+        end
+        item
+          FieldName = 'Descricao'
+          Title.Alignment = taCenter
+          Title.Caption = 'Descri'#231#227'o'
+          Title.Font.Style = [fsBold]
+          Width = 265
+          Font.Name = 'Calibri'
+        end
+        item
+          FieldName = 'Manifestada'
+          Title.Alignment = taCenter
+          Title.Caption = 'Manif'
+          Title.Font.Style = [fsBold]
+          Width = 40
+          Font.Name = 'Calibri'
+          Alignment = taCenter
         end>
+    end
+    object cSit: TUniRadioGroup
+      Left = 756
+      Top = 30
+      Width = 166
+      Height = 76
+      Hint = ''
+      Items.Strings = (
+        'N'#227'o Manifestadas'
+        'Manifestadas')
+      ItemIndex = 0
+      Anchors = [akLeft, akBottom]
+      Caption = 'Filtro'
+      TabOrder = 5
+      ParentFont = False
+      Font.Name = 'MS Sans Serif'
+      OnClick = cSitClick
+    end
+    object cEmpresa: TUniDBLookupComboBox
+      Left = 18
+      Top = 15
+      Width = 698
+      Height = 25
+      Hint = ''
+      ListField = 'CNPJ;Razao_Social'
+      ListSource = dsEmpresas
+      KeyField = 'CNPJ'
+      ListFieldIndex = 1
+      TabOrder = 8
+      Color = clWindow
+      FieldLabel = 'Empresa'
+    end
+    object cMensagens: TUniMemo
+      AlignWithMargins = True
+      Left = 3
+      Top = 475
+      Width = 951
+      Height = 156
+      Hint = ''
+      Margins.Right = 5
+      Margins.Bottom = 12
+      BorderStyle = ubsInset
+      Lines.Strings = (
+        'cMensagens')
+      Align = alBottom
+      ReadOnly = True
+      TabOrder = 7
+    end
+  end
+  object pBarraNav: TUniPanel
+    Left = 0
+    Top = 0
+    Width = 1350
+    Height = 39
+    Hint = ''
+    Align = alTop
+    TabOrder = 0
+    ClientEvents.UniEvents.Strings = (
+      
+        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+        '= '#39'Ficha'#39';'#13#10'}')
+    BorderStyle = ubsNone
+    Caption = ''
+    Color = 5526569
+    object bFechar: TUniSpeedButton
+      AlignWithMargins = True
+      Left = 337
+      Top = 2
+      Width = 41
+      Height = 35
+      Hint = 'Fecha a tela de cadastro atual.'
+      Margins.Left = 1
+      Margins.Top = 2
+      Margins.Right = 1
+      Margins.Bottom = 2
+      Caption = ''
+      Align = alLeft
+      ParentColor = False
+      IconAlign = iaCenter
+      Images = UniMainModule.imgBotoes
+      ImageIndex = 7
+      TabOrder = 1
+      OnClick = bFecharClick
+    end
+    object bManiFora: TUniButton
+      AlignWithMargins = True
+      Left = 90
+      Top = 2
+      Width = 136
+      Height = 35
+      Cursor = crHandPoint
+      Hint = ''
+      Margins.Left = 1
+      Margins.Top = 2
+      Margins.Right = 1
+      Margins.Bottom = 2
+      ShowHint = True
+      ParentShowHint = False
+      Caption = 'Manifesto Fora da Data'
+      Align = alLeft
+      TabOrder = 2
+    end
+    object bManifestar: TUniButton
+      AlignWithMargins = True
+      Left = 1
+      Top = 2
+      Width = 87
+      Height = 35
+      Cursor = crHandPoint
+      Hint = '   Mostrar os itens da nota fiscal.'
+      Margins.Left = 1
+      Margins.Top = 2
+      Margins.Right = 1
+      Margins.Bottom = 2
+      ShowHint = True
+      ParentShowHint = False
+      Caption = 'Manifestar'
+      Align = alLeft
+      TabOrder = 3
+      OnClick = bManifestarClick
+    end
+    object bConsultar: TUniButton
+      AlignWithMargins = True
+      Left = 228
+      Top = 2
+      Width = 107
+      Height = 35
+      Hint = ''
+      Margins.Left = 1
+      Margins.Top = 2
+      Margins.Right = 1
+      Margins.Bottom = 2
+      Caption = 'Consultar Notas'
+      Align = alLeft
+      TabOrder = 4
+      OnClick = bConsultarClick
     end
   end
   object Notas: TFDQuery
@@ -300,13 +316,96 @@ object fFiscalNFManifestar: TfFiscalNFManifestar
     UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
-      'select * from NotasFiscais where Emissao = '#39'T'#39)
-    Left = 33
-    Top = 123
+      'select Chave'
+      '      ,Data_Emissao'
+      '      ,Data_ES'
+      '      ,dst.Nome'
+      '      ,op. Descricao'
+      '      ,nf.Manifestada'
+      'from NotasFiscais nf'
+      'inner join Destinatarios dst on dst.Codigo = nf.Destinatario'
+      'inner join OperacaoFiscal op on op.Codigo = nf.Operacao'
+      'where nf.Empresa = '#39'07922103000158'#39
+      'and nf.Emissao = '#39'T'#39
+      'and Modelo = '#39'55'#39
+      'and isnull(nf.Desdobramento, 0) = 0'
+      'and isnull(nf.Manifestada, 0) = 0'
+      '')
+    Left = 187
+    Top = 300
   end
   object dsNotas: TDataSource
     DataSet = Notas
-    Left = 29
-    Top = 175
+    Left = 187
+    Top = 349
+  end
+  object Alerta: TUniSweetAlert
+    Title = ' '
+    Text = 'Registro salvo com sucesso!'
+    ConfirmButtonText = 'OK'
+    CancelButtonText = 'Cancelar'
+    Width = 400
+    Padding = 20
+    Left = 329
+    Top = 349
+  end
+  object Empresas: TFDQuery
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select Chave'
+      '      ,Data_Emissao'
+      '      ,Data_ES'
+      '      ,dst.Nome'
+      '      ,op. Descricao'
+      '      ,nf.Manifestada'
+      'from NotasFiscais nf'
+      'inner join Destinatarios dst on dst.Codigo = nf.Destinatario'
+      'inner join OperacaoFiscal op on op.Codigo = nf.Operacao'
+      'where nf.Empresa = '#39'07922103000158'#39
+      'and nf.Emissao = '#39'T'#39
+      'and Modelo = '#39'55'#39
+      'and isnull(nf.Desdobramento, 0) = 0'
+      'and isnull(nf.Manifestada, 0) = 0'
+      '')
+    Left = 257
+    Top = 300
+  end
+  object dsEmpresas: TDataSource
+    DataSet = Empresas
+    Left = 257
+    Top = 349
+  end
+  object Config: TFDQuery
+    Connection = UniMainModule.Conecta
+    UpdateOptions.AssignedValues = [uvEUpdate, uvAutoCommitUpdates]
+    UpdateOptions.AutoCommitUpdates = True
+    SQL.Strings = (
+      'select Chave'
+      '      ,Data_Emissao'
+      '      ,Data_ES'
+      '      ,dst.Nome'
+      '      ,op. Descricao'
+      '      ,nf.Manifestada'
+      'from NotasFiscais nf'
+      'inner join Destinatarios dst on dst.Codigo = nf.Destinatario'
+      'inner join OperacaoFiscal op on op.Codigo = nf.Operacao'
+      'where nf.Empresa = '#39'07922103000158'#39
+      'and nf.Emissao = '#39'T'#39
+      'and Modelo = '#39'55'#39
+      'and isnull(nf.Desdobramento, 0) = 0'
+      'and isnull(nf.Manifestada, 0) = 0'
+      '')
+    Left = 329
+    Top = 300
+  end
+  object UniScreenMask1: TUniScreenMask
+    AttachedControl = bConsultar
+    Enabled = True
+    DisplayMessage = 'Consultando Notas no WEB Service...Aguarde'
+    TargetControl = Ficha
+    Left = 411
+    Top = 300
   end
 end

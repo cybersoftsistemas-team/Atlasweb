@@ -97,10 +97,6 @@ object fContab_BloquearPeriodo: TfContab_BloquearPeriodo
         
           'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
           '= '#39'Painel'#39';'#13#10'}')
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
@@ -113,6 +109,7 @@ object fContab_BloquearPeriodo: TfContab_BloquearPeriodo
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
+        ScrollWidth = 313
         object UniPanel3: TUniPanel
           Left = 0
           Top = 0
@@ -413,4 +410,3 @@ object fContab_BloquearPeriodo: TfContab_BloquearPeriodo
     Top = 4
   end
 end
-

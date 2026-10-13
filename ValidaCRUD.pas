@@ -3,7 +3,7 @@
 interface
 
 uses System.SysUtils, System.Classes, Vcl.Controls, uniGUIClasses, uniGUIApplication, uniDBEdit, uniDBComboBox, uniDBLookUpComboBox, uniDBDateTimePicker,
-     uniDBCheckBox, uniDBMemo, uniDBRadioGroup, uniGuiDialogs, Dialogs, Dialogo, Vcl.Graphics, system.RTTI;
+     uniDBCheckBox, uniDBMemo, uniDBRadioGroup, uniGuiDialogs, Dialogs, Dialogo, Vcl.Graphics, system.RTTI, UniEdit, UniComboBox;
 
   type
      TValidaCRUD = class
@@ -22,7 +22,9 @@ implementation
 class function TValidaCRUD.CampoVazio(Comp: TUniControl): Boolean;
 begin
      result := true;
+     if Comp is TUniEdit                  then result := Trim(TUniEdit(Comp).Text) = '';
      if Comp is TUniDBEdit                then result := Trim(TUniDBEdit(Comp).Text) = '';
+     if Comp is TUniComboBox              then result := TUniComboBox(Comp).Text = '';
      if Comp is TUniDBComboBox            then result := TUniDBComboBox(Comp).Text = '';
      if Comp is TUniDBLookUpComboBox      then result := TUniDBComboBox(Comp).Text = '';
      if Comp is TUniDBDateTimePicker      then result := TuniDBDateTimePicker(Comp).DateTime = 0;

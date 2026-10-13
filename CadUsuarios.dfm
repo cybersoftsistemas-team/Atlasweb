@@ -22,7 +22,6 @@ object fCadUsuarios: TfCadUsuarios
     BorderStyle = ubsNone
     Caption = ''
     Color = 5526569
-    ExplicitWidth = 1435
     object Navega: TUniDBNavigator
       Left = 0
       Top = 0
@@ -130,18 +129,10 @@ object fCadUsuarios: TfCadUsuarios
     BodyRTL = False
     ActivePage = aFicha
     Align = alClient
-    ClientEvents.UniEvents.Strings = (
-      
-        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-        's = '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 1
-    ExplicitWidth = 1435
-    ExplicitHeight = 945
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitWidth = 1427
-      ExplicitHeight = 917
       object UniDBGrid1: TUniDBGrid
         Left = 0
         Top = 27
@@ -216,7 +207,6 @@ object fCadUsuarios: TfCadUsuarios
         BorderStyle = ubsNone
         Caption = ''
         Color = clNone
-        ExplicitWidth = 1427
         object bPesquisa: TUniSpeedButton
           Left = 520
           Top = 0
@@ -249,8 +239,6 @@ object fCadUsuarios: TfCadUsuarios
     object aFicha: TUniTabSheet
       Hint = ''
       Caption = 'Dados do Us'#250'ario'
-      ExplicitWidth = 1427
-      ExplicitHeight = 917
       object sFicha: TUniScrollBox
         Left = 0
         Top = 0
@@ -263,7 +251,6 @@ object fCadUsuarios: TfCadUsuarios
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
             's = '#39'Pasta'#39#13#10'}')
         TabOrder = 0
-        ExplicitHeight = 800
         DesignSize = (
           1044
           768)
@@ -409,9 +396,9 @@ object fCadUsuarios: TfCadUsuarios
           object UniPanel3: TUniPanel
             Tag = 1
             Left = 611
-            Top = 9
+            Top = 12
             Width = 341
-            Height = 150
+            Height = 147
             Hint = ''
             ShowHint = True
             TabOrder = 7
@@ -423,12 +410,12 @@ object fCadUsuarios: TfCadUsuarios
             Color = clWindow
             DesignSize = (
               341
-              150)
+              147)
             object iFoto: TUniImage
               Left = 113
               Top = 3
               Width = 120
-              Height = 120
+              Height = 117
               Hint = ''
               ShowHint = True
               Center = True
@@ -440,10 +427,11 @@ object fCadUsuarios: TfCadUsuarios
                   'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
                   '= '#39'CaixaSimples'#39';'#13#10'}')
               OnMouseEnter = iFotoMouseEnter
+              ExplicitHeight = 120
             end
             object bFoto: TUniFileUploadButton
               Left = 3
-              Top = 3
+              Top = 0
               Width = 30
               Height = 30
               Hint = ''
@@ -460,6 +448,7 @@ object fCadUsuarios: TfCadUsuarios
               Messages.MaxFilesError = 'You can upload maximum %d files.'
               ShowUploadingMsg = False
               OnCompleted = bFotoCompleted
+              ExplicitTop = 3
             end
           end
           object UniPanel4: TUniPanel
@@ -499,10 +488,6 @@ object fCadUsuarios: TfCadUsuarios
               UseCheckBox = True
               UseArrows = True
               OnClick = tMenuClick
-              ExplicitLeft = 1
-              ExplicitTop = 31
-              ExplicitWidth = 340
-              ExplicitHeight = 328
             end
             object UniPanel5: TUniPanel
               Left = 0
@@ -518,9 +503,6 @@ object fCadUsuarios: TfCadUsuarios
               TitleAlign = taCenter
               Title = 'Permiss'#245'es'
               Caption = 'UniPanel5'
-              ExplicitLeft = 1
-              ExplicitTop = 1
-              ExplicitWidth = 340
               object bSelTudo: TUniSpeedButton
                 Left = 191
                 Top = 1
@@ -537,7 +519,6 @@ object fCadUsuarios: TfCadUsuarios
                 ImageIndex = 4
                 TabOrder = 1
                 OnClick = bSelTudoClick
-                ExplicitLeft = 164
               end
               object bDesTudo: TUniSpeedButton
                 Left = 221
@@ -555,7 +536,6 @@ object fCadUsuarios: TfCadUsuarios
                 ImageIndex = 6
                 TabOrder = 2
                 OnClick = bDesTudoClick
-                ExplicitLeft = 199
               end
               object bExpand: TUniSpeedButton
                 Left = 251
@@ -573,7 +553,6 @@ object fCadUsuarios: TfCadUsuarios
                 ImageIndex = 11
                 TabOrder = 3
                 OnClick = bExpandClick
-                ExplicitLeft = 234
               end
               object bRecolhe: TUniSpeedButton
                 Left = 281
@@ -591,7 +570,6 @@ object fCadUsuarios: TfCadUsuarios
                 ImageIndex = 12
                 TabOrder = 4
                 OnClick = bRecolheClick
-                ExplicitLeft = 269
               end
               object bRecarga: TUniSpeedButton
                 Left = 311
@@ -608,7 +586,6 @@ object fCadUsuarios: TfCadUsuarios
                 Images = UniMainModule.imgBotoes
                 ImageIndex = 14
                 TabOrder = 5
-                ExplicitLeft = 304
               end
             end
           end

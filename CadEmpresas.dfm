@@ -14,12 +14,8 @@ object fCadEmpresas: TfCadEmpresas
     Height = 965
     Hint = ''
     BodyRTL = False
-    ActivePage = aParametros
+    ActivePage = aLista
     Align = alClient
-    ClientEvents.UniEvents.Strings = (
-      
-        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-        's = '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 0
     object aLista: TUniTabSheet
       Hint = ''

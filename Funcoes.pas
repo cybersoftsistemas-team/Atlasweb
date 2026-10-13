@@ -6,7 +6,7 @@ uses
     SysUtils, Windows, FireDAC.Comp.Client, Dialogs, MaskUtils, System.Variants, DB, Forms, uniSpeedButton, uniPanel, UniPageControl, System.Classes, CalcExpress, UniGUIClasses,
     uniGUIForm, uniGUIFrame, uniMemo, DBCommon, uniDBLookUpComboBox, uniDBComboBox, uniComboBox, uniDBDateTimePicker, uniDBEdit, uniEdit, uniGuiDialogs, TypInfo, Data.SqlTimSt,
     uniSweetAlert, FireDAC.Stan.Param, uniMainMenu, uniDBNavigator, uniButton, uniScrollBox, System.RegularExpressions, System.Rtti, uniStringGrid, DateUtils, ComObj, uniDBMemo,
-    uniDBRadioGroup;
+    uniDBRadioGroup, Math;
 
 
 // Funções de checagens.
@@ -17,6 +17,7 @@ function CampoVazio(Campo:TComponent; msg:string): boolean;
 function ValidaCampo(Campo:TObject; Valor1, Valor2:Variant; Condicao, msg, Titulo:string): boolean;
 function Aviso(Valor1, Valor2:Variant; Condicao, msg, Titulo:string): boolean;
 function ImportaEXCEL(xStringGrid: TuniStringGrid; xFileXLS: string; NomeAba: TuniPageControl; Aba, lIni, lFim:Integer; Titulo:Boolean): Boolean;
+function VerificaContainer(Num: String): boolean;
 
 // Funções de ordem gerais.
 procedure LimpaMemoria;
@@ -1745,45 +1746,8 @@ begin
      with tEstoque do begin
           Connection := uniMainModule.Conecta;
           sql.clear;
-          {
-          sql.Add('select Disponivel = cast((isnull((select sum(Quantidade)');
-          sql.Add('                                  from NotasItens');
-          sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
-          sql.Add('                                  and isnull(ES, 0) = 0');
-          sql.Add('                                  and isnull(Movimenta_Estoque, 0) = 1');
-          sql.Add('                                  and isnull(Cancelada, 0) = 0');
-          sql.Add('                                  and isnull(Denegada, 0) = 0), 0) +');
-          sql.Add('                          isnull((select sum(Quantidade_Entrada)');
-          sql.Add('                                  from EstoqueTransferencia');
-          sql.Add('                                  where Produto_Entrada = :pCodigo), 0) +');
-          sql.Add('                          isnull((select sum(Quantidade)');
-          sql.Add('                                  from EstoqueAbertura');
-          sql.Add('                                  where Produto = :pCodigo), 0) -');
-          sql.Add('                          isnull((select sum(Quantidade)');
-          sql.Add('                                  from NotasItens');
-          sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
-          sql.Add('                                  and isnull(ES, 0) = 1');
-          sql.Add('                                  and isnull(Movimenta_Estoque, 0) = 1');
-          sql.Add('                                  and isnull(Cancelada, 0) = 0');
-          sql.Add('                                  and isnull(Denegada, 0) = 0), 0) -');
-          sql.Add('                          isnull((select sum(Quantidade)');
-          sql.Add('                                  from PedidosNFItens');
-          sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
-          sql.Add('                                  and isnull(ES, 0) = 1');
-          sql.Add('                                  and isnull(Movimenta_Estoque, 0) = 1), 0)) -');
-          sql.Add('                          isnull((select sum(Quantidade_Entrada)');
-          sql.Add('                                  from EstoqueTransferencia');
-          sql.Add('                                  where Produto_Saida = :pCodigo), 0) as decimal(14,3)) -');
-          sql.Add('                          isnull((select sum(Quantidade)');
-          sql.Add('                                  from PedidosRepresentantesItens pri');
-          sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
-          sql.Add('                                  and isnull(Faturamento, 0) = 0');
-          sql.Add('                                  and isnull(Faturado, 0) = 0');
-          sql.Add('                                  and (select isnull(Cancelado, 0) from PedidosRepresentantes pr where pr.Pedido = pri.Pedido) = 0');
-          sql.Add('                                  and (select Local from PedidosRepresentantes pr where pr.Pedido = pri.Pedido) < 4), 0)');
-          }
-          sql.Add('select Disponivel =  cast(isnull(sum(Movimento), 0) as decimal(18,3)) from');
-          sql.Add('/* [ NOTAS FISCAIS ]----------------------------------------------------------------*/');
+          sql.Add('select Disponivel = cast(isnull(sum(Movimento), 0) as decimal(18,3)) from');
+          sql.Add('--[ NOTAS FISCAIS ]------------------------------------------------------------------');
           sql.Add('(select Movimento = iif(nf.ES = 0, ni.Quantidade, -ni.Quantidade)');
           sql.Add('from Notasitens ni');
           sql.Add('inner join Notasfiscais nf on nf.Nota_id = ni.Nota_id');
@@ -1794,16 +1758,16 @@ begin
           sql.Add('and isnull(nf.Cancelada,0) <> 1');
           sql.Add('and isnull(nf.Denegada,0) <> 1');
           sql.Add('union all');
-          sql.Add('/* [ TRANSFERÊNCIA ENTRADA ]--------------------------------------------------------*/');
+          sql.Add('--[ TRANSFERÊNCIA ENTRADA ]----------------------------------------------------------');
           sql.Add('select Quantidade_Entrada from EstoqueTransferencia where Produto_Entrada = :pCodigo');
           sql.Add('union all');
-          sql.Add('/* [ ESTOQUE INICIAL ]--------------------------------------------------------------*/');
+          sql.Add('--[ ESTOQUE INICIAL ]----------------------------------------------------------------');
           sql.Add('select Quantidade from EstoqueAbertura where Produto = :pCodigo');
           sql.Add('union all');
-          sql.Add('/* [ TRANSFERÊNCIA SAÍDA ]----------------------------------------------------------*/');
+          sql.Add('--[ TRANSFERÊNCIA SAÍDA ]------------------------------------------------------------');
           sql.Add('select -Quantidade_Entrada from EstoqueTransferencia where Produto_Saida = :pCodigo');
           sql.Add('union all');
-          sql.Add('/* [PEDIDOS NF - SAÍDA ]------------------------------------------------------------*/');
+          sql.Add('--[ PEDIDOS NF - SAÍDA ]--------------------------------------------------------------');
           sql.Add('select -pi.Quantidade');
           sql.Add('from PedidosNFItens pi');
           sql.Add('inner join PedidosNF pn on pn.Pedido = pi.Pedido');
@@ -1812,7 +1776,7 @@ begin
           sql.Add('and pi.ES = 1');
           sql.Add('and op.Movimenta_Estoque = 1');
           sql.Add('union all');
-          sql.Add('/* [PEDIDOS DE REPRESENTANTES - RESERVADO ]----------------------------------------*/');
+          sql.Add('--[ PEDIDOS DE REPRESENTANTES - RESERVADO ]------------------------------------------');
           sql.Add('select -pri.Quantidade');
           sql.Add('from PedidosRepresentantesItens pri');
           sql.Add('inner join PedidosRepresentantes pr on pr.Pedido = pri.Pedido');
@@ -1825,7 +1789,7 @@ begin
           ParamByName('pCodigo').AsInteger := pProduto;
           //sql.SavetoFile('c:\temp\Funcoes_Apura_Estoque.sql');
           open;
-          EstoqueProduto := FieldByName('Disponivel').Value;
+          EstoqueProduto := fieldbyname('Disponivel').Value;
           close;
      end;
 end;
@@ -3755,8 +3719,6 @@ var
   ,tItens: TFDQuery;
 begin
      // Cadastrando o item no Imobilizado.
-//MessageDlg('ANTES:'+inttostr(pID_Antes)+#13+'DEPOIS:'+inttostr(pNota_id), mtError, [mbOK]);
-     
      tItens := TFDQuery.Create(nil);
      with tItens do begin
           try 
@@ -3777,6 +3739,7 @@ begin
              sql.add('      ,Valor_Depreciacao = ni.Valor_Unitario - ni.Valor_ICMSOp');
              sql.add('      ,Valor_Credito = ni.CIAP_ValorICMS + ni.Valor_ICMSST');
              sql.add('      ,ni.CIAP_ValorICMS');
+             sql.add('      ,ni.CIAP_Tipo');
              sql.add('      ,ni.Valor_ICMSST');
              sql.add('from NotasItens ni');
              sql.add('inner join NotasFiscais nf on nf.Nota_id = ni.Nota_id');
@@ -3792,11 +3755,6 @@ begin
      with ttmp do begin 
           try 
              Connection := uniMainModule.Conecta;
-//             sql.clear;
-//             sql.add('delete from Imobilizado where Nota_id = :pid');
-//             parambyname('pid').asinteger := pID_Antes;
-//             execsql;
-
              sql.clear;
              sql.add('insert into Imobilizado (Empresa');
              sql.add('                        ,Data_Nota');
@@ -3836,7 +3794,7 @@ begin
              sql.add('                  ,:pICMS_Dif_Aliquota');
              sql.add('                  ,:pValor_Credito');
              sql.add('                  ,:pApropriadas');
-             sql.add('                  ,1');
+             sql.add('                  ,:pCIAP_Tipo');
              sql.add('                  ,:pVida_Util');
              sql.add('                  ,:pParcelas');
              sql.add('                  ,:pOrdem_Item');
@@ -3859,6 +3817,7 @@ begin
              ParamByName('pICMS_Dif_Aliquota').value := 0;
              ParamByName('pValor_Credito').value     := tItens.fieldbyname('Valor_Credito').ascurrency;
              ParamByName('pApropriadas').value       := 0;
+             ParamByName('pCIAP_Tipo').value         := tItens.fieldbyname('CIAP_Tipo').asinteger;
              ParamByName('pVida_Util').value         := 0;
              ParamByName('pParcelas').value          := pParcelas;
              ParamByName('pOrdem_Item').value        := tItens.fieldbyname('Item').asinteger;;
@@ -3872,44 +3831,63 @@ begin
              MessageDlg('Erro ao inserir imobilizado!'+#13+E.Message, mtError, [mbOK]);
           end;
      end;
-
-     {
-     If (NotasItens.State = dsEdit) and (NaturezaImobilizado.Value = True) then begin
-        // Verificando se foi utilizado alguma parcela.
-        CIAP.Close;
-        CIAP.SQL.Clear;
-        CIAP.SQL.Add('SELECT * FROM CIAP');
-        CIAP.SQL.Add('WHERE (Codigo_Mercadoria = :pMercadoria) AND (Nota = :pNota) AND (Utilizacao IS NOT NULL)');
-        CIAP.ParamByName('pMercadoria').AsInteger := NotasTerceirosItensCodigo_Mercadoria.Value;
-        CIAP.ParamByName('pNota').AsInteger       := NotasTerceirosItensNota.Value;
-        CIAP.Open;
-        If CIAP.RecordCount <> 0 then begin
-           mOpcao := MessageDlg('Atenção!'+#13+'Você esta alterando um item que ja teve '+InttoStr(CIAP.RecordCount)+' parcela(s) utilizada(s) no CIAP.'+#13+'Alterar também as parcelas utilizadas?', mtConfirmation, [mbYes, mbNo, mbCancel], 0);
-           If mOpcao = 6 then begin  // Opção 6 = "SIM'
-              CIAP.SQL.Clear;
-              CIAP.SQL.Add('SELECT * FROM CIAP WHERE (Codigo_Mercadoria = :pMercadoria) AND (Nota = :pNota)' );
-           End;
-           If mOpcao = 7 then begin  // Opção 7 = "NÃO'
-              CIAP.SQL.Clear;
-              CIAP.SQL.Add('SELECT * FROM CIAP WHERE (Codigo_Mercadoria = :pMercadoria) AND (Nota = :pNota) AND (Utilizacao IS NULL)' );
-           End;
-           If mOpcao = 2 then begin  // Opção 2 = "CANCELAR'
-              Navega.BtnClick(nbCancel);
-              Abort;
-           End;
-        end else begin
-           CIAP.SQL.Clear;
-           CIAP.SQL.Add('SELECT * FROM CIAP WHERE (Codigo_Mercadoria = :pMercadoria) AND (Nota = :pNota)' );
-        end;
-        CIAP.ParamByName('pMercadoria').AsInteger := NotasTerceirosItensCodigo_Mercadoria.Value;
-        CIAP.ParamByName('pNota').AsInteger       := NotasTerceirosItensNota.Value;
-        CIAP.Open;
-
-     end;
-     }
      ttmp.free;
      tItens.free;
 end;
+
+// Verifica se o número do container esta correto.
+Function VerificaContainer(Num: String): boolean;
+Var
+  mSoma: real;
+  i: integer;
+  mDigito: integer;
+begin
+     mSoma := 0;
+     if Length(Num) <> 11 then begin
+        VerificaContainer := false;
+     end else begin
+        for i := 0 to 9 do begin
+            if i < 4 then begin
+               if Num[i+1] = 'A' then mSoma := mSoma + (10 * power(2,i));
+               if Num[i+1] = 'B' then mSoma := mSoma + (12 * power(2,i));
+               if Num[i+1] = 'C' then mSoma := mSoma + (13 * power(2,i));
+               if Num[i+1] = 'D' then mSoma := mSoma + (14 * power(2,i));
+               if Num[i+1] = 'E' then mSoma := mSoma + (15 * power(2,i));
+               if Num[i+1] = 'F' then mSoma := mSoma + (16 * power(2,i));
+               if Num[i+1] = 'G' then mSoma := mSoma + (17 * power(2,i));
+               if Num[i+1] = 'H' then mSoma := mSoma + (18 * power(2,i));
+               if Num[i+1] = 'I' then mSoma := mSoma + (19 * power(2,i));
+               if Num[i+1] = 'J' then mSoma := mSoma + (20 * power(2,i));
+               if Num[i+1] = 'K' then mSoma := mSoma + (21 * power(2,i));
+               if Num[i+1] = 'L' then mSoma := mSoma + (23 * power(2,i));
+               if Num[i+1] = 'M' then mSoma := mSoma + (24 * power(2,i));
+               if Num[i+1] = 'N' then mSoma := mSoma + (25 * power(2,i));
+               if Num[i+1] = 'O' then mSoma := mSoma + (26 * power(2,i));
+               if Num[i+1] = 'P' then mSoma := mSoma + (27 * power(2,i));
+               if Num[i+1] = 'Q' then mSoma := mSoma + (28 * power(2,i));
+               if Num[i+1] = 'R' then mSoma := mSoma + (29 * power(2,i));
+               if Num[i+1] = 'S' then mSoma := mSoma + (30 * power(2,i));
+               if Num[i+1] = 'T' then mSoma := mSoma + (31 * power(2,i));
+               if Num[i+1] = 'U' then mSoma := mSoma + (32 * power(2,i));
+               if Num[i+1] = 'V' then mSoma := mSoma + (34 * power(2,i));
+               if Num[i+1] = 'W' then mSoma := mSoma + (35 * power(2,i));
+               if Num[i+1] = 'X' then mSoma := mSoma + (36 * power(2,i));
+               if Num[i+1] = 'Y' then mSoma := mSoma + (37 * power(2,i));
+               if Num[i+1] = 'Z' then mSoma := mSoma + (38 * power(2,i));
+            end else begin
+               mSoma := mSoma + (strtoint(Num[i+1]) * power(2,i));
+            end;
+        end;
+        mDigito           := trunc(mSoma) mod 11;
+        VerificaContainer := Num[11] = inttostr(mDigito);
+        
+//        if Num[11] = inttostr(mDigito) then 
+//           VerificaContainer := true 
+//        else 
+//           VerificaContainer := false;
+     end;
+end;
+
 
 
 

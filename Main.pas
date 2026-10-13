@@ -60,7 +60,7 @@ type
   public
     { Public declarations }
      mid:integer;
-    end;
+  end;
 
 function MainForm: TMainForm;
 
@@ -130,12 +130,12 @@ uses
  ,Contab_BloquearPeriodo
  ,CadOperacaoFiscal
  ,ComexProcessoImp
- ,LogisticaContainer
  ,DespRegistroDUIMP
  ,FatPedidoNF
  ,CadDREContabil
  ,CadNavios
  ,Embarques
+ ,Container
  ,ConfigCampos
  ,Estoque_SaldoAbertura
  ,DUIMP
@@ -186,28 +186,30 @@ var
     FCurrentFrame: TUniframe;
     i: integer;
 begin
-      PagePrincipal.Visible := True;
-      //Verificando se a tela já está aberta e redireciona a ela.
-      for i := 0 to PagePrincipal.PageCount - 1 do begin
-          with PagePrincipal do begin
-               if Pages[i].Caption = dFrame  then begin
-                  PagePrincipal.ActivePageIndex := i;
-                  Exit;
-               end;
-          end;
-      end;
-      TabSheet             := TUniTabSheet.Create(Self);
-      TabSheet.PageControl := PagePrincipal;
-      TabSheet.Caption     := dFrame;
-      TabSheet.Closable    := Fechar;
-      FCurrentFrame := TUniframeClass(nFrame).Create(Self);
-      with FCurrentFrame do begin
-           Align  := alClient;
-           Parent := TabSheet;
-      end;
-      TTradutor.TraduzirFormulario(fCurrentFrame, uniMainModule.mIdioma);
-      Refresh;
-      PagePrincipal.ActivePage := TabSheet;
+     PagePrincipal.Visible := True;
+     //Verificando se a tela já está aberta e redireciona a ela.
+     for i := 0 to PagePrincipal.PageCount - 1 do begin
+         with PagePrincipal do begin
+              if Pages[i].Caption = dFrame  then begin
+                 PagePrincipal.ActivePageIndex := i;
+                 Exit;
+              end;
+         end;
+     end;
+     TabSheet             := TUniTabSheet.Create(Self);
+     TabSheet.PageControl := PagePrincipal;
+     TabSheet.Caption     := dFrame;
+     TabSheet.Closable    := Fechar;
+     FCurrentFrame := TUniframeClass(nFrame).Create(Self);
+     with FCurrentFrame do begin
+          Align  := alClient;
+          Parent := TabSheet;
+     end;
+     if uniMainModule.mIdioma <> 'pt-BR' then begin
+        TTradutor.TraduzirFormulario(fCurrentFrame, uniMainModule.mIdioma);
+     end;
+     Refresh;
+     PagePrincipal.ActivePage := TabSheet;
 end;
 
 procedure TMainForm.mnSairClick(Sender: TObject);
@@ -279,7 +281,9 @@ begin
                 with bAtalho do begin
                      Parent           := MainForm.pAtalhos;
                      visible          := true;
-                     width            := 45;
+//                     width            := 45;
+                     width            := MainForm.pAtalhos.Height;
+                     Height           := MainForm.pAtalhos.Height;
                      Caption          := fieldbyname('Titulo').asstring;
                      Name             := fieldbyname('Form').asstring;
                      ImageIndex       := 21;
@@ -321,9 +325,9 @@ end;
 
 procedure TMainForm.CriaMenu(l_menu: TuniMenuItems);
 var
-  MenuItemList: TDictionary<Integer, TUniMenuItem>;
-  MenuItem: TUniMenuItem;
-  ParentMenuItem: TUniMenuItem;
+   MenuItemList: TDictionary<Integer, TUniMenuItem>;
+   MenuItem: TUniMenuItem;
+   ParentMenuItem: TUniMenuItem;
 begin
      MenuItemList := TDictionary<Integer, TUniMenuItem>.Create;
      with Tabmenu do begin
@@ -336,7 +340,10 @@ begin
              while not Eof do begin
                    // Criar o item do menu.
                    MenuItem         := TUniMenuItem.Create(Self);
-                   MenuItem.Caption := FieldByName('Caption').AsString;
+                   //MenuItem.Caption := FieldByName('Caption').AsString;
+                   // Tradução do menu principal para a linguagem do usuário. 
+                   MenuItem.Caption := TTradutor.TraduzirTexto(FieldByName('Caption').AsString, uniMainModule.mIdioma);
+                   
                    MenuItem.Tag     := FieldByName('ID').AsInteger;
                    MenuItem.Hint    := FieldByName('Form').AsString;
                    MenuItem.Name    := FieldByName('Nome').AsString;
@@ -382,7 +389,6 @@ begin
           end;
      end;
 end;
-
 
 initialization
   RegisterAppFormClass(TMainForm);
@@ -448,6 +454,7 @@ initialization
   RegisterClass(TfFatPedidoNF);
   RegisterClass(TfCadNavios);
   RegisterClass(TfEmbarques);
+  RegisterClass(TfContainer);
   RegisterClass(TfConfigCampos);
   RegisterClass(TfEstoque_SaldoAbertura);
   RegisterClass(TfComexPO);

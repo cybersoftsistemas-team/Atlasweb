@@ -83,20 +83,10 @@ type
     bSalvarBaixa: TUniButton;
     bCancelarBaixa: TUniSpeedButton;
     cBxClassificacao: TUniDBEdit;
-    UniGroupBox4: TUniGroupBox;
-    cBxValor_Doc: TUniFormattedNumberEdit;
-    cBxValor_Parcela: TUniFormattedNumberEdit;
-    cBxValor_Baixado: TUniFormattedNumberEdit;
-    cBxValor_Aberto: TUniFormattedNumberEdit;
     Contratos: TFDQuery;
     dsContratos: TDataSource;
     UniTabSheet5: TUniTabSheet;
     UniDBGrid2: TUniDBGrid;
-    gCambio: TUniGroupBox;
-    cVariacaoCambial: TUniFormattedNumberEdit;
-    cTotalCambio: TUniFormattedNumberEdit;
-    cTaxa_Cambial: TUniDBEdit;
-    cTaxa_FechamentoCambio: TUniFormattedNumberEdit;
     Cotacao: TFDQuery;
     dsCotacao: TDataSource;
     Config: TFDQuery;
@@ -104,11 +94,6 @@ type
     cBxForma_PgtoDoc: TUniEdit;
     cBxForma_Pgto: TUniComboBox;
     cBxObs: TUniMemo;
-    cNumero_CC: TUniEdit;
-    cBxValor_Juros: TUniFormattedNumberEdit;
-    cBxValor_Multa: TUniFormattedNumberEdit;
-    cBXValor_Desconto: TUniFormattedNumberEdit;
-    cBxValor: TUniFormattedNumberEdit;
     Lista: TFDQuery;
     dsLista: TDataSource;
     ListaAd: TFDQuery;
@@ -244,6 +229,15 @@ type
     ListaAdTipo: TStringField;
     ListaAdValor_Baixado: TFMTBCDField;
     ListaAdBeneficiario: TStringField;
+    UniMemo1: TUniMemo;
+    cBxValor_Doc: TUniFormattedNumberEdit;
+    cBxValor_Parcela: TUniFormattedNumberEdit;
+    cBxValor_Baixado: TUniFormattedNumberEdit;
+    cBxValor_Aberto: TUniFormattedNumberEdit;
+    cBxValor_Juros: TUniFormattedNumberEdit;
+    cBxValor_Multa: TUniFormattedNumberEdit;
+    cBXValor_Desconto: TUniFormattedNumberEdit;
+    cBxValor: TUniFormattedNumberEdit;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
@@ -439,13 +433,13 @@ begin
                cBxValor_Baixado.Value := tTmp.FieldByName('Total_Baixado').AsCurrency;
           end;
 
-          gCambio.Enabled       := Plano.FieldByName('Cambio').AsBoolean;
-          cBxValor_Aberto.Value := cBxValor_Parcela.value - tTmp.FieldByName('Total_Baixado').AsCurrency - tTmp.FieldByName('Total_Desconto').AsCurrency + tTmp.FieldByName('Total_Multa').AsCurrency + tTmp.FieldByName('Total_Juros').AsCurrency;
-          if Plano.FieldByName('Cambio').asBoolean then begin
-             cBxValor.Value := cBxValor_Parcela.value + cBxValor_Juros.value + cBxValor_Multa.value + cVariacaoCambial.value - cBxValor_Desconto.value;
-          end else begin
-             cBxValor.Value := cBxValor_Parcela.value + cBxValor_Juros.value + cBxValor_Multa.value - cBxValor_Desconto.value - cBxValor_Baixado.Value;
-          end;
+//          gCambio.Enabled       := Plano.FieldByName('Cambio').AsBoolean;
+//          cBxValor_Aberto.Value := cBxValor_Parcela.value - tTmp.FieldByName('Total_Baixado').AsCurrency - tTmp.FieldByName('Total_Desconto').AsCurrency + tTmp.FieldByName('Total_Multa').AsCurrency + tTmp.FieldByName('Total_Juros').AsCurrency;
+//          if Plano.FieldByName('Cambio').asBoolean then begin
+//             cBxValor.Value := cBxValor_Parcela.value + cBxValor_Juros.value + cBxValor_Multa.value + cVariacaoCambial.value - cBxValor_Desconto.value;
+//          end else begin
+//             cBxValor.Value := cBxValor_Parcela.value + cBxValor_Juros.value + cBxValor_Multa.value - cBxValor_Desconto.value - cBxValor_Baixado.Value;
+//          end;
 
           cBxValor.Enabled          := GradeLan.SelectedRows.Count = 1;
           cBxValor_Multa.Enabled    := GradeLan.SelectedRows.Count = 1;
@@ -1018,11 +1012,11 @@ begin
              ParamByName('pMoeda').asinteger := Contratos.FieldByName('Moeda').AsInteger;
              ParamByName('pData').asinteger  := Baixas.FieldByName('Data').Value;
              open;
-             if recordcount > 0 then begin
-                if cTaxa_FechamentoCambio.Value <= 0 then begin
-                   cTaxa_FechamentoCambio.Value := Cotacao.FieldByName('Valor').AsFloat;
-                end;
-             end;
+//             if recordcount > 0 then begin
+//                if cTaxa_FechamentoCambio.Value <= 0 then begin
+//                   cTaxa_FechamentoCambio.Value := Cotacao.FieldByName('Valor').AsFloat;
+//                end;
+//             end;
         end;
      end;
 end;
@@ -1431,14 +1425,14 @@ end;
 
 procedure TfFinanceiro.CalculaCambio;
 begin
-      if Contratos.fieldbyname('Taxa_Cambial').asfloat > 0 then begin
-         cVariacaoCambial.Value := ((cBxValor.Value/Contratos.fieldbyname('Taxa_Cambial').asfloat) * cTaxa_FechamentoCambio.Value) - cBxValor.Value;
-         cTotalCambio.Value     := cBxValor.Value + cVariacaoCambial.Value;
-         if cVariacaoCambial.Value > 0 then
-            cVariacaoCambial.FieldLabel := 'Variação(Passiva)'
-         else
-            cVariacaoCambial.FieldLabel := 'Variação(Ativa)';
-      end;
+//      if Contratos.fieldbyname('Taxa_Cambial').asfloat > 0 then begin
+//         cVariacaoCambial.Value := ((cBxValor.Value/Contratos.fieldbyname('Taxa_Cambial').asfloat) * cTaxa_FechamentoCambio.Value) - cBxValor.Value;
+//         cTotalCambio.Value     := cBxValor.Value + cVariacaoCambial.Value;
+//         if cVariacaoCambial.Value > 0 then
+//            cVariacaoCambial.FieldLabel := 'Variação(Passiva)'
+//         else
+//            cVariacaoCambial.FieldLabel := 'Variação(Ativa)';
+//      end;
 end;
 
 procedure TfFinanceiro.FiltraBenef(Tipo:string);

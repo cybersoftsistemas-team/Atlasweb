@@ -139,13 +139,9 @@ object fEstoque_Industrializacao: TfEstoque_Industrializacao
     Width = 897
     Height = 664
     Hint = ''
-    ActivePage = UniTabSheet1
+    ActivePage = TabDados
     Plain = True
     Align = alClient
-    ClientEvents.UniEvents.Strings = (
-      
-        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-        '= '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 1
     object UniTabSheet1: TUniTabSheet
       Hint = ''

@@ -1702,11 +1702,11 @@ object fFatPedidoNF: TfFatPedidoNF
     object cValorProdutos: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 6
+      Top = 2
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 5
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -1724,15 +1724,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 6
     end
     object cValorDespesas: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 28
+      Top = 26
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -1750,15 +1751,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 29
     end
     object cValorFrete: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 72
+      Top = 74
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -1780,11 +1782,11 @@ object fFatPedidoNF: TfFatPedidoNF
     object cValorSeguro: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 94
+      Top = 98
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -1802,15 +1804,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 97
     end
     object cValorII: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 138
+      Top = 146
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -1828,15 +1831,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 142
     end
     object cValorIPI: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 182
+      Top = 194
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -1854,15 +1858,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 187
     end
     object cValorPIS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 226
+      Top = 242
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -1880,15 +1885,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 232
     end
     object cValorCOFINS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 270
+      Top = 290
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -1906,15 +1912,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 277
     end
     object cValorICMS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 314
+      Top = 338
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -1932,15 +1939,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 322
     end
     object cValorICMSST: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 358
+      Top = 386
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -1958,15 +1966,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 367
     end
     object cTotalDesconto: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 556
+      Top = 602
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -1984,15 +1993,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 566
     end
     object cValorPedido: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 578
+      Top = 626
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2010,15 +2020,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 589
     end
     object cValorBCII: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 116
+      Top = 122
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2036,15 +2047,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 120
     end
     object cValorBCIPI: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 160
+      Top = 170
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2062,15 +2074,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 166
     end
     object cValorBCPIS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 204
+      Top = 218
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2088,15 +2101,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 212
     end
     object cValorBCCOFINS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 248
+      Top = 266
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2114,15 +2128,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 258
     end
     object cValorBCICMS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 292
+      Top = 314
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2140,15 +2155,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 304
     end
     object cValorBCICMSST: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 336
+      Top = 362
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2166,15 +2182,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 350
     end
     object cValorAFRMM: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
       Top = 50
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2192,15 +2209,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 52
     end
     object cValorDIFALDest: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 402
+      Top = 434
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2218,15 +2236,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 419
     end
     object cValorDIFALOrig: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 380
+      Top = 410
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2244,15 +2263,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 397
     end
     object cValorBCIS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 424
+      Top = 458
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2271,15 +2291,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 443
     end
     object cValorIS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 446
+      Top = 482
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2298,15 +2319,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 466
     end
     object cValorBCIBS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 468
+      Top = 506
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2325,15 +2347,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 489
     end
     object cValorIBS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 490
+      Top = 530
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2352,15 +2375,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 512
     end
     object ValorBCCBS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 512
+      Top = 554
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2379,15 +2403,16 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 535
     end
     object cValorCBS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
       Left = 4
-      Top = 534
+      Top = 578
       Width = 212
-      Height = 22
+      Height = 23
       Hint = ''
-      Margins.Top = 0
+      Margins.Top = 1
       Margins.Bottom = 0
       ShowHint = True
       ParentShowHint = False
@@ -2406,6 +2431,7 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
+      ExplicitTop = 558
     end
   end
   object MenuCusto: TUniPopupMenu

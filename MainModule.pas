@@ -40,7 +40,6 @@ type
    ,mLogoCyber
    ,mLogoAtlas: string;
   end;
-  
 
 function UniMainModule: TUniMainModule;
 

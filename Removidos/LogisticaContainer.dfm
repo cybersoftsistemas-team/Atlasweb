@@ -1,4 +1,4 @@
-object fLogisticaContainer: TfLogisticaContainer
+object fContainer: TfContainer
   Left = 0
   Top = 0
   Width = 1288
@@ -134,15 +134,9 @@ object fLogisticaContainer: TfLogisticaContainer
         'beforeInit=function beforeinti(sender, config)'#13#10'{'#13#10' config.cls =' +
         ' '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 0
-    ExplicitLeft = 16
-    ExplicitWidth = 991
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object pBarraPesq: TUniPanel
         Left = 0
         Top = 0
@@ -261,10 +255,6 @@ object fLogisticaContainer: TfLogisticaContainer
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Dados Gerais'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0

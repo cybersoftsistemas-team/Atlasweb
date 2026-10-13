@@ -219,7 +219,7 @@ object fFinanceiro: TfFinanceiro
     Height = 795
     Hint = ''
     BodyRTL = False
-    ActivePage = UniTabSheet1
+    ActivePage = UniTabSheet3
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -602,10 +602,6 @@ object fFinanceiro: TfFinanceiro
               Images = UniMainModule.imgBotoes
               LayoutConfig.Padding = '0'
               Align = alClient
-              ClientEvents.UniEvents.Strings = (
-                
-                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-                  '= '#39'BotaoCor'#39';'#13#10'}')
               OnClick = cMesClick
             end
             object cDia: TUniSegmentedButton
@@ -1109,11 +1105,10 @@ object fFinanceiro: TfFinanceiro
             
               'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
               ' '#39'Ficha'#39';'#13#10'}')
-          BorderStyle = ubsNone
+          BorderStyle = ubsSolid
           TitleAlign = taCenter
           Title = 'DADOS GERAIS'
           Caption = ''
-          Color = clTeal
           object cClassificacao: TUniDBLookupComboBox
             Left = 13
             Top = 95
@@ -2121,13 +2116,13 @@ object fFinanceiro: TfFinanceiro
         DesignSize = (
           1199
           759)
-        ScrollHeight = 520
+        ScrollHeight = 594
         object pFicha2: TUniPanel
           AlignWithMargins = True
-          Left = 321
-          Top = 15
-          Width = 816
-          Height = 505
+          Left = 159
+          Top = 27
+          Width = 648
+          Height = 567
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -2137,16 +2132,15 @@ object fFinanceiro: TfFinanceiro
             
               'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
               ' '#39'Ficha'#39';'#13#10'}')
-          BorderStyle = ubsNone
+          BorderStyle = ubsInset
           TitleAlign = taCenter
           Title = 'DADOS GERAIS'
           Caption = ''
-          Color = clTeal
           object cBxBanco: TUniDBLookupComboBox
             Left = 16
-            Top = 65
+            Top = 69
             Width = 613
-            Height = 50
+            Height = 25
             Hint = ''
             ShowHint = True
             ListOnlyMode = lmFollowSource
@@ -2158,17 +2152,16 @@ object fFinanceiro: TfFinanceiro
             TabOrder = 1
             Color = clWindow
             FieldLabel = 'Banco:'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
             FieldLabelSeparator = ' '
             ForceSelection = True
             Style = csDropDown
           end
           object UniPanel5: TUniPanel
             AlignWithMargins = True
-            Left = 3
-            Top = 467
-            Width = 810
+            Left = 4
+            Top = 528
+            Width = 640
             Height = 35
             Hint = ''
             ShowHint = True
@@ -2181,6 +2174,9 @@ object fFinanceiro: TfFinanceiro
             BorderStyle = ubsNone
             Caption = ''
             Color = 5526569
+            ExplicitLeft = 3
+            ExplicitTop = 467
+            ExplicitWidth = 810
             object bSalvarBaixa: TUniButton
               Left = 0
               Top = 0
@@ -2216,312 +2212,284 @@ object fFinanceiro: TfFinanceiro
             Left = 16
             Top = 15
             Width = 613
-            Height = 50
+            Height = 25
             Hint = ''
-            Enabled = False
             ShowHint = True
             DataField = 'Nome'
             DataSource = dsPlano
             TabOrder = 0
+            TabStop = False
+            ReadOnly = True
             FieldLabel = 'Classifica'#231#227'o Financeira'
-            FieldLabelAlign = laTop
-          end
-          object UniGroupBox4: TUniGroupBox
-            Left = 639
-            Top = 17
-            Width = 164
-            Height = 436
-            Hint = ''
-            ShowHint = True
-            ParentShowHint = False
-            Caption = 'VALORES'
-            TabOrder = 5
-            ParentFont = False
-            Font.Style = [fsBold]
-            ClientEvents.UniEvents.Strings = (
-              
-                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-                '= '#39'Grupo'#39';'#13#10'}')
-            object cBxValor_Doc: TUniFormattedNumberEdit
-              Left = 9
-              Top = 17
-              Width = 140
-              Height = 50
-              Hint = ''
-              Enabled = False
-              ShowHint = True
-              BorderStyle = ubsSolid
-              Alignment = taRightJustify
-              TabOrder = 1
-              FieldLabel = 'Valor do Documento'
-              FieldLabelAlign = laTop
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-            end
-            object cBxValor_Parcela: TUniFormattedNumberEdit
-              Left = 9
-              Top = 68
-              Width = 140
-              Height = 50
-              Hint = ''
-              Enabled = False
-              ShowHint = True
-              BorderStyle = ubsSolid
-              Alignment = taRightJustify
-              TabOrder = 2
-              FieldLabel = 'Valor da Parcela'
-              FieldLabelAlign = laTop
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-            end
-            object cBxValor_Baixado: TUniFormattedNumberEdit
-              Left = 9
-              Top = 119
-              Width = 140
-              Height = 50
-              Hint = ''
-              Enabled = False
-              ShowHint = True
-              BorderStyle = ubsSolid
-              Alignment = taRightJustify
-              TabOrder = 3
-              FieldLabel = 'Valor Baixado'
-              FieldLabelAlign = laTop
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-            end
-            object cBxValor_Aberto: TUniFormattedNumberEdit
-              Left = 9
-              Top = 170
-              Width = 140
-              Height = 50
-              Hint = ''
-              Enabled = False
-              ShowHint = True
-              BorderStyle = ubsSolid
-              Alignment = taRightJustify
-              TabOrder = 4
-              FieldLabel = 'Valor em Aberto'
-              FieldLabelAlign = laTop
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-            end
-            object cBxValor_Juros: TUniFormattedNumberEdit
-              Left = 9
-              Top = 221
-              Width = 140
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              BorderStyle = ubsSolid
-              Alignment = taRightJustify
-              TabOrder = 5
-              FieldLabel = 'Valor dos Juros'
-              FieldLabelAlign = laTop
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-            end
-            object cBxValor_Multa: TUniFormattedNumberEdit
-              Left = 9
-              Top = 272
-              Width = 140
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              BorderStyle = ubsSolid
-              Alignment = taRightJustify
-              TabOrder = 6
-              FieldLabel = 'Valor da Multa'
-              FieldLabelAlign = laTop
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-            end
-            object cBXValor_Desconto: TUniFormattedNumberEdit
-              Left = 9
-              Top = 323
-              Width = 140
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              BorderStyle = ubsSolid
-              Alignment = taRightJustify
-              TabOrder = 7
-              FieldLabel = 'Valor dos Descontos'
-              FieldLabelAlign = laTop
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-            end
-            object cBxValor: TUniFormattedNumberEdit
-              Left = 9
-              Top = 374
-              Width = 140
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              BorderStyle = ubsSolid
-              Alignment = taRightJustify
-              TabOrder = 8
-              FieldLabel = 'Valor Total'
-              FieldLabelAlign = laTop
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-            end
-          end
-          object gCambio: TUniGroupBox
-            Left = 16
-            Top = 300
-            Width = 612
-            Height = 73
-            Hint = ''
-            Enabled = False
-            ShowHint = True
-            ParentShowHint = False
-            Caption = 'CONTRATO DE C'#194'MBIO'
-            TabOrder = 4
-            ParentFont = False
-            Font.Style = [fsBold]
-            ClientEvents.UniEvents.Strings = (
-              
-                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-                '= '#39'Grupo'#39';'#13#10'}')
-            object cVariacaoCambial: TUniFormattedNumberEdit
-              Left = 364
-              Top = 15
-              Width = 113
-              Height = 50
-              Hint = ''
-              Enabled = False
-              ShowHint = True
-              BorderStyle = ubsSolid
-              Alignment = taRightJustify
-              TabOrder = 3
-              SelectOnFocus = True
-              FieldLabel = 'Varia'#231#227'o C'#226'mbial'
-              FieldLabelAlign = laTop
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-            end
-            object cTotalCambio: TUniFormattedNumberEdit
-              Left = 482
-              Top = 15
-              Width = 117
-              Height = 50
-              Hint = ''
-              Enabled = False
-              ShowHint = True
-              BorderStyle = ubsSolid
-              Alignment = taRightJustify
-              TabOrder = 4
-              SelectOnFocus = True
-              FieldLabel = 'Total do C'#226'mbio'
-              FieldLabelAlign = laTop
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-            end
-            object cTaxa_Cambial: TUniDBEdit
-              Left = 150
-              Top = 15
-              Width = 102
-              Height = 50
-              Hint = ''
-              Enabled = False
-              ShowHint = True
-              DataField = 'Taxa_Cambial'
-              DataSource = dsContratos
-              TabOrder = 1
-              FieldLabel = 'Taxa C'#226'mbio'
-              FieldLabelAlign = laTop
-              SelectOnFocus = True
-            end
-            object cTaxa_FechamentoCambio: TUniFormattedNumberEdit
-              Left = 257
-              Top = 15
-              Width = 102
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              BorderStyle = ubsSolid
-              Alignment = taRightJustify
-              TabOrder = 2
-              SelectOnFocus = True
-              FieldLabel = 'Taxa Fechamento'
-              FieldLabelAlign = laTop
-              DecimalPrecision = 4
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-              OnChange = cTaxa_FechamentoCambioChange
-            end
-            object cNumero_CC: TUniEdit
-              Left = 9
-              Top = 15
-              Width = 135
-              Height = 50
-              Hint = ''
-              ShowHint = True
-              BorderStyle = ubsSolid
-              Text = ''
-              TabOrder = 5
-              FieldLabel = 'N'#186' Contrato'
-              FieldLabelAlign = laTop
-            end
+            FieldLabelWidth = 140
+            FieldLabelSeparator = ' '
           end
           object cBxData: TUniDateTimePicker
-            Left = 15
-            Top = 115
-            Width = 138
-            Height = 50
+            Left = 16
+            Top = 42
+            Width = 350
+            Height = 25
             Hint = ''
             ShowHint = True
             DateTime = 44579.000000000000000000
             DateFormat = 'dd/MM/yyyy'
             TimeFormat = 'HH:mm:ss'
-            TabOrder = 6
+            TabOrder = 4
             FieldLabel = 'Data da Liquida'#231#227'o'
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
+            FieldLabelSeparator = ' '
             BorderStyle = ubsSolid
           end
           object cBxForma_PgtoDoc: TUniEdit
-            Left = 360
-            Top = 164
-            Width = 268
-            Height = 50
+            Left = 16
+            Top = 123
+            Width = 350
+            Height = 25
             Hint = ''
             ShowHint = True
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
             Text = ''
-            TabOrder = 7
+            TabOrder = 5
             FieldLabel = 'N'#186' Documento'
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
+            FieldLabelSeparator = ' '
           end
           object cBxForma_Pgto: TUniComboBox
-            Left = 15
-            Top = 164
-            Width = 341
-            Height = 50
+            Left = 16
+            Top = 96
+            Width = 613
+            Height = 25
             Hint = ''
             ShowHint = True
             Style = csDropDownList
             Text = ''
-            TabOrder = 8
+            TabOrder = 6
             Sorted = True
             AnyMatch = True
             FieldLabel = 'Forma de Pagamento'
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 140
+            FieldLabelSeparator = ' '
             SelectOnFocus = True
             IconItems = <>
             ReadOnlyMode = urmNotEditable
           end
           object cBxObs: TUniMemo
-            Left = 15
-            Top = 215
+            Left = 16
+            Top = 150
             Width = 613
-            Height = 75
+            Height = 66
             Hint = ''
             ShowHint = True
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
+            TabOrder = 7
+            FieldLabel = 'Observa'#231#227'o T'#237'tulo'
+            FieldLabelWidth = 140
+            FieldLabelSeparator = ' '
+          end
+          object UniMemo1: TUniMemo
+            Left = 16
+            Top = 218
+            Width = 613
+            Height = 66
+            Hint = ''
+            ShowHint = True
+            BorderStyle = ubsInset
+            TabOrder = 8
+            FieldLabel = 'Observa'#231#227'o Liquida'#231#227'o'
+            FieldLabelWidth = 140
+            FieldLabelSeparator = ' '
+          end
+          object cBxValor_Doc: TUniFormattedNumberEdit
+            AlignWithMargins = True
+            Left = 16
+            Top = 286
+            Width = 350
+            Height = 25
+            Hint = ''
+            Margins.Left = 1
+            Margins.Top = 1
+            Margins.Right = 1
+            Margins.Bottom = 1
+            ShowHint = True
+            BorderStyle = ubsInset
+            Alignment = taRightJustify
             TabOrder = 9
-            FieldLabel = 'Observa'#231#227'o'
-            FieldLabelAlign = laTop
+            TabStop = False
+            ReadOnly = True
+            ClientEvents.UniEvents.Strings = (
+              
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                '= '#39'CampoDestaque'#39';'#13#10'}')
+            FieldLabel = 'Valor do Documento'
+            FieldLabelWidth = 140
+            FieldLabelSeparator = ' '
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
+          end
+          object cBxValor_Parcela: TUniFormattedNumberEdit
+            AlignWithMargins = True
+            Left = 16
+            Top = 313
+            Width = 350
+            Height = 25
+            Hint = ''
+            Margins.Left = 1
+            Margins.Top = 1
+            Margins.Right = 1
+            Margins.Bottom = 1
+            ShowHint = True
+            BorderStyle = ubsInset
+            Alignment = taRightJustify
+            TabOrder = 10
+            TabStop = False
+            ReadOnly = True
+            ClientEvents.UniEvents.Strings = (
+              
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                '= '#39'CampoDestaque'#39';'#13#10'}')
+            FieldLabel = 'Valor da Parcela'
+            FieldLabelWidth = 140
+            FieldLabelSeparator = ' '
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
+          end
+          object cBxValor_Baixado: TUniFormattedNumberEdit
+            AlignWithMargins = True
+            Left = 16
+            Top = 340
+            Width = 350
+            Height = 25
+            Hint = ''
+            Margins.Left = 1
+            Margins.Top = 1
+            Margins.Right = 1
+            Margins.Bottom = 1
+            ShowHint = True
+            BorderStyle = ubsInset
+            Alignment = taRightJustify
+            TabOrder = 11
+            TabStop = False
+            ReadOnly = True
+            ClientEvents.UniEvents.Strings = (
+              
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                '= '#39'CampoDestaque'#39';'#13#10'}')
+            FieldLabel = 'Valor Baixado'
+            FieldLabelWidth = 140
+            FieldLabelSeparator = ' '
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
+          end
+          object cBxValor_Aberto: TUniFormattedNumberEdit
+            AlignWithMargins = True
+            Left = 16
+            Top = 367
+            Width = 350
+            Height = 25
+            Hint = ''
+            Margins.Left = 1
+            Margins.Top = 1
+            Margins.Right = 1
+            Margins.Bottom = 1
+            ShowHint = True
+            BorderStyle = ubsInset
+            Alignment = taRightJustify
+            TabOrder = 12
+            TabStop = False
+            ReadOnly = True
+            ClientEvents.UniEvents.Strings = (
+              
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                '= '#39'CampoDestaque'#39';'#13#10'}')
+            FieldLabel = 'Valor em Aberto'
+            FieldLabelWidth = 140
+            FieldLabelSeparator = ' '
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
+          end
+          object cBxValor_Juros: TUniFormattedNumberEdit
+            AlignWithMargins = True
+            Left = 16
+            Top = 394
+            Width = 350
+            Height = 25
+            Hint = ''
+            Margins.Left = 1
+            Margins.Top = 1
+            Margins.Right = 1
+            Margins.Bottom = 1
+            ShowHint = True
+            BorderStyle = ubsInset
+            Alignment = taRightJustify
+            TabOrder = 13
+            FieldLabel = 'Valor dos Juros'
+            FieldLabelWidth = 140
+            FieldLabelSeparator = ' '
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
+          end
+          object cBxValor_Multa: TUniFormattedNumberEdit
+            AlignWithMargins = True
+            Left = 16
+            Top = 421
+            Width = 350
+            Height = 25
+            Hint = ''
+            Margins.Left = 1
+            Margins.Top = 1
+            Margins.Right = 1
+            Margins.Bottom = 1
+            ShowHint = True
+            BorderStyle = ubsInset
+            Alignment = taRightJustify
+            TabOrder = 14
+            FieldLabel = 'Valor da Multa'
+            FieldLabelWidth = 140
+            FieldLabelSeparator = ' '
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
+          end
+          object cBXValor_Desconto: TUniFormattedNumberEdit
+            AlignWithMargins = True
+            Left = 16
+            Top = 448
+            Width = 350
+            Height = 25
+            Hint = ''
+            Margins.Left = 1
+            Margins.Top = 1
+            Margins.Right = 1
+            Margins.Bottom = 1
+            ShowHint = True
+            BorderStyle = ubsInset
+            Alignment = taRightJustify
+            TabOrder = 15
+            FieldLabel = 'Valor dos Descontos'
+            FieldLabelWidth = 140
+            FieldLabelSeparator = ' '
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
+          end
+          object cBxValor: TUniFormattedNumberEdit
+            AlignWithMargins = True
+            Left = 16
+            Top = 475
+            Width = 350
+            Height = 25
+            Hint = ''
+            Margins.Left = 1
+            Margins.Top = 1
+            Margins.Right = 1
+            Margins.Bottom = 1
+            ShowHint = True
+            BorderStyle = ubsInset
+            Alignment = taRightJustify
+            TabOrder = 16
+            FieldLabel = 'Valor Total'
+            FieldLabelWidth = 140
+            FieldLabelSeparator = ' '
+            DecimalSeparator = ','
+            ThousandSeparator = '.'
           end
         end
       end

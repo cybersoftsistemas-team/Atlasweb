@@ -202,7 +202,6 @@ type
     NotasItensAliquota_PISOrig: TFMTBCDField;
     NotasItensAliquota_COFINSOrig: TFMTBCDField;
     NotasItensValor_BCICMSSTOrig: TFMTBCDField;
-    NotasItensCIAP_TipoItem: TSmallintField;
     NotasItensItem_Referencia: TSmallintField;
     NotasItensProcesso: TStringField;
     Operacao: TFDQuery;
@@ -293,6 +292,7 @@ type
     Imobilizado: TFDQuery;
     Config: TFDQuery;
     Nota: TFDQuery;
+    NotasItensCIAP_Tipo: TSmallintField;
     procedure UniFrameCreate(Sender: TObject);
     procedure cProdutoExit(Sender: TObject);
   private
@@ -300,7 +300,8 @@ type
     mID
    ,mItem: integer;
     mAcao: string;
-//    procedure SalvaImobilizado;
+    mQuantidade: real;
+    mCodigo: integer;
   public
     { Public declarations }
     constructor Create(aOwner: TComponent; pEmpresa: string; pID, pItem: integer; pAcao: string; pOper: integer); reintroduce;
@@ -330,12 +331,14 @@ end;
 constructor TfFiscalNFTerceirosItens.Create(aOwner: TComponent; pEmpresa: string; pID, pItem: integer; pAcao: string; pOper: integer);
 begin
     inherited Create(aOwner);
-    mID      := pID;
-    mItem    := pItem;
-    mAcao    := pAcao;
+    mID         := pID;
+    mItem       := pItem;
+    mAcao       := pAcao;
 end;
 
 procedure TfFiscalNFTerceirosItens.Salvar;
+var
+   mCusto: real;
 begin
      // Verifica todos os campos obrigatórios que estão com a propriedade "Tag = 1".
      if not TValidaCRUD.ValidarFormulario(Ficha) then abort;
@@ -352,6 +355,7 @@ begin
         if NotasItens.state = dsInsert then begin 
            mItem := GeraItem('NotasItens', 'Item', 'Empresa = '+Nota.fieldbyname('Empresa').asstring+' and Nota_id = '+inttostr(mid));
         end;
+        
         // Dados do item.
         NotasItensNota_id.value              := mid;
         NotasItensEmpresa.value              := Nota.fieldbyname('Empresa').asstring;
@@ -363,7 +367,7 @@ begin
         NotasItensUM.asstring                := Produtos.fieldbyname('UM').asstring;
         NotasItensEXTIPI.value               := Produtos.fieldbyname('Codigo_EXTIPI').asinteger;
         
-        NotasItens.post; 
+        NotasItens.post;
         
         // Processa a ficha de Estoque/Inventario do item modificado.
         FichasEstInv(Nota.fieldbyname('Empresa').asstring, 0, '', '', 0, mid, NotasItensCodigo_Mercadoria.asstring, 'NFT');
@@ -371,6 +375,96 @@ begin
         // Ativo imobilizado.
         if CFOP.fieldbyname('Imobilizado').asboolean and (NotasItensValor_Unitario.ascurrency > Config.fieldbyname('Valor_Imobilizado').ascurrency) then begin
            SalvaImobilizado(Nota.Fieldbyname('Nota_id').asinteger, Nota.Fieldbyname('Nota_id').asinteger, Config.fieldbyname('Parcelas_Imobilizado').AsInteger);
+        end;
+
+        // Atualiza o cadastro do produto com o ultimo valor de entrada e com o custo médio e
+        // Reprocessa o valor do estoque minímo do produto por percentual caso esteja informado o percentual minímo no cadastro.
+        if Operacao.fieldbyname('Finalidade_Mercadoria').asinteger in[0, 3, 5] then begin
+           with ttmp do begin
+                sql.clear;
+                sql.add('select Valor = isnull(sum(ni.Valor_Unitario * ni.Quantidade) / nullif(sum(ni.Quantidade), 0),0)');
+                sql.add('from Produtos p');
+                sql.add('left join NotasItens ni on Empresa = :pemp and ni.Codigo_Mercadoria = p.Codigo');
+                sql.add('left join NotasFiscais nf on nf.Nota_id = ni.Nota_id');
+                sql.add('left join OperacaoFiscal op on op.Codigo = nf.Operacao');
+                sql.add('where P.Codigo = :pCod');
+                sql.add('and Op.Movimenta_Inventario = 1');
+                paramByName('pCod').AsInteger := NotasItensCodigo_Mercadoria.AsInteger;
+                parambyname('pEmp').asstring  := NotasItensEmpresa.asstring;
+                open;
+                mCusto := fieldbyname('Valor').AsCurrency;
+           
+                sql.clear;
+                sql.add('update Produtos set Valor_Entrada    = :pValor');
+                sql.add('                   ,Valor_CustoMedio = :pCusto');   
+                sql.add('                   ,Estoque_Minimo   = :pMinimo');
+                paramByName('pValor').value  := NotasItensValor_Unitario.ascurrency;
+                paramByName('pCusto').value  := mCusto;
+                paramByName('pMinimo').value := 0;
+                if Produtos.fieldbyname('Estoque_MinimoPerc').AsFloat > 0 then begin
+                   paramByName('pMinimo').value := Percentual(EstoqueProduto(NotasItensCodigo_Mercadoria.AsInteger)+NotasItensQuantidade.AsFloat-mQuantidade, Produtos.fieldbyname('Estoque_MinimoPerc').asfloat);
+                end;
+                execsql;
+           end;
+        end;
+        // Ajusta o produto nos lotes caso haja alteração no item da nota fiscal.
+        if mAcao = 'Editar' then begin
+           with ttmp do begin
+                sql.clear;
+                sql.add('update ProdutosDetalhe set Produto = :pProd');
+                sql.add('                          ,Quantidade_Entrada = :pQtde');
+                sql.add('                          ,Processo = :pProc');
+                sql.add('where Produto = :pCod');
+                sql.add('and Nota_id = :pid');
+                sql.add('and Item = :pItem');
+                ParamByName('pCod').AsInteger  := mCodigo;
+                ParamByName('pid').AsInteger   := NotasItensNota_id.asinteger;
+                ParamByName('pItem').AsInteger := NotasItensItem.asinteger;
+                ParamByName('pProd').AsInteger := NotasItensCodigo_Mercadoria.asinteger;
+                ParamByName('pQtde').value     := NotasItensQuantidade.asfloat;
+                ParamByName('pProc').value     := NotasItensProcesso.asstring;
+                execsql;
+           end;
+        end;
+        // Adiciona o item na tabela "NotasItensNavios.
+        if trim(cEmbarque.Text) <> '' then begin
+           with ttmp do begin
+                sql.clear;
+                sql.add('Delete from NotasItensNavios where Nota_id = :pid and Codigo_Mercadoria = :pCod');
+                ParamByName('pid').AsInteger  := NotasItensNota_id.AsInteger;
+                ParamByName('pCod').AsInteger := NotasItensCodigo_Mercadoria.AsInteger;
+                execsql;
+                sql.clear;
+                sql.add('insert into NotasItensNavios (Empresa');
+                sql.add('                             ,Nota_id');
+                sql.add('                             ,Nota');
+                sql.add('                             ,Data_Emissao');
+                sql.add('                             ,Codigo_Mercadoria');
+                sql.add('                             ,Item');
+                sql.add('                             ,Embarque');
+                sql.add('                             ,Quantidade');
+                sql.add('                             ,ES');
+                sql.add('                             ,Emissor)');
+                sql.add('            values(:pEmp');
+                sql.add('                  ,:pid');
+                sql.add('                  ,:pNota');
+                sql.add('                  ,:pEmi');
+                sql.add('                  ,:pCod');
+                sql.add('                  ,:pItem');
+                sql.add('                  ,:pEmb');
+                sql.add('                  ,:pQtd');
+                sql.add('                  ,0');
+                sql.add('                  ,''T'')');
+                parambyname('pEmp').asstring   := NotasItensEmpresa.asstring;
+                parambyname('pid').asinteger   := NotasItensNota_id.asinteger;
+                parambyname('pNota').asinteger := Nota.fieldbyname('Nota').asinteger;
+                parambyname('pEmi').value      := Nota.fieldbyname('Data_Emissao').value;
+                parambyname('pCod').asinteger  := NotasItensCodigo_Mercadoria.asinteger;
+                parambyname('pItem').asinteger := NotasItensItem.asinteger;
+                parambyname('pEmb').asinteger  := NotasItensEmbarque.asinteger;
+                parambyname('pQtd').asfloat    := NotasItensQuantidade.asfloat;
+                execsql;
+           end;
         end;
 
         Alerta.Text      := 'Item salvo na nota fiscal.';
@@ -401,23 +495,6 @@ begin
      lArq := UniServerModule.FilesFolder +'images\icones\SerialProduto.bmp';
      if FileExists(lArq) then bSerial.Glyph.LoadFromFile(lArq);
 
-     with NotasItens do begin
-          sql.clear;
-          sql.add('select *');
-          sql.add('from NotasItens');
-          sql.add('where Nota_id = :pID');
-          sql.add('and Item = :pItem');
-          parambyname('pID').Value   := mID;
-          parambyname('pItem').Value := mItem;
-          open;
-          if mAcao = 'Adicionar' then begin
-             Append;
-                  NotasItensNota_id.value := mID;
-                  NotasItensEmpresa.value := Nota.fieldbyname('Empresa').asstring;
-          end;
-          if mAcao = 'Editar' then Edit;;
-         // UniSession.Synchronize;                            
-     end;
      with Nota do begin
           sql.clear;
           sql.add('select Empresa');
@@ -434,6 +511,25 @@ begin
           parambyname('pID').Value   := mID;
           open;
      end;
+     with NotasItens do begin
+          sql.clear;
+          sql.add('select *');
+          sql.add('from NotasItens');
+          sql.add('where Nota_id = :pID');
+          sql.add('and Item = :pItem');
+          parambyname('pID').Value   := mID;
+          parambyname('pItem').Value := mItem;
+          open;
+          if mAcao = 'Adicionar' then begin
+             Append;
+                  NotasItensNota_id.value := mID;
+                  NotasItensEmpresa.value := Nota.fieldbyname('Empresa').asstring;
+          end;
+          if mAcao = 'Editar' then Edit;;
+          mQuantidade := fieldbyname('Quantidade').AsFloat;
+          mCodigo     := fieldbyname('Codigo_Mercadoria').asinteger;
+          // UniSession.Synchronize;                            
+     end;
      with Produtos do begin
           sql.clear;
           sql.add('select prd.Codigo');
@@ -443,6 +539,7 @@ begin
           sql.add('      ,prd.Descricao_Reduzida');
           sql.add('      ,prd.UM');
           sql.add('      ,NCM.Codigo_EXTIPI');
+          sql.add('      ,prd.Estoque_MinimoPerc');
           sql.add('from Produtos prd');
           sql.add('inner join NCM on prd.NCM = NCM.NCM');
           sql.add('where prd.Desativado <> 1');
@@ -472,6 +569,7 @@ begin
           sql.add('      ,Movimenta_Inventario');
           sql.add('      ,CST_ICMS');
           sql.add('      ,Complementar');
+          sql.add('      ,Finalidade_Mercadoria');
           sql.add('from OperacaoFiscal');
           sql.add('where Codigo = :pCod');
           parambyname('pCod').asinteger := Nota.fieldbyname('Operacao').asinteger;
@@ -587,100 +685,7 @@ begin
      end;
      cProduto.SetFocus;
 end;
-(*
-procedure TfFiscalNFTerceirosItens.SalvaImobilizado;
-begin
-     // Cadastrando o item no Imobilizado.
-     with ttmp do begin 
-          sql.Clear;
-          sql.Add('delete from Imobilizado where Codigo_Mercadoria = :pCod and Nota_id = :pid');
-          parambyname('pCod').AsInteger := NotasItensCodigo_Mercadoria.AsInteger;
-          parambyname('pid').AsInteger  := NotasItensNota_id.AsInteger;
-          execsql;
-     end;
-     with Imobilizado do begin 
-          sql.clear;
-          sql.Add('select * from Imobilizado where Codigo_Mercadoria = :pCod and Nota_id = :pid');
-          parambyname('pCod').AsInteger := NotasItensCodigo_Mercadoria.AsInteger;
-          parambyname('pid').AsInteger  := NotasItensNota_id.AsInteger;
-          open;
 
-          // Verifica se houve faturamento no mês para atualiza o campo "AnoMes_Faturamento" e o campo "Apropriacao".
-          with ttmp do begin
-               sql.clear;
-               sql.add('select top 1 1 from NotasFiscais where year(Data_Emissao) = :pAno and month(Data_Emissao) = :pMes and ES = 1 and Valor_ICMS > 0 and Cancelada <> 1 and Denegada <> 1');
-               paramByName('pAno').AsInteger := yearof(Nota.fieldbyname('Data_ES').AsDateTime);
-               paramByName('pMes').AsInteger := monthof(Nota.fieldbyname('Data_ES').AsDateTime);
-               open;
-               if not IsEmpty then begin
-                  Imobilizado.fieldbyname('AnoMes_Faturamento').Value := Format('%.2d', [yearof(Nota.fieldbyname('Data_ES').AsDateTime)]) + Format('%.2d', [monthof(Nota.fieldbyname('Data_ES').AsDateTime)]);
-                  Imobilizado.fieldbyname('Apropriadas').Value        := 1;
-               end;
-               close;
-          end;
-          append;
-                fieldbyname('Empresa').value           := Nota.fieldbyname('Empresa').Value;
-                fieldbyname('Data_Nota').value         := Nota.fieldbyname('Data_ES').Value;
-                fieldbyname('Codigo_Mercadoria').value := NotasItensCodigo_Mercadoria.Value;
-                fieldbyname('Fornecedor').value        := Nota.fieldbyname('Destinatario').asinteger;
-                fieldbyname('Nota_id').value           := Nota.fieldbyname('Nota_id').asinteger;
-                fieldbyname('Nota').value              := Nota.fieldbyname('Nota').asinteger;
-                fieldbyname('Valor_Aquisicao').value   := NotasItensValor_Unitario.ascurrency;
-                fieldbyname('Valor_Depreciacao').value := NotasItensValor_Unitario.ascurrency - NotasItensValor_ICMSOp.ascurrency;
-                fieldbyname('ICMS_Proprio').value      := NotasItensCIAP_ValorICMS.AsCurrency;
-                fieldbyname('ICMS_ST').value           := NotasItensValor_ICMSST.AsCurrency;
-                fieldbyname('ICMS_Frete').value        := 0;
-                fieldbyname('ICMS_Dif_Aliquota').value := 0;
-                fieldbyname('Valor_Credito').value     := (NotasItensCIAP_ValorICMS.ascurrency+ NotasItensValor_ICMSST.ascurrency);
-                fieldbyname('Apropriadas').value       := 0;
-                fieldbyname('Tipo_Item').value         := NotasItensCIAP_TipoItem.Value;
-                fieldbyname('Vida_Util').value         := 0;
-                fieldbyname('Parcelas').value          := Config.fieldbyname('Parcelas_Imobilizado').Value;
-                fieldbyname('Ordem_Item').value        := NotasItensItem.Value;
-                fieldbyname('Tipo_Movimentacao').Value := iif(NotasItensCIAP_TipoItem.AsInteger = 1, 'IM', 'IA');
-                fieldbyname('Serie').value             := Nota.fieldbyname('Serie').asstring;
-                fieldbyname('Modelo').value            := Nota.fieldbyname('Modelo').Value;
-                fieldbyname('Centro_Custo').value      := Nota.fieldbyname('Centro_Custo').Value;
-                fieldbyname('Descricao').value         := Trim(NotasItensDescricao_Mercadoria.AsString);
-          Post;
-     end;
-
-     {
-     If (NotasItens.State = dsEdit) and (NaturezaImobilizado.Value = True) then begin
-        // Verificando se foi utilizado alguma parcela.
-        CIAP.Close;
-        CIAP.SQL.Clear;
-        CIAP.SQL.Add('SELECT * FROM CIAP');
-        CIAP.SQL.Add('WHERE (Codigo_Mercadoria = :pMercadoria) AND (Nota = :pNota) AND (Utilizacao IS NOT NULL)');
-        CIAP.ParamByName('pMercadoria').AsInteger := NotasTerceirosItensCodigo_Mercadoria.Value;
-        CIAP.ParamByName('pNota').AsInteger       := NotasTerceirosItensNota.Value;
-        CIAP.Open;
-        If CIAP.RecordCount <> 0 then begin
-           mOpcao := MessageDlg('Atenção!'+#13+'Você esta alterando um item que ja teve '+InttoStr(CIAP.RecordCount)+' parcela(s) utilizada(s) no CIAP.'+#13+'Alterar também as parcelas utilizadas?', mtConfirmation, [mbYes, mbNo, mbCancel], 0);
-           If mOpcao = 6 then begin  // Opção 6 = "SIM'
-              CIAP.SQL.Clear;
-              CIAP.SQL.Add('SELECT * FROM CIAP WHERE (Codigo_Mercadoria = :pMercadoria) AND (Nota = :pNota)' );
-           End;
-           If mOpcao = 7 then begin  // Opção 7 = "NÃO'
-              CIAP.SQL.Clear;
-              CIAP.SQL.Add('SELECT * FROM CIAP WHERE (Codigo_Mercadoria = :pMercadoria) AND (Nota = :pNota) AND (Utilizacao IS NULL)' );
-           End;
-           If mOpcao = 2 then begin  // Opção 2 = "CANCELAR'
-              Navega.BtnClick(nbCancel);
-              Abort;
-           End;
-        end else begin
-           CIAP.SQL.Clear;
-           CIAP.SQL.Add('SELECT * FROM CIAP WHERE (Codigo_Mercadoria = :pMercadoria) AND (Nota = :pNota)' );
-        end;
-        CIAP.ParamByName('pMercadoria').AsInteger := NotasTerceirosItensCodigo_Mercadoria.Value;
-        CIAP.ParamByName('pNota').AsInteger       := NotasTerceirosItensNota.Value;
-        CIAP.Open;
-
-     end;
-     }
-end;
-*)
 
 
 

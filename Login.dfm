@@ -114,7 +114,7 @@ object TelaLogin: TTelaLogin
         Height = 25
         Hint = ''
         BorderStyle = ubsInset
-        Text = 'eder@cybersoftsistemas.com.br'
+        Text = ''
         ParentFont = False
         Font.Color = clWhite
         Font.Height = -16

@@ -47,9 +47,9 @@ SALVAR ITENS
 [ok] Verificar campos obrigatórios.
 [ok] Calcular valor do inventario ou pegar da ficha de estoque.
 [ok] Criar parcelas no imobilizado em casa de (Compra para ativo imobilizado).
-[  ] Atualizar valores do cadastro do produtos Custo Médio/ Valor Entrada/ Estoque minímo Perc/ Minímo.
-[  ] Ajuste de lotes/Detalhes.
-[  ] Adicionar itens a tabela de embarques.
+[ok] Atualizar valores do cadastro do produtos Custo Médio/ Valor Entrada/ Estoque minímo Perc/ Minímo.
+[ok] Ajuste de lotes/Detalhes.
+[ok] Adicionar itens a tabela de embarques.
 [ok] Adicionar itens a "FichaEstoque".
 
 =============================================================================================================================
@@ -60,11 +60,11 @@ ALTERAR ITENS
 =============================================================================================================================
 EXCLUIR ITENS
 =============================================================================================================================
-[  ] Ajustar movimentação de chassi/Serial.
-[  ] Reprocessar o valor do estoque minímo percentual.
-[  ] Excluir do imobilizado caso não tenha sido utilizado nenhuma parcela.
-[  ] Excluir controle de lotes.
-[  ] Excluir tabela de itens dos embarques.
+[ok] Ajustar movimentação de chassi/Serial.
+[ok] Reprocessar o valor do estoque minímo percentual.
+[ok] Excluir do imobilizado caso não tenha sido utilizado nenhuma parcela.
+[ok] Excluir controle de lotes.
+[ok] Excluir tabela de itens dos embarques.
 [ok] Excluir itens da "FichaEstoque".
 
 =============================================================================================================================
@@ -89,15 +89,11 @@ CAMPOS QUE PRECISAM VERIFICAR
 =============================================================================================================================
 MANIFESTAR NOTA FISCAL DE TERCEIROS
 =============================================================================================================================
-[ ] Efetuar manifestação da nota.
+[ok] Efetuar manifestação da nota.
 
-
-
-
-
-
+=============================================================================================================================
 ROTEIRO INDUSTRIALIZAÇÃO
-========================
+=============================================================================================================================
 -> Inclusão
 [ok]   -> Reprocessar fichas de "Estoque/Inventario" de todos os produtos "Industrializado e Matéria-Prima".
 
@@ -108,3 +104,5 @@ ROTEIRO INDUSTRIALIZAÇÃO
 -> Exclusão
 [ok]   -> Só permitir exclusão se não houve movimentação do produto apos o cadastro da industrialização.
 [ok]     -> Reprocessar fichas de "Estoque/Inventario" de todos os produtos "Industrializado e Matéria-Prima".
+
+

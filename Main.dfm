@@ -28,9 +28,9 @@ object MainForm: TMainForm
     TabOrder = 0
     object PagePrincipal: TUniPageControl
       Left = 0
-      Top = 50
+      Top = 54
       Width = 1104
-      Height = 659
+      Height = 655
       Hint = ''
       ActivePage = pInicio
       Plain = True
@@ -40,6 +40,8 @@ object MainForm: TMainForm
           'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
           '= '#39'Pasta'#39';'#13#10'}')
       TabOrder = 1
+      ExplicitTop = 50
+      ExplicitHeight = 659
       object pInicio: TUniTabSheet
         Hint = ''
         Caption = 'Inicio'
@@ -51,6 +53,7 @@ object MainForm: TMainForm
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'cybersoft-background'#39';'#13#10'}')
+        ExplicitHeight = 631
         object UniButton1: TUniButton
           Left = 20
           Top = 74
@@ -67,7 +70,7 @@ object MainForm: TMainForm
           Left = 250
           Top = 200
           Width = 596
-          Height = 231
+          Height = 227
           Hint = ''
           Margins.Left = 250
           Margins.Top = 200
@@ -84,6 +87,7 @@ object MainForm: TMainForm
               '= '#39'cybersoft-logo'#39';'#13#10'}')
           PersistentCache = False
           FitWidth = True
+          ExplicitHeight = 231
         end
       end
     end
@@ -91,7 +95,7 @@ object MainForm: TMainForm
       Left = 0
       Top = 0
       Width = 1104
-      Height = 50
+      Height = 54
       Hint = ''
       ParentColor = False
       Color = 4730899

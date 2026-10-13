@@ -105,7 +105,9 @@ uses
   Estoque_ProcessarEstoque in 'Estoque_ProcessarEstoque.pas' {fEstoque_Industrializacao: TUniFrame},
   Estoque_Imobilizado in 'Estoque_Imobilizado.pas' {fEstoque_Imobilizado: TUniFrame},
   Tradutor in 'Tradutor.pas',
-  FiscalNFManifestar in 'FiscalNFManifestar.pas' {fFiscalNFManifestar: TUniFrame};
+  FiscalNFManifestar in 'FiscalNFManifestar.pas' {fFiscalNFManifestar: TUniFrame},
+  NFeDistribuicao in 'NFeDistribuicao.pas',
+  Container in 'Container.pas' {fContainer: TUniFrame};
 
 (*uses p/gerador*)
 

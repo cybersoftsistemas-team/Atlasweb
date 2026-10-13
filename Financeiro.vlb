@@ -55,9 +55,6 @@ Coordinates=1281,878,83,36
 [cPago_Cliente]
 Coordinates=1173,878,98,36
 
-[cBxValor_Juros]
-Coordinates=1058,878,105,36
-
 [cModalidade_Pgto]
 Coordinates=927,878,121,36
 
@@ -84,9 +81,6 @@ Coordinates=481,878,112,36
 
 [UniPanel1]
 Coordinates=397,878,74,36
-
-[cBxValor_Doc]
-Coordinates=291,878,96,36
 
 [cSaldo]
 Coordinates=227,878,54,36
@@ -117,9 +111,6 @@ Coordinates=1854,832,51,36
 
 [cAno]
 Coordinates=1735,832,44,36
-
-[cTaxa_FechamentoCambio]
-Coordinates=1553,832,172,36
 
 [UniDBFormattedNumberEdit1]
 Coordinates=1358,832,185,36
@@ -157,9 +148,6 @@ Coordinates=215,832,57,36
 [cEmbarque]
 Coordinates=125,832,80,36
 
-[cBxValor_Multa]
-Coordinates=10,832,105,36
-
 [cValor_Parcela]
 Coordinates=2326,786,102,36
 Visible=True
@@ -194,9 +182,6 @@ Coordinates=1673,786,74,36
 [cSaldoDoc]
 Coordinates=1586,786,77,36
 
-[cVariacaoCambial]
-Coordinates=1457,786,119,36
-
 [cSituacao]
 Coordinates=1376,786,71,36
 
@@ -211,9 +196,6 @@ Coordinates=832,10,62,58
 
 [UniDBMemo1]
 Coordinates=1211,786,94,36
-
-[cBxValor]
-Coordinates=1135,786,66,36
 
 [cProv]
 Coordinates=1078,786,47,36
@@ -266,17 +248,11 @@ Coordinates=10,786,80,36
 [Alerta]
 Coordinates=1197,1321,48,36
 
-[UniGroupBox4]
-Coordinates=2306,740,99,36
-
 [Bancos]
 Coordinates=1702,10,57,58
 
 [UniTabSheet6]
 Coordinates=2199,740,97,36
-
-[gCambio]
-Coordinates=2123,740,66,36
 
 [UniTabSheet1]
 Coordinates=2016,740,97,36
@@ -320,9 +296,6 @@ Coordinates=1363,740,96,36
 [EmpresasEstado]
 Coordinates=316,1723,112,36
 
-[cTaxa_Cambial]
-Coordinates=1249,740,104,36
-
 [pFicha2]
 Coordinates=1179,740,60,36
 
@@ -334,9 +307,6 @@ Coordinates=1032,740,60,36
 
 [Beneficiario]
 Coordinates=740,10,82,58
-
-[cTotalCambio]
-Coordinates=928,740,94,36
 
 [AdiantamentosCNPJ]
 Coordinates=1395,276,133,36
@@ -383,12 +353,6 @@ Coordinates=2293,694,64,36
 [UniScrollBox2]
 Coordinates=2187,694,96,36
 
-[cBxValor_Baixado]
-Coordinates=2057,694,120,36
-
-[cNumero_CC]
-Coordinates=1955,694,92,36
-
 [dsTipoDoc]
 Coordinates=351,1479,76,36
 
@@ -406,9 +370,6 @@ Coordinates=1651,694,62,36
 
 [dsEmbarques]
 Coordinates=711,1,93,36
-
-[cBxValor_Parcela]
-Coordinates=1524,694,117,36
 
 [cNumero_Documento]
 Coordinates=1375,694,139,36
@@ -452,9 +413,6 @@ Coordinates=823,694,97,36
 [AdiantamentosAdiantamento_Numero]
 Coordinates=1621,56,232,36
 
-[cBxValor_Aberto]
-Coordinates=702,694,111,36
-
 [UniDBLookupComboBox11]
 Coordinates=521,694,171,36
 
@@ -466,9 +424,6 @@ Coordinates=361,1101,96,36
 
 [UniPanel4]
 Coordinates=355,694,74,36
-
-[cBXValor_Desconto]
-Coordinates=216,694,129,36
 
 [cBanco]
 Coordinates=149,694,57,36
@@ -504,7 +459,7 @@ Coordinates=165,924,46,36
 Coordinates=92,924,63,36
 
 []
-Coordinates=87,1797,89,36
+Coordinates=2123,740,66,36
 
 [cClassificacao]
 Coordinates=1789,832,55,36

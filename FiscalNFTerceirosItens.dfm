@@ -14,10 +14,19 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
     ActivePage = Painel
     Plain = True
     Align = alClient
+    ClientEvents.UniEvents.Strings = (
+      
+        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+        '= '#39'Pasta'#39';'#13#10'}')
     TabOrder = 0
+    ExplicitTop = -3
     object Painel: TUniTabSheet
       Hint = ''
       Caption = 'Itens da Nota'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniContainerPanel2: TUniContainerPanel
         Left = 0
         Top = 0
@@ -27,10 +36,6 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
         ParentColor = False
         Align = alClient
         AutoScroll = True
-        ClientEvents.UniEvents.Strings = (
-          
-            'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-            '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
           1143
@@ -137,7 +142,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
               Hint = ''
               ShowHint = True
               ParentShowHint = False
-              DataField = 'CIAP_TipoItem'
+              DataField = 'CIAP_Tipo'
               DataSource = dsItensNF
               Alignment = taRightJustify
               TabOrder = 4
@@ -384,7 +389,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
           end
           object UniPanel13: TUniPanel
             Left = 12
-            Top = 12
+            Top = 11
             Width = 761
             Height = 394
             Hint = ''
@@ -1961,7 +1966,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       'from NotasItens'
       '')
     Left = 921
-    Top = 47
+    Top = 46
     object NotasItensNota_id: TIntegerField
       FieldName = 'Nota_id'
       Origin = 'Nota_id'
@@ -2909,10 +2914,6 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       Precision = 18
       Size = 6
     end
-    object NotasItensCIAP_TipoItem: TSmallintField
-      FieldName = 'CIAP_TipoItem'
-      Origin = 'CIAP_TipoItem'
-    end
     object NotasItensItem_Referencia: TSmallintField
       FieldName = 'Item_Referencia'
       Origin = 'Item_Referencia'
@@ -2921,6 +2922,10 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
       FieldName = 'Processo'
       Origin = 'Processo'
       Size = 15
+    end
+    object NotasItensCIAP_Tipo: TSmallintField
+      FieldName = 'CIAP_Tipo'
+      Origin = 'CIAP_Tipo'
     end
   end
   object Operacao: TFDQuery
@@ -2988,7 +2993,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'SELECT Nota_id, Data_Emissao, Data_ES from NotasFiscais')
-    Left = 1018
-    Top = 626
+    Left = 1019
+    Top = 625
   end
 end

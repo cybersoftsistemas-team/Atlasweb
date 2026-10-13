@@ -191,7 +191,7 @@ object UniMainModule: TUniMainModule
     ResourceOptions.AssignedValues = [rvCmdExecMode]
     ResourceOptions.CmdExecMode = amNonBlocking
     LoginPrompt = False
-    Left = 34
+    Left = 35
     Top = 20
   end
   object Meses: TFDMemTable
@@ -260,7 +260,7 @@ object UniMainModule: TUniMainModule
     SQL.Strings = (
       'select * from EspecieVeiculo')
     Left = 298
-    Top = 91
+    Top = 93
   end
   object CondicaoVeiculo: TFDQuery
     Connection = Conecta
@@ -283,10 +283,9 @@ object UniMainModule: TUniMainModule
     FetchOptions.LiveWindowParanoic = False
     ResourceOptions.AssignedValues = [rvCmdExecMode]
     ResourceOptions.CmdExecMode = amNonBlocking
-    Connected = True
     LoginPrompt = False
-    Left = 115
-    Top = 18
+    Left = 116
+    Top = 20
   end
   object Log: TFDQuery
     Connection = Conecta

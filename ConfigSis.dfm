@@ -1,15 +1,15 @@
 object fConfigSis: TfConfigSis
   Left = 0
   Top = 0
-  Width = 1516
-  Height = 1500
+  Width = 1085
+  Height = 917
   OnCreate = uniFrameCreate
   OnDestroy = uniFrameDestroy
   TabOrder = 0
   object pBarraNav: TUniPanel
     Left = 0
     Top = 0
-    Width = 1516
+    Width = 1085
     Height = 35
     Hint = ''
     Align = alTop
@@ -17,7 +17,7 @@ object fConfigSis: TfConfigSis
     ClientEvents.UniEvents.Strings = (
       
         'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-        '= '#39'Pasta'#39';'#13#10'}')
+        '= '#39'BarraNavInterna'#39';'#13#10'}')
     BorderStyle = ubsNone
     Caption = ''
     Color = 5526569
@@ -64,12 +64,13 @@ object fConfigSis: TfConfigSis
       OnClick = bEditarClick
     end
     object bExcluir: TUniSpeedButton
-      Left = 222
+      Left = 143
       Top = 0
       Width = 41
       Height = 35
       Hint = 'Excluir registro corrente.'
       Caption = ''
+      Align = alLeft
       ParentColor = False
       IconAlign = iaCenter
       Images = UniMainModule.imgBotoes
@@ -78,12 +79,13 @@ object fConfigSis: TfConfigSis
       OnClick = bExcluirClick
     end
     object bCancelar: TUniSpeedButton
-      Left = 304
+      Left = 225
       Top = 0
       Width = 41
       Height = 35
       Hint = 'Cancelar modifica'#231#245'es feitas no registro corrente.'
       Caption = ''
+      Align = alLeft
       ParentColor = False
       IconAlign = iaCenter
       Images = UniMainModule.imgBotoes
@@ -92,12 +94,13 @@ object fConfigSis: TfConfigSis
       OnClick = bCancelarClick
     end
     object bGravar: TUniSpeedButton
-      Left = 263
+      Left = 184
       Top = 0
       Width = 41
       Height = 35
       Hint = 'Salva o registro corrente.'
       Caption = ''
+      Align = alLeft
       ParentColor = False
       IconAlign = iaCenter
       Images = UniMainModule.imgBotoes
@@ -106,12 +109,13 @@ object fConfigSis: TfConfigSis
       OnClick = bSalvarClick
     end
     object bFechar: TUniSpeedButton
-      Left = 345
+      Left = 352
       Top = 0
       Width = 41
       Height = 35
       Hint = 'Fecha a tela de cadastro atual.'
       Caption = ''
+      Align = alLeft
       ParentColor = False
       IconAlign = iaCenter
       Images = UniMainModule.imgBotoes
@@ -119,19 +123,28 @@ object fConfigSis: TfConfigSis
       TabOrder = 7
       OnClick = bFecharClick
     end
+    object bDLL: TUniButton
+      Left = 266
+      Top = 0
+      Width = 86
+      Height = 35
+      Hint = ''
+      ShowHint = True
+      ParentShowHint = False
+      Caption = 'Vers'#227'o DLL'
+      Align = alLeft
+      TabOrder = 8
+      OnClick = bDLLClick
+    end
   end
   object Pasta: TUniPageControl
     Left = 0
     Top = 35
-    Width = 1516
-    Height = 1465
+    Width = 1085
+    Height = 882
     Hint = ''
     ActivePage = TabSheet13
     Align = alClient
-    ClientEvents.UniEvents.Strings = (
-      
-        'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-        's = '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 0
     object TabSheet1: TUniTabSheet
       Hint = ''
@@ -139,8 +152,8 @@ object fConfigSis: TfConfigSis
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1508
-        Height = 1437
+        Width = 1077
+        Height = 854
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -149,14 +162,14 @@ object fConfigSis: TfConfigSis
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1506
-          1435)
-        ScrollHeight = 614
+          1075
+          852)
+        ScrollHeight = 489
         object pFicha1: TUniPanel
-          Left = 206
-          Top = 10
+          Left = 45
+          Top = 27
           Width = 714
-          Height = 604
+          Height = 462
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -166,16 +179,15 @@ object fConfigSis: TfConfigSis
             
               'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
               ' '#39'Ficha'#39';'#13#10'}')
-          BorderStyle = ubsNone
+          BorderStyle = ubsSolid
           TitleAlign = taCenter
           Title = 'DADOS GERAIS'
           Caption = ''
-          Color = clTeal
           object GroupBox9: TUniGroupBox
             Left = 26
-            Top = 23
-            Width = 150
-            Height = 124
+            Top = 18
+            Width = 256
+            Height = 87
             Hint = ''
             ShowHint = True
             ParentShowHint = False
@@ -187,7 +199,7 @@ object fConfigSis: TfConfigSis
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
                 's = '#39'Grupo'#39';'#13#10'}')
             object cBackup_Automatico: TUniDBCheckBox
-              Left = 13
+              Left = 21
               Top = 24
               Width = 119
               Height = 17
@@ -206,10 +218,10 @@ object fConfigSis: TfConfigSis
               FieldLabelSeparator = ' '
             end
             object cBackup_Hora: TUniDBEdit
-              Left = 13
-              Top = 54
-              Width = 116
-              Height = 55
+              Left = 19
+              Top = 48
+              Width = 225
+              Height = 25
               Hint = ''
               ShowHint = True
               ParentShowHint = False
@@ -223,17 +235,16 @@ object fConfigSis: TfConfigSis
               InputType = 'time'
               FieldLabel = 'Hora do Backup'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               SelectOnFocus = True
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
           end
           object GroupBox3: TUniGroupBox
             Left = 26
-            Top = 184
+            Top = 144
             Width = 660
-            Height = 385
+            Height = 294
             Hint = ''
             ShowHint = True
             ParentShowHint = False
@@ -247,7 +258,7 @@ object fConfigSis: TfConfigSis
               Left = 14
               Top = 24
               Width = 629
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Site'
@@ -259,17 +270,16 @@ object fConfigSis: TfConfigSis
               TabOrder = 0
               InputType = 'url'
               FieldLabel = 'Site'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 160
               FieldLabelSeparator = ' '
               SelectOnFocus = True
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cEmail_Suporte: TUniDBEdit
               Left = 14
-              Top = 80
+              Top = 51
               Width = 629
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Email_Suporte'
@@ -281,17 +291,16 @@ object fConfigSis: TfConfigSis
               TabOrder = 1
               InputType = 'email'
               FieldLabel = 'E-mail do Suporte'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 160
               FieldLabelSeparator = ' '
               SelectOnFocus = True
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cIP_Suporte: TUniDBEdit
               Left = 14
-              Top = 248
-              Width = 508
-              Height = 55
+              Top = 159
+              Width = 450
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'IP_Suporte'
@@ -302,17 +311,16 @@ object fConfigSis: TfConfigSis
               Font.Style = [fsBold]
               TabOrder = 3
               FieldLabel = 'IP do Suporte'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 160
               FieldLabelSeparator = ' '
               SelectOnFocus = True
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cServidor_Proxy: TUniDBEdit
               Left = 14
-              Top = 136
+              Top = 78
               Width = 629
-              Height = 55
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Servidor_Proxy'
@@ -323,17 +331,16 @@ object fConfigSis: TfConfigSis
               Font.Style = [fsBold]
               TabOrder = 2
               FieldLabel = 'Endere'#231'o do servidor Proxy '
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 160
               FieldLabelSeparator = ' '
               SelectOnFocus = True
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cUsuario_Proxy: TUniDBEdit
               Left = 14
-              Top = 192
-              Width = 340
-              Height = 55
+              Top = 105
+              Width = 450
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Usuario_Proxy'
@@ -344,17 +351,16 @@ object fConfigSis: TfConfigSis
               Font.Style = [fsBold]
               TabOrder = 4
               FieldLabel = 'Usu'#225'rio Proxy'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 160
               FieldLabelSeparator = ' '
               SelectOnFocus = True
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cSenha_FTP: TUniDBEdit
-              Left = 405
-              Top = 304
-              Width = 238
-              Height = 55
+              Left = 14
+              Top = 213
+              Width = 450
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Senha_FTP'
@@ -366,17 +372,16 @@ object fConfigSis: TfConfigSis
               Font.Style = [fsBold]
               TabOrder = 5
               FieldLabel = 'Senha'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 160
               FieldLabelSeparator = ' '
               SelectOnFocus = True
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cUsuario_FTP: TUniDBEdit
               Left = 14
-              Top = 304
-              Width = 340
-              Height = 55
+              Top = 186
+              Width = 450
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Usuario_FTP'
@@ -387,17 +392,16 @@ object fConfigSis: TfConfigSis
               Font.Style = [fsBold]
               TabOrder = 9
               FieldLabel = 'Usu'#225'rio FTP'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 160
               FieldLabelSeparator = ' '
               SelectOnFocus = True
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cSenha_Proxy: TUniDBEdit
-              Left = 405
-              Top = 192
-              Width = 238
-              Height = 55
+              Left = 14
+              Top = 132
+              Width = 450
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Senha_Proxy'
@@ -409,15 +413,14 @@ object fConfigSis: TfConfigSis
               Font.Style = [fsBold]
               TabOrder = 7
               FieldLabel = 'Senha'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 160
               FieldLabelSeparator = ' '
               SelectOnFocus = True
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cPassive_FTP: TUniDBCheckBox
-              Left = 537
-              Top = 281
+              Left = 14
+              Top = 255
               Width = 113
               Height = 17
               Hint = ''
@@ -435,17 +438,6 @@ object fConfigSis: TfConfigSis
               FieldLabelSeparator = ' '
             end
           end
-          object bDLL: TUniButton
-            Left = 614
-            Top = 15
-            Width = 86
-            Height = 42
-            Hint = ''
-            ShowHint = True
-            Caption = 'Vers'#227'o DLL'
-            TabOrder = 3
-            OnClick = bDLLClick
-          end
         end
       end
     end
@@ -456,8 +448,8 @@ object fConfigSis: TfConfigSis
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1508
-        Height = 1437
+        Width = 1077
+        Height = 854
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -466,11 +458,11 @@ object fConfigSis: TfConfigSis
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1506
-          1435)
+          1075
+          852)
         ScrollHeight = 461
         object UniPanel2: TUniPanel
-          Left = 206
+          Left = 97
           Top = 21
           Width = 349
           Height = 440
@@ -483,11 +475,10 @@ object fConfigSis: TfConfigSis
             
               'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
               ' '#39'Ficha'#39';'#13#10'}')
-          BorderStyle = ubsNone
+          BorderStyle = ubsSolid
           TitleAlign = taCenter
           Title = 'DADOS GERAIS'
           Caption = ''
-          Color = clTeal
           object cExtenso_Maiusculo: TUniDBCheckBox
             Left = 23
             Top = 34
@@ -662,8 +653,8 @@ object fConfigSis: TfConfigSis
       object UniScrollBox3: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1508
-        Height = 1437
+        Width = 1077
+        Height = 854
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -672,14 +663,14 @@ object fConfigSis: TfConfigSis
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1506
-          1435)
-        ScrollHeight = 674
+          1075
+          852)
+        ScrollHeight = 610
         object UniPanel3: TUniPanel
-          Left = 211
-          Top = 16
+          Left = 37
+          Top = 20
           Width = 1015
-          Height = 658
+          Height = 590
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -689,11 +680,10 @@ object fConfigSis: TfConfigSis
             
               'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
               ' '#39'Ficha'#39';'#13#10'}')
-          BorderStyle = ubsNone
+          BorderStyle = ubsSolid
           TitleAlign = taCenter
           Title = 'DADOS GERAIS'
           Caption = ''
-          Color = clTeal
           object GroupBox2: TUniGroupBox
             Left = 20
             Top = 13
@@ -878,7 +868,7 @@ object fConfigSis: TfConfigSis
           object cValor_Despesas: TUniDBRadioGroup
             Left = 20
             Top = 380
-            Width = 514
+            Width = 541
             Height = 50
             Hint = ''
             ShowHint = True
@@ -900,9 +890,9 @@ object fConfigSis: TfConfigSis
           end
           object cEmail_NFE: TUniDBEdit
             Left = 20
-            Top = 573
+            Top = 541
             Width = 966
-            Height = 55
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Email_NFE'
@@ -913,11 +903,10 @@ object fConfigSis: TfConfigSis
             Font.Style = [fsBold]
             TabOrder = 3
             FieldLabel = 'Enviar todas as Notas/C.Corre'#231#227'o/Cancelamentos para o E-mail'
-            FieldLabelWidth = 120
-            FieldLabelAlign = laTop
+            FieldLabelWidth = 350
             FieldLabelSeparator = ' '
             SelectOnFocus = True
-            BorderStyle = ubsSolid
+            BorderStyle = ubsInset
           end
           object GroupBox27: TUniGroupBox
             Left = 20
@@ -1097,9 +1086,9 @@ object fConfigSis: TfConfigSis
           end
           object GroupBox30: TUniGroupBox
             Left = 20
-            Top = 451
-            Width = 514
-            Height = 96
+            Top = 449
+            Width = 541
+            Height = 72
             Hint = ''
             ShowHint = True
             Caption = 'Estoque Min'#237'mo'
@@ -1109,13 +1098,13 @@ object fConfigSis: TfConfigSis
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
                 's = '#39'Grupo'#39';'#13#10'}')
             DesignSize = (
-              514
-              96)
+              541
+              72)
             object cEstoque_MinimoPerc: TUniDBFormattedNumberEdit
               Left = 11
-              Top = 19
-              Width = 78
-              Height = 55
+              Top = 27
+              Width = 214
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Estoque_MinimoPerc'
@@ -1127,17 +1116,15 @@ object fConfigSis: TfConfigSis
               TabOrder = 0
               SelectOnFocus = True
               FieldLabel = 'Percentual'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
               ThousandSeparator = '.'
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object bMinimo: TUniButton
-              Left = 107
-              Top = 40
-              Width = 294
+              Left = 252
+              Top = 22
+              Width = 274
               Height = 36
               Hint = ''
               ShowHint = True
@@ -1157,8 +1144,8 @@ object fConfigSis: TfConfigSis
       object UniScrollBox5: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1508
-        Height = 1437
+        Width = 1077
+        Height = 854
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -1167,14 +1154,14 @@ object fConfigSis: TfConfigSis
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1506
-          1435)
-        ScrollHeight = 1138
+          1075
+          852)
+        ScrollHeight = 741
         object UniPanel5: TUniPanel
-          Left = 205
-          Top = 10
-          Width = 775
-          Height = 1128
+          Left = 24
+          Top = 16
+          Width = 1021
+          Height = 725
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -1184,19 +1171,18 @@ object fConfigSis: TfConfigSis
             
               'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
               ' '#39'Ficha'#39';'#13#10'}')
-          BorderStyle = ubsNone
+          BorderStyle = ubsSolid
           TitleAlign = taCenter
           Title = 'DADOS GERAIS'
           Caption = ''
-          Color = clTeal
           object GroupBox10: TUniGroupBox
             Left = 15
             Top = 234
-            Width = 735
-            Height = 482
+            Width = 983
+            Height = 250
             Hint = ''
             ShowHint = True
-            Caption = 'Vencimentos dos  Impostos (Dia)'
+            Caption = 'Vencimentos dos Impostos (Dia)'
             TabOrder = 1
             ClientEvents.UniEvents.Strings = (
               
@@ -1205,8 +1191,8 @@ object fConfigSis: TfConfigSis
             object cVencimento_ICMSFUNDAP: TUniDBNumberEdit
               Left = 10
               Top = 20
-              Width = 110
-              Height = 55
+              Width = 210
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Vencimento_ICMSFUNDAP'
@@ -1218,17 +1204,15 @@ object fConfigSis: TfConfigSis
               TabOrder = 0
               SelectOnFocus = True
               FieldLabel = 'ICMS FUNDAP'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cVencimento_ICMSINVEST: TUniDBNumberEdit
               Left = 10
-              Top = 76
-              Width = 110
-              Height = 55
+              Top = 47
+              Width = 210
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Vencimento_ICMSINVEST'
@@ -1240,17 +1224,15 @@ object fConfigSis: TfConfigSis
               TabOrder = 1
               SelectOnFocus = True
               FieldLabel = 'ICMS INVEST'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cVencimento_ICMSComercio: TUniDBNumberEdit
               Left = 10
-              Top = 132
-              Width = 110
-              Height = 55
+              Top = 74
+              Width = 210
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Vencimento_ICMSComercio'
@@ -1262,17 +1244,15 @@ object fConfigSis: TfConfigSis
               TabOrder = 2
               SelectOnFocus = True
               FieldLabel = 'ICMS Com'#233'rcio'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cVencimento_PIS: TUniDBNumberEdit
               Left = 10
-              Top = 244
-              Width = 110
-              Height = 55
+              Top = 128
+              Width = 210
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Vencimento_PIS'
@@ -1284,17 +1264,15 @@ object fConfigSis: TfConfigSis
               TabOrder = 8
               SelectOnFocus = True
               FieldLabel = 'PIS'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cVencimento_COFINS: TUniDBNumberEdit
               Left = 10
-              Top = 300
-              Width = 110
-              Height = 55
+              Top = 155
+              Width = 210
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Vencimento_COFINS'
@@ -1306,17 +1284,15 @@ object fConfigSis: TfConfigSis
               TabOrder = 11
               SelectOnFocus = True
               FieldLabel = 'COFINS'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cVencimento_IPI: TUniDBNumberEdit
               Left = 10
-              Top = 188
-              Width = 110
-              Height = 55
+              Top = 101
+              Width = 210
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Vencimento_IPI'
@@ -1328,17 +1304,15 @@ object fConfigSis: TfConfigSis
               TabOrder = 5
               SelectOnFocus = True
               FieldLabel = 'IPI'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cVencimento_IRPJ: TUniDBNumberEdit
               Left = 10
-              Top = 356
-              Width = 110
-              Height = 55
+              Top = 182
+              Width = 210
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Vencimento_IRPJ'
@@ -1350,17 +1324,15 @@ object fConfigSis: TfConfigSis
               TabOrder = 14
               SelectOnFocus = True
               FieldLabel = 'IRPJ'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cVencimento_CSLL: TUniDBNumberEdit
               Left = 10
-              Top = 412
-              Width = 110
-              Height = 55
+              Top = 209
+              Width = 210
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Vencimento_CSLL'
@@ -1372,17 +1344,15 @@ object fConfigSis: TfConfigSis
               TabOrder = 17
               SelectOnFocus = True
               FieldLabel = 'CSLL'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cClassICMS: TUniDBLookupComboBox
-              Left = 124
-              Top = 132
-              Width = 341
-              Height = 55
+              Left = 226
+              Top = 74
+              Width = 430
+              Height = 25
               Hint = ''
               ShowHint = True
               ListOnlyMode = lmFollowSource
@@ -1390,270 +1360,276 @@ object fConfigSis: TfConfigSis
               ListSource = dsOrgao
               KeyField = 'Codigo'
               ListFieldIndex = 0
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Vencimento_ICMSOrgao'
               DataSource = dsConfig
               ParentFont = False
               AnyMatch = True
               TabOrder = 3
               Color = clWindow
+              MatchFieldWidth = False
               FieldLabel = 'Org'#227'o'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               Style = csDropDown
             end
             object RxDBLookupCombo3: TUniDBLookupComboBox
-              Left = 468
-              Top = 132
-              Width = 253
-              Height = 55
+              Left = 660
+              Top = 74
+              Width = 310
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Nome'
               ListSource = dsTipoDoc
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Vencimento_ICMSDoc'
               DataSource = dsConfig
+              AnyMatch = True
               TabOrder = 4
               Color = clWindow
+              MatchFieldWidth = False
               FieldLabel = 'Tipo DOC'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
             end
             object RxDBLookupCombo4: TUniDBLookupComboBox
-              Left = 124
-              Top = 188
-              Width = 341
-              Height = 55
+              Left = 226
+              Top = 101
+              Width = 430
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Nome'
               ListSource = dsOrgao
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Vencimento_IPIOrgao'
               DataSource = dsConfig
               ParentFont = False
               AnyMatch = True
               TabOrder = 6
               Color = clWindow
+              MatchFieldWidth = False
               FieldLabel = 'Org'#227'o'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
               Style = csDropDown
             end
             object RxDBLookupCombo5: TUniDBLookupComboBox
-              Left = 468
-              Top = 188
-              Width = 253
-              Height = 55
+              Left = 660
+              Top = 101
+              Width = 310
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Nome'
               ListSource = dsTipoDoc
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Vencimento_IPIDoc'
               DataSource = dsConfig
+              AnyMatch = True
               TabOrder = 7
               Color = clWindow
+              MatchFieldWidth = False
               FieldLabel = 'Tipo DOC'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
             end
             object RxDBLookupCombo6: TUniDBLookupComboBox
-              Left = 124
-              Top = 244
-              Width = 341
-              Height = 55
+              Left = 226
+              Top = 128
+              Width = 430
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Nome'
               ListSource = dsOrgao
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Vencimento_PISOrgao'
               DataSource = dsConfig
               ParentFont = False
               AnyMatch = True
               TabOrder = 9
               Color = clWindow
+              MatchFieldWidth = False
               FieldLabel = 'Org'#227'o'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
               Style = csDropDown
             end
             object RxDBLookupCombo7: TUniDBLookupComboBox
-              Left = 468
-              Top = 244
-              Width = 253
-              Height = 55
+              Left = 660
+              Top = 128
+              Width = 310
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Nome'
               ListSource = dsTipoDoc
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Vencimento_PISDoc'
               DataSource = dsConfig
+              AnyMatch = True
               TabOrder = 10
               Color = clWindow
+              MatchFieldWidth = False
               FieldLabel = 'Tipo DOC'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
             end
             object RxDBLookupCombo8: TUniDBLookupComboBox
-              Left = 124
-              Top = 300
-              Width = 341
-              Height = 55
+              Left = 226
+              Top = 155
+              Width = 430
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Nome'
               ListSource = dsOrgao
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Vencimento_COFINSOrgao'
               DataSource = dsConfig
               ParentFont = False
               AnyMatch = True
               TabOrder = 12
               Color = clWindow
+              MatchFieldWidth = False
               FieldLabel = 'Org'#227'o'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
               Style = csDropDown
             end
             object RxDBLookupCombo9: TUniDBLookupComboBox
-              Left = 468
-              Top = 300
-              Width = 253
-              Height = 55
+              Left = 660
+              Top = 155
+              Width = 310
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Nome'
               ListSource = dsTipoDoc
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Vencimento_COFINSDoc'
               DataSource = dsConfig
+              AnyMatch = True
               TabOrder = 13
               Color = clWindow
+              MatchFieldWidth = False
               FieldLabel = 'Tipo DOC'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
             end
             object RxDBLookupCombo10: TUniDBLookupComboBox
-              Left = 124
-              Top = 356
-              Width = 341
-              Height = 55
+              Left = 226
+              Top = 182
+              Width = 430
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Nome'
               ListSource = dsOrgao
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Vencimento_IRPJOrgao'
               DataSource = dsConfig
               ParentFont = False
               AnyMatch = True
               TabOrder = 15
               Color = clWindow
+              MatchFieldWidth = False
               FieldLabel = 'Org'#227'o'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
               Style = csDropDown
             end
             object RxDBLookupCombo11: TUniDBLookupComboBox
-              Left = 468
-              Top = 356
-              Width = 253
-              Height = 55
+              Left = 660
+              Top = 182
+              Width = 310
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Nome'
               ListSource = dsTipoDoc
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Vencimento_IRPJDoc'
               DataSource = dsConfig
+              AnyMatch = True
               TabOrder = 16
               Color = clWindow
+              MatchFieldWidth = False
               FieldLabel = 'Tipo DOC'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
             end
             object RxDBLookupCombo12: TUniDBLookupComboBox
-              Left = 124
-              Top = 412
-              Width = 341
-              Height = 55
+              Left = 226
+              Top = 209
+              Width = 430
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Nome'
               ListSource = dsOrgao
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Vencimento_CSLLOrgao'
               DataSource = dsConfig
               ParentFont = False
               AnyMatch = True
               TabOrder = 18
               Color = clWindow
+              MatchFieldWidth = False
               FieldLabel = 'Org'#227'o'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
               Style = csDropDown
             end
             object RxDBLookupCombo13: TUniDBLookupComboBox
-              Left = 468
-              Top = 412
-              Width = 253
-              Height = 55
+              Left = 660
+              Top = 209
+              Width = 310
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Nome'
               ListSource = dsTipoDoc
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Vencimento_CSLLDoc'
               DataSource = dsConfig
+              AnyMatch = True
               TabOrder = 19
               Color = clWindow
+              MatchFieldWidth = False
               FieldLabel = 'Tipo DOC'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 60
               FieldLabelSeparator = ' '
             end
           end
           object GroupBox29: TUniGroupBox
-            Left = 289
+            Left = 438
             Top = 17
             Width = 464
-            Height = 95
+            Height = 89
             Hint = ''
             ShowHint = True
             Caption = 'CIAP'
@@ -1664,12 +1640,12 @@ object fConfigSis: TfConfigSis
                 's = '#39'Grupo'#39';'#13#10'}')
             object cValor_CIAP: TUniDBFormattedNumberEdit
               Left = 10
-              Top = 54
+              Top = 50
               Width = 344
-              Height = 30
+              Height = 25
               Hint = ''
               ShowHint = True
-              DataField = 'Valor_CIAP'
+              DataField = 'Valor_Imobilizado'
               DataSource = dsConfig
               ParentFont = False
               Font.Height = -13
@@ -1679,19 +1655,18 @@ object fConfigSis: TfConfigSis
               SelectOnFocus = True
               FieldLabel = 'Valor M'#237'nimo para imobilizado (CIAP)'
               FieldLabelWidth = 210
-              FieldLabelAlign = laRight
               DecimalSeparator = ','
               ThousandSeparator = '.'
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cParcelas_CIAP: TUniDBNumberEdit
               Left = 9
               Top = 23
               Width = 344
-              Height = 30
+              Height = 25
               Hint = ''
               ShowHint = True
-              DataField = 'Parcelas_CIAP'
+              DataField = 'Parcelas_Imobilizado'
               DataSource = dsConfig
               ParentFont = False
               Font.Height = -13
@@ -1701,17 +1676,16 @@ object fConfigSis: TfConfigSis
               SelectOnFocus = True
               FieldLabel = 'Parcelas (Meses)'
               FieldLabelWidth = 210
-              FieldLabelAlign = laRight
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
           end
           object GroupBox33: TUniGroupBox
-            Left = 289
-            Top = 121
+            Left = 438
+            Top = 116
             Width = 464
-            Height = 70
+            Height = 62
             Hint = ''
             ShowHint = True
             Caption = 'Diferencial de Al'#237'quota ICMS (DIFAL)'
@@ -1724,7 +1698,7 @@ object fConfigSis: TfConfigSis
               Left = 11
               Top = 24
               Width = 438
-              Height = 30
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'DIFAL_ICMSPart'
@@ -1732,17 +1706,16 @@ object fConfigSis: TfConfigSis
               TabOrder = 1
               FieldLabel = 'Percentual participa'#231#227'o ano Corrente (Estado Destino)'
               FieldLabelWidth = 300
-              FieldLabelAlign = laRight
               DecimalSeparator = ','
               ThousandSeparator = '.'
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
           end
           object GroupBox7: TUniGroupBox
             Left = 15
-            Top = 17
-            Width = 260
-            Height = 205
+            Top = 18
+            Width = 364
+            Height = 160
             Hint = ''
             ShowHint = True
             Caption = 'Conhecimento de Transporte (CTR)'
@@ -1754,8 +1727,8 @@ object fConfigSis: TfConfigSis
             object cPIS_CTR: TUniDBFormattedNumberEdit
               Left = 9
               Top = 26
-              Width = 100
-              Height = 55
+              Width = 220
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'PIS_CTR'
@@ -1768,17 +1741,16 @@ object fConfigSis: TfConfigSis
               SelectOnFocus = True
               FieldLabel = 'PIS'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
               ThousandSeparator = '.'
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cCOFINS_CTR: TUniDBFormattedNumberEdit
-              Left = 115
-              Top = 26
-              Width = 100
-              Height = 55
+              Left = 9
+              Top = 53
+              Width = 220
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'COFINS_CTR'
@@ -1791,37 +1763,35 @@ object fConfigSis: TfConfigSis
               SelectOnFocus = True
               FieldLabel = 'COFINS'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
               ThousandSeparator = '.'
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object clRamo_CTR: TUniDBLookupComboBox
-              Left = 8
-              Top = 137
-              Width = 240
-              Height = 55
+              Left = 9
+              Top = 107
+              Width = 337
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Descricao'
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Ramo_CTR'
               DataSource = dsConfig
               TabOrder = 3
               Color = clWindow
               FieldLabel = 'Ramo de Atividade'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
             end
             object cItem_CTR: TUniDBNumberEdit
               Left = 9
-              Top = 82
-              Width = 100
-              Height = 55
+              Top = 80
+              Width = 220
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Item_CTR'
@@ -1834,143 +1804,14 @@ object fConfigSis: TfConfigSis
               SelectOnFocus = True
               FieldLabel = 'C'#243'digo Produto'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
-            end
-          end
-          object UniGroupBox1: TUniGroupBox
-            Left = 15
-            Top = 740
-            Width = 496
-            Height = 365
-            Hint = ''
-            ShowHint = True
-            Caption = 'SPED (Fiscal/PISCOFINS)'
-            TabOrder = 5
-            object GroupBox11: TUniGroupBox
-              Left = 15
-              Top = 26
-              Width = 460
-              Height = 145
-              Hint = ''
-              ShowHint = True
-              Caption = 'Inventario (SPED FISCAL)'
-              TabOrder = 1
-              ClientEvents.UniEvents.Strings = (
-                
-                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-                  's = '#39'Grupo'#39';'#13#10'}')
-              object cSPED_MesInventario: TUniDBLookupComboBox
-                Left = 15
-                Top = 73
-                Width = 188
-                Height = 55
-                Hint = ''
-                ShowHint = True
-                ListField = 'Nome'
-                ListSource = UniMainModule.dsMeses
-                KeyField = 'Mes'
-                ListFieldIndex = 0
-                BorderStyle = ubsSolid
-                DataField = 'SPED_MesInventario'
-                DataSource = dsConfig
-                TabOrder = 1
-                Color = clWindow
-                FieldLabel = 'Ramo de Atividade'
-                FieldLabelWidth = 120
-                FieldLabelAlign = laTop
-                FieldLabelSeparator = ' '
-              end
-              object cConta_Inventario: TUniDBLookupComboBox
-                Left = 15
-                Top = 18
-                Width = 427
-                Height = 55
-                Hint = ''
-                ShowHint = True
-                ListField = 'Conta;Nome_Contabil'
-                ListSource = dsPlano
-                KeyField = 'Conta'
-                ListFieldIndex = 1
-                BorderStyle = ubsSolid
-                DataField = 'Conta_Inventario'
-                DataSource = dsConfig
-                TabOrder = 2
-                Color = clWindow
-                FieldLabel = 'Conta'
-                FieldLabelWidth = 120
-                FieldLabelAlign = laTop
-                FieldLabelSeparator = ' '
-              end
-            end
-            object GroupBox18: TUniGroupBox
-              Left = 15
-              Top = 197
-              Width = 460
-              Height = 150
-              Hint = ''
-              ShowHint = True
-              Caption = 'Contas Cont'#225'beis para o PIS (SPED PIS/COFINS)'
-              TabOrder = 2
-              ClientEvents.UniEvents.Strings = (
-                
-                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
-                  's = '#39'Grupo'#39';'#13#10'}')
-              object cPIS_ContaCodigo: TUniDBLookupComboBox
-                Left = 15
-                Top = 20
-                Width = 430
-                Height = 55
-                Hint = ''
-                ShowHint = True
-                ListField = 'Conta;Nome_Contabil'
-                ListSource = dsPlano
-                KeyField = 'Codigo'
-                ListFieldIndex = 1
-                BorderStyle = ubsSolid
-                DataField = 'PIS_ContaCodigo'
-                DataSource = dsConfig
-                ParentFont = False
-                AnyMatch = True
-                TabOrder = 1
-                Color = clWindow
-                FieldLabel = 'Conta'
-                FieldLabelWidth = 120
-                FieldLabelAlign = laTop
-                FieldLabelSeparator = ' '
-                Style = csDropDown
-              end
-              object cCOFINS_ContaCodigo: TUniDBLookupComboBox
-                Left = 15
-                Top = 75
-                Width = 430
-                Height = 55
-                Hint = ''
-                ShowHint = True
-                ListField = 'Conta;Nome_Contabil'
-                ListSource = dsPlano
-                KeyField = 'Codigo'
-                ListFieldIndex = 1
-                BorderStyle = ubsSolid
-                DataField = 'COFINS_ContaCodigo'
-                DataSource = dsConfig
-                ParentFont = False
-                AnyMatch = True
-                TabOrder = 2
-                Color = clWindow
-                FieldLabel = 'Conta'
-                FieldLabelWidth = 120
-                FieldLabelAlign = laTop
-                FieldLabelSeparator = ' '
-                Style = csDropDown
-              end
+              BorderStyle = ubsInset
             end
           end
           object UniDBCheckBox1: TUniDBCheckBox
-            Left = 290
-            Top = 208
+            Left = 24
+            Top = 200
             Width = 464
             Height = 17
             Hint = ''
@@ -1982,12 +1823,126 @@ object fConfigSis: TfConfigSis
             Caption = 
               'Verificar c'#243'digo do produto na descri'#231#227'o na importa'#231#227'o do XML da' +
               ' NF-e terceiros.'
-            TabOrder = 6
+            TabOrder = 5
             ParentColor = False
             Color = clBtnFace
             FieldLabelWidth = 120
             FieldLabelAlign = laRight
             FieldLabelSeparator = ' '
+          end
+          object GroupBox11: TUniGroupBox
+            Left = 15
+            Top = 497
+            Width = 605
+            Height = 86
+            Hint = ''
+            ShowHint = True
+            Caption = 'Inventario (SPED FISCAL)'
+            TabOrder = 6
+            ClientEvents.UniEvents.Strings = (
+              
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                's = '#39'Grupo'#39';'#13#10'}')
+            object cSPED_MesInventario: TUniDBLookupComboBox
+              Left = 15
+              Top = 45
+              Width = 334
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ListField = 'Nome'
+              ListSource = UniMainModule.dsMeses
+              KeyField = 'Mes'
+              ListFieldIndex = 0
+              BorderStyle = ubsInset
+              DataField = 'SPED_MesInventario'
+              DataSource = dsConfig
+              TabOrder = 1
+              Color = clWindow
+              FieldLabel = 'M'#234's para entrega'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+            end
+            object cConta_Inventario: TUniDBLookupComboBox
+              Left = 15
+              Top = 18
+              Width = 580
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ListField = 'Conta;Nome_Contabil'
+              ListSource = dsPlano
+              KeyField = 'Conta'
+              ListFieldIndex = 1
+              BorderStyle = ubsInset
+              DataField = 'Conta_Inventario'
+              DataSource = dsConfig
+              TabOrder = 2
+              Color = clWindow
+              FieldLabel = 'Conta'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+            end
+          end
+          object GroupBox18: TUniGroupBox
+            Left = 16
+            Top = 595
+            Width = 605
+            Height = 93
+            Hint = ''
+            ShowHint = True
+            Caption = 'Contas Cont'#225'beis para o PIS (SPED PIS/COFINS)'
+            TabOrder = 7
+            ClientEvents.UniEvents.Strings = (
+              
+                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
+                's = '#39'Grupo'#39';'#13#10'}')
+            object cPIS_ContaCodigo: TUniDBLookupComboBox
+              Left = 15
+              Top = 20
+              Width = 580
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ListField = 'Conta;Nome_Contabil'
+              ListSource = dsPlano
+              KeyField = 'Codigo'
+              ListFieldIndex = 1
+              BorderStyle = ubsInset
+              DataField = 'PIS_ContaCodigo'
+              DataSource = dsConfig
+              ParentFont = False
+              AnyMatch = True
+              TabOrder = 1
+              Color = clWindow
+              FieldLabel = 'Conta'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+              Style = csDropDown
+            end
+            object cCOFINS_ContaCodigo: TUniDBLookupComboBox
+              Left = 15
+              Top = 47
+              Width = 580
+              Height = 25
+              Hint = ''
+              ShowHint = True
+              ListField = 'Conta;Nome_Contabil'
+              ListSource = dsPlano
+              KeyField = 'Codigo'
+              ListFieldIndex = 1
+              BorderStyle = ubsInset
+              DataField = 'COFINS_ContaCodigo'
+              DataSource = dsConfig
+              ParentFont = False
+              AnyMatch = True
+              TabOrder = 2
+              Color = clWindow
+              FieldLabel = 'Conta'
+              FieldLabelWidth = 120
+              FieldLabelSeparator = ' '
+              Style = csDropDown
+            end
           end
         end
       end
@@ -1999,8 +1954,8 @@ object fConfigSis: TfConfigSis
       object UniScrollBox6: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1508
-        Height = 1437
+        Width = 1077
+        Height = 854
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -2009,14 +1964,14 @@ object fConfigSis: TfConfigSis
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1506
-          1435)
-        ScrollHeight = 493
+          1075
+          852)
+        ScrollHeight = 444
         object UniPanel4: TUniPanel
-          Left = 212
+          Left = 4
           Top = 23
-          Width = 853
-          Height = 470
+          Width = 1032
+          Height = 421
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -2026,16 +1981,15 @@ object fConfigSis: TfConfigSis
             
               'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
               ' '#39'Ficha'#39';'#13#10'}')
-          BorderStyle = ubsNone
+          BorderStyle = ubsSolid
           TitleAlign = taCenter
           Title = 'DADOS GERAIS'
           Caption = ''
-          Color = clTeal
           object GroupBox15: TUniGroupBox
             Left = 17
-            Top = 155
-            Width = 482
-            Height = 86
+            Top = 182
+            Width = 734
+            Height = 58
             Hint = ''
             ShowHint = True
             Caption = 'Cria'#231#227'o de Contas autom'#225'tico no Plano de Contas'
@@ -2047,22 +2001,21 @@ object fConfigSis: TfConfigSis
             object clContab_GrupoBanco: TUniDBLookupComboBox
               Left = 11
               Top = 20
-              Width = 453
-              Height = 55
+              Width = 702
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome_Contabil'
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 2
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Contab_GrupoBanco'
               DataSource = dsConfig
               TabOrder = 0
               Color = clWindow
-              FieldLabel = 'Grupo de Bancos para cria'#231#227'o de Contas autom'#225'tico '
+              FieldLabel = 'Grupo de Bancos'
               FieldLabelWidth = 120
-              FieldLabelAlign = laTop
               FieldLabelSeparator = ' '
             end
           end
@@ -2070,7 +2023,7 @@ object fConfigSis: TfConfigSis
             Left = 17
             Top = 18
             Width = 250
-            Height = 17
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Parametrizacao_Contabil'
@@ -2087,9 +2040,9 @@ object fConfigSis: TfConfigSis
           end
           object GroupBox34: TUniGroupBox
             Left = 16
-            Top = 249
-            Width = 814
-            Height = 210
+            Top = 265
+            Width = 996
+            Height = 115
             Hint = ''
             ShowHint = True
             Caption = 'Lan'#231'amentos de Encerramento'
@@ -2099,137 +2052,131 @@ object fConfigSis: TfConfigSis
                 'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'    config.cl' +
                 's = '#39'Grupo'#39';'#13#10'}')
             object clContab_HistoricoEncPrejuizo: TUniDBLookupComboBox
-              Left = 409
-              Top = 138
-              Width = 391
-              Height = 55
+              Left = 499
+              Top = 75
+              Width = 480
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo; Descricao'
               ListSource = dsHistoricos
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Contab_HistoricoEncPrejuizo'
               DataSource = dsConfig
               TabOrder = 5
               Color = clWindow
               FieldLabel = 'Hist'#243'rico (Preju'#237'zo Acumulado)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 160
               FieldLabelSeparator = ' '
             end
             object clContab_ContaEncLucro: TUniDBLookupComboBox
               Left = 13
-              Top = 83
-              Width = 391
-              Height = 55
+              Top = 48
+              Width = 480
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome_Contabil'
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 2
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Contab_ContaEncLucro'
               DataSource = dsConfig
               TabOrder = 2
               Color = clWindow
               FieldLabel = 'Conta (Lucro Acumulado)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 140
               FieldLabelSeparator = ' '
             end
             object clContab_ContaEncPrejuizo: TUniDBLookupComboBox
               Left = 13
-              Top = 138
-              Width = 391
-              Height = 55
+              Top = 76
+              Width = 480
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome_Contabil'
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 2
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Contab_ContaEncPrejuizo'
               DataSource = dsConfig
               TabOrder = 4
               Color = clWindow
               FieldLabel = 'Conta (Preju'#237'zo Acumulado)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 140
               FieldLabelSeparator = ' '
             end
             object clContab_ContaResultado: TUniDBLookupComboBox
               Left = 13
-              Top = 28
-              Width = 391
-              Height = 55
+              Top = 20
+              Width = 480
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Conta;Codigo;Nome_Contabil'
               ListSource = dsPlano
               KeyField = 'Codigo'
               ListFieldIndex = 2
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Contab_ContaResultado'
               DataSource = dsConfig
               TabOrder = 0
               Color = clWindow
               FieldLabel = 'Conta (Resultado)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 140
               FieldLabelSeparator = ' '
             end
             object clContab_HistoricoResultado: TUniDBLookupComboBox
-              Left = 409
-              Top = 28
-              Width = 391
-              Height = 55
+              Left = 499
+              Top = 20
+              Width = 480
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo; Descricao'
               ListSource = dsHistoricos
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Contab_HistoricoResultado'
               DataSource = dsConfig
               TabOrder = 1
               Color = clWindow
               FieldLabel = 'Hist'#243'rico (Resultado)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 160
               FieldLabelSeparator = ' '
             end
             object clContab_HistoricoEncLucro: TUniDBLookupComboBox
-              Left = 409
-              Top = 83
-              Width = 391
-              Height = 55
+              Left = 499
+              Top = 48
+              Width = 480
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo; Descricao'
               ListSource = dsHistoricos
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Contab_HistoricoEncLucro'
               DataSource = dsConfig
               TabOrder = 3
               Color = clWindow
               FieldLabel = 'Hist'#243'rico (Lucro Acumulado)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 160
               FieldLabelSeparator = ' '
             end
           end
           object cContab_Numeracao: TUniDBCheckBox
             Left = 17
-            Top = 40
+            Top = 45
             Width = 289
-            Height = 17
+            Height = 25
             Hint = ''
             ShowHint = True
             DataField = 'Contab_Numeracao'
@@ -2246,8 +2193,8 @@ object fConfigSis: TfConfigSis
           end
           object UniDBRadioGroup1: TUniDBRadioGroup
             Left = 16
-            Top = 69
-            Width = 483
+            Top = 89
+            Width = 356
             Height = 73
             Hint = ''
             ShowHint = True
@@ -2276,8 +2223,8 @@ object fConfigSis: TfConfigSis
       object UniScrollBox8: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1508
-        Height = 1437
+        Width = 1077
+        Height = 854
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -2286,14 +2233,15 @@ object fConfigSis: TfConfigSis
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1506
-          1435)
-        ScrollHeight = 1218
+          1058
+          852)
+        ScrollHeight = 901
+        ScrollWidth = 810
         object PageControl2: TUniPageControl
-          Left = 205
-          Top = 10
-          Width = 817
-          Height = 1208
+          Left = 20
+          Top = 21
+          Width = 929
+          Height = 697
           Hint = ''
           ActivePage = TabSheet6
           Plain = True
@@ -2306,8 +2254,8 @@ object fConfigSis: TfConfigSis
             object UniPanel6: TUniPanel
               Left = 0
               Top = 0
-              Width = 809
-              Height = 1180
+              Width = 921
+              Height = 669
               Hint = ''
               ShowHint = True
               ParentShowHint = False
@@ -2316,17 +2264,16 @@ object fConfigSis: TfConfigSis
               ClientEvents.UniEvents.Strings = (
                 
                   'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-                  ' '#39'Ficha'#39';'#13#10'}')
-              BorderStyle = ubsNone
+                  ' '#39'FichaSSombra'#39';'#13#10'}')
+              BorderStyle = ubsSolid
               TitleAlign = taCenter
               Title = 'DADOS GERAIS'
               Caption = ''
-              Color = clTeal
               object GroupBox12: TUniGroupBox
-                Left = 139
-                Top = 30
-                Width = 549
-                Height = 369
+                Left = 27
+                Top = 13
+                Width = 600
+                Height = 200
                 Hint = ''
                 ShowHint = True
                 Caption = 
@@ -2340,135 +2287,129 @@ object fConfigSis: TfConfigSis
                 object clClassificacao_DescontosRC: TUniDBLookupComboBox
                   Left = 15
                   Top = 25
-                  Width = 519
-                  Height = 55
+                  Width = 570
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Classificacao_DescontosRC'
                   DataSource = dsConfig
                   TabOrder = 0
                   Color = clWindow
                   FieldLabel = 'Descontos Recebidos'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clClassificacao_DescontosPG: TUniDBLookupComboBox
                   Left = 15
-                  Top = 80
-                  Width = 519
-                  Height = 55
+                  Top = 52
+                  Width = 570
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Classificacao_DescontosPG'
                   DataSource = dsConfig
                   TabOrder = 1
                   Color = clWindow
                   FieldLabel = 'Descontos Concedidos'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clClassificacao_MultaRC: TUniDBLookupComboBox
                   Left = 15
-                  Top = 135
-                  Width = 519
-                  Height = 55
+                  Top = 79
+                  Width = 570
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Classificacao_MultaRC'
                   DataSource = dsConfig
                   TabOrder = 2
                   Color = clWindow
                   FieldLabel = 'Multas Recebidas'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clClassificacao_JurosPG: TUniDBLookupComboBox
                   Left = 15
-                  Top = 300
-                  Width = 519
-                  Height = 55
+                  Top = 160
+                  Width = 570
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Classificacao_JurosPG'
                   DataSource = dsConfig
                   TabOrder = 5
                   Color = clWindow
                   FieldLabel = 'Juros Pagos'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clClassificacao_JurosRC: TUniDBLookupComboBox
                   Left = 15
-                  Top = 245
-                  Width = 519
-                  Height = 55
+                  Top = 133
+                  Width = 570
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Classificacao_JurosRC'
                   DataSource = dsConfig
                   TabOrder = 4
                   Color = clWindow
                   FieldLabel = 'Juros Recebidos'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clClassificacao_MultaPG: TUniDBLookupComboBox
                   Left = 15
-                  Top = 190
-                  Width = 519
-                  Height = 55
+                  Top = 106
+                  Width = 570
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Classificacao_MultaPG'
                   DataSource = dsConfig
                   TabOrder = 3
                   Color = clWindow
                   FieldLabel = 'Multas Pagas'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
               end
               object GroupBox13: TUniGroupBox
-                Left = 139
-                Top = 413
-                Width = 549
-                Height = 150
+                Left = 27
+                Top = 229
+                Width = 600
+                Height = 97
                 Hint = ''
                 ShowHint = True
                 Caption = 'Classifica'#231#245'es Financeiras de Recebimento para Transfer'#234'ncias'
@@ -2480,51 +2421,49 @@ object fConfigSis: TfConfigSis
                 object clClassificacao_TransfBanco: TUniDBLookupComboBox
                   Left = 15
                   Top = 24
-                  Width = 519
-                  Height = 55
+                  Width = 570
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Classificacao_TransfBanco'
                   DataSource = dsConfig
                   TabOrder = 0
                   Color = clWindow
                   FieldLabel = 'Transfer'#234'ncia Banc'#225'ria'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clClassificacao_TransfProcesso: TUniDBLookupComboBox
                   Left = 15
-                  Top = 79
-                  Width = 519
-                  Height = 55
+                  Top = 51
+                  Width = 570
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Classificacao_TransfProcesso'
                   DataSource = dsConfig
                   TabOrder = 1
                   Color = clWindow
                   FieldLabel = 'Transfer'#234'ncia Processo'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
               end
               object GroupBox14: TUniGroupBox
-                Left = 139
-                Top = 579
-                Width = 549
-                Height = 208
+                Left = 27
+                Top = 336
+                Width = 600
+                Height = 116
                 Hint = ''
                 ShowHint = True
                 Caption = 'Classifica'#231#245'es Financeiras para Fechamento de C'#226'mbio'
@@ -2536,72 +2475,69 @@ object fConfigSis: TfConfigSis
                 object clClassificacao_CambioVarAtiva: TUniDBLookupComboBox
                   Left = 15
                   Top = 24
-                  Width = 519
-                  Height = 55
+                  Width = 570
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Classificacao_CambioVarAtiva'
                   DataSource = dsConfig
                   TabOrder = 1
                   Color = clWindow
                   FieldLabel = 'Varia'#231#227'o (Ativa)'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clDocumento_Cambio: TUniDBLookupComboBox
                   Left = 15
-                  Top = 134
-                  Width = 519
-                  Height = 55
+                  Top = 78
+                  Width = 570
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Documento_Cambio'
                   DataSource = dsConfig
                   TabOrder = 3
                   Color = clWindow
                   FieldLabel = 'Documento'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clClassificacao_CambioVarPassiva: TUniDBLookupComboBox
                   Left = 15
-                  Top = 79
-                  Width = 519
-                  Height = 55
+                  Top = 51
+                  Width = 570
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Classificacao_CambioVarPassiva'
                   DataSource = dsConfig
                   TabOrder = 2
                   Color = clWindow
                   FieldLabel = 'Varia'#231#227'o (Passiva)'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
               end
               object GroupBox16: TUniGroupBox
-                Left = 139
-                Top = 800
-                Width = 549
-                Height = 153
+                Left = 27
+                Top = 464
+                Width = 600
+                Height = 102
                 Hint = ''
                 ShowHint = True
                 Caption = 'Classifica'#231#227'o Financeira para o Lan'#231'amento do Contrato de C'#226'mbio'
@@ -2613,43 +2549,41 @@ object fConfigSis: TfConfigSis
                 object clContratoCambio_Classificacao: TUniDBLookupComboBox
                   Left = 15
                   Top = 24
-                  Width = 519
-                  Height = 55
+                  Width = 570
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Classificacao_ContratoCambio'
                   DataSource = dsConfig
                   TabOrder = 1
                   Color = clWindow
                   FieldLabel = 'Lan'#231'amento Financeiro'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clContratoCambio_Documento: TUniDBLookupComboBox
                   Left = 15
-                  Top = 80
-                  Width = 519
-                  Height = 55
+                  Top = 51
+                  Width = 570
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Classificacao_ContratoCambioDoc'
                   DataSource = dsConfig
                   TabOrder = 2
                   Color = clWindow
                   FieldLabel = 'Documento'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
               end
@@ -2661,8 +2595,8 @@ object fConfigSis: TfConfigSis
             object UniPanel7: TUniPanel
               Left = 0
               Top = 0
-              Width = 809
-              Height = 1180
+              Width = 921
+              Height = 669
               Hint = ''
               ShowHint = True
               ParentShowHint = False
@@ -2671,17 +2605,16 @@ object fConfigSis: TfConfigSis
               ClientEvents.UniEvents.Strings = (
                 
                   'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-                  ' '#39'Ficha'#39';'#13#10'}')
-              BorderStyle = ubsNone
+                  ' '#39'FichaSSombra'#39';'#13#10'}')
+              BorderStyle = ubsSolid
               TitleAlign = taCenter
               Title = 'DADOS GERAIS'
               Caption = ''
-              Color = clTeal
               object GroupBox4: TUniGroupBox
-                Left = 20
+                Left = 16
                 Top = 16
-                Width = 769
-                Height = 522
+                Width = 884
+                Height = 287
                 Hint = ''
                 ShowHint = True
                 ParentShowHint = False
@@ -2694,8 +2627,8 @@ object fConfigSis: TfConfigSis
                 object cDuplicata01_Dias: TUniDBNumberEdit
                   Left = 554
                   Top = 56
-                  Width = 76
-                  Height = 55
+                  Width = 180
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   DataField = 'Duplicata01_Dias'
@@ -2708,16 +2641,15 @@ object fConfigSis: TfConfigSis
                   SelectOnFocus = True
                   FieldLabel = 'Vencto.(Dias)'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                   DecimalSeparator = ','
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                 end
                 object cDuplicata02_Dias: TUniDBNumberEdit
                   Left = 554
-                  Top = 113
-                  Width = 76
-                  Height = 55
+                  Top = 83
+                  Width = 180
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   DataField = 'Duplicata02_Dias'
@@ -2730,16 +2662,15 @@ object fConfigSis: TfConfigSis
                   SelectOnFocus = True
                   FieldLabel = 'Vencto.(Dias)'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                   DecimalSeparator = ','
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                 end
                 object cDuplicata03_Dias: TUniDBNumberEdit
                   Left = 554
-                  Top = 169
-                  Width = 76
-                  Height = 55
+                  Top = 110
+                  Width = 180
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   DataField = 'Duplicata03_Dias'
@@ -2752,16 +2683,15 @@ object fConfigSis: TfConfigSis
                   SelectOnFocus = True
                   FieldLabel = 'Vencto.(Dias)'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                   DecimalSeparator = ','
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                 end
                 object cDuplicata04_Dias: TUniDBNumberEdit
                   Left = 554
-                  Top = 225
-                  Width = 76
-                  Height = 55
+                  Top = 137
+                  Width = 180
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   DataField = 'Duplicata04_Dias'
@@ -2774,16 +2704,15 @@ object fConfigSis: TfConfigSis
                   SelectOnFocus = True
                   FieldLabel = 'Vencto.(Dias)'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                   DecimalSeparator = ','
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                 end
                 object cDuplicata05_Dias: TUniDBNumberEdit
                   Left = 554
-                  Top = 281
-                  Width = 76
-                  Height = 55
+                  Top = 164
+                  Width = 180
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   DataField = 'Duplicata05_Dias'
@@ -2796,16 +2725,15 @@ object fConfigSis: TfConfigSis
                   SelectOnFocus = True
                   FieldLabel = 'Vencto.(Dias)'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                   DecimalSeparator = ','
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                 end
                 object cDuplicata06_Dias: TUniDBNumberEdit
                   Left = 554
-                  Top = 337
-                  Width = 76
-                  Height = 55
+                  Top = 191
+                  Width = 180
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   DataField = 'Duplicata06_Dias'
@@ -2818,16 +2746,15 @@ object fConfigSis: TfConfigSis
                   SelectOnFocus = True
                   FieldLabel = 'Vencto.(Dias)'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                   DecimalSeparator = ','
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                 end
                 object cDuplicata07_Dias: TUniDBNumberEdit
                   Left = 554
-                  Top = 393
-                  Width = 76
-                  Height = 55
+                  Top = 218
+                  Width = 180
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   DataField = 'Duplicata07_Dias'
@@ -2840,16 +2767,15 @@ object fConfigSis: TfConfigSis
                   SelectOnFocus = True
                   FieldLabel = 'Vencto.(Dias)'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                   DecimalSeparator = ','
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                 end
                 object cDuplicata08_Dias: TUniDBNumberEdit
                   Left = 554
-                  Top = 449
-                  Width = 76
-                  Height = 55
+                  Top = 245
+                  Width = 180
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   DataField = 'Duplicata08_Dias'
@@ -2862,16 +2788,15 @@ object fConfigSis: TfConfigSis
                   SelectOnFocus = True
                   FieldLabel = 'Vencto.(Dias)'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                   DecimalSeparator = ','
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                 end
                 object cDuplicata01_Sub: TUniDBCheckBox
-                  Left = 635
-                  Top = 92
-                  Width = 110
-                  Height = 17
+                  Left = 739
+                  Top = 56
+                  Width = 120
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   DataField = 'Duplicata01_Sub'
@@ -2887,10 +2812,10 @@ object fConfigSis: TfConfigSis
                   FieldLabelSeparator = ' '
                 end
                 object cDuplicata02_Sub: TUniDBCheckBox
-                  Left = 635
-                  Top = 150
-                  Width = 110
-                  Height = 17
+                  Left = 739
+                  Top = 83
+                  Width = 120
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   DataField = 'Duplicata02_Sub'
@@ -2906,10 +2831,10 @@ object fConfigSis: TfConfigSis
                   FieldLabelSeparator = ' '
                 end
                 object cDuplicata03_Sub: TUniDBCheckBox
-                  Left = 635
-                  Top = 204
-                  Width = 110
-                  Height = 17
+                  Left = 739
+                  Top = 110
+                  Width = 120
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   DataField = 'Duplicata03_Sub'
@@ -2925,10 +2850,10 @@ object fConfigSis: TfConfigSis
                   FieldLabelSeparator = ' '
                 end
                 object cDuplicata04_Sub: TUniDBCheckBox
-                  Left = 635
-                  Top = 261
-                  Width = 110
-                  Height = 17
+                  Left = 739
+                  Top = 137
+                  Width = 120
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   DataField = 'Duplicata04_Sub'
@@ -2944,10 +2869,10 @@ object fConfigSis: TfConfigSis
                   FieldLabelSeparator = ' '
                 end
                 object cDuplicata05_Sub: TUniDBCheckBox
-                  Left = 635
-                  Top = 317
-                  Width = 110
-                  Height = 17
+                  Left = 739
+                  Top = 164
+                  Width = 120
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   DataField = 'Duplicata05_Sub'
@@ -2963,10 +2888,10 @@ object fConfigSis: TfConfigSis
                   FieldLabelSeparator = ' '
                 end
                 object cDuplicata06_Sub: TUniDBCheckBox
-                  Left = 635
-                  Top = 374
-                  Width = 110
-                  Height = 17
+                  Left = 739
+                  Top = 191
+                  Width = 120
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   DataField = 'Duplicata06_Sub'
@@ -2982,10 +2907,10 @@ object fConfigSis: TfConfigSis
                   FieldLabelSeparator = ' '
                 end
                 object cDuplicata07_Sub: TUniDBCheckBox
-                  Left = 635
-                  Top = 430
-                  Width = 110
-                  Height = 17
+                  Left = 739
+                  Top = 218
+                  Width = 120
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   DataField = 'Duplicata07_Sub'
@@ -3001,10 +2926,10 @@ object fConfigSis: TfConfigSis
                   FieldLabelSeparator = ' '
                 end
                 object cDuplicata08_Sub: TUniDBCheckBox
-                  Left = 635
-                  Top = 485
-                  Width = 110
-                  Height = 17
+                  Left = 739
+                  Top = 245
+                  Width = 120
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   DataField = 'Duplicata08_Sub'
@@ -3023,160 +2948,152 @@ object fConfigSis: TfConfigSis
                   Left = 15
                   Top = 56
                   Width = 180
-                  Height = 55
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Descricao'
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Duplicata01'
                   DataSource = dsConfig
                   TabOrder = 0
                   Color = clWindow
                   FieldLabel = 'Duplicata 1'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clDuplicata02: TUniDBLookupComboBox
                   Left = 15
-                  Top = 113
+                  Top = 83
                   Width = 180
-                  Height = 55
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Descricao'
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Duplicata02'
                   DataSource = dsConfig
                   TabOrder = 4
                   Color = clWindow
                   FieldLabel = 'Duplicata 2'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clDuplicata03: TUniDBLookupComboBox
                   Left = 15
-                  Top = 169
+                  Top = 110
                   Width = 180
-                  Height = 55
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Descricao'
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Duplicata03'
                   DataSource = dsConfig
                   TabOrder = 8
                   Color = clWindow
                   FieldLabel = 'Duplicata 3'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clDuplicata06: TUniDBLookupComboBox
                   Left = 15
-                  Top = 337
+                  Top = 191
                   Width = 180
-                  Height = 55
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Descricao'
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Duplicata06'
                   DataSource = dsConfig
                   TabOrder = 20
                   Color = clWindow
                   FieldLabel = 'Duplicata 6'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clDuplicata05: TUniDBLookupComboBox
                   Left = 15
-                  Top = 281
+                  Top = 164
                   Width = 180
-                  Height = 55
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Descricao'
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Duplicata05'
                   DataSource = dsConfig
                   TabOrder = 16
                   Color = clWindow
                   FieldLabel = 'Duplicata 5'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clDuplicata04: TUniDBLookupComboBox
                   Left = 15
-                  Top = 225
+                  Top = 137
                   Width = 180
-                  Height = 55
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Descricao'
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Duplicata04'
                   DataSource = dsConfig
                   TabOrder = 12
                   Color = clWindow
                   FieldLabel = 'Duplicata 4'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clDuplicata08: TUniDBLookupComboBox
                   Left = 15
-                  Top = 449
+                  Top = 245
                   Width = 180
-                  Height = 55
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Descricao'
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Duplicata08'
                   DataSource = dsConfig
                   TabOrder = 28
                   Color = clWindow
                   FieldLabel = 'Duplicata 8'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clDuplicata07: TUniDBLookupComboBox
                   Left = 15
-                  Top = 393
+                  Top = 218
                   Width = 180
-                  Height = 55
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Descricao'
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Duplicata07'
                   DataSource = dsConfig
                   TabOrder = 24
                   Color = clWindow
                   FieldLabel = 'Duplicata 7'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object cGerar_DuplImpostos: TUniDBCheckBox
@@ -3202,174 +3119,166 @@ object fConfigSis: TfConfigSis
                   Left = 198
                   Top = 56
                   Width = 354
-                  Height = 55
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Duplicata01_Class'
                   DataSource = dsConfig
                   TabOrder = 1
                   Color = clWindow
                   FieldLabel = 'Classifica'#231#227'o'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clDuplicata02_Class: TUniDBLookupComboBox
                   Left = 198
-                  Top = 113
+                  Top = 83
                   Width = 354
-                  Height = 55
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Duplicata02_Class'
                   DataSource = dsConfig
                   TabOrder = 5
                   Color = clWindow
                   FieldLabel = 'Classifica'#231#227'o'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clDuplicata03_Class: TUniDBLookupComboBox
                   Left = 198
-                  Top = 169
+                  Top = 110
                   Width = 354
-                  Height = 55
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Duplicata03_Class'
                   DataSource = dsConfig
                   TabOrder = 9
                   Color = clWindow
                   FieldLabel = 'Classifica'#231#227'o'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clDuplicata06_Class: TUniDBLookupComboBox
                   Left = 198
-                  Top = 337
+                  Top = 191
                   Width = 354
-                  Height = 55
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Duplicata06_Class'
                   DataSource = dsConfig
                   TabOrder = 21
                   Color = clWindow
                   FieldLabel = 'Classifica'#231#227'o'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clDuplicata05_Class: TUniDBLookupComboBox
                   Left = 198
-                  Top = 281
+                  Top = 164
                   Width = 354
-                  Height = 55
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Duplicata05_Class'
                   DataSource = dsConfig
                   TabOrder = 17
                   Color = clWindow
                   FieldLabel = 'Classifica'#231#227'o'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clDuplicata04_Class: TUniDBLookupComboBox
                   Left = 198
-                  Top = 225
+                  Top = 137
                   Width = 354
-                  Height = 55
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Duplicata04_Class'
                   DataSource = dsConfig
                   TabOrder = 13
                   Color = clWindow
                   FieldLabel = 'Classifica'#231#227'o'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clDuplicata08_Class: TUniDBLookupComboBox
                   Left = 198
-                  Top = 449
+                  Top = 245
                   Width = 354
-                  Height = 55
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Duplicata08_Class'
                   DataSource = dsConfig
                   TabOrder = 29
                   Color = clWindow
                   FieldLabel = 'Classifica'#231#227'o'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
                 object clDuplicata07_Class: TUniDBLookupComboBox
                   Left = 198
-                  Top = 393
+                  Top = 218
                   Width = 354
-                  Height = 55
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Duplicata07_Class'
                   DataSource = dsConfig
                   TabOrder = 25
                   Color = clWindow
                   FieldLabel = 'Classifica'#231#227'o'
                   FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
                   FieldLabelSeparator = ' '
                 end
               end
               object cDia_Util: TUniDBRadioGroup
-                Left = 21
-                Top = 557
+                Left = 16
+                Top = 332
                 Width = 199
                 Height = 92
                 Hint = ''
@@ -3393,9 +3302,9 @@ object fConfigSis: TfConfigSis
                   'N')
               end
               object cDiferenca_Duplicata: TUniDBRadioGroup
-                Left = 263
-                Top = 557
-                Width = 180
+                Left = 239
+                Top = 332
+                Width = 199
                 Height = 92
                 Hint = ''
                 ShowHint = True
@@ -3416,9 +3325,9 @@ object fConfigSis: TfConfigSis
                   '1')
               end
               object cSequencial_Duplicata: TUniDBRadioGroup
-                Left = 489
-                Top = 557
-                Width = 180
+                Left = 466
+                Top = 332
+                Width = 199
                 Height = 92
                 Hint = ''
                 ShowHint = True
@@ -3447,8 +3356,8 @@ object fConfigSis: TfConfigSis
             object UniPanel8: TUniPanel
               Left = 0
               Top = 0
-              Width = 809
-              Height = 1180
+              Width = 921
+              Height = 669
               Hint = ''
               ShowHint = True
               ParentShowHint = False
@@ -3457,17 +3366,16 @@ object fConfigSis: TfConfigSis
               ClientEvents.UniEvents.Strings = (
                 
                   'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-                  ' '#39'Ficha'#39';'#13#10'}')
-              BorderStyle = ubsNone
+                  ' '#39'FichaSSombra'#39';'#13#10'}')
+              BorderStyle = ubsSolid
               TitleAlign = taCenter
               Title = 'DADOS GERAIS'
               Caption = ''
-              Color = clTeal
               object cCalculo_Comissao: TUniDBRadioGroup
-                Left = 85
-                Top = 73
+                Left = 21
+                Top = 49
                 Width = 636
-                Height = 45
+                Height = 51
                 Hint = ''
                 ShowHint = True
                 DataField = 'Calculo_Comissao'
@@ -3489,8 +3397,8 @@ object fConfigSis: TfConfigSis
                   'TOTAL NOTA')
               end
               object cHora_Solicitacao: TUniDBEdit
-                Left = 85
-                Top = 25
+                Left = 21
+                Top = 17
                 Width = 326
                 Height = 25
                 Hint = ''
@@ -3508,13 +3416,13 @@ object fConfigSis: TfConfigSis
                 FieldLabelWidth = 250
                 FieldLabelSeparator = ' '
                 SelectOnFocus = True
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
               end
               object GroupBox20: TUniGroupBox
-                Left = 87
-                Top = 144
-                Width = 633
-                Height = 210
+                Left = 23
+                Top = 112
+                Width = 800
+                Height = 110
                 Hint = ''
                 ShowHint = True
                 Caption = 'Lan'#231'amento Financeiro (Pagamento Comiss'#245'es a Representantes)'
@@ -3525,71 +3433,68 @@ object fConfigSis: TfConfigSis
                     's = '#39'Grupo'#39';'#13#10'}')
                 object clTipo_DocumentoPagamento: TUniDBLookupComboBox
                   Left = 11
-                  Top = 139
-                  Width = 610
-                  Height = 55
+                  Top = 74
+                  Width = 770
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Descricao'
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Tipo_DocumentoPagamento'
                   DataSource = dsConfig
                   TabOrder = 2
                   Color = clWindow
                   FieldLabel = 'Tipo de Documento'
-                  FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
+                  FieldLabelWidth = 160
                   FieldLabelSeparator = ' '
                 end
                 object clCentro_CustoPagamento: TUniDBLookupComboBox
                   Left = 11
-                  Top = 83
-                  Width = 610
-                  Height = 55
+                  Top = 47
+                  Width = 770
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo; Descricao'
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Centro_CustoPagamento'
                   DataSource = dsConfig
                   TabOrder = 1
                   Color = clWindow
                   FieldLabel = 'Centro de Custo'
-                  FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
+                  FieldLabelWidth = 160
                   FieldLabelSeparator = ' '
                 end
                 object clClassificacao_Pagamento: TUniDBLookupComboBox
                   Left = 11
-                  Top = 27
-                  Width = 610
-                  Height = 55
+                  Top = 20
+                  Width = 770
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Classificacao_Pagamento'
                   DataSource = dsConfig
                   TabOrder = 0
                   Color = clWindow
                   FieldLabel = 'Classifica'#231#227'o Financeira'
-                  FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
+                  FieldLabelWidth = 160
                   FieldLabelSeparator = ' '
                 end
               end
               object GroupBox25: TUniGroupBox
-                Left = 88
-                Top = 815
-                Width = 633
-                Height = 314
+                Left = 24
+                Top = 470
+                Width = 800
+                Height = 161
                 Hint = ''
                 ShowHint = True
                 Caption = 'Informa'#231#245'es default para empr'#233'stimos banc'#225'rios (Capital de Giro)'
@@ -3600,91 +3505,87 @@ object fConfigSis: TfConfigSis
                     's = '#39'Grupo'#39';'#13#10'}')
                 object clEmprestimoBancario_CentroCusto: TUniDBLookupComboBox
                   Left = 11
-                  Top = 183
-                  Width = 610
-                  Height = 55
+                  Top = 101
+                  Width = 770
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Descricao'
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'EmprestimoBancario_CentroCusto'
                   DataSource = dsConfig
                   TabOrder = 3
                   Color = clWindow
                   FieldLabel = 'Centro de Custo'
-                  FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
+                  FieldLabelWidth = 160
                   FieldLabelSeparator = ' '
                 end
                 object clEmprestimoBancario_ClassificacaoR: TUniDBLookupComboBox
                   Left = 11
-                  Top = 15
-                  Width = 610
-                  Height = 55
+                  Top = 20
+                  Width = 770
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'EmprestimoBancario_ClassificacaoR'
                   DataSource = dsConfig
                   TabOrder = 0
                   Color = clWindow
                   FieldLabel = 'Classifica'#231#227'o Financeira (Recebimento)'
-                  FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
+                  FieldLabelWidth = 160
                   FieldLabelSeparator = ' '
                 end
                 object clEmprestimoBancario_TipoDocumento: TUniDBLookupComboBox
                   Left = 11
-                  Top = 239
-                  Width = 610
-                  Height = 55
+                  Top = 128
+                  Width = 770
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Descricao'
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'EmprestimoBancario_TipoDocumento'
                   DataSource = dsConfig
                   TabOrder = 4
                   Color = clWindow
                   FieldLabel = 'Tipo de Documento'
-                  FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
+                  FieldLabelWidth = 160
                   FieldLabelSeparator = ' '
                 end
                 object clEmprestimoBancario_ClassificacaoP: TUniDBLookupComboBox
                   Left = 11
-                  Top = 127
-                  Width = 610
-                  Height = 55
+                  Top = 74
+                  Width = 770
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'EmprestimoBancario_ClassificacaoP'
                   DataSource = dsConfig
                   TabOrder = 2
                   Color = clWindow
                   FieldLabel = 'Classifica'#231#227'o Financeira (Pagamento)'
-                  FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
+                  FieldLabelWidth = 160
                   FieldLabelSeparator = ' '
                 end
                 object cEmprestimoBancario_FormaRecebimento: TUniDBComboBox
                   Left = 11
-                  Top = 71
-                  Width = 610
-                  Height = 55
+                  Top = 47
+                  Width = 770
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   DataField = 'EmprestimoBancario_FormaRecebimento'
@@ -3700,17 +3601,16 @@ object fConfigSis: TfConfigSis
                     'DINHEIRO')
                   TabOrder = 1
                   FieldLabel = 'Forma de Recebimento'
-                  FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
+                  FieldLabelWidth = 160
                   FieldLabelSeparator = ' '
                   IconItems = <>
                 end
               end
               object GroupBox31: TUniGroupBox
-                Left = 87
-                Top = 372
-                Width = 633
-                Height = 199
+                Left = 23
+                Top = 231
+                Width = 800
+                Height = 110
                 Hint = ''
                 ShowHint = True
                 Caption = 
@@ -3723,71 +3623,68 @@ object fConfigSis: TfConfigSis
                     's = '#39'Grupo'#39';'#13#10'}')
                 object clTipo_DocumentoPagamentoTelevendas: TUniDBLookupComboBox
                   Left = 11
-                  Top = 127
-                  Width = 610
-                  Height = 55
+                  Top = 74
+                  Width = 770
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Descricao'
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Tipo_DocumentoPagamentoTelevendas'
                   DataSource = dsConfig
                   TabOrder = 2
                   Color = clWindow
                   FieldLabel = 'Tipo de Documento'
-                  FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
+                  FieldLabelWidth = 160
                   FieldLabelSeparator = ' '
                 end
                 object clCentro_CustoPagamentoTelevendas: TUniDBLookupComboBox
                   Left = 11
-                  Top = 71
-                  Width = 610
-                  Height = 55
+                  Top = 47
+                  Width = 770
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Descricao'
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Centro_CustoPagamentoTelevendas'
                   DataSource = dsConfig
                   TabOrder = 1
                   Color = clWindow
                   FieldLabel = 'Centro de Custo'
-                  FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
+                  FieldLabelWidth = 160
                   FieldLabelSeparator = ' '
                 end
                 object clClassificacao_PagamentoTelevendas: TUniDBLookupComboBox
                   Left = 11
-                  Top = 15
-                  Width = 610
-                  Height = 55
+                  Top = 20
+                  Width = 770
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Classificacao_PagamentoTelevendas'
                   DataSource = dsConfig
                   TabOrder = 0
                   Color = clWindow
                   FieldLabel = 'Classifica'#231#227'o Financeira'
-                  FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
+                  FieldLabelWidth = 160
                   FieldLabelSeparator = ' '
                 end
               end
               object GroupBox32: TUniGroupBox
-                Left = 87
-                Top = 592
-                Width = 633
-                Height = 202
+                Left = 23
+                Top = 351
+                Width = 800
+                Height = 110
                 Hint = ''
                 ShowHint = True
                 Caption = 'Lan'#231'amento Financeiro (Pagamento Comiss'#245'es - Outras)'
@@ -3798,63 +3695,60 @@ object fConfigSis: TfConfigSis
                     's = '#39'Grupo'#39';'#13#10'}')
                 object clTipo_DocumentoPagamentoOutros: TUniDBLookupComboBox
                   Left = 11
-                  Top = 127
-                  Width = 610
-                  Height = 55
+                  Top = 74
+                  Width = 770
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Descricao'
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Tipo_DocumentoPagamentoOutros'
                   DataSource = dsConfig
                   TabOrder = 2
                   Color = clWindow
                   FieldLabel = 'Tipo de Documento'
-                  FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
+                  FieldLabelWidth = 160
                   FieldLabelSeparator = ' '
                 end
                 object clCentro_CustoPagamentoOutros: TUniDBLookupComboBox
                   Left = 11
-                  Top = 71
-                  Width = 610
-                  Height = 55
+                  Top = 47
+                  Width = 770
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Descricao'
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Centro_CustoPagamentoOutros'
                   DataSource = dsConfig
                   TabOrder = 1
                   Color = clWindow
                   FieldLabel = 'Centro de Custo'
-                  FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
+                  FieldLabelWidth = 160
                   FieldLabelSeparator = ' '
                 end
                 object clClassificacao_PagamentoOutros: TUniDBLookupComboBox
                   Left = 11
-                  Top = 15
-                  Width = 610
-                  Height = 55
+                  Top = 20
+                  Width = 770
+                  Height = 25
                   Hint = ''
                   ShowHint = True
                   ListField = 'Codigo;Nome_Financeiro'
                   ListSource = dsPlano
                   KeyField = 'Codigo'
                   ListFieldIndex = 1
-                  BorderStyle = ubsSolid
+                  BorderStyle = ubsInset
                   DataField = 'Classificacao_PagamentoOutros'
                   DataSource = dsConfig
                   TabOrder = 0
                   Color = clWindow
                   FieldLabel = 'Classifica'#231#227'o Financeira'
-                  FieldLabelWidth = 120
-                  FieldLabelAlign = laTop
+                  FieldLabelWidth = 160
                   FieldLabelSeparator = ' '
                 end
               end
@@ -3867,8 +3761,8 @@ object fConfigSis: TfConfigSis
             object UniPanel9: TUniPanel
               Left = 0
               Top = 0
-              Width = 809
-              Height = 1180
+              Width = 921
+              Height = 669
               Hint = ''
               ShowHint = True
               ParentShowHint = False
@@ -3877,17 +3771,16 @@ object fConfigSis: TfConfigSis
               ClientEvents.UniEvents.Strings = (
                 
                   'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-                  ' '#39'Ficha'#39';'#13#10'}')
-              BorderStyle = ubsNone
+                  ' '#39'FichaSSombra'#39';'#13#10'}')
+              BorderStyle = ubsSolid
               TitleAlign = taCenter
               Title = 'DADOS GERAIS'
               Caption = ''
-              Color = clTeal
               object cBoleto_Contato: TUniDBCheckBox
-                Left = 34
-                Top = 297
-                Width = 300
-                Height = 17
+                Left = 20
+                Top = 256
+                Width = 222
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Boleto_Contato'
@@ -3903,10 +3796,10 @@ object fConfigSis: TfConfigSis
                 FieldLabelSeparator = ' '
               end
               object cBoleto_EspecieDOC: TUniDBComboBox
-                Left = 32
-                Top = 234
+                Left = 18
+                Top = 205
                 Width = 744
-                Height = 28
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Boleto_EspecieDOC'
@@ -3950,10 +3843,10 @@ object fConfigSis: TfConfigSis
                 IconItems = <>
               end
               object cBoleto_InstrucaoCod: TUniDBEdit
-                Left = 32
-                Top = 118
-                Width = 300
-                Height = 28
+                Left = 18
+                Top = 97
+                Width = 350
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Boleto_InstrucaoCod'
@@ -3967,13 +3860,13 @@ object fConfigSis: TfConfigSis
                 FieldLabelWidth = 220
                 FieldLabelSeparator = ' '
                 SelectOnFocus = True
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
               end
               object cBoleto_InstrucaoCod2: TUniDBEdit
-                Left = 32
-                Top = 176
-                Width = 300
-                Height = 28
+                Left = 18
+                Top = 151
+                Width = 350
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Boleto_InstrucaoCod2'
@@ -3987,13 +3880,13 @@ object fConfigSis: TfConfigSis
                 FieldLabelWidth = 220
                 FieldLabelSeparator = ' '
                 SelectOnFocus = True
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
               end
               object cBoleto_Instrucoes: TUniDBEdit
-                Left = 32
-                Top = 147
+                Left = 18
+                Top = 124
                 Width = 740
-                Height = 28
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Boleto_Instrucoes'
@@ -4007,13 +3900,13 @@ object fConfigSis: TfConfigSis
                 FieldLabelWidth = 220
                 FieldLabelSeparator = ' '
                 SelectOnFocus = True
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
               end
               object cBoleto_LocalPagamento: TUniDBEdit
-                Left = 32
-                Top = 31
+                Left = 18
+                Top = 16
                 Width = 740
-                Height = 28
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Boleto_LocalPagamento'
@@ -4027,13 +3920,13 @@ object fConfigSis: TfConfigSis
                 FieldLabelWidth = 220
                 FieldLabelSeparator = ' '
                 SelectOnFocus = True
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
               end
               object cBoleto_PercentualJuros: TUniDBFormattedNumberEdit
-                Left = 32
-                Top = 89
-                Width = 300
-                Height = 28
+                Left = 18
+                Top = 70
+                Width = 350
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Boleto_PercentualJuros'
@@ -4049,13 +3942,13 @@ object fConfigSis: TfConfigSis
                 FieldLabelSeparator = ' '
                 DecimalSeparator = ','
                 ThousandSeparator = '.'
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
               end
               object cBoleto_PercentualMulta: TUniDBFormattedNumberEdit
-                Left = 32
-                Top = 60
-                Width = 300
-                Height = 28
+                Left = 18
+                Top = 43
+                Width = 350
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Boleto_PercentualMulta'
@@ -4071,13 +3964,13 @@ object fConfigSis: TfConfigSis
                 FieldLabelSeparator = ' '
                 DecimalSeparator = ','
                 ThousandSeparator = '.'
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
               end
               object cBoleto_ProtestoDias: TUniDBNumberEdit
-                Left = 32
-                Top = 205
-                Width = 300
-                Height = 28
+                Left = 18
+                Top = 178
+                Width = 350
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Boleto_ProtestoDias'
@@ -4092,10 +3985,19 @@ object fConfigSis: TfConfigSis
                 FieldLabelWidth = 220
                 FieldLabelSeparator = ' '
                 DecimalSeparator = ','
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
               end
             end
           end
+        end
+        object UniContainerPanel1: TUniContainerPanel
+          Left = 254
+          Top = 879
+          Width = 556
+          Height = 22
+          Hint = ''
+          ParentColor = False
+          TabOrder = 1
         end
       end
     end
@@ -4106,8 +4008,8 @@ object fConfigSis: TfConfigSis
       object UniScrollBox7: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1508
-        Height = 1437
+        Width = 1077
+        Height = 854
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -4116,14 +4018,14 @@ object fConfigSis: TfConfigSis
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1506
-          1435)
-        ScrollHeight = 822
+          1075
+          852)
+        ScrollHeight = 646
         object PageControl3: TUniPageControl
-          Left = 211
-          Top = 10
-          Width = 776
-          Height = 812
+          Left = 24
+          Top = 16
+          Width = 749
+          Height = 630
           Hint = ''
           ActivePage = TabSheet19
           Plain = True
@@ -4135,8 +4037,8 @@ object fConfigSis: TfConfigSis
             object UniPanel11: TUniPanel
               Left = 0
               Top = 0
-              Width = 768
-              Height = 784
+              Width = 741
+              Height = 602
               Hint = ''
               ShowHint = True
               ParentShowHint = False
@@ -4145,12 +4047,11 @@ object fConfigSis: TfConfigSis
               ClientEvents.UniEvents.Strings = (
                 
                   'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-                  ' '#39'Ficha'#39';'#13#10'}')
-              BorderStyle = ubsNone
+                  ' '#39'FichaSSombra'#39';'#13#10'}')
+              BorderStyle = ubsSolid
               TitleAlign = taCenter
               Title = 'DADOS GERAIS'
               Caption = ''
-              Color = clTeal
               object cProcesso_Numero: TUniDBRadioGroup
                 Left = 20
                 Top = 23
@@ -4181,9 +4082,9 @@ object fConfigSis: TfConfigSis
               end
               object cBloquear_ProcessoFechado: TUniDBCheckBox
                 Left = 21
-                Top = 216
+                Top = 200
                 Width = 348
-                Height = 17
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Bloquear_ProcessoFechado'
@@ -4200,9 +4101,9 @@ object fConfigSis: TfConfigSis
               end
               object cProcesso_ObrigarFatura: TUniDBCheckBox
                 Left = 21
-                Top = 239
+                Top = 229
                 Width = 303
-                Height = 17
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Processo_ObrigarFatura'
@@ -4219,9 +4120,9 @@ object fConfigSis: TfConfigSis
               end
               object cBloquear_ItemContrato: TUniDBCheckBox
                 Left = 21
-                Top = 262
+                Top = 257
                 Width = 393
-                Height = 17
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Bloquear_ItemContrato'
@@ -4239,10 +4140,10 @@ object fConfigSis: TfConfigSis
                 FieldLabelSeparator = ' '
               end
               object cValor_DI: TUniDBFormattedNumberEdit
-                Left = 22
-                Top = 312
-                Width = 185
-                Height = 55
+                Left = 28
+                Top = 314
+                Width = 382
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Valor_DI'
@@ -4255,11 +4156,10 @@ object fConfigSis: TfConfigSis
                 SelectOnFocus = True
                 FieldLabel = 'Valor da DI'
                 FieldLabelWidth = 120
-                FieldLabelAlign = laTop
                 FieldLabelSeparator = ' '
                 DecimalSeparator = ','
                 ThousandSeparator = '.'
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
               end
             end
           end
@@ -4270,8 +4170,8 @@ object fConfigSis: TfConfigSis
             object UniPanel12: TUniPanel
               Left = 0
               Top = 0
-              Width = 768
-              Height = 784
+              Width = 741
+              Height = 602
               Hint = ''
               ShowHint = True
               ParentShowHint = False
@@ -4280,15 +4180,14 @@ object fConfigSis: TfConfigSis
               ClientEvents.UniEvents.Strings = (
                 
                   'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-                  ' '#39'Ficha'#39';'#13#10'}')
-              BorderStyle = ubsNone
+                  ' '#39'FichaSSombra'#39';'#13#10'}')
+              BorderStyle = ubsSolid
               TitleAlign = taCenter
               Title = 'DADOS GERAIS'
               Caption = ''
-              Color = clTeal
               object Label1: TUniLabel
                 Left = 22
-                Top = 142
+                Top = 94
                 Width = 616
                 Height = 13
                 Hint = ''
@@ -4304,50 +4203,48 @@ object fConfigSis: TfConfigSis
               object clMoeda_Importacao: TUniDBLookupComboBox
                 Left = 22
                 Top = 22
-                Width = 488
-                Height = 55
+                Width = 700
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 ListField = 'Codigo;Nome;Simbolo'
                 ListSource = dsMoedas
                 KeyField = 'Codigo'
                 ListFieldIndex = 1
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
                 DataField = 'Moeda_Importacao'
                 DataSource = dsConfig
                 TabOrder = 2
                 Color = clWindow
                 FieldLabel = 'Moeda padr'#227'o p/convers'#227'o p/DI'#39's com mais de uma moeda'
-                FieldLabelWidth = 120
-                FieldLabelAlign = laTop
+                FieldLabelWidth = 300
                 FieldLabelSeparator = ' '
               end
               object clRamo_Atividade: TUniDBLookupComboBox
                 Left = 22
-                Top = 77
-                Width = 488
-                Height = 55
+                Top = 49
+                Width = 700
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 ListField = 'Codigo;Descricao'
                 ListSource = dsRamos
                 KeyField = 'Codigo'
                 ListFieldIndex = 1
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
                 DataField = 'Ramo_Atividade'
                 DataSource = dsConfig
                 TabOrder = 3
                 Color = clWindow
                 FieldLabel = 'Ramo de atividade padr'#227'o para fornecedores do exterior'
-                FieldLabelWidth = 120
-                FieldLabelAlign = laTop
+                FieldLabelWidth = 300
                 FieldLabelSeparator = ' '
               end
               object cAdicao_PesoLiquido: TUniDBRadioGroup
                 Left = 22
-                Top = 375
-                Width = 270
-                Height = 98
+                Top = 301
+                Width = 267
+                Height = 102
                 Hint = ''
                 ShowHint = True
                 DataField = 'Adicao_PesoLiquido'
@@ -4368,8 +4265,8 @@ object fConfigSis: TfConfigSis
                   '2')
               end
               object cSISCOMEX_CodigoProduto: TUniDBCheckBox
-                Left = 22
-                Top = 512
+                Left = 20
+                Top = 425
                 Width = 410
                 Height = 17
                 Hint = ''
@@ -4390,9 +4287,9 @@ object fConfigSis: TfConfigSis
               end
               object cSISCOMEX_MascaraReferencia: TUniDBEdit
                 Left = 22
-                Top = 162
-                Width = 384
-                Height = 28
+                Top = 114
+                Width = 528
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'SISCOMEX_MascaraReferencia'
@@ -4406,11 +4303,11 @@ object fConfigSis: TfConfigSis
                 FieldLabelWidth = 300
                 FieldLabelSeparator = ' '
                 SelectOnFocus = True
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
               end
               object cProcesso_ImportarFechado: TUniDBCheckBox
-                Left = 22
-                Top = 533
+                Left = 20
+                Top = 446
                 Width = 410
                 Height = 17
                 Hint = ''
@@ -4428,8 +4325,8 @@ object fConfigSis: TfConfigSis
                 FieldLabelSeparator = ' '
               end
               object cAFRMM_Calcular: TUniDBCheckBox
-                Left = 22
-                Top = 553
+                Left = 20
+                Top = 466
                 Width = 410
                 Height = 17
                 Hint = ''
@@ -4448,10 +4345,10 @@ object fConfigSis: TfConfigSis
                 OnClick = cAFRMM_CalcularClick
               end
               object cAFRMM_Tarifa: TUniDBFormattedNumberEdit
-                Left = 43
-                Top = 628
-                Width = 160
-                Height = 55
+                Left = 57
+                Top = 520
+                Width = 300
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'AFRMM_Tarifa'
@@ -4463,18 +4360,17 @@ object fConfigSis: TfConfigSis
                 TabOrder = 9
                 SelectOnFocus = True
                 FieldLabel = 'Tarifa'
-                FieldLabelWidth = 80
-                FieldLabelAlign = laTop
+                FieldLabelWidth = 140
                 FieldLabelSeparator = ' '
                 DecimalSeparator = ','
                 ThousandSeparator = '.'
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
               end
               object cAFRMM_Taxa: TUniDBFormattedNumberEdit
-                Left = 43
-                Top = 684
-                Width = 160
-                Height = 55
+                Left = 57
+                Top = 547
+                Width = 300
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'AFRMM_Taxa'
@@ -4486,18 +4382,17 @@ object fConfigSis: TfConfigSis
                 TabOrder = 10
                 SelectOnFocus = True
                 FieldLabel = 'Taxa Utiliza'#231#227'o Mercante'
-                FieldLabelWidth = 80
-                FieldLabelAlign = laTop
+                FieldLabelWidth = 140
                 FieldLabelSeparator = ' '
                 DecimalSeparator = ','
                 ThousandSeparator = '.'
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
               end
               object cAFRMM_Percentual: TUniDBFormattedNumberEdit
-                Left = 43
-                Top = 572
-                Width = 160
-                Height = 55
+                Left = 57
+                Top = 493
+                Width = 300
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'AFRMM_Percentual'
@@ -4509,18 +4404,17 @@ object fConfigSis: TfConfigSis
                 TabOrder = 11
                 SelectOnFocus = True
                 FieldLabel = 'Percentual p/C'#225'lculo'
-                FieldLabelWidth = 80
-                FieldLabelAlign = laTop
+                FieldLabelWidth = 140
                 FieldLabelSeparator = ' '
                 DecimalSeparator = ','
                 ThousandSeparator = '.'
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
               end
               object cSISCOMEX_MascaraPosicao: TUniDBRadioGroup
                 Left = 22
-                Top = 272
+                Top = 216
                 Width = 267
-                Height = 71
+                Height = 77
                 Hint = ''
                 ShowHint = True
                 DataField = 'SISCOMEX_MascaraPosicao'
@@ -4540,9 +4434,9 @@ object fConfigSis: TfConfigSis
               end
               object cSISCOMEX_MascaraPO: TUniDBEdit
                 Left = 22
-                Top = 191
-                Width = 384
-                Height = 28
+                Top = 141
+                Width = 528
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'SISCOMEX_MascaraPO'
@@ -4556,13 +4450,13 @@ object fConfigSis: TfConfigSis
                 FieldLabelWidth = 300
                 FieldLabelSeparator = ' '
                 SelectOnFocus = True
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
               end
               object cSISCOMEX_MascaraITEM: TUniDBEdit
                 Left = 22
-                Top = 220
-                Width = 384
-                Height = 28
+                Top = 168
+                Width = 528
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'SISCOMEX_MascaraITEM'
@@ -4576,13 +4470,13 @@ object fConfigSis: TfConfigSis
                 FieldLabelWidth = 300
                 FieldLabelSeparator = ' '
                 SelectOnFocus = True
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
               end
               object cSISCOMEX_MascaraPOFech: TUniDBEdit
-                Left = 409
-                Top = 191
+                Left = 553
+                Top = 141
                 Width = 100
-                Height = 28
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'SISCOMEX_MascaraPOFech'
@@ -4593,16 +4487,15 @@ object fConfigSis: TfConfigSis
                 Font.Style = [fsBold]
                 TabOrder = 15
                 FieldLabelWidth = 400
-                FieldLabelAlign = laRight
                 FieldLabelSeparator = ' '
                 SelectOnFocus = True
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
               end
               object cSISCOMEX_MascaraITEMFech: TUniDBEdit
-                Left = 409
-                Top = 220
+                Left = 553
+                Top = 168
                 Width = 100
-                Height = 28
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'SISCOMEX_MascaraITEMFech'
@@ -4613,10 +4506,9 @@ object fConfigSis: TfConfigSis
                 Font.Style = [fsBold]
                 TabOrder = 16
                 FieldLabelWidth = 400
-                FieldLabelAlign = laRight
                 FieldLabelSeparator = ' '
                 SelectOnFocus = True
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
               end
             end
           end
@@ -4626,8 +4518,8 @@ object fConfigSis: TfConfigSis
             object UniPanel13: TUniPanel
               Left = 0
               Top = 0
-              Width = 768
-              Height = 784
+              Width = 741
+              Height = 602
               Hint = ''
               ShowHint = True
               ParentShowHint = False
@@ -4636,59 +4528,56 @@ object fConfigSis: TfConfigSis
               ClientEvents.UniEvents.Strings = (
                 
                   'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
-                  ' '#39'Ficha'#39';'#13#10'}')
-              BorderStyle = ubsNone
+                  ' '#39'FichaSSombra'#39';'#13#10'}')
+              BorderStyle = ubsSolid
               TitleAlign = taCenter
               Title = 'DADOS GERAIS'
               Caption = ''
-              Color = clTeal
               object clProcesso_FechamentoCSLL: TUniDBLookupComboBox
                 Left = 19
                 Top = 25
-                Width = 449
-                Height = 55
+                Width = 700
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 ListField = 'Codigo;Nome_Financeiro'
                 ListSource = dsPlano
                 KeyField = 'Codigo'
                 ListFieldIndex = 1
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
                 DataField = 'Processo_FechamentoCSLL'
                 DataSource = dsConfig
                 TabOrder = 1
                 Color = clWindow
                 FieldLabel = 'CSLL'
-                FieldLabelWidth = 120
-                FieldLabelAlign = laTop
+                FieldLabelWidth = 160
                 FieldLabelSeparator = ' '
               end
               object clProcesso_FechamentoIRPJ: TUniDBLookupComboBox
                 Left = 19
-                Top = 80
-                Width = 449
-                Height = 55
+                Top = 52
+                Width = 700
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 ListField = 'Codigo;Nome_Financeiro'
                 ListSource = dsPlano
                 KeyField = 'Codigo'
                 ListFieldIndex = 1
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
                 DataField = 'Processo_FechamentoIRPJ'
                 DataSource = dsConfig
                 TabOrder = 2
                 Color = clWindow
                 FieldLabel = 'IRPJ'
-                FieldLabelWidth = 120
-                FieldLabelAlign = laTop
+                FieldLabelWidth = 160
                 FieldLabelSeparator = ' '
               end
               object cProcesso_FechamentoICMSPagar: TUniDBFormattedNumberEdit
                 Left = 19
-                Top = 301
-                Width = 150
-                Height = 55
+                Top = 160
+                Width = 250
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Processo_FechamentoICMSPagar'
@@ -4701,17 +4590,16 @@ object fConfigSis: TfConfigSis
                 SelectOnFocus = True
                 FieldLabel = 'Percentual ICMS (Pagar)'
                 FieldLabelWidth = 120
-                FieldLabelAlign = laTop
                 FieldLabelSeparator = ' '
                 DecimalSeparator = ','
                 ThousandSeparator = '.'
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
               end
               object cProcesso_FechamentoFDE: TUniDBFormattedNumberEdit
                 Left = 19
-                Top = 357
-                Width = 150
-                Height = 55
+                Top = 187
+                Width = 250
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Processo_FechamentoFDE'
@@ -4724,17 +4612,16 @@ object fConfigSis: TfConfigSis
                 SelectOnFocus = True
                 FieldLabel = 'Percentual FDE'
                 FieldLabelWidth = 120
-                FieldLabelAlign = laTop
                 FieldLabelSeparator = ' '
                 DecimalSeparator = ','
                 ThousandSeparator = '.'
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
               end
               object cProcesso_FechamentoAssAduaneira: TUniDBFormattedNumberEdit
                 Left = 19
-                Top = 413
-                Width = 150
-                Height = 55
+                Top = 214
+                Width = 250
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Processo_FechamentoAssAduaneira'
@@ -4747,59 +4634,56 @@ object fConfigSis: TfConfigSis
                 SelectOnFocus = True
                 FieldLabel = 'Assessoria Aduaneira'
                 FieldLabelWidth = 120
-                FieldLabelAlign = laTop
                 FieldLabelSeparator = ' '
                 DecimalSeparator = ','
                 ThousandSeparator = '.'
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
               end
               object clProcesso_FechamentoClassPgtoCliente: TUniDBLookupComboBox
                 Left = 19
-                Top = 135
-                Width = 449
-                Height = 55
+                Top = 79
+                Width = 700
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 ListField = 'Codigo;Nome_Financeiro'
                 ListSource = dsPlano
                 KeyField = 'Codigo'
                 ListFieldIndex = 1
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
                 DataField = 'Processo_FechamentoClassPgtoCliente'
                 DataSource = dsConfig
                 TabOrder = 6
                 Color = clWindow
                 FieldLabel = 'Classifica'#231#227'o Pgto. Cliente'
-                FieldLabelWidth = 120
-                FieldLabelAlign = laTop
+                FieldLabelWidth = 160
                 FieldLabelSeparator = ' '
               end
               object clProcesso_FechamentoClassCorrecao: TUniDBLookupComboBox
                 Left = 19
-                Top = 190
-                Width = 449
-                Height = 55
+                Top = 106
+                Width = 700
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 ListField = 'Codigo;Nome_Financeiro'
                 ListSource = dsPlano
                 KeyField = 'Codigo'
                 ListFieldIndex = 1
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
                 DataField = 'Processo_FechamentoClassCorrecao'
                 DataSource = dsConfig
                 TabOrder = 7
                 Color = clWindow
                 FieldLabel = 'Classifica'#231#227'o Corr.Financ.'
-                FieldLabelWidth = 120
-                FieldLabelAlign = laTop
+                FieldLabelWidth = 160
                 FieldLabelSeparator = ' '
               end
               object cProcesso_FechamentoCorrecao: TUniDBFormattedNumberEdit
                 Left = 19
-                Top = 469
-                Width = 151
-                Height = 55
+                Top = 241
+                Width = 250
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Processo_FechamentoCorrecao'
@@ -4812,17 +4696,16 @@ object fConfigSis: TfConfigSis
                 SelectOnFocus = True
                 FieldLabel = 'Percentual Corre'#231#227'o Dia'
                 FieldLabelWidth = 120
-                FieldLabelAlign = laTop
                 FieldLabelSeparator = ' '
                 DecimalSeparator = ','
                 ThousandSeparator = '.'
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
               end
               object cProcesso_FechamentoObservacao: TUniDBRadioGroup
-                Left = 484
-                Top = 26
-                Width = 264
-                Height = 72
+                Left = 15
+                Top = 317
+                Width = 261
+                Height = 82
                 Hint = ''
                 ShowHint = True
                 DataField = 'Processo_FechamentoObservacao'
@@ -4842,14 +4725,14 @@ object fConfigSis: TfConfigSis
               end
               object cProcesso_FechamentoObsTexto: TUniDBMemo
                 Left = 19
-                Top = 525
-                Width = 665
-                Height = 55
+                Top = 268
+                Width = 702
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 DataField = 'Processo_FechamentoObsTexto'
                 DataSource = dsConfig
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
                 ParentFont = False
                 Font.Height = -13
                 Font.Name = 'DejaVu Sans'
@@ -4857,28 +4740,26 @@ object fConfigSis: TfConfigSis
                 TabOrder = 10
                 FieldLabel = 'Observa'#231#227'o para o Fechamento'
                 FieldLabelWidth = 120
-                FieldLabelAlign = laTop
                 FieldLabelSeparator = ' '
               end
               object clProcesso_FechamentoDRE: TUniDBLookupComboBox
                 Left = 19
-                Top = 245
-                Width = 449
-                Height = 55
+                Top = 133
+                Width = 700
+                Height = 25
                 Hint = ''
                 ShowHint = True
                 ListField = 'Codigo;Nome_Financeiro'
                 ListSource = dsPlano
                 KeyField = 'Codigo'
                 ListFieldIndex = 1
-                BorderStyle = ubsSolid
+                BorderStyle = ubsInset
                 DataField = 'Processo_FechamentoDRE'
                 DataSource = dsConfig
                 TabOrder = 11
                 Color = clWindow
                 FieldLabel = 'C'#243'digo da DRE'
-                FieldLabelWidth = 120
-                FieldLabelAlign = laTop
+                FieldLabelWidth = 160
                 FieldLabelSeparator = ' '
               end
             end
@@ -4893,8 +4774,8 @@ object fConfigSis: TfConfigSis
       object UniScrollBox9: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1508
-        Height = 1437
+        Width = 1077
+        Height = 854
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -4903,11 +4784,11 @@ object fConfigSis: TfConfigSis
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1506
-          1435)
+          1075
+          852)
         ScrollHeight = 436
         object UniPanel14: TUniPanel
-          Left = 206
+          Left = 42
           Top = 21
           Width = 736
           Height = 415
@@ -4920,16 +4801,15 @@ object fConfigSis: TfConfigSis
             
               'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
               ' '#39'Ficha'#39';'#13#10'}')
-          BorderStyle = ubsNone
+          BorderStyle = ubsSolid
           TitleAlign = taCenter
           Title = 'DADOS GERAIS'
           Caption = ''
-          Color = clTeal
           object GroupBox22: TUniGroupBox
             Left = 23
             Top = 231
             Width = 690
-            Height = 159
+            Height = 151
             Hint = ''
             ShowHint = True
             Caption = 'Entrega de Arquivos Fiscais'
@@ -4942,7 +4822,7 @@ object fConfigSis: TfConfigSis
               Left = 456
               Top = 25
               Width = 216
-              Height = 28
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Vencimento_FISCALDias'
@@ -4957,13 +4837,13 @@ object fConfigSis: TfConfigSis
               FieldLabelWidth = 160
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cVencimento_PISCOFINSDias: TUniDBNumberEdit
               Left = 456
-              Top = 54
+              Top = 52
               Width = 216
-              Height = 28
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Vencimento_PISCOFINSDias'
@@ -4978,13 +4858,13 @@ object fConfigSis: TfConfigSis
               FieldLabelWidth = 160
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cVencimento_CONTABILDias: TUniDBNumberEdit
               Left = 456
-              Top = 83
+              Top = 79
               Width = 216
-              Height = 28
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Vencimento_CONTABILDias'
@@ -4999,13 +4879,13 @@ object fConfigSis: TfConfigSis
               FieldLabelWidth = 160
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cVencimento_SINTEGRADias: TUniDBNumberEdit
               Left = 456
-              Top = 112
+              Top = 106
               Width = 216
-              Height = 28
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Vencimento_SINTEGRADias'
@@ -5020,13 +4900,13 @@ object fConfigSis: TfConfigSis
               FieldLabelWidth = 160
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cVencimento_FISCAL: TUniDBNumberEdit
               Left = 20
               Top = 25
               Width = 259
-              Height = 28
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Vencimento_FISCAL'
@@ -5041,13 +4921,13 @@ object fConfigSis: TfConfigSis
               FieldLabelWidth = 200
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cVencimento_PISCOFINS: TUniDBNumberEdit
               Left = 20
-              Top = 54
+              Top = 52
               Width = 259
-              Height = 28
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Vencimento_PISCOFINS'
@@ -5062,13 +4942,13 @@ object fConfigSis: TfConfigSis
               FieldLabelWidth = 200
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cVencimento_CONTABIL: TUniDBNumberEdit
               Left = 20
-              Top = 83
+              Top = 79
               Width = 259
-              Height = 28
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Vencimento_CONTABIL'
@@ -5083,13 +4963,13 @@ object fConfigSis: TfConfigSis
               FieldLabelWidth = 200
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cVencimento_SINTEGRA: TUniDBNumberEdit
               Left = 20
-              Top = 112
+              Top = 106
               Width = 259
-              Height = 28
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Vencimento_SINTEGRA'
@@ -5104,13 +4984,13 @@ object fConfigSis: TfConfigSis
               FieldLabelWidth = 200
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cVencimento_CONTABILMes: TUniDBNumberEdit
               Left = 300
-              Top = 83
+              Top = 79
               Width = 145
-              Height = 28
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Vencimento_CONTABILMes'
@@ -5124,14 +5004,14 @@ object fConfigSis: TfConfigSis
               FieldLabel = 'M'#234's Espec'#237'fico'
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
           end
           object UniGroupBox2: TUniGroupBox
             Left = 23
             Top = 24
             Width = 690
-            Height = 187
+            Height = 175
             Hint = ''
             ShowHint = True
             Caption = 'Avisos de Vencimentos'
@@ -5144,7 +5024,7 @@ object fConfigSis: TfConfigSis
               Left = 23
               Top = 24
               Width = 320
-              Height = 28
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Aviso_VencimentoContrato'
@@ -5159,13 +5039,13 @@ object fConfigSis: TfConfigSis
               FieldLabelWidth = 260
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cAviso_VencimentoRetorno: TUniDBNumberEdit
               Left = 23
-              Top = 111
+              Top = 105
               Width = 320
-              Height = 28
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Aviso_VencimentoRetorno'
@@ -5180,13 +5060,13 @@ object fConfigSis: TfConfigSis
               FieldLabelWidth = 260
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cAviso_VencimentoRadar: TUniDBNumberEdit
               Left = 23
-              Top = 53
+              Top = 51
               Width = 320
-              Height = 28
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Aviso_VencimentoRadar'
@@ -5201,13 +5081,13 @@ object fConfigSis: TfConfigSis
               FieldLabelWidth = 260
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cAviso_VencimentoVinculacao: TUniDBNumberEdit
               Left = 23
-              Top = 82
+              Top = 78
               Width = 320
-              Height = 28
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Aviso_VencimentoVinculacao'
@@ -5222,13 +5102,13 @@ object fConfigSis: TfConfigSis
               FieldLabelWidth = 260
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cAviso_MovimentoMinimo: TUniDBNumberEdit
               Left = 23
-              Top = 140
+              Top = 132
               Width = 320
-              Height = 28
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Aviso_MovimentoMinimo'
@@ -5243,13 +5123,13 @@ object fConfigSis: TfConfigSis
               FieldLabelWidth = 260
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
             object cAviso_MovimentoMaximo: TUniDBNumberEdit
               Left = 349
-              Top = 139
+              Top = 131
               Width = 122
-              Height = 28
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Aviso_MovimentoMaximo'
@@ -5264,7 +5144,7 @@ object fConfigSis: TfConfigSis
               FieldLabelWidth = 50
               FieldLabelSeparator = ' '
               DecimalSeparator = ','
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
             end
           end
         end
@@ -5277,8 +5157,8 @@ object fConfigSis: TfConfigSis
       object UniScrollBox4: TUniScrollBox
         Left = 0
         Top = 0
-        Width = 1508
-        Height = 1437
+        Width = 1077
+        Height = 854
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -5287,14 +5167,14 @@ object fConfigSis: TfConfigSis
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
         DesignSize = (
-          1506
-          1435)
-        ScrollHeight = 510
+          1075
+          852)
+        ScrollHeight = 364
         object UniPanel10: TUniPanel
-          Left = 211
-          Top = 16
-          Width = 712
-          Height = 494
+          Left = 24
+          Top = 23
+          Width = 765
+          Height = 341
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -5304,16 +5184,15 @@ object fConfigSis: TfConfigSis
             
               'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
               ' '#39'Ficha'#39';'#13#10'}')
-          BorderStyle = ubsNone
+          BorderStyle = ubsSolid
           TitleAlign = taCenter
           Title = 'DADOS GERAIS'
           Caption = ''
-          Color = clTeal
           object GroupBox28: TUniGroupBox
             Left = 28
             Top = 90
-            Width = 656
-            Height = 379
+            Width = 712
+            Height = 219
             Hint = ''
             ShowHint = True
             Caption = 'Dados de Faturamento para pedidos de Televendas'
@@ -5325,50 +5204,48 @@ object fConfigSis: TfConfigSis
             object clTelevendas_Transportador: TUniDBLookupComboBox
               Left = 23
               Top = 28
-              Width = 609
-              Height = 55
+              Width = 670
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Nome;CNPJ'
               ListSource = dstTransp
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Televendas_Transportador'
               DataSource = dsConfig
               TabOrder = 1
               Color = clWindow
               FieldLabel = 'Transportador'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 200
               FieldLabelSeparator = ' '
             end
-            object cTipoNota: TUniDBLookupComboBox
+            object cOperacao: TUniDBLookupComboBox
               Left = 23
-              Top = 138
-              Width = 609
-              Height = 55
+              Top = 82
+              Width = 670
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Descricao; Codigo'
-              ListSource = dsTipoNota
+              ListSource = dsOperacao
               KeyField = 'Codigo'
               ListFieldIndex = 0
-              BorderStyle = ubsSolid
-              DataField = 'Televendas_TipoNota'
+              BorderStyle = ubsInset
+              DataField = 'Televendas_Operacao'
               DataSource = dsConfig
               TabOrder = 3
               Color = clWindow
               FieldLabel = 'Tipo Nota'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 200
               FieldLabelSeparator = ' '
             end
             object cModalidadeFrete: TUniDBComboBox
               Left = 23
-              Top = 83
-              Width = 609
-              Height = 55
+              Top = 55
+              Width = 670
+              Height = 25
               Hint = ''
               ShowHint = True
               DataField = 'Televendas_ModalidadeFrete'
@@ -5381,58 +5258,55 @@ object fConfigSis: TfConfigSis
                 'Sem cobran'#231'a de frete')
               TabOrder = 2
               FieldLabel = 'Modalidade de Frete'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 200
               FieldLabelSeparator = ' '
               IconItems = <>
             end
             object cTelevendas_NaturezaFora: TUniDBLookupComboBox
               Left = 23
-              Top = 248
-              Width = 609
-              Height = 55
+              Top = 136
+              Width = 670
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Codigo;Descricao'
               ListSource = dsCFOP
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Televendas_NaturezaFora'
               DataSource = dsConfig
               TabOrder = 4
               Color = clWindow
               FieldLabel = 'Natureza Opera'#231#227'o (Fora do Estado)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 200
               FieldLabelSeparator = ' '
             end
             object cModalidade: TUniDBLookupComboBox
               Left = 23
-              Top = 303
-              Width = 609
-              Height = 55
+              Top = 163
+              Width = 670
+              Height = 25
               Hint = ''
               ShowHint = True
               ListField = 'Descricao'
               ListSource = dsModalPg
               KeyField = 'Codigo'
               ListFieldIndex = 0
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Televendas_ModalidadePgto'
               DataSource = dsConfig
               TabOrder = 5
               Color = clWindow
               FieldLabel = 'Modalidade Pgto'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 200
               FieldLabelSeparator = ' '
             end
             object cTelevendas_NaturezaDentro: TUniDBLookupComboBox
               Left = 23
-              Top = 193
-              Width = 609
-              Height = 55
+              Top = 109
+              Width = 670
+              Height = 25
               Hint = ''
               ShowHint = True
               ListOnlyMode = lmFollowSource
@@ -5440,14 +5314,13 @@ object fConfigSis: TfConfigSis
               ListSource = dsCFOP
               KeyField = 'Codigo'
               ListFieldIndex = 1
-              BorderStyle = ubsSolid
+              BorderStyle = ubsInset
               DataField = 'Televendas_NaturezaDentro'
               DataSource = dsConfig
               TabOrder = 6
               Color = clWindow
               FieldLabel = 'Natureza Opera'#231#227'o (Dentro do Estado)'
-              FieldLabelWidth = 120
-              FieldLabelAlign = laTop
+              FieldLabelWidth = 200
               FieldLabelSeparator = ' '
             end
           end
@@ -5522,8 +5395,8 @@ object fConfigSis: TfConfigSis
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'SELECT * FROM Config')
-    Left = 56
-    Top = 70
+    Left = 55
+    Top = 68
   end
   object dsConfig: TDataSource
     DataSet = Config
@@ -5607,17 +5480,17 @@ object fConfigSis: TfConfigSis
     Left = 144
     Top = 501
   end
-  object TipoNota: TFDQuery
+  object Operacao: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
-      'SELECT * FROM TipoNota'
+      'SELECT * FROM OperacaoFiscal'
       ''
       '')
     Left = 56
     Top = 469
   end
-  object dsTipoNota: TDataSource
-    DataSet = TipoNota
+  object dsOperacao: TDataSource
+    DataSet = Operacao
     Left = 56
     Top = 517
   end

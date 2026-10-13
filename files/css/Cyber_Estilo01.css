@@ -1,13 +1,29 @@
+/* ============================================================================
+   ATLASWEB | CSS BASE VALIDADO - ETAPA 2
+   Delphi 10.3 Rio / uniGUI 1.99
+   Objetivo: documentar e preparar a modularizacao, sem alterar a cascata.
+   IMPORTANTE: mantenha a ordem original dos seletores e teste novas alteracoes.
+   ============================================================================ */
+
+/* INDICE (secoes na ordem historica do projeto)
+   01. Area principal, login, fundo, menu
+   02. Grids, botoes e paineis
+   03. Abas e PageControls
+   04. Campos, combos, labels e checkboxes
+   05. Personalizacoes finais (login, mascaras, abas metalicas)
+   Observacao: ha sobreposicoes intencionais no final do arquivo.
+*/
+
+/* AtlasWeb — revisão conservadora. Validar visualmente no uniGUI 1.99 antes de substituir o original. */
 /*----------------------------------------------------------[ AREA PRINCIPAL ]------------------------------------------------------*/
 .x-form-textarea {
-   min-height: 100%! Importante;
+   min-height: 100% !important;
 }  
                   
 video::-webkit-media-controls-timeline {display: none;}
 video::-webkit-media-controls-play-button {display: none;}
 video::-webkit-media-controls-volume-slider {display: none;}
 video::-webkit-media-controls-mute-button {display: none;}
-video::-webkit-media-controls-timeline {display: none;}
 video::-webkit-media-controls-current-time-display {display: none;}
 
 video {
@@ -32,10 +48,7 @@ video {
 }
 
 */
-.x-item-disabled .x-mask {
-   background: none;
-   opacity: 100%;
-}
+
 
 /*--------------------------------------------------------[ TELA DE LOG IN ]------------------------------------------------------*/
 .CaixaLog {
@@ -109,7 +122,7 @@ video {
           
 /*--------------------------------------------------------[ FUNDO ABERTURA ]-------------------------------------------------------*/
 .Fundo {
-   video: url("/files/images/Earth.mp4");
+   /* Vídeo deve ser carregado por HTML/uniGUI, não pela propriedade CSS video. */
    background-size: cover;
 }
 
@@ -261,14 +274,14 @@ video {
 .BotaoCor {
    background:#1E90FF !important;
    border: none;
-   border-color: none;
-   webkit-transition: background 0.5s ease-in-out;
+   /* border-color: none é inválido; border: none já remove a borda. */
+   transition: background 0.5s ease-in-out;
 }
 
 .BotaoDegrade {
    background-image:url("/files/images/fundo8.jpg");        
-   box-shadow: 0 0 .1em #343434, 0 0 1.em #343434, 0 0 .1em #343434;
-   text-font: 10px helvetica,helvetica !important;
+   box-shadow: 0 0 .1em #343434, 0 0 1em #343434, 0 0 .1em #343434;
+   font: 10px helvetica, Arial, sans-serif !important;
 }
             
 .x-btn-default-small .x-btn-inner {
@@ -281,7 +294,7 @@ video {
 
 /*--------------------------------------------------------[ PAINEIS GERAIS ]---------------------------------------------------------*/
 .Painel {
-   border-width: 1px solid #000;
+   border: 1px solid #000;
    border-radius: 5px;
    background-color: #EEE9E9;
    background-image: url("/files/images/Painel1.jpg");
@@ -351,7 +364,7 @@ video {
 
 .Ficha {
    box-shadow: -1px -1px 14px #000;
-   border-width: 1px solid inset #000;
+   border: 1px inset #000;
    border-radius: 5px;
    background-color: #EEE9E9;
    background-image: url("/files/images/Painel1.jpg");
@@ -359,7 +372,7 @@ video {
 }
 
 .FichaSSombra {
-   border-width: 1px solid #000;
+   border: 1px solid #000;
    border-radius: 5px;
    background-color: #EEE9E9;
    background-image:url("/files/images/Painel1.jpg");
@@ -368,14 +381,16 @@ video {
 
 /*--------------------------------------------------------[ PASTA (PageControls) ]-----------------------------------------------------*/
 .Pasta {
-   background-color:#696969;
    background-color: #4f5e6b !important;
    border-style: none;
+   box-shadow: 0 0 4px rgba(0, 0, 0, 0.35);
 }
 
 .PastaInterna {
-   box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 40px 0 rgba(0, 0, 0, 0.19);
-   background-color: #4f5e6b !important;
+   background: transparent !important;
+   background-image: none !important;
+   box-shadow: -1px -1px 14px #000;
+   border: 1px inset #000;
    border-style: solid;
    border-width: 3px;
    border-color: #43666c63;
@@ -385,7 +400,7 @@ video {
        
 .PastaPrincipal {
    box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 40px 0 rgba(0, 0, 0, 0.19);
-   background-color: $00545429;
+   background-color: #295454; /* conversão de cor Delphi $00BBGGRR */
 }
       
 .PastaItens {
@@ -408,24 +423,39 @@ video {
     max-width: 100%;
 }
 
-.x-tab-bar {
-  background-color: #f5f5f5 !important;
-  background-image: url("/files/images/Painel1.jpg");
+
+/*--------------------------------------------------------[ AJUSTE PROFISSIONAL DAS ABAS ]--------------------------------------------------------*/
+
+/* Barra das abas */
+
+
+/* Área interna da barra */
+
+
+/* Remove espaço entre a barra das abas e o conteúdo */
+.x-tab-bar-strip {
+    display: none !important;
 }
 
+/* Conteúdo do PageControl */
+.x-tab-panel-body {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    border-top: none !important;
+}
 
 /*--------------------------------------------------------[ CAMPOS ]--------------------------------------------------------------*/
 /* Caixa dos campos */
 .x-form-field {
    border-radius: 0px;
-   font: bold 11px helvetica,courrier new !important;*/
-   font-color: black;
+   font: bold 11px helvetica, "Courier New", monospace !important;
+   color: black;
 }
 
 /* Texto dos campos */
 .x-form-text {
    /*border: 1px 1px 0px 1px groove inset rgba(204,225,229,0.17);*/
-   min-height: 100%! Importante;
+   min-height: 100% !important;
    border-radius: 0px;
    background-color: #608d8417;
 }
@@ -503,9 +533,9 @@ video {
    min-height: 22px;
    color: #000;
    border-radius: 0px;
-   background-color: none;
+   /* background-color: none é inválido; preservado o background anterior. */
    font: bold 11px helvetica, arial, verdana, sans-serif;
-   background-opacity: 50%;
+   /* background-opacity não existe em CSS; preservar opacidade do conteúdo. */
 }
 
 /*---------------------------------------------------------[ CAMPOS SIMPLES ]---------------------------------------------------------*/
@@ -529,9 +559,8 @@ video {
 }
                         
 .x-form-table {
-   border: thick groove outset;            
-   border-radius: 3px;
-   border: thick solid;            
+   border: thick solid;
+   border-radius: 3px;            
 }
               
 .x-fieldset-header-default > .x-fieldset-header-text {
@@ -557,8 +586,7 @@ video {
    color: #000;
    font-size: 10px;
    border-radius: 0px;
-   border-style: default;
-   border: default;
+   /* Valores default inválidos para border/border-style. */
    border-color: #000;
    cursor: pointer;
 }
@@ -587,16 +615,10 @@ video {
     padding-block: 4px;
     padding: 6px;
     font: bold 10px helvetica, arial, verdana, sans-serif;
-    color: color: #4682B4;
+    color: #4682B4;
 }
 
 /*---------------------------------------------------------[ Classe dos botoões ]------------------------------------------------------*/
-element.style {
-    width: 628px;
-    left: 0px;
-    height: 33px;
-    top: 25px;
-}
 
 /*--------------------------------------------[ Toggle swith ]-----------------------------------------------------*/
 /* Wrapper do checkbox */
@@ -802,4 +824,120 @@ element.style {
 }
 .x-mask-msg .x-mask-msg-text {
     color: #2C3E55 !important;
+}
+
+/*--------------------------------------------------------[ ABAS - ESTILO METAL ]--------------------------------------------------------*/
+/* Barra das abas */
+.x-tab-bar {
+    background: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Área interna da barra */
+.x-tab-bar-body {
+    background: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Aba Inativa (Metal Escovado Escuro) */
+.x-tab-default-top {
+    /* Gradiente que simula a reflexão do metal fosco */
+    background: linear-gradient(to bottom, #cfd6db 0%, #9ba4ab 40%, #7a848c 50%, #656e75 100%) !important;
+    background-image: none !important;
+    
+    /* Borda externa escura com a base fundida */
+    border: 1px solid #4a5359 !important;
+    border-bottom: 1px solid #3d444a !important;
+    border-radius: 6px 6px 0 0 !important;
+    height: 28px !important;
+    padding: 0 18px !important;
+    margin-right: 0px !important;
+    
+    /* Inset simula o chanfro brilhante do metal lapidado */
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        inset 1px 0 0 rgba(255, 255, 255, 0.2),
+        0 1px 3px rgba(0, 0, 0, 0.3) !important;
+    
+    position: relative;
+    top: 1px;
+    transition: all .15s ease;
+}
+
+/* Caption (Texto gravado no metal) */
+.x-tab-inner-default {
+    font: bold 11px/27px helvetica, arial, verdana, sans-serif !important;
+    color: #f5f7f8 !important; /* Mudado para branco para destacar do fundo */ 
+    text-align: center !important;
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.7) !important; /* Sombra escura para dar contraste e profundidade */
+}
+
+/* Aba ao passar o mouse (Metal polido/brilhante) */
+.x-tab-default-top:hover {
+    background: linear-gradient(
+        to bottom,
+        #e3e9ed 0%,
+        #b1bac2 40%,
+        #8e99a1 50%,
+        #79838a 100%
+    ) !important;
+    border-color: #3d444a !important;
+    cursor: pointer;
+}
+
+/* ABA ATIVA (Metal Cromado em Destaque) */
+.x-tab-active.x-tab-default-top {
+    /* Gradiente metálico com mais contraste e brilho central */
+    background: linear-gradient(
+        to bottom,
+        #ffffff 0%,
+        #e3e7fa 25%,
+        #b8c2cc 50%,
+        #8a95a0 52%,
+        #a3afbc 100%
+    ) !important;
+    
+    border: 1px solid #2d3337 !important;
+    border-bottom: none !important; /* Une-se perfeitamente ao painel inferior */
+    
+    /* Chanfro interno duplo e sombra projetada forte */
+    box-shadow: 
+        inset 0 1px 0 #ffffff,
+        inset 0 2px 0 rgba(255, 255, 255, 0.4),
+        0 -2px 6px rgba(0, 0, 0, 0.25) !important;
+    
+    position: relative;
+    top: 0;
+    z-index: 10;
+}
+
+/* Caption da aba ativa */
+.x-tab-active.x-tab-default-top .x-tab-inner-default {
+    color: #1a2024 !important;
+    font-weight: bold !important;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Linha de reflexo extremo de luz na quina do metal ativo */
+.x-tab-active.x-tab-default-top:before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    top: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 1px;
+}
+
+/* Aplica o separador no topo da área interna, sem tocar nas abas */
+.x-panel-body-default, .x-panel-body {
+    border-top: 0px solid #2d3337 !important; /* Linha fina escura */
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.15) !important; /* Linha de luz opcional */
 }

@@ -18,6 +18,7 @@ type
     class procedure AplicarTraducao(AForm: TComponent; AComponente: TComponent; const APropriedade, AIdioma: string);
   public
     class procedure TraduzirFormulario(AForm: TComponent; const AIdioma: string);
+    class function TraduzirTexto(const ATexto, AIdioma: string): string;
   end;
 
 implementation
@@ -47,8 +48,10 @@ var
   Traducao: string;
   ComponenteAtual: TComponent;
 begin
-     if not Assigned(AComponente) then Exit;
-     if Trim(AComponente.Name) = '' then Exit;
+     if not Assigned(AComponente) then 
+        Exit;
+     if Trim(AComponente.Name) = '' then 
+        Exit;
 
      Chave           := '';
      ComponenteAtual := AComponente;
@@ -85,6 +88,34 @@ begin
           end;
      finally
           Q.Free;
+     end;
+end;
+
+class function TTradutor.TraduzirTexto(const ATexto, AIdioma: string): string;
+var
+   Q: TFDQuery;
+begin
+     Result := ATexto;
+
+     if Trim(ATexto) = '' then Exit;
+     if Trim(AIdioma) = '' then Exit;
+
+     Q := TFDQuery.Create(nil);
+     try
+        Q.Connection := UniMainModule.Conecta;
+        Q.SQL.Clear;
+        Q.SQL.Add('select top 1 Traducao');
+        Q.SQL.Add('from Traducoes');
+        Q.SQL.Add('where TextoOriginal = :pTextoOriginal');
+        Q.SQL.Add('and Idioma = :pIdioma');
+        Q.SQL.Add('and Traducao is not null');
+        Q.SQL.Add('and Traducao <> ''''');
+        Q.ParamByName('pTextoOriginal').AsString := ATexto;
+        Q.ParamByName('pIdioma').AsString        := AIdioma;
+        Q.Open;
+        if not Q.IsEmpty then Result := Q.FieldByName('Traducao').AsString;
+     finally
+       Q.Free;
      end;
 end;
 

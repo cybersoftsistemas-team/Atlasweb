@@ -443,6 +443,7 @@ type
     function VerBloqueios: boolean;
     procedure LigaBotoesItens(Estado: boolean);
     procedure FrameFilhoFechou(Sender: TObject);
+    function ExcluirMovItens: boolean;
   public
     { Public declarations }
     mDataEmi_Antes,
@@ -514,45 +515,6 @@ begin
             try
                Param.Arquivo := Files[i].CacheFile;
                Importador.ImportarXML(Param);
-               {
-               // Fichas de Estoque/Inventario.
-               with ttmp do begin
-                    sql.clear;  
-                    sql.add('select Codigos = string_agg(convert(nvarchar(max), isnull(Codigo_Mercadoria, '''')), '','')');
-                    sql.add('within group (order by Codigo_Mercadoria)');
-                    sql.add('from NotasItens');
-                    sql.add('where Nota_id = :pid');
-                    parambyname('pid').asinteger := Importador.NFe.Notaid;
-                    open;
-                    mCodigos := fieldbyname('Codigos').asstring;
-               end;
-               FichasEstInv(Importador.NFe.Empresa
-                           ,Importador.NFe.EmitCod
-                           ,Importador.NFe.EmitNome
-                           ,Importador.NFe.EmitCNPJ
-                           ,0
-                           ,Importador.NFe.NotaIDAntes
-                           ,mCodigos
-                           ,'NFT');
-
-               // Ativo imobilizado.
-               try
-                  with CFOP do begin
-                       sql.clear;
-                       sql.add('select Imobilizado from CFOP where Codigo = :pCod');
-                       parambyname('pCod').asstring := Importador.Item.CFOP;
-                       open;
-                  end;
-               except on E: Exception do 
-                  begin
-                     MessageDlg('Erro ao abrir tabela CFOP!'+#13+E.Message, mtError, [mbOK]);
-                  end;
-               end;
-               if CFOP.fieldbyname('Imobilizado').asboolean and (Importador.Item.vUnitario > Config.fieldbyname('Valor_Imobilizado').ascurrency) then begin
-                  SalvaImobilizado(Importador.NFe.NotaIDAntes, Importador.NFe.NotaID, Config.fieldbyname('Parcelas_Imobilizado').AsInteger);
-               end;
-               }
-               cLog.cells[0, i] := Files[i].OriginalFileName;
                clog.cells[1, i] := 'SUCESSO';
             except
                on E: Exception do begin
@@ -863,9 +825,6 @@ begin
 end;
 
 procedure TfFiscalNFTerceiros.bExcItensClick(Sender: TObject);
-var
-  mItem: integer;
-  mCodigo: string;
 begin
      // Se estiver bloqueado não deixa alterar.
      if VerBloqueios then abort;
@@ -874,17 +833,15 @@ begin
                  procedure(Comp:TComponent; ARes: Integer)
                  begin
                       if ARes = mrYes then begin
-                         try 
-                            mCodigo := ItensCodigo_Mercadoria.asstring;
-                            with ttmp do begin 
-                                 mItem := ItensItem.asinteger;
+                         if ExcluirMovItens then begin
+                            with ttmp do begin
                                  sql.clear;
-                                 sql.add('delete from NotasItens where Nota_Id = :pid and Item = :pItem');
-                                 parambyname('pid').value   := ItensNota_id.asinteger;
-                                 parambyname('pitem').value := ItensItem.asinteger;
-                                 execute;
+                                 sql.add('delete form NotasItens where Nota_id = :pid and Codigo_Mercadoria = :pCod and Item = :pItem');
+                                 parambyname('pid').asinteger   := ItensNota_id.asinteger;
+                                 parambyname('pCod').asinteger  := ItensCodigo_Mercadoria.asinteger;
+                                 parambyname('pItem').asinteger := ItensItem.asinteger;
+                                 execsql;
                             end;
-                            Itens.Refresh;
                             
                             // Processa a ficha de Estoque/Inventario do item modificado.
                             FichasEstInv(Notas.fieldbyname('Empresa').asstring
@@ -893,17 +850,9 @@ begin
                                                            ,''
                                                            ,0
                                                            ,Notas.fieldbyname('Nota_id').asinteger
-                                                           ,mCodigo
+                                                           ,Itens.fieldbyname('Codigo_Mercadoria').asstring
                                                            ,'NFT');
-                            
-                            // Ativo imobilizado.
-//                            if CFOP.fieldbyname('Imobilizado').asboolean and (NotasItensValor_Unitario.ascurrency > Config.fieldbyname('Valor_Imobilizado').ascurrency) then begin
-//                               SalvaImobilizado(Nota.Fieldbyname('Nota_id').asinteger, Nota.Fieldbyname('Nota_id').asinteger, Config.fieldbyname('Parcelas_Imobilizado').AsInteger);
-//                            end;
-
-                            TfDialogo.Execute(UniApplication, 'Sucesso', 'Sucesso', 'Item ['+inttostr(mItem)+'] excluído da nota fiscal');  
-                         except on E: Exception do
-                            TfDialogo.Execute(UniApplication, 'Erro', 'Erro ao Excluir!', E.Message);
+                            Itens.Refresh;
                          end;
                       end;
                  end);
@@ -932,9 +881,6 @@ begin
                                        sql.add('and Produto in(select Codigo_Mercadoria from NotasItens where Empresa = :pEmp and Nota_id = :pid);');
                                        sql.add('-- EXCLUI O VÍNCULO DOS CHASSIS/SERIAIS COM A NOTA.');
                                        sql.add('delete from ProdutosSeriaisNotas where Empresa = :pEmp and Nota_id = :pid;');
-                                       //sql.add('-- EXCLUI PRODUTOS SERIAIS QUE NÃO POSSUEM MAIS VÍNCULOS.');
-                                       //sql.add('delete from ProdutosSeriais');
-                                       //sql.add('where not exists(select 1 from ProdutosSeriaisNotas psn where psn.Produto = ProdutosSeriais.Produto);');
                                        sql.add('-- EXCLUI OS DETALHES DOS PRODUTOS DA NOTA.');
                                        sql.add('delete from ProdutosDetalhe where Empresa = :pEmp and Nota_id = :pid;');
                                        sql.add('-- EXCLUI O IMOBILIZADO RELACIONADO À NOTA.');
@@ -1250,7 +1196,7 @@ begin
                 TfDialogo.Execute(UniApplication, 'Bloqueado', 'Bloqueio', 'Esta nota fiscal não pode ser alterada, Esta dentro de um período contabil fechado');
              end;
           end;
-          // Lançamento financeiro bachado.
+          // Lançamento financeiro baixado.
           if not result and (NotasLancamento_Financeiro.asinteger > 0) then begin
              sql.clear;
              sql.add('create index IX_PagarReceberBaixas_Empresa_Titulo on PagarReceberBaixas (Empresa, Titulo);');
@@ -1307,5 +1253,34 @@ procedure TfFiscalNFTerceiros.GradeItensDblClick(Sender: TObject);
 begin
     bEditItens.Click;
 end;
+
+function TfFiscalNFTerceiros.ExcluirMovItens: boolean;
+begin
+     try 
+        with ttmp do begin
+             // 1 - Libera o Serial.
+             // 2 - Exclui a nota do serial.
+             // 3 - Ajusta o estoque minimo por percentual.
+             // 4 - Exclui do imobilizado se não foi apropriada nenhuma parcela.
+             // 5 - Exclui o item do controle de lotes caso haja.
+             // 6 - Deleta o item da tabela "NotasItensNavios.
+             sql.clear;
+             sql.add('update ProdutosSeriais set Disponivel = 0 where Produto = :pCod and Empresa = :pEmp;');
+             sql.add('delete from ProdutosSeriaisNotas where Nota_id = :pid and Produto = :pCod and Empresa = :pEmp;');
+             sql.add('update produtos set Estoque_Minimo = :pQtde * (Estoque_MinimoPerc/100) where Codigo = :pCod;');
+             sql.add('delete from Imobilizado where Codigo_Mercadoria = :pCod and Empresa = :pEmp and Nota_id = :pid and isnull(Apropriadas, 0) = 0;');
+             sql.Add('delete from ProdutosDetalhe where Produto_Codigo = :pCodi and Empresa = :pEmp and Nota_id = :pid and Item = :pItem');
+             sql.add('Delete from NotasItensNavios where Empresa = :pEmp Nota_id = :pid and Codigo_Mercadoria = :pCod');
+             paramByName('pCod').asinteger := Itens.fieldbyname('Codigo_Mercadoria').asinteger;
+             paramByName('pid').asinteger  := Notas.fieldbyname('Nota_id').asinteger;
+             paramByName('pQtde').asfloat  := (EstoqueProduto(Itens.fieldbyname('Codigo_Mercadoria').asinteger) - Itens.fieldbyname('Quantidade').asfloat);
+             paramByName('pEmp').asstring  := Itens.fieldbyname('Empresa').asstring;
+             execsql;
+        end;
+     except on E: Exception do
+        TfDialogo.Execute(UniApplication, 'Erro', 'Erro ao Excluir!', E.Message);
+     end;
+end;
+
 
 end.

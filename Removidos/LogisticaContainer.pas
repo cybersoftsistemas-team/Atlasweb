@@ -10,7 +10,7 @@ uses
   FireDAC.Comp.DataSet, uniDBComboBox, uniMemo, uniMultiItem, uniCheckBox;
 
 type
-  TfLogisticaContainer = class(TUniFrame)
+  TfContainer = class(TUniFrame)
     aLista: TUniTabSheet;
     UniScrollBox1: TUniScrollBox;
     pBarraNav: TUniPanel;
@@ -99,7 +99,7 @@ implementation
 
 uses MainModule, Main;
 
-procedure TfLogisticaContainer.bAdicionarClick(Sender: TObject);
+procedure TfContainer.bAdicionarClick(Sender: TObject);
 begin
       with Container do begin
            try
@@ -111,7 +111,7 @@ begin
       end;
 end;
 
-procedure TfLogisticaContainer.bExcluirClick(Sender: TObject);
+procedure TfContainer.bExcluirClick(Sender: TObject);
 begin
      with Container do begin
           MessageDlg('Deseja realmente excluir estes dados?'+#13+#13+FieldByName('Numero').AsString, mtConfirmation,mbYesNo,
@@ -126,7 +126,7 @@ begin
      end;
 end;
 
-procedure TfLogisticaContainer.bGravarClick(Sender: TObject);
+procedure TfContainer.bGravarClick(Sender: TObject);
 begin
       with Container do begin
           {
@@ -161,13 +161,13 @@ begin
       end;
 end;
 
-procedure TfLogisticaContainer.bCancelarClick(Sender: TObject);
+procedure TfContainer.bCancelarClick(Sender: TObject);
 begin
       Container.Cancel;
       LigaBotoes(true);
 end;
 
-procedure TfLogisticaContainer.bEditarClick(Sender: TObject);
+procedure TfContainer.bEditarClick(Sender: TObject);
 begin
      try
          LigaBotoes(false);
@@ -178,7 +178,7 @@ begin
      end;
 end;
 
-procedure TfLogisticaContainer.UniFrameDestroy(Sender: TObject);
+procedure TfContainer.UniFrameDestroy(Sender: TObject);
 var
    i:integer;
 begin
@@ -190,12 +190,12 @@ begin
       end;
 end;
 
-procedure TfLogisticaContainer.bFecharClick(Sender: TObject);
+procedure TfContainer.bFecharClick(Sender: TObject);
 begin
       MainForm.PagePrincipal.Pages[MainForm.PagePrincipal.ActivePageIndex].free;
 end;
 
-procedure TfLogisticaContainer.LigaBotoes(Estado:boolean);
+procedure TfContainer.LigaBotoes(Estado:boolean);
 begin
      Navega.Enabled     := Estado;
      bEditar.Enabled    := Estado;
@@ -206,7 +206,7 @@ begin
      if not Estado then Pasta.ActivePageIndex := 1;
 end;
 
-procedure TfLogisticaContainer.UniFrameCreate(Sender: TObject);
+procedure TfContainer.UniFrameCreate(Sender: TObject);
 var
   i:integer;
 begin
@@ -252,27 +252,27 @@ begin
            open;
       end;
 end;
-procedure TfLogisticaContainer.cPesquisaKeyDown(Sender: TObject; var Key: Word;Shift: TShiftState);
+procedure TfContainer.cPesquisaKeyDown(Sender: TObject; var Key: Word;Shift: TShiftState);
 begin
       if Key = VK_RETURN then begin
          bPesquisa.Click;
       end;
 end;
 
-procedure TfLogisticaContainer.bPesquisaClick(Sender: TObject);
+procedure TfContainer.bPesquisaClick(Sender: TObject);
 begin
      Container.Cancel;
      LigaBotoes(true);
      Pesquisa(Container, 'Numero', 'Numero',cPesquisa.text)
 end;
 
-procedure TfLogisticaContainer.ContainerBeforePost(DataSet: TDataSet);
+procedure TfContainer.ContainerBeforePost(DataSet: TDataSet);
 begin
       LogDados(DataSet, DataSet.FieldByName('Numero').AsString, EstadoTabela(DataSet));
 end;
 
 
-procedure TfLogisticaContainer.ContainerBeforeDelete(DataSet: TDataSet);
+procedure TfContainer.ContainerBeforeDelete(DataSet: TDataSet);
 begin
       LogDados(DataSet, DataSet.FieldByName('Numero').AsString, 'Delete');
 end;
