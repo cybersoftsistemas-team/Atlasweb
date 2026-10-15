@@ -341,7 +341,7 @@ begin
      with tTemp do begin
           sql.clear;
           sql.add('select Nome from Usuarios where Matricula = :pMat');
-          parambyname('pMat').value  := UniMainModule.mUsuarioMatricula;
+          parambyname('pMat').value  := UniMainModule.mMatricula;
           open;
           mResp := fieldbyname('Nome').asstring;
      end;

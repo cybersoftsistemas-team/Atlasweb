@@ -14,7 +14,7 @@ object fCadAlugueis: TfCadAlugueis
     Height = 966
     Hint = ''
     BodyRTL = False
-    ActivePage = aLista
+    ActivePage = UniTabSheet1
     Plain = True
     Align = alClient
     ClientEvents.UniEvents.Strings = (
@@ -409,101 +409,147 @@ object fCadAlugueis: TfCadAlugueis
       Height = 35
       Cursor = crHandPoint
       Hint = ''
+      Margins.Left = 1
+      Margins.Top = 1
+      Margins.Right = 1
+      Margins.Bottom = 1
       DataSource = dsAlugueis
       VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
       IconSet = icsFontAwesome
       Align = alLeft
       TabOrder = 1
+      ExplicitLeft = -58
+      ExplicitTop = 1
+      ExplicitHeight = 33
     end
     object bAdicionar: TUniSpeedButton
-      Left = 140
+      Left = 143
       Top = 0
       Width = 41
       Height = 35
       Hint = 'Adicionar novo registro.'
+      Margins.Left = 1
+      Margins.Top = 1
+      Margins.Right = 1
+      Margins.Bottom = 1
       Caption = ''
+      Align = alLeft
+      ParentFont = False
       ParentColor = False
       IconAlign = iaCenter
       Images = UniMainModule.imgBotoes
       ImageIndex = 0
       TabOrder = 2
       OnClick = bAdicionarClick
+      ExplicitLeft = 140
     end
     object bEditar: TUniSpeedButton
-      Left = 181
+      Left = 184
       Top = 0
       Width = 41
       Height = 35
       Hint = 'Editar registro corrente.'
+      Margins.Left = 1
+      Margins.Top = 1
+      Margins.Right = 1
+      Margins.Bottom = 1
       Caption = ''
+      Align = alLeft
       ParentColor = False
       IconAlign = iaCenter
       Images = UniMainModule.imgBotoes
       ImageIndex = 1
       TabOrder = 3
       OnClick = bEditarClick
+      ExplicitLeft = 181
     end
     object bExcluir: TUniSpeedButton
-      Left = 222
+      Left = 225
       Top = 0
       Width = 41
       Height = 35
       Hint = 'Excluir registro corrente.'
+      Margins.Left = 1
+      Margins.Top = 1
+      Margins.Right = 1
+      Margins.Bottom = 1
       Caption = ''
+      Align = alLeft
       ParentColor = False
       IconAlign = iaCenter
       Images = UniMainModule.imgBotoes
       ImageIndex = 2
       TabOrder = 4
       OnClick = bExcluirClick
+      ExplicitLeft = 222
     end
     object bCancelar: TUniSpeedButton
-      Left = 304
+      Left = 307
       Top = 0
       Width = 41
       Height = 35
       Hint = 'Cancelar modifica'#231#245'es feitas no registro corrente.'
+      Margins.Left = 1
+      Margins.Top = 1
+      Margins.Right = 1
+      Margins.Bottom = 1
       Caption = ''
+      Align = alLeft
       ParentColor = False
       IconAlign = iaCenter
       Images = UniMainModule.imgBotoes
       ImageIndex = 3
       TabOrder = 6
       OnClick = bCancelarClick
+      ExplicitLeft = 304
     end
     object bSalvar: TUniSpeedButton
-      Left = 263
+      Left = 266
       Top = 0
       Width = 41
       Height = 35
       Hint = 'Salva o registro corrente.'
+      Margins.Left = 1
+      Margins.Top = 1
+      Margins.Right = 1
+      Margins.Bottom = 1
       Caption = ''
+      Align = alLeft
       ParentColor = False
       IconAlign = iaCenter
       Images = UniMainModule.imgBotoes
       ImageIndex = 4
       TabOrder = 5
       OnClick = bSalvarClick
+      ExplicitLeft = 263
     end
     object bFechar: TUniSpeedButton
-      Left = 345
+      Left = 348
       Top = 0
       Width = 41
       Height = 35
       Hint = 'Fecha a tela de cadastro atual.'
+      Margins.Left = 1
+      Margins.Top = 1
+      Margins.Right = 1
+      Margins.Bottom = 1
       Caption = ''
+      Align = alLeft
       ParentColor = False
       IconAlign = iaCenter
       Images = UniMainModule.imgBotoes
       ImageIndex = 7
       TabOrder = 7
       OnClick = bFecharClick
+      ExplicitLeft = 361
+      ExplicitTop = -2
+      ExplicitHeight = 33
     end
   end
   object dsAlugueis: TDataSource
     DataSet = Alugueis
-    Left = 81
-    Top = 103
+    Left = 49
+    Top = 191
   end
   object Alugueis: TFDQuery
     BeforePost = AlugueisBeforePost
@@ -513,8 +559,8 @@ object fCadAlugueis: TfCadAlugueis
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'SELECT * FROM Alugueis')
-    Left = 25
-    Top = 103
+    Left = 49
+    Top = 135
   end
   object Alerta: TUniSweetAlert
     Title = ' '
@@ -523,7 +569,7 @@ object fCadAlugueis: TfCadAlugueis
     CancelButtonText = 'Cancelar'
     Width = 400
     Padding = 20
-    Left = 100
-    Top = 75
+    Left = 132
+    Top = 139
   end
 end

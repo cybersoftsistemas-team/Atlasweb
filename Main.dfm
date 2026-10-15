@@ -13,8 +13,7 @@ object MainForm: TMainForm
   ScreenMask.Color = clRed
   OnBeforeShow = UniFormBeforeShow
   OnCreate = UniFormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object unipane: TUniContainerPanel
     Left = 350
     Top = 68
@@ -40,8 +39,6 @@ object MainForm: TMainForm
           'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
           '= '#39'Pasta'#39';'#13#10'}')
       TabOrder = 1
-      ExplicitTop = 50
-      ExplicitHeight = 659
       object pInicio: TUniTabSheet
         Hint = ''
         Caption = 'Inicio'
@@ -53,7 +50,10 @@ object MainForm: TMainForm
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'cybersoft-background'#39';'#13#10'}')
-        ExplicitHeight = 631
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 256
+        ExplicitHeight = 128
         object UniButton1: TUniButton
           Left = 20
           Top = 74
@@ -87,7 +87,6 @@ object MainForm: TMainForm
               '= '#39'cybersoft-logo'#39';'#13#10'}')
           PersistentCache = False
           FitWidth = True
-          ExplicitHeight = 231
         end
       end
     end
@@ -450,6 +449,7 @@ object MainForm: TMainForm
     ParentColor = False
     Align = alLeft
     TabOrder = 2
+    ExplicitHeight = 412
     object UniContainerPanel2: TUniContainerPanel
       Left = 0
       Top = 32
@@ -492,6 +492,7 @@ object MainForm: TMainForm
       Color = 4730899
       SingleExpand = True
       ExpanderOnly = False
+      ExplicitHeight = 348
     end
     object UniPanel3: TUniPanel
       Left = 0

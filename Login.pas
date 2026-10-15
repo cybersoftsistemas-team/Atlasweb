@@ -116,10 +116,10 @@ begin
                              Exit;
                           end;
 
-                          vFoto := FieldByName('Foto').AsString;
-                          vLogo := FieldByName('Logo').AsString;
-                          mUsuarioMatricula := FieldByName('Matricula').AsString;
-                          mIdioma           := FieldByName('Idioma').AsString;
+                          vFoto      := FieldByName('Foto').AsString;
+                          vLogo      := FieldByName('Logo').AsString;
+                          mMatricula := FieldByName('Matricula').AsString;
+                          mIdioma    := FieldByName('Idioma').AsString;
                      end;
                   finally
                      tTmp.Free;

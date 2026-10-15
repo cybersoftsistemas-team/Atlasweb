@@ -22,8 +22,7 @@ object TelaLogin: TTelaLogin
       'window.afterrender=function window.afterrender(sender, eOpts)'#13#10'{' +
       #13#10'  Ext.get(sender.id).el.setStyle("padding", 0);'#13#10'  Ext.get(sen' +
       'der.id).el.setStyle("border-width", 0);'#13#10'}')
-  PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object UniContainerPanel1: TUniContainerPanel
     Left = 0
     Top = 0

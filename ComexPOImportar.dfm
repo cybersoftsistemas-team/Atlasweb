@@ -10,7 +10,6 @@ object fComexPOImportar: TfComexPOImportar
   MonitoredKeys.Keys = <>
   Font.Name = 'MS Sans Serif'
   OnDestroy = uniFrameDestroy
-  PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TUniPanel
     AlignWithMargins = True
@@ -205,7 +204,7 @@ object fComexPOImportar: TfComexPOImportar
         Left = 3
         Top = 102
         Width = 1096
-        Height = 505
+        Height = 503
         Hint = ''
         Align = alClient
         TabOrder = 1
@@ -216,7 +215,7 @@ object fComexPOImportar: TfComexPOImportar
           Left = 4
           Top = 4
           Width = 859
-          Height = 264
+          Height = 262
           Hint = ''
           ClientEvents.ExtEvents.Strings = (
             
@@ -237,19 +236,21 @@ object fComexPOImportar: TfComexPOImportar
           Font.Height = -13
           Font.Name = 'Calibri'
           Font.Style = [fsBold]
+          ExplicitHeight = 264
         end
         object UniPanel3: TUniPanel
           AlignWithMargins = True
           Left = 869
           Top = 4
           Width = 223
-          Height = 264
+          Height = 262
           Hint = ''
           Align = alRight
           TabOrder = 2
           BorderStyle = ubsInset
           ShowCaption = False
           Caption = 'UniPanel3'
+          ExplicitHeight = 264
           object cCampos: TUniListBox
             AlignWithMargins = True
             Left = 4
@@ -316,7 +317,7 @@ object fComexPOImportar: TfComexPOImportar
         object DBGrid1: TUniDBGrid
           AlignWithMargins = True
           Left = 4
-          Top = 274
+          Top = 272
           Width = 1088
           Height = 133
           Hint = ''
@@ -514,7 +515,7 @@ object fComexPOImportar: TfComexPOImportar
         object cLog: TUniMemo
           AlignWithMargins = True
           Left = 4
-          Top = 413
+          Top = 411
           Width = 1088
           Height = 88
           Hint = ''
@@ -535,6 +536,10 @@ object fComexPOImportar: TfComexPOImportar
         
           'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
           ' '#39'FichaSSombra'#39';'#13#10'}')
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       DesignSize = (
         1102
         610)
@@ -742,12 +747,14 @@ object fComexPOImportar: TfComexPOImportar
         
           'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
           ' '#39'FichaSSombra'#39';'#13#10'}')
+      ExplicitTop = 26
+      ExplicitHeight = 608
       object Memo1: TUniMemo
         AlignWithMargins = True
         Left = 3
         Top = 3
         Width = 1096
-        Height = 607
+        Height = 605
         Hint = ''
         Margins.Bottom = 0
         BorderStyle = ubsInset
@@ -1474,6 +1481,7 @@ object fComexPOImportar: TfComexPOImportar
       'uotas=true&indicadores=true'
     Params = <>
     RaiseExceptionOn500 = False
+    SynchronizedEvents = False
     Left = 276
     Top = 155
   end
@@ -1601,47 +1609,9 @@ object fComexPOImportar: TfComexPOImportar
     Left = 214
     Top = 375
   end
-  object EComm: TMSQuery
-    SQLInsert.Strings = (
-      'INSERT INTO ECommerce'
-      
-        '  (Registro, Ativo, Tempo_Verificacao, URL, Consumer_Key, consum' +
-        'er_Secret, Token, Servico)'
-      'VALUES'
-      
-        '  (:Registro, :Ativo, :Tempo_Verificacao, :URL, :Consumer_Key, :' +
-        'consumer_Secret, :Token, :Servico)')
-    SQLDelete.Strings = (
-      'DELETE FROM ECommerce'
-      'WHERE'
-      '  Registro = :Old_Registro')
-    SQLUpdate.Strings = (
-      'UPDATE ECommerce'
-      'SET'
-      
-        '  Registro = :Registro, Ativo = :Ativo, Tempo_Verificacao = :Tem' +
-        'po_Verificacao, URL = :URL, Consumer_Key = :Consumer_Key, consum' +
-        'er_Secret = :consumer_Secret, Token = :Token, Servico = :Servico'
-      'WHERE'
-      '  Registro = :Old_Registro')
-    SQLRefresh.Strings = (
-      
-        'SELECT Registro, Ativo, Tempo_Verificacao, URL, Consumer_Key, co' +
-        'nsumer_Secret, Token, Servico FROM ECommerce'
-      'WHERE'
-      '  Registro = :Registro')
-    SQLLock.Strings = (
-      'SELECT * FROM ECommerce'
-      'WITH (UPDLOCK, ROWLOCK, HOLDLOCK)'
-      'WHERE'
-      '  Registro = :Old_Registro')
-    SQLRecCount.Strings = (
-      'SET :PCOUNT = (SELECT COUNT(*) FROM ECommerce'
-      ')')
+  object EComm: TFDQuery
     SQL.Strings = (
       'SELECT * FROM ECommerce')
-    FetchRows = 1
-    RefreshOptions = [roAfterInsert, roAfterUpdate, roBeforeEdit]
     Left = 215
     Top = 224
     object ECommRegistro: TIntegerField

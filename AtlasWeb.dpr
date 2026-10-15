@@ -107,7 +107,8 @@ uses
   Tradutor in 'Tradutor.pas',
   FiscalNFManifestar in 'FiscalNFManifestar.pas' {fFiscalNFManifestar: TUniFrame},
   NFeDistribuicao in 'NFeDistribuicao.pas',
-  Container in 'Container.pas' {fContainer: TUniFrame};
+  Container in 'Container.pas' {fContainer: TUniFrame},
+  ComexSimulacaoImp in 'ComexSimulacaoImp.pas' {fComexSimulacaoImp: TUniFrame};
 
 (*uses p/gerador*)
 

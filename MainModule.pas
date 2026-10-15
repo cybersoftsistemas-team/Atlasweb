@@ -35,7 +35,7 @@ type
     mEmpresaAtiva
    ,mUsuarioAtivo
    ,mIdioma
-   ,mUsuarioMatricula
+   ,mMatricula
    ,mPath
    ,mLogoCyber
    ,mLogoAtlas: string;

@@ -9,7 +9,7 @@ uses
   uniEdit, uniDBEdit, uniDBMemo, uniBasicGrid, uniGUIBaseClasses, uniComboBox, UniGroupBox, uniSpinEdit, unimToggle, FireDAC.Comp.Client, Funcoes, Data.DB, uniSweetAlert, 
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, 
   Data.Bind.Components, Data.Bind.ObjectScope, Vcl.Menus, uniMainMenu, FireDAC.Comp.DataSet, Datasnap.DBClient, uniMemo, uniStringGrid, uniCheckBox, uniProgressBar, 
-  uniFileUpload, MemDS, DBAccess, MSAccess, uniScreenMask, uniMultiItem, uniDBComboBox, uniListBox;
+  uniFileUpload, uniScreenMask, uniMultiItem, uniDBComboBox, uniListBox, System.Net.URLClient, System.Net.HttpClient, REST.Authenticator.OAuth.WebForm.Win;
 
 type
   THackControl = class(TUniControl);
@@ -186,7 +186,7 @@ type
     dsNCM: TDataSource;
 //    dsprodutos: TDataSource;
     dsLayoutImportacao: TDataSource;
-    EComm: TMSQuery;
+    EComm: TFDQuery;
     ECommRegistro: TIntegerField;
     ECommAtivo: TBooleanField;
     ECommTempo_Verificacao: TSmallintField;
@@ -396,8 +396,8 @@ begin
       cCampos.Enabled := true;
 end;
 
-procedure TfComexPOImportar.AbrirPlanilha(AStream: TStream);
-var
+procedure TfComexPOImportar.AbrirPlanilha(AStream: TStream);
+var
   FileName: string;
   Dest: TFileStream;
 begin

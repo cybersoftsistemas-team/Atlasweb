@@ -19,6 +19,10 @@ object fComexPO: TfComexPO
     object pLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 27
@@ -128,7 +132,7 @@ object fComexPO: TfComexPO
       Caption = 'Capa do (PO)'
       DesignSize = (
         1170
-        706)
+        704)
       object pFicha: TUniPanel
         Left = 132
         Top = 21
@@ -575,9 +579,13 @@ object fComexPO: TfComexPO
       Hint = ''
       ImageIndex = 1
       Caption = 'Itens'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       DesignSize = (
         1170
-        706)
+        704)
       object UniPanel1: TUniPanel
         Left = 36
         Top = 19

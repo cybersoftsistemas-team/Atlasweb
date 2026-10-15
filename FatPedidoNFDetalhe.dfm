@@ -15,8 +15,7 @@ object fFatPedidoNFDetalhe: TfFatPedidoNFDetalhe
       'window.beforeInit=function window.beforeInit(sender, config)'#13#10'{'#13 +
       #10'  config.cls = '#39'Ficha'#39';'#13#10'}')
   OnCreate = UniFormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object pBarraNav: TUniPanel
     Left = 0
     Top = 223

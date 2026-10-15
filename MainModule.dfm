@@ -1,5 +1,4 @@
 object UniMainModule: TUniMainModule
-  OldCreateOrder = False
   OnCreate = UniGUIMainModuleCreate
   Theme = 'neptune'
   TouchTheme = 'neptune'
@@ -283,6 +282,7 @@ object UniMainModule: TUniMainModule
     FetchOptions.LiveWindowParanoic = False
     ResourceOptions.AssignedValues = [rvCmdExecMode]
     ResourceOptions.CmdExecMode = amNonBlocking
+    Connected = True
     LoginPrompt = False
     Left = 116
     Top = 20

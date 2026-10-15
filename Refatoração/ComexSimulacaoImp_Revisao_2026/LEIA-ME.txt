@@ -1,0 +1,22 @@
+REVISAO ESTRUTURAL - NAO VALIDADA POR COMPILACAO
+
+Fonte atual recebida: frmProcesso_SimulacaoCalculo(1).pas/.dfm.
+Base uniGUI utilizada: conversao anterior, com componentes locais e consultas migradas.
+
+Verificacoes automaticas:
+- 27 TFDQuery declarados no PAS e presentes no DFM
+- 20 TDataSource declarados no PAS e presentes no DFM
+- 16 associacoes de eventos comuns recuperadas do DFM atual
+- Removido escopo 'with Dados do' e referencia direta a frmDados
+- Removido bloco COM Excel; exportacao permanece pendente
+- Corrigida assinatura de CarregarDados
+
+LIMITACOES CONHECIDAS:
+- A base da interface ainda deriva da conversao anterior, nao e uma reconstrucao validada integralmente do DFM novo.
+- Referencias a formularios antigos (PesquisaGerais, Menu_Principal etc.) precisam migracao para fluxos uniGUI do AtlasWeb.
+- Campos de banco presumidos em dois pontos (Tipo_Nota, Compartilhar_Classificacao) exigem conferencia no schema real.
+- Eventos de navegadores, menus e grid nao foram ligados automaticamente porque as assinaturas VCL/uniGUI diferem.
+- Calculos e logica precisam testes funcionais.
+- NAO e versao pronta para compilar nem para producao.
+
+Eventos religados: [('cNumero', 'OnChange', 'cNumeroChange'), ('cProduto', 'OnChange', 'cProdutoChange'), ('cNCM', 'OnExit', 'cNCMExit'), ('cUnitario', 'OnExit', 'cUnitarioExit'), ('bDuplicarItem', 'OnClick', 'bDuplicarItemClick'), ('bRemoveTudo', 'OnClick', 'bRemoveTudoClick'), ('bBuscar', 'OnClick', 'bBuscarClick'), ('bMarinha', 'OnClick', 'bMarinhaClick'), ('bPISCOFINS', 'OnClick', 'bPISCOFINSClick'), ('bPesq', 'OnClick', 'bPesqClick'), ('cValorME', 'OnChange', 'cValorMEChange'), ('DBEdit39', 'OnChange', 'DBEdit39Change'), ('bCalcular', 'OnClick', 'bCalcularClick'), ('bSair', 'OnClick', 'bSairClick'), ('bExcel', 'OnClick', 'bExcelClick'), ('bDuplicar', 'OnClick', 'bDuplicarClick')]

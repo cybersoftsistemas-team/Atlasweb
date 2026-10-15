@@ -1,0 +1,16 @@
+CONSULTAS ADICIONADAS NESTA REVISAO
+
+- Empresas: TFDQuery + dsEmpresas: TDataSource
+- ClassificacaoFinanceira: TFDQuery + dsClassificacaoFinanceira: TDataSource
+- Moedas: TFDQuery + dsMoedas: TDataSource
+- TipoNota: TFDQuery + dsTipoNota: TDataSource
+- IncentivosFiscais: TFDQuery + dsIncentivosFiscais: TDataSource
+- Paises: TFDQuery + dsPaises: TDataSource
+- Estados: TFDQuery + dsEstados: TDataSource
+- Incoterms: TFDQuery + dsIncoterms: TDataSource
+- Campos: TFDQuery + dsCampos: TDataSource
+- Configuracao: TFDQuery + dsConfiguracao: TDataSource
+
+As consultas SimulaImportacao, SimulaDespesas, SimulaProdutos e TiposProcesso ja estavam presentes e foram mantidas.
+
+ATENCAO: Esta revisao corrige os componentes ausentes no PAS/DFM. Nao garante compilacao nem elimina todas as dependencias do DataModule antigo. A consulta Campos continua com SQL dinamico na rotina original.

@@ -143,6 +143,7 @@ uses
  ,ComexPOImportar
  ,ComexContratoCambio
  ,ComexInvoice
+ ,ComexSimulacaoImp
  ,CadLPCO
  ,FiscalNFTerceiros
  ,FiscalNFManifestar
@@ -281,7 +282,6 @@ begin
                 with bAtalho do begin
                      Parent           := MainForm.pAtalhos;
                      visible          := true;
-//                     width            := 45;
                      width            := MainForm.pAtalhos.Height;
                      Height           := MainForm.pAtalhos.Height;
                      Caption          := fieldbyname('Titulo').asstring;
@@ -339,11 +339,15 @@ begin
              // Pega os itens da tabela.
              while not Eof do begin
                    // Criar o item do menu.
-                   MenuItem         := TUniMenuItem.Create(Self);
-                   //MenuItem.Caption := FieldByName('Caption').AsString;
-                   // Tradução do menu principal para a linguagem do usuário. 
-                   MenuItem.Caption := TTradutor.TraduzirTexto(FieldByName('Caption').AsString, uniMainModule.mIdioma);
-                   
+                   MenuItem := TUniMenuItem.Create(Self);
+
+                   // Tradução do menu principal para a linguagem do usuário.
+                   if uniMainModule.mIdioma <> 'pt-BR' then begin
+                      MenuItem.Caption := TTradutor.TraduzirTexto(FieldByName('Caption').AsString, uniMainModule.mIdioma);
+                   end else begin
+                      MenuItem.Caption := FieldByName('Caption').AsString;
+                   end;
+
                    MenuItem.Tag     := FieldByName('ID').AsInteger;
                    MenuItem.Hint    := FieldByName('Form').AsString;
                    MenuItem.Name    := FieldByName('Nome').AsString;
@@ -461,6 +465,7 @@ initialization
   RegisterClass(TfComexPOImportar);
   RegisterClass(TfComexContratoCambio);
   RegisterClass(TfComexInvoice);
+  RegisterClass(TfComexSimulacaoImp);
   RegisterClass(TfCadLPCO);
   RegisterClass(TfFiscalNFTerceiros);
   RegisterClass(TfFiscalNFManifestar);
