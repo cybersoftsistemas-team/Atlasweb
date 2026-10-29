@@ -347,7 +347,7 @@ begin
 
      with Empresas do begin
           sql.Clear;
-          sql.Add('select CNPJ, Razao_Social, Numero_Filial from Empresas where CNPJ = '+quotedstr(UniMainModule.mEmpresaAtiva));
+          sql.Add('select CNPJ, Razao_Social, Filial from Empresas where CNPJ = '+quotedstr(UniMainModule.mEmpresaAtiva));
           Open;
      end;
      with Fornecedores do begin

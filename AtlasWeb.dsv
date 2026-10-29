@@ -1,8 +1,8 @@
 ﻿[ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcRXN0b3F1ZV9JbmR1c3RyaWFsaXphY2FvLnBhcw==]
 Module=C:\Projetos\Atlasweb\Estoque_Industrializacao.pas
-CursorX=80
-CursorY=439
-TopLine=437
+CursorX=1
+CursorY=435
+TopLine=398
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -11,8 +11,8 @@ EditViewName=C:\Projetos\Atlasweb\Estoque_Industrializacao.pas
 [ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcQ29tZXhTaW11bGFjYW9JbXAucGFz]
 Module=C:\Projetos\Atlasweb\ComexSimulacaoImp.pas
 CursorX=1
-CursorY=505
-TopLine=482
+CursorY=1
+TopLine=1
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -80,9 +80,9 @@ EditViewName=c:\program files (x86)\embarcadero\studio\37.0\SOURCE\RTL\SYS\Syste
 
 [ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcTWFpbi5wYXM=]
 Module=C:\Projetos\Atlasweb\Main.pas
-CursorX=20
-CursorY=349
-TopLine=334
+CursorX=69
+CursorY=9
+TopLine=1
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -100,29 +100,29 @@ EditViewName=c:\program files (x86)\embarcadero\studio\37.0\source\data\Data.DB.
 
 [ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcQ2FkRGVzdGluYXRhcmlvcy5wYXM=]
 Module=C:\Projetos\Atlasweb\CadDestinatarios.pas
-CursorX=1
-CursorY=1
-TopLine=1
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=
-
-[ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcQ2FkQWx1Z3VlaXMucGFz]
-Module=C:\Projetos\Atlasweb\CadAlugueis.pas
-CursorX=1
-CursorY=1
-TopLine=1
+CursorX=44
+CursorY=626
+TopLine=610
 LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=Borland.FormDesignerView
 
+[ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcQ2FkQWx1Z3VlaXMucGFz]
+Module=C:\Projetos\Atlasweb\CadAlugueis.pas
+CursorX=1
+CursorY=1
+TopLine=40
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Projetos\Atlasweb\CadAlugueis.pas
+
 [ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcTG9naW4ucGFz]
 Module=C:\Projetos\Atlasweb\Login.pas
-CursorX=19
-CursorY=129
-TopLine=103
+CursorX=58
+CursorY=90
+TopLine=69
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -147,4 +147,424 @@ LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=C:\Projetos\Atlasweb\ComexPO.pas
+
+[ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcTWFpbk1vZHVsZS5wYXM=]
+Module=C:\Projetos\Atlasweb\MainModule.pas
+CursorX=1
+CursorY=1
+TopLine=13
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Projetos\Atlasweb\MainModule.pas
+
+[ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcQXRsYXNXZWIuZHBy]
+Module=C:\Projetos\Atlasweb\AtlasWeb.dpr
+CursorX=1
+CursorY=124
+TopLine=106
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Projetos\Atlasweb\AtlasWeb.dpr
+
+[ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcU2VydmVyTW9kdWxlLnBhcw==]
+Module=C:\Projetos\Atlasweb\ServerModule.pas
+CursorX=8
+CursorY=41
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Projetos\Atlasweb\ServerModule.pas
+
+[ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcRmF0UGVkaWRvTkYucGFz]
+Module=C:\Projetos\Atlasweb\FatPedidoNF.pas
+CursorX=1
+CursorY=783
+TopLine=783
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Projetos\Atlasweb\FatPedidoNF.pas
+[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxzb3VyY2VcZGF0
+YVxEYXRhLkRCLnBhcw==]
+Module=c:\program files (x86)\embarcadero\studio\37.0\source\data\Data.DB.pas
+CursorX=1
+CursorY=3315
+TopLine=3297
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\studio\37.0\source\data\Data.DB.pas
+
+[ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcRnVuY29lcy5wYXM=]
+Module=C:\Projetos\Atlasweb\Funcoes.pas
+CursorX=1
+CursorY=2344
+TopLine=2298
+LeftCol=1
+Elisions=
+Bookmarks={1,2236,19}{2,2275,6}
+EditViewName=C:\Projetos\Atlasweb\Funcoes.pas
+[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxTT1VSQ0VcVkNM
+XFZjbC5HcmFwaGljcy5wYXM=]
+Module=c:\program files (x86)\embarcadero\studio\37.0\SOURCE\VCL\Vcl.Graphics.pas
+CursorX=18
+CursorY=10
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=
+[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxTT1VSQ0VcUlRM
+XFNZU1xTeXN0ZW0ucGFz]
+Module=c:\program files (x86)\embarcadero\studio\37.0\SOURCE\RTL\SYS\System.pas
+CursorX=1
+CursorY=19741
+TopLine=19723
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\studio\37.0\SOURCE\RTL\SYS\System.pas
+[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxTT1VSQ0VcUlRM
+XFNZU1xTeXN0ZW0ucGFz]
+Module=c:\program files (x86)\embarcadero\studio\37.0\SOURCE\RTL\SYS\System.pas
+CursorX=1
+CursorY=19741
+TopLine=19723
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\studio\37.0\SOURCE\RTL\SYS\System.pas
+
+[ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcRmF0UGVkaWRvTkZJdGVtLnBhcw==]
+Module=C:\Projetos\Atlasweb\FatPedidoNFItem.pas
+CursorX=71
+CursorY=543
+TopLine=528
+LeftCol=1
+Elisions=
+Bookmarks={1,515,24}
+EditViewName=C:\Projetos\Atlasweb\FatPedidoNFItem.pas
+
+[ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcQ29tZXhDb250cmF0b0NhbWJpby5wYXM=]
+Module=C:\Projetos\Atlasweb\ComexContratoCambio.pas
+CursorX=19
+CursorY=616
+TopLine=598
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=
+
+[ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcQ2FkQmFuY29zLnBhcw==]
+Module=C:\Projetos\Atlasweb\CadBancos.pas
+CursorX=1
+CursorY=195
+TopLine=100
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Projetos\Atlasweb\CadBancos.pas
+[ClosedView_QzpcUHJvZ3JhbSBGaWxlcyAoeDg2KVxGTVNvZnRcRnJhbWV3b3JrXHVuaUdVSVxTb3VyY2VcQ29y
+ZVx1bmlHVUlKU0Zvcm0ucGFz]
+Module=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIJSForm.pas
+CursorX=1
+CursorY=935
+TopLine=912
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIJSForm.pas
+
+[ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcTkZlX1V0aWxfMkdfVExCLnBhcw==]
+Module=C:\Projetos\Atlasweb\NFe_Util_2G_TLB.pas
+CursorX=1
+CursorY=180
+TopLine=146
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Projetos\Atlasweb\NFe_Util_2G_TLB.pas
+
+[ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcRXN0b3F1ZV9JbW9iaWxpemFkby5wYXM=]
+Module=C:\Projetos\Atlasweb\Estoque_Imobilizado.pas
+CursorX=53
+CursorY=227
+TopLine=209
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Projetos\Atlasweb\Estoque_Imobilizado.pas
+[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxzb3VyY2VcZGF0
+YVxmaXJlZGFjXEZpcmVEQUMuUGh5cy5PREJDV3JhcHBlci5wYXM=]
+Module=c:\program files (x86)\embarcadero\studio\37.0\source\data\firedac\FireDAC.Phys.ODBCWrapper.pas
+CursorX=1
+CursorY=5907
+TopLine=5889
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\studio\37.0\source\data\firedac\FireDAC.Phys.ODBCWrapper.pas
+[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxzb3VyY2VcZGF0
+YVxmaXJlZGFjXEZpcmVEQUMuUGh5cy5PREJDV3JhcHBlci5wYXM=]
+Module=c:\program files (x86)\embarcadero\studio\37.0\source\data\firedac\FireDAC.Phys.ODBCWrapper.pas
+CursorX=1
+CursorY=5907
+TopLine=5889
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\studio\37.0\source\data\firedac\FireDAC.Phys.ODBCWrapper.pas
+[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxzb3VyY2VcZGF0
+YVxmaXJlZGFjXEZpcmVEQUMuUGh5cy5PREJDV3JhcHBlci5wYXM=]
+Module=c:\program files (x86)\embarcadero\studio\37.0\source\data\firedac\FireDAC.Phys.ODBCWrapper.pas
+CursorX=1
+CursorY=5907
+TopLine=5889
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\studio\37.0\source\data\firedac\FireDAC.Phys.ODBCWrapper.pas
+
+[ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcRmF0UGVkaWRvSXRlbnNEVUlNUC5wYXM=]
+Module=C:\Projetos\Atlasweb\FatPedidoItensDUIMP.pas
+CursorX=20
+CursorY=3493
+TopLine=3478
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Projetos\Atlasweb\FatPedidoItensDUIMP.pas
+
+[ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcQ2FkTkNNLnBhcw==]
+Module=C:\Projetos\Atlasweb\CadNCM.pas
+CursorX=1
+CursorY=465
+TopLine=567
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Projetos\Atlasweb\CadNCM.pas
+
+[ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcRmlzY2FsTkZUZXJjZWlyb3NJdGVucy5wYXM=]
+Module=C:\Projetos\Atlasweb\FiscalNFTerceirosItens.pas
+CursorX=106
+CursorY=326
+TopLine=307
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Projetos\Atlasweb\FiscalNFTerceirosItens.pas
+[ClosedView_QzpcUHJvZ3JhbSBGaWxlcyAoeDg2KVxGTVNvZnRcRnJhbWV3b3JrXHVuaUdVSVxTb3VyY2VcQ29y
+ZVx1bmlHVUlGcmFtZS5wYXM=]
+Module=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIFrame.pas
+CursorX=43
+CursorY=453
+TopLine=443
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIFrame.pas
+[ClosedView_QzpcUHJvZ3JhbSBGaWxlcyAoeDg2KVxGTVNvZnRcRnJhbWV3b3JrXHVuaUdVSVxTb3VyY2VcQ29y
+ZVx1bmlHVUlGcmFtZS5wYXM=]
+Module=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIFrame.pas
+CursorX=43
+CursorY=453
+TopLine=443
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIFrame.pas
+[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxzb3VyY2VcZGF0
+YVxmaXJlZGFjXEZpcmVEQUMuQ29tcC5DbGllbnQucGFz]
+Module=c:\program files (x86)\embarcadero\studio\37.0\source\data\firedac\FireDAC.Comp.Client.pas
+CursorX=44
+CursorY=11428
+TopLine=11415
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\studio\37.0\source\data\firedac\FireDAC.Comp.Client.pas
+
+[ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcQ29uc3VsdGFUcmlidXRhY2FvTkNNLnBhcw==]
+Module=C:\Projetos\Atlasweb\ConsultaTributacaoNCM.pas
+CursorX=1
+CursorY=119
+TopLine=94
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Projetos\Atlasweb\ConsultaTributacaoNCM.pas
+[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxTT1VSQ0VcUlRM
+XFNZU1xTeXN0ZW0uU3lzVXRpbHMucGFz]
+Module=c:\program files (x86)\embarcadero\studio\37.0\SOURCE\RTL\SYS\System.SysUtils.pas
+CursorX=1
+CursorY=9136
+TopLine=9118
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\studio\37.0\SOURCE\RTL\SYS\System.SysUtils.pas
+[ClosedView_QzpcUHJvZ3JhbSBGaWxlcyAoeDg2KVxGTVNvZnRcRnJhbWV3b3JrXHVuaUdVSVxTb3VyY2VcQ29y
+ZVx1bmlHVUlGcmFtZS5wYXM=]
+Module=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIFrame.pas
+CursorX=1
+CursorY=236
+TopLine=218
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=
+
+[ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcQ2FsY0V4cHJlc3MucGFz]
+Module=C:\Projetos\Atlasweb\CalcExpress.pas
+CursorX=1
+CursorY=56
+TopLine=33
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Projetos\Atlasweb\CalcExpress.pas
+[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxzb3VyY2VcZGF0
+YVxmaXJlZGFjXEZpcmVEQUMuUGh5cy5wYXM=]
+Module=c:\program files (x86)\embarcadero\studio\37.0\source\data\firedac\FireDAC.Phys.pas
+CursorX=1
+CursorY=8089
+TopLine=8069
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\studio\37.0\source\data\firedac\FireDAC.Phys.pas
+[ClosedView_QzpcUHJvZ3JhbSBGaWxlcyAoeDg2KVxGTVNvZnRcRnJhbWV3b3JrXHVuaUdVSVxTb3VyY2VcQ29y
+ZVx1bmlHVUlDbGFzc2VzLnBhcw==]
+Module=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIClasses.pas
+CursorX=1
+CursorY=4425
+TopLine=4400
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIClasses.pas
+[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxzb3VyY2VcZGF0
+YVxmaXJlZGFjXEZpcmVEQUMuUGh5cy5PREJDV3JhcHBlci5wYXM=]
+Module=c:\program files (x86)\embarcadero\studio\37.0\source\data\firedac\FireDAC.Phys.ODBCWrapper.pas
+CursorX=1
+CursorY=5907
+TopLine=5889
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\studio\37.0\source\data\firedac\FireDAC.Phys.ODBCWrapper.pas
+[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxzb3VyY2VcZGF0
+YVxmaXJlZGFjXEZpcmVEQUMuUGh5cy5PREJDV3JhcHBlci5wYXM=]
+Module=c:\program files (x86)\embarcadero\studio\37.0\source\data\firedac\FireDAC.Phys.ODBCWrapper.pas
+CursorX=1
+CursorY=5907
+TopLine=5889
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\studio\37.0\source\data\firedac\FireDAC.Phys.ODBCWrapper.pas
+[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxzb3VyY2VcZGF0
+YVxmaXJlZGFjXEZpcmVEQUMuUGh5cy5PREJDQmFzZS5wYXM=]
+Module=c:\program files (x86)\embarcadero\studio\37.0\source\data\firedac\FireDAC.Phys.ODBCBase.pas
+CursorX=1
+CursorY=2976
+TopLine=2958
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\studio\37.0\source\data\firedac\FireDAC.Phys.ODBCBase.pas
+[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxzb3VyY2VcZGF0
+YVxmaXJlZGFjXEZpcmVEQUMuUGh5cy5PREJDQmFzZS5wYXM=]
+Module=c:\program files (x86)\embarcadero\studio\37.0\source\data\firedac\FireDAC.Phys.ODBCBase.pas
+CursorX=1
+CursorY=2976
+TopLine=2958
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\studio\37.0\source\data\firedac\FireDAC.Phys.ODBCBase.pas
+[ClosedView_QzpcUHJvZ3JhbSBGaWxlcyAoeDg2KVxGTVNvZnRcRnJhbWV3b3JrXHVuaUdVSVxTb3VyY2VcQ29y
+ZVx1bmlHVUlDbGFzc2VzLnBhcw==]
+Module=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIClasses.pas
+CursorX=1
+CursorY=3725
+TopLine=3706
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIClasses.pas
+[ClosedView_QzpcUHJvZ3JhbSBGaWxlcyAoeDg2KVxGTVNvZnRcRnJhbWV3b3JrXHVuaUdVSVxTb3VyY2VcQ29t
+cG9uZW50c1x1bmlCdXR0b24ucGFz]
+Module=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Components\uniButton.pas
+CursorX=1
+CursorY=593
+TopLine=568
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Components\uniButton.pas
+[ClosedView_QzpcUHJvZ3JhbSBGaWxlcyAoeDg2KVxGTVNvZnRcRnJhbWV3b3JrXHVuaUdVSVxTb3VyY2VcQ29t
+cG9uZW50c1x1bmlCdXR0b24ucGFz]
+Module=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Components\uniButton.pas
+CursorX=1
+CursorY=593
+TopLine=568
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Components\uniButton.pas
+[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxzb3VyY2VccnRs
+XGNvbW1vblxTeXN0ZW0uQ2xhc3Nlcy5wYXM=]
+Module=c:\program files (x86)\embarcadero\studio\37.0\source\rtl\common\System.Classes.pas
+CursorX=1
+CursorY=9877
+TopLine=9859
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\studio\37.0\source\rtl\common\System.Classes.pas
+[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxTT1VSQ0VcUlRM
+XFNZU1xTeXN0ZW0ucGFz]
+Module=c:\program files (x86)\embarcadero\studio\37.0\SOURCE\RTL\SYS\System.pas
+CursorX=10
+CursorY=16
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\studio\37.0\SOURCE\RTL\SYS\System.pas
+[ClosedView_QzpcUHJvZ3JhbSBGaWxlcyAoeDg2KVxGTVNvZnRcRnJhbWV3b3JrXHVuaUdVSVxTb3VyY2VcQ29y
+ZVx1bmlHVUlDbGFzc2VzLnBhcw==]
+Module=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIClasses.pas
+CursorX=1
+CursorY=3725
+TopLine=3712
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=
+[ClosedView_QzpcUHJvZ3JhbSBGaWxlcyAoeDg2KVxGTVNvZnRcRnJhbWV3b3JrXHVuaUdVSVxTb3VyY2VcQ29y
+ZVx1bmlHVUlDbGFzc2VzLnBhcw==]
+Module=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIClasses.pas
+CursorX=1
+CursorY=3725
+TopLine=3707
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIClasses.pas
+[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxzb3VyY2VcZGF0
+YVxEYXRhLkRCLnBhcw==]
+Module=c:\program files (x86)\embarcadero\studio\37.0\source\data\Data.DB.pas
+CursorX=1
+CursorY=3315
+TopLine=3292
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\studio\37.0\source\data\Data.DB.pas
 

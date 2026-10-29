@@ -73,7 +73,7 @@ object TelaLogin: TTelaLogin
         Left = 0
         Top = 0
         Width = 320
-        Height = 374
+        Height = 349
         Hint = ''
         Margins.Left = 60
         Margins.Top = 0
@@ -88,6 +88,7 @@ object TelaLogin: TTelaLogin
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'cybersoft-logo'#39';'#13#10'}')
         FitWidth = True
+        ExplicitHeight = 374
       end
       object UniLabel1: TUniLabel
         Left = 299
@@ -157,6 +158,25 @@ object TelaLogin: TTelaLogin
         IconPosition = ipButtonEdge
         Images = UniMainModule.imgBotoes
         OnClick = bEntrarClick
+      end
+      object lNomeComp: TUniLabel
+        Left = 0
+        Top = 349
+        Width = 642
+        Height = 25
+        Hint = ''
+        Alignment = taCenter
+        AutoSize = False
+        Caption = 'lNomeComp'
+        Align = alBottom
+        ParentFont = False
+        Font.Color = clSilver
+        Font.Height = -12
+        Font.Style = [fsBold]
+        TabOrder = 6
+        ExplicitLeft = 307
+        ExplicitTop = 328
+        ExplicitWidth = 294
       end
     end
   end

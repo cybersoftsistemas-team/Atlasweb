@@ -2243,7 +2243,7 @@ object fConfigSis: TfConfigSis
           Width = 929
           Height = 697
           Hint = ''
-          ActivePage = TabSheet6
+          ActivePage = TabSheet15
           Plain = True
           Anchors = [akTop]
           TabOrder = 0

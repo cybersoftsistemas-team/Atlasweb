@@ -323,7 +323,7 @@ begin
           open;
           if not IsEmpty then begin
              // Executa o cálculo do valor do inventario se tiver formula informada ou busca o valor da ficha de estoque.
-             CalculaTudo(Nota.fieldbyname('Operacao').asinteger, 'Item', gFormula, cLog, NotasItens, self, nil);
+             CalculaPedido(Nota.fieldbyname('Operacao').asinteger, 'Item', gFormula, cLog, NotasItens, self);
           end;
      end;
 end;

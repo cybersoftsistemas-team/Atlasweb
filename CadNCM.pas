@@ -7,7 +7,13 @@ uses
     uniPanel, uniDBLookUpComboBox, uniDBCheckBox, uniScrollBox, uniSpeedButton, uniDateTimePicker, uniDBDateTimePicker, uniButton, uniBitBtn, uniDBNavigator,
     uniEdit, uniDBEdit, uniDBMemo, uniBasicGrid, uniGUIBaseClasses, FireDAC.Comp.Client, Funcoes, Data.DB, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
     FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, uniStringGrid, uniCheckBox,
-    uniGroupBox, uniMultiItem, uniComboBox, uniDBComboBox, uniSweetAlert;
+    uniGroupBox, uniMultiItem, uniComboBox, uniDBComboBox, uniSweetAlert,
+    System.Net.HttpClient,
+    System.Net.URLClient, uniMemo,
+    System.JSON,
+    System.Diagnostics,
+    System.IOUtils;
+
 
 type
   TfCadNCM = class(TUniFrame)
@@ -70,33 +76,11 @@ type
     dsICMS: TDataSource;
     Estados: TFDQuery;
     dsEstados: TDataSource;
-    ICMSNCM: TStringField;
-    ICMSEstado: TStringField;
-    ICMSST: TBCDField;
-    ICMSMVA_Imp: TBCDField;
-    ICMSMVA_Nac: TBCDField;
-    ICMSReducao_BCICMSOp: TBCDField;
-    ICMSReducao_BCICMSOp2: TBCDField;
-    ICMSReducao_BCICMSST: TBCDField;
     tmp: TFDQuery;
     UniScrollBox1: TUniScrollBox;
     pPanel2: TUniPanel;
-    UniPanel2: TUniPanel;
-    NavegaICMS: TUniDBNavigator;
-    bAddICMS: TUniSpeedButton;
-    bEditICMS: TUniSpeedButton;
-    bDelICMS: TUniSpeedButton;
-    bCancICMS: TUniSpeedButton;
-    bSalvaICMS: TUniSpeedButton;
     pFichaICMS: TUniContainerPanel;
     UniDBGrid2: TUniDBGrid;
-    cEstado: TUniDBLookupComboBox;
-    UniDBFormattedNumberEdit1: TUniDBFormattedNumberEdit;
-    UniDBFormattedNumberEdit2: TUniDBFormattedNumberEdit;
-    UniDBFormattedNumberEdit3: TUniDBFormattedNumberEdit;
-    UniDBFormattedNumberEdit4: TUniDBFormattedNumberEdit;
-    UniDBFormattedNumberEdit5: TUniDBFormattedNumberEdit;
-    UniDBFormattedNumberEdit6: TUniDBFormattedNumberEdit;
     UniDBLookupComboBox1: TUniDBLookupComboBox;
     UniDBLookupComboBox2: TUniDBLookupComboBox;
     UniDBLookupComboBox3: TUniDBLookupComboBox;
@@ -105,6 +89,32 @@ type
     UniGroupBox1: TUniGroupBox;
     cFCP: TUniDBCheckBox;
     cCusto_Seletivo: TUniDBCheckBox;
+    ICMSNCM: TStringField;
+    ICMSEstado: TStringField;
+    ICMSST: TFMTBCDField;
+    ICMSMVA_Imp: TFMTBCDField;
+    ICMSMVA_Nac: TFMTBCDField;
+    ICMSReducao_BCICMSOp: TFMTBCDField;
+    ICMSReducao_BCICMSOp2: TFMTBCDField;
+    ICMSReducao_BCICMSST: TFMTBCDField;
+    UniContainerPanel1: TUniContainerPanel;
+    cEstado: TUniDBLookupComboBox;
+    UniDBFormattedNumberEdit1: TUniDBFormattedNumberEdit;
+    UniDBFormattedNumberEdit2: TUniDBFormattedNumberEdit;
+    UniDBFormattedNumberEdit3: TUniDBFormattedNumberEdit;
+    UniDBFormattedNumberEdit4: TUniDBFormattedNumberEdit;
+    UniDBFormattedNumberEdit5: TUniDBFormattedNumberEdit;
+    UniDBFormattedNumberEdit6: TUniDBFormattedNumberEdit;
+    UniPanel2: TUniPanel;
+    NavegaICMS: TUniDBNavigator;
+    bAddICMS: TUniSpeedButton;
+    bEditICMS: TUniSpeedButton;
+    bDelICMS: TUniSpeedButton;
+    bCancICMS: TUniSpeedButton;
+    bSalvaICMS: TUniSpeedButton;
+    bBuscarNCM: TUniButton;
+    UniTabSheet2: TUniTabSheet;
+    mJson: TUniMemo;
     procedure UniFrameCreate(Sender: TObject);
     procedure bCancelarClick(Sender: TObject);
     procedure LigaBotoes(Estado:boolean);
@@ -124,9 +134,12 @@ type
     procedure bDelICMSClick(Sender: TObject);
     procedure bSalvaICMSClick(Sender: TObject);
     procedure bCancICMSClick(Sender: TObject);
+    procedure bBuscarNCMClick(Sender: TObject);
   private
-    procedure LigaBotoesICMS(Estado: boolean);
     { Private declarations }
+    procedure LigaBotoesICMS(Estado: boolean);
+//    function BaixarTabelaNCM: string;
+    procedure ImportarTabelaNCM;
   public
     { Public declarations }
   end;
@@ -135,7 +148,7 @@ implementation
 
 {$R *.dfm}
 
-uses MainModule, Main;
+uses MainModule, Main, ConsultaTributacaoNCM;
 
 procedure TfCadNCM.bAddICMSClick(Sender: TObject);
 begin
@@ -438,5 +451,172 @@ procedure TfCadNCM.NCMBeforeDelete(DataSet: TDataSet);
 begin
        LogDados(DataSet, DataSet.FieldByName('Produto').AsString,'Delete');
 end;
+
+procedure TfCadNCM.bBuscarNCMClick(Sender: TObject);
+begin
+     mJson.lines.clear;
+     try
+          mJSON.Lines.Text := TConsultaTributacaoNCM.ConsultarImportacao('85176259',23, Date);
+     except
+          on E: Exception do ShowMessage(E.Message);
+     end;
+end;
+
+procedure TfCadNCM.ImportarTabelaNCM;
+const
+     TAMANHO_LOTE = 500;
+var
+     Qry: TFDQuery;
+     Raiz: TJSONObject;
+     Lista: TJSONArray;
+     Item: TJSONObject;
+     JSON: string;
+     Inicio, Qtde, i, j: Integer;
+     Incluidos, Atualizados: Integer;
+     Cronometro: TStopwatch;
+
+     function Valor(const Campo: string): string;
+     var
+          V: TJSONValue;
+     begin
+          Result := '';
+          V := Item.GetValue(Campo);
+          if (V <> nil) and not (V is TJSONNull) then
+               Result := V.Value;
+     end;
+
+     function DataNCM(const Campo: string): Variant;
+     var
+          D: TDateTime;
+          F: TFormatSettings;
+          S: string;
+     begin
+          Result := Null;
+          S := Trim(Valor(Campo));
+          if S = '' then Exit;
+          F := TFormatSettings.Create('pt-BR');
+          F.ShortDateFormat := 'dd/mm/yyyy';
+          if not TryStrToDate(S, D, F) then raise Exception.Create('Data inválida: ' + S);
+          Result := D;
+     end;
+
+begin
+     Cronometro := TStopwatch.StartNew;
+
+     // Lê o arquivo usando o método já testado.
+     mJSON.Lines.LoadFromFile('C:\Projetos\AtlasWeb\Files\ncm_json_consulta.txt');
+     JSON := mJSON.Lines.Text;
+     Raiz := TJSONObject.ParseJSONValue(JSON) as TJSONObject;
+     if Raiz = nil then raise Exception.Create('Arquivo JSON inválido.');
+
+     try
+          Lista := Raiz.GetValue('Nomenclaturas') as TJSONArray;
+          if (Lista = nil) or (Lista.Count = 0) then raise Exception.Create('Nenhum NCM encontrado no JSON.');
+          Qry := TFDQuery.Create(nil);
+          try
+               Qry.Connection := UniMainModule.Conecta;
+               UniMainModule.Conecta.StartTransaction;
+               try
+                    // Limpa apenas a tabela de importação.
+                    UniMainModule.Conecta.ExecSQL('DELETE FROM NCM_Oficial');
+                    Qry.SQL.Text := 'INSERT INTO NCM_Oficial(' +
+                                     'Codigo, Descricao, Data_Inicio, Data_Fim, ' +
+                                     'Tipo_Ato_Ini, Numero_Ato_Ini, Ano_Ato_Ini) ' +
+                                     'VALUES (' +
+                                     ':Codigo, :Descricao, :Data_Inicio, :Data_Fim, ' +
+                                     ':Tipo_Ato_Ini, :Numero_Ato_Ini, :Ano_Ato_Ini)';
+
+                    Qry.ParamByName('Codigo').DataType := ftString;
+                    Qry.ParamByName('Codigo').Size := 10;
+                    Qry.ParamByName('Descricao').DataType := ftWideString;
+                    Qry.ParamByName('Descricao').Size := 4000;
+                    Qry.ParamByName('Data_Inicio').DataType := ftDate;
+                    Qry.ParamByName('Data_Fim').DataType := ftDate;
+                    Qry.ParamByName('Tipo_Ato_Ini').DataType := ftString;
+                    Qry.ParamByName('Tipo_Ato_Ini').Size := 50;
+                    Qry.ParamByName('Numero_Ato_Ini').DataType := ftString;
+                    Qry.ParamByName('Numero_Ato_Ini').Size := 20;
+                    Qry.ParamByName('Ano_Ato_Ini').DataType := ftString;
+                    Qry.ParamByName('Ano_Ato_Ini').Size := 4;
+                    Qry.Params.ArraySize := TAMANHO_LOTE;
+                    Qry.Prepare;
+
+                    Inicio := 0;
+
+                    while Inicio < Lista.Count do begin
+                         Qtde := Lista.Count - Inicio;
+                         if Qtde > TAMANHO_LOTE then Qtde := TAMANHO_LOTE;
+
+                         for j := 0 to Qtde - 1 do begin
+                             i                                              := Inicio + j;
+                             Item                                           := Lista.Items[i] as TJSONObject;
+                             Qry.ParamByName('Codigo').AsStrings[j]         := Valor('Codigo');
+                             Qry.ParamByName('Descricao').AsWideStrings[j]  := Valor('Descricao');
+                             Qry.ParamByName('Data_Inicio').Values[j]       := DataNCM('Data_Inicio');
+                             Qry.ParamByName('Data_Fim').Values[j]          := DataNCM('Data_Fim');
+                             Qry.ParamByName('Tipo_Ato_Ini').AsStrings[j]   := Valor('Tipo_Ato_Ini');
+                             Qry.ParamByName('Numero_Ato_Ini').AsStrings[j] := Valor('Numero_Ato_Ini');
+                             Qry.ParamByName('Ano_Ato_Ini').AsStrings[j]    := Valor('Ano_Ato_Ini');
+                         end;
+
+                         Qry.Execute(Qtde, 0);
+                         Inc(Inicio, Qtde);
+                    end;
+
+                    // Atualiza somente os registros diferentes.
+                    Qry.SQL.Text := 'UPDATE D SET ' +
+                                    'D.Descricao = O.Descricao, ' +
+                                    'D.Data_Inicio = O.Data_Inicio, ' +
+                                    'D.Data_Fim = O.Data_Fim, ' +
+                                    'D.Tipo_Ato_Ini = O.Tipo_Ato_Ini, ' +
+                                    'D.Numero_Ato_Ini = O.Numero_Ato_Ini, ' +
+                                    'D.Ano_Ato_Ini = O.Ano_Ato_Ini ' +
+                                    'FROM NCM_Oficial D ' +
+                                    'INNER JOIN NCM_Oficial O ON O.Codigo = D.Codigo ' +
+                                    'WHERE EXISTS (' +
+                                    'SELECT D.Descricao, D.Data_Inicio, D.Data_Fim, ' +
+                                    'D.Tipo_Ato_Ini, D.Numero_Ato_Ini, D.Ano_Ato_Ini ' +
+                                    'EXCEPT ' +
+                                    'SELECT O.Descricao, O.Data_Inicio, O.Data_Fim, ' +
+                                    'O.Tipo_Ato_Ini, O.Numero_Ato_Ini, O.Ano_Ato_Ini)';
+
+                    Qry.ExecSQL;
+                    Atualizados := Qry.RowsAffected;
+
+                    // Inclui apenas códigos novos.
+                    Qry.SQL.Text := 'INSERT INTO NCM_Oficial (' +
+                                    'Codigo, Descricao, Data_Inicio, Data_Fim, ' +
+                                    'Tipo_Ato_Ini, Numero_Ato_Ini, Ano_Ato_Ini) ' +
+                                    'SELECT O.Codigo, O.Descricao, O.Data_Inicio, O.Data_Fim, ' +
+                                    'O.Tipo_Ato_Ini, O.Numero_Ato_Ini, O.Ano_Ato_Ini ' +
+                                    'FROM NCM_Oficial O ' +
+                                    'WHERE NOT EXISTS (' +
+                                    'SELECT 1 FROM NCM_Oficial D WHERE D.Codigo = O.Codigo)';
+
+                    Qry.ExecSQL;
+                    Incluidos := Qry.RowsAffected;
+                    UniMainModule.Conecta.Commit;
+               except
+                    if UniMainModule.Conecta.InTransaction then
+                         UniMainModule.Conecta.Rollback;
+                    raise;
+               end;
+
+          finally
+               Qry.Free;
+          end;
+
+          Cronometro.Stop;
+
+          ShowMessage('Atualização NCM concluída!' + sLineBreak +
+                      'Registros no arquivo: ' + IntToStr(Lista.Count) + sLineBreak +
+                      'Incluídos: ' + IntToStr(Incluidos) + sLineBreak +
+                      'Atualizados: ' + IntToStr(Atualizados) + sLineBreak +
+                      'Sem alteração: ' + IntToStr(Lista.Count - Incluidos - Atualizados) + sLineBreak +'Tempo: ' + FormatFloat('0.0', Cronometro.Elapsed.TotalSeconds) +' segundos');
+     finally
+          Raiz.Free;
+     end;
+end;
+
 
 end.

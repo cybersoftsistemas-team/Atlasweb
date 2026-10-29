@@ -241,7 +241,7 @@ var
 begin
      with Usuarios do begin
           if bFoto.FileName <> '' then begin
-             if (NomeComputador = 'PROGRAMACAO1') or (NomeComputador = 'NOTE-DED') then begin
+             if (NomeComputador = 'PROGRAMACAO1') or (NomeComputador = 'NOTE-DED') or (NomeComputador = 'DED-CASA')  then begin
                 fieldbyname('Foto').AsString := UniServerModule.FilesFolder + 'images\'+bFoto.FileName;
              end else begin
                 fieldbyname('Foto').AsString := 'c:\Aplicativos\Atlas\files\images\'+bFoto.FileName;

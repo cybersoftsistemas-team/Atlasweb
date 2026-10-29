@@ -453,7 +453,7 @@ end;
 
 procedure TfFatPedidoNFItem.cValor_UnitarioExit(Sender: TObject);
 begin
-    CalculaTudo(PedidosNF.fieldbyname('Operacao').asinteger, 'Item', gFormula, cLog, PedidosNFItens, self, nil);
+    CalculaPedido(PedidosNF.fieldbyname('Operacao').asinteger, 'Item', gFormula, cLog, PedidosNFItens, self);
     TotalizaItens;
 end;
 
@@ -505,24 +505,26 @@ begin
      end;
      with FichaEstoque do begin
           sql.clear;
-          sql.add('select Unitario_Entrada');
+          sql.add('select top 1');
+          sql.add('       Unitario_Entrada');
           sql.add('      ,Unitario_Saida');
           sql.add('      ,Unitario_Saldo');
-          sql.add('from FichaEstoque fet');
-          sql.add('where fet.Codigo = :pCodigo');
-          sql.add('and fet.Item = (select max(Item) from FichaEstoque fe2 where fe2.Codigo = fet.Codigo)');
-          parambyname('pCodigo').asinteger := Produtos.fieldbyname('Codigo').asinteger;
+          sql.add('from FichaEstoque');
+          sql.add('where Codigo_Mercadoria = :pCod');
+          sql.add('order by Item desc');
+          parambyname('pCod').asinteger := Produtos.fieldbyname('Codigo').asinteger;
           open;
      end;
      with FichaInventario do begin
           sql.clear;
-          sql.add('select Unitario_Entrada');
+          sql.add('select top 1');
+          sql.add('       Unitario_Entrada');
           sql.add('      ,Unitario_Saida');
           sql.add('      ,Unitario_Saldo');
-          sql.add('from FichaInventario fiv');
-          sql.add('where fiv.Codigo = :pCodigo');
-          sql.add('and fiv.Item = (select max(Item) from FichaEstoque fi2 where fi2.Codigo = fiv.Codigo)');
-          parambyname('pCodigo').asinteger := Produtos.fieldbyname('Codigo').asinteger;
+          sql.add('from FichaInventario');
+          sql.add('where Codigo_Mercadoria = :pCod');
+          sql.add('order by Item desc');
+          parambyname('pCod').asinteger := Produtos.fieldbyname('Codigo').asinteger;
           open;
      end;
 
@@ -538,7 +540,7 @@ begin
              if tFormulasItens.Locate('Campo', 'Valor_Unitario', [loCaseInsensitive]) then begin
                 gFormula.Cells[0, gFormula.RowCount-1] := tFormulasItens.fieldbyname('Campo').AsString;
                 gFormula.Cells[1, gFormula.RowCount-1] := tFormulasItens.fieldbyname('Formula').AsString;
-                fieldbyname('Valor_Unitario').value    := CalculaMacro(self, tFormulasItens.fieldbyname('Formula').AsString, 'Vaor_Unitario');
+                fieldbyname('Valor_Unitario').value    := CalculaMacroPed(self, tFormulasItens.fieldbyname('Formula').AsString, 'Vaor_Unitario');
              end;
           end;
           gFormula.RowCount := gFormula.RowCount + 1;
@@ -690,7 +692,7 @@ begin
           PedidosNFItens.fieldbyname('Aliquota_CBS').Value := ICMS.fieldbyname('Aliquota_CBS').asfloat;
           
           // Executa o calculo de todos os campos de valores do item.
-          CalculaTudo(PedidosNF.fieldbyname('Operacao').asinteger, 'Item', gFormula, cLog, PedidosNFItens, self, nil);
+          CalculaPedido(PedidosNF.fieldbyname('Operacao').asinteger, 'Item', gFormula, cLog, PedidosNFItens, self);
 {          
           fieldbyname('CSTIPI').Value    := PegaCSTIPI(PedidosNF.fieldbyname('Operacao').asinteger, Produtos.FieldByName('Codigo').asinteger);
           fieldbyname('CSTPIS').Value    := PegaCSTPIS(PedidosNF.fieldbyname('Operacao').asinteger, Produtos.FieldByName('Codigo').asinteger, PedidosNF.fieldbyname('Destinatario').asinteger) ;
@@ -711,7 +713,7 @@ end;
 
 procedure TfFatPedidoNFItem.cQtdeExit(Sender: TObject);
 begin
-    CalculaTudo(PedidosNF.fieldbyname('Operacao').asinteger, 'Item', gFormula, cLog, PedidosNFItens, self, nil);
+    CalculaPedido(PedidosNF.fieldbyname('Operacao').asinteger, 'Item', gFormula, cLog, PedidosNFItens, self);
     TotalizaItens;
 end;
 

@@ -15,10 +15,15 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     Plain = True
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = -3
+    ExplicitLeft = -48
+    ExplicitTop = 8
     object UniTabSheet3: TUniTabSheet
       Hint = ''
       Caption = 'Itens do Pedido'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniContainerPanel1: TUniContainerPanel
         Left = 0
         Top = 0
@@ -35,8 +40,8 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
         TabOrder = 0
         DesignSize = (
           865
-          1872)
-        ScrollHeight = 1872
+          1870)
+        ScrollHeight = 1870
         ScrollWidth = 865
         object UniPanel3: TUniPanel
           Left = 38
@@ -2786,7 +2791,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
         Left = 3
         Top = 515
         Width = 859
-        Height = 1354
+        Height = 1352
         Hint = ''
         BorderStyle = ubsInset
         ScrollBars = ssBoth
@@ -2814,8 +2819,8 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       'select *'
       'from PedidosNFitens'
       '')
-    Left = 259
-    Top = 149
+    Left = 274
+    Top = 138
     object PedidosNFItensPedido: TIntegerField
       FieldName = 'Pedido'
       Origin = 'Pedido'
@@ -3747,7 +3752,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
   end
   object dsPedidosNFItens: TDataSource
     DataSet = PedidosNFItens
-    Left = 259
+    Left = 274
     Top = 191
   end
   object Produtos: TFDQuery
@@ -3806,8 +3811,8 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       'where Desativado <> 1'
       'and isnull(NCM, '#39#39') <> '#39#39' '
       'order by Descricao')
-    Left = 428
-    Top = 148
+    Left = 464
+    Top = 138
     object ProdutosCodigo: TIntegerField
       FieldName = 'Codigo'
       Origin = 'Codigo'
@@ -4048,7 +4053,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
   end
   object dsProdutos: TDataSource
     DataSet = Produtos
-    Left = 426
+    Left = 464
     Top = 191
   end
   object CSTCBS: TFDQuery
@@ -4061,13 +4066,13 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     SQL.Strings = (
       'select * FROM CSTCBS'
       '')
-    Left = 575
+    Left = 667
     Top = 243
   end
   object dsCSTCBS: TDataSource
     DataSet = CSTCBS
-    Left = 575
-    Top = 289
+    Left = 667
+    Top = 295
   end
   object CSTIBS: TFDQuery
     Connection = UniMainModule.Conecta
@@ -4078,12 +4083,12 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * FROM CSTIBS')
-    Left = 575
-    Top = 147
+    Left = 667
+    Top = 138
   end
   object dsCSTIBS: TDataSource
     DataSet = CSTIBS
-    Left = 575
+    Left = 667
     Top = 191
   end
   object CFOP: TFDQuery
@@ -4100,7 +4105,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       'from CFOP '
       'where Desativada <> 1')
     Left = 117
-    Top = 147
+    Top = 138
     object CFOPCodigo: TStringField
       FieldName = 'Codigo'
       Origin = 'Codigo'
@@ -4137,12 +4142,12 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       '      ,Declaracao = DE'
       'from ProcessosExp'
       'where isnull(DE, '#39#39') <> '#39#39)
-    Left = 175
-    Top = 147
+    Left = 183
+    Top = 138
   end
   object dsProcessos: TDataSource
     DataSet = Processos
-    Left = 175
+    Left = 183
     Top = 191
   end
   object CSTIPI: TFDQuery
@@ -4154,13 +4159,13 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * FROM CSTIPI')
-    Left = 175
+    Left = 183
     Top = 243
   end
   object dsCSTIPI: TDataSource
     DataSet = CSTIPI
-    Left = 175
-    Top = 289
+    Left = 183
+    Top = 295
   end
   object CSTPIS: TFDQuery
     Connection = UniMainModule.Conecta
@@ -4171,13 +4176,13 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * FROM CSTPIS')
-    Left = 259
+    Left = 274
     Top = 243
   end
   object dsCSTPIS: TDataSource
     DataSet = CSTPIS
-    Left = 259
-    Top = 289
+    Left = 274
+    Top = 295
   end
   object CSTCOFINS: TFDQuery
     Connection = UniMainModule.Conecta
@@ -4188,12 +4193,12 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * FROM CSTCOFINS')
-    Left = 496
-    Top = 147
+    Left = 560
+    Top = 138
   end
   object dsCSTCOFINS: TDataSource
     DataSet = CSTCOFINS
-    Left = 496
+    Left = 560
     Top = 191
   end
   object CSTICMSB: TFDQuery
@@ -4205,13 +4210,13 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * FROM CSTICMS')
-    Left = 496
+    Left = 560
     Top = 243
   end
   object dsCSTICMSB: TDataSource
     DataSet = CSTICMSB
-    Left = 496
-    Top = 289
+    Left = 560
+    Top = 295
   end
   object ICMS: TFDQuery
     Connection = UniMainModule.Conecta
@@ -4222,13 +4227,13 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from ICMS')
-    Left = 351
+    Left = 377
     Top = 242
   end
   object dsICMS: TDataSource
     DataSet = ICMS
-    Left = 351
-    Top = 289
+    Left = 377
+    Top = 295
   end
   object CSTICMSA: TFDQuery
     Connection = UniMainModule.Conecta
@@ -4239,13 +4244,13 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * FROM CSTICMS')
-    Left = 426
+    Left = 464
     Top = 243
   end
   object dsCSTICMSA: TDataSource
     DataSet = CSTICMSA
-    Left = 426
-    Top = 289
+    Left = 464
+    Top = 295
   end
   object TabPISCOFINS: TFDQuery
     Connection = UniMainModule.Conecta
@@ -4253,24 +4258,24 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       'select *'
       'from TabelaPISCOFINS'
       'where Tipo = '#39'B'#39)
-    Left = 351
-    Top = 147
+    Left = 377
+    Top = 138
   end
   object dsTabPISCOFINS: TDataSource
     DataSet = TabPISCOFINS
-    Left = 351
+    Left = 377
     Top = 191
   end
   object PedidosNF: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'select * from pedidosNF')
-    Left = 639
-    Top = 147
+    Left = 739
+    Top = 138
   end
   object dsPedidosNF: TDataSource
     DataSet = PedidosNF
-    Left = 639
+    Left = 739
     Top = 191
   end
   object OpFiscal: TFDQuery
@@ -4282,12 +4287,12 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from OperacaoFiscal')
-    Left = 710
-    Top = 147
+    Left = 816
+    Top = 138
   end
   object dsOPFiscal: TDataSource
     DataSet = OpFiscal
-    Left = 710
+    Left = 816
     Top = 191
   end
   object tFormulasItens: TFDQuery
@@ -4299,13 +4304,13 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from OperacaoFiscalFormulas')
-    Left = 600
-    Top = 341
+    Left = 667
+    Top = 347
   end
   object dstFormulasItens: TDataSource
     DataSet = tFormulasItens
-    Left = 600
-    Top = 383
+    Left = 667
+    Top = 406
   end
   object Campos: TFDQuery
     Connection = UniMainModule.Conecta
@@ -4319,42 +4324,42 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       '      ,Estado'
       '      ,Razao_Social'
       'from Empresas')
-    Left = 62
-    Top = 245
+    Left = 46
+    Top = 77
   end
   object dsCampos: TDataSource
     DataSet = Campos
-    Left = 62
-    Top = 295
+    Left = 46
+    Top = 128
   end
   object Macro: TCalcExpress
     Formula = '0'
-    Left = 427
-    Top = 81
+    Left = 421
+    Top = 57
   end
   object tNCM: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'select * from NCM')
-    Left = 639
+    Left = 739
     Top = 243
   end
   object dstNCM: TDataSource
     DataSet = tNCM
-    Left = 639
-    Top = 289
+    Left = 739
+    Top = 295
   end
   object tNCMICMS: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'select * from NCM')
-    Left = 710
+    Left = 816
     Top = 243
   end
   object dstNCMICMS: TDataSource
     DataSet = tNCMICMS
-    Left = 710
-    Top = 289
+    Left = 816
+    Top = 295
   end
   object Destinatarios: TFDQuery
     Connection = UniMainModule.Conecta
@@ -4370,30 +4375,30 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
         '      ,CNPJ_CPF = iif(CNPJ <> '#39#39', replicate('#39'0'#39', 14-len(CNPJ))+C' +
         'NPJ, replicate('#39'0'#39', 14-len(CPF))+CPF)'
       'from Destinatarios')
-    Left = 62
-    Top = 347
+    Left = 46
+    Top = 180
   end
   object dsDestinatarios: TDataSource
     DataSet = Destinatarios
-    Left = 62
-    Top = 394
+    Left = 46
+    Top = 231
   end
   object ProdutosPauta: TFDQuery
     Connection = UniMainModule.Conecta
     SQL.Strings = (
       'select * from ProdutosPauta')
-    Left = 259
+    Left = 274
     Top = 347
   end
   object dsProdutosPauta: TDataSource
     DataSet = ProdutosPauta
-    Left = 259
-    Top = 394
+    Left = 274
+    Top = 406
   end
   object dstImpostos: TDataSource
     DataSet = tImpostos
-    Left = 62
-    Top = 506
+    Left = 46
+    Top = 333
   end
   object tImpostos: TFDMemTable
     FieldDefs = <>
@@ -4412,8 +4417,8 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
     StoreDefs = True
-    Left = 62
-    Top = 457
+    Left = 46
+    Top = 284
     object tImpostosOrdem_Calculo: TSmallintField
       FieldName = 'Ordem_Calculo'
     end
@@ -4449,8 +4454,8 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     CancelButtonText = 'Cancelar'
     Width = 400
     Padding = 20
-    Left = 480
-    Top = 79
+    Left = 482
+    Top = 57
   end
   object ttmp: TFDQuery
     Connection = UniMainModule.Conecta
@@ -4464,8 +4469,8 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       '      ,Estado'
       '      ,Razao_Social'
       'from Empresas')
-    Left = 565
-    Top = 79
+    Left = 543
+    Top = 57
   end
   object Empresas: TFDQuery
     Connection = UniMainModule.Conecta
@@ -4479,28 +4484,28 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
       '      ,Estado'
       '      ,Razao_Social'
       'from Empresas')
-    Left = 175
+    Left = 183
     Top = 347
   end
   object dsEmpresas: TDataSource
     DataSet = Empresas
-    Left = 175
-    Top = 394
+    Left = 183
+    Top = 406
   end
   object FichaEstoque: TFDQuery
     Connection = UniMainModule.Conecta
-    Left = 350
+    Left = 377
     Top = 347
   end
   object FichaInventario: TFDQuery
     Connection = UniMainModule.Conecta
-    Left = 430
-    Top = 346
+    Left = 464
+    Top = 347
   end
   object dstFormulasTotais: TDataSource
     DataSet = tFormulasTotais
-    Left = 515
-    Top = 383
+    Left = 560
+    Top = 406
   end
   object tFormulasTotais: TFDQuery
     Connection = UniMainModule.Conecta
@@ -4511,7 +4516,7 @@ object fFatPedidoNFItem: TfFatPedidoNFItem
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from OperacaoFiscalFormulas')
-    Left = 515
-    Top = 341
+    Left = 560
+    Top = 347
   end
 end

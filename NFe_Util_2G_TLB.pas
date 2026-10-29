@@ -176,8 +176,7 @@
 
 interface
 
-uses Winapi.Windows, mscorlib_TLB, System.Classes, System.Variants, System.Win.StdVCL, System_TLB, Vcl.Graphics, Vcl.OleServer, 
-Winapi.ActiveX;
+uses Winapi.Windows, mscorlib_TLB, System.Classes, System.Variants, System.Win.StdVCL, System_TLB, Vcl.Graphics, Vcl.OleServer, Winapi.ActiveX;
   
 
 // *********************************************************************//

@@ -575,7 +575,6 @@ begin
            sql.add('order by Descricao');
            open;
       end;
-      uniMainModule.Meses.Open;
 end;
 procedure TfConfigSis.ConfigBeforePost(DataSet: TDataSet);
 begin

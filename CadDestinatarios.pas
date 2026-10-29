@@ -630,17 +630,9 @@ begin
 end;
 
 procedure TfCadDestinatarios.UniframeCreate(Sender: TObject);
-var
-  i:integer;
 begin
       // Alinhando todas as fichas de dados ao centro do form.
-      for i := 0 to ComponentCount -1 do begin
-          if Components[i] is TUniPanel then begin
-             TuniPanel(Components[i]).Top   := 30;
-             TuniPanel(Components[i]).Left  := (Pasta.Width - TuniPanel(Components[i]).Width) div 2;
-             TuniPanel(Components[i]).color := clNone;
-          end;
-      end;
+      AlinharPanels(self, Pasta.Width);
 
       LigaBotoes(true);
       LigaBotoes2(true);

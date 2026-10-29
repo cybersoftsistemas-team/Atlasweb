@@ -317,7 +317,7 @@ var
 begin
      with Empresas do begin
           if bLogo.FileName <> '' then begin
-             if (NomeComputador = 'PROGRAMACAO1') or (NomeComputador = 'NOTE-DED') then begin
+             if (NomeComputador = 'PROGRAMACAO1') or (NomeComputador = 'NOTE-DED') or (NomeComputador = 'DED-CASA') then begin
                 fieldbyname('Logo').AsString := uniMainModule.mPath + 'files\images\'+bLogo.FileName;
              end else begin
                 fieldbyname('Logo').AsString := 'c:\Aplicativos\Atlas\files\images\'+bLogo.FileName;

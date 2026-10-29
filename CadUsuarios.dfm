@@ -133,6 +133,10 @@ object fCadUsuarios: TfCadUsuarios
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniDBGrid1: TUniDBGrid
         Left = 0
         Top = 27
@@ -243,7 +247,7 @@ object fCadUsuarios: TfCadUsuarios
         Left = 0
         Top = 0
         Width = 1063
-        Height = 770
+        Height = 768
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -253,7 +257,7 @@ object fCadUsuarios: TfCadUsuarios
         TabOrder = 0
         DesignSize = (
           1044
-          768)
+          766)
         ScrollHeight = 1008
         ScrollWidth = 647
         object pFicha: TUniPanel

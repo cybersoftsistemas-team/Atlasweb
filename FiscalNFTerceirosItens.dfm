@@ -39,8 +39,8 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
         TabOrder = 0
         DesignSize = (
           1143
-          1571)
-        ScrollHeight = 1571
+          1569)
+        ScrollHeight = 1569
         ScrollWidth = 1143
         object Ficha: TUniPanel
           Left = 80
@@ -1598,7 +1598,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
         Left = 3
         Top = 3
         Width = 1137
-        Height = 1565
+        Height = 1563
         Hint = ''
         HeaderTitle = 'F'#211'RMULAS DOS CALCULOS DO PEDIDO'
         HeaderTitleAlign = taCenter
@@ -1637,6 +1637,7 @@ object fFiscalNFTerceirosItens: TfFiscalNFTerceirosItens
         ForceFit = True
         Align = alClient
         TabOrder = 0
+        ExplicitHeight = 1565
       end
       object cLog: TUniMemo
         AlignWithMargins = True

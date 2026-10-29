@@ -216,18 +216,13 @@ video {
 
 .x-column-header {
    border-right: 1px solid #c2c2c2;
-   /*
-   color: #eed60f;
-   background-color: #607d8b;
-   color: #66ccff;
-   text-shadow: 1px 1px white, -1px -1px #000; 
-   */
-   color: #000;
+   color: white;
    font: bold 10px helvetica, helvetica, arial, verdana, sans-serif;
    text-transform: uppercase;      
    outline: 0;
-   background-color: #E6E6FA;
-   height: 24px;
+/*   background-color: #E6E6FA;*/
+  background: linear-gradient(180deg, #367f9b 0%, #276d87 100%);
+   height: 20px;
 }
 
 .x-column-header-default-horizontal.x-header-noborder {
@@ -425,13 +420,8 @@ video {
 
 
 /*--------------------------------------------------------[ AJUSTE PROFISSIONAL DAS ABAS ]--------------------------------------------------------*/
-
 /* Barra das abas */
-
-
 /* Área interna da barra */
-
-
 /* Remove espaço entre a barra das abas e o conteúdo */
 .x-tab-bar-strip {
     display: none !important;
@@ -515,7 +505,6 @@ video {
    font-family: jet brain mono, courrier new;
    border-radius: 0px;
 }
-
 
 /*--------------------------------------------------------[ CAMPOS DESTACADOS ]------------------------------------------------------*/
 .CampoDestaque {
@@ -759,6 +748,29 @@ video {
     background-color: #7fb3d5 !important;
 }
 
+/* uniGUI Neptune - botão menor dentro do campo */
+.x-form-arrow-trigger {
+/*    margin-top: 1px !important;*/
+    margin-bottom: 2px !important;
+    border: 1px solid silver !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    box-sizing: border-box !important;
+    background-color: #e6e6e6 !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    height: 22px !important;
+    width: 22px !important;
+    min-width: 22px !important;
+}
+
+/* Remove a divisão entre o texto e o botão */
+.x-form-text-wrap {
+    border-right: none !important;
+}
+
+
+
 /* ===========================================================
    CYBERSOFT BACKGROUND
    ===========================================================*/
@@ -794,10 +806,8 @@ video {
 }
 
 .cybersoft-logo img{
-    filter:
-        drop-shadow(0px 8px 8px rgba(0,0,0,.55));
+    filter: drop-shadow(0px 8px 8px rgba(0,0,0,.55));
 }
-
 
 
 /* MASCARA DE TELA PARA PROCESSAMENTOS */
@@ -940,4 +950,41 @@ video {
 .x-panel-body-default, .x-panel-body {
     border-top: 0px solid #2d3337 !important; /* Linha fina escura */
     box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.15) !important; /* Linha de luz opcional */
+}
+
+
+/*--------------------------------------------------------
+  SOMBRA E TREMOR DOS ÍCONES
+--------------------------------------------------------*/
+/* Sombra permanente */
+.icone-sombra img, img.icone-sombra {
+    cursor: pointer !important;
+    filter: drop-shadow(3px 4px 3px rgba(0, 0, 0, 0.45)) !important;
+}
+
+/* Tremor ao passar o mouse */
+.icone-sombra:hover img, img.icone-sombra:hover {
+    animation: iconeTremor 0.35s ease-in-out infinite !important;
+    filter:
+        brightness(1.08)
+        drop-shadow(3px 4px 3px rgba(0, 0, 0, 0.45)) !important;
+}
+
+/* Movimento suave */
+@keyframes iconeTremor {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(-1px, 0) rotate(-1deg);
+    }
+
+    50% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    75% {
+        transform: translate(-1px, 1px) rotate(-0.5deg);
+    }
 }

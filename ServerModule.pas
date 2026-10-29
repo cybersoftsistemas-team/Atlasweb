@@ -38,7 +38,7 @@ end;
 
 procedure TUniServerModule.UniGUIServerModuleCreate(Sender: TObject);
 begin
-     if (NomeComputador = 'PROGRAMACAO1') or (NomeComputador = 'NOTE-DED') then begin
+     if (NomeComputador = 'PROGRAMACAO1') or (NomeComputador = 'NOTE-DED') or (NomeComputador = 'DED-CASA') then begin
         ExploreWeb('http://localhost:8077');
      end;
 end;

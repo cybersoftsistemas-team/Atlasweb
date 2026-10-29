@@ -222,7 +222,7 @@ begin
            sql.Clear;
            sql.Add('select CNPJ');
            sql.Add('      ,Estado');
-           sql.add('      ,Unidade = case when isnull(Numero_Filial, 0) = 0 then ''MATRIZ'' else ''FILIAL ''+cast(numero_Filial as char(3)) end');
+           sql.add('      ,Unidade = case when isnull(Filial, 0) = 0 then ''MATRIZ'' else ''FILIAL ''+cast(Filial as char(3)) end');
            sql.Add('      ,Razao_Social');
            sql.Add('      ,Regime_Tributario');
            sql.Add('from Empresas');

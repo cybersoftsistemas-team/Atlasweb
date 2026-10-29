@@ -20,6 +20,10 @@ object fCtbLancamentos: TfCtbLancamentos
     object pLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniPanel1: TUniPanel
         Left = 0
         Top = 0
@@ -492,6 +496,7 @@ object fCtbLancamentos: TfCtbLancamentos
               Title.Font.Style = [fsBold]
               Width = 58
               Alignment = taCenter
+              ReadOnly = True
             end
             item
               FieldName = 'Lote'
@@ -500,6 +505,7 @@ object fCtbLancamentos: TfCtbLancamentos
               Title.Font.Style = [fsBold]
               Width = 35
               Alignment = taCenter
+              ReadOnly = True
             end
             item
               FieldName = 'Origem'
@@ -507,6 +513,7 @@ object fCtbLancamentos: TfCtbLancamentos
               Title.Caption = 'Origem'
               Title.Font.Style = [fsBold]
               Width = 64
+              ReadOnly = True
             end
             item
               FieldName = 'Descricao'
@@ -514,6 +521,7 @@ object fCtbLancamentos: TfCtbLancamentos
               Title.Caption = 'Descri'#231#227'o'
               Title.Font.Style = [fsBold]
               Width = 161
+              ReadOnly = True
             end
             item
               FieldName = 'Contabilizar'
@@ -522,6 +530,7 @@ object fCtbLancamentos: TfCtbLancamentos
               Title.Font.Style = [fsBold]
               Width = 64
               Alignment = taCenter
+              ReadOnly = True
             end
             item
               FieldName = 'Aberto'
@@ -530,6 +539,7 @@ object fCtbLancamentos: TfCtbLancamentos
               Title.Font.Style = [fsBold]
               Width = 64
               Alignment = taCenter
+              ReadOnly = True
             end>
         end
         object gLancamentos: TUniDBGrid
@@ -560,6 +570,7 @@ object fCtbLancamentos: TfCtbLancamentos
               Title.Font.Style = [fsBold]
               Width = 60
               Alignment = taCenter
+              ReadOnly = True
             end
             item
               FieldName = 'Conta_Debito'
@@ -567,6 +578,7 @@ object fCtbLancamentos: TfCtbLancamentos
               Title.Caption = 'Cta (D)'
               Title.Font.Style = [fsBold]
               Width = 70
+              ReadOnly = True
             end
             item
               FieldName = 'Descricao_Debito'
@@ -582,6 +594,7 @@ object fCtbLancamentos: TfCtbLancamentos
               Title.Caption = 'Processo (D)'
               Title.Font.Style = [fsBold]
               Width = 100
+              ReadOnly = True
             end
             item
               FieldName = 'Conta_Credito'
@@ -589,6 +602,7 @@ object fCtbLancamentos: TfCtbLancamentos
               Title.Caption = 'Cta (C)'
               Title.Font.Style = [fsBold]
               Width = 70
+              ReadOnly = True
             end
             item
               FieldName = 'Descricao_Credito'
@@ -604,6 +618,7 @@ object fCtbLancamentos: TfCtbLancamentos
               Title.Caption = 'Processo (C)'
               Title.Font.Style = [fsBold]
               Width = 100
+              ReadOnly = True
             end
             item
               FieldName = 'Valor'
@@ -611,6 +626,7 @@ object fCtbLancamentos: TfCtbLancamentos
               Title.Caption = 'Valor'
               Title.Font.Style = [fsBold]
               Width = 88
+              ReadOnly = True
             end
             item
               FieldName = 'Historico_Codigo'
@@ -618,6 +634,7 @@ object fCtbLancamentos: TfCtbLancamentos
               Title.Caption = 'Hist'#243'rico'
               Title.Font.Style = [fsBold]
               Width = 64
+              ReadOnly = True
             end
             item
               FieldName = 'Historico_Complemento'
@@ -625,6 +642,7 @@ object fCtbLancamentos: TfCtbLancamentos
               Title.Caption = 'Complemento do Hist'#243'rico'
               Title.Font.Style = [fsBold]
               Width = 380
+              ReadOnly = True
               DisplayMemo = True
             end>
         end
@@ -633,6 +651,10 @@ object fCtbLancamentos: TfCtbLancamentos
     object UniTabSheet1: TUniTabSheet
       Hint = ''
       Caption = 'Lote/Lan'#231'amento'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox3: TUniScrollBox
         AlignWithMargins = True
         Left = 3
@@ -646,7 +668,6 @@ object fCtbLancamentos: TfCtbLancamentos
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
-        ScrollWidth = 1119
         object UniPanel5: TUniPanel
           AlignWithMargins = True
           Left = 3

@@ -498,9 +498,9 @@ begin
            sql.clear;
            sql.add('select CNPJ');
            sql.add('      ,Razao_Social');
-           sql.add('      ,Numero_Filial');
+           sql.add('      ,Filial');
            sql.add('from Empresas');
-           sql.add('order by Numero_Filial');
+           sql.add('order by Filial');
            open;
       end;
       with tPlano do begin

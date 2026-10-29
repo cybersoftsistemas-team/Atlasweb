@@ -139,6 +139,10 @@ object fComexContratoCambio: TfComexContratoCambio
     object pLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object Lista: TUniDBGrid
         Left = 0
         Top = 27
@@ -286,9 +290,13 @@ object fComexContratoCambio: TfComexContratoCambio
     object pDados: TUniTabSheet
       Hint = ''
       Caption = 'Contrato de C'#226'mbio'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       DesignSize = (
         1198
-        642)
+        640)
       object Panel2: TUniPanel
         Left = 30
         Top = 17

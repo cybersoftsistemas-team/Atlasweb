@@ -19,6 +19,7 @@ type
     cLogUser: TUniEdit;
     cLogSenha: TUniEdit;
     bEntrar: TUniBitBtn;
+    lNomeComp: TUniLabel;
     procedure bEntrarClick(Sender: TObject);
     procedure UniLoginFormShow(Sender: TObject);
   private
@@ -49,111 +50,118 @@ var
   vFoto, vLogo: string;
 begin
      if (Trim(cLogUser.Text) = '') or (cLogSenha.Text = '') then begin
-        ShowMessage('Informe o usuário e a senha!');
+        UniSession.AddJS('Ext.Msg.alert("Aviso", "Informe o usuário e a senha!");');
         Exit;
      end;
-
      bEntrar.Enabled := False;
      try
-       try
-        // Validando o login do usuário.
-        with Clientes do begin
-             Close;
-             SQL.Clear;
-             SQL.Add('select *');
-             SQL.Add('from Clientes');
-             SQL.Add('where Email = :pEmail');
-             SQL.Add('and Senha collate Latin1_General_CS_AS = :pSenha');
-             SQL.Add('and Ativa = 1');
-             SQL.Add('and Inadimplente = 0');
-             SQL.Add('and isnull(Banco, '''') <> '''' ');
-             ParamByName('pEmail').AsString := Trim(cLogUser.Text);
-             ParamByName('pSenha').AsString := cLogSenha.Text;
-             //SQL.SaveToFile('c:\temp\Clientes_WEB.sql');
-             Open;
+         try
+            // Validando o login do usuário.
+            with Clientes do begin
+                 Close;
+                 SQL.Clear;
+                 SQL.Add('select *');
+                 SQL.Add('from Clientes');
+                 SQL.Add('where Email = :pEmail');
+                 SQL.Add('and Senha collate Latin1_General_CS_AS = :pSenha');
+                 SQL.Add('and Ativa = 1');
+                 SQL.Add('and Inadimplente = 0');
+                 SQL.Add('and isnull(Banco, '''') <> '''' ');
+                 ParamByName('pEmail').AsString := Trim(cLogUser.Text);
+                 ParamByName('pSenha').AsString := cLogSenha.Text;
+                 //SQL.SaveToFile('c:\temp\Clientes_WEB.sql');
+                 Open;
 
-             if IsEmpty then begin
-                ShowMessage('Usuário ou senha inválidos!');
-                Exit;
+                 if IsEmpty then begin
+                    UniSession.AddJS('Ext.Msg.alert("Aviso", "Usuário ou senha inválidos!");');
+                    Exit;
+                 end;
+
+                 with UniMainModule do begin
+                      with Conecta do begin
+                           Connected := false;
+                           Params.Clear;
+                           Params.Values['DriverID']   := 'MSSQL';
+                           Params.Values['DriverName'] := 'MSSQL';
+                           Params.Values['Port']       := '1433';
+                           if NomeComputador = 'OMINIHOST' then begin
+                              Params.Values['Server'] := Clientes.FieldByName('Server').AsString;
+                           end else begin
+                              Params.Values['Server'] := Clientes.FieldByName('Server_Prog').AsString;
+                           end;
+                           Params.Values['Database']     := Clientes.FieldByName('Banco').AsString;
+                           Params.Values['User_Name']    := 'sa';
+                           Params.Values['Password']     := 'cybersoft@123';
+                           Params.Values['ODBCAdvanced'] := 'Encrypt=yes;TrustServerCertificate=yes';
+
+                           LoginPrompt := false;
+                           Connected   := true;
+                      end;
+
+                      // Pegando a foto do usuario no cadastro de usuarios.
+                      tTmp := TFDQuery.Create(nil);
+                      try
+                         with tTmp do begin
+                              Connection := Conecta;
+                              SQL.Clear;
+                              SQL.Add('select u.Foto');
+                              SQL.Add('      ,e.Logo');
+                              SQL.Add('      ,u.Matricula');
+                              SQL.Add('      ,u.Idioma');
+                              SQL.Add('from Usuarios u');
+                              SQL.Add('inner join Empresas e on e.CNPJ = u.Empresa');
+                              SQL.Add('where u.Email = :pEmail');
+                              SQL.Add('and u.Empresa = :pEmp');
+                              SQL.Add('and u.Chave = :pPass');
+                              ParamByName('pEmail').AsString := Clientes.FieldByName('Email').AsString;
+                              ParamByName('pEmp').AsString   := Clientes.FieldByName('Empresa_CNPJ').AsString;
+                              ParamByName('pPass').AsString  := Clientes.FieldByName('Senha').AsString;
+                              //SQL.SaveToFile('c:\temp\Usuarios_temp.sql');
+                              Open;
+
+                              if IsEmpty then begin
+                                 UniSession.AddJS('Ext.Msg.alert("Aviso", "Usuário não autorizado para esta empresa!");');
+                                 Conecta.Connected := False;
+                                 Exit;
+                              end;
+
+                              vFoto      := FieldByName('Foto').AsString;
+                              vLogo      := FieldByName('Logo').AsString;
+                              mMatricula := FieldByName('Matricula').AsString;
+                              mIdioma    := FieldByName('Idioma').AsString;
+                         end;
+                      finally
+                         tTmp.Free;
+                      end;
+
+                      mEmpresaAtiva := Clientes.FieldByName('Empresa_CNPJ').AsString;
+                      mUsuarioAtivo := Trim(cLogUser.Text);
+                 end;
+
+                 ModalResult := mrOK;
+                 with MainForm do begin
+                      lUser.Caption    := cLogUser.Text;
+                      lEmpresa.Caption := FormatMaskText('##.###.###/####-##;0', Clientes.FieldByName('Empresa_CNPJ').AsString) + ' - ' + Clientes.FieldByName('Empresa').AsString;
+                      if FileExists(UniMainModule.mLogoAtlas) then begin
+                         iLogoAtlas.Picture.LoadFromFile(UniMainModule.mLogoAtlas);
+                      end;
+                      if FileExists(UniMainModule.mLogoCyber) then begin
+                         iLogoCyber.Picture.LoadFromFile(UniMainModule.mLogoCyber);
+                      end;
+                      if FileExists(vFoto) then begin
+                         iFoto.Picture.LoadFromFile(vFoto);
+                      end;
+                      if FileExists(vLogo) then begin
+                         iLogoEmpresa.Picture.LoadFromFile(vLogo);
+                      end;
+                 end;
+            end;
+         except on E: Exception do
+             begin
+                 UniMainModule.Conecta.Connected := False;
+                 UniSession.AddJS('Ext.Msg.alert("Aviso", "Não foi possível concluir o login. Verifique a conexão ou contate o suporte.");');
              end;
-
-             with UniMainModule do begin
-                  with Conecta do begin
-                       Connected := False;
-                       Params.Clear;
-                       Params.Values['DriverID']  := 'MSSQL';
-                       Params.Values['Server']    := Clientes.FieldByName('Server').AsString;
-                       Params.Values['Database']  := Clientes.FieldByName('Banco').AsString;
-                       Params.Values['User_Name'] := 'sa';
-                       Params.Values['Password']  := 'cybersoft@123';
-                       Connected := True;
-                  end;
-
-                  // Pegando a foto do usuario no cadastro de usuarios.
-                  tTmp := TFDQuery.Create(nil);
-                  try
-                     with tTmp do begin
-                          Connection := Conecta;
-                          SQL.Clear;
-                          SQL.Add('select u.Foto');
-                          SQL.Add('      ,e.Logo');
-                          SQL.Add('      ,u.Matricula');
-                          SQL.Add('      ,u.Idioma');
-                          SQL.Add('from Usuarios u');
-                          SQL.Add('inner join Empresas e on e.CNPJ = u.Empresa');
-                          SQL.Add('where u.Email = :pEmail');
-                          SQL.Add('and u.Empresa = :pEmp');
-                          SQL.Add('and u.Chave = :pPass');
-                          ParamByName('pEmail').AsString := Clientes.FieldByName('Email').AsString;
-                          ParamByName('pEmp').AsString   := Clientes.FieldByName('Empresa_CNPJ').AsString;
-                          ParamByName('pPass').AsString  := Clientes.FieldByName('Senha').AsString;
-                          //SQL.SaveToFile('c:\temp\Usuarios_temp.sql');
-                          Open;
-
-                          if IsEmpty then begin
-                             ShowMessage('Usuário não autorizado para esta empresa!');
-                             Conecta.Connected := False;
-                             Exit;
-                          end;
-
-                          vFoto      := FieldByName('Foto').AsString;
-                          vLogo      := FieldByName('Logo').AsString;
-                          mMatricula := FieldByName('Matricula').AsString;
-                          mIdioma    := FieldByName('Idioma').AsString;
-                     end;
-                  finally
-                     tTmp.Free;
-                  end;
-
-                  mEmpresaAtiva := Clientes.FieldByName('Empresa_CNPJ').AsString;
-                  mUsuarioAtivo := Trim(cLogUser.Text);
-             end;
-
-             ModalResult := mrOK;
-             with MainForm do begin
-                  lUser.Caption    := cLogUser.Text;
-                  lEmpresa.Caption := FormatMaskText('##.###.###/####-##;0', Clientes.FieldByName('Empresa_CNPJ').AsString) + ' - ' + Clientes.FieldByName('Empresa').AsString;
-                  if FileExists(UniMainModule.mLogoAtlas) then begin
-                     iLogoAtlas.Picture.LoadFromFile(UniMainModule.mLogoAtlas);
-                  end;
-                  if FileExists(UniMainModule.mLogoCyber) then begin
-                     iLogoCyber.Picture.LoadFromFile(UniMainModule.mLogoCyber);
-                  end;
-                  if FileExists(vFoto) then begin
-                     iFoto.Picture.LoadFromFile(vFoto);
-                  end;
-                  if FileExists(vLogo) then begin
-                     iLogoEmpresa.Picture.LoadFromFile(vLogo);
-                  end;
-             end;
-        end;
-       except
-        on E: Exception do begin
-           UniMainModule.Conecta.Connected := False;
-           ShowMessage('Não foi possível concluir o login. Verifique a conexão ou contate o suporte.');
-           // Durante o desenvolvimento, registrar E.Message em log protegido.
-        end;
-       end;
+         end;
      finally
         bEntrar.Enabled := True;
      end;
@@ -161,6 +169,14 @@ end;
 
 procedure TTelaLogin.UniLoginFormShow(Sender: TObject);
 begin
+    try
+       UniMainModule.AtlasConect.Connected := True;
+    except
+       on E: Exception do begin
+          UniSession.AddJS('Ext.Msg.alert("Erro de conexão", "Não foi possível conectar ao banco de dados. Contate o suporte.");');
+       end;
+    end;
+
     UniHTMLFrame1.HTML.Add(' <!DOCTYPE html> '+
                            ' <html> '+
                            ' <body> '+
@@ -177,10 +193,12 @@ begin
         iLogoAtlas.Picture.LoadFromFile(uniMainModule.mLogoAtlas);
      end;
 
+     lNomeComp.Text :=  NomeComputador.ToUpper;
+
      //-----------------------------[ REMOVER APÓS TESTES ]--------------------------------\\
      cLogUser.text  := '';
      cLogSenha.Text := '';
-     if (NomeComputador = 'PROGRAMACAO1') or (NomeComputador = 'NOTE-DED') or (NomeComputador = 'OMINIHOST') then begin
+     if (NomeComputador = 'PROGRAMACAO1') or (NomeComputador = 'NOTE-DED') or (NomeComputador = 'DED-CASA') or (NomeComputador = 'OMINIHOST') then begin
         cLogUser.text  := 'administrador@cybersoftsistemas.com.br';
         cLogSenha.Text := 'Cybersoft@123';
      end;

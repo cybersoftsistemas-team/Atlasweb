@@ -15,7 +15,7 @@ object UniMainModule: TUniMainModule
     Left = 300
     Top = 20
     Images = {
-      1C000000FFFFFF1F060F000000706C75732D636972636C653B66613BFFFFFF1F
+      1D000000FFFFFF1F060F000000706C75732D636972636C653B66613BFFFFFF1F
       061300000070656E63696C2D7371756172652D6F3B66613BFFFFFF1F060B0000
       0074726173682D6F3B66613BFFFFFF1F061200000074696D65732D636972636C
       652D6F3B66613BFFFFFF1F0612000000636865636B2D636972636C652D6F3B66
@@ -173,15 +173,17 @@ object UniMainModule: TUniMainModule
       6E67FFFFFF1F060C0000006C6973742D6F6C3B66615F3BFFFFFF1F0609000000
       6C6973743B66615F3BFFFFFF1F060D0000006C6973742D616C743B66615F3BFF
       FFFF1F060B0000006572617365723B66615F3BFFFFFF1F060800000062616E3B
-      66615F3BFFFFFF1F06110000006D696E75732D636972636C653B66615F3B}
+      66615F3BFFFFFF1F06110000006D696E75732D636972636C653B66615F3BFFFF
+      FF1F060A0000007072696E743B66615F3B}
   end
   object AtlasConect: TFDConnection
     Params.Strings = (
       'Database=AtlasWeb'
       'User_Name=sa'
       'Password=cybersoft@123'
-      'DriverID=MSSQL'
-      'Server=server-Dados')
+      'Server=54.39.196.122'
+      'ODBCAdvanced=TrustServerCertificate=Yes'
+      'DriverID=MSSQL')
     FetchOptions.AssignedValues = [evMode, evRecsSkip, evRecsMax, evRowsetSize, evRecordCountMode, evCursorKind, evAutoFetchAll, evLiveWindowParanoic, evDetailCascade]
     FetchOptions.Mode = fmAll
     FetchOptions.RowsetSize = 100
@@ -190,35 +192,8 @@ object UniMainModule: TUniMainModule
     ResourceOptions.AssignedValues = [rvCmdExecMode]
     ResourceOptions.CmdExecMode = amNonBlocking
     LoginPrompt = False
-    Left = 35
+    Left = 43
     Top = 20
-  end
-  object Meses: TFDMemTable
-    FieldDefs = <>
-    IndexDefs = <>
-    FetchOptions.AssignedValues = [evMode]
-    FetchOptions.Mode = fmAll
-    ResourceOptions.AssignedValues = [rvPersistent, rvSilentMode]
-    ResourceOptions.Persistent = True
-    ResourceOptions.SilentMode = True
-    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
-    UpdateOptions.CheckRequired = False
-    UpdateOptions.AutoCommitUpdates = True
-    StoreDefs = True
-    Left = 34
-    Top = 93
-    object MesesMes: TSmallintField
-      FieldName = 'Mes'
-    end
-    object MesesNome: TStringField
-      FieldName = 'Nome'
-      Size = 15
-    end
-  end
-  object dsMeses: TDataSource
-    DataSet = Meses
-    Left = 34
-    Top = 141
   end
   object dsTipoCombustivel: TDataSource
     DataSet = TipoCombustivel
@@ -272,8 +247,9 @@ object UniMainModule: TUniMainModule
     Params.Strings = (
       'Database=EmpresaBase'
       'Password=cybersoft@123'
-      'Server=server-dados'
+      'Server=54.39.196.122'
       'User_Name=sa'
+      'ODBCAdvanced=TrustServerCertificate=Yes'
       'DriverID=MSSQL')
     FetchOptions.AssignedValues = [evMode, evRecsSkip, evRecsMax, evRowsetSize, evRecordCountMode, evCursorKind, evAutoFetchAll, evLiveWindowParanoic, evDetailCascade]
     FetchOptions.Mode = fmAll
@@ -282,9 +258,8 @@ object UniMainModule: TUniMainModule
     FetchOptions.LiveWindowParanoic = False
     ResourceOptions.AssignedValues = [rvCmdExecMode]
     ResourceOptions.CmdExecMode = amNonBlocking
-    Connected = True
     LoginPrompt = False
-    Left = 116
+    Left = 124
     Top = 20
   end
   object Log: TFDQuery

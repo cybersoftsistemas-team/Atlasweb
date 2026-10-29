@@ -26,6 +26,10 @@ object fComexInvoice: TfComexInvoice
       Hint = ''
       ImageIndex = 1
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object Grade: TUniDBGrid
         AlignWithMargins = True
         Left = 3
@@ -169,17 +173,22 @@ object fComexInvoice: TfComexInvoice
     object AbaInvoice: TUniTabSheet
       Hint = ''
       Caption = 'Dados da Invoice'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
         Width = 1009
-        Height = 951
+        Height = 949
         Hint = ''
         Align = alClient
         TabOrder = 0
+        ExplicitHeight = 951
         DesignSize = (
           1007
-          949)
+          947)
         ScrollHeight = 934
         ScrollWidth = 632
         object pFicha: TUniPanel
@@ -1087,9 +1096,13 @@ object fComexInvoice: TfComexInvoice
       Hint = ''
       ImageIndex = 2
       Caption = 'Itens da Invoice'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       DesignSize = (
         1009
-        951)
+        949)
       object Fichaitens: TUniPanel
         Left = 49
         Top = 18
@@ -2762,7 +2775,6 @@ object fComexInvoice: TfComexInvoice
     object ItensLPCORegistro: TFDAutoIncField
       FieldName = 'Registro'
       Origin = 'Registro'
-      ReadOnly = True
     end
     object ItensLPCOInvoice: TStringField
       FieldName = 'Invoice'

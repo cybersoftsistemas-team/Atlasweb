@@ -10,8 +10,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
   OldCreateOrder = False
   MonitoredKeys.Keys = <>
   PageMode = True
-  PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 15
   object UniPanel3: TUniPanel
     Left = 0
     Top = 679
@@ -181,6 +180,10 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
         object UniTabSheet1: TUniTabSheet
           Hint = ''
           Caption = 'Itens do Pedido'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 256
+          ExplicitHeight = 128
           object UniContainerPanel3: TUniContainerPanel
             AlignWithMargins = True
             Left = 316
@@ -544,7 +547,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
           Caption = 'An'#225'lise'
           object cLog: TUniMemo
             Left = 0
-            Top = 325
+            Top = 323
             Width = 1317
             Height = 204
             Hint = ''
@@ -572,7 +575,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
             Left = 3
             Top = 3
             Width = 1311
-            Height = 319
+            Height = 317
             Hint = ''
             HeaderTitle = 'F'#211'RMULAS DOS CALCULOS DO PEDIDO'
             HeaderTitleAlign = taCenter
@@ -611,6 +614,7 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
             ForceFit = True
             Align = alClient
             TabOrder = 1
+            ExplicitHeight = 319
           end
         end
       end
@@ -1602,7 +1606,6 @@ object fFatPedidoItensDUIMP: TfFatPedidoItensDUIMP
     object ProcessosImpItensRegistro: TFDAutoIncField
       FieldName = 'Registro'
       Origin = 'Registro'
-      ReadOnly = True
     end
     object ProcessosImpItensOrdem: TIntegerField
       FieldName = 'Ordem'

@@ -5,8 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, uniGUITypes, uniGUIAbstractClasses, uniGUIClasses, uniGUIRegClasses, uniGUIForm, uniGUIBaseClasses, uniPanel, uniPageControl,
   uniGUIFrame, Vcl.Imaging.pngimage, uniImage, Vcl.Imaging.jpeg, uniImageList, uniTreeView, uniTreeMenu, uniMainMenu, Vcl.Menus, uniLabel, uniScrollBox, uniEdit, Funcoes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, uniScreenMask, 
-  System.Generics.Collections, uniSweetAlert, uniButton, uniBitBtn, uniSpeedButton, Vcl.AppEvnts;
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.Generics.Collections,
+  uniSweetAlert, uniButton, uniBitBtn, uniSpeedButton, Vcl.AppEvnts;
 
 type
   TMainForm = class(TUniForm)
@@ -23,9 +23,7 @@ type
     UniPanel1: TUniPanel;
     iLogoEmpresa: TUniImage;
     tEmpresas: TFDQuery;
-    UniScreenMask1: TUniScreenMask;
     Alerta: TUniSweetAlert;
-    UniScreenMask2: TUniScreenMask;
     pMenu: TUniContainerPanel;
     UniContainerPanel2: TUniContainerPanel;
     cPesquisa: TUniEdit;
@@ -46,7 +44,6 @@ type
     procedure mnSairClick(Sender: TObject);
     procedure bFecharTodosClick(Sender: TObject);
     procedure bMenuClick(Sender: TObject);
-    procedure bMudarEmpresaClick(Sender: TObject);
     procedure botao_Atalho(Sender: TObject);
     procedure UniFormBeforeShow(Sender: TObject);
     procedure UniFormCreate(Sender: TObject);
@@ -73,7 +70,7 @@ uses
  ,MainModule
  ,uniGUIApplication
  ,Login
- ,Tradutor 
+ ,Tradutor
  ,CadEmpresas
  ,CadUsuarios
  ,CadPaises
@@ -129,7 +126,6 @@ uses
  ,Fiscal_BloquearPeriodo
  ,Contab_BloquearPeriodo
  ,CadOperacaoFiscal
- ,ComexProcessoImp
  ,DespRegistroDUIMP
  ,FatPedidoNF
  ,CadDREContabil
@@ -139,6 +135,7 @@ uses
  ,ConfigCampos
  ,Estoque_SaldoAbertura
  ,DUIMP
+ ,ComexProcessoImp
  ,ComexPO
  ,ComexPOImportar
  ,ComexContratoCambio
@@ -201,7 +198,7 @@ begin
      TabSheet.PageControl := PagePrincipal;
      TabSheet.Caption     := dFrame;
      TabSheet.Closable    := Fechar;
-     FCurrentFrame := TUniframeClass(nFrame).Create(Self);
+     FCurrentFrame := TUniframeClass(nFrame).Create(TabSheet);
      with FCurrentFrame do begin
           Align  := alClient;
           Parent := TabSheet;
@@ -250,11 +247,6 @@ begin
         pMenu.Width := 350;
 end;
 
-procedure TMainForm.bMudarEmpresaClick(Sender: TObject);
-begin
-     uniscreenMask1.DisplayMessage := 'Aguarde...Fechando todas as Abas';
-end;
-
 procedure TMainForm.UniButton1Click(Sender: TObject);
 begin
      fDUIMP.ShowModal;
@@ -283,26 +275,31 @@ begin
                      Parent           := MainForm.pAtalhos;
                      visible          := true;
                      width            := MainForm.pAtalhos.Height;
-                     Height           := MainForm.pAtalhos.Height;
                      Caption          := fieldbyname('Titulo').asstring;
                      Name             := fieldbyname('Form').asstring;
                      ImageIndex       := 21;
                      align            := alLeft;
                      AlignWithMargins := true;
                      center           := true;
-                     FitWidth         := true;
                      Enabled          := true;
                      stretch          := true;
                      Cursor           := crHandPoint;
                      tag              := fieldbyname('Id').asinteger;
                      hint             := fieldbyname('Titulo').asstring;
                      ShowHint         := true;
+                     JSInterface.JSConfig('cls', ['icone-sombra']);
                      if fileexists(fieldbyname('Icone').asstring) then begin
                         Picture.LoadFromFile(fieldbyname('Icone').asstring);
                      end else begin
                         Picture.LoadFromFile(mpath+'images\icones\Atalho0b.png');
                      end;
                      OnClick := MainForm.Botao_Atalho;
+
+                     // Definição da mascara de abertura dos módulos.
+                     JSInterface.JSConfig('cls', ['icone-sombra']);
+                     ClientEvents.ExtEvents.Values['click'] := '';
+                     ScreenMask.Enabled := True;
+                     ScreenMask.Message := 'Carregando '+fieldbyname('Titulo').asstring+', aguarde...';
                 end;
                 next;
           end;
@@ -320,7 +317,13 @@ end;
 
 procedure TMainForm.UniFormCreate(Sender: TObject);
 begin
+     // Cria o menu principal.
      CriaMenu(MenuPrincipal);
+
+     // Tradução do form principal.
+     if uniMainModule.mIdioma <> 'pt-BR' then begin
+        TTradutor.TraduzirFormulario(self, uniMainModule.mIdioma);
+     end;
 end;
 
 procedure TMainForm.CriaMenu(l_menu: TuniMenuItems);
@@ -339,15 +342,8 @@ begin
              // Pega os itens da tabela.
              while not Eof do begin
                    // Criar o item do menu.
-                   MenuItem := TUniMenuItem.Create(Self);
-
-                   // Tradução do menu principal para a linguagem do usuário.
-                   if uniMainModule.mIdioma <> 'pt-BR' then begin
-                      MenuItem.Caption := TTradutor.TraduzirTexto(FieldByName('Caption').AsString, uniMainModule.mIdioma);
-                   end else begin
-                      MenuItem.Caption := FieldByName('Caption').AsString;
-                   end;
-
+                   MenuItem         := TUniMenuItem.Create(Self);
+                   MenuItem.Caption := FieldByName('Caption').AsString;
                    MenuItem.Tag     := FieldByName('ID').AsInteger;
                    MenuItem.Hint    := FieldByName('Form').AsString;
                    MenuItem.Name    := FieldByName('Nome').AsString;
@@ -357,7 +353,7 @@ begin
                       MenuItem.OnClick := MenuClick;
                    end;
                    if fieldByName('Nome').asstring = 'mnSair' then begin
-                      MenuItem.OnClick := mnSairClick; 
+                      MenuItem.OnClick := mnSairClick;
                    end;
                    // Encontrar o pai, se houver.
                    if not FieldByName('ParentID').IsNull then begin
@@ -398,9 +394,9 @@ initialization
   RegisterAppFormClass(TMainForm);
 
   (* Devem ser registrados aqui todos os frames que serão chamados pelo menu principal *)
-  RegisterClass(TfCadEmpresas); 
-  RegisterClass(TfCadUsuarios); 
-  RegisterClass(TfCadPaises); 
+  RegisterClass(TfCadEmpresas);
+  RegisterClass(TfCadUsuarios);
+  RegisterClass(TfCadPaises);
   RegisterClass(TfCadMunicipios);
   RegisterClass(TfCadDestinatarios);
   RegisterClass(TfCadServicos);
@@ -453,6 +449,7 @@ initialization
   RegisterClass(TfContab_BloquearPeriodo);
   RegisterClass(TfCadOperacaoFiscal);
   RegisterClass(TfComexProcessoImp);
+  RegisterClass(TfComexSimulacaoImp);
   RegisterClass(TfConfigAtalhos);
   RegisterClass(TfDespRegistroDUIMP);
   RegisterClass(TfFatPedidoNF);
@@ -465,7 +462,6 @@ initialization
   RegisterClass(TfComexPOImportar);
   RegisterClass(TfComexContratoCambio);
   RegisterClass(TfComexInvoice);
-  RegisterClass(TfComexSimulacaoImp);
   RegisterClass(TfCadLPCO);
   RegisterClass(TfFiscalNFTerceiros);
   RegisterClass(TfFiscalNFManifestar);
@@ -474,5 +470,5 @@ initialization
   RegisterClass(TfEstoque_Imobilizado);
   (*RegisterClass p/gerador*)
 
-  
+
 end.

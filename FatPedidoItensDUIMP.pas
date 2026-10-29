@@ -283,7 +283,7 @@ type
     procedure AddItem;
     procedure LigaBotoes;
     function CalculaCampos(Formula: widestring): real;
-    function CalculaMacro(pForm: TComponent; pFormula: String): Real;
+    function CalculaMacroPed(pForm: TComponent; pFormula: String): Real;
     procedure FiltraTabelas(pProduto: integer);
     
     { Private declarations }
@@ -945,7 +945,7 @@ begin
                   if tFormulasItens.Locate('Campo', 'Valor_Unitario', [loCaseInsensitive]) then begin
                      gFormula.Cells[0, gFormula.RowCount-1] := tFormulasItens.fieldbyname('Campo').AsString;
                      gFormula.Cells[1, gFormula.RowCount-1] := tFormulasItens.fieldbyname('Formula').AsString;
-                     fieldbyname('Valor_Unitario').value    := CalculaMacro(self, tFormulasItens.fieldbyname('Formula').AsString);
+                     fieldbyname('Valor_Unitario').value    := CalculaMacroPed(self, tFormulasItens.fieldbyname('Formula').AsString);
                   end;
                end else begin
                   gFormula.Cells[0, gFormula.RowCount-1] := 'Valor_Unitario';
@@ -953,7 +953,7 @@ begin
                   fieldbyname('Valor_Unitario').value    := mValorInformado;
                end;
 
-               if not CalculaTudo(PedidosNF.fieldbyname('Operacao').asinteger, 'Item', gFormula, cLog, PedidosNFItens, nil, self) then begin
+               if not CalculaPedido(PedidosNF.fieldbyname('Operacao').asinteger, 'Item', gFormula, cLog, PedidosNFItens, self) then begin
                   cLog.Lines.Add('************************************************[ ERRO GRAVE ]*******************************************************');
                   cLog.Lines.Add('Ocorreu uma erro nas fórmulas, verifique as formulas ou entre em contato com o suporte para corrigir!');
                   cLog.Lines.Add('*********************************************************************************************************************');
@@ -1338,7 +1338,7 @@ begin
                         // Calculando o valor do II
                         SetRoundMode(rmNearest);
                         if Trim(TipoNotaCalculo_BCII.AsString) <> '' then begin
-                           PedidosItensValor_BCII.Value := CalculaMacro('Calculo_BCII');
+                           PedidosItensValor_BCII.Value := CalculaMacroPed('Calculo_BCII');
                         end;
 
                         // Arredonda o II para menos casas para o caso de diferença de centavos.
@@ -1497,9 +1497,9 @@ begin
                         if mValorInformado <= 0 then begin
                            if Trim(TipoNotaCalculo_Mercadoria.AsString) <> '' then begin
                               if TipoNotaArredondar_Unitario.AsBoolean then
-                                 PedidosItensValor_Unitario.Value := Roundto(CalculaMacro('Calculo_Mercadoria'), -5)
+                                 PedidosItensValor_Unitario.Value := Roundto(CalculaMacroPed('Calculo_Mercadoria'), -5)
                               else
-                                 PedidosItensValor_Unitario.Value := CalculaMacro('Calculo_Mercadoria');
+                                 PedidosItensValor_Unitario.Value := CalculaMacroPed('Calculo_Mercadoria');
                            end;
                         end;
 
@@ -1514,9 +1514,9 @@ begin
 
                         // Calculo do valor de PIS / COFINS da Entrada se o tipo de nota estiver marcado para calcular..
                         If (PedidosSaida_Entrada.AsInteger = 0) and (TipoNotaRateio_PISCOFINSEntrada.AsInteger = 1) then begin
-                           If Trim(TipoNotaCalculo_BCPIS.AsString)  <> '' then PedidosItensValor_BCPIS.Value  := CalculaMacro('Calculo_BCPIS');
-                           If Trim(TipoNotaCalculo_PIS.AsString)    <> '' then PedidosItensValor_PIS.Value    := RoundTo(CalculaMacro('Calculo_PIS')   , -2);
-                           If Trim(TipoNotaCalculo_COFINS.AsString) <> '' then PedidosItensValor_COFINS.Value := RoundTo(CalculaMacro('Calculo_COFINS'), -2);
+                           If Trim(TipoNotaCalculo_BCPIS.AsString)  <> '' then PedidosItensValor_BCPIS.Value  := CalculaMacroPed('Calculo_BCPIS');
+                           If Trim(TipoNotaCalculo_PIS.AsString)    <> '' then PedidosItensValor_PIS.Value    := RoundTo(CalculaMacroPed('Calculo_PIS')   , -2);
+                           If Trim(TipoNotaCalculo_COFINS.AsString) <> '' then PedidosItensValor_COFINS.Value := RoundTo(CalculaMacroPed('Calculo_COFINS'), -2);
                         End;
 
                         // Applicando o desconto no valor unitario(Percentual).
@@ -1548,7 +1548,7 @@ begin
                            if mBCIPIInformado = 0 then begin
                               if ProdutosValor_IPI.Value = 0 then begin
                                  if Trim(TipoNotaCalculo_BCIPI.AsString) <> '' then begin
-                                    PedidosItensValor_BCIPI.Value := CalculaMacro('Calculo_BCIPI');
+                                    PedidosItensValor_BCIPI.Value := CalculaMacroPed('Calculo_BCIPI');
                                     if ProdutosTipo_Conversao.Value <> 'M' then
                                        PedidosItensValor_IPI.Value := Percentual(PedidosItensValor_BCIPI.value, PedidosItensAliquota_IPI.value) / (PedidosItensQuantidade.asfloat / ProdutosQuantidade_Unidade.value)
                                     else
@@ -1582,7 +1582,7 @@ begin
                            If mBCICMSOperInformado = 0 then begin
                               If Trim(TipoNotaCalculo_BCICMS.AsString) <> '' then begin
                                  If PedidosItensAliquota_ICMSOper.Value <> 0 then begin
-                                    PedidosItensValor_BCICMSOper.Value := Roundto(CalculaMacro('Calculo_BCICMS'), -2);
+                                    PedidosItensValor_BCICMSOper.Value := Roundto(CalculaMacroPed('Calculo_BCICMS'), -2);
                                  end else begin
                                     mErro                               := 2;
                                     PedidosItensAliquota_ICMSOper.Value := 0;
@@ -1595,7 +1595,7 @@ begin
                            // Calculando o valor do ICMS Operacional.
                            If Trim(TipoNotaCalculo_VlrICMS.AsString) <> '' then begin
                               If PedidosItensAliquota_ICMSOper.Value <> 0 then begin
-                                 PedidosItensValor_ICMSOper.Value := Roundto(CalculaMacro('Calculo_VlrICMS'), -2)
+                                 PedidosItensValor_ICMSOper.Value := Roundto(CalculaMacroPed('Calculo_VlrICMS'), -2)
                               end else begin
                                  PedidosItensValor_ICMSOper.Value := 0;
                               End;
@@ -1686,8 +1686,8 @@ begin
                                           if TipoNotaFinalidade_Mercadoria.Value = 0 then begin
                                              PedidosItensValor_BCICMSDest.Value := PedidosItensValor_BCICMSOper.Value;
                                              PedidosItensValor_ICMSDest.Value   := Roundto(Percentual(PedidosItensValor_BCICMSOper.Value, ICMSICMS_Interno.Value), -2);
-                                             PedidosItensValor_BCDIFAL.Value    := CalculaMacro('Calculo_BCDIFAL');
-                                             PedidosItensDIFAL_Valor.Value      := CalculaMacro('Calculo_DIFAL');
+                                             PedidosItensValor_BCDIFAL.Value    := CalculaMacroPed('Calculo_BCDIFAL');
+                                             PedidosItensDIFAL_Valor.Value      := CalculaMacroPed('Calculo_DIFAL');
                                              PedidosItensDIFAL_PercOrig.Value   := 100 - ConfiguracaoDIFAL_ICMSPart.Value;
                                              PedidosItensDIFAL_ValorOrig.Value  := Roundto(Percentual(PedidosItensDIFAL_Valor.Value, (100-ConfiguracaoDIFAL_ICMSPart.Value)), -2);
                                              PedidosItensDIFAL_PercDest.Value   := ConfiguracaoDIFAL_ICMSPart.Value;
@@ -1718,10 +1718,10 @@ begin
                               PedidosItensAliquota_MVA.Value := NCM.FieldbyName(mUF).AsFloat;
                            end;
                            If Trim(TipoNotaCalculo_BCMVA.AsString) <> '' then begin
-                              PedidosItensValor_BCMVA.Value := CalculaMacro('Calculo_BCMVA');
+                              PedidosItensValor_BCMVA.Value := CalculaMacroPed('Calculo_BCMVA');
                               If TipoNotaCalculo_VlrMVA.Value <> '' then begin
                                  If PedidosItensAliquota_MVA.Value <> 0 then
-                                    PedidosItensValor_MVA.Value := CalculaMacro('Calculo_VlrMVA')
+                                    PedidosItensValor_MVA.Value := CalculaMacroPed('Calculo_VlrMVA')
                                  else begin
                                     PedidosItensValor_MVA.Value := 0;
                                     mErro                       := 3;
@@ -1741,9 +1741,9 @@ begin
                            If PedidosItensAliquota_ICMSSub.Value > 0 then begin
                               If mBCICMSSubInformado = 0 then begin
                                  If Trim(TipoNotaCalculo_BCICMSSub.AsString) <> '' then begin
-                                    PedidosItensValor_BCICMSSub.Value := Roundto(CalculaMacro('Calculo_BCICMSSub'), -2);
+                                    PedidosItensValor_BCICMSSub.Value := Roundto(CalculaMacroPed('Calculo_BCICMSSub'), -2);
                                     If TipoNotaCalculo_VlrICMSSub.Value <> '' then begin
-                                       PedidosItensValor_ICMSSub.Value := Roundto(CalculaMacro('Calculo_VlrICMSSub'), -2);
+                                       PedidosItensValor_ICMSSub.Value := Roundto(CalculaMacroPed('Calculo_VlrICMSSub'), -2);
                                     End;
                                  End;
                               end else begin
@@ -1765,10 +1765,10 @@ begin
                            PedidosItensAliquota_MVA.Value := NCM.FieldbyName(mUF).AsFloat;
 
                            If Trim(TipoNotaCalculo_BCMVA.AsString) <> '' then begin
-                              PedidosItensValor_BCMVA.Value := CalculaMacro('Calculo_BCMVA');
+                              PedidosItensValor_BCMVA.Value := CalculaMacroPed('Calculo_BCMVA');
                               If Trim(TipoNotaCalculo_VlrMVA.AsString) <> '' then begin
                                  If PedidosItensAliquota_MVA.Value <> 0 then
-                                    PedidosItensValor_MVA.Value := CalculaMacro('Calculo_VlrMVA')
+                                    PedidosItensValor_MVA.Value := CalculaMacroPed('Calculo_VlrMVA')
                                  else
                                     PedidosItensValor_MVA.Value := 0;
                               End;
@@ -1785,9 +1785,9 @@ begin
                            If PedidosItensAliquota_ICMSSub.Value > 0 then begin
                               If mBCICMSSubInformado = 0 then begin
                                  If Trim(TipoNotaCalculo_BCICMSSub.AsString) <> '' then begin
-                                    PedidosItensValor_BCICMSSub.Value := Roundto(CalculaMacro('Calculo_BCICMSSub'), -2);
+                                    PedidosItensValor_BCICMSSub.Value := Roundto(CalculaMacroPed('Calculo_BCICMSSub'), -2);
                                     If Trim(TipoNotaCalculo_VlrICMSSub.AsString) <> '' then begin
-                                       PedidosItensValor_ICMSSub.Value := Roundto(CalculaMacro('Calculo_VlrICMSSub'), -2);
+                                       PedidosItensValor_ICMSSub.Value := Roundto(CalculaMacroPed('Calculo_VlrICMSSub'), -2);
                                     End;
                                  End;
                               end else begin
@@ -1854,8 +1854,8 @@ begin
                         // Calculo do DIAL ST.
                         if TipoNotaFinalidade_Mercadoria.asinteger in[1, 6] then Begin
                            if trim(TipoNotaCalculo_BCDIFALST.asstring) <> '' then begin
-                              PedidosItensValor_BCDIFALST.Value := Roundto(CalculaMacro('Calculo_BCDIFALST'), -2);
-                              PedidosItensDIFAL_ValorST.Value   := Roundto(CalculaMacro('Calculo_DIFALST'), -2);
+                              PedidosItensValor_BCDIFALST.Value := Roundto(CalculaMacroPed('Calculo_BCDIFALST'), -2);
+                              PedidosItensDIFAL_ValorST.Value   := Roundto(CalculaMacroPed('Calculo_DIFALST'), -2);
                            end;
                         end;
 
@@ -1877,7 +1877,7 @@ begin
                         // Recalcula o valor unitario do produto com base no segundo campo de formula.
                         // Calculo_MercadoriaImp = Valores extras calculados sobre o valor do produto.
                         if Trim(TipoNotaCalculo_MercadoriaImp.AsString) <> '' then begin
-                           PedidosItensValor_Unitario.Value := CalculaMacro('Calculo_MercadoriaImp');
+                           PedidosItensValor_Unitario.Value := CalculaMacroPed('Calculo_MercadoriaImp');
                         end;
                         if ProdutosTipo_Conversao.Value <> 'M' then begin
                            PedidosItensValor_Unitario.Value := PedidosItensValor_Unitario.Value * ProdutosQuantidade_Unidade.Value;
@@ -1899,15 +1899,15 @@ begin
                            PedidosItensValor_COFINS.Value := 0;
 
                            If (CSTPISTributavel.AsBoolean = true) or (CSTPISCodigo.AsString = '49') then begin
-                              If Trim(TipoNotaCalculo_BCPIS.AsString)  <> '' then PedidosItensValor_BCPIS.Value  := CalculaMacro('Calculo_BCPIS');
-                              If Trim(TipoNotaCalculo_PIS.AsString)    <> '' then PedidosItensValor_PIS.Value    := Roundto(CalculaMacro('Calculo_PIS'), -2);
-                              If Trim(TipoNotaCalculo_COFINS.AsString) <> '' then PedidosItensValor_COFINS.Value := Roundto(CalculaMacro('Calculo_COFINS'), -2);
+                              If Trim(TipoNotaCalculo_BCPIS.AsString)  <> '' then PedidosItensValor_BCPIS.Value  := CalculaMacroPed('Calculo_BCPIS');
+                              If Trim(TipoNotaCalculo_PIS.AsString)    <> '' then PedidosItensValor_PIS.Value    := Roundto(CalculaMacroPed('Calculo_PIS'), -2);
+                              If Trim(TipoNotaCalculo_COFINS.AsString) <> '' then PedidosItensValor_COFINS.Value := Roundto(CalculaMacroPed('Calculo_COFINS'), -2);
                            End;
                         End;
 
                         // Calculando o valor da redução do ICMS.
                         If Trim(TipoNotaCalculo_ReducaoICMS.AsString) <> '' then begin
-                           PedidosItensValor_ICMSReducao.Value := CalculaMacro('Calculo_ReducaoICMS');
+                           PedidosItensValor_ICMSReducao.Value := CalculaMacroPed('Calculo_ReducaoICMS');
                         End;
 
                         // Verifica se o IPI é por "Alíquota ou por valor unitario".
@@ -2102,7 +2102,7 @@ begin
                         PedidosItensValor_ICMSDesonerado.Value := 0;
                         if Trim(TipoNotaCalculo_VlrICMSDeson.AsString) <> '' then begin
                            case AnsiIndexStr((PedidosItensCodigoTrib_TabB.Value), ['20','30','40','41','50','70','90']) of
-                                0..6: PedidosItensValor_ICMSDesonerado.Value := Roundto(CalculaMacro('Calculo_VlrICMSDeson'), -2);
+                                0..6: PedidosItensValor_ICMSDesonerado.Value := Roundto(CalculaMacroPed('Calculo_VlrICMSDeson'), -2);
                            end;
                         end;
 
@@ -2274,7 +2274,7 @@ begin
                                  PedidosItensValor_Seguro.Value := Roundto((ProcessosDOCSeguro.Value / ProcessosDOCPeso_Liquido.Value), -6) * PedidosItensPeso_Liquido.Value;
                            end;
 
-                           PedidosItensValor_Inventario.Value := CalculaMacro('Calculo_Inventario');
+                           PedidosItensValor_Inventario.Value := CalculaMacroPed('Calculo_Inventario');
 
                            // Zera ou carrega os valores salvos de frete seguro utilizados para calculo do inventario.
                            PedidosItensValor_Frete.Value  := mValorFrete;
@@ -2315,16 +2315,16 @@ begin
                         PedidosItensValor_BCICMSMono.Value    := 0;
                         PedidosItensValor_BCICMSMonoRet.Value := 0;
                         if TipoNotaCalculo_BCICMSMono.Value <> '' then begin
-                           PedidosItensValor_BCICMSMono.value := roundto(CalculaMacro('Calculo_BCICMSMono'), -2);
+                           PedidosItensValor_BCICMSMono.value := roundto(CalculaMacroPed('Calculo_BCICMSMono'), -2);
                         end;
                         if TipoNotaCalculo_BCICMSMonoRet.Value <> '' then begin
-                           PedidosItensValor_BCICMSMonoRet.value := roundto(CalculaMacro('Calculo_BCICMSMonoRet'), -2);
+                           PedidosItensValor_BCICMSMonoRet.value := roundto(CalculaMacroPed('Calculo_BCICMSMonoRet'), -2);
                         end;
                         if TipoNotaCalculo_ICMSMono.Value <> '' then begin
-                           PedidosItensValor_ICMSMono.value := roundto(CalculaMacro('Calculo_ICMSMono'), -2);
+                           PedidosItensValor_ICMSMono.value := roundto(CalculaMacroPed('Calculo_ICMSMono'), -2);
                         end;
                         if TipoNotaCalculo_ICMSMonoRet.Value <> '' then begin
-                           PedidosItensValor_ICMSMonoRet.value := roundto(CalculaMacro('Calculo_ICMSMonoRet'), -2);
+                           PedidosItensValor_ICMSMonoRet.value := roundto(CalculaMacroPed('Calculo_ICMSMonoRet'), -2);
                         end;
                         if PedidosItensValor_ICMSMonoRet.ascurrency = 0 then begin
                            PedidosItensPercentual_ICMSMonoRet.value := 0;
@@ -2379,10 +2379,10 @@ begin
                                    if recordcount > 0 then begin
                                       PedidosItensAliquota_ICMSPresumido.Value := fieldbyname('Credito_Presumido').AsFloat;
                                       if TipoNotaCalculo_BCICMSPresumido.Value <> '' then begin
-                                         PedidosItensValor_BCICMSPresumido.value := roundto(CalculaMacro('Calculo_BCICMSPresumido'), -2);
+                                         PedidosItensValor_BCICMSPresumido.value := roundto(CalculaMacroPed('Calculo_BCICMSPresumido'), -2);
                                       end;
                                       if TipoNotaCalculo_ICMSPresumido.Value <> '' then begin
-                                         PedidosItensValor_ICMSPresumido.value := roundto(CalculaMacro('Calculo_ICMSPresumido'), -2);
+                                         PedidosItensValor_ICMSPresumido.value := roundto(CalculaMacroPed('Calculo_ICMSPresumido'), -2);
                                       end;
                                       // Verifica se as ncm tem o codigo informado.
                                       PedidosItensCodigo_CredPres.value  := NCMCodigo_CredPres.Value;
@@ -3019,7 +3019,7 @@ begin
                 
                    // Faz o cálculo da formula e Acha o campo.
                    try
-                      mValor := CalculaMacro(self, fieldbyname('Formula').AsString);
+                      mValor := CalculaMacroPed(self, fieldbyname('Formula').AsString);
                    except On E: Exception do
                       begin
                           cLog.Lines.add('Ocorreu um erro de cálculo: '+E.Message);
@@ -3200,7 +3200,7 @@ end;
 *)
 (*
 // Executa os calculos dos macro passados como strings.
-Function TfFatPedidoItensDUIMP.CalculaMacro(Campo:String):Real;
+Function TfFatPedidoItensDUIMP.CalculaMacroPed(Campo:String):Real;
 var
     mPos
    ,mTam
@@ -3431,7 +3431,7 @@ begin
 
 end;
 
-function TfFatPedidoItensDUIMP.CalculaMacro(pForm: TComponent; pFormula: String): Real;
+function TfFatPedidoItensDUIMP.CalculaMacroPed(pForm: TComponent; pFormula: String): Real;
 var
    mCalc: String;
    mResultado: real;
@@ -3490,7 +3490,7 @@ begin
         Grade.Cells[3, Grade.RowCount-1] := floattostr(mResultado);
         Grade.RowCount                   := Grade.RowCount + 1;
      end;
-     CalculaMacro := mResultado;
+     CalculaMacroPed := mResultado;
 end;
 
 

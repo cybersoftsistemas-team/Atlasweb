@@ -136,11 +136,15 @@ object fEmbarques: TfEmbarques
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object Grade: TUniDBGrid
         Left = 0
         Top = 85
         Width = 1387
-        Height = 621
+        Height = 619
         Hint = ''
         HeaderTitleAlign = taCenter
         TitleFont.Height = -13
@@ -430,11 +434,15 @@ object fEmbarques: TfEmbarques
         
           'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
           '= '#39'Pasta'#39';'#13#10'}')
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
         Width = 1387
-        Height = 706
+        Height = 704
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -442,9 +450,10 @@ object fEmbarques: TfEmbarques
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
+        ExplicitHeight = 706
         DesignSize = (
           1385
-          704)
+          702)
         ScrollHeight = 690
         object Panel2: TUniPanel
           Left = 119
@@ -909,13 +918,14 @@ object fEmbarques: TfEmbarques
         Left = 578
         Top = 3
         Width = 806
-        Height = 700
+        Height = 698
         Hint = ''
         Align = alClient
         TabOrder = 0
         Caption = ''
         ExplicitLeft = 446
         ExplicitWidth = 938
+        ExplicitHeight = 700
         object GradeBL: TUniDBGrid
           AlignWithMargins = True
           Left = 4
@@ -1028,7 +1038,7 @@ object fEmbarques: TfEmbarques
         Left = 3
         Top = 3
         Width = 569
-        Height = 700
+        Height = 698
         Hint = ''
         Align = alLeft
         TabOrder = 1
@@ -1043,12 +1053,11 @@ object fEmbarques: TfEmbarques
           Left = 0
           Top = 35
           Width = 569
-          Height = 665
+          Height = 663
           Hint = ''
           ParentColor = False
           Align = alClient
           TabOrder = 1
-          ExplicitWidth = 437
           object cBL: TUniDBEdit
             Left = 13
             Top = 92
@@ -1451,6 +1460,10 @@ object fEmbarques: TfEmbarques
       Hint = ''
       ImageIndex = 4
       Caption = 'Laudos'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object Panel4: TUniPanel
         AlignWithMargins = True
         Left = 3
@@ -1932,6 +1945,10 @@ object fEmbarques: TfEmbarques
       Hint = ''
       ImageIndex = 4
       Caption = 'Notas Fiscais'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniDBGrid1: TUniDBGrid
         AlignWithMargins = True
         Left = 3
@@ -2675,7 +2692,6 @@ object fEmbarques: TfEmbarques
     object tEmbarquesRegistro: TFDAutoIncField
       FieldName = 'Registro'
       Origin = 'Registro'
-      ReadOnly = True
     end
     object tEmbarquesCodigo: TIntegerField
       FieldName = 'Codigo'

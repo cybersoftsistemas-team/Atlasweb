@@ -586,13 +586,13 @@ begin
           sql.Clear;
           sql.Add('select distinct');
           sql.Add('       CNPJ');
-          sql.Add('      ,Filial = Numero_Filial');
-          sql.Add('      ,Nome   = cast(iif(Numero_Filial > 0, ''FILIAL ''+cast(Numero_Filial as varchar(6)), ''MATRIZ'') as varchar(10))');
+          sql.Add('      ,Filial');
+          sql.Add('      ,Nome   = cast(iif(Numero_Filial > 0, ''FILIAL ''+cast(Filial as varchar(6)), ''MATRIZ'') as varchar(10))');
           sql.Add('      ,Cidade = cast(upper((select Nome from Municipios where Codigo = Municipio_Codigo)) as varchar(30))');
           sql.Add('      ,Estado = cast(Estado as varchar(4))');
           sql.Add('from Empresas');
           sql.add('where SUBSTRING(CNPJ, 1, 8) = '+quotedstr(Copy(UniMainModule.mEmpresaAtiva, 1, 8)));
-          sql.add('order by Numero_Filial');
+          sql.add('order by Filial');
           open;
      end;
      with tPortos do begin

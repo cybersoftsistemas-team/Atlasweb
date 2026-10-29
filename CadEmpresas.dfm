@@ -20,6 +20,10 @@ object fCadEmpresas: TfCadEmpresas
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniDBGrid1: TUniDBGrid
         Left = 0
         Top = 0
@@ -99,11 +103,15 @@ object fCadEmpresas: TfCadEmpresas
     object aFicha: TUniTabSheet
       Hint = ''
       Caption = 'Endere'#231'o'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox1: TUniScrollBox
         Left = 0
         Top = 0
         Width = 1243
-        Height = 937
+        Height = 935
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -111,9 +119,10 @@ object fCadEmpresas: TfCadEmpresas
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
+        ExplicitHeight = 937
         DesignSize = (
           1241
-          935)
+          933)
         ScrollHeight = 731
         object pFicha: TUniPanel
           Left = 131
@@ -981,6 +990,10 @@ object fCadEmpresas: TfCadEmpresas
     object aContador: TUniTabSheet
       Hint = ''
       Caption = 'Representante Legal / Contabilista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox6: TUniScrollBox
         Left = 0
         Top = 0
@@ -995,7 +1008,7 @@ object fCadEmpresas: TfCadEmpresas
         TabOrder = 0
         DesignSize = (
           1241
-          935)
+          933)
         ScrollHeight = 742
         object pContab: TUniPanel
           Left = 108
@@ -1816,11 +1829,15 @@ object fCadEmpresas: TfCadEmpresas
     object aParametros: TUniTabSheet
       Hint = ''
       Caption = 'Par'#226'metros'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox2: TUniScrollBox
         Left = 0
         Top = 0
         Width = 1243
-        Height = 937
+        Height = 935
         Hint = ''
         ShowHint = True
         ParentShowHint = False
@@ -1830,9 +1847,10 @@ object fCadEmpresas: TfCadEmpresas
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'      config.' +
             'cls = '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
+        ExplicitHeight = 937
         DesignSize = (
           1241
-          935)
+          933)
         ScrollHeight = 683
         object pParam: TUniPanel
           Left = 135
@@ -2697,11 +2715,15 @@ object fCadEmpresas: TfCadEmpresas
     object UniTabSheet2: TUniTabSheet
       Hint = ''
       Caption = 'SPED'#39's'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox8: TUniScrollBox
         Left = 0
         Top = 0
         Width = 1243
-        Height = 937
+        Height = 935
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -2709,9 +2731,10 @@ object fCadEmpresas: TfCadEmpresas
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'      config.' +
             'cls = '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
+        ExplicitHeight = 937
         DesignSize = (
           1224
-          935)
+          933)
         ScrollHeight = 1273
         object UniPanel2: TUniPanel
           Left = 185
@@ -3401,11 +3424,15 @@ object fCadEmpresas: TfCadEmpresas
       Hint = ''
       Caption = 'Rede / Internet'
       ParentFont = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object UniScrollBox3: TUniScrollBox
         Left = 0
         Top = 0
         Width = 1243
-        Height = 937
+        Height = 935
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -3413,9 +3440,10 @@ object fCadEmpresas: TfCadEmpresas
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'      config.' +
             'cls = '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
+        ExplicitHeight = 937
         DesignSize = (
           1224
-          935)
+          933)
         ScrollHeight = 1053
         ScrollY = 118
         object pRede: TUniPanel

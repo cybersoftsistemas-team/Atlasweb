@@ -12,10 +12,6 @@ type
   TUniMainModule = class(TUniGUIMainModule)
     imgBotoes: TUniNativeImageList;
     AtlasConect: TFDConnection;
-    Meses: TFDMemTable;
-    MesesMes: TSmallintField;
-    MesesNome: TStringField;
-    dsMeses: TDataSource;
     dsTipoCombustivel: TDataSource;
     dsTipoVeiculo: TDataSource;
     dsEspecieVeiculo: TDataSource;
@@ -68,29 +64,26 @@ begin
       with AtlasConect do begin
            Connected := false;
            Params.Clear;
-           Params.Values['DriverID']   := aINI.ReadString('SERVIDOR', 'DriverID'  , EmptyStr);
-           Params.Values['DriverName'] := aINI.ReadString('SERVIDOR', 'DriverName', EmptyStr);
-           Params.Values['Server']     := aINI.ReadString('SERVIDOR', 'Server'    , EmptyStr);
-           Params.Values['Database']   := aINI.ReadString('SERVIDOR', 'DataBase'  , EmptyStr);
-           Params.Values['User_name']  := aINI.ReadString('SERVIDOR', 'UserName'  , EmptyStr);
-           Params.Values['Password']   := aINI.ReadString('SERVIDOR', 'Password'  , EmptyStr);
+           Params.Values['DriverID']     := aINI.ReadString('SERVIDOR', 'DriverID'  , EmptyStr);
+           Params.Values['DriverName']   := aINI.ReadString('SERVIDOR', 'DriverName', EmptyStr);
+           Params.Values['Port']         := aINI.ReadString('SERVIDOR', 'port'      , EmptyStr);
+           Params.Values['Server']       := aINI.ReadString('SERVIDOR', 'Server'    , EmptyStr);
+           Params.Values['Database']     := aINI.ReadString('SERVIDOR', 'DataBase'  , EmptyStr);
+           Params.Values['User_name']    := aINI.ReadString('SERVIDOR', 'UserName'  , EmptyStr);
+           Params.Values['Password']     := aINI.ReadString('SERVIDOR', 'Password'  , EmptyStr);
+           Params.Values['ODBCAdvanced'] := 'Encrypt=yes;TrustServerCertificate=yes';
+           LoginPrompt := False;
            try
               Connected := True;
            except
-              ShowMessage('Erro na conexão com o banco de dados!');
-              Abort;
+              on E: Exception do begin
+                 UniSession.Log('ATLAS - ERRO SQL: ' + E.ClassName + ' - ' + E.Message);
+                 Abort;
+              end;
            end;
       end;
 
       FreeAndNil(aINI);
-
-      Meses.Open;
-      for i := 1 to 12 do begin
-          Meses.Append;
-                Meses.FieldByName('Mes').Value  := i;
-                Meses.FieldByName('Nome').Value := NomeMes(i);
-          Meses.Post;
-      end;
 end;
 
 procedure TUniMainModule.UniGUIMainModuleDestroy(Sender: TObject);

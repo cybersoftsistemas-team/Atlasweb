@@ -124,6 +124,17 @@ object fCadNCM: TfCadNCM
       TabOrder = 7
       OnClick = bFecharClick
     end
+    object bBuscarNCM: TUniButton
+      Left = 407
+      Top = 0
+      Width = 103
+      Height = 35
+      Hint = ''
+      Caption = 'Buscar NCM'
+      Align = alLeft
+      TabOrder = 8
+      OnClick = bBuscarNCMClick
+    end
   end
   object Pasta: TUniPageControl
     Left = 0
@@ -131,7 +142,7 @@ object fCadNCM: TfCadNCM
     Width = 1100
     Height = 1008
     Hint = ''
-    ActivePage = TabSheet1
+    ActivePage = UniTabSheet1
     Align = alClient
     ClientEvents.UniEvents.Strings = (
       
@@ -506,7 +517,7 @@ object fCadNCM: TfCadNCM
                 's = '#39'Grupo'#39';'#13#10'}')
             object cCodigo_DNF: TUniDBEdit
               Left = 12
-              Top = 15
+              Top = 24
               Width = 250
               Height = 25
               Hint = ''
@@ -522,7 +533,7 @@ object fCadNCM: TfCadNCM
             end
             object cFatorConv_DNF: TUniDBEdit
               Left = 12
-              Top = 42
+              Top = 51
               Width = 250
               Height = 25
               Hint = ''
@@ -538,7 +549,7 @@ object fCadNCM: TfCadNCM
             end
             object cCapacidadeVol_DNF: TUniDBEdit
               Left = 12
-              Top = 69
+              Top = 78
               Width = 250
               Height = 25
               Hint = ''
@@ -855,12 +866,12 @@ object fCadNCM: TfCadNCM
         DesignSize = (
           1090
           978)
-        ScrollHeight = 582
+        ScrollHeight = 601
         object pPanel2: TUniPanel
           Left = 226
           Top = 27
-          Width = 557
-          Height = 555
+          Width = 563
+          Height = 574
           Hint = ''
           ShowHint = True
           ParentShowHint = False
@@ -875,141 +886,24 @@ object fCadNCM: TfCadNCM
           Title = 'DADOS GERAIS'
           Caption = ''
           Color = clTeal
-          object UniPanel2: TUniPanel
-            Left = 0
-            Top = 0
-            Width = 557
-            Height = 35
-            Hint = ''
-            ShowHint = True
-            Align = alTop
-            TabOrder = 1
-            ClientEvents.UniEvents.Strings = (
-              
-                'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
-                '= '#39'Pasta'#39';'#13#10'}')
-            BorderStyle = ubsNone
-            Caption = ''
-            Color = 5526569
-            ExplicitWidth = 554
-            object NavegaICMS: TUniDBNavigator
-              Left = 0
-              Top = 0
-              Width = 156
-              Height = 35
-              Cursor = crHandPoint
-              Hint = ''
-              ShowHint = True
-              DataSource = dsICMS
-              VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
-              IconSet = icsFontAwesome
-              Align = alLeft
-              TabOrder = 1
-            end
-            object bAddICMS: TUniSpeedButton
-              Left = 156
-              Top = 0
-              Width = 41
-              Height = 35
-              Hint = 'Adicionar novo registro.'
-              ShowHint = True
-              Caption = ''
-              Align = alLeft
-              ParentColor = False
-              IconAlign = iaCenter
-              Images = UniMainModule.imgBotoes
-              ImageIndex = 0
-              TabOrder = 2
-              OnClick = bAddICMSClick
-            end
-            object bEditICMS: TUniSpeedButton
-              Left = 197
-              Top = 0
-              Width = 41
-              Height = 35
-              Hint = 'Editar registro corrente.'
-              ShowHint = True
-              Caption = ''
-              Align = alLeft
-              ParentColor = False
-              IconAlign = iaCenter
-              Images = UniMainModule.imgBotoes
-              ImageIndex = 1
-              TabOrder = 3
-              OnClick = bEditICMSClick
-            end
-            object bDelICMS: TUniSpeedButton
-              Left = 238
-              Top = 0
-              Width = 41
-              Height = 35
-              Hint = 'Excluir registro corrente.'
-              ShowHint = True
-              Caption = ''
-              Align = alLeft
-              ParentColor = False
-              IconAlign = iaCenter
-              Images = UniMainModule.imgBotoes
-              ImageIndex = 2
-              TabOrder = 4
-              OnClick = bDelICMSClick
-            end
-            object bCancICMS: TUniSpeedButton
-              Left = 320
-              Top = 0
-              Width = 41
-              Height = 35
-              Hint = 'Cancelar modifica'#231#245'es feitas no registro corrente.'
-              ShowHint = True
-              Caption = ''
-              Align = alLeft
-              ParentColor = False
-              IconAlign = iaCenter
-              Images = UniMainModule.imgBotoes
-              ImageIndex = 3
-              TabOrder = 6
-              OnClick = bCancICMSClick
-            end
-            object bSalvaICMS: TUniSpeedButton
-              Left = 279
-              Top = 0
-              Width = 41
-              Height = 35
-              Hint = 'Salva o registro corrente.'
-              ShowHint = True
-              Caption = ''
-              Align = alLeft
-              ParentColor = False
-              IconAlign = iaCenter
-              Images = UniMainModule.imgBotoes
-              ImageIndex = 4
-              TabOrder = 5
-              OnClick = bSalvaICMSClick
-            end
-          end
           object pFichaICMS: TUniContainerPanel
             Left = 0
-            Top = 35
-            Width = 557
-            Height = 520
+            Top = 0
+            Width = 563
+            Height = 574
             Hint = ''
             Enabled = False
             ShowHint = True
             ParentColor = False
             Align = alClient
-            TabOrder = 2
-            ExplicitWidth = 554
+            TabOrder = 1
             object UniDBGrid2: TUniDBGrid
               AlignWithMargins = True
-              Left = 12
-              Top = 141
-              Width = 533
-              Height = 367
+              Left = 3
+              Top = 189
+              Width = 557
+              Height = 382
               Hint = ''
-              Margins.Left = 12
-              Margins.Top = 12
-              Margins.Right = 12
-              Margins.Bottom = 12
               ShowHint = True
               DataSource = dsICMS
               Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgAutoRefreshRow]
@@ -1018,8 +912,8 @@ object fCadNCM: TfCadNCM
               LoadMask.Message = 'Loading data...'
               ForceFit = True
               BorderStyle = ubsInset
-              Align = alBottom
-              TabOrder = 7
+              Align = alClient
+              TabOrder = 0
               Columns = <
                 item
                   FieldName = 'Estado'
@@ -1033,7 +927,7 @@ object fCadNCM: TfCadNCM
                   Title.Alignment = taCenter
                   Title.Caption = 'ST'
                   Title.Font.Style = [fsBold]
-                  Width = 64
+                  Width = 118
                 end
                 item
                   FieldName = 'Reducao_BCICMSST'
@@ -1047,14 +941,14 @@ object fCadNCM: TfCadNCM
                   Title.Alignment = taCenter
                   Title.Caption = 'MVA Imp'
                   Title.Font.Style = [fsBold]
-                  Width = 64
+                  Width = 118
                 end
                 item
                   FieldName = 'MVA_Nac'
                   Title.Alignment = taCenter
                   Title.Caption = 'MVA Nac'
                   Title.Font.Style = [fsBold]
-                  Width = 64
+                  Width = 118
                 end
                 item
                   FieldName = 'Reducao_BCICMSOp'
@@ -1071,131 +965,269 @@ object fCadNCM: TfCadNCM
                   Width = 96
                 end>
             end
-            object cEstado: TUniDBLookupComboBox
-              Left = 11
-              Top = 11
-              Width = 524
-              Height = 25
+            object UniContainerPanel1: TUniContainerPanel
+              Left = 0
+              Top = 0
+              Width = 563
+              Height = 145
               Hint = ''
               ShowHint = True
-              ListField = 'UF;Nome'
-              ListSource = dsEstados
-              KeyField = 'UF'
-              ListFieldIndex = 1
-              BorderStyle = ubsInset
-              DataField = 'Estado'
-              DataSource = dsICMS
-              TabOrder = 0
-              Color = clWindow
-              FieldLabel = 'Estado'
-              FieldLabelWidth = 130
-              FieldLabelSeparator = ' '
-              Style = csDropDown
-            end
-            object UniDBFormattedNumberEdit1: TUniDBFormattedNumberEdit
-              Left = 11
-              Top = 38
-              Width = 260
-              Height = 25
-              Hint = ''
-              ShowHint = True
-              DataField = 'ST'
-              DataSource = dsICMS
-              TabOrder = 1
-              FieldLabel = 'ICMS ST'
-              FieldLabelWidth = 130
-              FieldLabelSeparator = ' '
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-              BorderStyle = ubsInset
-            end
-            object UniDBFormattedNumberEdit2: TUniDBFormattedNumberEdit
-              Left = 11
-              Top = 65
-              Width = 260
-              Height = 25
-              Hint = ''
-              ShowHint = True
-              DataField = 'MVA_Imp'
-              DataSource = dsICMS
-              TabOrder = 3
-              FieldLabel = 'MVA Importa'#231#227'o'
-              FieldLabelWidth = 130
-              FieldLabelSeparator = ' '
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-              BorderStyle = ubsInset
-            end
-            object UniDBFormattedNumberEdit3: TUniDBFormattedNumberEdit
-              Left = 11
-              Top = 92
-              Width = 260
-              Height = 25
-              Hint = ''
-              ShowHint = True
-              DataField = 'Reducao_BCICMSOp'
-              DataSource = dsICMS
-              TabOrder = 5
-              FieldLabel = 'Redu'#231#227'o BC ICMS Oper.'
-              FieldLabelWidth = 130
-              FieldLabelSeparator = ' '
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-              BorderStyle = ubsInset
-            end
-            object UniDBFormattedNumberEdit4: TUniDBFormattedNumberEdit
-              Left = 275
-              Top = 38
-              Width = 260
-              Height = 25
-              Hint = ''
-              ShowHint = True
-              DataField = 'Reducao_BCICMSST'
-              DataSource = dsICMS
+              ParentColor = False
+              Align = alTop
               TabOrder = 2
-              FieldLabel = 'Redu'#231#227'o BC ICMS ST'
-              FieldLabelWidth = 130
-              FieldLabelSeparator = ' '
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-              BorderStyle = ubsInset
+              object cEstado: TUniDBLookupComboBox
+                Left = 19
+                Top = 19
+                Width = 524
+                Height = 25
+                Hint = ''
+                ShowHint = True
+                ListField = 'UF;Nome'
+                ListSource = dsEstados
+                KeyField = 'UF'
+                ListFieldIndex = 1
+                BorderStyle = ubsInset
+                DataField = 'Estado'
+                DataSource = dsICMS
+                TabOrder = 1
+                Color = clWindow
+                FieldLabel = 'Estado'
+                FieldLabelWidth = 130
+                FieldLabelSeparator = ' '
+                Style = csDropDown
+              end
+              object UniDBFormattedNumberEdit1: TUniDBFormattedNumberEdit
+                Left = 19
+                Top = 46
+                Width = 260
+                Height = 25
+                Hint = ''
+                ShowHint = True
+                DataField = 'ST'
+                DataSource = dsICMS
+                TabOrder = 2
+                FieldLabel = 'ICMS ST'
+                FieldLabelWidth = 130
+                FieldLabelSeparator = ' '
+                DecimalSeparator = ','
+                ThousandSeparator = '.'
+                BorderStyle = ubsInset
+              end
+              object UniDBFormattedNumberEdit2: TUniDBFormattedNumberEdit
+                Left = 19
+                Top = 73
+                Width = 260
+                Height = 25
+                Hint = ''
+                ShowHint = True
+                DataField = 'MVA_Imp'
+                DataSource = dsICMS
+                TabOrder = 3
+                FieldLabel = 'MVA Importa'#231#227'o'
+                FieldLabelWidth = 130
+                FieldLabelSeparator = ' '
+                DecimalSeparator = ','
+                ThousandSeparator = '.'
+                BorderStyle = ubsInset
+              end
+              object UniDBFormattedNumberEdit3: TUniDBFormattedNumberEdit
+                Left = 19
+                Top = 100
+                Width = 260
+                Height = 25
+                Hint = ''
+                ShowHint = True
+                DataField = 'Reducao_BCICMSOp'
+                DataSource = dsICMS
+                TabOrder = 4
+                FieldLabel = 'Redu'#231#227'o BC ICMS Oper.'
+                FieldLabelWidth = 130
+                FieldLabelSeparator = ' '
+                DecimalSeparator = ','
+                ThousandSeparator = '.'
+                BorderStyle = ubsInset
+              end
+              object UniDBFormattedNumberEdit4: TUniDBFormattedNumberEdit
+                Left = 283
+                Top = 46
+                Width = 260
+                Height = 25
+                Hint = ''
+                ShowHint = True
+                DataField = 'Reducao_BCICMSST'
+                DataSource = dsICMS
+                TabOrder = 5
+                FieldLabel = 'Redu'#231#227'o BC ICMS ST'
+                FieldLabelWidth = 130
+                FieldLabelSeparator = ' '
+                DecimalSeparator = ','
+                ThousandSeparator = '.'
+                BorderStyle = ubsInset
+              end
+              object UniDBFormattedNumberEdit5: TUniDBFormattedNumberEdit
+                Left = 283
+                Top = 73
+                Width = 260
+                Height = 25
+                Hint = ''
+                ShowHint = True
+                DataField = 'MVA_Nac'
+                DataSource = dsICMS
+                TabOrder = 6
+                FieldLabel = 'MVA Nacional'
+                FieldLabelWidth = 130
+                FieldLabelSeparator = ' '
+                DecimalSeparator = ','
+                ThousandSeparator = '.'
+                BorderStyle = ubsInset
+              end
+              object UniDBFormattedNumberEdit6: TUniDBFormattedNumberEdit
+                Left = 283
+                Top = 100
+                Width = 260
+                Height = 25
+                Hint = ''
+                ShowHint = True
+                DataField = 'Reducao_BCICMSOp2'
+                DataSource = dsICMS
+                TabOrder = 7
+                FieldLabel = 'Redu'#231#227'o BC ICMS Oper.2'
+                FieldLabelWidth = 130
+                FieldLabelSeparator = ' '
+                DecimalSeparator = ','
+                ThousandSeparator = '.'
+                BorderStyle = ubsInset
+              end
             end
-            object UniDBFormattedNumberEdit5: TUniDBFormattedNumberEdit
-              Left = 275
-              Top = 65
-              Width = 260
-              Height = 25
+            object UniPanel2: TUniPanel
+              AlignWithMargins = True
+              Left = 3
+              Top = 148
+              Width = 557
+              Height = 35
               Hint = ''
               ShowHint = True
-              DataField = 'MVA_Nac'
-              DataSource = dsICMS
-              TabOrder = 4
-              FieldLabel = 'MVA Nacional'
-              FieldLabelWidth = 130
-              FieldLabelSeparator = ' '
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-              BorderStyle = ubsInset
-            end
-            object UniDBFormattedNumberEdit6: TUniDBFormattedNumberEdit
-              Left = 275
-              Top = 92
-              Width = 260
-              Height = 25
-              Hint = ''
-              ShowHint = True
-              DataField = 'Reducao_BCICMSOp2'
-              DataSource = dsICMS
-              TabOrder = 6
-              FieldLabel = 'Redu'#231#227'o BC ICMS Oper.2'
-              FieldLabelWidth = 130
-              FieldLabelSeparator = ' '
-              DecimalSeparator = ','
-              ThousandSeparator = '.'
-              BorderStyle = ubsInset
+              Align = alTop
+              TabOrder = 3
+              ClientEvents.UniEvents.Strings = (
+                
+                  'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
+                  '= '#39'Pasta'#39';'#13#10'}')
+              BorderStyle = ubsNone
+              Caption = ''
+              Color = 5526569
+              object NavegaICMS: TUniDBNavigator
+                Left = 0
+                Top = 0
+                Width = 156
+                Height = 35
+                Cursor = crHandPoint
+                Hint = ''
+                ShowHint = True
+                DataSource = dsICMS
+                VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
+                IconSet = icsFontAwesome
+                Align = alLeft
+                TabOrder = 1
+              end
+              object bAddICMS: TUniSpeedButton
+                Left = 156
+                Top = 0
+                Width = 41
+                Height = 35
+                Hint = 'Adicionar novo registro.'
+                ShowHint = True
+                Caption = ''
+                Align = alLeft
+                ParentColor = False
+                IconAlign = iaCenter
+                Images = UniMainModule.imgBotoes
+                ImageIndex = 0
+                TabOrder = 2
+                OnClick = bAddICMSClick
+              end
+              object bEditICMS: TUniSpeedButton
+                Left = 197
+                Top = 0
+                Width = 41
+                Height = 35
+                Hint = 'Editar registro corrente.'
+                ShowHint = True
+                Caption = ''
+                Align = alLeft
+                ParentColor = False
+                IconAlign = iaCenter
+                Images = UniMainModule.imgBotoes
+                ImageIndex = 1
+                TabOrder = 3
+                OnClick = bEditICMSClick
+              end
+              object bDelICMS: TUniSpeedButton
+                Left = 238
+                Top = 0
+                Width = 41
+                Height = 35
+                Hint = 'Excluir registro corrente.'
+                ShowHint = True
+                Caption = ''
+                Align = alLeft
+                ParentColor = False
+                IconAlign = iaCenter
+                Images = UniMainModule.imgBotoes
+                ImageIndex = 2
+                TabOrder = 4
+                OnClick = bDelICMSClick
+              end
+              object bCancICMS: TUniSpeedButton
+                Left = 320
+                Top = 0
+                Width = 41
+                Height = 35
+                Hint = 'Cancelar modifica'#231#245'es feitas no registro corrente.'
+                ShowHint = True
+                Caption = ''
+                Align = alLeft
+                ParentColor = False
+                IconAlign = iaCenter
+                Images = UniMainModule.imgBotoes
+                ImageIndex = 3
+                TabOrder = 6
+                OnClick = bCancICMSClick
+              end
+              object bSalvaICMS: TUniSpeedButton
+                Left = 279
+                Top = 0
+                Width = 41
+                Height = 35
+                Hint = 'Salva o registro corrente.'
+                ShowHint = True
+                Caption = ''
+                Align = alLeft
+                ParentColor = False
+                IconAlign = iaCenter
+                Images = UniMainModule.imgBotoes
+                ImageIndex = 4
+                TabOrder = 5
+                OnClick = bSalvaICMSClick
+              end
             end
           end
         end
+      end
+    end
+    object UniTabSheet2: TUniTabSheet
+      Hint = ''
+      Caption = 'JSon'
+      object mJson: TUniMemo
+        Left = 0
+        Top = 0
+        Width = 1092
+        Height = 980
+        Hint = ''
+        Lines.Strings = (
+          'mJson')
+        Align = alClient
+        TabOrder = 0
       end
     end
   end
@@ -1211,13 +1243,13 @@ object fCadNCM: TfCadNCM
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from NCM')
-    Left = 40
-    Top = 134
+    Left = 72
+    Top = 78
   end
   object dsNCM: TDataSource
     DataSet = NCM
-    Left = 40
-    Top = 182
+    Left = 72
+    Top = 130
   end
   object Genero: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1228,18 +1260,18 @@ object fCadNCM: TfCadNCM
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from Genero')
-    Left = 40
-    Top = 230
+    Left = 72
+    Top = 182
   end
   object dsGenero: TDataSource
     DataSet = Genero
-    Left = 40
-    Top = 278
+    Left = 72
+    Top = 234
   end
   object dsEXTIPI: TDataSource
     DataSet = EXTIPI
-    Left = 40
-    Top = 374
+    Left = 72
+    Top = 338
   end
   object EXTIPI: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1250,8 +1282,8 @@ object fCadNCM: TfCadNCM
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from EXTIPI')
-    Left = 40
-    Top = 326
+    Left = 72
+    Top = 286
   end
   object ModalBCICMS: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1262,13 +1294,13 @@ object fCadNCM: TfCadNCM
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from ModalidadeBCICMS')
-    Left = 40
-    Top = 422
+    Left = 72
+    Top = 390
   end
   object dsModalBCICMS: TDataSource
     DataSet = ModalBCICMS
-    Left = 40
-    Top = 470
+    Left = 72
+    Top = 442
   end
   object ModalBCICMSST: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1279,13 +1311,13 @@ object fCadNCM: TfCadNCM
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from ModalidadeBCICMSST')
-    Left = 40
-    Top = 518
+    Left = 72
+    Top = 494
   end
   object dsModalBCICMSST: TDataSource
     DataSet = ModalBCICMSST
-    Left = 40
-    Top = 566
+    Left = 72
+    Top = 546
   end
   object ClasseIPI: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1296,13 +1328,13 @@ object fCadNCM: TfCadNCM
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from ClasseEnquadramentoIPI')
-    Left = 40
-    Top = 622
+    Left = 72
+    Top = 598
   end
   object dsClasseIPI: TDataSource
     DataSet = ClasseIPI
-    Left = 40
-    Top = 678
+    Left = 72
+    Top = 650
   end
   object Alerta: TUniSweetAlert
     Title = ' '
@@ -1311,8 +1343,8 @@ object fCadNCM: TfCadNCM
     CancelButtonText = 'Cancelar'
     Width = 400
     Padding = 20
-    Left = 432
-    Top = 3
+    Left = 248
+    Top = 83
   end
   object ICMS: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1323,11 +1355,12 @@ object fCadNCM: TfCadNCM
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from NCMICMS')
-    Left = 112
-    Top = 134
+    Left = 160
+    Top = 78
     object ICMSNCM: TStringField
       FieldName = 'NCM'
       Origin = 'NCM'
+      EditMask = '####.##.##;0'
       FixedChar = True
       Size = 8
     end
@@ -1337,41 +1370,53 @@ object fCadNCM: TfCadNCM
       FixedChar = True
       Size = 2
     end
-    object ICMSST: TBCDField
+    object ICMSST: TFMTBCDField
       FieldName = 'ST'
       Origin = 'ST'
       DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object ICMSMVA_Imp: TBCDField
+    object ICMSMVA_Imp: TFMTBCDField
       FieldName = 'MVA_Imp'
       Origin = 'MVA_Imp'
       DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object ICMSMVA_Nac: TBCDField
+    object ICMSMVA_Nac: TFMTBCDField
       FieldName = 'MVA_Nac'
       Origin = 'MVA_Nac'
       DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object ICMSReducao_BCICMSOp: TBCDField
+    object ICMSReducao_BCICMSOp: TFMTBCDField
       FieldName = 'Reducao_BCICMSOp'
       Origin = 'Reducao_BCICMSOp'
       DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object ICMSReducao_BCICMSOp2: TBCDField
+    object ICMSReducao_BCICMSOp2: TFMTBCDField
       FieldName = 'Reducao_BCICMSOp2'
       Origin = 'Reducao_BCICMSOp2'
       DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
-    object ICMSReducao_BCICMSST: TBCDField
+    object ICMSReducao_BCICMSST: TFMTBCDField
       FieldName = 'Reducao_BCICMSST'
       Origin = 'Reducao_BCICMSST'
       DisplayFormat = ',##0.00'
+      Precision = 18
+      Size = 6
     end
   end
   object dsICMS: TDataSource
     DataSet = ICMS
-    Left = 112
-    Top = 182
+    Left = 160
+    Top = 130
   end
   object Estados: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1383,13 +1428,13 @@ object fCadNCM: TfCadNCM
     SQL.Strings = (
       'select UF, Nome'
       'from Estados')
-    Left = 112
-    Top = 230
+    Left = 160
+    Top = 182
   end
   object dsEstados: TDataSource
     DataSet = Estados
-    Left = 112
-    Top = 278
+    Left = 160
+    Top = 234
   end
   object tmp: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1401,8 +1446,8 @@ object fCadNCM: TfCadNCM
     SQL.Strings = (
       'select UF, Nome'
       'from Estados')
-    Left = 32
-    Top = 742
+    Left = 72
+    Top = 703
   end
   object CSTICMS: TFDQuery
     Connection = UniMainModule.Conecta
@@ -1413,12 +1458,12 @@ object fCadNCM: TfCadNCM
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from CSTICMSTabA')
-    Left = 112
-    Top = 326
+    Left = 160
+    Top = 286
   end
   object dsCSTICMS: TDataSource
     DataSet = CSTICMS
-    Left = 112
-    Top = 374
+    Left = 160
+    Top = 338
   end
 end

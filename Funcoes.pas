@@ -6,7 +6,7 @@ uses
     SysUtils, Windows, FireDAC.Comp.Client, Dialogs, MaskUtils, System.Variants, DB, Forms, uniSpeedButton, uniPanel, UniPageControl, System.Classes, CalcExpress, UniGUIClasses,
     uniGUIForm, uniGUIFrame, uniMemo, DBCommon, uniDBLookUpComboBox, uniDBComboBox, uniComboBox, uniDBDateTimePicker, uniDBEdit, uniEdit, uniGuiDialogs, TypInfo, Data.SqlTimSt,
     uniSweetAlert, FireDAC.Stan.Param, uniMainMenu, uniDBNavigator, uniButton, uniScrollBox, System.RegularExpressions, System.Rtti, uniStringGrid, DateUtils, ComObj, uniDBMemo,
-    uniDBRadioGroup, Math;
+    uniDBRadioGroup, Math, Vcl.Graphics;
 
 
 // Funções de checagens.
@@ -30,8 +30,10 @@ function IIf(Expressao: Variant; ParteTRUE, ParteFALSE: Variant): Variant;
 function PastaDLL: string;
 function Calculo(Formula: widestring): string;
 function Percentual(Valor, Percent: Real): Real;
-function CalculaTudo(pOper: integer; pTipo: string; gFormula: TuniStringGrid; cLog: tuniMemo; pTabDestino: TFDQuery; pFrame: TuniFrame; pForm: TuniForm): boolean;
-function CalculaMacro(pForm: TComponent; pFormula, Campo: String): Real;
+function CalculaPedido(pOper: integer; pTipo: string; gFormula: TuniStringGrid; cLog: tuniMemo; pTabDestino: TFDQuery; pTela: TComponent): boolean;
+function CalculaSimulacao(pOper: integer; pTipo: string; gFormula: TuniStringGrid; cLog: tuniMemo; pTabDestino: TFDQuery; pTela: TComponent): boolean;
+function CalculaMacroPed(pForm: TComponent; pFormula, Campo: String): Real;
+function CalculaMacroSim(pForm: TComponent; pFormula, Campo: String; pTabDestino: TFDQuery): Real;
 function SubstituirCampos(pForm: TComponent; pCampo: string): string;
 function SubstituirCondicao(Campo: string): string;
 function PegaCSTIPI(pOper, pProd: integer): string;
@@ -40,6 +42,8 @@ function PegaCSTCOFINS(pOper, pProd, pDest: Integer): string;
 function PegaCSTICMS(TabItens: TFDQuery; pOper, pProd, pRegTrib, pDest: Integer): string;
 function PegaCSTCBS(TabItens: TFDQuery; pOper, pProd: Integer): string;
 function PegaCSTIBS(TabItens: TFDQuery; pOper, pProd: Integer): string;
+procedure AlinharPanels(pFrame: TuniFrame; Largura: integer);
+procedure LigaBotoes(pFrame: TUniFrame; Estado: boolean);
 
 // Funções de strings.
 function QuebraString(BaseString, BreakString: string): TStringList;
@@ -238,7 +242,7 @@ begin
              Connection := uniMainModule.Conecta;
              sql.clear;
              sql.Add('select isnull(max('+Campo+'), 0)+1 as '+Campo+' from '+Tabela+' where '+Condicao);
-             //sql.savetofile('c:\temp\Atlas_Funcoes_GeraItem.sql');
+             sql.savetofile('c:\temp\Atlas_Funcoes_GeraItem.sql');
              open;
              GeraItem := FieldByName(Campo).AsInteger;
         end;
@@ -1655,6 +1659,13 @@ begin
       Result := Str;
 End;
 
+{==============================================================
+ pFormula: A formula do campo.
+------------------------------
+    pCampo  : Se formula dos campos ou Informação complementar.
+              0 = Formulas.
+              1 = INformações complementares.
+===============================================================}
 Function ListaCampos(pFormula: string; pCampo:Integer): WideString;
 var
     Lista,
@@ -1664,23 +1675,24 @@ var
 begin
      Lista := '';
      if pCampo = 0 then begin
-        mCalculo := StringReplace(pFormula, '100',' ',[rfReplaceAll]);
+        mCalculo := StringReplace(pFormula, '100'     ,' ',[rfReplaceAll]);
         mCalculo := StringReplace(mCalculo, 'CONDIÇÃO',' ',[rfReplaceAll]);
-        mCalculo := StringReplace(mCalculo, '+',' ',[rfReplaceAll]);
-        mCalculo := StringReplace(mCalculo, '-',' ',[rfReplaceAll]);
-        mCalculo := StringReplace(mCalculo, '/',' ',[rfReplaceAll]);
-        mCalculo := StringReplace(mCalculo, '*',' ',[rfReplaceAll]);
-        mCalculo := StringReplace(mCalculo, '(',' ',[rfReplaceAll]);
-        mCalculo := StringReplace(mCalculo, ')',' ',[rfReplaceAll]);
-        mCalculo := StringReplace(mCalculo, '{',' ',[rfReplaceAll]);
-        mCalculo := StringReplace(mCalculo, '}',' ',[rfReplaceAll]);
-        mCalculo := StringReplace(mCalculo, '>',' ',[rfReplaceAll]);
-        mCalculo := StringReplace(mCalculo, ';',' ',[rfReplaceAll]);
-        mCalculo := StringReplace(mCalculo, '=',' ',[rfReplaceAll]);
+        mCalculo := StringReplace(mCalculo, '+'       ,' ',[rfReplaceAll]);
+        mCalculo := StringReplace(mCalculo, '-'       ,' ',[rfReplaceAll]);
+        mCalculo := StringReplace(mCalculo, '/'       ,' ',[rfReplaceAll]);
+        mCalculo := StringReplace(mCalculo, '*'       ,' ',[rfReplaceAll]);
+        mCalculo := StringReplace(mCalculo, '('       ,' ',[rfReplaceAll]);
+        mCalculo := StringReplace(mCalculo, ')'       ,' ',[rfReplaceAll]);
+        mCalculo := StringReplace(mCalculo, '{'       ,' ',[rfReplaceAll]);
+        mCalculo := StringReplace(mCalculo, '}'       ,' ',[rfReplaceAll]);
+        mCalculo := StringReplace(mCalculo, '>'       ,' ',[rfReplaceAll]);
+        mCalculo := StringReplace(mCalculo, ';'       ,' ',[rfReplaceAll]);
+        mCalculo := StringReplace(mCalculo, '='       ,' ',[rfReplaceAll]);
         mCalculo := mCalculo + ' ';
+
         if Trim(mCalculo) <> '' then begin
            repeat
-                Fim := Pos(' ', mCalculo);
+                Fim    := Pos(' ', mCalculo);
                 mParte := Trim(Copy(mCalculo, 1, Fim-1));
                 if mParte <> '' then begin
                    if Pos(mParte, Lista) = 0 then begin
@@ -1719,11 +1731,11 @@ begin
 //     end;
      end;
 
-     If Trim(Lista) <> '' then begin
-        Result := Copy(Lista, 1, Length(Lista)-1);
+     if Trim(Lista) <> '' then begin
+        result := Copy(Lista, 1, Length(Lista)-1);
      end else begin
-        Result := QuotedStr('');
-     End;   
+        result := QuotedStr('');
+     end;
 end;
 
 // Retorna a porcentagem de um valor
@@ -1762,7 +1774,7 @@ begin
           sql.Add('select Quantidade_Entrada from EstoqueTransferencia where Produto_Entrada = :pCodigo');
           sql.Add('union all');
           sql.Add('--[ ESTOQUE INICIAL ]----------------------------------------------------------------');
-          sql.Add('select Quantidade from EstoqueAbertura where Produto = :pCodigo');
+          sql.Add('select Quantidade from EstoqueAbertura where Codigo_Mercadoria = :pCodigo');
           sql.Add('union all');
           sql.Add('--[ TRANSFERÊNCIA SAÍDA ]------------------------------------------------------------');
           sql.Add('select -Quantidade_Entrada from EstoqueTransferencia where Produto_Saida = :pCodigo');
@@ -1816,7 +1828,7 @@ begin
           sql.Add('                                  where Produto_Entrada = :pCodigo), 0) +');
           sql.Add('                          isnull((select sum(Quantidade)');
           sql.Add('                                  from EstoqueAbertura');
-          sql.Add('                                  where Produto = :pCodigo), 0) -');
+          sql.Add('                                  where Codigo_Mercadoria = :pCodigo), 0) -');
           sql.Add('                          isnull((select sum(Quantidade)');
           sql.Add('                                  from NotasItens');
           sql.Add('                                  where Codigo_Mercadoria = :pCodigo');
@@ -1914,7 +1926,7 @@ begin
           sql.Add('select Quantidade_Entrada from EstoqueTransferencia where Produto_Entrada = :pCodigo');
           sql.Add('union all');
           sql.Add('/* [ ESTOQUE INICIAL ]--------------------------------------------------------------*/');
-          sql.Add('select Quantidade from EstoqueAbertura where Produto = :pCodigo');
+          sql.Add('select Quantidade from EstoqueAbertura where Codigo_Mercadoria = :pCodigo');
           sql.Add('union all');
           sql.Add('/* [ TRANSFERÊNCIA SAÍDA ]----------------------------------------------------------*/');
           sql.Add('select -Quantidade_Entrada from EstoqueTransferencia where Produto_Saida = :pCodigo');
@@ -2024,32 +2036,27 @@ begin
 end;
 
 (*=================================================================================================*
-Executa os calculos dos itens da nota fiscal.
----------------------------------------------
+  Executa os calculos da nota fiscal.
+  -------------------------------------------------------------------------------------------------
   Parametros:
       pOper      : Operação fiscal.
       pTipo      : Item/Total: se calculos dos itens ou totalizadores.
       gFormula   : O grid que ira receber as formulas no form origem.
       cLog       : O memo que ira receber o log de erros no form origem.
       pTabDestino: A Tabela de Itens.
-      pFrame     : o Frame de origem (Quando for uniForm passar nil em pFrame.
-      pForm      : o Form de origem (Quando for uniFrame passar nil em pForm.
+      pTela      : o Frame/Form de origem.
  *=================================================================================================*)
-function CalculaTudo(pOper: integer; pTipo: string; gFormula: TuniStringGrid; cLog: tuniMemo; pTabDestino: TFDQuery; pFrame: TuniFrame; pForm: TuniForm): boolean;
+function CalculaPedido(pOper: integer; pTipo: string; gFormula: TuniStringGrid; cLog: tuniMemo; pTabDestino: TFDQuery; pTela: TComponent): boolean;
 var
    mValor: real;
    mAliqImp
   ,mCSTImp: string;
-   tFormulasItens
-  ,Campos: TFDQuery;
+   tFormulasItens: TFDQuery;
    tImpostos: TFDMemTable;  
 begin
      // Limpa a tabela de impostos.
      try 
-        Campos            := TFDQuery.Create(nil);
-        Campos.Connection := uniMainModule.Conecta;
-        mValor            := 0;
-
+        mValor    := 0;
         tImpostos := TFDMemTable.Create(nil);
         with tImpostos do begin
              Close;
@@ -2078,38 +2085,23 @@ begin
              sql.add('where Operacao = :pOp');
              sql.add('and Tipo = :pTipo');
              sql.add('and isnull(Desativada, 0) = 0');
+             sql.add('and isnull(cast(Formula as varchar(max)), '''') <> '''' ');
              sql.add('order by Ordem_Calculo');
              parambyname('pOp').AsInteger  := pOper;
              parambyname('pTipo').asstring := pTipo;
+             //sql.savetofile('c:\temp\AtlasWeb_Funcoes_CalculaPedido_Formulas.sql');
              open;
              first;
-
              while not eof do begin
-                   // Pula o calculo do valor unitário pois ja foi calculado anteriormente.
+                   // Pula o cálculo do valor unitário pois ja foi calculado anteriormente.
                    if fieldbyname('Campo').AsString <> 'Valor_Unitario' then begin
                       if gFormula <> nil then begin
                          gFormula.Cells[0, gFormula.RowCount-1] := fieldbyname('Campo').AsString;
                          gFormula.Cells[1, gFormula.RowCount-1] := fieldbyname('Formula').AsString;
                       end;
-                      with Campos do begin
-                           sql.clear;
-                           sql.add('select Campo');
-                           sql.add('      ,Tabela');
-                           sql.add('      ,Campo_Chave');
-                           sql.add('      ,Pesquisa');
-                           sql.add('      ,Percentual');
-                           sql.Add('from Campos');
-                           sql.Add('where Campo in('+ListaCampos(tFormulasItens.fieldbyname('Formula').AsString, 0)+')');
-                           sql.add('order by Tabela');
-                           open;
-                      end;
-                      // Faz o cálculo da formula e Acha o campo.
+                      // Faz o cálculo da fórmula e acha o campo.
                       try
-                         if pFrame <> nil then begin
-                            mValor := CalculaMacro(pFrame, fieldbyname('Formula').AsString, fieldbyname('Campo').asstring);
-                         end else begin
-                            mValor := CalculaMacro(pForm, fieldbyname('Formula').AsString, fieldbyname('Campo').asstring);
-                         end;
+                         mValor := CalculaMacroPed(pTela, fieldbyname('Formula').AsString, fieldbyname('Campo').asstring);
                       except On E: Exception do
                          begin
                              if cLog <> nil then begin
@@ -2146,8 +2138,133 @@ begin
      end;
 end;
 
-// Efetua a conversão do texto da formula para valores.
-function CalculaMacro(pForm: TComponent; pFormula, Campo: String): Real;
+(*=======================================================================
+  Executa os calculos da simulação de importação.
+  -----------------------------------------------------------------------
+  Parametros:
+      pOper      : Operação fiscal.
+      pTipo      : Item/Total: se calculos dos itens ou totalizadores.
+      gFormula   : O grid que ira receber as formulas no form origem.
+      cLog       : O memo que ira receber o log de erros no form origem.
+      pTabDestino: A Tabela de Itens.
+      pTela      : o Frame/Form de origem.
+ *======================================================================*)
+function CalculaSimulacao(pOper: Integer; pTipo: string; gFormula: TUniStringGrid; cLog: TUniMemo; pTabDestino: TFDQuery; pTela: TComponent): Boolean;
+var
+   mValor: Real;
+   mAliqImp, mCSTImp: string;
+   mCampo, mFormula: string;
+   mTeveErro: Boolean;
+   tFormulasItens: TFDQuery;
+   tImpostos: TFDMemTable;
+begin
+   Result         := false;
+   mTeveErro      := false;
+   tFormulasItens := nil;
+   tImpostos      := nil;
+
+   try
+      // Cria a tabela temporária de impostos.
+      tImpostos := TFDMemTable.Create(nil);
+      with tImpostos do begin
+           FieldDefs.Clear;
+           FieldDefs.Add('Ordem_Calculo', ftSmallint);
+           FieldDefs.Add('Descricao'    , ftString, 60);
+           FieldDefs.Add('Campo'        , ftString, 60);
+           FieldDefs.Add('Aliquota'     , ftFloat);
+           FieldDefs.Add('Valor'        , ftCurrency);
+           FieldDefs.Add('Total'        , ftCurrency);
+           FieldDefs.Add('CST'          , ftString, 5);
+           CreateDataSet;
+      end;
+      // Cria a consulta das fórmulas.
+      tFormulasItens := TFDQuery.Create(nil);
+      with tFormulasItens do begin
+           connection := uniMainModule.Conecta;
+           sql.clear;
+           sql.add('select Campo');
+           sql.add('      ,Formula = ltrim(replace(replace(cast(Formula as varchar(max)), :porig1, :pdest), :porig2, :pdest))');
+           sql.add('      ,Campo_Aliquota');
+           sql.add('      ,Campo_CST');
+           sql.add('      ,Ordem_Calculo');
+           sql.add('      ,Descricao');
+           sql.add('from OperacaoFiscalFormulas');
+           sql.add('where Operacao = :pOp');
+           sql.add('and Tipo = :pTipo');
+           sql.add('and isnull(Desativada, 0) = 0');
+           sql.add('and isnull(cast(Formula as varchar(max)), '''') <> '''' ');
+           sql.add('and Campo not in(''Valor_IsentasIPI'', ''Valor_OutrasIPI'', ''Valor_IsentasICMS'', ''Valor_OutrasICMS'')');
+           sql.add('order by Ordem_Calculo');
+           parambyName('pOp').AsInteger   := pOper;
+           parambyName('pTipo').AsString  := pTipo;
+           parambyName('pdest').AsString  := pTabDestino.name+'_[';
+           parambyName('porig1').AsString := 'PedidosNFItens_[';
+           parambyName('porig2').AsString := 'Produtos_[';
+           //sql.savetofile('c:\temp\AtlasWeb_CalculaSimulacao_Formulas.sql');
+           open;
+           first;
+      end;
+      // Processa todas as fórmulas.
+      while not tFormulasItens.eof do begin
+            mValor   := 0;
+            mCampo   := '';
+            mFormula := '';
+            try
+               mCampo   := tFormulasItens.FieldByName('Campo').AsString;
+               mFormula := tFormulasItens.FieldByName('Formula').AsString;
+               if mCampo <> 'Valor_Unitario' then begin
+                  // Registra a fórmula na grade.
+                  if Assigned(gFormula) then begin
+                     gFormula.Cells[0, gFormula.RowCount - 1] := mCampo;
+                     gFormula.Cells[1, gFormula.RowCount - 1] := mFormula;
+                  end;
+                  // Calcula a fórmula.
+                  mValor := CalculaMacroSim(pTela, mFormula, mCampo, pTabDestino);
+                  // Grava o resultado.
+                  pTabDestino.FieldByName(mCampo).Value := mValor;
+                  // Obtém alíquota e CST.
+                  mAliqImp := Trim(tFormulasItens.FieldByName('Campo_Aliquota').AsString);
+                  mCSTImp  := Trim(tFormulasItens.FieldByName('Campo_CST').AsString);
+                  // Registra o imposto.
+                  tImpostos.Append;
+                  tImpostos.FieldByName('Ordem_Calculo').Value := tFormulasItens.FieldByName('Ordem_Calculo').Value;
+                  tImpostos.FieldByName('Descricao').Value     := tFormulasItens.FieldByName('Descricao').Value;
+                  tImpostos.FieldByName('Campo').Value         := mCampo;
+                  tImpostos.FieldByName('Valor').Value         := mValor;
+                  tImpostos.FieldByName('Total').AsCurrency    := mValor * pTabDestino.FieldByName('Quantidade').AsFloat;
+                  if mAliqImp <> '' then
+                     tImpostos.FieldByName('Aliquota').AsFloat := pTabDestino.FieldByName(mAliqImp).AsFloat;
+                  tImpostos.Post;
+               end;
+            except
+               on E: Exception do begin
+                  mTeveErro := True;
+                  if tImpostos.State in dsEditModes then tImpostos.Cancel;
+                  if Assigned(cLog) then begin
+                     mFormula := StringReplace(mFormula,  #8, '', [rfReplaceAll, rfIgnoreCase]);
+                     mFormula := stringreplace(mFormula, #10, '', [rfReplaceAll]);
+                     mFormula := stringreplace(mFormula, #12, '', [rfReplaceAll]);
+                     mFormula := stringreplace(mFormula, #13, '', [rfReplaceAll]);
+
+                     cLog.Lines.Add('ERRO NO CAMPO: ' + mCampo);
+                     cLog.Lines.Add('FÓRMULA: ' + mFormula);
+                     cLog.Lines.Add('ERRO: ' + E.Message);
+                     cLog.Lines.Add(StringOfChar('-', 350));
+                  end;
+               end;
+            end;
+            // Continua mesmo que uma fórmula apresente erro.
+            tFormulasItens.Next;
+      end;
+      Result := not mTeveErro;
+   finally
+      tFormulasItens.Free;
+      tImpostos.Free;
+   end;
+end;
+
+// Efetua a conversão do texto da formula para valores do pedido.
+function CalculaMacroPed(pForm: TComponent; pFormula, Campo: String): Real;
 var
    mCalc: String;
    mResultado: real;
@@ -2186,24 +2303,23 @@ begin
           end;
      end;
      try
-         //if (campo = 'Valor_CBS') then Clipboard.AsText := mCalc;
-         Macro.Formula := mCalc;
-         mResultado    := Macro.Calc([0]);
-         if mResultado < 0 then mResultado := 0;
-     except on E:Exception do 
-         begin 
-              Memo := pForm.FindComponent('cLog') as TUniMemo;
-              if Assigned(Memo) then begin
-                 Memo.Lines.Add('');
-                 Memo.Lines.Add('ERRO NA FÓRMULA DO CAMPO '+stringofchar('=', 160));
-                 Memo.Lines.Add('   CAMPO: '+Campo);
-                 Memo.Lines.Add('   FORMULA: '+trim(pFormula));
-                 Memo.Lines.add('   ERRO: '+trim(E.Message));
-                 Memo.Lines.add(stringofchar('=', 188));
-                 Memo.Lines.Add('');
-              end;
-              mResultado := 0;
-         end;
+        Macro.Formula := mCalc;
+        mResultado    := Macro.Calc([0]);
+        if mResultado < 0 then mResultado := 0;
+     except on E:Exception do
+        begin
+             Memo := pForm.FindComponent('cLog') as TUniMemo;
+             if Assigned(Memo) then begin
+                Memo.Lines.Add('');
+                Memo.Lines.Add('ERRO NA FÓRMULA DO CAMPO '+stringofchar('=', 160));
+                Memo.Lines.Add('   CAMPO: '+Campo);
+                Memo.Lines.Add('   FORMULA: '+trim(pFormula));
+                Memo.Lines.add('   ERRO: '+trim(E.Message));
+                Memo.Lines.add(stringofchar('=', 188));
+                Memo.Lines.Add('');
+             end;
+             mResultado := 0;
+        end;
      end;
      Grade := pForm.FindComponent('gFormula') as TUniStringGrid;
      if Assigned(Grade) then begin
@@ -2211,30 +2327,116 @@ begin
         Grade.Cells[3, Grade.RowCount-1] := floattostr(mResultado);
         Grade.RowCount                   := Grade.RowCount + 1;
      end;
-     CalculaMacro := mResultado;
+     CalculaMacroPed := mResultado;
+end;
+
+// Efetua a conversão do texto da formula para valores da simulação
+function CalculaMacroSim(pForm: TComponent; pFormula, Campo: String; pTabDestino: TFDQuery): Real;
+var
+   mCalc: String;
+   tCampos: TFDQuery;
+   Macro: TCalcExpress;
+   Grade: TUniStringGrid;
+begin
+   Result  := 0;
+   tCampos := nil;
+   Macro   := nil;
+
+   try
+      tCampos := TFDQuery.Create(nil);
+      Macro   := TCalcExpress.Create(nil);
+      with tCampos do begin
+           connection := uniMainModule.Conecta;
+           sql.clear;
+           sql.add('select Campo = replace(Campo, ''Valores_['', ' + QuotedStr(pTabDestino.Name + '_[') + ')');
+           sql.add('      ,Tabela = ' + QuotedStr(pTabDestino.Name));
+           sql.add('      ,Campo_Chave');
+           sql.add('      ,Pesquisa');
+           sql.add('      ,Percentual');
+           sql.add('from CamposSimulacao');
+           sql.add('where Campo in(' + StringReplace(ListaCampos(pFormula, 0),pTabDestino.Name + '_[','Valores_[',[rfReplaceAll]) + ')');
+           sql.add('and Tabela = ''Valores'' ');
+           sql.add('order by Tabela');
+           //sql.SaveToFile('c:\temp\AtlasWeb_CalculaMacro_Sim_Valor_BCPIS.sql');
+           open;
+
+           // Converte a fórmula.
+           mCalc := StringReplace(Trim(pFormula), #13, '', [rfReplaceAll]);
+           mCalc := StringReplace(mCalc         , #12, '', [rfReplaceAll]);
+           mCalc := StringReplace(mCalc         , #10, '', [rfReplaceAll]);
+           First;
+           while not eof do begin
+                 mCalc := StringReplace(mCalc, FieldByName('Campo').AsString, SubstituirCampos(pForm, FieldByName('Campo').AsString), [rfReplaceAll]);
+                 next;
+           end;
+      end;
+
+      // Processa as condições.
+      mCalc := SubstituirCondicao(mCalc);
+      mCalc := StringReplace(mCalc, ' ', '', [rfReplaceAll]);
+
+      // Executa o cálculo.
+      Macro.Formula := mCalc;
+      try
+         Result := Macro.Calc([0]);
+      except
+         Result := 0;
+      end;
+
+      if Result < 0 then Result := 0;
+
+      // Atualiza a grade.
+      if Assigned(pForm) then begin
+         if pForm.FindComponent('gFormula') is TUniStringGrid then begin
+            Grade := TUniStringGrid(pForm.FindComponent('gFormula'));
+            Grade.Cells[2, Grade.RowCount - 1] := mCalc;
+            Grade.Cells[3, Grade.RowCount - 1] := FloatToStr(Result);
+            Grade.RowCount := Grade.RowCount + 1;
+         end;
+      end;
+   finally
+      Macro.Free;
+      tCampos.Free;
+   end;
 end;
 
 function SubstituirCampos(pForm: TComponent; pCampo: string): string;
 var
-  Match: TMatch;
-  CampoNome
- ,NomeDataSet: string;
-  DataSet: TDataSet;
+   Match: TMatch;
+   CampoNome, NomeDataSet: string;
+   DataSet: TDataSet;
+   Comp: TComponent;
 begin
-     Result      := '';
-     NomeDataSet := copy(pCampo, 1, pos('_', pCampo)-1);
-     Result      := '0';
-     // Localiza componente pelo nome
-     if TDataSet(pForm.FindComponent(NomeDataset)) <> nil then begin
-        DataSet := TDataSet(pForm.FindComponent(NomeDataset));
-        if not DataSet.Active then begin
-           exit;
-        end;
-        // Expressão regular para pegar o texto dentro dos colchetes
-        Match     := TRegEx.Match(pCampo, '\[(.*?)\]');
-        CampoNome := Match.Groups[1].Value;
-        if DataSet.FindField(CampoNome) <> nil then begin
-           Result := iif(DataSet.FieldByName(CampoNome).AsString = '', '0', DataSet.FieldByName(CampoNome).AsString);
+     Result := '0';
+     if not Assigned(pForm) then
+        Exit;
+     if Pos('_', pCampo) = 0 then
+        Exit;
+
+     NomeDataSet := Copy(pCampo, 1, Pos('_', pCampo) - 1);
+     Comp        := pForm.FindComponent(NomeDataSet);
+
+     if not (Comp is TDataSet) then
+        Exit;
+
+     DataSet := TDataSet(Comp);
+
+     if not DataSet.Active then
+        Exit;
+
+     Match := TRegEx.Match(pCampo, '\[(.*?)\]');
+
+     if not Match.Success then
+        Exit;
+
+     CampoNome := Match.Groups[1].Value;
+
+     if DataSet.FindField(CampoNome) = nil then
+        Exit;
+
+     if not DataSet.FieldByName(CampoNome).IsNull then begin
+        if Trim(DataSet.FieldByName(CampoNome).AsString) <> '' then begin
+           Result := DataSet.FieldByName(CampoNome).AsString;
         end;
      end;
 end;
@@ -3750,7 +3952,7 @@ begin
              MessageDlg('Erro ao selecionar os itens da nota!'+#13+E.Message, mtError, [mbOK]);
           end;
      end;
-     
+
      ttmp := TFDQuery.Create(nil);
      with ttmp do begin 
           try 
@@ -3888,7 +4090,70 @@ begin
      end;
 end;
 
+// Alinha os panels do form/frame passado.
+procedure AlinharPanels(pFrame: TUniFrame; Largura: Integer);
+var
+  i: Integer;
+  Painel: TUniPanel;
+begin
+     for i := 0 to pred(pFrame.ComponentCount) do begin
+         if pFrame.Components[i] is TUniPanel then begin
+            Painel := TUniPanel(pFrame.Components[i]);
+            if Painel.Tag <> 1 then begin
+               Painel.Top   := 30;
+               Painel.Left  := (Largura - Painel.Width) div 2;
+               Painel.Color := clNone;
+            end;
+         end;
+     end;
+end;
 
+// Habilita / Desabilita botoes do CRUD.
+{
+procedure LigaBotoes(pFrame: TUniFrame; Estado: boolean);
+var
+  i: Integer;
+  Botao: TUniButton;
+begin
+     for i := 0 to pred(pFrame.ComponentCount) do begin
+         if pFrame.Components[i] is TUniButton then begin
+            Botao := TUniButton(pFrame.Components[i]);
+            Botao.Enabled := not Estado;
+         end;
+     end;
+end;
+}
+
+// Habilita / Desabilita botoes do CRUD.
+procedure LigaBotoes(pFrame: TUniFrame; Estado: Boolean);
+var
+   i: Integer;
+   n: string;
+begin
+     for i := 0 to pFrame.ComponentCount -1 do begin
+         n := uppercase(pFrame.Components[i].Name);
+         if pFrame.Components[i].Tag = 1 then begin
+            if pos('NAVEGA', n) > 0 then begin
+               TUniDBNavigator(pFrame.Components[i]).Enabled := Estado;
+            end;
+            if pos('BADICIONAR', n) > 0 then begin
+               TUniSpeedButton(pFrame.Components[i]).Enabled := Estado;
+            end;
+            if pos('BEDITAR', n) > 0 then begin
+               TUniSpeedButton(pFrame.Components[i]).Enabled := Estado;
+            end;
+            if pos('BEXCLUIR', n) > 0 then begin
+               TUniSpeedButton(pFrame.Components[i]).Enabled := Estado;
+            end;
+            if pos('BSALVAR', n) > 0 then begin
+               TUniSpeedButton(pFrame.Components[i]).Enabled := not Estado;
+            end;
+            if pos('BCANCELAR', n) > 0 then begin
+               TUniSpeedButton(pFrame.Components[i]).Enabled := not Estado;
+            end;
+         end;
+     end;
+end;
 
 
 

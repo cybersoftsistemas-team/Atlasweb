@@ -13,14 +13,8 @@ Coordinates=10,122,176,51
 [UniMainModule.dsCondicaoVeiculo]
 Coordinates=517,155,188,33
 
-[UniMainModule.Meses]
-Coordinates=10,10,124,87
-
 [UniMainModule.dsTipoVeiculo]
 Coordinates=773,1,163,33
-
-[UniMainModule.dsMeses]
-Coordinates=0,0,136,33
 
 [UniMainModule.dsTipoCombustivel]
 Coordinates=262,1,188,33
@@ -34,4 +28,7 @@ Coordinates=224,122,168,51
 []
 Coordinates=391,78,70,33
 Visible=True
+
+[UniMainModule.]
+Coordinates=10,10,124,87
 

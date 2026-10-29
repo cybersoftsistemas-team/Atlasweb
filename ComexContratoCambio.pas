@@ -300,9 +300,9 @@ begin
           sql.clear;
           sql.add('select CNPJ');
           sql.add('      ,Razao_Social');
-          sql.add('      ,Filial = iif(isnull(Numero_Filial, 0) = 0, ''MATRIZ'', ''FILIAL ''+cast(Numero_Filial as char(2)))');
+          sql.add('      ,Filial = iif(isnull(Filial, 0) = 0, ''MATRIZ'', ''FILIAL ''+cast(Filial as char(2)))');
           sql.add('      ,Estado');
-          sql.add('      ,Numero_Filial');
+          sql.add('      ,Numero_Filial = Filial');
           sql.add('from Empresas');
           sql.add('where substring(CNPJ, 1, 8) = :pEmpresa');
           parambyname('pEmpresa').value := copy(UniMainModule.mEmpresaAtiva, 1, 8);

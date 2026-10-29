@@ -27,9 +27,9 @@ object MainForm: TMainForm
     TabOrder = 0
     object PagePrincipal: TUniPageControl
       Left = 0
-      Top = 54
+      Top = 60
       Width = 1104
-      Height = 655
+      Height = 649
       Hint = ''
       ActivePage = pInicio
       Plain = True
@@ -50,13 +50,9 @@ object MainForm: TMainForm
           
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'cybersoft-background'#39';'#13#10'}')
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 256
-        ExplicitHeight = 128
         object UniButton1: TUniButton
           Left = 20
-          Top = 74
+          Top = 18
           Width = 115
           Height = 66
           Hint = ''
@@ -70,7 +66,7 @@ object MainForm: TMainForm
           Left = 250
           Top = 200
           Width = 596
-          Height = 227
+          Height = 221
           Hint = ''
           Margins.Left = 250
           Margins.Top = 200
@@ -94,7 +90,7 @@ object MainForm: TMainForm
       Left = 0
       Top = 0
       Width = 1104
-      Height = 54
+      Height = 60
       Hint = ''
       ParentColor = False
       Color = 4730899
@@ -449,7 +445,6 @@ object MainForm: TMainForm
     ParentColor = False
     Align = alLeft
     TabOrder = 2
-    ExplicitHeight = 412
     object UniContainerPanel2: TUniContainerPanel
       Left = 0
       Top = 32
@@ -492,7 +487,6 @@ object MainForm: TMainForm
       Color = 4730899
       SingleExpand = True
       ExpanderOnly = False
-      ExplicitHeight = 348
     end
     object UniPanel3: TUniPanel
       Left = 0
@@ -534,7 +528,6 @@ object MainForm: TMainForm
         Scale = bbsSmall
         ScaleButton = False
         IconCls = 'team'
-        OnClick = bMudarEmpresaClick
       end
       object bMenu: TUniButton
         Left = 0
@@ -586,15 +579,8 @@ object MainForm: TMainForm
   end
   object tEmpresas: TFDQuery
     Connection = UniMainModule.Conecta
-    Left = 124
-    Top = 333
-  end
-  object UniScreenMask1: TUniScreenMask
-    Enabled = True
-    DisplayMessage = 'Aguarde...'
-    TargetControl = PagePrincipal
-    Left = 124
-    Top = 389
+    Left = 60
+    Top = 237
   end
   object Alerta: TUniSweetAlert
     Title = ' '
@@ -603,15 +589,8 @@ object MainForm: TMainForm
     CancelButtonText = 'Cancelar'
     Width = 400
     Padding = 20
-    Left = 124
-    Top = 501
-  end
-  object UniScreenMask2: TUniScreenMask
-    Enabled = True
-    DisplayMessage = 'Aguarde..Testando'
-    TargetControl = PagePrincipal
-    Left = 124
-    Top = 446
+    Left = 60
+    Top = 301
   end
   object TabMenu: TFDQuery
     Connection = UniMainModule.Conecta

@@ -174,6 +174,7 @@ object fFatPedidoNF: TfFatPedidoNF
         'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
         '= '#39'PastaInterna'#39';'#13#10'}')
     TabOrder = 1
+    ExplicitTop = 34
     object aLista: TUniTabSheet
       Hint = ''
       Caption = 'Lista'
@@ -1724,7 +1725,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 6
     end
     object cValorDespesas: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -1751,7 +1751,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 29
     end
     object cValorFrete: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -1804,7 +1803,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 97
     end
     object cValorII: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -1831,7 +1829,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 142
     end
     object cValorIPI: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -1858,7 +1855,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 187
     end
     object cValorPIS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -1885,7 +1881,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 232
     end
     object cValorCOFINS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -1912,7 +1907,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 277
     end
     object cValorICMS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -1939,7 +1933,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 322
     end
     object cValorICMSST: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -1966,7 +1959,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 367
     end
     object cTotalDesconto: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -1993,7 +1985,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 566
     end
     object cValorPedido: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -2020,7 +2011,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 589
     end
     object cValorBCII: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -2047,7 +2037,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 120
     end
     object cValorBCIPI: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -2074,7 +2063,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 166
     end
     object cValorBCPIS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -2101,7 +2089,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 212
     end
     object cValorBCCOFINS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -2128,7 +2115,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 258
     end
     object cValorBCICMS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -2155,7 +2141,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 304
     end
     object cValorBCICMSST: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -2182,7 +2167,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 350
     end
     object cValorAFRMM: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -2209,7 +2193,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 52
     end
     object cValorDIFALDest: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -2236,7 +2219,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 419
     end
     object cValorDIFALOrig: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -2263,7 +2245,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 397
     end
     object cValorBCIS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -2291,7 +2272,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 443
     end
     object cValorIS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -2319,7 +2299,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 466
     end
     object cValorBCIBS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -2347,7 +2326,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 489
     end
     object cValorIBS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -2375,7 +2353,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 512
     end
     object ValorBCCBS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -2403,7 +2380,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 535
     end
     object cValorCBS: TUniDBFormattedNumberEdit
       AlignWithMargins = True
@@ -2431,7 +2407,6 @@ object fFatPedidoNF: TfFatPedidoNF
       DecimalSeparator = ','
       ThousandSeparator = '.'
       BorderStyle = ubsInset
-      ExplicitTop = 558
     end
   end
   object MenuCusto: TUniPopupMenu
@@ -2498,7 +2473,7 @@ object fFatPedidoNF: TfFatPedidoNF
   object dsPedidosNF: TDataSource
     DataSet = PedidosNF
     Left = 138
-    Top = 116
+    Top = 117
   end
   object Alerta: TUniSweetAlert
     Title = ' '
@@ -2525,12 +2500,12 @@ object fFatPedidoNF: TfFatPedidoNF
         'NPJ, replicate('#39'0'#39', 14-len(CPF))+CPF)'
       'from Destinatarios')
     Left = 138
-    Top = 165
+    Top = 168
   end
   object dsDestinatarios: TDataSource
     DataSet = Destinatarios
     Left = 138
-    Top = 212
+    Top = 220
   end
   object OpFiscal: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2542,12 +2517,12 @@ object fFatPedidoNF: TfFatPedidoNF
     SQL.Strings = (
       'select * from OperacaoFiscal')
     Left = 138
-    Top = 260
+    Top = 271
   end
   object dsOPFiscal: TDataSource
     DataSet = OpFiscal
     Left = 138
-    Top = 309
+    Top = 323
   end
   object Beneficio: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2559,12 +2534,12 @@ object fFatPedidoNF: TfFatPedidoNF
     SQL.Strings = (
       'select * from BeneficioFiscal')
     Left = 138
-    Top = 360
+    Top = 374
   end
   object dsBeneficio: TDataSource
     DataSet = Beneficio
     Left = 138
-    Top = 407
+    Top = 425
   end
   object Transportador: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2582,12 +2557,12 @@ object fFatPedidoNF: TfFatPedidoNF
       'from Destinatarios'
       'where isnull(Transportador, 0) = 1')
     Left = 138
-    Top = 458
+    Top = 476
   end
   object dsTransportador: TDataSource
     DataSet = Transportador
     Left = 138
-    Top = 510
+    Top = 528
   end
   object ModalFrete: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2605,12 +2580,12 @@ object fFatPedidoNF: TfFatPedidoNF
       'from Destinatarios'
       'where isnull(Transportador, 0) = 1')
     Left = 138
-    Top = 559
+    Top = 580
   end
   object dsModalFrete: TDataSource
     DataSet = ModalFrete
     Left = 138
-    Top = 605
+    Top = 631
   end
   object IndPresenca: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2622,12 +2597,12 @@ object fFatPedidoNF: TfFatPedidoNF
     SQL.Strings = (
       'select * from IndicadorPresenca')
     Left = 138
-    Top = 656
+    Top = 682
   end
   object dsIndPresenca: TDataSource
     DataSet = IndPresenca
     Left = 138
-    Top = 702
+    Top = 734
   end
   object PresencaComp: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2638,13 +2613,13 @@ object fFatPedidoNF: TfFatPedidoNF
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from PresencaComprador')
-    Left = 311
-    Top = 165
+    Left = 327
+    Top = 168
   end
   object dsPresencaComp: TDataSource
     DataSet = PresencaComp
-    Left = 311
-    Top = 212
+    Left = 327
+    Top = 220
   end
   object Intermediador: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2655,13 +2630,13 @@ object fFatPedidoNF: TfFatPedidoNF
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from Intermediadores')
-    Left = 219
-    Top = 70
+    Left = 227
+    Top = 66
   end
   object dsIntermediador: TDataSource
     DataSet = Intermediador
-    Left = 220
-    Top = 116
+    Left = 227
+    Top = 117
   end
   object TiposDesc: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2674,13 +2649,13 @@ object fFatPedidoNF: TfFatPedidoNF
       'select *'
       'from TiposDescontos'
       '')
-    Left = 220
-    Top = 165
+    Left = 227
+    Top = 168
   end
   object dsTiposDesc: TDataSource
     DataSet = TiposDesc
-    Left = 220
-    Top = 212
+    Left = 227
+    Top = 220
   end
   object TipoPgto: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2693,13 +2668,13 @@ object fFatPedidoNF: TfFatPedidoNF
       'select Codigo = 0'
       '      ,Descricao = cast('#39#39' as varchar(15))'
       '')
-    Left = 220
-    Top = 260
+    Left = 227
+    Top = 271
   end
   object dsTipoPgto: TDataSource
     DataSet = TipoPgto
-    Left = 220
-    Top = 309
+    Left = 227
+    Top = 323
   end
   object FormaPgto: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2712,13 +2687,13 @@ object fFatPedidoNF: TfFatPedidoNF
       'select *'
       'from FormaPagamento'
       '')
-    Left = 220
-    Top = 360
+    Left = 227
+    Top = 374
   end
   object dsFormaPgto: TDataSource
     DataSet = FormaPgto
-    Left = 220
-    Top = 407
+    Left = 227
+    Top = 425
   end
   object OpVeiculo: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2731,13 +2706,13 @@ object fFatPedidoNF: TfFatPedidoNF
       'select *'
       'from OperacaoVeiculo'
       '')
-    Left = 220
-    Top = 458
+    Left = 227
+    Top = 476
   end
   object dsOpVeiculo: TDataSource
     DataSet = OpVeiculo
-    Left = 220
-    Top = 510
+    Left = 227
+    Top = 528
   end
   object RestVeiculo: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2750,13 +2725,13 @@ object fFatPedidoNF: TfFatPedidoNF
       'select *'
       'from RestricaoVeiculo'
       '')
-    Left = 220
-    Top = 559
+    Left = 227
+    Top = 580
   end
   object dsRestVeiculo: TDataSource
     DataSet = RestVeiculo
-    Left = 220
-    Top = 605
+    Left = 227
+    Top = 631
   end
   object NFRef: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2773,18 +2748,18 @@ object fFatPedidoNF: TfFatPedidoNF
       'where isnull(Cancelada, 0) = 0'
       'and isnull(Denegada, 0) = 0'
       'order by Chave')
-    Left = 220
-    Top = 656
+    Left = 227
+    Top = 682
   end
   object dsNFRef: TDataSource
     DataSet = NFRef
-    Left = 220
-    Top = 702
+    Left = 227
+    Top = 734
   end
   object dsEmpresas: TDataSource
     DataSet = Empresas
-    Left = 311
-    Top = 510
+    Left = 327
+    Top = 528
   end
   object Empresas: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2798,8 +2773,8 @@ object fFatPedidoNF: TfFatPedidoNF
       '      ,Estado'
       '      ,Razao_Social'
       'from Empresas')
-    Left = 311
-    Top = 458
+    Left = 327
+    Top = 476
   end
   object Config: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2816,13 +2791,13 @@ object fFatPedidoNF: TfFatPedidoNF
       ''
       ''
       '')
-    Left = 311
-    Top = 360
+    Left = 327
+    Top = 374
   end
   object dsConfig: TDataSource
     DataSet = Config
-    Left = 311
-    Top = 407
+    Left = 327
+    Top = 425
   end
   object PedidosNF: TFDQuery
     BeforePost = PedidosNFBeforePost
@@ -2860,8 +2835,8 @@ object fFatPedidoNF: TfFatPedidoNF
       '      ,Destinatario_Estado'
       '      ,Valor_Pedido'
       'from PedidosNF')
-    Left = 509
-    Top = 70
+    Left = 533
+    Top = 66
   end
   object Armazem: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2876,13 +2851,13 @@ object fFatPedidoNF: TfFatPedidoNF
       '      ,CNPJ'
       'from Destinatarios'
       'where isnull(Armazem, 0) = 1')
-    Left = 308
-    Top = 559
+    Left = 327
+    Top = 580
   end
   object dsArmazem: TDataSource
     DataSet = Armazem
-    Left = 308
-    Top = 605
+    Left = 327
+    Top = 631
   end
   object Representantes: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2897,13 +2872,13 @@ object fFatPedidoNF: TfFatPedidoNF
       '      ,CNPJ'
       'from Destinatarios'
       'where isnull(Representante, 0) = 1')
-    Left = 306
-    Top = 656
+    Left = 327
+    Top = 682
   end
   object dsRepresentantes: TDataSource
     DataSet = Representantes
-    Left = 306
-    Top = 702
+    Left = 327
+    Top = 734
   end
   object AtendeCall: TFDQuery
     Connection = UniMainModule.Conecta
@@ -2918,12 +2893,12 @@ object fFatPedidoNF: TfFatPedidoNF
       '      ,CNPJ'
       'from Destinatarios'
       'where isnull(Representante, 0) = 1')
-    Left = 396
-    Top = 70
+    Left = 420
+    Top = 66
   end
   object dsAtendeCall: TDataSource
     DataSet = AtendeCall
-    Left = 396
+    Left = 420
     Top = 117
   end
   object PedidosNFItens: TFDQuery
@@ -2945,8 +2920,8 @@ object fFatPedidoNF: TfFatPedidoNF
       '      ,Quantidade'
       'from PedidosNFitens'
       '')
-    Left = 310
-    Top = 67
+    Left = 327
+    Top = 66
     object PedidosNFItensPedido: TIntegerField
       FieldName = 'Pedido'
       Origin = 'Pedido'
@@ -2998,8 +2973,8 @@ object fFatPedidoNF: TfFatPedidoNF
   end
   object dsPedidosNFItens: TDataSource
     DataSet = PedidosNFItens
-    Left = 311
-    Top = 116
+    Left = 327
+    Top = 117
   end
   object ttmp: TFDQuery
     Connection = UniMainModule.Conecta
@@ -3013,8 +2988,8 @@ object fFatPedidoNF: TfFatPedidoNF
       '      ,Estado'
       '      ,Razao_Social'
       'from Empresas')
-    Left = 459
-    Top = 70
+    Left = 483
+    Top = 66
   end
   object ICMS: TFDQuery
     Connection = UniMainModule.Conecta
@@ -3025,13 +3000,13 @@ object fFatPedidoNF: TfFatPedidoNF
     UpdateOptions.AutoCommitUpdates = True
     SQL.Strings = (
       'select * from ICMS')
-    Left = 311
-    Top = 260
+    Left = 327
+    Top = 271
   end
   object dsICMS: TDataSource
     DataSet = ICMS
-    Left = 311
-    Top = 309
+    Left = 327
+    Top = 323
   end
   object tTotaliza: TFDQuery
     Connection = UniMainModule.Conecta
@@ -3045,7 +3020,7 @@ object fFatPedidoNF: TfFatPedidoNF
       '      ,Estado'
       '      ,Razao_Social'
       'from Empresas')
-    Left = 559
-    Top = 68
+    Left = 583
+    Top = 66
   end
 end

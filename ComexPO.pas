@@ -224,7 +224,7 @@ begin
           sql.Clear;
           sql.add('select CNPJ');
           sql.add('      ,Razao_Social');
-          sql.add('      ,Numero_Filial');
+          sql.add('      ,Filial');
           sql.add('      ,Processo_Automatico');
           sql.add('      ,PO_Automatico');
           sql.add('      ,Mascara_Processo');

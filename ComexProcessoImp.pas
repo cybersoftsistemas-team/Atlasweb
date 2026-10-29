@@ -678,12 +678,12 @@ begin
            sql.clear;
            sql.add('select Razao_Social');
            sql.add('      ,CNPJ');
-           sql.add('      ,Unidade = case when isnull(Numero_Filial, 0) = 0 then ''MATRIZ'' else ''FILIAL ''+cast(numero_Filial as char(3)) end');
+           sql.add('      ,Unidade = case when isnull(Filial, 0) = 0 then ''MATRIZ'' else ''FILIAL ''+cast(Filial as char(3)) end');
            sql.add('      ,Fechamento_Financeiro');
            sql.add('      ,Estado');
            sql.add('from  Empresas');
            sql.add('where substring(CNPJ, 1, 8) = '+quotedstr(copy(UniMainModule.mEmpresaAtiva, 1, 8)) );
-           sql.add('order by CNPJ, Numero_Filial');
+           sql.add('order by CNPJ, Filial');
            open;
       end;
       with tBeneficio do begin

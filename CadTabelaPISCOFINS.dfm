@@ -276,7 +276,7 @@ object fCadTabelaPISCOFINS: TfCadTabelaPISCOFINS
         Left = 0
         Top = 0
         Width = 1280
-        Height = 938
+        Height = 936
         Hint = ''
         Align = alClient
         ClientEvents.UniEvents.Strings = (
@@ -284,9 +284,10 @@ object fCadTabelaPISCOFINS: TfCadTabelaPISCOFINS
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10' config.cls =' +
             ' '#39'Pasta'#39';'#13#10'}')
         TabOrder = 0
+        ExplicitHeight = 938
         DesignSize = (
           1278
-          936)
+          934)
         ScrollHeight = 426
         object pFicha: TUniPanel
           Left = 123
