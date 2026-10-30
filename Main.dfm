@@ -84,6 +84,16 @@ object MainForm: TMainForm
           PersistentCache = False
           FitWidth = True
         end
+        object UniButton2: TUniButton
+          Left = 24
+          Top = 136
+          Width = 129
+          Height = 65
+          Hint = ''
+          Caption = 'UniButton2'
+          TabOrder = 2
+          OnClick = UniButton2Click
+        end
       end
     end
     object pAtalhos: TUniContainerPanel

@@ -345,7 +345,7 @@ type
     cValor_BCIBSs: TUniDBFormattedNumberEdit;
     UniSplitter1: TUniSplitter;
     cTotalItem: TUniFormattedNumberEdit;
-    rSimulacaoRadar: TppReport;
+    rSimulRadar: TppReport;
     ppHeaderBand2: TppHeaderBand;
     ppLabel175: TppLabel;
     iLogoRadar: TppImage;
@@ -677,7 +677,7 @@ type
     ppDesignLayers18: TppDesignLayers;
     ppDesignLayer18: TppDesignLayer;
     ppParameterList3: TppParameterList;
-    rSimulacaoRadarProd: TppReport;
+    rSimulRadarProd: TppReport;
     ppHeaderBand3: TppHeaderBand;
     ppShape252: TppShape;
     ppShape253: TppShape;
@@ -949,6 +949,8 @@ type
     ppShape1: TppShape;
     ppLabel7: TppLabel;
     ppDBText2: TppDBText;
+    Produtos: TFDQuery;
+    dsProdutos: TDataSource;
     procedure NavegaClick(Sender: TObject; Button: TNavigateBtn);
     procedure NavegaBeforeAction(Sender: TObject; Button: TNavigateBtn);
     procedure bRemoveTudoClick(Sender: TObject);
@@ -2493,8 +2495,8 @@ var
 begin
      Imprimir;
 
-     ArquivoPDF := UniServerModule.LocalCachePath + 'Simulacao.pdf';
-     with rSimulacaoRadar do begin
+     ArquivoPDF := UniServerModule.LocalCachePath + 'Simulacao_'+NomeComputador+'.pdf';
+     with rSimulRadar do begin
           DeviceType       := 'PDF';
           TextFileName     := ArquivoPDF;
           ShowPrintDialog  := False;
@@ -2502,7 +2504,7 @@ begin
           PrinterSetup.PrinterName := 'Screen';
           Print;
      end;
-     URL := UniServerModule.LocalCacheURL + 'Simulacao.pdf';
+     URL := UniServerModule.LocalCacheURL + 'Simulacao_'+NomeComputador+'.pdf';
      UniSession.AddJS('window.open("' + URL + '", "_blank");');
 end;
 
@@ -2994,49 +2996,49 @@ begin
            //sql.saveToFile('c:\temp\AtlasWeb_Simulacao.sql');
            open;
       end;
-
+      with Produtos do begin
+           sql.Clear;
+           sql.Add('select *');
+           sql.Add('      ,Total_Produtos          = sp.Valor_Unitario * sp.Quantidade');
+           sql.Add('      ,Total_ICMSSai           = svs.Valor_ICMSOp * sp.Quantidade');
+           sql.Add('      ,Total_ICMSSTSai         = svs.Valor_ICMSST * sp.Quantidade');
+           sql.Add('      ,Total_ICMSSTEnt         = 0');
+           sql.Add('      ,Total_IIEnt             = sve.Valor_II * sp.Quantidade');
+           sql.Add('      ,Total_IISai             = svs.Valor_II * sp.Quantidade');
+           sql.Add('      ,Total_IPI               = sve.Valor_IPI * sp.Quantidade');
+           sql.Add('      ,Total_IPISai            = svs.Valor_IPI * sp.Quantidade');
+           sql.Add('      ,Total_IPISaiME          = (svs.Valor_IPI * sp.Quantidade) / si.Taxa_FOB');
+           sql.Add('      ,Total_PISEnt            = sve.Valor_PIS * sp.Quantidade');
+           sql.Add('      ,Total_COFINSEnt         = sve.Valor_COFINS * sp.Quantidade');
+           sql.Add('      ,Total_PISSai            = svs.Valor_PIS * sp.Quantidade');
+           sql.Add('      ,Total_COFINSSai         = svs.Valor_COFINS * sp.Quantidade');
+           sql.Add('      ,Processo                = si.Processo');
+           sql.Add('      ,Modalidade              = mi.Descricao');
+           sql.Add('      ,Produto                 = si.Tipo_Produto');
+           sql.Add('      ,Cliente                 = si.Cliente_ImpNome');
+           sql.Add('      ,Taxa                    = si.Taxa_FOB');
+           sql.add('      ,Valor_ICMSSTME          = sve.Valor_ICMSST / si.Taxa_FOB');
+           sql.Add('      ,Valor_ICMSSaiME         = svs.Valor_ICMSOp /si.Taxa_FOB');
+           sql.Add('      ,Valor_UniExReal         = sp.Valor_UnitarioME * si.Taxa_FOB');
+           sql.Add('      ,Valor_TotalExReal       = (sp.Valor_UnitarioME * si.Taxa_FOB) * sp.Quantidade');
+           sql.Add('      ,Valor_TotalExME         = sp.Valor_UnitarioME * sp.Quantidade');
+           sql.Add('      ,Valor_TotalExIPIReal    = (isnull(si.Valor_IPISai, 0) / isnull(si.FOB, 0)) * sp.Valor_Unitario');
+           sql.Add('      ,Valor_TotalExIPIME      = ((isnull(si.Valor_IPISai, 0) / isnull(si.FOB, 0)) * sp.Valor_Unitario) / si.Taxa_FOB');
+           sql.Add('      ,Valor_TotalExICMSReal   = (isnull(si.Valor_ICMSSaida, 0) / isnull(si.FOB, 0)) * sp.Valor_Unitario');
+           sql.Add('      ,Valor_TotalExICMSME     = (isnull(si.Valor_ICMSSaida, 0) / isnull(si.FOB, 0) * sp.Valor_Unitario) / si.Taxa_FOB');
+           sql.Add('      ,Valor_TotalExICMSSTReal = (isnull(si.Valor_ICMSST, 0) / isnull(si.FOB, 0)) * sp.Valor_Unitario');
+           sql.Add('      ,Valor_TotalExICMSSTME   = ((isnull(si.Valor_ICMSST, 0) / isnull(si.FOB, 0)) * sp.Valor_Unitario) / si.Taxa_FOB');
+           sql.Add('from SimulaProdutos sp');
+           sql.Add('inner join SimulaImp si on si.Simulacao = sp.Simulacao');
+           sql.Add('inner join SimulaValores sve on sve.Simulacao = sp.Simulacao and sve.ES = 0');
+           sql.Add('inner join SimulaValores svs on svs.Simulacao = sp.Simulacao and svs.ES = 1');
+           sql.Add('inner join ModalidadeImportacao mi on Codigo = si.Modalidade');
+           sql.Add('where sp.Simulacao = :pSimul');
+           ParamByName('pSimul').AsInteger := ImpSimula.FieldByName('Simulacao').asinteger;
+           //sql.savetofile('c:\temp\AtalasWeb_Simula_Produtos.sql');
+           open;
+      end;
      {
-     with tProdutos do begin
-          sql.Clear;
-          sql.Add('select *');
-          sql.Add('      ,Total_Produtos        = Valor_UnitarioSaida * Quantidade');
-          sql.Add('      ,Total_ICMSSai         = Valor_ICMSSaida     * Quantidade');
-          sql.Add('      ,Total_ICMSSTSai       = Valor_ICMSST        * Quantidade');
-          sql.Add('      ,Total_ICMSSTEnt       = 0');
-          sql.Add('      ,Total_II              = Valor_II            * Quantidade');
-          sql.Add('      ,Total_IPI             = Valor_IPI           * Quantidade');
-          sql.Add('      ,Total_IPISai          = Valor_IPISai        * Quantidade');
-          sql.Add('      ,Total_IPISaiME        = (Valor_IPISai       * Quantidade)/(select Taxa_FOB from SimulaImportacao where Numero = Simulacao)');
-          sql.Add('      ,Total_PISEnt          = Valor_PIS');
-          sql.Add('      ,Total_COFINSEnt       = Valor_COFINS');
-          sql.Add('      ,Total_PISSai          = Valor_PISSai');
-          sql.Add('      ,Total_COFINSSai       = Valor_COFINSSai');
-          sql.Add('      ,Processo              = (select Processo from SimulaImportacao where Numero = Simulacao)');
-          sql.Add('      ,Modalidade            = (select Modalidade from SimulaImportacao where Numero = Simulacao)');
-          sql.Add('      ,Produto               = (select Tipo_Produto from SimulaImportacao where Numero = Simulacao)');
-          sql.Add('      ,Cliente               = (select Cliente_ImpNome from SimulaImportacao where Numero = Simulacao)');
-          sql.Add('      ,Taxa                  = (select Taxa_FOB from SimulaImportacao where Numero = Simulacao)');
-          sql.Add('      ,Valor_ICMSSTME        = Valor_ICMSST / (select Taxa_FOB from SimulaImportacao where Numero = Simulacao)');
-          sql.add('      ,Valor_ICMSSaiME       = Valor_ICMSSaida/(select Taxa_FOB from SimulaImportacao where Numero = Simulacao)');
-          // Simulação RADAR.
-          sql.Add('      ,Valor_UniExReal       = Valor_UnitarioME * (select Taxa_FOB from SimulaImportacao where Numero = Simulacao)');
-          sql.Add('      ,Valor_TotalExReal     = (Valor_UnitarioME * (select Taxa_FOB from SimulaImportacao where Numero = Simulacao)) * Quantidade');
-          sql.Add('      ,Valor_TotalExME       = Valor_UnitarioME * Quantidade');
-          sql.Add('      ,Valor_TotalExIPIReal  = (select isnull(Valor_IPISai, 0) from SimulaImportacao si where si.Numero = sp.Simulacao) / (select isnull(FOB, 0) from SimulaImportacao si where si.Numero = sp.Simulacao) * Valor_UnitarioReal');
-          sql.Add('      ,Valor_TotalExIPIME    = ((select isnull(Valor_IPISai, 0) from SimulaImportacao si where si.Numero = sp.Simulacao) /');
-          sql.add('                               (select isnull(FOB, 0) from SimulaImportacao si where si.Numero = sp.Simulacao) * Valor_UnitarioReal) / (select Taxa_FOB from SimulaImportacao where Numero = Simulacao)');
-          sql.Add('      ,Valor_TotalExICMSReal = (select isnull(Valor_ICMSSaida, 0) from SimulaImportacao si where si.Numero = sp.Simulacao) / (select isnull(FOB, 0) from SimulaImportacao si where si.Numero = sp.Simulacao) * Valor_UnitarioReal');
-          sql.Add('      ,Valor_TotalExICMSME   = ((select isnull(Valor_ICMSSaida, 0) from SimulaImportacao si where si.Numero = sp.Simulacao) /');
-          sql.add('                               (select isnull(FOB, 0) from SimulaImportacao si where si.Numero = sp.Simulacao) * Valor_UnitarioReal) / (select Taxa_FOB from SimulaImportacao where Numero = Simulacao)');
-          sql.Add('      ,Valor_TotalExICMSSTReal = (select isnull(Valor_ICMSST, 0) from SimulaImportacao si where si.Numero = sp.Simulacao) / (select isnull(FOB, 0) from SimulaImportacao si where si.Numero = sp.Simulacao) * Valor_UnitarioReal');
-          sql.Add('      ,Valor_TotalExICMSSTME   = ((select isnull(Valor_ICMSST, 0) from SimulaImportacao si where si.Numero = sp.Simulacao) /');
-          sql.add('                               (select isnull(FOB, 0) from SimulaImportacao si where si.Numero = sp.Simulacao) * Valor_UnitarioReal) / (select Taxa_FOB from SimulaImportacao where Numero = Simulacao)');
-          sql.Add('from SimulaProdutos sp');
-          sql.Add('where Simulacao = :pSimulacao');
-          ParamByName('pSimulacao').AsInteger := tSimula.FieldByName('Numero').asinteger;
-          //sql.savetofile('c:\temp\Simula_Produtos.sql');
-          tProdutos.Open;
-     end;
      if not Configuracao.fieldbyname('Modelo_Simulacao').AsBoolean then begin
         with tDespesa do begin
              sql.Clear;

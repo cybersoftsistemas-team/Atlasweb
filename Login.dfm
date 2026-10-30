@@ -88,7 +88,6 @@ object TelaLogin: TTelaLogin
             'beforeInit=function beforeInit(sender, config)'#13#10'{'#13#10'  config.cls ' +
             '= '#39'cybersoft-logo'#39';'#13#10'}')
         FitWidth = True
-        ExplicitHeight = 374
       end
       object UniLabel1: TUniLabel
         Left = 299
@@ -174,9 +173,6 @@ object TelaLogin: TTelaLogin
         Font.Height = -12
         Font.Style = [fsBold]
         TabOrder = 6
-        ExplicitLeft = 307
-        ExplicitTop = 328
-        ExplicitWidth = 294
       end
     end
   end

@@ -11,7 +11,7 @@ object fComexSimulacaoImp: TfComexSimulacaoImp
     Width = 1291
     Height = 761
     Hint = ''
-    ActivePage = TabSheet5
+    ActivePage = TabSheet2
     Align = alClient
     TabOrder = 0
     object TabSheet5: TUniTabSheet
@@ -4271,7 +4271,7 @@ object fComexSimulacaoImp: TfComexSimulacaoImp
     Left = 332
     Top = 192
   end
-  object rSimulacaoRadar: TppReport
+  object rSimulRadar: TppReport
     AutoStop = False
     DataPipeline = pSimulacao
     PrinterSetup.BinName = 'Default'
@@ -4378,8 +4378,8 @@ object fComexSimulacaoImp: TfComexSimulacaoImp
     CloudDriveSettings.OneDriveSettings.OAuth2.RefreshTokenLifeSpan = 365
     CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     CloudDriveSettings.OneDriveSettings.SharedResources = True
-    Left = 536
-    Top = 205
+    Left = 1040
+    Top = 85
     Version = '23.05'
     mmColumnWidth = 0
     DataPipelineName = 'pSimulacao'
@@ -5280,7 +5280,7 @@ object fComexSimulacaoImp: TfComexSimulacaoImp
         DataPipelineName = 'pSimulacao'
         mmHeight = 2646
         mmLeft = 117740
-        mmTop = 529
+        mmTop = 528
         mmWidth = 14552
         BandType = 4
         LayerName = BandLayer22
@@ -5300,7 +5300,7 @@ object fComexSimulacaoImp: TfComexSimulacaoImp
         Transparent = True
         mmHeight = 2645
         mmLeft = 104511
-        mmTop = 646
+        mmTop = 528
         mmWidth = 12435
         BandType = 4
         LayerName = BandLayer22
@@ -6061,7 +6061,7 @@ object fComexSimulacaoImp: TfComexSimulacaoImp
         Transparent = True
         mmHeight = 2645
         mmLeft = 1270
-        mmTop = 646
+        mmTop = 528
         mmWidth = 16404
         BandType = 4
         LayerName = BandLayer22
@@ -6081,8 +6081,8 @@ object fComexSimulacaoImp: TfComexSimulacaoImp
         Transparent = True
         DataPipelineName = 'pSimulacao'
         mmHeight = 2646
-        mmLeft = 17992
-        mmTop = 529
+        mmLeft = 18616
+        mmTop = 528
         mmWidth = 8202
         BandType = 4
         LayerName = BandLayer22
@@ -10869,7 +10869,7 @@ object fComexSimulacaoImp: TfComexSimulacaoImp
     object ppParameterList3: TppParameterList
     end
   end
-  object rSimulacaoRadarProd: TppReport
+  object rSimulRadarProd: TppReport
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Simula'#231#227'o de calculo de importa'#231#227'o'
     PrinterSetup.Duplex = dpNone
@@ -10975,8 +10975,8 @@ object fComexSimulacaoImp: TfComexSimulacaoImp
     CloudDriveSettings.OneDriveSettings.OAuth2.RefreshTokenLifeSpan = 365
     CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     CloudDriveSettings.OneDriveSettings.SharedResources = True
-    Left = 672
-    Top = 204
+    Left = 1140
+    Top = 85
     Version = '23.05'
     mmColumnWidth = 0
     object ppHeaderBand3: TppHeaderBand
@@ -13916,22 +13916,892 @@ object fComexSimulacaoImp: TfComexSimulacaoImp
     end
   end
   object pSimulacao: TppDBPipeline
-    DataSource = dsSimulaImp
+    DataSource = dsImpSimula
     OpenDataSource = False
     UserName = 'pSimulacao'
-    Left = 536
-    Top = 258
+    Left = 1040
+    Top = 138
+    object pSimulacaoppField1: TppField
+      FieldAlias = 'Simulacao'
+      FieldName = 'Simulacao'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 0
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField2: TppField
+      FieldAlias = 'Empresa'
+      FieldName = 'Empresa'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 1
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField3: TppField
+      FieldAlias = 'Data'
+      FieldName = 'Data'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 2
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField4: TppField
+      FieldAlias = 'Modalidade'
+      FieldName = 'Modalidade'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 3
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField5: TppField
+      FieldAlias = 'Fornecedor'
+      FieldName = 'Fornecedor'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 4
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField6: TppField
+      FieldAlias = 'Beneficio'
+      FieldName = 'Beneficio'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 5
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField7: TppField
+      FieldAlias = 'Peso_Bruto'
+      FieldName = 'Peso_Bruto'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 6
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField8: TppField
+      FieldAlias = 'FOB'
+      FieldName = 'FOB'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 7
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField9: TppField
+      FieldAlias = 'Valor_II'
+      FieldName = 'Valor_II'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 8
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField10: TppField
+      FieldAlias = 'Valor_IPI'
+      FieldName = 'Valor_IPI'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 9
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField11: TppField
+      FieldAlias = 'Frete_Internacional'
+      FieldName = 'Frete_Internacional'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 10
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField12: TppField
+      FieldAlias = 'Seguro_PremioPercentual'
+      FieldName = 'Seguro_PremioPercentual'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 11
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField13: TppField
+      FieldAlias = 'Seguro_PremioValor'
+      FieldName = 'Seguro_PremioValor'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 12
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField14: TppField
+      FieldAlias = 'FOB_Real'
+      FieldName = 'FOB_Real'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 13
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField15: TppField
+      FieldAlias = 'Frete_Real'
+      FieldName = 'Frete_Real'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 14
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField16: TppField
+      FieldAlias = 'Seguro_Real'
+      FieldName = 'Seguro_Real'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 15
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField17: TppField
+      FieldAlias = 'Valor_PIS'
+      FieldName = 'Valor_PIS'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 16
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField18: TppField
+      FieldAlias = 'Valor_COFINS'
+      FieldName = 'Valor_COFINS'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 17
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField19: TppField
+      FieldAlias = 'Aliquota_ICMSEntrada'
+      FieldName = 'Aliquota_ICMSEntrada'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 18
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField20: TppField
+      FieldAlias = 'Valor_ICMSEntrada'
+      FieldName = 'Valor_ICMSEntrada'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 19
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField21: TppField
+      FieldAlias = 'Aliquota_ICMSSaida'
+      FieldName = 'Aliquota_ICMSSaida'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 20
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField22: TppField
+      FieldAlias = 'Valor_ICMSSaida'
+      FieldName = 'Valor_ICMSSaida'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 21
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField23: TppField
+      FieldAlias = 'Taxa_Adiministrativa'
+      FieldName = 'Taxa_Adiministrativa'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 22
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField24: TppField
+      FieldAlias = 'BCICMS_Entrada'
+      FieldName = 'BCICMS_Entrada'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 23
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField25: TppField
+      FieldAlias = 'BCICMS_Saida'
+      FieldName = 'BCICMS_Saida'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 24
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField26: TppField
+      FieldAlias = 'Aliquota_IRPJ'
+      FieldName = 'Aliquota_IRPJ'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 25
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField27: TppField
+      FieldAlias = 'Valor_IRPJ'
+      FieldName = 'Valor_IRPJ'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 26
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField28: TppField
+      FieldAlias = 'Aliquota_CSLL'
+      FieldName = 'Aliquota_CSLL'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 27
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField29: TppField
+      FieldAlias = 'Valor_CSLL'
+      FieldName = 'Valor_CSLL'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 28
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField30: TppField
+      FieldAlias = 'Peso_Liquido'
+      FieldName = 'Peso_Liquido'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 29
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField31: TppField
+      FieldAlias = 'Porto_Origem'
+      FieldName = 'Porto_Origem'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 30
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField32: TppField
+      FieldAlias = 'Porto_Destino'
+      FieldName = 'Porto_Destino'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 31
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField33: TppField
+      FieldAlias = 'Pais_Origem'
+      FieldName = 'Pais_Origem'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 32
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField34: TppField
+      FieldAlias = 'Cidade_Origem'
+      FieldName = 'Cidade_Origem'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 33
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField35: TppField
+      FieldAlias = 'Pais_Destino'
+      FieldName = 'Pais_Destino'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 34
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField36: TppField
+      FieldAlias = 'Cidade_Destino'
+      FieldName = 'Cidade_Destino'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 35
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField37: TppField
+      FieldAlias = 'Moeda_FOB'
+      FieldName = 'Moeda_FOB'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 36
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField38: TppField
+      FieldAlias = 'Taxa_FOB'
+      FieldName = 'Taxa_FOB'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 37
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField39: TppField
+      FieldAlias = 'Moeda_Seguro'
+      FieldName = 'Moeda_Seguro'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 38
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField40: TppField
+      FieldAlias = 'Taxa_Seguro'
+      FieldName = 'Taxa_Seguro'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 39
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField41: TppField
+      FieldAlias = 'Moeda_Frete'
+      FieldName = 'Moeda_Frete'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 40
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField42: TppField
+      FieldAlias = 'Taxa_Frete'
+      FieldName = 'Taxa_Frete'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 41
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField43: TppField
+      FieldAlias = 'Operacao_Entrada'
+      FieldName = 'Operacao_Entrada'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 42
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField44: TppField
+      FieldAlias = 'Operacao_Saida'
+      FieldName = 'Operacao_Saida'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 43
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField45: TppField
+      FieldAlias = 'Cliente_NotaZonaFranca'
+      FieldName = 'Cliente_NotaZonaFranca'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 44
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField46: TppField
+      FieldAlias = 'Cliente_NotaConsumidorFinal'
+      FieldName = 'Cliente_NotaConsumidorFinal'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 45
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField47: TppField
+      FieldAlias = 'INCOTERM'
+      FieldName = 'INCOTERM'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 46
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField48: TppField
+      FieldAlias = 'Processo'
+      FieldName = 'Processo'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 47
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField49: TppField
+      FieldAlias = 'DI'
+      FieldName = 'DI'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 48
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField50: TppField
+      FieldAlias = 'Qtde_Container'
+      FieldName = 'Qtde_Container'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 49
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField51: TppField
+      FieldAlias = 'Cliente_ImpNome'
+      FieldName = 'Cliente_ImpNome'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 50
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField52: TppField
+      FieldAlias = 'Cliente_ImpEstado'
+      FieldName = 'Cliente_ImpEstado'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 51
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField53: TppField
+      FieldAlias = 'Cliente_NotaNome'
+      FieldName = 'Cliente_NotaNome'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 52
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField54: TppField
+      FieldAlias = 'Cliente_NotaEstado'
+      FieldName = 'Cliente_NotaEstado'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 53
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField55: TppField
+      FieldAlias = 'Cliente_NotaContrib'
+      FieldName = 'Cliente_NotaContrib'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 54
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField56: TppField
+      FieldAlias = 'Cliente_NotaSimples'
+      FieldName = 'Cliente_NotaSimples'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 55
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField57: TppField
+      FieldAlias = 'Cliente_NotaJuridica'
+      FieldName = 'Cliente_NotaJuridica'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 56
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField58: TppField
+      FieldAlias = 'Tipo_Produto'
+      FieldName = 'Tipo_Produto'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 57
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField59: TppField
+      FieldAlias = 'Fator'
+      FieldName = 'Fator'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 58
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField60: TppField
+      FieldAlias = 'Valor_IPISai'
+      FieldName = 'Valor_IPISai'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 59
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField61: TppField
+      FieldAlias = 'Valor_PISSai'
+      FieldName = 'Valor_PISSai'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 60
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField62: TppField
+      FieldAlias = 'Valor_COFINSSai'
+      FieldName = 'Valor_COFINSSai'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 61
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField63: TppField
+      FieldAlias = 'Total_NFSaida'
+      FieldName = 'Total_NFSaida'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 62
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField64: TppField
+      FieldAlias = 'Total_Produtos'
+      FieldName = 'Total_Produtos'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 63
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField65: TppField
+      FieldAlias = 'Valor_Despesas'
+      FieldName = 'Valor_Despesas'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 64
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField66: TppField
+      FieldAlias = 'BCIPI_Entrada'
+      FieldName = 'BCIPI_Entrada'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 65
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField67: TppField
+      FieldAlias = 'BCIPI_Saida'
+      FieldName = 'BCIPI_Saida'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 66
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField68: TppField
+      FieldAlias = 'BCII_Entrada'
+      FieldName = 'BCII_Entrada'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 67
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField69: TppField
+      FieldAlias = 'BCICMSST'
+      FieldName = 'BCICMSST'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 68
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField70: TppField
+      FieldAlias = 'Valor_ICMSST'
+      FieldName = 'Valor_ICMSST'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 69
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField71: TppField
+      FieldAlias = 'Total_NFEntrada'
+      FieldName = 'Total_NFEntrada'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 70
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField72: TppField
+      FieldAlias = 'Valor_DespesasSai'
+      FieldName = 'Valor_DespesasSai'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 71
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField73: TppField
+      FieldAlias = 'Produto_Destinado'
+      FieldName = 'Produto_Destinado'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 72
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField74: TppField
+      FieldAlias = 'Taxa_Servico'
+      FieldName = 'Taxa_Servico'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 73
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField75: TppField
+      FieldAlias = 'Aliquota_PISServ'
+      FieldName = 'Aliquota_PISServ'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 74
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField76: TppField
+      FieldAlias = 'Aliquota_COFINSServ'
+      FieldName = 'Aliquota_COFINSServ'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 75
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField77: TppField
+      FieldAlias = 'Aliquota_IRPJServ'
+      FieldName = 'Aliquota_IRPJServ'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 76
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField78: TppField
+      FieldAlias = 'Aliquota_CSLLServ'
+      FieldName = 'Aliquota_CSLLServ'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 77
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField79: TppField
+      FieldAlias = 'Aliquota_ISSServ'
+      FieldName = 'Aliquota_ISSServ'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 78
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField80: TppField
+      FieldAlias = 'Destacar_ImpCred'
+      FieldName = 'Destacar_ImpCred'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 79
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField81: TppField
+      FieldAlias = 'Valor_AFRMM'
+      FieldName = 'Valor_AFRMM'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 80
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField82: TppField
+      FieldAlias = 'Via_Transporte'
+      FieldName = 'Via_Transporte'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 81
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField83: TppField
+      FieldAlias = 'Tipo_Container'
+      FieldName = 'Tipo_Container'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 82
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField84: TppField
+      FieldAlias = 'Pais_OrigemNome'
+      FieldName = 'Pais_OrigemNome'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 83
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField85: TppField
+      FieldAlias = 'Pais_DestinoNome'
+      FieldName = 'Pais_DestinoNome'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 84
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField86: TppField
+      FieldAlias = 'Modal_Nome'
+      FieldName = 'Modal_Nome'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 85
+      Searchable = False
+      Sortable = False
+    end
+    object pSimulacaoppField87: TppField
+      FieldAlias = 'Beneficio_Nome'
+      FieldName = 'Beneficio_Nome'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 86
+      Searchable = False
+      Sortable = False
+    end
   end
   object pEmpresas: TppDBPipeline
     DataSource = dsEmpresas
     UserName = 'pEmpresas'
-    Left = 536
-    Top = 311
+    Left = 1040
+    Top = 191
   end
   object pDespesas: TppDBPipeline
     UserName = 'pDespesas'
-    Left = 536
-    Top = 364
+    Left = 1040
+    Top = 331
     object pDespesasppField1: TppField
       FieldAlias = 'Registro'
       FieldName = 'Registro'
@@ -14015,8 +14885,8 @@ object fComexSimulacaoImp: TfComexSimulacaoImp
   end
   object pProdutos: TppDBPipeline
     UserName = 'pProdutos'
-    Left = 672
-    Top = 261
+    Left = 1140
+    Top = 138
     object pProdutosppField1: TppField
       Alignment = taRightJustify
       FieldAlias = 'Simulacao'
@@ -14644,13 +15514,13 @@ object fComexSimulacaoImp: TfComexSimulacaoImp
   end
   object pDespesaAdm: TppDBPipeline
     UserName = 'pDespesas1'
-    Left = 536
-    Top = 418
+    Left = 1040
+    Top = 383
   end
   object pDespesaSai: TppDBPipeline
     UserName = 'pDespesaSai'
-    Left = 536
-    Top = 471
+    Left = 1040
+    Top = 435
     object pDespesaSaippField1: TppField
       FieldAlias = 'Registro'
       FieldName = 'Registro'
@@ -14754,8 +15624,8 @@ object fComexSimulacaoImp: TfComexSimulacaoImp
   end
   object pDespesaMar: TppDBPipeline
     UserName = 'pDespesaMar'
-    Left = 536
-    Top = 524
+    Left = 1040
+    Top = 487
     object pDespesaMarppField1: TppField
       FieldAlias = 'Registro'
       FieldName = 'Registro'
@@ -14946,8 +15816,8 @@ object fComexSimulacaoImp: TfComexSimulacaoImp
     CloudDriveSettings.OneDriveSettings.OAuth2.RefreshTokenLifeSpan = 365
     CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     CloudDriveSettings.OneDriveSettings.SharedResources = True
-    Left = 780
-    Top = 363
+    Left = 1140
+    Top = 191
     Version = '23.05'
     mmColumnWidth = 0
     DataPipelineName = 'pSimulacao'
@@ -15789,5 +16659,19 @@ object fComexSimulacaoImp: TfComexSimulacaoImp
     end
     object ppParameterList1: TppParameterList
     end
+  end
+  object Produtos: TFDQuery
+    MasterSource = dsSimulaImp
+    MasterFields = 'Simulacao'
+    Connection = UniMainModule.Conecta
+    SQL.Strings = (
+      'select * from SimulaDespesas')
+    Left = 330
+    Top = 298
+  end
+  object dsProdutos: TDataSource
+    DataSet = Produtos
+    Left = 330
+    Top = 350
   end
 end

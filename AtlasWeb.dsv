@@ -10,9 +10,9 @@ EditViewName=C:\Projetos\Atlasweb\Estoque_Industrializacao.pas
 
 [ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcQ29tZXhTaW11bGFjYW9JbXAucGFz]
 Module=C:\Projetos\Atlasweb\ComexSimulacaoImp.pas
-CursorX=1
-CursorY=1
-TopLine=1
+CursorX=21
+CursorY=2502
+TopLine=2488
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -80,9 +80,9 @@ EditViewName=c:\program files (x86)\embarcadero\studio\37.0\SOURCE\RTL\SYS\Syste
 
 [ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcTWFpbi5wYXM=]
 Module=C:\Projetos\Atlasweb\Main.pas
-CursorX=69
-CursorY=9
-TopLine=1
+CursorX=43
+CursorY=261
+TopLine=251
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -120,9 +120,9 @@ EditViewName=C:\Projetos\Atlasweb\CadAlugueis.pas
 
 [ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcTG9naW4ucGFz]
 Module=C:\Projetos\Atlasweb\Login.pas
-CursorX=58
-CursorY=90
-TopLine=69
+CursorX=64
+CursorY=184
+TopLine=172
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -557,14 +557,14 @@ LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIClasses.pas
-[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxzb3VyY2VcZGF0
-YVxEYXRhLkRCLnBhcw==]
-Module=c:\program files (x86)\embarcadero\studio\37.0\source\data\Data.DB.pas
+[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxzb3VyY2VccnRs
+XGNvbW1vblxTeXN0ZW0uQ2xhc3Nlcy5wYXM=]
+Module=c:\program files (x86)\embarcadero\studio\37.0\source\rtl\common\System.Classes.pas
 CursorX=1
-CursorY=3315
-TopLine=3292
+CursorY=9193
+TopLine=9170
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=c:\program files (x86)\embarcadero\studio\37.0\source\data\Data.DB.pas
+EditViewName=c:\program files (x86)\embarcadero\studio\37.0\source\rtl\common\System.Classes.pas
 
