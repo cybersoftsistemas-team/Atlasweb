@@ -181,7 +181,7 @@ object UniMainModule: TUniMainModule
       'Database=AtlasWeb'
       'User_Name=sa'
       'Password=cybersoft@123'
-      'Server=54.39.196.122'
+      'Server=server-dados'
       'ODBCAdvanced=TrustServerCertificate=Yes'
       'DriverID=MSSQL')
     FetchOptions.AssignedValues = [evMode, evRecsSkip, evRecsMax, evRowsetSize, evRecordCountMode, evCursorKind, evAutoFetchAll, evLiveWindowParanoic, evDetailCascade]
@@ -247,7 +247,7 @@ object UniMainModule: TUniMainModule
     Params.Strings = (
       'Database=EmpresaBase'
       'Password=cybersoft@123'
-      'Server=54.39.196.122'
+      'Server=server-dados'
       'User_Name=sa'
       'ODBCAdvanced=TrustServerCertificate=Yes'
       'DriverID=MSSQL')

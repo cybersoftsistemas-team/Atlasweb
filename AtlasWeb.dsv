@@ -10,9 +10,9 @@ EditViewName=C:\Projetos\Atlasweb\Estoque_Industrializacao.pas
 
 [ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcQ29tZXhTaW11bGFjYW9JbXAucGFz]
 Module=C:\Projetos\Atlasweb\ComexSimulacaoImp.pas
-CursorX=21
-CursorY=2502
-TopLine=2488
+CursorX=52
+CursorY=3248
+TopLine=3216
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -80,9 +80,9 @@ EditViewName=c:\program files (x86)\embarcadero\studio\37.0\SOURCE\RTL\SYS\Syste
 
 [ClosedView_QzpcUHJvamV0b3NcQXRsYXN3ZWJcTWFpbi5wYXM=]
 Module=C:\Projetos\Atlasweb\Main.pas
-CursorX=43
-CursorY=261
-TopLine=251
+CursorX=45
+CursorY=263
+TopLine=241
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -567,4 +567,95 @@ LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=c:\program files (x86)\embarcadero\studio\37.0\source\rtl\common\System.Classes.pas
+[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxzb3VyY2VccnRs
+XGNvbW1vblxTeXN0ZW0uQ2xhc3Nlcy5wYXM=]
+Module=c:\program files (x86)\embarcadero\studio\37.0\source\rtl\common\System.Classes.pas
+CursorX=1
+CursorY=9868
+TopLine=9850
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\studio\37.0\source\rtl\common\System.Classes.pas
+[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxzb3VyY2VccnRs
+XGNvbW1vblxTeXN0ZW0uQ2xhc3Nlcy5wYXM=]
+Module=c:\program files (x86)\embarcadero\studio\37.0\source\rtl\common\System.Classes.pas
+CursorX=1
+CursorY=9868
+TopLine=9849
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\studio\37.0\source\rtl\common\System.Classes.pas
+[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxzb3VyY2VccnRs
+XGNvbW1vblxTeXN0ZW0uQ2xhc3Nlcy5wYXM=]
+Module=c:\program files (x86)\embarcadero\studio\37.0\source\rtl\common\System.Classes.pas
+CursorX=1
+CursorY=9868
+TopLine=9845
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\studio\37.0\source\rtl\common\System.Classes.pas
+[ClosedView_YzpccHJvZ3JhbSBmaWxlcyAoeDg2KVxlbWJhcmNhZGVyb1xzdHVkaW9cMzcuMFxzb3VyY2VccnRs
+XGNvbW1vblxTeXN0ZW0uQ2xhc3Nlcy5wYXM=]
+Module=c:\program files (x86)\embarcadero\studio\37.0\source\rtl\common\System.Classes.pas
+CursorX=1
+CursorY=9868
+TopLine=9849
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\embarcadero\studio\37.0\source\rtl\common\System.Classes.pas
+[ClosedView_QzpcUHJvZ3JhbSBGaWxlcyAoeDg2KVxGTVNvZnRcRnJhbWV3b3JrXHVuaUdVSVxTb3VyY2VcQ29y
+ZVx1bmlHVUlDbGFzc2VzLnBhcw==]
+Module=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIClasses.pas
+CursorX=1
+CursorY=3725
+TopLine=3706
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIClasses.pas
+[ClosedView_QzpcUHJvZ3JhbSBGaWxlcyAoeDg2KVxGTVNvZnRcRnJhbWV3b3JrXHVuaUdVSVxTb3VyY2VcQ29y
+ZVx1bmlHVUlDbGFzc2VzLnBhcw==]
+Module=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIClasses.pas
+CursorX=1
+CursorY=3725
+TopLine=3705
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIClasses.pas
+[ClosedView_QzpcUHJvZ3JhbSBGaWxlcyAoeDg2KVxGTVNvZnRcRnJhbWV3b3JrXHVuaUdVSVxTb3VyY2VcQ29y
+ZVx1bmlHVUlDbGFzc2VzLnBhcw==]
+Module=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIClasses.pas
+CursorX=1
+CursorY=3725
+TopLine=3705
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIClasses.pas
+[ClosedView_QzpcUHJvZ3JhbSBGaWxlcyAoeDg2KVxGTVNvZnRcRnJhbWV3b3JrXHVuaUdVSVxTb3VyY2VcQ29y
+ZVx1bmlHVUlDbGFzc2VzLnBhcw==]
+Module=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIClasses.pas
+CursorX=1
+CursorY=3725
+TopLine=3705
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIClasses.pas
+
+[ClosedView_QzpcUHJvZ3JhbSBGaWxlcyAoeDg2KVxGTVNvZnRcRnJhbWV3b3JrXHVuaUdVSVxTb3VyY2VcQ29y
+ZVx1bmlHVUlDbGFzc2VzLnBhcw==]
+Module=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIClasses.pas
+CursorX=1
+CursorY=3725
+TopLine=3705
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Program Files (x86)\FMSoft\Framework\uniGUI\Source\Core\uniGUIClasses.pas
 

@@ -40,7 +40,6 @@ type
     UniButton1: TUniButton;
     iLogoCyber: TUniImage;
     iLogoAtlas: TUniImage;
-    UniButton2: TUniButton;
     procedure cPesquisaChange(Sender: TObject);
     procedure mnSairClick(Sender: TObject);
     procedure bFecharTodosClick(Sender: TObject);
@@ -50,7 +49,6 @@ type
     procedure UniFormCreate(Sender: TObject);
     procedure UniButton1Click(Sender: TObject);
     procedure bFecharClick(Sender: TObject);
-    procedure UniButton2Click(Sender: TObject);
   private
     { Private declarations }
     procedure CriaAba(nFrame: TuniFrame; dFrame: string; Fechar: Boolean);
@@ -252,29 +250,6 @@ end;
 procedure TMainForm.UniButton1Click(Sender: TObject);
 begin
      fDUIMP.ShowModal;
-end;
-
-procedure TMainForm.UniButton2Click(Sender: TObject);
-var
-  Conn: TFDConnection;
-  Inicio: UInt64;
-  Tempo: UInt64;
-begin
-  Conn := TFDConnection.Create(nil);
-  try
-    Conn.ConnectionDefName := '';
-    Conn.Params.Assign(uniMainModule.Conecta.Params);
-    Conn.LoginPrompt := False;
-
-    Inicio := TThread.GetTickCount64;
-    Conn.Connected := True;
-    Tempo := TThread.GetTickCount64 - Inicio;
-
-    ShowMessage('Tempo conexão SQL: ' +
-                IntToStr(Tempo) + ' ms');
-  finally
-    Conn.Free;
-  end;
 end;
 
 procedure TMainForm.UniFormBeforeShow(Sender: TObject);
